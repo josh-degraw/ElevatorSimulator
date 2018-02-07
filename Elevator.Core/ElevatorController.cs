@@ -10,7 +10,7 @@ namespace ElevatorApp.Core
         public Queue<int> FloorsRequested { get; set; }
         public ICollection<ElevatorDispatcher> Dispatchers { get; set; }
 
-        public event EventHandler OnElevatorRequested;
+        public event EventHandler OnElevatorRequested = delegate { };
 
         public void QueueElevator(int floor)
         {

@@ -1,7 +1,7 @@
-﻿<Application x:Class="CS3260_Proj_02_JBD.App"
+﻿<Application x:Class="ElevatorApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:CS3260_Proj_02_JBD"
+             xmlns:local="clr-namespace:ElevatorApp.GUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

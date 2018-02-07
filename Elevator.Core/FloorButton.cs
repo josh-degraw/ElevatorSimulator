@@ -4,15 +4,22 @@ using System.Text;
 
 namespace ElevatorApp.Core
 {
-    public class FloorButton : IFloorBoundButton
+    public class FloorButton : IFloorBoundButton, IButton<int>
     {
-        public string Label { get; }
-        public void Push()
+        public string Label => this.FloorNum.ToString();
+
+        public event EventHandler<int> OnPushed = delegate { };
+        public int FloorNum { get; }
+
+        public FloorButton(int floorNum)
         {
-            throw new NotImplementedException();
+            this.FloorNum = floorNum;
         }
 
-        public event EventHandler OnPushed;
-        public int FloorNum { get; }
+        public void Push()
+        {
+            this.OnPushed(this, this.FloorNum);
+        }
+
     }
 }

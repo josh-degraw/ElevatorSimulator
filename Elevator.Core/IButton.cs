@@ -8,6 +8,10 @@ namespace ElevatorApp.Core
     {
         string Label { get; }
         void Push();
-        event EventHandler OnPushed;
+    }
+
+    public interface IButton<T> : IButton
+    {
+        event EventHandler<T> OnPushed;
     }
 }

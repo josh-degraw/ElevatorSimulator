@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ElevatorApp.Core
 {
-    public class DoorButton : IButton
+    public class DoorButton : IButton<DoorButtonType>
     {
         public DoorButtonType DoorButtonType { get; }
 
@@ -20,7 +20,7 @@ namespace ElevatorApp.Core
             throw new NotImplementedException();
         }
 
-        public event EventHandler OnPushed;
+        public event EventHandler<DoorButtonType> OnPushed;
 
     }
 
