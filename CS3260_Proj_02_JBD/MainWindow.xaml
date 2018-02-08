@@ -5,23 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElevatorApp.GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Elevator Simulator" Height="561.135" Width="537.181">
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="8"/>
+    </Window.Effect>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="135*"/>
+            <ColumnDefinition Width="164*"/>
+            <ColumnDefinition Width="230*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Label>Elevator Simulator</Label>
-        <Label Grid.Column="0" Grid.Row="1">Elevator</Label>
-        <Label Grid.Column="3" Grid.Row="0">Settings</Label>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="481" Margin="1.338,53,-3.023,-7.6" Stroke="Black" VerticalAlignment="Top" Width="234" Grid.ColumnSpan="3" Grid.Column="3"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="481" Margin="0,53,0,-7.6" Stroke="Black" VerticalAlignment="Top" Width="144" Grid.ColumnSpan="3"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="481" Margin="14.153,53,0,-7.6" Stroke="Black" VerticalAlignment="Top" Width="144" Grid.Column="2"/>
+        <Rectangle Fill="#FFDDDDFF" HorizontalAlignment="Left" Height="53" Stroke="Black" VerticalAlignment="Top" Width="534" Grid.ColumnSpan="6" ClipToBounds="True" Margin="0,0,-3.023,0"/>
+        <Label Content="Parameters" Grid.ColumnSpan="2" Margin="0,18,3.847,470.6" FontSize="22" FontWeight="Bold"/>
+        <Label Grid.Column="0" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0,53,3.847,438.2">Elevator Settings</Label>
+        <Label x:Name="label" Content="Speed(feet per minute)" HorizontalAlignment="Left" Margin="2,72,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="134" Grid.Column="1" Height="26"/>
+        <TextBox x:Name="ElevatorSpeedText" HorizontalAlignment="Left" Height="23" Margin="6,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="label_Copy" Content="Capacity(persons)" HorizontalAlignment="Left" Margin="2,126,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="134" Grid.Column="1" Height="25"/>
+        <TextBox x:Name="CapacityText" HorizontalAlignment="Left" Height="23" Margin="6,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label Grid.Column="0" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0,319,3.847,167.2" Content="Building Settings"/>
+        <Label x:Name="label_Copy1" Content="Number of Floors" HorizontalAlignment="Left" Margin="2,338,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="134" Grid.Column="1" Height="26"/>
+        <TextBox x:Name="FloorsText" HorizontalAlignment="Left" Height="23" Margin="5,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="label_Copy2" Content="Floor Height (feet)" HorizontalAlignment="Left" Margin="2,409,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="134" Grid.Column="1" Height="26"/>
+        <TextBox x:Name="HeightText" HorizontalAlignment="Left" Height="23" Margin="5,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <StackPanel Margin="2,197,3.847,269.6" Grid.Column="1">
+            <Label Content="Door Category"/>
+            <RadioButton x:Name="TwinButton">Twin</RadioButton>
+            <RadioButton x:Name="SingleButton">Single</RadioButton>
+        </StackPanel>
+        <Label Content="Test Settings" Margin="14.153,18,229.49,470.6" FontSize="22" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Label x:Name="label1" Content="Time Settings" Grid.Column="2" HorizontalAlignment="Left" Margin="14.153,53,0,0" VerticalAlignment="Top" Height="31" Width="107" FontWeight="Bold"/>
+        <Label x:Name="label_Copy3" Content="Test Duration(minutes)" HorizontalAlignment="Left" Margin="23.153,72,0,0" VerticalAlignment="Top" Width="134" Grid.Column="2" Height="26"/>
+        <TextBox x:Name="DurationText" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="26.153,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label1_Copy" Content="Traffic Settings" Grid.Column="2" HorizontalAlignment="Left" Margin="14.153,155,0,0" VerticalAlignment="Top" Height="25" Width="107" FontWeight="Bold"/>
+        <Label x:Name="label_Copy4" Content="Passengers per Minute" HorizontalAlignment="Left" Margin="23.153,178,0,0" VerticalAlignment="Top" Width="134" Grid.Column="2" Height="26"/>
+        <TextBox x:Name="PassengersText" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="26.153,204,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Test Results" Margin="42.338,18,46.49,470.6" FontSize="22" FontWeight="Bold" Grid.Column="3"/>
+        <ToolBar x:Name="toolBar" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="538" Grid.ColumnSpan="6" Margin="-5,-2,-2.023,0">
+            <ToolBar.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </ToolBar.Effect>
+            <Menu>
+                <Menu.Items>
+                    <MenuItem Header="_Open Test Case"/>
+
+                    <MenuItem Header="_Save Test Case"/>
+
+                    <MenuItem Header="_Exit"/>
+                </Menu.Items>
+            </Menu>
+        </ToolBar>
+        <Label x:Name="label_Copy5" Content="Average Wait Time Per Passenger(sec)" HorizontalAlignment="Left" Margin="12.338,72,0,0" VerticalAlignment="Top" Width="210" Grid.Column="3" Height="26"/>
+        <TextBox x:Name="WaitTimeText" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="19.338,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Text="22.4"/>
+        <Label x:Name="label_Copy6" Content="Average Car Load (persons)" HorizontalAlignment="Left" Margin="12.338,139,0,0" VerticalAlignment="Top" Width="210" Grid.Column="3" Height="26"/>
+        <TextBox x:Name="AverageLoadText" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="19.338,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Text="2.61"/>
+        <Label x:Name="label_Copy7" Content="Number of Elevators" HorizontalAlignment="Left" Margin="2,263,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="134" Grid.Column="1" Height="26"/>
+        <TextBox x:Name="ElevatorCountText" HorizontalAlignment="Left" Height="23" Margin="6,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Button x:Name="RunButton" Content="Run Test" Grid.Column="2" HorizontalAlignment="Left" Margin="26.153,248,0,0" VerticalAlignment="Top" Width="120" Height="54"/>
+        <Label x:Name="label_Copy8" Content="Average Elevator Idle Time(sec)" HorizontalAlignment="Left" Margin="11.338,214,0,0" VerticalAlignment="Top" Width="210" Grid.Column="3" Height="26"/>
+        <TextBox x:Name="IdleTimeText" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="19.338,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Text="32.1"/>
+
     </Grid>
 </Window>
