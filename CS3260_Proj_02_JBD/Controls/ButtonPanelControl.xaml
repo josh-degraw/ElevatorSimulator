@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="ElevatorApp.GUI.ButtonPanelControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElevatorApp.GUI"
+             
+             xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
+             
+             mc:Ignorable="d"
+             x:Name="elevator"
+             >
+
+    <!--<UserControl.DataContext>
+        <viewModels:ButtonPanelControlViewModel x:Name="ViewModel"/>
+    </UserControl.DataContext>-->
+
+    <Border BorderThickness="2" BorderBrush="Black" Background="AliceBlue" Margin="25,0,25,15">
+        <StackPanel>
+            <ListView BorderThickness="0"
+                      Background="Transparent"
+                      Padding="15,0,10,0"
+                      ItemsSource="{Binding FloorButtons}" 
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <local:ElevatorButtonControl DataContext="{Binding}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal" Margin="5,0,5,5">
+                <!--<UserControl DataContext="{Binding CloseDoorButton}" ContentTemplate="{StaticResource ButtonTemplate}" Margin="0,0,5,0"/>
+                                                        <UserControl DataContext="{Binding OpenDoorButton}"  ContentTemplate="{StaticResource ButtonTemplate}"/>-->
+                <local:ElevatorButtonControl DataContext="{Binding OpenDoorButton}"/>
+                <local:ElevatorButtonControl DataContext="{Binding CloseDoorButton}"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+    <!--<Grid x:Name="grid">
+        <ListView DataContext="{Binding Path='Buttons'}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local:ElevatorDoorButtonControl Button="{Binding}"></local:ElevatorDoorButtonControl>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>-->
+</UserControl>

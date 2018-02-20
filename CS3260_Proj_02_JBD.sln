@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS3260_Proj_02_JBD", "CS3260_Proj_02_JBD\CS3260_Proj_02_JBD.csproj", "{C7DC03DE-8746-4FD9-B3CA-C0A768F25DFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorApp.GUI", "CS3260_Proj_02_JBD\ElevatorApp.GUI.csproj", "{C7DC03DE-8746-4FD9-B3CA-C0A768F25DFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorApp.Core", "Elevator.Core\ElevatorApp.Core.csproj", "{82458C1E-7C63-40F3-815A-ADA1F4B8E6B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorApp.Core", "Elevator.Core\ElevatorApp.Core.csproj", "{82458C1E-7C63-40F3-815A-ADA1F4B8E6B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

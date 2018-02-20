@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="ElevatorApp.GUI.ElevatorButtonControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElevatorApp.GUI"
+             xmlns:core="clr-namespace:ElevatorApp.Core;assembly=ElevatorApp.Core"
+             xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
+             
+             mc:Ignorable="d" 
+             x:Name="button">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Active}" Value="True">
+                    <Setter Property="Background" Value="Yellow"/>
+                    <Setter Property="IsEnabled"  Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <WrapPanel >
+            <Button Content="{Binding Label}" Click="Button_Click" Height="37" Width="43" Background="#FFF3F3F3"/>
+        </WrapPanel>
+    </StackPanel>
+
+</UserControl>

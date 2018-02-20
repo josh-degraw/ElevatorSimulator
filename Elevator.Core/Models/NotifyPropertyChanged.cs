@@ -11,6 +11,8 @@ namespace ElevatorApp.Core
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+        // ReSharper disable once RedundantAssignment
         [NotifyPropertyChangedInvocator]
         protected virtual void SetValue<T>(ref T prop, T newVal, [CallerMemberName] string propertyName = null)
         {
