@@ -3,10 +3,10 @@ using ElevatorApp.Core.Models;
 
 namespace ElevatorApp.Core.Interfaces
 {
-    public interface IButtonPanel: IMasterSubscriber
+    public interface IButtonPanel
     {
-        ICollection<FloorButton> FloorButtons { get; set; }
-        DoorButton CloseDoorButton { get; set; }
-        DoorButton OpenDoorButton { get; set; }
+        ICollection<FloorButton> FloorButtons { get; }
+        DoorButton CloseDoorButton { get; }
+        DoorButton OpenDoorButton { get; }
     }
 }

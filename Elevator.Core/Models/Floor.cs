@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using ElevatorApp.Core.Interfaces;
-using ElevatorApp.Core.Models;
 
-namespace ElevatorApp.Core
+namespace ElevatorApp.Core.Models
 {
-    public class Floor : IFloor
+    public class Floor : ModelBase, IFloor, ISubcriber<ElevatorMasterController>
     {
-        public int FloorNumber { get; set; }
-        public bool ElevatorAvailable { get; private set; }
+        public int FloorNumber { get; }
 
-        public ICollection<CallElevatorButtonPanel> Buttons { get; set; }
 
-        public Floor(int floorNumber, ICollection<CallElevatorButtonPanel> buttons)
+        public ICollection<ElevatorCallPanel> Buttons { get; } = new ObservableCollection<ElevatorCallPanel> { new ElevatorCallPanel() };
+
+        public Floor(int floorNumber, IEnumerable<ElevatorCallPanel> buttons)
         {
             this.FloorNumber = floorNumber;
-            this.Buttons = buttons;
+            this.Buttons = new ObservableCollection<ElevatorCallPanel>(buttons);
         }
 
         public Floor(int floorNumber, int callPanels = 1)
-            : this(floorNumber, Enumerable.Range(0, callPanels).Select(a => new CallElevatorButtonPanel(a)).ToArray())
+            : this(floorNumber, new ObservableCollection<ElevatorCallPanel>(Enumerable.Range(0, callPanels).Select(a => new ElevatorCallPanel(a))))
         {
 
         }
@@ -32,5 +30,12 @@ namespace ElevatorApp.Core
         }
 
 
+        public void Subscribe(ElevatorMasterController parent)
+        {
+            foreach (ElevatorCallPanel panel in this.Buttons)
+            {
+                panel.Subscribe(parent);
+            }
+        }
     }
 }

@@ -7,20 +7,19 @@ using ElevatorApp.Core.Interfaces;
 
 namespace ElevatorApp.Core.Models
 {
-    public abstract class Button<T> : IButton<T>
+    public abstract class Button<T> : ModelBase, IButton<T>
     {
         public abstract string Label { get; }
 
+        protected bool _active;
         public bool Active
         {
-            get;
-#if !DEBUG
-            protected
-#endif
-            set;
+            get => _active;
+            protected set => SetValue(ref _active, value);
         }
 
         public event EventHandler<T> OnPushed;
+
         public event EventHandler<T> OnActionCompleted;
 
         public event EventHandler OnActivated;
@@ -28,8 +27,10 @@ namespace ElevatorApp.Core.Models
 
         protected T actionArgs;
 
-        protected Button()
+        public string Id { get; }
+        protected Button(string id)
         {
+            this.Id = id;
             this.OnActivated += _setActiveTrue;
             this.OnDeactivated += _setActiveFalse;
         }

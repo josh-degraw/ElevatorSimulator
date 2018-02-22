@@ -11,13 +11,15 @@ namespace ElevatorApp.Core.Models
 
         public int FloorNum { get; }
 
-        public FloorButton(int floorNum)
+        public FloorButton(int floorNum, bool active = false):base($"FloorBtn {floorNum}")
         {
             this.FloorNum = floorNum;
+            this.Active = active;
         }
 
         public override void Push()
         {
+
             this.Pushed(this, this.FloorNum);
         }
 

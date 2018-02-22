@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="ElevatorApp.GUI.Controls.DoorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElevatorApp.GUI.Controls"
+             xmlns:models="clr-namespace:ElevatorApp.Core.Models;assembly=ElevatorApp.Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <models:Door/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--<StackPanel Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Label>Door:</Label>
+            <Label Content="{Binding DoorState, Mode=OneWay}"/>
+        </StackPanel>-->
+        <Rectangle Grid.Row="1" Grid.Column="0" Fill="Gray" />
+        <Rectangle Grid.Row="1" Grid.Column="1" Fill="Gray" Margin="0,0,1,0" />
+        <Rectangle Grid.Row="1" Grid.Column="2" Fill="Gray" />
+        <Rectangle Grid.Row="1" Grid.Column="3" Fill="Gray" />
+    </Grid>
+</UserControl>

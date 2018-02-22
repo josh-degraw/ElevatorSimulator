@@ -34,8 +34,6 @@ namespace ElevatorApp.GUI
         {
             get
             {
-                if (this.DataContext is ElevatorButtonViewModel vm)
-                    return vm.Button;
                 if (this.DataContext is IButton b)
                     return b;
 
@@ -43,20 +41,13 @@ namespace ElevatorApp.GUI
             }
             set
             {
-                if (this.DataContext is ElevatorButtonViewModel vm)
-                    vm.Button = value;
-                else
-                    this.DataContext = value;
+                this.DataContext = value;
             }
         }
 
 
         public ElevatorButtonControl()
         {
-            if (DesignerProperties.GetIsInDesignMode(this))
-            {
-                this.DataContext = new ElevatorButtonViewModel();
-            }
             InitializeComponent();
         }
 

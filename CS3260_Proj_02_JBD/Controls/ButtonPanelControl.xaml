@@ -6,43 +6,32 @@
              xmlns:local="clr-namespace:ElevatorApp.GUI"
              
              xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
-             
+             xmlns:models="clr-namespace:ElevatorApp.Core.Models;assembly=ElevatorApp.Core"
+
              mc:Ignorable="d"
              x:Name="elevator"
              >
 
-    <!--<UserControl.DataContext>
-        <viewModels:ButtonPanelControlViewModel x:Name="ViewModel"/>
-    </UserControl.DataContext>-->
-
+    <UserControl.DataContext>
+        <models:ButtonPanel/>
+    </UserControl.DataContext>
     <Border BorderThickness="2" BorderBrush="Black" Background="AliceBlue" Margin="25,0,25,15">
         <StackPanel>
             <ListView BorderThickness="0"
                       Background="Transparent"
                       Padding="15,0,10,0"
-                      ItemsSource="{Binding FloorButtons}" 
+                      ItemsSource="{Binding FloorButtons, Mode=OneWay}" 
                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <local:ElevatorButtonControl DataContext="{Binding}"/>
+                        <local:ElevatorButtonControl DataContext="{Binding Mode=OneWay}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <StackPanel Orientation="Horizontal" Margin="5,0,5,5">
-                <!--<UserControl DataContext="{Binding CloseDoorButton}" ContentTemplate="{StaticResource ButtonTemplate}" Margin="0,0,5,0"/>
-                                                        <UserControl DataContext="{Binding OpenDoorButton}"  ContentTemplate="{StaticResource ButtonTemplate}"/>-->
-                <local:ElevatorButtonControl DataContext="{Binding OpenDoorButton}"/>
-                <local:ElevatorButtonControl DataContext="{Binding CloseDoorButton}"/>
+                <local:ElevatorButtonControl DataContext="{Binding OpenDoorButton, Mode=OneWay}"/>
+                <local:ElevatorButtonControl DataContext="{Binding CloseDoorButton, Mode=OneWay}"/>
             </StackPanel>
         </StackPanel>
     </Border>
-    <!--<Grid x:Name="grid">
-        <ListView DataContext="{Binding Path='Buttons'}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <local:ElevatorDoorButtonControl Button="{Binding}"></local:ElevatorDoorButtonControl>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </Grid>-->
 </UserControl>

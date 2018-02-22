@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ElevatorApp.Core;
-using ElevatorApp.Core.Interfaces;
-using ElevatorApp.GUI.ViewModels;
 
-namespace ElevatorApp.GUI
+namespace ElevatorApp.GUI.Controls
 {
     /// <summary>
-    /// Interaction logic for ButtonPanelControl.xaml
+    /// Interaction logic for DoorControl.xaml
     /// </summary>
-    public partial class ButtonPanelControl : UserControl
+    public partial class DoorControl : UserControl
     {
-        public ButtonPanelControl()
+        public DoorControl()
         {
             InitializeComponent();
-        }
-
-        public ButtonPanelControl(IButtonPanel buttonPanel) : this()
-        {
-            this.DataContext = buttonPanel;
         }
     }
 }

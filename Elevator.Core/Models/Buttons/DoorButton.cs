@@ -7,7 +7,13 @@ namespace ElevatorApp.Core.Models
 {
     public class DoorButton : Button<DoorButtonType>, IButton
     {
-        public DoorButtonType DoorButtonType { get; set; } = DoorButtonType.Close;
+        private DoorButtonType _doorButtonType= DoorButtonType.Close;
+
+        public DoorButtonType DoorButtonType
+        {
+            get => _doorButtonType;
+            set => SetValue(ref _doorButtonType, value);
+        } 
 
         public override string Label
         {
@@ -26,10 +32,10 @@ namespace ElevatorApp.Core.Models
 
         public override void Push()
         {
-            base.Pushed(this, this.DoorButtonType);
+            this.Pushed(this, this.DoorButtonType);
         }
 
-        private DoorButton(DoorButtonType type)
+        private DoorButton(DoorButtonType type):base($"DoorBtn {type}")
         {
             this.DoorButtonType = type;
         }

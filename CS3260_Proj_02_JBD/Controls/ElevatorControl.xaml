@@ -7,8 +7,7 @@
              xmlns:models="clr-namespace:ElevatorApp.Core.Models;assembly=ElevatorApp.Core"
              xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
              xmlns:gui="clr-namespace:ElevatorApp.GUI"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d" Height="257.449" Width="445.534">
     <UserControl.DataContext>
         <models:Elevator/>
     </UserControl.DataContext>
@@ -16,27 +15,38 @@
 
         <Label FontWeight="Bold">Elevator</Label>
         <StackPanel  Orientation="Horizontal">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Current floor:</Label>
-                    <Label Content="{Binding CurrentFloor}"/>
-                </StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Horizontal">
-                    <Label>Passengers:</Label>
-                    <Label Content="{Binding Passengers.Count}"/>
-                </StackPanel>
+                <Label Grid.Row="0" Grid.Column="0">Current floor:</Label>
+                <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentFloor, Mode=OneWay}"/>
 
-                <StackPanel Orientation="Horizontal">
-                    <Label>State:</Label>
-                    <Label Content="{Binding State}"/>
-                </StackPanel>
-                <StackPanel DataContext="{Binding Door}">
-                    <Label Content="{Binding DoorState}"/>
-                </StackPanel>
-            </StackPanel>
-            <gui:ButtonPanelControl DataContext="{Binding ButtonPanel}"/>
-            
+                <Label Grid.Row="1" Grid.Column="0">Passengers:</Label>
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding Passengers.Count, Mode=OneWay}"/>
+
+                <Label Grid.Row="2" Grid.Column="0">State:</Label>
+                <Label Grid.Row="2" Grid.Column="1" Content="{Binding State, Mode=OneWay}"/>
+
+                <Label Grid.Row="3" Grid.Column="0">Door:</Label>
+                <Label Grid.Row="3" Grid.Column="1" DataContext="{Binding Door}" Content="{Binding DoorState, Mode=OneWay}"/>
+            </Grid>
+            <gui:ButtonPanelControl DataContext="{Binding ButtonPanel, Mode=OneWay}"/>
+            <local:DoorControl DataContext="{Binding Door}" Width="166">
+                
+            </local:DoorControl>
         </StackPanel>
     </StackPanel>
 </UserControl>

@@ -11,4 +11,9 @@ namespace ElevatorApp.Core.Interfaces
     {
         void Subscribe(ElevatorMasterController masterController);
     }
+
+    public interface ISubcriber<T>
+    {
+        void Subscribe(T parent);
+    }
 }

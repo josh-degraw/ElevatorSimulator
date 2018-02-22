@@ -10,12 +10,12 @@
         xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
         xmlns:controls="clr-namespace:ElevatorApp.GUI.Controls"
         mc:Ignorable="d"
-        Title="Elevator Simulator" d:DesignWidth="957" d:DesignHeight="1067.5" >
+        Title="Elevator Simulator" d:DesignWidth="957" Height="935.5" >
 
     <Window.Resources>
     </Window.Resources>
     <Window.DataContext>
-        <viewModels:ElevatorMasterControllerViewModel/>
+        <models:ElevatorMasterController/>
     </Window.DataContext>
     <DockPanel >
         <Ribbon DockPanel.Dock="Top">
@@ -76,6 +76,7 @@
             <RibbonTab Header="">
 
             </RibbonTab>
+
         </Ribbon>
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
@@ -84,9 +85,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
+            <StackPanel Grid.Column="0" Grid.ColumnSpan="2" >
                 <Grid >
-                    <ScrollViewer>
+                    <ScrollViewer MaxHeight="500">
                         <ListView ItemsSource="{Binding Elevators}" ScrollViewer.CanContentScroll="True">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -103,7 +104,8 @@
                     <Button Padding="15,4">Save</Button>
                 </WrapPanel>
             </StackPanel>
-            <StackPanel Grid.Column="2" Grid.Row="2"  Background="#FFF4F4F5">
+
+            <StackPanel Grid.Column="2"  Background="#FFF4F4F5">
                 <StackPanel>
                     <Label Content="Average Wait Time Per Passenger(sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
                     <TextBox Name="txtBxWaitTime"                         Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23" TextWrapping="Wrap" IsEnabled="False" Text="22.4"/>
@@ -121,12 +123,24 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Label Content="{Binding}"/>
-                                
+
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
-                
+                <StackPanel>
+                    <ListView ItemsSource="{Binding FloorsRequested}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel DataContext="{Binding}">
+                                    <Label Content="{Binding DestinationFloor}"/>
+                                    <Label Content="{Binding RequestDirection}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
             </StackPanel>
 
         </Grid>

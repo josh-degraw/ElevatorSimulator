@@ -9,18 +9,17 @@ namespace ElevatorApp.Core.Interfaces
     public interface IElevatorMasterController
     {
         int ElevatorCount { get; set; }
-        ObservableCollection<Elevator> Elevators { get; set; }
-        ElevatorSettings ElevatorSettings { get; set; }
+        ObservableCollection<Elevator> Elevators { get; }
+        ElevatorSettings ElevatorSettings { get; }
         int FloorCount { get; set; }
         int FloorHeight { get; set; }
-        ObservableCollection<Floor> Floors { get; set; }
-        ObservableConcurrentQueue<int> FloorsRequested { get; }
+        ObservableConcurrentQueue<ElevatorCall> FloorsRequested { get; }
 
-        event EventHandler<int> OnElevatorRequested;
+        event EventHandler<ElevatorCall> OnElevatorRequested;
 
         void Dispatch(int floor, Direction direction);
+        void Dispatch(ElevatorCall call);
         void Init();
-        void QueueElevator(int floor);
-        void ReportArrival(IElevator elevator);
+        void ReportArrival(Elevator elevator);
     }
 }

@@ -10,24 +10,18 @@ using ElevatorApp.Core.Models;
 
 namespace ElevatorApp.Core.Models
 {
-    public class ButtonPanel : ICollection<FloorButton>, IButtonPanel
+    public class ButtonPanel : ICollection<FloorButton>, IButtonPanel, ISubcriber<(ElevatorMasterController, Elevator)>
     {
-        public ICollection<FloorButton> FloorButtons { get; set; } = new ObservableCollection<FloorButton>
+        public ICollection<FloorButton> FloorButtons { get; } = new ObservableCollection<FloorButton>
         {
             new FloorButton(4),
-            new FloorButton(3)
-#if DEBUG
-            {
-                Active=true
-            }
-#endif
-            ,
+            new FloorButton(3, active: true),
             new FloorButton(2),
             new FloorButton(1),
         };
 
-        public DoorButton OpenDoorButton { get; set; } = DoorButton.Open;
-        public DoorButton CloseDoorButton { get; set; } = DoorButton.Close;
+        public DoorButton OpenDoorButton { get; } = DoorButton.Open;
+        public DoorButton CloseDoorButton { get; } = DoorButton.Close;
 
         #region ICollectionImplementation
         public IEnumerator<FloorButton> GetEnumerator()
@@ -70,12 +64,18 @@ namespace ElevatorApp.Core.Models
         public bool IsReadOnly => FloorButtons.IsReadOnly;
         #endregion
 
-        public void Subscribe(ElevatorMasterController controller)
+        public void Subscribe((ElevatorMasterController, Elevator) parent)
         {
+            var (controller, elevator) = parent;
             foreach (FloorButton button in this.FloorButtons)
             {
-                button.OnPushed += (a, b) => controller.QueueElevator(button.FloorNum);
+                button.OnPushed += (a, b) =>
+                {
+                    controller.Dispatch(button.FloorNum, elevator.CurrentFloor > button.FloorNum ? Direction.Down : Direction.Up);
+                };
             }
+            elevator.Door.Subscribe(this);
         }
+        
     }
 }

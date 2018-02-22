@@ -10,12 +10,22 @@ using ElevatorApp.Core.Models;
 namespace ElevatorApp.Core.Models
 {
 
-    public class Elevator : IElevator
+    public class Elevator : ModelBase, IElevator, ISubcriber<ElevatorMasterController>
     {
-        #region INotifyParent Properties
-        public int Speed { get; set; }
+        #region Backing fields
 
-        public int Capacity { get; set; }
+        private int _speed, _capacity, _currentFloor;
+
+        #endregion
+
+        #region INotifyParent Properties
+
+        public int Capacity
+        {
+            get => _capacity;
+            set => SetValue(ref _capacity, value);
+        }
+
 
         public int CurrentWeight => Passengers?.Count ?? 0;
 
@@ -23,22 +33,17 @@ namespace ElevatorApp.Core.Models
 
         public int CurrentFloor
         {
-            get;
-
-#if !DEBUG
-            private 
-#endif
-
-            set ;
+            get => _currentFloor;
+            private set => SetValue(ref _currentFloor, value);
         }
 
         #endregion
-        
+
 
         public ObservableConcurrentQueue<int> Path { get; } = new ObservableConcurrentQueue<int>();
-        public ObservableCollection<IPassenger> Passengers { get; } = new ObservableCollection<IPassenger>();
+        public ICollection<IPassenger> Passengers { get; } = new ObservableCollection<IPassenger>();
 
-        public ButtonPanel ButtonPanel { get; set; } = new ButtonPanel();
+        public ButtonPanel ButtonPanel { get; } = new ButtonPanel();
 
         public Door Door { get; } = new Door();
 
@@ -51,10 +56,10 @@ namespace ElevatorApp.Core.Models
             {
                 controller.Elevators.Add(this);
             }
+            this.ButtonPanel.Subscribe((controller, this));
 
-            this.ButtonPanel.Subscribe(controller);
         }
-        
+
         public void Arrived()
         {
             if (this.Path.TryDequeue(out int destination))
@@ -93,6 +98,11 @@ namespace ElevatorApp.Core.Models
             OnArrival += Elevator_OnArrival;
             OnDeparture += Elevator_OnDeparture;
 
+        }
+
+        public Elevator(int initialFloor):this()
+        {
+            this.CurrentFloor = initialFloor;
         }
     }
 }

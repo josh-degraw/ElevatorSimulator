@@ -10,20 +10,17 @@ using static System.Math;
 
 namespace ElevatorApp.Core.Models
 {
-    public class ElevatorMasterController : INotifyCollectionChanged, IElevatorMasterController
+    public class ElevatorMasterController : ModelBase, INotifyCollectionChanged, IElevatorMasterController
     {
         public event NotifyCollectionChangedEventHandler CollectionChanged;
-        /// <summary>
-        /// Singleton representation of elevator
-        /// </summary>
-        public static ElevatorMasterController Instance { get; } = new ElevatorMasterController();
 
+        private int _floorHeight;
+        
         public ObservableCollection<Elevator> Elevators { get; set; } = new ObservableCollection<Elevator>(
             new[] {
                 new Elevator(),
-                new Elevator
+                new Elevator(2)
                 {
-                    CurrentFloor = 2,
                     Passengers=
                     {
                          new Passenger{ State= PassengerState.In, Weight=20}
@@ -33,24 +30,36 @@ namespace ElevatorApp.Core.Models
             }
         );
 
-        public ObservableConcurrentQueue<int> FloorsRequested { get; } = new ObservableConcurrentQueue<int>();
-        public ObservableCollection<Floor> Floors { get; set; } = new ObservableCollection<Floor>(Enumerable.Range(0, 4).Select(a => new Floor(a)));
+        public ObservableConcurrentQueue<ElevatorCall> FloorsRequested { get; } = new ObservableConcurrentQueue<ElevatorCall>();
+        public ICollection<Floor> Floors { get; } = new ObservableCollection<Floor>(Enumerable.Range(0, 4).Select(a => new Floor(a)));
 
-        public int FloorHeight { get; set; }
 
-        public ElevatorSettings ElevatorSettings { get; set; } = new ElevatorSettings();
+        public int FloorHeight
+        {
+            get => _floorHeight;
+            set => SetValue(ref _floorHeight, value);
+        }
 
-        private void AdjustCollection<T>(ICollection<T> collection, int value, Func<int, T> generator)
+        public ElevatorSettings ElevatorSettings { get; } = new ElevatorSettings();
+
+        private void AdjustCollection<T>(ICollection<T> collection, int value, Func<int, T> generator) where T: ISubcriber<ElevatorMasterController>
         {
             if (collection.Count == value)
                 return;
+
+            int pseudoBackingField = 0;
 
             if (collection.Count < value)
             {
                 for (int i = collection.Count; i < value; i++)
                 {
-                    collection.Add(generator(i));
+                    T newItem = generator(i);
+                    newItem.Subscribe(this);
+                    collection.Add(newItem);
+                    this.CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, newItem));
                 }
+                SetValue(ref pseudoBackingField, collection.Count);
+
             }
             else
             {
@@ -58,9 +67,14 @@ namespace ElevatorApp.Core.Models
                 {
                     T item = collection.LastOrDefault();
                     if (!Object.Equals(item, default))
+                    {
                         collection.Remove(item);
+                        this.CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
+                    }
                 }
+                SetValue(ref pseudoBackingField, collection.Count);
             }
+            
         }
 
         public int FloorCount
@@ -75,50 +89,48 @@ namespace ElevatorApp.Core.Models
             set => AdjustCollection(Elevators, value, _ => new Elevator());
         }
 
-        public event EventHandler<int> OnElevatorRequested;
+        public event EventHandler<ElevatorCall> OnElevatorRequested;
 
-        public void QueueElevator(int floor)
+        private void ElevatorArrived(Elevator elevator)
         {
-            OnElevatorRequested?.Invoke(this, floor);
-        }
-
-        public void QueueElevator(int floor, Direction direction)
-        {
-            OnElevatorRequested?.Invoke(this, floor);
-        }
-
-        private void ElevatorArrived(IElevator elevator)
-        {
-            if (this.FloorsRequested.TryPeek(out int val) && val == elevator.CurrentFloor)
+            if (this.FloorsRequested.TryPeek(out ElevatorCall val) && val.DestinationFloor == elevator.CurrentFloor)
             {
                 this.FloorsRequested.TryDequeue(out _);
             }
         }
 
-        private void Dispatch(int floor, IElevator elevator)
+        private void Dispatch(int floor, Elevator elevator)
         {
-            elevator.Dispatch(floor);
+            elevator?.Dispatch(floor);
         }
 
         public void Dispatch(int floor, Direction direction)
         {
-            int distanceFromRequestedFloor(IElevator e) => Abs(floor - e.CurrentFloor);
+            int distanceFromRequestedFloor(Elevator e) => Abs(floor - e.CurrentFloor);
 
             // First check if any are not moving
-            IElevator closest = Elevators
+            Elevator closest = Elevators
                 .Where(e => e.State == ElevatorState.Idle)
                 .MinBy(distanceFromRequestedFloor); // If any were found idle, the closest one to the requested floor is dispatched
 
             if (closest != null)
+            {
                 Dispatch(floor, closest);
-
-            // If none were idle, find the one that's closest to it, going in the direction
-            closest = this.Elevators
-                .Where(e => e.State == (ElevatorState)direction)
-                .MinBy(distanceFromRequestedFloor);
+            }
+            else
+            {
+                // If none were idle, find the one that's closest to it, going in the direction
+                closest = this.Elevators
+                    .Where(e => e.State == (ElevatorState)direction)
+                    .MinBy(distanceFromRequestedFloor);
+            }
 
             Dispatch(floor, closest);
+        }
 
+        public void Dispatch(ElevatorCall call)
+        {
+            this.Dispatch(call.DestinationFloor, call.RequestDirection);
         }
 
         public ElevatorMasterController()
@@ -129,23 +141,27 @@ namespace ElevatorApp.Core.Models
             };
         }
 
-        public void ReportArrival(IElevator elevator)
+        public void ReportArrival(Elevator elevator)
         {
             ElevatorArrived(elevator);
         }
 
         public void Init()
         {
-            foreach (IElevator item in this.Elevators)
+            foreach (Elevator item in this.Elevators)
             {
                 item.Subscribe(this);
+                item.OnArrival += (a, b) => this.ReportArrival(item);
             }
+            
+
+            Logger.LogEvent("Initialized");
         }
 
         private void ElevatorMasterController_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
 
         }
-        
+
     }
 }

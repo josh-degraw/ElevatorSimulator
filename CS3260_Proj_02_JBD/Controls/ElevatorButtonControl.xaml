@@ -9,7 +9,6 @@
              
              mc:Ignorable="d" 
              x:Name="button">
-
     <UserControl.Resources>
         <Style TargetType="TextBlock">
             <Style.Triggers>

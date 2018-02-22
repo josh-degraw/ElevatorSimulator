@@ -60,15 +60,19 @@
     <Compile Include="Controls\ButtonPanelControl.xaml.cs">
       <DependentUpon>ButtonPanelControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DoorControl.xaml.cs">
+      <DependentUpon>DoorControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ElevatorControl.xaml.cs">
       <DependentUpon>ElevatorControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DependencyInjection\IocKernal.cs" />
-    <Compile Include="ViewModels\ButtonPanelControlViewModel.cs" />
     <Compile Include="Util\DelegateCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="DependencyInjection\ViewModelLocator.cs" />
     <Page Include="Controls\ButtonPanelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DoorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -77,10 +81,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ElevatorControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ElevatorDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -95,12 +95,6 @@
     <Compile Include="Controls\ElevatorButtonControl.xaml.cs">
       <DependentUpon>ElevatorButtonControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ElevatorDisplay.xaml.cs">
-      <DependentUpon>ElevatorDisplay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\ElevatorButtonViewModel.cs" />
-    <Compile Include="ViewModels\ElevatorMasterControllerViewModel.cs" />
-    <Compile Include="ViewModels\ElevatorViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

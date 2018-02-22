@@ -2,7 +2,7 @@
 
 namespace ElevatorApp.Core.Interfaces
 {
-    public interface ICallElevatorButtonPanel: IMasterSubscriber
+    public interface IElevatorCallPanel: IMasterSubscriber
     {
         int FloorNumber { get; }
         RequestButton GoingDownButton { get; }

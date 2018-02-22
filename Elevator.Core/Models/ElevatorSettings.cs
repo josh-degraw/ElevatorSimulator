@@ -6,11 +6,28 @@ using System.Threading.Tasks;
 
 namespace ElevatorApp.Core.Models
 {
-    public class ElevatorSettings
+    public class ElevatorSettings: ModelBase
     {
-        public int Speed { get; set; }
-        public int Capacity { get; set; }
+        private int _speed, _capacity;
+        private DoorType _doorType = Core.DoorType.Single;
 
-        public DoorType DoorType { get; set; } = DoorType.Single;
+        public int Speed
+        {
+            get => _speed;
+            set => SetValue(ref _speed, value);
+        }
+
+        public int Capacity
+        {
+            get => _capacity;
+            set => SetValue(ref _capacity, value);
+        }
+
+        public DoorType DoorType
+        {
+            get => _doorType;
+            set => SetValue(ref _doorType, value);
+        }
+        
     }
 }
