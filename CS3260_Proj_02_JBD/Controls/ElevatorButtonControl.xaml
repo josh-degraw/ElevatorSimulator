@@ -4,11 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ElevatorApp.GUI"
-             xmlns:core="clr-namespace:ElevatorApp.Core;assembly=ElevatorApp.Core"
-             xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
-             
              mc:Ignorable="d" 
-             x:Name="button">
+             >
     <UserControl.Resources>
         <Style TargetType="TextBlock">
             <Style.Triggers>

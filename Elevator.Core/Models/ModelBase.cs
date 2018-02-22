@@ -12,20 +12,27 @@ namespace ElevatorApp.Core
     /// </summary>
     public abstract class ModelBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged= (sender, args) =>
-        {
-            
-        };
-        
+        public event PropertyChangedEventHandler PropertyChanged = (sender, args) =>
+         {
+
+         };
+
         [NotifyPropertyChangedInvocator]
         protected virtual bool SetValue<T>(ref T prop, T value, [CallerMemberName] string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(prop, value)) return false;
 
-            Logger.LogEvent($"Property Changed: {propertyName}. Old Value: {prop} New Value: {value}");
+            Logger.LogEvent($"Property Changed: {propertyName}. Old Value: {prop}; New Value: {value}");
             prop = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             return true;
+        }
+
+        protected void OnPropertyChanged<T>(T newValue, [CallerMemberName] string propertyName = null)
+        {
+            Logger.LogEvent($"Property Changed: {propertyName}. New Value: {newValue}");
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
         }
 
     }

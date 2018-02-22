@@ -12,25 +12,22 @@
              x:Name="elevator"
              >
 
-    <UserControl.DataContext>
-        <models:ButtonPanel/>
-    </UserControl.DataContext>
     <Border BorderThickness="2" BorderBrush="Black" Background="AliceBlue" Margin="25,0,25,15">
         <StackPanel>
             <ListView BorderThickness="0"
                       Background="Transparent"
                       Padding="15,0,10,0"
-                      ItemsSource="{Binding FloorButtons, Mode=OneWay}" 
+                      ItemsSource="{Binding FloorButtons}" 
                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <local:ElevatorButtonControl DataContext="{Binding Mode=OneWay}"/>
+                        <local:ElevatorButtonControl DataContext="{Binding}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <StackPanel Orientation="Horizontal" Margin="5,0,5,5">
-                <local:ElevatorButtonControl DataContext="{Binding OpenDoorButton, Mode=OneWay}"/>
-                <local:ElevatorButtonControl DataContext="{Binding CloseDoorButton, Mode=OneWay}"/>
+                <local:ElevatorButtonControl DataContext="{Binding OpenDoorButton}"/>
+                <local:ElevatorButtonControl DataContext="{Binding CloseDoorButton}"/>
             </StackPanel>
         </StackPanel>
     </Border>

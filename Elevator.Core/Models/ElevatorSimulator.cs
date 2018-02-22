@@ -13,7 +13,7 @@ namespace ElevatorApp.Core.Models
 {
     public class ElevatorSimulator
     {
-        public ElevatorMasterController Controller { get; set; } = new ElevatorMasterController();
+        public ElevatorMasterController Controller { get; } = new ElevatorMasterController();
 
         public ICollection<Passenger> People { get; } = new ObservableCollection<Passenger>();
 

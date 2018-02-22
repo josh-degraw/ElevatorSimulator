@@ -15,7 +15,9 @@ namespace ElevatorApp.GUI
         public MainWindow()
         {
             InitializeComponent();
+
             Logger.OnItemLogged += Logger_OnItemLogged;
+            this.DataContext = new ElevatorMasterController();
             // this.DataContext = new ElevatorMasterControllerViewModel(ElevatorMasterController.Instance);
 //            this.txtBxLog.Text = @"
 //Initializing
@@ -56,14 +58,11 @@ namespace ElevatorApp.GUI
 
                 return null;
             }
-            set => this.DataContext = value;
         }
         
         private void Init_Click(object sender, RoutedEventArgs e)
         {
-            Logger.LogEvent("Initializing");
-            this.ViewModel.Init();
-           
+            this.ViewModel?.Init();
         }
 
     }

@@ -43,7 +43,7 @@ namespace ElevatorApp.Core.Models
         public ObservableConcurrentQueue<int> Path { get; } = new ObservableConcurrentQueue<int>();
         public ICollection<IPassenger> Passengers { get; } = new ObservableCollection<IPassenger>();
 
-        public ButtonPanel ButtonPanel { get; } = new ButtonPanel();
+        public ButtonPanel ButtonPanel { get; }
 
         public Door Door { get; } = new Door();
 
@@ -90,12 +90,14 @@ namespace ElevatorApp.Core.Models
 
         public Elevator()
         {
+            Logger.LogEvent($"Initializing Elevator {this.GetHashCode()}");
+            this.ButtonPanel = new ButtonPanel();
             OnArrival += Elevator_OnArrival;
             OnDeparture += Elevator_OnDeparture;
 
         }
 
-        public Elevator(int initialFloor):this()
+        public Elevator(int initialFloor) : this()
         {
             this.CurrentFloor = initialFloor;
         }

@@ -39,10 +39,6 @@ namespace ElevatorApp.GUI
 
                 return null;
             }
-            set
-            {
-                this.DataContext = value;
-            }
         }
 
 
@@ -54,7 +50,6 @@ namespace ElevatorApp.GUI
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Button?.Push();
-
         }
     }
 }
