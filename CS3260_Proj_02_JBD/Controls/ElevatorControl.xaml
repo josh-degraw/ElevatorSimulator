@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="ElevatorApp.GUI.Controls.ElevatorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElevatorApp.GUI.Controls"
+             xmlns:models="clr-namespace:ElevatorApp.Core.Models;assembly=ElevatorApp.Core"
+             xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
+             xmlns:gui="clr-namespace:ElevatorApp.GUI"
+             mc:Ignorable="d" Height="257.449" Width="445.534">
+    <UserControl.DataContext>
+        <models:Elevator/>
+    </UserControl.DataContext>
+    <StackPanel>
+
+        <Label FontWeight="Bold">Elevator</Label>
+        <StackPanel  Orientation="Horizontal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Current floor:</Label>
+                <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentFloor, Mode=OneWay}"/>
+
+                <Label Grid.Row="1" Grid.Column="0">Passengers:</Label>
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding Passengers.Count, Mode=OneWay}"/>
+
+                <Label Grid.Row="2" Grid.Column="0">State:</Label>
+                <Label Grid.Row="2" Grid.Column="1" Content="{Binding State, Mode=OneWay}"/>
+
+                <Label Grid.Row="3" Grid.Column="0">Door:</Label>
+                <Label Grid.Row="3" Grid.Column="1" DataContext="{Binding Door}" Content="{Binding DoorState, Mode=OneWay}"/>
+            </Grid>
+            <gui:ButtonPanelControl DataContext="{Binding ButtonPanel, Mode=OneWay}"/>
+            <local:DoorControl DataContext="{Binding Door}" Width="166">
+                
+            </local:DoorControl>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

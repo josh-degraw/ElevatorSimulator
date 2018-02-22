@@ -2,8 +2,32 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ElevatorApp.GUI"
+             xmlns:core="clr-namespace:ElevatorApp.Core;assembly=ElevatorApp.Core"
+             xmlns:interfaces="clr-namespace:ElevatorApp.Core.Interfaces;assembly=ElevatorApp.Core"
+             xmlns:models="clr-namespace:ElevatorApp.Core.Models;assembly=ElevatorApp.Core"
+             xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <DataTemplate x:Key="ElevatorTemplate" DataType="{x:Type models:Elevator}">
+            <StackPanel DataContext="{Binding}">
+                <Label>Elevator</Label>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Current floor</Label>
+                    <Label Content="{Binding CurrentFloor}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label>Passengers</Label>
+                    <Label Content="{Binding Passengers.Count}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label>State:</Label>
+                    <Label Content="{Binding State}"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+
     </Application.Resources>
 </Application>

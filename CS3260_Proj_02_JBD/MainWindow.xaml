@@ -1,98 +1,148 @@
-﻿<Window x:Class="ElevatorApp.GUI.MainWindow"
+﻿<RibbonWindow x:Class="ElevatorApp.GUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElevatorApp.GUI"
+        xmlns:models="clr-namespace:ElevatorApp.Core.Models;assembly=ElevatorApp.Core"
+        xmlns:core="clr-namespace:ElevatorApp.Core;assembly=ElevatorApp.Core"
+        xmlns:interfaces="clr-namespace:ElevatorApp.Core.Interfaces;assembly=ElevatorApp.Core"
+        xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
+        xmlns:controls="clr-namespace:ElevatorApp.GUI.Controls"
         mc:Ignorable="d"
-        Title="Elevator Simulator" Height="561.135" Width="653.181">
-    <Window.Effect>
-        <DropShadowEffect BlurRadius="8"/>
-    </Window.Effect>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="29" />
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="182*" />
-            <ColumnDefinition Width="214*" />
-            <ColumnDefinition Width="249*" />
-        </Grid.ColumnDefinitions>
-        <ToolBar Grid.Row="0" Grid.Column="0" Height="28" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Grid.ColumnSpan="3">
-            <Menu HorizontalAlignment="Stretch">
-                <Menu.Items>
-                    <MenuItem Header="_Open Test Case"></MenuItem>
-                    <MenuItem Header="_Save Test Case"></MenuItem>
-                    <MenuItem Header="_Exit"></MenuItem>
-                </Menu.Items>
-            </Menu>
-        </ToolBar>
-        <StackPanel Grid.Row="1" Grid.Column="0"  Background="#FFF4F4F5">
-            <StackPanel>
-                <Label Content="Parameters" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center"/>
-                <Label Content="Elevator Settings" FontWeight="Bold"/>
-            </StackPanel>
-            <StackPanel>
-                <Label Content="Speed(feet per minute)"     HorizontalAlignment="Left" Width="134" Height="26"/>
-                <TextBox x:Name="txtBxElevatorSpeed"        HorizontalAlignment="Left" Width="120" Height="23"  Margin="10,0" TextWrapping="Wrap"/>
+        Title="Elevator Simulator" d:DesignWidth="957" Height="935.5" >
+
+    <Window.Resources>
+    </Window.Resources>
+    <Window.DataContext>
+        <models:ElevatorMasterController/>
+    </Window.DataContext>
+    <DockPanel >
+        <Ribbon DockPanel.Dock="Top">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu>
+                    <RibbonApplicationMenuItem Header="_Open Test Case"/>
+                    <RibbonApplicationMenuItem Header="_Save Test Case"/>
+                    <RibbonApplicationMenuItem Header="E_xit"/>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Home">
+                <RibbonGroup Header="Elevator Settings" DataContext="{Binding ElevatorSettings}">
+
+                    <Label ToolTip="Feet per minute">Speed</Label>
+                    <RibbonTextBox Text="{Binding Speed, Mode=TwoWay}"/>
+
+                    <Label ToolTip="Total weight">Capacity</Label>
+                    <RibbonTextBox Text="{Binding Capacity, Mode=TwoWay}"/>
+
+                    <Label>Door Category</Label>
+                    <RibbonComboBox>
+                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
+                                       SelectedValue="{Binding DoorType, Mode=TwoWay}">
+                            <RibbonGalleryCategory>
+                                <RibbonGalleryItem>
+                                    <core:DoorType>Single</core:DoorType>
+                                </RibbonGalleryItem>
+                                <RibbonGalleryItem>
+                                    <core:DoorType>Double</core:DoorType>
+                                </RibbonGalleryItem>
+                            </RibbonGalleryCategory>
+                        </RibbonGallery>
+                    </RibbonComboBox>
+                </RibbonGroup>
+
+                <RibbonGroup Header="Building Settings">
+                    <Label Content="Number of Elevators" />
+                    <RibbonTextBox Text="{Binding ElevatorCount, Mode=TwoWay}" />
+
+                    <Label>Number of Floors</Label>
+                    <RibbonTextBox Text="{Binding FloorCount, Mode=TwoWay}"/>
+                    <Label>Floor Height (ft)</Label>
+                    <RibbonTextBox Text="{Binding FloorHeight, Mode=TwoWay}"/>
+
+                </RibbonGroup>
+                <RibbonGroup Header="Test Settings">
+                    <Label ToolTip="(in minutes)">Test duration</Label>
+                    <RibbonTextBox/>
+                    <Label>Passengers / Minute</Label>
+                    <RibbonTextBox/>
+                </RibbonGroup>
+                <RibbonGroup Header="Run">
+                    <RibbonButton Label="Init" Click="Init_Click"/>
+                    <RibbonButton Label="Run Test"/>
+                </RibbonGroup>
+
+            </RibbonTab>
+            <RibbonTab Header="">
+
+            </RibbonTab>
+
+        </Ribbon>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Grid.ColumnSpan="2" >
+                <Grid >
+                    <ScrollViewer MaxHeight="500">
+                        <ListView ItemsSource="{Binding Elevators}" ScrollViewer.CanContentScroll="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <controls:ElevatorControl DataContext="{Binding}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+                <TextBox Height="192" x:Name="txtBxLog" Padding="5" >
+                </TextBox>
+                <WrapPanel DockPanel.Dock="Bottom">
+                    <Button Padding="15,4" Margin="0,0,15,0">Clear</Button>
+                    <Button Padding="15,4">Save</Button>
+                </WrapPanel>
             </StackPanel>
 
-            <StackPanel>
-                <Label Content="Capacity(persons)"          HorizontalAlignment="Left" Width="134" Height="25"/>
-                <TextBox x:Name="txtBxCapacity"             HorizontalAlignment="Left" Width="120" Height="23"  Margin="10,0" TextWrapping="Wrap"/>
-            </StackPanel>
-            <StackPanel>
-                <Label Content="Building Settings" FontWeight="Bold" />
+            <StackPanel Grid.Column="2"  Background="#FFF4F4F5">
                 <StackPanel>
-                    <Label Content="Number of Floors" HorizontalAlignment="Left" Width="134" Height="26"/>
-                    <TextBox x:Name="txtBxFloors"     HorizontalAlignment="Left" Width="120" Height="23"  Margin="10,0" TextWrapping="Wrap" Text="4"/>
+                    <Label Content="Average Wait Time Per Passenger(sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
+                    <TextBox Name="txtBxWaitTime"                         Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23" TextWrapping="Wrap" IsEnabled="False" Text="22.4"/>
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="Floor Height (feet)"  HorizontalAlignment="Left" Width="134" Height="26"/>
-                    <TextBox x:Name="txtBxHeight"         HorizontalAlignment="Left" Width="120" Height="23"  Margin="10,0" TextWrapping="Wrap"/>
+                    <Label  Content="Average Car Load (persons)"          HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
+                    <TextBox x:Name="txtBxAverageLoad"                    Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23" TextWrapping="Wrap" IsEnabled="False" Text="2.61"  />
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="Door Category"/>
-                    <RadioButton x:Name="rBtnSingle" Content="Single" Margin="10,0" IsChecked="True"/>
-                    <RadioButton x:Name="rBtnTwin"   Content="Twin"   Margin="10,0" />
+                    <Label Content="Average Elevator Idle Time(sec)"      HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
+                    <TextBox x:Name="txtBxIdleTime"                       Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23"  TextWrapping="Wrap" IsEnabled="False" Text="32.1"/>
                 </StackPanel>
+                <StackPanel>
+                    <ListBox ItemsSource="{Binding FloorsRequested}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding}"/>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+                <StackPanel>
+                    <ListView ItemsSource="{Binding FloorsRequested}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel DataContext="{Binding}">
+                                    <Label Content="{Binding DestinationFloor}"/>
+                                    <Label Content="{Binding RequestDirection}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
             </StackPanel>
-        </StackPanel>
-        
-        <StackPanel Grid.Column="1" Grid.Row="1" Background="#FFF4F4F5" Margin="5,0">
-            <Label Content="Test Settings"          HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" />
-            <StackPanel>
-                <Label Content="Time Settings"              HorizontalAlignment="Left"   Height="31" Width="107" FontWeight="Bold"/>
-                <Label Content="Test Duration(minutes)"     HorizontalAlignment="Left"   Width="134"  Height="26"/>
-                <TextBox x:Name="txtBxDuration"             HorizontalAlignment="Left"   Margin="10,0" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            </StackPanel>
-            <StackPanel Margin="0,10">
-                <Label Content="Traffic Settings"           HorizontalAlignment="Left"   Height="25" Width="107" FontWeight="Bold"/>
-                <Label Content="Passengers per Minute"      HorizontalAlignment="Left"   Width="134" Height="26"/>
-                <TextBox x:Name="txtBxPassengers"           HorizontalAlignment="Left"   Margin="10,0"  Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-            </StackPanel>
-            <Button x:Name="btnRun" Content="Run Test"  HorizontalAlignment="Center"  Margin="0,20" VerticalAlignment="Top" Width="120" Height="54" />
-        </StackPanel>
-        
-        <StackPanel Grid.Column="2" Grid.Row="1"  Background="#FFF4F4F5">
-            <Label Content="Test Results" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" />
-            <StackPanel>
-                <Label Content="Average Wait Time Per Passenger(sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
-                <TextBox Name="txtBxWaitTime"                         Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23" TextWrapping="Wrap" IsEnabled="False" Text="22.4"/>
-            </StackPanel>
-            <StackPanel>
-                <Label  Content="Average Car Load (persons)"          HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
-                <TextBox x:Name="txtBxAverageLoad"                    Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23" TextWrapping="Wrap" IsEnabled="False" Text="2.61"  />
-            </StackPanel>
-            <StackPanel>
-                <Label Content="Number of Elevators"                  HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Height="26" />
-                <TextBox x:Name="txtBxElevatorCount"                  Margin="10,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23" TextWrapping="Wrap" />
-            </StackPanel>
-            <StackPanel>
-                <Label Content="Average Elevator Idle Time(sec)"      HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
-                <TextBox x:Name="txtBxIdleTime"                       Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23"  TextWrapping="Wrap" IsEnabled="False" Text="32.1"/>
-            </StackPanel>
-        </StackPanel>
-    </Grid>
-</Window>
+
+        </Grid>
+    </DockPanel>
+</RibbonWindow>
