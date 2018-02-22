@@ -12,11 +12,9 @@
         mc:Ignorable="d"
         Title="Elevator Simulator" d:DesignWidth="957" Height="935.5" >
 
-    <Window.Resources>
-    </Window.Resources>
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <models:ElevatorMasterController/>
-    </Window.DataContext>
+    </Window.DataContext>-->
     <DockPanel >
         <Ribbon DockPanel.Dock="Top">
             <Ribbon.ApplicationMenu>
@@ -118,17 +116,7 @@
                     <Label Content="Average Elevator Idle Time(sec)"      HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
                     <TextBox x:Name="txtBxIdleTime"                       Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23"  TextWrapping="Wrap" IsEnabled="False" Text="32.1"/>
                 </StackPanel>
-                <StackPanel>
-                    <ListBox ItemsSource="{Binding FloorsRequested}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Label Content="{Binding}"/>
-
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
-                <StackPanel>
+                <!--<StackPanel>
                     <ListView ItemsSource="{Binding FloorsRequested}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -139,7 +127,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </StackPanel>
+                </StackPanel>-->
 
             </StackPanel>
 

@@ -7,7 +7,7 @@ namespace ElevatorApp.Core.Models
 {
     public class DoorButton : Button<DoorButtonType>, IButton
     {
-        private DoorButtonType _doorButtonType= DoorButtonType.Close;
+        private DoorButtonType _doorButtonType;
 
         public DoorButtonType DoorButtonType
         {
@@ -29,6 +29,9 @@ namespace ElevatorApp.Core.Models
                 }
             }
         }
+        
+
+        public override event EventHandler OnActivated;
 
         public override void Push()
         {
@@ -37,7 +40,7 @@ namespace ElevatorApp.Core.Models
 
         private DoorButton(DoorButtonType type):base($"DoorBtn {type}")
         {
-            this.DoorButtonType = type;
+            this._doorButtonType = type;
         }
 
         private DoorButton() : this(DoorButtonType.Close)
@@ -45,8 +48,8 @@ namespace ElevatorApp.Core.Models
 
         }
 
-        public static DoorButton Open => new DoorButton(DoorButtonType.Open);
+        public static DoorButton Open() => new DoorButton(DoorButtonType.Open);
 
-        public static DoorButton Close => new DoorButton(DoorButtonType.Close);
+        public static DoorButton Close() => new DoorButton(DoorButtonType.Close);
     }
 }

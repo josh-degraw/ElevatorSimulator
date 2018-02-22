@@ -12,16 +12,26 @@ namespace ElevatorApp.Core.Models
 {
     public class ButtonPanel : ICollection<FloorButton>, IButtonPanel, ISubcriber<(ElevatorMasterController, Elevator)>
     {
-        public ICollection<FloorButton> FloorButtons { get; } = new ObservableCollection<FloorButton>
-        {
-            new FloorButton(4),
-            new FloorButton(3, active: true),
-            new FloorButton(2),
-            new FloorButton(1),
-        };
+        public ICollection<FloorButton> FloorButtons { get; private set; }
 
-        public DoorButton OpenDoorButton { get; } = DoorButton.Open;
-        public DoorButton CloseDoorButton { get; } = DoorButton.Close;
+        public DoorButton OpenDoorButton { get; }
+        public DoorButton CloseDoorButton { get; }
+
+        public ButtonPanel()
+        {
+            Logger.LogEvent($"Initializing ButtonPanel {this.GetHashCode()}");
+            this.OpenDoorButton = DoorButton.Open();
+            this.CloseDoorButton = DoorButton.Close();
+            this.FloorButtons = new ObservableCollection<FloorButton>
+            {
+                new FloorButton(4),
+                new FloorButton(3, active: true),
+                new FloorButton(2),
+                new FloorButton(1),
+            };
+            Logger.LogEvent($"Done initializing ButtonPanel {this.GetHashCode()}");
+
+        }
 
         #region ICollectionImplementation
         public IEnumerator<FloorButton> GetEnumerator()
@@ -67,15 +77,28 @@ namespace ElevatorApp.Core.Models
         public void Subscribe((ElevatorMasterController, Elevator) parent)
         {
             var (controller, elevator) = parent;
+
             foreach (FloorButton button in this.FloorButtons)
             {
-                button.OnPushed += (a, b) =>
-                {
-                    controller.Dispatch(button.FloorNum, elevator.CurrentFloor > button.FloorNum ? Direction.Down : Direction.Up);
-                };
+                button.Subscribe(parent);
             }
+
+
+            controller.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(controller.FloorCount))
+                {
+                    this.FloorButtons.Clear();
+
+                    foreach (var i in Enumerable.Range(1, controller.FloorCount).Reverse())
+                    {
+                        this.FloorButtons.Add(new FloorButton(i));
+                    }
+
+                }
+            };
             elevator.Door.Subscribe(this);
         }
-        
+
     }
 }

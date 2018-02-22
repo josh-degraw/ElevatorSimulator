@@ -18,12 +18,24 @@ namespace ElevatorApp.Core.Models
             protected set => SetValue(ref _active, value);
         }
 
-        public event EventHandler<T> OnPushed;
+        private event EventHandler<T> _onPushed;
+        public virtual event EventHandler<T> OnPushed
+        {
+            add
+            {
+                Logger.LogEvent($"Adding eventHandler: {this.Id}-- {this.GetHashCode()}");
+                _onPushed += value;
+            }
+            remove
+            {
+                _onPushed -= value;
+            }
+        }
+        
 
-        public event EventHandler<T> OnActionCompleted;
-
-        public event EventHandler OnActivated;
-        public event EventHandler OnDeactivated;
+        public virtual event EventHandler<T> OnActionCompleted;
+        public virtual event EventHandler OnActivated;
+        public virtual event EventHandler OnDeactivated;
 
         protected T actionArgs;
 
@@ -33,6 +45,8 @@ namespace ElevatorApp.Core.Models
             this.Id = id;
             this.OnActivated += _setActiveTrue;
             this.OnDeactivated += _setActiveFalse;
+
+            Logger.LogEvent($"Initializing button: {this.Id} -- {this.GetHashCode()}");
         }
 
         protected void _setActiveTrue(object sender, EventArgs e) => this.Active = true;
@@ -41,7 +55,8 @@ namespace ElevatorApp.Core.Models
 
         protected void Pushed(object sender, T args)
         {
-            this.OnPushed?.Invoke(this, args);
+            Logger.LogEvent($"Calling Pushed Event: {this.Id}-- {this.GetHashCode()}");
+            this._onPushed?.Invoke(this, args);
             actionArgs = args;
             OnActivated?.Invoke(sender, EventArgs.Empty);
         }
