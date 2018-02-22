@@ -63,7 +63,7 @@ namespace ElevatorApp.Core.Models
             }
             else
             {
-                for (int i = collection.Count - 1; i >= value && i > 0; i--)
+                for (int i = collection.Count - 1; i > value && i > 0; i--)
                 {
                     T item = collection.LastOrDefault();
                     if (!Object.Equals(item, default))

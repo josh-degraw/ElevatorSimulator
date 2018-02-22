@@ -52,12 +52,7 @@ namespace ElevatorApp.Core.Models
 
         public void Subscribe(ElevatorMasterController controller)
         {
-            if (!controller.Elevators.Contains(this))
-            {
-                controller.Elevators.Add(this);
-            }
             this.ButtonPanel.Subscribe((controller, this));
-
         }
 
         public void Arrived()
