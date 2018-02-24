@@ -39,7 +39,7 @@
             <Rectangle.Style>
                 <Style>
                     <Style.Triggers>
-                        <DataTrigger  Binding="{Binding Path=DoorState}" Value="Opening">
+                        <DataTrigger Binding="{Binding Path=DoorState}" Value="Opening">
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard x:Name="stryBoardOpening" Storyboard="{StaticResource ResourceKey=animTransition}"/>
                             </DataTrigger.EnterActions>
@@ -47,6 +47,7 @@
                                 <StopStoryboard BeginStoryboardName="stryBoardOpening"/>
                             </DataTrigger.ExitActions>
                         </DataTrigger>
+                        
                         <DataTrigger Binding="{Binding Path=DoorState}" Value="Opened">
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard x:Name="stryBoardOpened" Storyboard="{StaticResource ResourceKey=animOpened}"/>
@@ -64,6 +65,7 @@
                                 <StopStoryboard BeginStoryboardName="stryBoardClosing"/>
                             </DataTrigger.ExitActions>
                         </DataTrigger>
+                        
                         <DataTrigger Binding="{Binding Path=DoorState}" Value="Closed" >
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard x:Name="stryBoardClosed" Storyboard="{StaticResource ResourceKey=animClosed}"/>
@@ -71,7 +73,6 @@
                             <DataTrigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="stryBoardClosed"/>
                             </DataTrigger.ExitActions>
-                            
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
