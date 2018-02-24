@@ -8,21 +8,22 @@ using ElevatorApp.Core.Annotations;
 namespace ElevatorApp.Core
 {
     /// <summary>
-    /// Base class to implement <see cref="INotifyPropertyChanged"/>, with a helper method (<see cref="SetValue{T}(ref T, T, string)"/>)
+    /// Base class to implement <see cref="INotifyPropertyChanged"/>, with a helper method (<see cref="SetProperty{T}"/>)
     /// </summary>
     public abstract class ModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = (sender, args) =>
-         {
+        {
 
-         };
+        };
 
         [NotifyPropertyChangedInvocator]
-        protected virtual bool SetValue<T>(ref T prop, T value, [CallerMemberName] string propertyName = null)
+        protected virtual bool SetProperty<T>(ref T prop, T value, bool log = true, [CallerMemberName] string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(prop, value)) return false;
 
-            Logger.LogEvent($"Property Changed: {propertyName}. Old Value: {prop}; New Value: {value}");
+            if (log)
+                Logger.LogEvent($"Property Changed: {propertyName}. {prop} --> {value}");
             prop = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             return true;
@@ -35,5 +36,10 @@ namespace ElevatorApp.Core
 
         }
 
+        protected void DependantPropertyChanged(string propertyName)
+        {
+            Logger.LogEvent($"Property Changed: {propertyName}");
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

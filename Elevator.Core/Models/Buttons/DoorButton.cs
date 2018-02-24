@@ -12,7 +12,7 @@ namespace ElevatorApp.Core.Models
         public DoorButtonType DoorButtonType
         {
             get => _doorButtonType;
-            set => SetValue(ref _doorButtonType, value);
+            set => SetProperty(ref _doorButtonType, value);
         } 
 
         public override string Label

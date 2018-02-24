@@ -12,6 +12,8 @@ namespace ElevatorApp.Core.Models
 
     public class Elevator : ModelBase, IElevator, ISubcriber<ElevatorMasterController>
     {
+        private static int _RegisteredElevators = 0;
+
         #region Backing fields
 
         private int _speed, _capacity, _currentFloor;
@@ -23,7 +25,7 @@ namespace ElevatorApp.Core.Models
         public int Capacity
         {
             get => _capacity;
-            set => SetValue(ref _capacity, value);
+            set => SetProperty(ref _capacity, value);
         }
 
 
@@ -34,7 +36,7 @@ namespace ElevatorApp.Core.Models
         public int CurrentFloor
         {
             get => _currentFloor;
-            private set => SetValue(ref _currentFloor, value);
+            private set => SetProperty(ref _currentFloor, value);
         }
 
         #endregion
@@ -87,9 +89,12 @@ namespace ElevatorApp.Core.Models
             this.Path.TryDequeue(out _);
         }
 
+        public int ElevatorNumber { get; }
 
         public Elevator()
         {
+            this.ElevatorNumber = ++Elevator._RegisteredElevators;
+
             Logger.LogEvent($"Initializing Elevator {this.GetHashCode()}");
             this.ButtonPanel = new ButtonPanel();
             OnArrival += Elevator_OnArrival;
@@ -100,6 +105,12 @@ namespace ElevatorApp.Core.Models
         public Elevator(int initialFloor) : this()
         {
             this.CurrentFloor = initialFloor;
+        }
+
+        ~Elevator()
+        {
+            if (Elevator._RegisteredElevators > 0)
+                Elevator._RegisteredElevators -= 1;
         }
     }
 }

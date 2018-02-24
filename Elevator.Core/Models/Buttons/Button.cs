@@ -15,7 +15,7 @@ namespace ElevatorApp.Core.Models
         public bool Active
         {
             get => _active;
-            protected set => SetValue(ref _active, value);
+            protected set => SetProperty(ref _active, value);
         }
 
         private event EventHandler<T> _onPushed;

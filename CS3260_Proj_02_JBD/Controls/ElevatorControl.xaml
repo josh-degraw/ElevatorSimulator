@@ -7,12 +7,15 @@
              xmlns:models="clr-namespace:ElevatorApp.Core.Models;assembly=ElevatorApp.Core"
              xmlns:viewModels="clr-namespace:ElevatorApp.GUI.ViewModels"
              xmlns:gui="clr-namespace:ElevatorApp.GUI"
-             mc:Ignorable="d" Height="257.449" Width="445.534">
-    
-    <StackPanel>
+             mc:Ignorable="d" Height="293.678" Width="333.034">
 
-        <Label FontWeight="Bold">Elevator</Label>
-        <StackPanel  Orientation="Horizontal">
+    <StackPanel Margin="0,0,0,41">
+
+        <StackPanel Orientation="Horizontal">
+            <Label FontWeight="Bold">Elevator</Label>
+            <Label Content="{Binding ElevatorNumber}"/>
+        </StackPanel>
+        <StackPanel  Orientation="Horizontal" Height="253">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -29,19 +32,16 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0">Current floor:</Label>
+                <Label Grid.Row="0" Grid.Column="0" Content="Current floor:"/>
                 <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentFloor}"/>
 
-                <Label Grid.Row="1" Grid.Column="0">Passengers:</Label>
+                <Label Grid.Row="1" Grid.Column="0" Content="Passengers:"/>
                 <Label Grid.Row="1" Grid.Column="1" Content="{Binding Passengers.Count}"/>
 
-                <Label Grid.Row="2" Grid.Column="0">State:</Label>
+                <Label Grid.Row="2" Grid.Column="0" Content="State:"/>
                 <Label Grid.Row="2" Grid.Column="1" Content="{Binding State}"/>
             </Grid>
-            <gui:ButtonPanelControl DataContext="{Binding ButtonPanel}"/>
-            <local:DoorControl DataContext="{Binding Door}" Width="166">
-                
-            </local:DoorControl>
+            <local:DoorControl DataContext="{Binding Door}" Height="190" Width="190" />
         </StackPanel>
     </StackPanel>
 </UserControl>

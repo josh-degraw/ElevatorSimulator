@@ -16,7 +16,7 @@ namespace ElevatorApp.Core.Models
             get => _state;
             set
             {
-                SetValue(ref _state, value);
+                SetProperty(ref _state, value);
             }
         }
         

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using ElevatorApp.Core.Interfaces;
 
 namespace ElevatorApp.Core.Models
@@ -13,7 +15,7 @@ namespace ElevatorApp.Core.Models
 
     public class Door : ModelBase, ISubcriber<Elevator>, ISubcriber<ButtonPanel>
     {
-        private const int TRANSITION_TIME_MS = 1000;
+        private const int TRANSITION_TIME_MS = 500, TIME_SPENT_OPEN = 5 * 1000;
 
         #region Event Handlers
 
@@ -57,7 +59,7 @@ namespace ElevatorApp.Core.Models
         public DoorState DoorState
         {
             get => _doorState;
-            set => SetValue(ref _doorState, value);
+            set => SetProperty(ref _doorState, value, false);
 
         }
 
@@ -76,10 +78,10 @@ namespace ElevatorApp.Core.Models
         {
         }
 
-        public void RequestOpen()
+        public async void RequestOpen()
         {
             // If the door is already opened, don't do anything
-            if (this.DoorState == DoorState.Closed)
+            if (this.DoorState == DoorState.Opened)
             {
                 return;
             }
@@ -87,22 +89,28 @@ namespace ElevatorApp.Core.Models
             this.OnOpenRequested?.Invoke(this, args);
             if (args.CancelOperation)
                 return;
-
-
+            
             this.DoorState = DoorState.Opening;
             this.OnOpening?.Invoke(this, args);
+            await Task.Delay(TRANSITION_TIME_MS);
+
             if (args.CancelOperation)
             {
                 this.RequestClose();
                 return;
             }
 
+            await Task.Delay(TRANSITION_TIME_MS);
             this.OnOpened?.Invoke(this, args);
             this.DoorState = DoorState.Opened;
 
+            await Task.Delay(TIME_SPENT_OPEN);
+
+            this.RequestClose();
+
         }
 
-        public void RequestClose()
+        public async void RequestClose()
         {
             // If the door is already closed, don't do anything
             if (this.DoorState == DoorState.Closed)
@@ -112,16 +120,18 @@ namespace ElevatorApp.Core.Models
 
             var args = new DoorStateChangeEventArgs();
 
-            this.DoorState = DoorState.Closing;
-
             this.OnCloseRequested?.Invoke(this, args);
+            await Task.Delay(TRANSITION_TIME_MS);
             if (args.CancelOperation)
             {
                 this.RequestOpen();
                 return;
             }
 
+            this.DoorState = DoorState.Closing;
             this.OnClosing?.Invoke(this, args);
+            await Task.Delay(TRANSITION_TIME_MS);
+
             if (args.CancelOperation)
             {
                 this.RequestOpen();

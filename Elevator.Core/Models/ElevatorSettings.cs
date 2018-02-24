@@ -14,19 +14,19 @@ namespace ElevatorApp.Core.Models
         public int Speed
         {
             get => _speed;
-            set => SetValue(ref _speed, value);
+            set => SetProperty(ref _speed, value);
         }
 
         public int Capacity
         {
             get => _capacity;
-            set => SetValue(ref _capacity, value);
+            set => SetProperty(ref _capacity, value);
         }
 
         public DoorType DoorType
         {
             get => _doorType;
-            set => SetValue(ref _doorType, value);
+            set => SetProperty(ref _doorType, value);
         }
         
     }

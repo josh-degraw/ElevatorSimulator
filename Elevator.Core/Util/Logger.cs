@@ -29,7 +29,7 @@ namespace ElevatorApp.Core
 
         public override string ToString()
         {
-            return $"{this.Timestamp}\t- {this.Name}";
+            return $"{this.Timestamp:HH:mm:ss:ff}  --  {this.Name}";
         }
 
         public Event(string name) : this(name, Logger.Clock.GetCurrentInstant())

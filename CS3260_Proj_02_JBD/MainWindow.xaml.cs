@@ -17,7 +17,8 @@ namespace ElevatorApp.GUI
             InitializeComponent();
 
             Logger.OnItemLogged += Logger_OnItemLogged;
-            this.DataContext = new ElevatorMasterController();
+            this.DataContext = new SimulatorViewModel();
+            this.ViewModel.SelectedElevatorNumber = 1;
             // this.DataContext = new ElevatorMasterControllerViewModel(ElevatorMasterController.Instance);
 //            this.txtBxLog.Text = @"
 //Initializing
@@ -42,6 +43,7 @@ namespace ElevatorApp.GUI
 //Elevator 1 Door opening
 //Elevator 1 Door opened
 //";
+
         }
 
         private void Logger_OnItemLogged(object sender, Event str)
@@ -49,11 +51,11 @@ namespace ElevatorApp.GUI
             this.txtBxLog.Text += $"{str}\n";
         }
 
-        public ElevatorMasterController ViewModel
+        public SimulatorViewModel ViewModel
         {
             get
             {
-                if (this.DataContext is ElevatorMasterController vm)
+                if (this.DataContext is SimulatorViewModel vm)
                     return vm;
 
                 return null;
@@ -62,8 +64,20 @@ namespace ElevatorApp.GUI
         
         private void Init_Click(object sender, RoutedEventArgs e)
         {
-            this.ViewModel?.Init();
+            this.ViewModel?.Controller.Init();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.txtBxLog.Text = "";
+        }
+
+        private void clkSelectElevator(object sender, RoutedEventArgs e)
+        {
+            if (sender is FrameworkElement el && el.Tag is int num)
+            {
+                this.ViewModel.SelectedElevatorNumber = num;
+            }
+        }
     }
 }

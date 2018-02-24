@@ -25,7 +25,7 @@ namespace ElevatorApp.Core.Models
         public int FloorHeight
         {
             get => _floorHeight;
-            set => SetValue(ref _floorHeight, value);
+            set => SetProperty(ref _floorHeight, value);
         }
 
         public ElevatorSettings ElevatorSettings { get; } = new ElevatorSettings();

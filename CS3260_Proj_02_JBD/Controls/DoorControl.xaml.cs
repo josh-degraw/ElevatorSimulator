@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ElevatorApp.Core.Models;
 
 namespace ElevatorApp.GUI.Controls
 {
@@ -24,5 +25,6 @@ namespace ElevatorApp.GUI.Controls
         {
             InitializeComponent();
         }
+        
     }
 }
