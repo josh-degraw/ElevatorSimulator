@@ -45,8 +45,6 @@ namespace ElevatorApp.Core.Models
             this.Id = id;
             this.OnActivated += _setActiveTrue;
             this.OnDeactivated += _setActiveFalse;
-
-            Logger.LogEvent($"Initializing button: {this.Id} -- {this.GetHashCode()}");
         }
 
         protected void _setActiveTrue(object sender, EventArgs e) => this.Active = true;
@@ -55,7 +53,6 @@ namespace ElevatorApp.Core.Models
 
         protected void Pushed(object sender, T args)
         {
-            Logger.LogEvent($"Calling Pushed Event: {this.Id}-- {this.GetHashCode()}");
             this._onPushed?.Invoke(this, args);
             actionArgs = args;
             OnActivated?.Invoke(sender, EventArgs.Empty);
@@ -79,5 +76,7 @@ namespace ElevatorApp.Core.Models
         {
             return this.Label;
         }
+
+        
     }
 }

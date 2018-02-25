@@ -18,13 +18,18 @@ namespace ElevatorApp.Core.Models
         }
 
         #region Operators
-        public void Deconstruct(out int destinationFloor, out Direction direction)
-        {
-            destinationFloor = this.DestinationFloor;
-            direction = this.RequestDirection;
-        }
-
         public static implicit operator int(ElevatorCall call) => call.DestinationFloor;
         #endregion
+    }
+
+    public static partial class Extensions
+    {
+
+        public static void Deconstruct(this ElevatorCall @this, out int destinationFloor, out Direction direction)
+        {
+            destinationFloor = @this.DestinationFloor;
+            direction = @this.RequestDirection;
+        }
+
     }
 }

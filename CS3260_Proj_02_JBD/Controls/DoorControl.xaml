@@ -24,7 +24,7 @@
     <!--<UserControl.DataContext>
         <models:Door DoorState="Opening"/>
     </UserControl.DataContext>-->
-    <Grid x:Name="grdDoor" >
+    <Grid x:Name="grdDoor"  Height="190" Width="190" >
         <Grid.Background>
             <ImageBrush ImageSource="/ElevatorApp.GUI;component/Resources/ElevatorBack.jpg" Stretch="Uniform"/>
         </Grid.Background>

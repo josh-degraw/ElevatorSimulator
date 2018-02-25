@@ -4,22 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ElevatorApp.GUI"
-             mc:Ignorable="d" 
-             >
+             xmlns:models="clr-namespace:ElevatorApp.Core.Models;assembly=ElevatorApp.Core"
+             mc:Ignorable="d" >
+    <!--<UserControl.DataContext>
+        <models:DoorButton Subscribed="False" />
+    </UserControl.DataContext>-->
     <UserControl.Resources>
-        <Style TargetType="TextBlock">
+        <ControlTemplate x:Key="buttonTemplate">
+            <Button  Content="{Binding Label, FallbackValue=0}" Click="Button_Click" Height="37" Width="43" Background="#FFF3F3F3">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Active}" Value="True">
+                                <Setter Property="Background" Value="Yellow"/>
+                                <Setter Property="IsEnabled"  Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Subscribed}" Value="False">
+                                <Setter Property="Background" Value="#FFF17D7D">
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            
+        </ControlTemplate>
+        <!--<Style TargetType="Button">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Active}" Value="True">
                     <Setter Property="Background" Value="Yellow"/>
                     <Setter Property="IsEnabled"  Value="False"/>
                 </DataTrigger>
             </Style.Triggers>
-        </Style>
+        </Style>-->
     </UserControl.Resources>
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <WrapPanel >
-            <Button Content="{Binding Label}" Click="Button_Click" Height="37" Width="43" Background="#FFF3F3F3"/>
+            <Button Template="{StaticResource buttonTemplate}"/>
         </WrapPanel>
     </StackPanel>
 

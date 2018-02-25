@@ -24,14 +24,21 @@ namespace ElevatorApp.Core.Models
 
         }
 
+        public bool Subscribed { get; private set; }
+
         public void Subscribe(ElevatorMasterController masterController)
         {
+            //if (Subscribed)
+            //    return;
+
             this.GoingUpButton.OnPushed += RequestButton_OnPushed;
 
             void RequestButton_OnPushed(object sender, ElevatorCall e)
             {
                 masterController.Dispatch(e);
             }
+
+            this.Subscribed = true;
         }
 
         public static ElevatorCallPanel TopFloorPanel(int floorNum) => new ElevatorCallPanel(floorNum) { GoingUpButton = null };

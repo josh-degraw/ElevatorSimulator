@@ -58,7 +58,7 @@ namespace ElevatorApp.Core
             OnItemLogged?.Invoke(callerMember, message);
         }
 
-        public static void AddLog(TextWriter writer)
+        public static void AddLogger(TextWriter writer)
         {
             Loggers.Add(writer);
         }

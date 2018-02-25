@@ -23,13 +23,27 @@ namespace ElevatorApp.Core.Models
             this.Pushed(this, this.FloorNum);
         }
 
+        public bool Subscribed { get; private set; }
+
         public void Subscribe((ElevatorMasterController, Elevator) parent)
         {
+            //if (this.Subscribed)
+            //    return;
+
             var (controller, elevator) = parent;
             this.OnPushed += (a, b) =>
             {
+                Logger.LogEvent($"Pushed floor button {this.FloorNum}");
                 controller.Dispatch(this.FloorNum, elevator.CurrentFloor > this.FloorNum ? Direction.Down : Direction.Up);
             };
+            
+            elevator.OnArrival += (e, floor) =>
+            {
+                if (floor == this.FloorNum)
+                    this.ActionCompleted(e, floor);
+            };
+
+            this.Subscribed = true;
         }
     }
 }

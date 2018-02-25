@@ -23,6 +23,5 @@ namespace ElevatorApp.Core.Interfaces
         event EventHandler<int> OnDeparture;
 
         void Arrived();
-        void Dispatch(int floor);
     }
 }

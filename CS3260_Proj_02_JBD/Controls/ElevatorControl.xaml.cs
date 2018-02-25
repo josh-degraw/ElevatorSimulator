@@ -39,25 +39,13 @@ namespace ElevatorApp.GUI.Controls
                 this.DataContext = value;
             }
         }
-
-        public ICommand Dispatch { get; }
+        
 
         public ElevatorControl()
         {
-            if (DesignerProperties.GetIsInDesignMode(this))
-            {
-                this.Elevator = new Elevator();
-                this.Dispatch = DelegateCommand.Create<int>(Elevator.Dispatch);
-            }
             InitializeComponent();
         }
-
-        public ElevatorControl(IElevator elevator)
-        {
-            this.DataContext = elevator;
-
-            this.Dispatch = DelegateCommand.Create<int>(elevator.Dispatch);
-        }
+        
 
     }
 }

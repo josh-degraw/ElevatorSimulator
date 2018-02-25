@@ -74,8 +74,13 @@ namespace ElevatorApp.Core.Models
         public bool IsReadOnly => FloorButtons.IsReadOnly;
         #endregion
 
+        public bool Subscribed { get; private set; }
+
         public void Subscribe((ElevatorMasterController, Elevator) parent)
         {
+            //if (Subscribed)
+            //    return;
+
             var (controller, elevator) = parent;
 
             foreach (FloorButton button in this.FloorButtons)
@@ -83,21 +88,24 @@ namespace ElevatorApp.Core.Models
                 button.Subscribe(parent);
             }
 
-
             controller.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(controller.FloorCount))
                 {
                     this.FloorButtons.Clear();
 
-                    foreach (var i in Enumerable.Range(1, controller.FloorCount).Reverse())
+                    // Range from 1 to count, reversed so it goes low to high vertically
+                    foreach (int i in Enumerable.Range(1, controller.FloorCount).Reverse())
                     {
                         this.FloorButtons.Add(new FloorButton(i));
                     }
 
                 }
             };
-            elevator.Door.Subscribe(this);
+
+            elevator.Door.Subscribe(elevator);
+
+            this.Subscribed = true;
         }
 
     }

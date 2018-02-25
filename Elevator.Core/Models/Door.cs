@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ElevatorApp.Core.Interfaces;
+using NodaTime;
 
 namespace ElevatorApp.Core.Models
 {
@@ -13,9 +14,11 @@ namespace ElevatorApp.Core.Models
     public delegate void DoorStateChangeRequestHandler(object sender, DoorStateChangeEventArgs args);
 
 
-    public class Door : ModelBase, ISubcriber<Elevator>, ISubcriber<ButtonPanel>
+    public class Door : ModelBase, ISubcriber<Elevator>
     {
-        private const int TRANSITION_TIME_MS = 500, TIME_SPENT_OPEN = 5 * 1000;
+        private readonly Duration
+            TRANSITION_TIME = Duration.FromSeconds(.5),
+            TIME_SPENT_OPEN = Duration.FromSeconds(10);
 
         #region Event Handlers
 
@@ -78,39 +81,41 @@ namespace ElevatorApp.Core.Models
         {
         }
 
-        public async void RequestOpen()
+        public async Task RequestOpen()
         {
             // If the door is already opened, don't do anything
             if (this.DoorState == DoorState.Opened)
             {
                 return;
             }
+
             var args = new DoorStateChangeEventArgs();
             this.OnOpenRequested?.Invoke(this, args);
             if (args.CancelOperation)
                 return;
-            
+
             this.DoorState = DoorState.Opening;
             this.OnOpening?.Invoke(this, args);
-            await Task.Delay(TRANSITION_TIME_MS);
+            await Task.Delay(TRANSITION_TIME.ToTimeSpan());
 
             if (args.CancelOperation)
             {
-                this.RequestClose();
+                await this.RequestClose();
                 return;
             }
 
-            await Task.Delay(TRANSITION_TIME_MS);
-            this.OnOpened?.Invoke(this, args);
+            await Task.Delay(TRANSITION_TIME.ToTimeSpan());
+
             this.DoorState = DoorState.Opened;
+            this.OnOpened?.Invoke(this, args);
 
-            await Task.Delay(TIME_SPENT_OPEN);
+            await Task.Delay(TIME_SPENT_OPEN.ToTimeSpan());
 
-            this.RequestClose();
+            await this.RequestClose().ConfigureAwait(false);
 
         }
 
-        public async void RequestClose()
+        public async Task RequestClose()
         {
             // If the door is already closed, don't do anything
             if (this.DoorState == DoorState.Closed)
@@ -121,20 +126,20 @@ namespace ElevatorApp.Core.Models
             var args = new DoorStateChangeEventArgs();
 
             this.OnCloseRequested?.Invoke(this, args);
-            await Task.Delay(TRANSITION_TIME_MS);
+            await Task.Delay(TRANSITION_TIME.ToTimeSpan());
             if (args.CancelOperation)
             {
-                this.RequestOpen();
+                await this.RequestOpen();
                 return;
             }
 
             this.DoorState = DoorState.Closing;
             this.OnClosing?.Invoke(this, args);
-            await Task.Delay(TRANSITION_TIME_MS);
+            await Task.Delay(TRANSITION_TIME.ToTimeSpan());
 
             if (args.CancelOperation)
             {
-                this.RequestOpen();
+                await this.RequestOpen();
                 return;
             }
 
@@ -142,22 +147,30 @@ namespace ElevatorApp.Core.Models
             this.OnClosed?.Invoke(this, args);
         }
 
+        public bool Subscribed { get; private set; }
+
         public void Subscribe(Elevator parent)
         {
-            this.Subscribe(parent.ButtonPanel);
-        }
+            //if (Subscribed)
+            //    return;
 
-        public void Subscribe(ButtonPanel parent)
-        {
-            parent.CloseDoorButton.OnPushed += (a, b) =>
+            parent.ButtonPanel.CloseDoorButton.OnPushed += async (a, b) =>
             {
-                this.RequestClose();
+                if (parent.State == ElevatorState.Idle)
+                    await this.RequestClose();
             };
 
-            parent.OpenDoorButton.OnPushed += (a, b) =>
+            parent.ButtonPanel.OpenDoorButton.OnPushed += async (a, b) =>
             {
-                this.RequestOpen();
+                if (parent.State == ElevatorState.Idle)
+                    await this.RequestOpen();
             };
+
+            parent.OnArrival += async (e, args) => await this.RequestOpen();
+
+
+            this.Subscribed = true;
         }
+
     }
 }

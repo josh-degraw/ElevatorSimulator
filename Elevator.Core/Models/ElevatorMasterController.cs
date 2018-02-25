@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Text;
 using ElevatorApp.Core.Interfaces;
 using ElevatorApp.Core.Models;
@@ -16,11 +17,26 @@ namespace ElevatorApp.Core.Models
 
         private int _floorHeight;
 
-        public ICollection<Elevator> Elevators { get; }
+        private readonly ObservableCollection<Elevator> _elevators = new ObservableCollection<Elevator>(
+            new[] {
+                new Elevator(),
+                //new Elevator(2)
+                //{
+                //    Passengers=
+                //    {
+                //        new Passenger{ State= PassengerState.In, Weight=20}
+                //    }
+
+                //}
+            }
+        );
+
+        private readonly ObservableCollection<Floor> _floors = new ObservableCollection<Floor>(Enumerable.Range(0, 4).Select(a => new Floor(a)));
+
+        public ICollection<Elevator> Elevators => _elevators;
+        public ICollection<Floor> Floors => _floors;
 
         public ObservableConcurrentQueue<ElevatorCall> FloorsRequested { get; } = new ObservableConcurrentQueue<ElevatorCall>();
-        public ICollection<Floor> Floors { get; }
-
 
         public int FloorHeight
         {
@@ -34,7 +50,7 @@ namespace ElevatorApp.Core.Models
         {
             if (collection.Count == value)
                 return;
-            
+
             if (value > collection.Count)
             {
                 for (int i = collection.Count; i < value; i++)
@@ -46,7 +62,7 @@ namespace ElevatorApp.Core.Models
             }
             else
             {
-                for (int i = collection.Count ; i > value && i > 0; i--)
+                for (int i = collection.Count; i > value && i > 0; i--)
                 {
                     T item = collection.LastOrDefault();
                     if (!Object.Equals(item, default))
@@ -79,13 +95,22 @@ namespace ElevatorApp.Core.Models
             }
         }
 
-        private void Dispatch(int floor, Elevator elevator)
-        {
-            elevator?.Dispatch(floor);
-        }
 
         public void Dispatch(int floor, Direction direction)
         {
+            this.Dispatch(new ElevatorCall(floor, direction));
+        }
+        
+        private void Dispatch(ElevatorCall call, Elevator elevator)
+        {
+            elevator?.Dispatch(call);
+        }
+
+        public void Dispatch(ElevatorCall call)
+        {
+            int floor = call.DestinationFloor;
+            Direction direction = call.RequestDirection;
+
             int distanceFromRequestedFloor(Elevator e) => Abs(floor - e.CurrentFloor);
 
             // First check if any are not moving
@@ -95,7 +120,7 @@ namespace ElevatorApp.Core.Models
 
             if (closest != null)
             {
-                Dispatch(floor, closest);
+                Dispatch(call, closest);
             }
             else
             {
@@ -105,41 +130,22 @@ namespace ElevatorApp.Core.Models
                     .MinBy(distanceFromRequestedFloor);
             }
 
-            Dispatch(floor, closest);
-        }
-
-        public void Dispatch(ElevatorCall call)
-        {
-            this.Dispatch(call.DestinationFloor, call.RequestDirection);
+            Dispatch(call, closest);
         }
 
         public ElevatorMasterController()
         {
-            var coll = new ObservableCollection<Elevator>(
-                new[] {
-                    new Elevator(),
-                    new Elevator(2)
-                    {
-                        Passengers=
-                        {
-                            new Passenger{ State= PassengerState.In, Weight=20}
-                        }
-
-                    }
-                }
-            );
-            coll.CollectionChanged += (a, b) =>
+            this._elevators.CollectionChanged += (a, b) =>
             {
                 base.OnPropertyChanged(this.ElevatorCount, nameof(ElevatorCount));
             };
-            this.Elevators = coll;
-            var fls = new ObservableCollection<Floor>(Enumerable.Range(0, 4).Select(a => new Floor(a)));
-            fls.CollectionChanged += (a, b) =>
+
+            this._floors.CollectionChanged += (a, b) =>
             {
                 base.OnPropertyChanged(this.FloorCount, nameof(FloorCount));
-
             };
-            this.Floors = fls;
+
+
             this.Init();
             this.OnElevatorRequested = (sender, e) =>
             {

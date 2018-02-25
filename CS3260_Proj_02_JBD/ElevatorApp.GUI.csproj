@@ -69,6 +69,9 @@
     <Compile Include="Controls\ElevatorControl.xaml.cs">
       <DependentUpon>ElevatorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ElevatorShaftControl.xaml.cs">
+      <DependentUpon>ElevatorShaftControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util\DelegateCommand.cs" />
     <Compile Include="ViewModels\SimulatorViewModel.cs" />
     <Page Include="Controls\ButtonPanelControl.xaml">
@@ -84,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ElevatorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ElevatorShaftControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,6 +143,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FontAwesome.WPF">
+      <Version>4.7.0.9</Version>
+    </PackageReference>
     <PackageReference Include="Ninject">
       <Version>3.3.4</Version>
     </PackageReference>

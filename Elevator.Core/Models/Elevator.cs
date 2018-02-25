@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using ElevatorApp.Core.Interfaces;
 using ElevatorApp.Core.Models;
+using NodaTime;
 
 namespace ElevatorApp.Core.Models
 {
@@ -41,7 +43,6 @@ namespace ElevatorApp.Core.Models
 
         #endregion
 
-
         public ObservableConcurrentQueue<int> Path { get; } = new ObservableConcurrentQueue<int>();
         public ICollection<IPassenger> Passengers { get; } = new ObservableCollection<IPassenger>();
 
@@ -52,31 +53,59 @@ namespace ElevatorApp.Core.Models
         public event EventHandler<int> OnArrival;
         public event EventHandler<int> OnDeparture;
 
-        public void Subscribe(ElevatorMasterController controller)
-        {
-            this.ButtonPanel.Subscribe((controller, this));
-        }
 
-        public void Arrived()
+        public async void Arrived()
         {
             if (this.Path.TryDequeue(out int destination))
             {
+                this.CurrentFloor = destination;
                 Console.WriteLine("Arrived");
+                // Simulate slowdown after arriving
+                await Task.Delay(250);
                 this.OnArrival?.Invoke(this, destination);
             }
         }
 
-        public void Dispatch(int floor)
+        private void MoveNext()
         {
-            this.Path.Enqueue(floor);
+            if (this.Path.TryPeek(out int next))
+            {
+                while (this.Door.DoorState != DoorState.Closed)
+                {
+                    // Wait until the door is closed to move
+                    Thread.Sleep(2000);
+                }
+
+                this.State = this.CurrentFloor > next
+                    ? ElevatorState.GoingUp
+                    : ElevatorState.GoingDown;
+            }
+            else
+            {
+                this.State = ElevatorState.Idle;
+            }
+
         }
+
+        internal void Dispatch(ElevatorCall call)
+        {
+            this.Path.Enqueue(call.DestinationFloor);
+
+            if (this.State == ElevatorState.Idle)
+            {
+                this.State = (ElevatorState)call.RequestDirection;
+                this.Move();
+            }
+        }
+
+        private readonly Duration FLOOR_MOVEMENT_SPEED = Duration.FromSeconds(5);
 
         private void Move()
         {
             this.OnDeparture?.Invoke(this, this.CurrentFloor);
 
             // Logic
-            Thread.Sleep(4000);
+            Thread.Sleep(FLOOR_MOVEMENT_SPEED.Milliseconds);
             this.Arrived();
         }
 
@@ -99,7 +128,6 @@ namespace ElevatorApp.Core.Models
             this.ButtonPanel = new ButtonPanel();
             OnArrival += Elevator_OnArrival;
             OnDeparture += Elevator_OnDeparture;
-
         }
 
         public Elevator(int initialFloor) : this()
@@ -107,8 +135,20 @@ namespace ElevatorApp.Core.Models
             this.CurrentFloor = initialFloor;
         }
 
+        public bool Subscribed { get; private set; }
+
+        public void Subscribe(ElevatorMasterController controller)
+        {
+            //if (Subscribed)
+            //    return;
+
+            this.ButtonPanel.Subscribe((controller, this));
+            this.Subscribed = true;
+        }
+
         ~Elevator()
         {
+            // Decrement the global count of elevators
             if (Elevator._RegisteredElevators > 0)
                 Elevator._RegisteredElevators -= 1;
         }

@@ -30,12 +30,18 @@ namespace ElevatorApp.Core.Models
         }
 
 
+        public bool Subscribed { get; private set; }
+
         public void Subscribe(ElevatorMasterController parent)
         {
+            //if (Subscribed)
+            //    return;
+
             foreach (ElevatorCallPanel panel in this.Buttons)
             {
                 panel.Subscribe(parent);
             }
+            this.Subscribed = true;
         }
     }
 }
