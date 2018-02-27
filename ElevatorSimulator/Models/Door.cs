@@ -17,7 +17,7 @@ namespace ElevatorApp.Models
     public class Door : ModelBase, ISubcriber<Elevator>
     {
         private readonly Duration
-            TRANSITION_TIME = Duration.FromSeconds(.5),
+            TRANSITION_TIME = Duration.FromSeconds(2),
             TIME_SPENT_OPEN = Duration.FromSeconds(10);
 
         #region Event Handlers
@@ -104,8 +104,6 @@ namespace ElevatorApp.Models
                 return;
             }
 
-            await Task.Delay(TRANSITION_TIME.ToTimeSpan());
-
             this.DoorState = DoorState.Opened;
             this.OnOpened?.Invoke(this, args);
 
@@ -126,7 +124,6 @@ namespace ElevatorApp.Models
             var args = new DoorStateChangeEventArgs();
 
             this.OnCloseRequested?.Invoke(this, args);
-            await Task.Delay(TRANSITION_TIME.ToTimeSpan());
             if (args.CancelOperation)
             {
                 await this.RequestOpen();

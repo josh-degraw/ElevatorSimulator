@@ -3,26 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ElevatorApp.Controls"
-             xmlns:system="clr-namespace:System;assembly=System"
+             
              xmlns:models="clr-namespace:ElevatorApp.Models"
              mc:Ignorable="d" Height="190" Width="190" 
-    d:DataContext="{d:DesignInstance Type=models:Door, IsDesignTimeCreatable=True}"         
-             >
+             d:DataContext="{d:DesignInstance Type=models:Door, IsDesignTimeCreatable=True}">
 
     <UserControl.Resources>
-        <Storyboard x:Key="animOpened" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="120" Duration="0:0:1"/>
+        <Storyboard x:Key="animOpening" >
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="120" Duration="0:0:2"/>
         </Storyboard>
-        <Storyboard  x:Key="animTransition" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="50" Duration="0:0:1"/>
+        <Storyboard  x:Key="animClosing" >
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="0" Duration="0:0:2"/>
+        </Storyboard>
+        <Storyboard  x:Key="animOpened" >
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="120" Duration="0:0:0"/>
         </Storyboard>
         <Storyboard  x:Key="animClosed" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="0" Duration="0:0:1"/>
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="0" Duration="0:0:0"/>
         </Storyboard>
 
     </UserControl.Resources>
-    
+
     <Grid x:Name="grdDoor"  Height="190" Width="190" >
         <Grid.Background>
             <ImageBrush ImageSource="/ElevatorApp;component/Resources/ElevatorBack.jpg" Stretch="Uniform"/>
@@ -34,13 +35,22 @@
         </Grid.ColumnDefinitions>
 
         <Rectangle Grid.Column="0" x:Name="left" Fill="Gray" Stroke="Black" />
-        <Rectangle Grid.Column="1" x:Name="mid" Width="0" Fill="Transparent">
-            <Rectangle.Style>
-                <Style>
+        <UserControl Grid.Column="1" x:Name="mid" Width="0" MinWidth="0" MaxWidth="120" Background="Transparent">
+            <UserControl.Style>
+                <Style TargetType="UserControl">
                     <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=DoorState}" Value="Closed" >
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="stryBoardClosed" Storyboard="{StaticResource ResourceKey=animClosed}"/>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="stryBoardClosed"/>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                        
                         <DataTrigger Binding="{Binding Path=DoorState}" Value="Opening">
                             <DataTrigger.EnterActions>
-                                <BeginStoryboard x:Name="stryBoardOpening" Storyboard="{StaticResource ResourceKey=animTransition}"/>
+                                <BeginStoryboard x:Name="stryBoardOpening" Storyboard="{StaticResource ResourceKey=animOpening}"/>
                             </DataTrigger.EnterActions>
                             <DataTrigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="stryBoardOpening"/>
@@ -56,27 +66,18 @@
                             </DataTrigger.ExitActions>
                         </DataTrigger>
 
-                        <DataTrigger  Binding="{Binding Path=DoorState}" Value="Closing">
+                        <DataTrigger Binding="{Binding Path=DoorState}" Value="Closing">
                             <DataTrigger.EnterActions>
-                                <BeginStoryboard x:Name="stryBoardClosing" Storyboard="{StaticResource ResourceKey=animTransition}"/>
+                                <BeginStoryboard x:Name="stryBoardClosing" Storyboard="{StaticResource ResourceKey=animClosing}"/>
                             </DataTrigger.EnterActions>
                             <DataTrigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="stryBoardClosing"/>
                             </DataTrigger.ExitActions>
                         </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=DoorState}" Value="Closed" >
-                            <DataTrigger.EnterActions>
-                                <BeginStoryboard x:Name="stryBoardClosed" Storyboard="{StaticResource ResourceKey=animClosed}"/>
-                            </DataTrigger.EnterActions>
-                            <DataTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="stryBoardClosed"/>
-                            </DataTrigger.ExitActions>
-                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </Rectangle.Style>
-        </Rectangle>
+            </UserControl.Style>
+        </UserControl>
         <Rectangle Grid.Column="2" x:Name="right" Fill="Gray" Stroke="Black" />
     </Grid>
 </UserControl>

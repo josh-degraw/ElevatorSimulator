@@ -124,7 +124,7 @@ namespace ElevatorApp.Models
         {
             this.ElevatorNumber = ++Elevator._RegisteredElevators;
 
-            Logger.LogEvent($"Initializing Elevator {this.ElevatorNumber}");
+            Logger.LogEvent("Initializing Elevator", ("ElevatorNumber", this.ElevatorNumber));
             this.ButtonPanel = new ButtonPanel();
             OnArrival += Elevator_OnArrival;
             OnDeparture += Elevator_OnDeparture;
@@ -141,7 +141,7 @@ namespace ElevatorApp.Models
         {
             //if (Subscribed)
             //    return;
-            Logger.LogEvent($"Subcribing elevator # {this.ElevatorNumber} to MasterController");
+            Logger.LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
             this.ButtonPanel.Subscribe((controller, this));
             this.Subscribed = true;
         }

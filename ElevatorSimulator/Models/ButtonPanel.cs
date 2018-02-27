@@ -16,7 +16,7 @@ namespace ElevatorApp.Models
 
         public ButtonPanel()
         {
-            Logger.LogEvent($"Initializing ButtonPanel {this.GetHashCode()}");
+            Logger.LogEvent($"Initializing ButtonPanel");
             this.OpenDoorButton = DoorButton.Open();
             this.CloseDoorButton = DoorButton.Close();
             this.FloorButtons = new ObservableCollection<FloorButton>
@@ -26,7 +26,7 @@ namespace ElevatorApp.Models
                 new FloorButton(2),
                 new FloorButton(1),
             };
-            Logger.LogEvent($"Done initializing ButtonPanel {this.GetHashCode()}");
+            Logger.LogEvent("Done initializing ButtonPanel");
 
         }
 
