@@ -1,0 +1,160 @@
+﻿<RibbonWindow x:Class="ElevatorApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElevatorApp"
+        xmlns:controls="clr-namespace:ElevatorApp.Controls"
+        xmlns:controls1="clr-namespace:ElevatorApp.Controls"
+        xmlns:models="clr-namespace:ElevatorApp.Models"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:SimulatorViewModel, IsDesignTimeCreatable=True}"
+        Title="Elevator Simulator" d:DesignWidth="957" Height="935.5" >
+
+    <DockPanel >
+        <Ribbon DockPanel.Dock="Top">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu>
+                    <RibbonApplicationMenuItem Header="_Open Test Case"/>
+                    <RibbonApplicationMenuItem Header="_Save Test Case"/>
+                    <RibbonApplicationMenuItem Header="E_xit"/>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Home" DataContext="{Binding Controller}">
+                <RibbonGroup Header="Elevator Settings" DataContext="{Binding ElevatorSettings}">
+
+                    <Label ToolTip="Feet per minute">Speed</Label>
+                    <RibbonTextBox Text="{Binding Speed, Mode=TwoWay}"/>
+
+                    <Label ToolTip="Total weight">Capacity</Label>
+                    <RibbonTextBox Text="{Binding Capacity, Mode=TwoWay}"/>
+
+                    <Label>Door Category</Label>
+                    <RibbonComboBox>
+                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
+                                       SelectedValue="{Binding DoorType, Mode=TwoWay}">
+                            <RibbonGalleryCategory>
+                                <RibbonGalleryItem>
+                                    <models:DoorType>Single</models:DoorType>
+                                </RibbonGalleryItem>
+                                <RibbonGalleryItem>
+                                    <models:DoorType>Double</models:DoorType>
+                                </RibbonGalleryItem>
+                            </RibbonGalleryCategory>
+                        </RibbonGallery>
+                    </RibbonComboBox>
+                </RibbonGroup>
+
+                <RibbonGroup Header="Building Settings">
+                    <Label Content="Number of Elevators" />
+                    <RibbonTextBox Text="{Binding ElevatorCount, Mode=TwoWay}" />
+
+                    <Label>Number of Floors</Label>
+                    <RibbonTextBox Text="{Binding FloorCount, Mode=TwoWay}"/>
+                    <Label>Floor Height (ft)</Label>
+                    <RibbonTextBox Text="{Binding FloorHeight, Mode=TwoWay}"/>
+
+                </RibbonGroup>
+                <RibbonGroup Header="Test Settings">
+                    <Label ToolTip="(in minutes)">Test duration</Label>
+                    <RibbonTextBox/>
+                    <Label>Passengers / Minute</Label>
+                    <RibbonTextBox/>
+                </RibbonGroup>
+                <RibbonGroup Header="Run">
+                    <RibbonButton Label="Init" Click="Init_Click"/>
+                    <RibbonButton Label="Run Test"/>
+                </RibbonGroup>
+
+            </RibbonTab>
+            <RibbonTab Header="">
+
+            </RibbonTab>
+
+        </Ribbon>
+        <Grid DockPanel.Dock="Top" VerticalAlignment="Top" Height="769" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="316*" />
+                <ColumnDefinition Width="417*" />
+                <ColumnDefinition Width="216*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="531*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="227*"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer DataContext="{Binding Controller}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" MaxHeight="500">
+                <ListView ItemsSource="{Binding Elevators}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <StackPanel Mouse.MouseUp="ListView_MouseDown" Tag="{Binding ElevatorNumber}">
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding }"/>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <controls1:ElevatorControl DataContext="{Binding}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+
+            <GridSplitter Grid.Column="0" Grid.Row="1" Height="5" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"/>
+            <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom">
+                <!--<ScrollViewer >
+                    <TextBox ScrollViewer.CanContentScroll="True" Height="192" x:Name="txtBxLog" Padding="5"  />
+                </ScrollViewer>-->
+
+                <ListView ScrollViewer.CanContentScroll="True" DataContext="{Binding Logger, Mode=OneWay}" ItemsSource="{Binding Events}" Height="196">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                    <Button Padding="15,4" Margin="0,0,15,0" Click="Button_Click" Content="Clear">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Yellow"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Padding="15,4" IsEnabled="False">Save</Button>
+                </StackPanel>
+            </StackPanel>
+
+            <!--<StackPanel  Grid.Column="2" Grid.Row="0" Background="#FFF4F4F5">
+                -->
+            <!--<StackPanel>
+                    <Label Content="Average Wait Time Per Passenger(sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
+                    <TextBox Name="txtBxWaitTime"                         Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23" TextWrapping="Wrap" IsEnabled="False" Text="22.4"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label  Content="Average Car Load (persons)"          HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
+                    <TextBox x:Name="txtBxAverageLoad"                    Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23" TextWrapping="Wrap" IsEnabled="False" Text="2.61"  />
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Average Elevator Idle Time(sec)"      HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="26" />
+                    <TextBox x:Name="txtBxIdleTime"                       Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="23"  TextWrapping="Wrap" IsEnabled="False" Text="32.1"/>
+                </StackPanel>-->
+            <!--
+                <StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Selected Elevator #</Label>
+                        <Label Content="{Binding SelectedElevatorNumber}"/>
+                    </StackPanel>
+                    <local:ButtonPanelControl DataContext="{Binding SelectedButtonPanel}"/>
+                </StackPanel>
+            </StackPanel>-->
+        </Grid>
+    </DockPanel>
+</RibbonWindow>
