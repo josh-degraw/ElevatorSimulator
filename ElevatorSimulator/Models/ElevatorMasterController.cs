@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
 
@@ -16,19 +17,11 @@ namespace ElevatorApp.Models
 
         private readonly ObservableCollection<Elevator> _elevators = new ObservableCollection<Elevator>(
             new[] {
-                new Elevator(),
-                //new Elevator(2)
-                //{
-                //    Passengers=
-                //    {
-                //        new Passenger{ State= PassengerState.In, Weight=20}
-                //    }
-
-                //}
+                new Elevator(1)
             }
         );
 
-        private readonly ObservableCollection<Floor> _floors = new ObservableCollection<Floor>(Enumerable.Range(0, 4).Select(a => new Floor(a)));
+        private readonly ObservableCollection<Floor> _floors = new ObservableCollection<Floor>(Enumerable.Range(1, 4).Reverse().Select(a => new Floor(a)));
 
         public ICollection<Elevator> Elevators => _elevators;
         public ICollection<Floor> Floors => _floors;
@@ -43,7 +36,7 @@ namespace ElevatorApp.Models
 
         public ElevatorSettings ElevatorSettings { get; } = new ElevatorSettings();
 
-        private void AdjustCollection<T>(ICollection<T> collection, int value, Func<int, T> generator) where T : ISubcriber<ElevatorMasterController>
+        private void AdjustCollection<T>(ICollection<T> collection, int value, Func<int, T> generator, [CallerMemberName] string memberName =null) where T : ISubcriber<ElevatorMasterController>
         {
             if (collection.Count == value)
                 return;
@@ -68,6 +61,7 @@ namespace ElevatorApp.Models
                     }
                 }
             }
+            OnPropertyChanged(collection.Count, memberName);
         }
 
         public int FloorCount
@@ -132,18 +126,8 @@ namespace ElevatorApp.Models
 
         public ElevatorMasterController()
         {
-            this._elevators.CollectionChanged += (a, b) =>
-            {
-                base.OnPropertyChanged(this.ElevatorCount, nameof(ElevatorCount));
-            };
-
-            this._floors.CollectionChanged += (a, b) =>
-            {
-                base.OnPropertyChanged(this.FloorCount, nameof(FloorCount));
-            };
-
-
             this.Init();
+
             this.OnElevatorRequested = (sender, e) =>
             {
                 this.FloorsRequested.Enqueue(e);

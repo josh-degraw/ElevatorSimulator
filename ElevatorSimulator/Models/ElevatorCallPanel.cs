@@ -2,7 +2,7 @@
 
 namespace ElevatorApp.Models
 {
-    public class ElevatorCallPanel : IElevatorCallPanel, ISubcriber<ElevatorMasterController>
+    public class ElevatorCallPanel :ButtonPanelBase, ISubcriber<ElevatorMasterController>
     {
         public RequestButton GoingUpButton { get; private set; }
         public RequestButton GoingDownButton { get; private set; }
@@ -21,7 +21,8 @@ namespace ElevatorApp.Models
 
         }
 
-        public bool Subscribed { get; private set; }
+        private bool _subscribed;
+        bool ISubcriber<ElevatorMasterController>.Subscribed => _subscribed;
 
         public void Subscribe(ElevatorMasterController masterController)
         {
@@ -35,7 +36,7 @@ namespace ElevatorApp.Models
                 masterController.Dispatch(e);
             }
 
-            this.Subscribed = true;
+            this._subscribed = true;
         }
 
         public static ElevatorCallPanel TopFloorPanel(int floorNum) => new ElevatorCallPanel(floorNum) { GoingUpButton = null };

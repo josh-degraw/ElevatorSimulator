@@ -5,11 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ElevatorApp.Controls"
              xmlns:models="clr-namespace:ElevatorApp.Models"
+             xmlns:elevatorApp="clr-namespace:ElevatorApp"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=models:ElevatorMasterController, IsDesignTimeCreatable=True}"
+             d:DataContext="{d:DesignInstance Type=elevatorApp:SimulatorViewModel}"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        
-            
-    </Grid>
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Width="50">
+            <ItemsControl ItemsSource="{Binding Elevators}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding ElevatorNumber}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <StackPanel>
+            <ItemsControl ItemsSource="{Binding Floors}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label/>
+                            <local:FloorControl DataContext="{Binding}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </StackPanel>
+    </StackPanel>
 </UserControl>

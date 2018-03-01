@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using ElevatorApp.Models;
 
 namespace ElevatorApp.Controls
 {
@@ -11,5 +12,18 @@ namespace ElevatorApp.Controls
         {
             InitializeComponent();
         }
+
+        private SimulatorViewModel Controller
+        {
+            get
+            {
+                if (this.DataContext is SimulatorViewModel c)
+                    return c;
+
+                return null;
+            }
+        }
+
+
     }
 }

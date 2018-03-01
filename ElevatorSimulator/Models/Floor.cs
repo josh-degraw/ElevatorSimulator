@@ -7,41 +7,44 @@ namespace ElevatorApp.Models
 {
     public class Floor : ModelBase, IFloor, ISubcriber<ElevatorMasterController>
     {
-        public int FloorNumber { get; }
+        public int FloorNumber { get; } = 1;
+
+        public ICollection<FloorButton> FloorButtons { get; private set; }
+
+        private ElevatorCallPanel _callPanel = new ElevatorCallPanel(1);
+        public ElevatorCallPanel CallPanel
+        {
+            get => _callPanel;
+            set => SetProperty(ref _callPanel, value);
+        }
 
 
-        public ICollection<ElevatorCallPanel> Buttons { get; } = new ObservableCollection<ElevatorCallPanel> { new ElevatorCallPanel() };
-
-        public Floor(int floorNumber, IEnumerable<ElevatorCallPanel> buttons)
+        public Floor(int floorNumber, ElevatorCallPanel callPanel)
         {
             this.FloorNumber = floorNumber;
-            this.Buttons = new ObservableCollection<ElevatorCallPanel>(buttons);
+            this.CallPanel = callPanel;
         }
 
-        public Floor(int floorNumber, int callPanels = 1)
-            : this(floorNumber, new ObservableCollection<ElevatorCallPanel>(Enumerable.Range(0, callPanels).Select(a => new ElevatorCallPanel(a))))
+        public Floor(int floorNumber) : this(floorNumber, new ElevatorCallPanel(floorNumber))
         {
 
         }
-
+        
         public Floor()
         {
 
         }
 
+        private bool _subscribed = false;
 
-        public bool Subscribed { get; private set; }
+        bool ISubcriber<ElevatorMasterController>.Subscribed => _subscribed;
 
         public void Subscribe(ElevatorMasterController parent)
         {
             //if (Subscribed)
             //    return;
-
-            foreach (ElevatorCallPanel panel in this.Buttons)
-            {
-                panel.Subscribe(parent);
-            }
-            this.Subscribed = true;
+            this.CallPanel.Subscribe(parent);
+            this._subscribed = true;
         }
     }
 }

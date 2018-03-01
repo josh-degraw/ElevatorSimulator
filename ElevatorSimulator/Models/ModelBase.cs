@@ -22,7 +22,8 @@ namespace ElevatorApp.Models
             if (EqualityComparer<T>.Default.Equals(prop, value)) return false;
 
             if (log)
-                Logger.LogEvent($"Property Changed: {propertyName}. {prop} --> {value}");
+                Logger.LogEvent($"Property Changed: {propertyName}.", ($"{prop} -->", value?.ToString()));
+
             prop = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             return true;

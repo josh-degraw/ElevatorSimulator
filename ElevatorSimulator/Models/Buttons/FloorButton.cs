@@ -7,7 +7,6 @@ namespace ElevatorApp.Models
     public class FloorButton : Button<int>, IFloorBoundButton, ISubcriber<(ElevatorMasterController, Elevator)>
     {
         public override string Label => this.FloorNum.ToString();
-        public override event EventHandler<int> OnPushed;
 
         public int FloorNum { get; }
 
@@ -42,6 +41,15 @@ namespace ElevatorApp.Models
                     this.ActionCompleted(e, floor);
             };
 
+            elevator.PropertyChanged += (e, args) =>
+            {
+                if (args.PropertyName == nameof(Elevator.CurrentFloor) && this.FloorNum == elevator.CurrentFloor)
+                {
+                    this.Disabled = true;
+                    
+                }
+
+            };
             this.Subscribed = true;
         }
     }

@@ -16,7 +16,8 @@ namespace ElevatorApp.Models
 
         #region Backing fields
 
-        private int _speed, _capacity, _currentFloor;
+        private int _speed, _capacity, _currentFloor=1;
+        private ElevatorState _state;
 
         #endregion
 
@@ -31,7 +32,11 @@ namespace ElevatorApp.Models
 
         public int CurrentWeight => Passengers?.Count ?? 0;
 
-        public ElevatorState State { get; set; }
+        public ElevatorState State
+        {
+            get => _state;
+            set => SetProperty(ref _state, value);
+        }
 
         public int CurrentFloor
         {
@@ -122,9 +127,9 @@ namespace ElevatorApp.Models
 
         public Elevator()
         {
-            this.ElevatorNumber = ++Elevator._RegisteredElevators;
+            this.ElevatorNumber = ++_RegisteredElevators;
 
-            Logger.LogEvent($"Initializing Elevator {this.ElevatorNumber}");
+            Logger.LogEvent("Initializing Elevator", ("ElevatorNumber", this.ElevatorNumber));
             this.ButtonPanel = new ButtonPanel();
             OnArrival += Elevator_OnArrival;
             OnDeparture += Elevator_OnDeparture;
@@ -141,8 +146,9 @@ namespace ElevatorApp.Models
         {
             //if (Subscribed)
             //    return;
-            Logger.LogEvent($"Subcribing elevator # {this.ElevatorNumber} to MasterController");
+            Logger.LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
             this.ButtonPanel.Subscribe((controller, this));
+            this.Door.Subscribe(this);
             this.Subscribed = true;
         }
 

@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElevatorApp"
         xmlns:controls="clr-namespace:ElevatorApp.Controls"
-        xmlns:controls1="clr-namespace:ElevatorApp.Controls"
         xmlns:models="clr-namespace:ElevatorApp.Models"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:SimulatorViewModel, IsDesignTimeCreatable=True}"
@@ -20,7 +19,9 @@
                     <RibbonApplicationMenuItem Header="E_xit"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
+            
             <RibbonTab Header="Home" DataContext="{Binding Controller}">
+                
                 <RibbonGroup Header="Elevator Settings" DataContext="{Binding ElevatorSettings}">
 
                     <Label ToolTip="Feet per minute">Speed(feet per minute)</Label>
@@ -28,12 +29,8 @@
                         <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
                                        SelectedValue="{Binding Speed, Mode=TwoWay}">
                             <RibbonGalleryCategory>
-                                <RibbonGalleryItem>
-                                    800
-                                </RibbonGalleryItem>
-                                <RibbonGalleryItem>
-                                    1200
-                                </RibbonGalleryItem>
+                                <RibbonGalleryItem IsSelected="True">800</RibbonGalleryItem>
+                                <RibbonGalleryItem>1200</RibbonGalleryItem>
                             </RibbonGalleryCategory>
                         </RibbonGallery>
                     </RibbonComboBox>
@@ -43,26 +40,22 @@
                         <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
                                        SelectedValue="{Binding Capacity, Mode=TwoWay}">
                             <RibbonGalleryCategory>
-                                <RibbonGalleryItem>
-                                    19
-                                </RibbonGalleryItem>
-                                <RibbonGalleryItem>
-                                    22
-                                </RibbonGalleryItem>
+                                <RibbonGalleryItem IsSelected="True">19</RibbonGalleryItem>
+                                <RibbonGalleryItem>22</RibbonGalleryItem>
                             </RibbonGalleryCategory>
                         </RibbonGallery>
                     </RibbonComboBox>
 
                     <Label>Door Category</Label>
                     <RibbonComboBox>
-                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
+                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1"   CanAddToQuickAccessToolBarDirectly="False"
                                        SelectedValue="{Binding DoorType, Mode=TwoWay}">
                             <RibbonGalleryCategory>
                                 <RibbonGalleryItem>
                                     <models:DoorType>Single</models:DoorType>
                                 </RibbonGalleryItem>
-                                <RibbonGalleryItem>
-                                    <models:DoorType>Double</models:DoorType>
+                                <RibbonGalleryItem IsEnabled="False">
+                                    <models:DoorType >Double</models:DoorType>
                                 </RibbonGalleryItem>
                             </RibbonGalleryCategory>
                         </RibbonGallery>
@@ -72,36 +65,25 @@
                 <RibbonGroup Header="Building Settings">
                     <Label Content="Number of Elevators" />
                     <RibbonComboBox>
-                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
+                        <RibbonGallery MaxColumnCount="1"  SelectedValuePath="Content"  CanAddToQuickAccessToolBarDirectly="False"
                                        SelectedValue="{Binding ElevatorCount, Mode=TwoWay}">
-                            <RibbonGalleryCategory>
-                                <RibbonGalleryItem>
-                                    1
-                                </RibbonGalleryItem>
-                                <RibbonGalleryItem>
-                                    2
-                                </RibbonGalleryItem>
+                            <RibbonGalleryCategory Name="Elevator">
+                                <RibbonGalleryItem IsSelected="True">1</RibbonGalleryItem>
+                                <RibbonGalleryItem IsEnabled="False">2</RibbonGalleryItem>
                             </RibbonGalleryCategory>
                         </RibbonGallery>
                     </RibbonComboBox>
 
                     <Label>Number of Floors</Label>
                     <RibbonComboBox>
-                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
-                                       SelectedValue="{Binding FloorCount, Mode=TwoWay}">
+                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" CanAddToQuickAccessToolBarDirectly="False"
+                                       SelectedValue="{Binding FloorCount, Mode=TwoWay,TargetNullValue=4, FallbackValue=4}">
                             <RibbonGalleryCategory>
-                                <RibbonGalleryItem>
-                                    1
-                                </RibbonGalleryItem>
-                                <RibbonGalleryItem>
-                                    2
-                                </RibbonGalleryItem>
-                                <RibbonGalleryItem>
-                                    3
-                                </RibbonGalleryItem>
-                                <RibbonGalleryItem>
-                                    4
-                                </RibbonGalleryItem>
+                                <RibbonGalleryItem>5</RibbonGalleryItem>
+                                <RibbonGalleryItem IsSelected="True">4</RibbonGalleryItem>
+                                <RibbonGalleryItem>3</RibbonGalleryItem>
+                                <RibbonGalleryItem>2</RibbonGalleryItem>
+                                <RibbonGalleryItem>1</RibbonGalleryItem>
                             </RibbonGalleryCategory>
                         </RibbonGallery>
                     </RibbonComboBox>
@@ -149,7 +131,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </StackPanel.Style>
-                                <controls1:ElevatorControl DataContext="{Binding}"/>
+                                <controls:ElevatorControl DataContext="{Binding}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -183,6 +165,9 @@
                     </Button>
                     <Button Padding="15,4" IsEnabled="False">Save</Button>
                 </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <controls:ElevatorShaftControl DataContext="{Binding}"/>
             </StackPanel>
 
             <!--<StackPanel  Grid.Column="2" Grid.Row="0" Background="#FFF4F4F5">
