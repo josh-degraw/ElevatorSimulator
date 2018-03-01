@@ -1,4 +1,5 @@
 ﻿using ElevatorApp.Models.Interfaces;
+using FontAwesome;
 
 namespace ElevatorApp.Models
 {

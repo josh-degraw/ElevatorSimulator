@@ -6,9 +6,15 @@
              xmlns:local="clr-namespace:ElevatorApp.Controls"
              xmlns:models="clr-namespace:ElevatorApp.Models"
              mc:Ignorable="d" 
-            d:DataContext="{d:DesignInstance Type=models:Floor, IsDesignTimeCreatable=True}"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             d:DataContext="{d:DesignInstance Type=models:Floor, IsDesignTimeCreatable=True}">
+    <StackPanel Orientation="Horizontal" >
+        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+            <Label>Floor</Label>
+                <Label Content="{Binding FloorNumber}"/>
+            </StackPanel>
+            <local:AddPassengerControl DataContext="{Binding}"/>
+        </StackPanel>
+    </StackPanel>
 </UserControl>

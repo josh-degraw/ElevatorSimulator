@@ -7,7 +7,7 @@ namespace ElevatorApp.Controls
     /// <summary>
     /// Interaction logic for ElevatorDoorButton.xaml
     /// </summary>
-    public partial class ElevatorButtonControl : UserControl
+    public partial class ElevatorButtonControl : Button
     {
         //public ICommand Push { get; private set; }
 

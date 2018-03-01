@@ -1,17 +1,17 @@
-﻿<UserControl x:Class="ElevatorApp.Controls.ElevatorButtonControl"
+﻿<Button x:Class="ElevatorApp.Controls.ElevatorButtonControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ElevatorApp"
              xmlns:models="clr-namespace:ElevatorApp.Models"
-             
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
              d:DataContext="{ d:DesignInstance Type=models:DoorButton, IsDesignTimeCreatable=True}"     
              mc:Ignorable="d" >
-    
-    <UserControl.Resources>
-        <ControlTemplate x:Key="buttonTemplate">
-            <Button  Content="{Binding Label, FallbackValue=0}" Click="Button_Click" Height="37" Width="43" Background="#FFF3F3F3">
+
+    <Button.Template>
+        <ControlTemplate>
+            <Button Content="{Binding Label, FallbackValue=0}" Click="Button_Click" Padding="5" Margin="0" Background="#FFF3F3F3">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Style.Triggers>
@@ -23,18 +23,23 @@
                                 <Setter Property="Background" Value="#FFF17D7D">
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding DoorButtonType}">
+                                <DataTrigger.Value>
+                                    <models:DoorButtonType>RequestUp</models:DoorButtonType>
+                                </DataTrigger.Value>
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <fa:FontAwesome Icon="ArrowUp"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
+
                     </Style>
                 </Button.Style>
             </Button>
-            
+
         </ControlTemplate>
-    </UserControl.Resources>
+    </Button.Template>
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <WrapPanel >
-            <Button Template="{StaticResource buttonTemplate}"/>
-        </WrapPanel>
-    </StackPanel>
-
-</UserControl>
+</Button>

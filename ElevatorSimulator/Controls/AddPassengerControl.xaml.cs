@@ -12,21 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ElevatorApp.Models;
 
 namespace ElevatorApp.Controls
 {
     /// <summary>
-    /// Interaction logic for FloorControl.xaml
+    /// Interaction logic for AddPassengerControl.xaml
     /// </summary>
-    public partial class FloorControl : UserControl
+    public partial class AddPassengerControl : UserControl
     {
-        public FloorControl()
+        public AddPassengerControl()
         {
             InitializeComponent();
         }
 
+        
 
-        public bool ELevatorReady { get; }
+        public void AddPassenger()
+        {
+            
+        }
     }
 }

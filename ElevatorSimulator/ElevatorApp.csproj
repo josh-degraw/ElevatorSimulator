@@ -76,6 +76,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\AddPassengerControl.xaml.cs">
+      <DependentUpon>AddPassengerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ButtonPanelControl.xaml.cs">
       <DependentUpon>ButtonPanelControl.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,7 @@
     <Compile Include="Controls\FloorControl.xaml.cs">
       <DependentUpon>FloorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ButtonPanelBase.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Interfaces\IButton.cs" />
     <Compile Include="Models\Interfaces\IButtonPanel.cs" />
@@ -127,6 +131,10 @@
     <Compile Include="Util\LocalSystemClock.cs" />
     <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\ObservableConcurrentQueue.cs" />
+    <Page Include="Controls\AddPassengerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ButtonPanelControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

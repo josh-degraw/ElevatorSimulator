@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using ElevatorApp.Models;
 using ElevatorApp.Util;
@@ -8,15 +9,17 @@ namespace ElevatorApp
 
     public class SimulatorViewModel : ModelBase
     {
-        public ElevatorSimulator Simulator { get; } = new ElevatorSimulator();
+        public ElevatorMasterController Controller { get; } = new ElevatorMasterController();
 
-        public ElevatorMasterController Controller => Simulator.Controller;
-
-        public ICollection<Passenger> People => Simulator.People;
+        public ICollection<Passenger> People { get; } = new ObservableCollection<Passenger>();
 
         public ILogger Logger => Util.Logger.Instance;
 
         public ButtonPanel SelectedButtonPanel => Controller.Elevators.SingleOrDefault(a => a.ElevatorNumber == SelectedElevatorNumber)?.ButtonPanel;
+
+        public ICollection<Elevator> Elevators => Controller.Elevators;
+
+        public ICollection<Floor> Floors => Controller.Floors;
 
         private int _selectedElevatorNumber;
 
@@ -33,5 +36,7 @@ namespace ElevatorApp
                 }
             }
         }
+
+
     }
 }

@@ -12,7 +12,7 @@
              x:Name="elevator">
     <Border BorderThickness="2" BorderBrush="Black" Background="AliceBlue">
         <StackPanel>
-            <Border BorderBrush="Black" Margin="5" BorderThickness="1" Background="#FF275D38">
+            <!--<Border BorderBrush="Black" Margin="5" BorderThickness="1" Background="#FF275D38">
                 <ItemsControl BorderThickness="0"
                           Background="Transparent"
                           ItemsSource="{Binding FloorButtons}" BorderBrush="Black" >
@@ -29,7 +29,7 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
-            </Border>
+            </Border>-->
 
             <!--<ListView BorderThickness="0"
                       Background="Transparent"
@@ -43,7 +43,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>-->
-            <StackPanel Orientation="Horizontal" Margin="5,0,5,5">
+            <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
                 <controls:ElevatorButtonControl DataContext="{Binding OpenDoorButton}"/>
                 <controls:ElevatorButtonControl DataContext="{Binding CloseDoorButton}"/>
             </StackPanel>

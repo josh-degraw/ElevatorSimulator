@@ -4,7 +4,7 @@ namespace ElevatorApp.Models.Interfaces
 {
     public interface IFloor
     {
-        ICollection<ElevatorCallPanel> Buttons { get; }
+        ElevatorCallPanel CallPanel { get; }
         int FloorNumber { get; }
     }
 }

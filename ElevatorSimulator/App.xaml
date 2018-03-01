@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:ElevatorApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
+        <Style TargetType="RibbonGalleryItem">
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <ControlTemplate x:Key="rbgiTemplate" TargetType="RibbonGalleryItem">
+            <RibbonGalleryItem Padding="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"></RibbonGalleryItem>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

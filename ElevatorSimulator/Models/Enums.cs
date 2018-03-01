@@ -10,7 +10,7 @@
 
     public enum DoorType { Single, Double }
 
-    public enum DoorButtonType { Open, Close }
+    public enum DoorButtonType { Open, Close, RequestUp, RequestDown, Floor }
 
     public enum Direction { Up = 1, Down = 2 }
 
