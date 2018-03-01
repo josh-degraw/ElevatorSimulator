@@ -23,11 +23,35 @@
             <RibbonTab Header="Home" DataContext="{Binding Controller}">
                 <RibbonGroup Header="Elevator Settings" DataContext="{Binding ElevatorSettings}">
 
-                    <Label ToolTip="Feet per minute">Speed</Label>
-                    <RibbonTextBox Text="{Binding Speed, Mode=TwoWay}"/>
+                    <Label ToolTip="Feet per minute">Speed(feet per minute)</Label>
+                    <RibbonComboBox>
+                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
+                                       SelectedValue="{Binding Speed, Mode=TwoWay}">
+                            <RibbonGalleryCategory>
+                                <RibbonGalleryItem>
+                                    800
+                                </RibbonGalleryItem>
+                                <RibbonGalleryItem>
+                                    1200
+                                </RibbonGalleryItem>
+                            </RibbonGalleryCategory>
+                        </RibbonGallery>
+                    </RibbonComboBox>
 
-                    <Label ToolTip="Total weight">Capacity</Label>
-                    <RibbonTextBox Text="{Binding Capacity, Mode=TwoWay}"/>
+                    <Label ToolTip="Total weight">Capacity(persons)</Label>
+                    <RibbonComboBox>
+                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
+                                       SelectedValue="{Binding Capacity, Mode=TwoWay}">
+                            <RibbonGalleryCategory>
+                                <RibbonGalleryItem>
+                                    19
+                                </RibbonGalleryItem>
+                                <RibbonGalleryItem>
+                                    22
+                                </RibbonGalleryItem>
+                            </RibbonGalleryCategory>
+                        </RibbonGallery>
+                    </RibbonComboBox>
 
                     <Label>Door Category</Label>
                     <RibbonComboBox>
@@ -47,10 +71,40 @@
 
                 <RibbonGroup Header="Building Settings">
                     <Label Content="Number of Elevators" />
-                    <RibbonTextBox Text="{Binding ElevatorCount, Mode=TwoWay}" />
+                    <RibbonComboBox>
+                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
+                                       SelectedValue="{Binding ElevatorCount, Mode=TwoWay}">
+                            <RibbonGalleryCategory>
+                                <RibbonGalleryItem>
+                                    1
+                                </RibbonGalleryItem>
+                                <RibbonGalleryItem>
+                                    2
+                                </RibbonGalleryItem>
+                            </RibbonGalleryCategory>
+                        </RibbonGallery>
+                    </RibbonComboBox>
 
                     <Label>Number of Floors</Label>
-                    <RibbonTextBox Text="{Binding FloorCount, Mode=TwoWay}"/>
+                    <RibbonComboBox>
+                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
+                                       SelectedValue="{Binding FloorCount, Mode=TwoWay}">
+                            <RibbonGalleryCategory>
+                                <RibbonGalleryItem>
+                                    1
+                                </RibbonGalleryItem>
+                                <RibbonGalleryItem>
+                                    2
+                                </RibbonGalleryItem>
+                                <RibbonGalleryItem>
+                                    3
+                                </RibbonGalleryItem>
+                                <RibbonGalleryItem>
+                                    4
+                                </RibbonGalleryItem>
+                            </RibbonGalleryCategory>
+                        </RibbonGallery>
+                    </RibbonComboBox>
                     <Label>Floor Height (ft)</Label>
                     <RibbonTextBox Text="{Binding FloorHeight, Mode=TwoWay}"/>
 
