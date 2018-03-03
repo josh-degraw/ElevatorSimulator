@@ -9,16 +9,48 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=elevatorApp:SimulatorViewModel}"
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+    </UserControl.Resources>
     <StackPanel Orientation="Horizontal">
-        <StackPanel Width="50">
-            <ItemsControl ItemsSource="{Binding Elevators}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Label Content="{Binding ElevatorNumber}"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
+        <ItemsControl x:Name="shaftViewer" ItemsSource="{Binding Elevators}">
+            <ItemsControl.ItemTemplate >
+                <DataTemplate>
+                    <Grid DataContext="{Binding}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Width="15" Height="15" Fill="Gray" Margin="5" ToolTip="TODO: This should represent an elevator moving up and down" ></Rectangle>
+                        <Rectangle Grid.Row="1">
+                            <Rectangle.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding State}" Value="GoingUp" >
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard x:Name="stryBoard">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetProperty="Height" From="0" To="50" AccelerationRatio="0.2" Duration="0:0:2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+
+                                            <DataTrigger.ExitActions>
+                                                <StopStoryboard BeginStoryboardName="stryBoard"/>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Width="158" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
         <StackPanel>
             <ItemsControl ItemsSource="{Binding Floors}">
                 <ItemsControl.ItemTemplate>
@@ -29,9 +61,7 @@
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-
             </ItemsControl>
-
         </StackPanel>
     </StackPanel>
 </UserControl>

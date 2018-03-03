@@ -7,9 +7,11 @@
         xmlns:controls="clr-namespace:ElevatorApp.Controls"
         xmlns:models="clr-namespace:ElevatorApp.Models"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=local:SimulatorViewModel, IsDesignTimeCreatable=True}"
         Title="Elevator Simulator" d:DesignWidth="957" Height="935.5" >
 
+    <Window.DataContext>
+        <local:SimulatorViewModel/>
+    </Window.DataContext>
     <DockPanel >
         <Ribbon DockPanel.Dock="Top">
             <Ribbon.ApplicationMenu>
@@ -139,34 +141,8 @@
             </ScrollViewer>
 
             <GridSplitter Grid.Column="0" Grid.Row="1" Height="5" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"/>
-            <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom">
-                <!--<ScrollViewer >
-                    <TextBox ScrollViewer.CanContentScroll="True" Height="192" x:Name="txtBxLog" Padding="5"  />
-                </ScrollViewer>-->
-
-                <ListView ScrollViewer.CanContentScroll="True" DataContext="{Binding Logger, Mode=OneWay}" ItemsSource="{Binding Events}" Height="196">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel/>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                </ListView>
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
-                    <Button Padding="15,4" Margin="0,0,15,0" Click="Button_Click" Content="Clear">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="Yellow"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                    <Button Padding="15,4" IsEnabled="False">Save</Button>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Grid.Column="2">
+            <controls:LoggerView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" />
+            <StackPanel Grid.Row="0" Grid.Column="2">
                 <controls:ElevatorShaftControl DataContext="{Binding}"/>
             </StackPanel>
 

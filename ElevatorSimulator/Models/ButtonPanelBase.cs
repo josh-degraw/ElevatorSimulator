@@ -17,7 +17,7 @@ namespace ElevatorApp.Models
         public ButtonPanelBase()
         {
             Logger.LogEvent($"Initializing ButtonPanel");
-            this.FloorButtons = new ObservableCollection<FloorButton>
+            this.FloorButtons = new  AsyncObservableCollection<FloorButton>
             {
                 new FloorButton(4),
                 new FloorButton(3),
@@ -70,14 +70,13 @@ namespace ElevatorApp.Models
 
         public bool Subscribed { get; protected set; }
 
-
-
-        public virtual void Subscribe((ElevatorMasterController, Elevator) parent)
+        public virtual async Task Subscribe((ElevatorMasterController, Elevator) parent)
         {
-            foreach (FloorButton button in this.FloorButtons)
-            {
-                button.Subscribe(parent);
-            }
+            var (_, elevator) = parent;
+
+            Logger.LogEvent($"Subscribing {nameof(ButtonPanelBase)}", ("Elevator", elevator.ElevatorNumber));
+            await Task.WhenAll(this.FloorButtons.Select(button => button.Subscribe(parent)));
+            
         }
     }
 }

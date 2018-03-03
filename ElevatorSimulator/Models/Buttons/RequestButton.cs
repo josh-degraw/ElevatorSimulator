@@ -5,7 +5,7 @@ namespace ElevatorApp.Models
 {
     delegate void RequestFloor(int floorNumber, Direction requestDirection);
 
-    public class RequestButton : Button<ElevatorCall>, IFloorBoundButton
+    public class RequestButton : ButtonBase<ElevatorCall>
     {
         public override void Push()
         {

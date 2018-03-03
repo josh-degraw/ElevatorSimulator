@@ -12,20 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ElevatorApp.Models;
+using ElevatorApp.Util;
 
 namespace ElevatorApp.Controls
 {
     /// <summary>
-    /// Interaction logic for FloorControl.xaml
+    /// Interaction logic for LoggerView.xaml
     /// </summary>
-    public partial class FloorControl : UserControl
+    public partial class LoggerView : UserControl
     {
-        public FloorControl()
+        public LoggerView()
         {
             InitializeComponent();
         }
 
-        public bool ELevatorReady { get; }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Logger.Instance.ClearItems();
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using ElevatorApp.Models;
 using NodaTime;
@@ -20,42 +21,52 @@ namespace ElevatorApp.Util
     {
         private Logger()
         {
-
         }
 
         public static ILogger Instance { get; } = new Logger();
 
         public event LogEventHandler OnItemLogged = async (sender, @event) =>
         {
-            if (((Logger)Instance).Loggers.Any())
-                await Task.WhenAll(((Logger)Instance).Loggers.Select(writer => writer.WriteLineAsync(@event.ToString()))).ConfigureAwait(false);
+            var self = (Logger)Instance;
+
+            if (self.Loggers.Any())
+                await Task.WhenAll(self.Loggers.Select(writer => writer.WriteLineAsync(@event.ToString())))
+                .ConfigureAwait(false);
+
         };
 
         public static readonly IClock Clock = LocalSystemClock.Instance;
 
         private readonly ConcurrentBag<TextWriter> Loggers = new ConcurrentBag<TextWriter>();
-        public IList<Event> Events { get; } = new ObservableCollection<Event>();
+        public IList<LogEvent> Events { get; } = new AsyncObservableCollection<LogEvent>();
 
         public static void LogEvent(string message, params (object, object)[] parameters)
         {
             Instance.LogEvent(message, parameters);
         }
 
-        public static void LogEvent(Event message)
+        public static void LogEvent(LogEvent message)
         {
             Instance.LogEvent(message);
         }
 
         void ILogger.LogEvent(string message, params (object, object)[] parameters)
         {
-            ((ILogger)this).LogEvent(new Event(message, Clock.GetCurrentInstant(), parameters));
+            ((ILogger)this).LogEvent(new LogEvent(message, Clock.GetCurrentInstant(), parameters));
         }
 
 
-        void ILogger.LogEvent(Event message)
+        void ILogger.LogEvent(LogEvent message)
         {
-            Events.Add(message);
-            OnItemLogged(this, message);
+            try
+            {
+                Events.Add(message);
+                OnItemLogged(this, message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public static void LogEvent(string message, (object, object) parameter)
@@ -66,48 +77,50 @@ namespace ElevatorApp.Util
         public void AddLogger(TextWriter writer)
         {
             Loggers.Add(writer);
+
         }
 
         public void ClearItems()
         {
             this.Events.Clear();
+
         }
 
-        public delegate void LogEventHandler(object sender, Event str);
+        public delegate void LogEventHandler(object sender, LogEvent str);
 
-        public struct Event
+    }
+
+    public struct LogEvent
+    {
+        public string Name { get; }
+
+        public Instant Timestamp { get; }
+
+        public (object name, object value)[] Parameters { get; }
+
+        public LogEvent(string name, Instant timeStamp, (object name, object value)[] parameters = null)
         {
-            public string Name { get; }
-
-            public Instant Timestamp { get; }
-
-            public (object name, object value)[] Parameters { get; }
-
-            public Event(string name, Instant timeStamp, (object name, object value)[] parameters = null)
-            {
-                this.Name = name;
-                this.Timestamp = timeStamp;
-                this.Parameters = parameters ?? new(object name, object value)[] { };
-            }
-
-            public const string TIMESTAMP_FORMAT = "HH:mm:ss:ff";
-
-            public override string ToString()
-            {
-                string timeStamp = this.Timestamp.ToString(TIMESTAMP_FORMAT, null);
-                string baseStr = $"{timeStamp} --\t{this.Name}";
-
-                if (this.Parameters?.Length == 0)
-                    return baseStr;
-
-                return baseStr + "\n" + this.Parameters?.Select(param => $"\t\t{param.name}: {param.value}").ToDelimitedString($"\n") ?? "";
-            }
-
-            public Event(string name, params (object name, object value)[] parameters) : this(name, Clock.GetCurrentInstant(), parameters)
-            {
-            }
+            this.Name = name;
+            this.Timestamp = timeStamp;
+            this.Parameters = parameters ?? new(object name, object value)[] { };
         }
 
+        public const string TIMESTAMP_FORMAT = "HH:mm:ss:ff";
+
+        public override string ToString()
+        {
+            string timeStamp = this.Timestamp.ToString(TIMESTAMP_FORMAT, null);
+            string baseStr = $"{timeStamp} --\t{this.Name}";
+
+            if (this.Parameters?.Length == 0)
+                return baseStr;
+
+            return baseStr + "\n" + this.Parameters?.Select(param => $"\t\t{param.name}: {param.value}").ToDelimitedString($"\n") ?? "";
+        }
+
+        public LogEvent(string name, params (object name, object value)[] parameters) : this(name, Logger.Clock.GetCurrentInstant(), parameters)
+        {
+        }
     }
 
 

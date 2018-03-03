@@ -1,10 +1,7 @@
-﻿namespace ElevatorApp.Models.Interfaces
-{
-    public interface IMasterSubscriber
-    {
-        void Subscribe(ElevatorMasterController masterController);
-    }
+﻿using System.Threading.Tasks;
 
+namespace ElevatorApp.Models.Interfaces
+{
     public interface ISubcriber<in T>
     {
         /// <summary>
@@ -16,6 +13,6 @@
         /// Perform the necessary steps to subscribe to the target.
         /// </summary>
         /// <param name="parent">The item this object will be subscribed to</param>
-        void Subscribe(T parent);
+        Task Subscribe(T parent);
     }
 }

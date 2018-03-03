@@ -6,13 +6,13 @@ namespace ElevatorApp.Util
 {
     public interface ILogger
     {
-        IList<Logger.Event> Events { get; }
+        IList<LogEvent> Events { get; }
 
         event Logger.LogEventHandler OnItemLogged;
 
         void AddLogger(TextWriter writer);
         void ClearItems();
         void LogEvent(string message, params (object, object)[] parameters);
-        void LogEvent(Logger.Event message);
+        void LogEvent(LogEvent message);
     }
 }

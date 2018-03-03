@@ -11,7 +11,7 @@ namespace ElevatorApp
     {
         public ElevatorMasterController Controller { get; } = new ElevatorMasterController();
 
-        public ICollection<Passenger> People { get; } = new ObservableCollection<Passenger>();
+        public ICollection<Passenger> People { get; } = new  AsyncObservableCollection<Passenger>();
 
         public ILogger Logger => Util.Logger.Instance;
 
@@ -32,7 +32,7 @@ namespace ElevatorApp
                 {
                     SetProperty(ref _selectedElevatorNumber, value);
 
-                    base.DependantPropertyChanged(nameof(SelectedButtonPanel));
+                    base.DependentPropertyChanged(nameof(SelectedButtonPanel));
                 }
             }
         }

@@ -4,25 +4,28 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
+using MoreLinq;
 
 namespace ElevatorApp.Models
 {
     public class ElevatorMasterController : ModelBase, IElevatorMasterController
     {
-        //public event NotifyCollectionChangedEventHandler CollectionChanged;
-
+        #region Backing fields
         private int _floorHeight;
 
-        private readonly ObservableCollection<Elevator> _elevators = new ObservableCollection<Elevator>(
+        private readonly AsyncObservableCollection<Elevator> _elevators = new AsyncObservableCollection<Elevator>(
             new[] {
                 new Elevator(1)
             }
         );
 
-        private readonly ObservableCollection<Floor> _floors = new ObservableCollection<Floor>(Enumerable.Range(1, 4).Reverse().Select(a => new Floor(a)));
-
+        private readonly AsyncObservableCollection<Floor> _floors = new AsyncObservableCollection<Floor>(Enumerable.Range(1, 4).Reverse().Select(a => new Floor(a)));
+        #endregion
+      
+        #region Properties
         public ICollection<Elevator> Elevators => _elevators;
         public ICollection<Floor> Floors => _floors;
 
@@ -36,7 +39,9 @@ namespace ElevatorApp.Models
 
         public ElevatorSettings ElevatorSettings { get; } = new ElevatorSettings();
 
-        private void AdjustCollection<T>(ICollection<T> collection, int value, Func<int, T> generator, [CallerMemberName] string memberName =null) where T : ISubcriber<ElevatorMasterController>
+
+        private void AdjustCollection<T>(ICollection<T> collection, int value, Func<int, T> generator,
+            [CallerMemberName] string memberName = null) where T : ISubcriber<ElevatorMasterController>
         {
             if (collection.Count == value)
                 return;
@@ -47,6 +52,13 @@ namespace ElevatorApp.Models
                 {
                     T newItem = generator(i);
                     newItem.Subscribe(this);
+                    if (newItem is ISubcriber<(ElevatorMasterController, Elevator)> subscriber)
+                    {
+                        foreach (Elevator elevator in this.Elevators)
+                        {
+                            subscriber.Subscribe((this, elevator));
+                        }
+                    }
                     collection.Add(newItem);
                 }
             }
@@ -55,13 +67,14 @@ namespace ElevatorApp.Models
                 for (int i = collection.Count; i > value && i > 0; i--)
                 {
                     T item = collection.LastOrDefault();
-                    if (!Object.Equals(item, default))
-                    {
+
+                    if (!Equals(item, default)) // If LastOrDefault returned default, 
+                    {                           // the collection is empty, so don't do anything here
                         collection.Remove(item);
                     }
                 }
             }
-            OnPropertyChanged(collection.Count, memberName);
+            this.OnPropertyChanged(collection.Count, memberName);
         }
 
         public int FloorCount
@@ -75,29 +88,44 @@ namespace ElevatorApp.Models
             get => Elevators.Count;
             set => AdjustCollection(Elevators, value, _ => new Elevator());
         }
+        #endregion
 
+        #region Events
         public event EventHandler<ElevatorCall> OnElevatorRequested;
+        #endregion
 
-        private void ElevatorArrived(Elevator elevator)
+        #region Methods
+        
+        #region Private methods
+        private Task ElevatorArrived(Elevator elevator)
         {
             if (this.FloorsRequested.TryPeek(out ElevatorCall val) && val.DestinationFloor == elevator.CurrentFloor)
             {
                 this.FloorsRequested.TryDequeue(out _);
             }
+
+            return Task.CompletedTask;
         }
 
-
-        public void Dispatch(int floor, Direction direction)
+        private async Task Dispatch(ElevatorCall call, Elevator elevator)
         {
-            this.Dispatch(new ElevatorCall(floor, direction));
+            if (elevator != null)
+                await Task.Run(() => elevator.Dispatch(call).ConfigureAwait(false));
         }
+
+        private async Task ReportArrival(Elevator elevator)
+        {
+            await ElevatorArrived(elevator).ConfigureAwait(false);
+        }
+
+        #endregion
         
-        private void Dispatch(ElevatorCall call, Elevator elevator)
+        public async Task Dispatch(int floor, Direction direction)
         {
-            elevator?.Dispatch(call);
+            await this.Dispatch(new ElevatorCall(floor, direction)).ConfigureAwait(false);
         }
 
-        public void Dispatch(ElevatorCall call)
+        public async Task Dispatch(ElevatorCall call)
         {
             int floor = call.DestinationFloor;
             Direction direction = call.RequestDirection;
@@ -111,7 +139,7 @@ namespace ElevatorApp.Models
 
             if (closest != null)
             {
-                Dispatch(call, closest);
+                await Dispatch(call, closest).ConfigureAwait(false);
             }
             else
             {
@@ -119,43 +147,43 @@ namespace ElevatorApp.Models
                 closest = this.Elevators
                     .Where(e => e.State == (ElevatorState)direction)
                     .MinBy(distanceFromRequestedFloor);
+
+                if (closest != null)
+                    await Dispatch(call, closest).ConfigureAwait(false);
             }
 
-            Dispatch(call, closest);
         }
+
+
+        public async Task Init()
+        {
+            Logger.LogEvent($"Initializing {nameof(ElevatorMasterController)}");
+
+            await Task.WhenAll(this.Elevators.Select(async elevator =>
+            {
+                await elevator.Subscribe(this);
+
+                elevator.OnArrival += async (a, b) => await this.ReportArrival(elevator);
+
+                await Task.WhenAll(this.Floors.Select(floor => floor.Subscribe((this, elevator))));
+
+            }));
+
+            Logger.LogEvent($"Initialized {nameof(ElevatorMasterController)}");
+        }
+        #endregion
 
         public ElevatorMasterController()
         {
-            this.Init();
-
             this.OnElevatorRequested = (sender, e) =>
             {
                 this.FloorsRequested.Enqueue(e);
             };
+
+            // Force execution immediately 
+            this.Init().GetAwaiter().GetResult();
         }
 
-        private void ReportArrival(Elevator elevator)
-        {
-            ElevatorArrived(elevator);
-        }
-
-        public void Init()
-        {
-            Logger.LogEvent($"Initializing {nameof(ElevatorMasterController)}");
-            foreach (Elevator item in this.Elevators)
-            {
-                item.Subscribe(this);
-                item.OnArrival += (a, b) => this.ReportArrival(item);
-            }
-
-            Logger.LogEvent($"Initialized {nameof(ElevatorMasterController)}");
-        }
-
-
-        private void ElevatorMasterController_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-
-        }
 
     }
 }

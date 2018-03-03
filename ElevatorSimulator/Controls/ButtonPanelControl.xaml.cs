@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using ElevatorApp.Models;
 using ElevatorApp.Models.Interfaces;
 
 namespace ElevatorApp.Controls
@@ -13,7 +14,7 @@ namespace ElevatorApp.Controls
             InitializeComponent();
         }
 
-        public ButtonPanelControl(IButtonPanel buttonPanel) : this()
+        public ButtonPanelControl(ButtonPanel buttonPanel) : this()
         {
             this.DataContext = buttonPanel;
         }

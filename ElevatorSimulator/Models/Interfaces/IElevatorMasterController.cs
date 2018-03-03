@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using ElevatorApp.Util;
 
 namespace ElevatorApp.Models.Interfaces
@@ -15,7 +16,7 @@ namespace ElevatorApp.Models.Interfaces
 
         event EventHandler<ElevatorCall> OnElevatorRequested;
         
-        void Dispatch(ElevatorCall call);
-        void Init();
+        Task Dispatch(ElevatorCall call);
+        Task Init();
     }
 }
