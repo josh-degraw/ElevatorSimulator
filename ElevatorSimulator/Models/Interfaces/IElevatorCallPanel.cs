@@ -1,6 +1,6 @@
 ﻿namespace ElevatorApp.Models.Interfaces
 {
-    public interface IElevatorCallPanel: IMasterSubscriber
+    public interface IElevatorCallPanel
     {
         int FloorNumber { get; }
         RequestButton GoingDownButton { get; }

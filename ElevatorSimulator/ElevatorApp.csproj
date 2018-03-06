@@ -94,19 +94,19 @@
     <Compile Include="Controls\FloorControl.xaml.cs">
       <DependentUpon>FloorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LoggerView.xaml.cs">
+      <DependentUpon>LoggerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\ButtonPanelBase.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Interfaces\IButton.cs" />
-    <Compile Include="Models\Interfaces\IButtonPanel.cs" />
     <Compile Include="Models\Interfaces\IElevator.cs" />
     <Compile Include="Models\Interfaces\IElevatorCallPanel.cs" />
     <Compile Include="Models\Interfaces\IElevatorMasterController.cs" />
     <Compile Include="Models\Interfaces\IFloor.cs" />
-    <Compile Include="Models\Interfaces\IFloorBoundButton.cs" />
-    <Compile Include="Models\Interfaces\IMasterSubscriber.cs" />
-    <Compile Include="Models\Interfaces\IPassenger.cs" />
+    <Compile Include="Models\Interfaces\ISubscriber.cs" />
     <Compile Include="Models\ButtonPanel.cs" />
-    <Compile Include="Models\Buttons\Button.cs" />
+    <Compile Include="Models\Buttons\ButtonBase.cs" />
     <Compile Include="Models\Buttons\DoorButton.cs" />
     <Compile Include="Models\Buttons\FloorButton.cs" />
     <Compile Include="Models\Buttons\RequestButton.cs" />
@@ -125,6 +125,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\Annotations.cs" />
+    <Compile Include="Util\AsyncObservableCollection.cs" />
     <Compile Include="Util\DelegateCommand.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\ILogger.cs" />
@@ -156,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FloorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoggerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +198,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="UML_Diagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

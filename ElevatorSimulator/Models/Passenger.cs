@@ -2,7 +2,7 @@
 
 namespace ElevatorApp.Models
 {
-    public class Passenger : ModelBase, IPassenger
+    public class Passenger : ModelBase
     {
         public int Weight { get; set; }
 
@@ -11,10 +11,7 @@ namespace ElevatorApp.Models
         public PassengerState State
         {
             get => _state;
-            set
-            {
-                SetProperty(ref _state, value);
-            }
+            set => SetProperty(ref _state, value);
         }
         
 

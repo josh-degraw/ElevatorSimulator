@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using ElevatorApp.Util;
 
 namespace ElevatorApp.Models.Interfaces
 {
-    public interface IElevator : IMasterSubscriber
+    public interface IElevator 
     {
         int Capacity { get; set; }
         int CurrentFloor { get; }
@@ -12,7 +13,7 @@ namespace ElevatorApp.Models.Interfaces
 
         ButtonPanel ButtonPanel { get; }
 
-        ICollection<IPassenger> Passengers { get; }
+        ICollection<Passenger> Passengers { get; }
         ObservableConcurrentQueue<int> Path { get; }
         
         ElevatorState State { get; }
@@ -20,6 +21,6 @@ namespace ElevatorApp.Models.Interfaces
         event EventHandler<int> OnArrival;
         event EventHandler<int> OnDeparture;
 
-        void Arrived();
+        Task Arrived();
     }
 }

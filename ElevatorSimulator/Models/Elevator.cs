@@ -16,7 +16,7 @@ namespace ElevatorApp.Models
 
         #region Backing fields
 
-        private int _speed, _capacity, _currentFloor=1;
+        private int _speed, _capacity, _currentFloor = 1;
         private ElevatorState _state;
 
         #endregion
@@ -47,7 +47,7 @@ namespace ElevatorApp.Models
         #endregion
 
         public ObservableConcurrentQueue<int> Path { get; } = new ObservableConcurrentQueue<int>();
-        public ICollection<IPassenger> Passengers { get; } = new ObservableCollection<IPassenger>();
+        public ICollection<Passenger> Passengers { get; } = new  AsyncObservableCollection<Passenger>();
 
         public ButtonPanel ButtonPanel { get; }
 
@@ -56,8 +56,7 @@ namespace ElevatorApp.Models
         public event EventHandler<int> OnArrival;
         public event EventHandler<int> OnDeparture;
 
-
-        public async void Arrived()
+        public async Task Arrived()
         {
             if (this.Path.TryDequeue(out int destination))
             {
@@ -67,18 +66,18 @@ namespace ElevatorApp.Models
                 await Task.Delay(250);
                 this.OnArrival?.Invoke(this, destination);
 
-                this.MoveNext();
+                await this.MoveNext().ConfigureAwait(false);
             }
         }
 
-        private void MoveNext()
+        private async Task MoveNext()
         {
             if (this.Path.TryPeek(out int next))
             {
                 while (this.Door.DoorState != DoorState.Closed)
                 {
                     // Wait until the door is closed to move
-                    Thread.Sleep(2000);
+                    await Task.Delay(2000);
                 }
 
                 this.State = this.CurrentFloor > next
@@ -89,37 +88,45 @@ namespace ElevatorApp.Models
             {
                 this.State = ElevatorState.Idle;
             }
-
         }
 
-        internal void Dispatch(ElevatorCall call)
+        internal async Task Dispatch(ElevatorCall call)
         {
             this.Path.Enqueue(call.DestinationFloor);
 
             if (this.State == ElevatorState.Idle)
             {
                 this.State = (ElevatorState)call.RequestDirection;
-                this.Move();
+                await this.Move().ConfigureAwait(false);
             }
         }
 
-        private readonly Duration FLOOR_MOVEMENT_SPEED = Duration.FromSeconds(5);
+        public static TimeSpan FLOOR_MOVEMENT_SPEED { get; } = Duration.FromSeconds(3).ToTimeSpan();
 
-        private void Move()
+        public static System.Windows.Duration FloorMovementSpeed => new System.Windows.Duration(FLOOR_MOVEMENT_SPEED);
+
+        private async Task Move()
         {
+            //Wait for the door to be closed
+            while (this.Door.DoorState != DoorState.Closed)
+                await Task.Delay(20);
+
             this.OnDeparture?.Invoke(this, this.CurrentFloor);
 
             // Logic
-            Thread.Sleep(FLOOR_MOVEMENT_SPEED.Milliseconds);
-            this.Arrived();
+            Thread.Sleep(FLOOR_MOVEMENT_SPEED);
+            await this.Arrived().ConfigureAwait(false);
         }
 
         private void Elevator_OnDeparture(object sender, int e)
         {
+            if (this.Path.TryPeek(out int to))
+                Logger.LogEvent("Elevator Moving", ("From", e), ("To", to));
         }
 
         private void Elevator_OnArrival(object sender, int e)
         {
+            Logger.LogEvent("Elevator arrived", ("Floor", e));
             this.Path.TryDequeue(out _);
         }
 
@@ -142,13 +149,12 @@ namespace ElevatorApp.Models
 
         public bool Subscribed { get; private set; }
 
-        public void Subscribe(ElevatorMasterController controller)
+        public async Task Subscribe(ElevatorMasterController controller)
         {
-            //if (Subscribed)
-            //    return;
+            if (Subscribed)
+                return;
             Logger.LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
-            this.ButtonPanel.Subscribe((controller, this));
-            this.Door.Subscribe(this);
+            await Task.WhenAll(this.ButtonPanel.Subscribe((controller, this)), this.Door.Subscribe(this)).ConfigureAwait(false);
             this.Subscribed = true;
         }
 

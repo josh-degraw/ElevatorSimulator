@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ElevatorApp.Models.Interfaces;
 
 namespace ElevatorApp.Models
 {
-    public class DoorButton : Button<DoorButtonType>, IButton, ISubcriber<Door>
+    public class DoorButton : ButtonBase<DoorButtonType>, IButton, ISubcriber<Door>
     {
         private DoorButtonType _doorButtonType;
 
@@ -52,10 +53,10 @@ namespace ElevatorApp.Models
 
         public bool Subscribed { get; set; } = false;
 
-        public void Subscribe(Door door)
+        public Task Subscribe(Door door)
         {
-            //if (this.Subscribed)
-            //    return;
+            if (this.Subscribed)
+                return Task.CompletedTask;
 
             if (this._doorButtonType == DoorButtonType.Open)
                 door.OnOpened += (e, args) => base.ActionCompleted(e, this.DoorButtonType);
@@ -63,7 +64,7 @@ namespace ElevatorApp.Models
                 door.OnClosed += (e, args) => base.ActionCompleted(e, this.DoorButtonType);
 
             this.Subscribed = true;
-
+            return Task.CompletedTask;
         }
     }
 }

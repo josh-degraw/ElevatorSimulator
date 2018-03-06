@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="ElevatorApp.Controls.LoggerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElevatorApp.Controls"
+             xmlns:util="clr-namespace:ElevatorApp.Util"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             DataContext="{x:Static util:Logger.Instance}">
+    <StackPanel>
+        <TreeView ItemsSource="{Binding Events}" Height="196" MinWidth="450" >
+            <!--<TreeView.ItemTemplate>
+                <DataTemplate DataType="{x:Type util:LogEvent}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding Name}"/>
+                        <TreeViewItem Grid.Column="2" AllowDrop="True">
+                            <TreeView ItemsSource="{Binding Parameters}">
+                                <TreeView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate>
+                                </TreeView.ItemsPanel>
+                            </TreeView>
+                        </TreeViewItem>
+                    </Grid>
+                </DataTemplate>
+            </TreeView.ItemTemplate>-->
+        </TreeView>
+
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="35 5">
+            <Button Padding="15,4" Margin="0,0,15,0" Click="Button_Click">Clear</Button>
+            <Button Padding="15,4" IsEnabled="False">Save</Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

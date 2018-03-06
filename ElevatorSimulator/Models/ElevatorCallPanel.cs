@@ -1,8 +1,9 @@
-﻿using ElevatorApp.Models.Interfaces;
+﻿using System.Threading.Tasks;
+using ElevatorApp.Models.Interfaces;
 
 namespace ElevatorApp.Models
 {
-    public class ElevatorCallPanel :ButtonPanelBase, ISubcriber<ElevatorMasterController>
+    public class ElevatorCallPanel : ButtonPanelBase, ISubcriber<ElevatorMasterController>
     {
         public RequestButton GoingUpButton { get; private set; }
         public RequestButton GoingDownButton { get; private set; }
@@ -18,25 +19,25 @@ namespace ElevatorApp.Models
 
         public ElevatorCallPanel()
         {
-
         }
 
         private bool _subscribed;
         bool ISubcriber<ElevatorMasterController>.Subscribed => _subscribed;
 
-        public void Subscribe(ElevatorMasterController masterController)
+        public Task Subscribe(ElevatorMasterController masterController)
         {
-            //if (Subscribed)
-            //    return;
+            if (_subscribed)
+                return Task.CompletedTask;
 
-            this.GoingUpButton.OnPushed += RequestButton_OnPushed;
-
-            void RequestButton_OnPushed(object sender, ElevatorCall e)
+            this.GoingUpButton.OnPushed += async (sender, e) =>
             {
-                masterController.Dispatch(e);
-            }
+                await masterController.Dispatch(e).ConfigureAwait(false);
+            };
 
             this._subscribed = true;
+
+            return Task.CompletedTask;
+
         }
 
         public static ElevatorCallPanel TopFloorPanel(int floorNum) => new ElevatorCallPanel(floorNum) { GoingUpButton = null };

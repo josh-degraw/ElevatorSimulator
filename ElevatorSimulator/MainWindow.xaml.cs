@@ -12,11 +12,9 @@ namespace ElevatorApp
         public MainWindow()
         {
             InitializeComponent();
-            
-            this.DataContext = new SimulatorViewModel() { SelectedElevatorNumber = 1 };
         }
 
-        private void Logger_OnItemLogged(object sender, Logger.Event @event)
+        private void Logger_OnItemLogged(object sender, LogEvent @event)
         {
             // this.txtBxLog.Text += $"{@event}\n";
         }
@@ -37,10 +35,6 @@ namespace ElevatorApp
             this.ViewModel?.Controller.Init();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.ViewModel?.Logger.ClearItems();
-        }
 
         private void clkSelectElevator(object sender, RoutedEventArgs e)
         {

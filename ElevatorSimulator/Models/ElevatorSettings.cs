@@ -22,6 +22,5 @@
             get => _doorType;
             set => SetProperty(ref _doorType, value);
         }
-        
     }
 }

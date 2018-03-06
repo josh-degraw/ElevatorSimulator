@@ -4,7 +4,7 @@ using ElevatorApp.Util;
 
 namespace ElevatorApp.Models
 {
-    public abstract class Button<T> : ModelBase, IButton, IButton<T>
+    public abstract class ButtonBase<T> : ModelBase, IButton, IButton<T>
     {
         public abstract string Label { get; }
 
@@ -15,7 +15,13 @@ namespace ElevatorApp.Models
             protected set => SetProperty(ref _active, value);
         }
 
-        public bool Disabled { get; protected set; }
+        private bool _isEnabled = true;
+
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            protected set => SetProperty(ref _isEnabled, value);
+        }
 
         public virtual event EventHandler<T> OnPushed;
         public virtual event EventHandler<T> OnActionCompleted;
@@ -25,7 +31,7 @@ namespace ElevatorApp.Models
         protected T actionArgs;
 
         public string Id { get; }
-        protected Button(string id)
+        protected ButtonBase(string id)
         {
             this.Id = id;
             this.OnActivated += _setActiveTrue;
@@ -60,7 +66,5 @@ namespace ElevatorApp.Models
         {
             return this.Label;
         }
-
-
     }
 }

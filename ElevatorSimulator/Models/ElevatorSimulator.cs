@@ -8,7 +8,7 @@ namespace ElevatorApp.Models
     {
         public ElevatorMasterController Controller { get; } = new ElevatorMasterController();
 
-        public ICollection<Passenger> People { get; } = new ObservableCollection<Passenger>();
+        public ICollection<Passenger> People { get; } = new  AsyncObservableCollection<Passenger>();
 
         public ElevatorSimulator()
         {
