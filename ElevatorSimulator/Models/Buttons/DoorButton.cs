@@ -59,9 +59,9 @@ namespace ElevatorApp.Models
                 return Task.CompletedTask;
 
             if (this._doorButtonType == DoorButtonType.Open)
-                door.OnOpened += (e, args) => base.ActionCompleted(e, this.DoorButtonType);
+                door.Opened += (e, args) => base.ActionCompleted(e, this.DoorButtonType);
             else
-                door.OnClosed += (e, args) => base.ActionCompleted(e, this.DoorButtonType);
+                door.Closed += (e, args) => base.ActionCompleted(e, this.DoorButtonType);
 
             this.Subscribed = true;
             return Task.CompletedTask;

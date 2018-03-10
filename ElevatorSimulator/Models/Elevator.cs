@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Interfaces;
@@ -9,8 +10,7 @@ using NodaTime;
 
 namespace ElevatorApp.Models
 {
-
-    public class Elevator : ModelBase, IElevator, ISubcriber<ElevatorMasterController>
+    public class Elevator : ModelBase, ISubcriber<ElevatorMasterController>
     {
         private static int _RegisteredElevators = 0;
 
@@ -29,6 +29,11 @@ namespace ElevatorApp.Models
             set => SetProperty(ref _capacity, value);
         }
 
+        public int Speed
+        {
+            get => _speed;
+            set => SetProperty(ref _speed, value);
+        }
 
         public int CurrentWeight => Passengers?.Count ?? 0;
 
@@ -46,53 +51,50 @@ namespace ElevatorApp.Models
 
         #endregion
 
-        public ObservableConcurrentQueue<int> Path { get; } = new ObservableConcurrentQueue<int>();
-        public ICollection<Passenger> Passengers { get; } = new  AsyncObservableCollection<Passenger>();
+        public ElevatorCall? CurrentCall
+        {
+            get
+            {
+                if (_path.TryPeek(out ElevatorCall call))
+                    return call;
+
+                return null;
+            }
+        }
+
+        private readonly AsyncObservableCollection<ElevatorCall> _path = new AsyncObservableCollection<ElevatorCall>();
+        private readonly AsyncObservableCollection<Passenger> _passengers = new AsyncObservableCollection<Passenger>();
+
+
+        public IReadOnlyCollection<ElevatorCall> Path => _path;
+        public IReadOnlyCollection<Passenger> Passengers => _passengers;
 
         public ButtonPanel ButtonPanel { get; }
 
         public Door Door { get; } = new Door();
 
-        public event EventHandler<int> OnArrival;
-        public event EventHandler<int> OnDeparture;
+        public event EventHandler<ElevatorCall> Arriving;
+        public event EventHandler<ElevatorCall> Arrived;
+        public event EventHandler<ElevatorCall> Departing;
+        public event EventHandler<ElevatorCall> Departed;
 
-        public async Task Arrived()
+        public event EventHandler<Passenger> PassengerAdded = (_, p) => Logger.LogEvent("Passenger Added to Elevator", ("Passenger", p));
+        public event EventHandler<Passenger> PassengerExited = (_, p) => Logger.LogEvent("Passenger Exited Elevator", ("Passenger", p));
+
+
+        private async Task OnArrived(ElevatorCall call)
         {
-            if (this.Path.TryDequeue(out int destination))
-            {
-                this.CurrentFloor = destination;
-                Console.WriteLine("Arrived");
-                // Simulate slowdown after arriving
-                await Task.Delay(250);
-                this.OnArrival?.Invoke(this, destination);
+            Console.WriteLine("Arrived");
+            // Simulate slowdown after arriving
+            await Task.Delay(250);
+            this.Arrived?.Invoke(this, call);
 
-                await this.MoveNext().ConfigureAwait(false);
-            }
-        }
-
-        private async Task MoveNext()
-        {
-            if (this.Path.TryPeek(out int next))
-            {
-                while (this.Door.DoorState != DoorState.Closed)
-                {
-                    // Wait until the door is closed to move
-                    await Task.Delay(2000);
-                }
-
-                this.State = this.CurrentFloor > next
-                    ? ElevatorState.GoingUp
-                    : ElevatorState.GoingDown;
-            }
-            else
-            {
-                this.State = ElevatorState.Idle;
-            }
+            this.CurrentFloor = call.DestinationFloor;
         }
 
         internal async Task Dispatch(ElevatorCall call)
         {
-            this.Path.Enqueue(call.DestinationFloor);
+            this._path.Enqueue(call);
 
             if (this.State == ElevatorState.Idle)
             {
@@ -101,34 +103,41 @@ namespace ElevatorApp.Models
             }
         }
 
-        public static TimeSpan FLOOR_MOVEMENT_SPEED { get; } = Duration.FromSeconds(3).ToTimeSpan();
+        public static readonly Duration FLOOR_MOVEMENT_SPEED = Duration.FromSeconds(7);
 
-        public static System.Windows.Duration FloorMovementSpeed => new System.Windows.Duration(FLOOR_MOVEMENT_SPEED);
+        public static readonly Duration ACCELERATION_DELAY = Duration.FromSeconds(4);
+        public static readonly Duration DECELERATION_DELAY = ACCELERATION_DELAY * 2;
+
+        public static System.Windows.Duration FloorMovementSpeed => new System.Windows.Duration(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
 
         private async Task Move()
         {
             //Wait for the door to be closed
             while (this.Door.DoorState != DoorState.Closed)
-                await Task.Delay(20);
+                await Task.Delay(2000);
 
-            this.OnDeparture?.Invoke(this, this.CurrentFloor);
 
-            // Logic
-            Thread.Sleep(FLOOR_MOVEMENT_SPEED);
-            await this.Arrived().ConfigureAwait(false);
+            while (this._path.TryDequeue(out ElevatorCall call))
+            {
+                this.State = this.CurrentFloor < call.DestinationFloor
+                                 ? ElevatorState.GoingUp
+                                 : ElevatorState.GoingDown;
+
+                this.Departing?.Invoke(this, call);
+                await Task.Delay(ACCELERATION_DELAY.ToTimeSpan());
+
+                this.Departed?.Invoke(this, call);
+                await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
+
+                // Logic
+                this.Arriving?.Invoke(this, call);
+                await Task.Delay(DECELERATION_DELAY.ToTimeSpan());
+                await this.OnArrived(call).ConfigureAwait(false);
+            }
+
+            this.State = ElevatorState.Idle;
         }
 
-        private void Elevator_OnDeparture(object sender, int e)
-        {
-            if (this.Path.TryPeek(out int to))
-                Logger.LogEvent("Elevator Moving", ("From", e), ("To", to));
-        }
-
-        private void Elevator_OnArrival(object sender, int e)
-        {
-            Logger.LogEvent("Elevator arrived", ("Floor", e));
-            this.Path.TryDequeue(out _);
-        }
 
         public int ElevatorNumber { get; }
 
@@ -138,8 +147,11 @@ namespace ElevatorApp.Models
 
             Logger.LogEvent("Initializing Elevator", ("ElevatorNumber", this.ElevatorNumber));
             this.ButtonPanel = new ButtonPanel();
-            OnArrival += Elevator_OnArrival;
-            OnDeparture += Elevator_OnDeparture;
+            this.Arriving += ElevatorArriving;
+            this.Arrived += ElevatorArrived;
+
+            this.Departing += ElevatorDeparting;
+            this.Departed += ElevatorDeparted;
         }
 
         public Elevator(int initialFloor) : this()
@@ -147,14 +159,73 @@ namespace ElevatorApp.Models
             this.CurrentFloor = initialFloor;
         }
 
+        private void ElevatorDeparting(object sender, ElevatorCall call)
+        {
+            Logger.LogEvent("Elevator Departing", ("From", call.SourceFloor), ("To", call.DestinationFloor));
+            this.State = (ElevatorState)call.RequestDirection;
+        }
+
+        private void ElevatorDeparted(object sender, ElevatorCall call)
+        {
+            Logger.LogEvent("Elevator Departed");
+        }
+
+        private void ElevatorArriving(object sender, ElevatorCall e)
+        {
+            Logger.LogEvent("Elevator Arriving");
+        }
+
+        private async void ElevatorArrived(object sender, ElevatorCall e)
+        {
+            Logger.LogEvent("Elevator Arrived", ("Floor", e.DestinationFloor));
+            IEnumerable<Passenger> leaving = this.Passengers.Where(p => p.Path.destination == e.DestinationFloor);
+            foreach (Passenger passenger in leaving)
+            {
+                await this.RemovePassenger(passenger);
+            }
+        }
+
         public bool Subscribed { get; private set; }
+
+        public async Task AddPassenger(Passenger passenger)
+        {
+            passenger.State = PassengerState.Transition;
+
+            // Simulate time it takes to enter the elevator
+            await Task.Delay(Passenger.TransitionSpeed);
+            passenger.State = PassengerState.In;
+            this._passengers.AddDistinct(passenger);
+            this._path.AddDistinct(new ElevatorCall(passenger.Path.source, passenger.Path.destination));
+            PassengerAdded?.Invoke(this, passenger);
+        }
+
+        private async Task RemovePassenger(Passenger passenger)
+        {
+            passenger.State = PassengerState.Transition;
+            await Task.Delay(Passenger.TransitionSpeed);
+            this._passengers.Remove(passenger);
+            passenger.State = PassengerState.Out;
+            PassengerExited?.Invoke(this, passenger);
+        }
 
         public async Task Subscribe(ElevatorMasterController controller)
         {
             if (Subscribed)
                 return;
+
             Logger.LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
-            await Task.WhenAll(this.ButtonPanel.Subscribe((controller, this)), this.Door.Subscribe(this)).ConfigureAwait(false);
+            Task subscribeButtonPanel = this.ButtonPanel.Subscribe((controller, this));
+            Task subscribeDoor = this.Door.Subscribe(this);
+
+            this.Door.Closed += async (e, args) =>
+            {
+                if (this.Path.Count > 0)
+                    await this.Move();
+            };
+
+            await Task.WhenAll(subscribeButtonPanel, subscribeDoor).ConfigureAwait(false);
+
+
             this.Subscribed = true;
         }
 

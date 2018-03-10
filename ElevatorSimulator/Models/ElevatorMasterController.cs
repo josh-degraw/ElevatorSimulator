@@ -11,7 +11,7 @@ using MoreLinq;
 
 namespace ElevatorApp.Models
 {
-    public class ElevatorMasterController : ModelBase, IElevatorMasterController
+    public class ElevatorMasterController : ModelBase//, IElevatorMasterController
     {
         #region Backing fields
         private int _floorHeight;
@@ -23,13 +23,13 @@ namespace ElevatorApp.Models
         );
 
         private readonly AsyncObservableCollection<Floor> _floors = new AsyncObservableCollection<Floor>(Enumerable.Range(1, 4).Reverse().Select(a => new Floor(a)));
+        private readonly AsyncObservableCollection<ElevatorCall> _floorsRequested= new AsyncObservableCollection<ElevatorCall>();
         #endregion
-      
-        #region Properties
-        public ICollection<Elevator> Elevators => _elevators;
-        public ICollection<Floor> Floors => _floors;
 
-        public ObservableConcurrentQueue<ElevatorCall> FloorsRequested { get; } = new ObservableConcurrentQueue<ElevatorCall>();
+        #region Properties
+        public IReadOnlyCollection<Elevator> Elevators => _elevators;
+        public IReadOnlyCollection<Floor> Floors => _floors;
+        public IReadOnlyCollection<ElevatorCall> FloorsRequested => _floorsRequested;
 
         public int FloorHeight
         {
@@ -40,8 +40,7 @@ namespace ElevatorApp.Models
         public ElevatorSettings ElevatorSettings { get; } = new ElevatorSettings();
 
 
-        private void AdjustCollection<T>(ICollection<T> collection, int value, Func<int, T> generator,
-            [CallerMemberName] string memberName = null) where T : ISubcriber<ElevatorMasterController>
+        private void AdjustCollection<T>(ICollection<T> collection, int value, Func<int, T> generator, [CallerMemberName] string memberName = null) where T : ISubcriber<ElevatorMasterController>
         {
             if (collection.Count == value)
                 return;
@@ -80,13 +79,13 @@ namespace ElevatorApp.Models
         public int FloorCount
         {
             get => Floors.Count;
-            set => AdjustCollection(Floors, value, floorNum => new Floor(floorNum));
+            set => AdjustCollection(_floors, value, floorNum => new Floor(floorNum));
         }
 
         public int ElevatorCount
         {
             get => Elevators.Count;
-            set => AdjustCollection(Elevators, value, _ => new Elevator());
+            set => AdjustCollection(_elevators, value, _ => new Elevator());
         }
         #endregion
 
@@ -95,13 +94,13 @@ namespace ElevatorApp.Models
         #endregion
 
         #region Methods
-        
+
         #region Private methods
         private Task ElevatorArrived(Elevator elevator)
         {
-            if (this.FloorsRequested.TryPeek(out ElevatorCall val) && val.DestinationFloor == elevator.CurrentFloor)
+            if (this._floorsRequested.TryPeek(out ElevatorCall val) && val.DestinationFloor == elevator.CurrentFloor)
             {
-                this.FloorsRequested.TryDequeue(out _);
+                this._floorsRequested.TryDequeue(out _);
             }
 
             return Task.CompletedTask;
@@ -119,11 +118,11 @@ namespace ElevatorApp.Models
         }
 
         #endregion
-        
-        public async Task Dispatch(int floor, Direction direction)
-        {
-            await this.Dispatch(new ElevatorCall(floor, direction)).ConfigureAwait(false);
-        }
+
+        //public async Task Dispatch(int floor, Direction direction)
+        //{
+        //    await this.Dispatch(new ElevatorCall(floor, direction)).ConfigureAwait(false);
+        //}
 
         public async Task Dispatch(ElevatorCall call)
         {
@@ -163,7 +162,7 @@ namespace ElevatorApp.Models
             {
                 await elevator.Subscribe(this);
 
-                elevator.OnArrival += async (a, b) => await this.ReportArrival(elevator);
+                elevator.Arrived += async (a, b) => await this.ReportArrival(elevator);
 
                 await Task.WhenAll(this.Floors.Select(floor => floor.Subscribe((this, elevator))));
 
@@ -171,13 +170,15 @@ namespace ElevatorApp.Models
 
             Logger.LogEvent($"Initialized {nameof(ElevatorMasterController)}");
         }
+
         #endregion
 
         public ElevatorMasterController()
         {
             this.OnElevatorRequested = (sender, e) =>
             {
-                this.FloorsRequested.Enqueue(e);
+                if(!this.FloorsRequested.Any())
+                this._floorsRequested.Enqueue(e);
             };
 
             // Force execution immediately 

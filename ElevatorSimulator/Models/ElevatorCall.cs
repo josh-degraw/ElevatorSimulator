@@ -2,17 +2,65 @@
 {
     public struct ElevatorCall
     {
-        public int DestinationFloor { get; set; }
-        public Direction RequestDirection { get; set; }
+        public int DestinationFloor { get; }
 
-        public ElevatorCall(int destination, Direction direction)
+        public int SourceFloor { get; }
+
+        public Direction RequestDirection => this.DestinationFloor > this.SourceFloor ? Direction.Up : Direction.Down;
+
+        public ElevatorCall(int sourceFloor, int destination)
         {
             this.DestinationFloor = destination;
-            this.RequestDirection = direction;
+            this.SourceFloor = sourceFloor;
+        }
+
+        public ElevatorCall(int sourceFloor, Direction requestDirection)
+        {
+            this.SourceFloor = sourceFloor;
+            this.DestinationFloor = requestDirection == Direction.Up ? int.MaxValue : int.MinValue;
+
         }
 
         #region Operators
-        public static implicit operator int(ElevatorCall call) => call.DestinationFloor;
+
+        public static bool operator==(ElevatorCall a, ElevatorCall b)
+        {
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(ElevatorCall a, ElevatorCall b)
+        {
+            return !(a == b);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public bool Equals(ElevatorCall other)
+        {
+            return DestinationFloor == other.DestinationFloor && SourceFloor == other.SourceFloor;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (DestinationFloor * 397) ^ SourceFloor;
+            }
+        }
+
+        public static implicit operator ElevatorCall((int source, int destination) path)
+        {
+            return new ElevatorCall(path.source, path.destination);
+        }
+
+        public static implicit operator (int source, int destination)(ElevatorCall path)
+        {
+            return (path.SourceFloor, path.DestinationFloor);
+        }
+
         #endregion
     }
 

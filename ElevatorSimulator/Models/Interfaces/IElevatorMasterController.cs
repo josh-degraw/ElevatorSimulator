@@ -12,7 +12,7 @@ namespace ElevatorApp.Models.Interfaces
         ElevatorSettings ElevatorSettings { get; }
         int FloorCount { get; set; }
         int FloorHeight { get; set; }
-        ObservableConcurrentQueue<ElevatorCall> FloorsRequested { get; }
+        AsyncObservableCollection<ElevatorCall> FloorsRequested { get; }
 
         event EventHandler<ElevatorCall> OnElevatorRequested;
         

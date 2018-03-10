@@ -9,7 +9,7 @@ namespace ElevatorApp.Models
     {
         public override void Push()
         {
-            base.Pushed(this, new ElevatorCall(this.FloorNum, this.RequestDirection));
+         //   base.Pushed(this, new ElevatorCall(this.FloorNum, this.RequestDirection));
         }
 
         public override string Label => this.RequestDirection.ToString();

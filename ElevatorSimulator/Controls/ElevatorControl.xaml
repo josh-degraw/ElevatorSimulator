@@ -42,6 +42,15 @@
                 <Label Grid.Row="3" Grid.Column="0" Content="State:"/>
                 <Label Grid.Row="3" Grid.Column="1" Content="{Binding State, FallbackValue=Idle}"/>
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!--<TextBlock>
+                        <TextBlock.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Text" Value="▲"/>
+                                
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>-->
+                    
                     <fa:FontAwesome Icon="ArrowUp" FontSize="20">
                         <fa:FontAwesome.Style>
                             <Style TargetType="fa:FontAwesome">
@@ -57,7 +66,7 @@
                         <fa:FontAwesome.Style>
                             <Style TargetType="fa:FontAwesome">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding State}" Value="GoingUp">
+                                    <DataTrigger Binding="{Binding State}" Value="GoingDown">
                                         <Setter Property="Icon" Value="ArrowCircleDown"/>
                                     </DataTrigger>
                                 </Style.Triggers>
