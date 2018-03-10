@@ -21,7 +21,13 @@
         GoingDown = 2
     }
 
-    public enum PassengerState { Out, In, Transition }
+    public enum PassengerState
+    {
+        Waiting = 0,
+        Transition = 1,
+        In = 2,
+        Out = 3,
+    }
 
     public enum ButtonType
     {

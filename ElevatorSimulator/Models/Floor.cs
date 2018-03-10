@@ -224,8 +224,6 @@ namespace ElevatorApp.Models
             elevator.Door.Closing -= cancelIfStartsToClose;
         }
 
-
-
         IEnumerable<Passenger> getPassengersToMove(Elevator elevator)
         {
             ElevatorCall? call = elevator.CurrentCall;
@@ -242,9 +240,9 @@ namespace ElevatorApp.Models
         private IEnumerable<Passenger> _getPassengersToMove(ElevatorCall call)
         {
             if (call.RequestDirection == Direction.Up)
-                return this.WaitingPassengers.Where(p => p.State == PassengerState.Out && p.Path.destination >= call.DestinationFloor);
+                return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= call.DestinationFloor);
             else
-                return this.WaitingPassengers.Where(p => p.State == PassengerState.Out && p.Path.destination <= call.DestinationFloor);
+                return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= call.DestinationFloor);
         }
 
 

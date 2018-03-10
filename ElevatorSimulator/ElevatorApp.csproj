@@ -138,6 +138,7 @@
     <Compile Include="Util\LocalSystemClock.cs" />
     <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\ObservableConcurrentQueue.cs" />
+    <Compile Include="Util\Stats.cs" />
     <Page Include="Controls\AddPassengerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

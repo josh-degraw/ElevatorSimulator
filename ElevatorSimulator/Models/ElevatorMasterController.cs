@@ -96,20 +96,23 @@ namespace ElevatorApp.Models
         #region Methods
 
         #region Private methods
-        private Task ElevatorArrived(Elevator elevator)
+        private async Task ElevatorArrived(Elevator elevator)
         {
             if (this._floorsRequested.TryPeek(out ElevatorCall val) && val.DestinationFloor == elevator.CurrentFloor)
             {
                 this._floorsRequested.TryDequeue(out _);
             }
 
-            return Task.CompletedTask;
+            foreach (ElevatorCall call in this._floorsRequested)
+            {
+                await this.Dispatch(call, elevator);
+            }
         }
 
         private async Task Dispatch(ElevatorCall call, Elevator elevator)
         {
             if (elevator != null)
-                await Task.Run(() => elevator.Dispatch(call).ConfigureAwait(false));
+                await elevator.Dispatch(call).ConfigureAwait(false);
         }
 
         private async Task ReportArrival(Elevator elevator)
@@ -118,12 +121,7 @@ namespace ElevatorApp.Models
         }
 
         #endregion
-
-        //public async Task Dispatch(int floor, Direction direction)
-        //{
-        //    await this.Dispatch(new ElevatorCall(floor, direction)).ConfigureAwait(false);
-        //}
-
+        
         public async Task Dispatch(ElevatorCall call)
         {
             int floor = call.DestinationFloor;
@@ -150,7 +148,6 @@ namespace ElevatorApp.Models
                 if (closest != null)
                     await Dispatch(call, closest).ConfigureAwait(false);
             }
-
         }
 
 

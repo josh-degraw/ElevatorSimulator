@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
 using NodaTime;
+using static ElevatorApp.Util.Logger;
 
 namespace ElevatorApp.Models
 {
@@ -78,18 +79,19 @@ namespace ElevatorApp.Models
         public event EventHandler<ElevatorCall> Departing;
         public event EventHandler<ElevatorCall> Departed;
 
-        public event EventHandler<Passenger> PassengerAdded = (_, p) => Logger.LogEvent("Passenger Added to Elevator", ("Passenger", p));
-        public event EventHandler<Passenger> PassengerExited = (_, p) => Logger.LogEvent("Passenger Exited Elevator", ("Passenger", p));
+        public event EventHandler<Passenger> PassengerAdded = (_, p) => LogEvent("Passenger Added to Elevator", parameters: p);
+        public event EventHandler<Passenger> PassengerExited = (_, p) => LogEvent("Passenger Exited Elevator", parameters: p);
 
 
-        private async Task OnArrived(ElevatorCall call)
+        private Task OnArrived(ElevatorCall call)
         {
             Console.WriteLine("Arrived");
             // Simulate slowdown after arriving
-            await Task.Delay(250);
             this.Arrived?.Invoke(this, call);
 
             this.CurrentFloor = call.DestinationFloor;
+
+            return Task.CompletedTask;
         }
 
         internal async Task Dispatch(ElevatorCall call)
@@ -99,7 +101,7 @@ namespace ElevatorApp.Models
             if (this.State == ElevatorState.Idle)
             {
                 this.State = (ElevatorState)call.RequestDirection;
-                await this.Move().ConfigureAwait(false);
+                await Task.Run(() => this.Move().ConfigureAwait(false));
             }
         }
 
@@ -127,7 +129,12 @@ namespace ElevatorApp.Models
                 await Task.Delay(ACCELERATION_DELAY.ToTimeSpan());
 
                 this.Departed?.Invoke(this, call);
-                await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
+
+                for (int i = call.SourceFloor; i < call.DestinationFloor; i++)
+                {
+                    await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
+                    LogEvent($"Elevator passing floor {i}");
+                }
 
                 // Logic
                 this.Arriving?.Invoke(this, call);
@@ -137,7 +144,6 @@ namespace ElevatorApp.Models
 
             this.State = ElevatorState.Idle;
         }
-
 
         public int ElevatorNumber { get; }
 
@@ -161,23 +167,23 @@ namespace ElevatorApp.Models
 
         private void ElevatorDeparting(object sender, ElevatorCall call)
         {
-            Logger.LogEvent("Elevator Departing", ("From", call.SourceFloor), ("To", call.DestinationFloor));
+            LogEvent("Elevator Departing", ("From", call.SourceFloor), ("To", call.DestinationFloor));
             this.State = (ElevatorState)call.RequestDirection;
         }
 
         private void ElevatorDeparted(object sender, ElevatorCall call)
         {
-            Logger.LogEvent("Elevator Departed");
+            LogEvent("Elevator Departed", ("From", call.SourceFloor), ("To", call.DestinationFloor));
         }
 
         private void ElevatorArriving(object sender, ElevatorCall e)
         {
-            Logger.LogEvent("Elevator Arriving");
+            LogEvent("Elevator Arriving", ("At Floor", e.DestinationFloor));
         }
 
         private async void ElevatorArrived(object sender, ElevatorCall e)
         {
-            Logger.LogEvent("Elevator Arrived", ("Floor", e.DestinationFloor));
+            LogEvent("Elevator Arrived", ("At Floor", e.DestinationFloor));
             IEnumerable<Passenger> leaving = this.Passengers.Where(p => p.Path.destination == e.DestinationFloor);
             foreach (Passenger passenger in leaving)
             {
@@ -189,6 +195,7 @@ namespace ElevatorApp.Models
 
         public async Task AddPassenger(Passenger passenger)
         {
+            LogEvent("Adding Passenger to Elevator");
             passenger.State = PassengerState.Transition;
 
             // Simulate time it takes to enter the elevator
@@ -201,6 +208,7 @@ namespace ElevatorApp.Models
 
         private async Task RemovePassenger(Passenger passenger)
         {
+            LogEvent("Passenger Leaving Elevator");
             passenger.State = PassengerState.Transition;
             await Task.Delay(Passenger.TransitionSpeed);
             this._passengers.Remove(passenger);
@@ -221,6 +229,7 @@ namespace ElevatorApp.Models
             {
                 if (this.Path.Count > 0)
                     await this.Move();
+
             };
 
             await Task.WhenAll(subscribeButtonPanel, subscribeDoor).ConfigureAwait(false);
