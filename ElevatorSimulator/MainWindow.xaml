@@ -37,7 +37,7 @@
                         </RibbonGallery>
                     </RibbonComboBox>
 
-                    <Label ToolTip="Total weight">Capacity(persons)</Label>
+                    <Label ToolTip="Total weight">TotalCapacity(persons)</Label>
                     <RibbonComboBox>
                         <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
                                        SelectedValue="{Binding Capacity, Mode=TwoWay}">

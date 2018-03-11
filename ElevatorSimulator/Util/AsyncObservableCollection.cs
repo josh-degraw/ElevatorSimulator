@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -13,19 +14,20 @@ using System.Windows.Threading;
 
 namespace ElevatorApp.Util
 {
+    /// <inheritdoc />
     /// <permission>
     /// All credit for this code, unless explicitly declared otherwise, is from Source: https://pastebin.com/hKQi6EHD
     /// </permission>
     /// <summary>
-    /// A version of <see cref="ObservableCollection{T}"/> that is locked so that it can be accessed by multiple threads. When you enumerate it (foreach),
-    /// you will get a snapshot of the current contents. Also the <see cref="CollectionChanged"/> event will be called on the thread that added it if that
+    /// A version of <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> that is locked so that it can be accessed by multiple threads. When you enumerate it (foreach),
+    /// you will get a snapshot of the current contents. Also the <see cref="E:ElevatorApp.Util.AsyncObservableCollection`1.CollectionChanged" /> event will be called on the thread that added it if that
     /// thread is a Dispatcher (WPF/Silverlight/WinRT) thread. This means that you can update this from any thread and recieve notifications of those updates
     /// on the UI thread.
-    /// 
     /// You can't modify the collection during a callback (on the thread that recieved the callback -- other threads can do whatever they want). This is the
-    /// same as <see cref="ObservableCollection{T}"/>. 
+    /// same as <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" />. 
     /// </summary>
     [Serializable, DebuggerDisplay("Count = {Count}")]
+    [SuppressMessage("ReSharper", "InheritdocInvalidUsage")]
     public sealed class AsyncObservableCollection<T> : IList<T>, IReadOnlyList<T>, IList, INotifyCollectionChanged, INotifyPropertyChanged, ISerializable
     {
 
@@ -35,7 +37,7 @@ namespace ElevatorApp.Util
         /// <author>Josh DeGraw</author>
         public void Enqueue(T next)
         {
-            this.Add(next);
+            this.AddDistinct(next);
         }
 
 
