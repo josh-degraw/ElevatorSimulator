@@ -134,6 +134,9 @@ namespace ElevatorApp.Models
         /// <param name="elevator"></param>
         private async Task ElevatorArrived(Elevator elevator)
         {
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+            player.Stream = Properties.Resources.elevatorDing;
+            player.Play();
             if (this._floorsRequested.TryPeek(out ElevatorCall val) && val.DestinationFloor == elevator.CurrentFloor)
             {
                 this._floorsRequested.TryDequeue(out _);
