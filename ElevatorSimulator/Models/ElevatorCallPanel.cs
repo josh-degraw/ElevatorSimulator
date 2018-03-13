@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using ElevatorApp.Models.Interfaces;
 
 namespace ElevatorApp.Models
 {
-    public class ElevatorCallPanel : ButtonPanelBase, ISubcriber<ElevatorMasterController>
+    public class ElevatorCallPanel : ButtonPanelBase, ISubcriber<ElevatorMasterController>, ISubcriber<(ElevatorMasterController, Elevator)>
     {
         public RequestButton GoingUpButton { get; private set; }
         public RequestButton GoingDownButton { get; private set; }
@@ -37,6 +39,19 @@ namespace ElevatorApp.Models
             this._subscribed = true;
 
             return Task.CompletedTask;
+        }
+
+        public override async Task Subscribe((ElevatorMasterController, Elevator) parent)
+        {
+            var thisBtn = this.FloorButtons.FirstOrDefault(b => b.FloorNum == this.FloorNumber);
+
+            // If the button is for this floor, just remove it
+            if (thisBtn != null)
+            {
+                this.FloorButtons.Remove(thisBtn);
+            }
+
+            await base.Subscribe(parent);
 
         }
 

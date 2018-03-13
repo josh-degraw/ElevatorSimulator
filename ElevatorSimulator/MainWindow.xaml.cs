@@ -14,7 +14,7 @@ namespace ElevatorApp
             InitializeComponent();
         }
 
-        private void Logger_OnItemLogged(object sender, LogEvent @event)
+        private void Logger_OnItemLogged(object sender, Event @event)
         {
             // this.txtBxLog.Text += $"{@event}\n";
         }

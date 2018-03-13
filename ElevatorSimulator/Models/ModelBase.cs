@@ -14,7 +14,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// If <see langword="true"/>, any time a property value changes, an event is logged.
         /// </summary>
-        protected static bool LogAllPropertyChanges { get; set; } = false;
+        private static bool LogAllPropertyChanges { get; set; } = false;
 
         public event PropertyChangedEventHandler PropertyChanged = (sender, args) =>
         {

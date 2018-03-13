@@ -35,7 +35,6 @@ namespace ElevatorApp.Models
             this.IsEnabled = false;
         }
 
-
         public Task Subscribe((ElevatorMasterController, Elevator) parent)
         {
             if (this.Subscribed)
@@ -45,36 +44,36 @@ namespace ElevatorApp.Models
 
             Logger.LogEvent($"Subscribing {nameof(FloorButton)}", ("Elevator", elevator.ElevatorNumber));
 
-            this.IsEnabled = this.FloorNum != elevator.CurrentFloor;
+            //this.IsEnabled = this.FloorNum != elevator.CurrentFloor;
 
             this.OnPushed += async (a, b) =>
             {
                 Logger.LogEvent($"Pushed floor button {this.FloorNum}");
-                await controller.Dispatch(this.FloorNum, elevator.CurrentFloor > this.FloorNum ? Direction.Down : Direction.Up).ConfigureAwait(true);
+                await controller.Dispatch(new ElevatorCall(elevator.CurrentFloor, this.FloorNum)).ConfigureAwait(false);
             };
 
-            elevator.OnDeparture += (e, floor) =>
-            {
-                if (floor == this.FloorNum)
-                {
-                    this.IsEnabled = true;
-                    this.Active = false;
-                }
-            };
+            //elevator.Departed += (e, floor) =>
+            //{
+            //    if (floor == this.FloorNum)
+            //    {
+            //        this.IsEnabled = true;
+            //        this.Active = false;
+            //    }
+            //};
 
-            elevator.OnArrival += (e, floor) =>
-            {
-                if (floor == this.FloorNum)
-                    this.ActionCompleted(e, floor);
-            };
+            //elevator.Arrived += (e, floor) =>
+            //{
+            //    if (floor == this.FloorNum)
+            //        this.ActionCompleted(e, floor);
+            //};
 
-            elevator.PropertyChanged += (e, args) =>
-            {
-                if (args.PropertyName == nameof(Elevator.CurrentFloor))
-                {
-                    this.IsEnabled = this.FloorNum != elevator.CurrentFloor;
-                }
-            };
+            //elevator.PropertyChanged += (e, args) =>
+            //{
+            //    if (args.PropertyName == nameof(Elevator.CurrentFloor))
+            //    {
+            //        this.IsEnabled = this.FloorNum != elevator.CurrentFloor;
+            //    }
+            //};
 
             this.Subscribed = true;
             return Task.CompletedTask;

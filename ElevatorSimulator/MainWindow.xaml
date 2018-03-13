@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:ElevatorApp.Controls"
         xmlns:models="clr-namespace:ElevatorApp.Models"
         mc:Ignorable="d"
-        Title="Elevator Simulator" d:DesignWidth="957" Height="935.5" >
+        Title="Elevator Simulator" Height="935.5" Width="1089" >
 
     <Window.DataContext>
         <local:SimulatorViewModel/>
@@ -21,9 +21,9 @@
                     <RibbonApplicationMenuItem Header="E_xit"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
-            
+
             <RibbonTab Header="Home" DataContext="{Binding Controller}">
-                
+
                 <RibbonGroup Header="Elevator Settings" DataContext="{Binding ElevatorSettings}">
 
                     <Label ToolTip="Feet per minute">Speed(feet per minute)</Label>
@@ -37,7 +37,7 @@
                         </RibbonGallery>
                     </RibbonComboBox>
 
-                    <Label ToolTip="Total weight">Capacity(persons)</Label>
+                    <Label ToolTip="Total weight">TotalCapacity(persons)</Label>
                     <RibbonComboBox>
                         <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
                                        SelectedValue="{Binding Capacity, Mode=TwoWay}">

@@ -5,7 +5,7 @@ namespace ElevatorApp.Models.Interfaces
     public interface ISubcriber<in T>
     {
         /// <summary>
-        /// Represents whether or not this object has performed the necessary steps to subscribe
+        /// Represents whether or not this object has performed the necessary steps to subscribe to the source, (<typeparamref name="T"/>)
         /// </summary>
         bool Subscribed { get; }
 

@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="ElevatorApp.Controls.PassengerQueueControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElevatorApp.Controls"
+             xmlns:models="clr-namespace:ElevatorApp.Models"
+             d:DataContext="{d:DesignInstance Type=models:Floor, IsDesignTimeCreatable=True}"
+             x:Name="me"
+             mc:Ignorable="d" >
+    <StackPanel>
+        <StackPanel DataContext="{Binding}" Orientation="Horizontal">
+            <Label>Floor</Label>
+            <Label Content="{Binding FloorNumber}"/>
+            <Label>Passengers Waiting:</Label>
+            <Label Content="{Binding WaitingPassengers.Count}"/>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Elevator Available:</Label>
+            <TextBlock VerticalAlignment="Center">
+                <TextBlock.Style>
+                    <Style>
+                        <Setter Property="TextBlock.Text" Value="✕"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElevatorAvailable}" Value="True">
+                                <Setter Property="TextBlock.Text" Value="✔"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </StackPanel>
+        <Expander IsExpanded="{Binding ElementName=me, Path=ShowAddButtons}" MouseUp="Expander_MouseUp" Header="Add Passenger">
+
+            <StackPanel>
+                <Label>Which floor?</Label>
+                <ItemsControl BorderThickness="0"
+                                  Background="Transparent"
+                                  ItemsSource="{Binding CallPanel.FloorButtons}" BorderBrush="Black" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Label}" DataContext="{Binding}" IsEnabled="{Binding IsEnabled, FallbackValue=true}" Margin="2" Width="25" Height="25" FontSize="11" Click="Button_Click" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </Expander>
+    </StackPanel>
+</UserControl>

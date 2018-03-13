@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Threading;
@@ -12,21 +14,98 @@ using System.Windows.Threading;
 
 namespace ElevatorApp.Util
 {
+    /// <inheritdoc />
+    /// <permission>
+    /// All credit for this code, unless explicitly declared otherwise, is from Source: https://pastebin.com/hKQi6EHD
+    /// </permission>
     /// <summary>
-    /// A version of <see cref="ObservableCollection{T}"/> that is locked so that it can be accessed by multiple threads. When you enumerate it (foreach),
-    /// you will get a snapshot of the current contents. Also the <see cref="CollectionChanged"/> event will be called on the thread that added it if that
+    /// A version of <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> that is locked so that it can be accessed by multiple threads. When you enumerate it (foreach),
+    /// you will get a snapshot of the current contents. Also the <see cref="E:ElevatorApp.Util.AsyncObservableCollection`1.CollectionChanged" /> event will be called on the thread that added it if that
     /// thread is a Dispatcher (WPF/Silverlight/WinRT) thread. This means that you can update this from any thread and recieve notifications of those updates
     /// on the UI thread.
-    /// 
     /// You can't modify the collection during a callback (on the thread that recieved the callback -- other threads can do whatever they want). This is the
-    /// same as <see cref="ObservableCollection{T}"/>. 
+    /// same as <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" />. 
     /// </summary>
-    /// <permission>
-    /// Source: https://pastebin.com/hKQi6EHD
-    /// </permission>
     [Serializable, DebuggerDisplay("Count = {Count}")]
+    [SuppressMessage("ReSharper", "InheritdocInvalidUsage")]
     public sealed class AsyncObservableCollection<T> : IList<T>, IReadOnlyList<T>, IList, INotifyCollectionChanged, INotifyPropertyChanged, ISerializable
     {
+
+        /// <summary>
+        /// Adds an item to the collection
+        /// </summary>
+        /// <author>Josh DeGraw</author>
+        public void Enqueue(T next)
+        {
+            this.AddDistinct(next);
+        }
+
+
+        /// <summary>
+        /// Tries to remove the first item from the collection
+        /// </summary>
+        /// <author>Josh DeGraw</author>
+        public bool TryDequeue(out T res)
+        {
+            if (!this.Any())
+            {
+                res = default;
+                return false;
+            }
+            try
+            {
+                res = this.First();
+                return this.Remove(res);
+            }
+            catch
+            {
+                res = default;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Tries to read the first item in the collection
+        /// </summary>
+        /// <author>Josh DeGraw</author>
+        public bool TryPeek(out T item)
+        {
+            if (this.Count <= 0)
+            {
+                item = default;
+                return false;
+            }
+
+            try
+            {
+                item = this.First();
+                return true;
+            }
+            catch
+            {
+                item = default;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Adds an item if it does not already exist in the collection
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>True if the item is newly added, else false</returns>
+        public bool AddDistinct(T item)
+        {
+            if (!this.Contains(item))
+            {
+                this.Add(item);
+                return true;
+            }
+
+            return false;
+        }
+
+
+        #region Unmodified from source
         // we implement IReadOnlyList<T> because ObservableCollection<T> does, and we want to mostly keep API compatability...
         // this collection is NOT read only, but neither is ObservableCollection<T>
 
@@ -196,6 +275,8 @@ namespace ElevatorApp.Util
                 _lock.ExitReadLock();
             }
         }
+
+
         #endregion
 
         #region Write methods -- VERY repetitive, don't say I didn't warn you
@@ -831,5 +912,6 @@ namespace ElevatorApp.Util
                     dispatcher.BeginInvoke(handler as Delegate, DispatcherPriority.DataBind, sender, args);
             }
         }
+        #endregion
     }
 }

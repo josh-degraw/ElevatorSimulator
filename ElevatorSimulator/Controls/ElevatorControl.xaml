@@ -41,30 +41,38 @@
 
                 <Label Grid.Row="3" Grid.Column="0" Content="State:"/>
                 <Label Grid.Row="3" Grid.Column="1" Content="{Binding State, FallbackValue=Idle}"/>
-                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <fa:FontAwesome Icon="ArrowUp" FontSize="20">
-                        <fa:FontAwesome.Style>
-                            <Style TargetType="fa:FontAwesome">
-                                <Style.Triggers>
+                <Border  Grid.Row="0" Grid.Column="2" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Padding="2">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock FontSize="20">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="△"/>
+                                <Style.Triggers >
                                     <DataTrigger Binding="{Binding State}" Value="GoingUp">
-                                        <Setter Property="Icon" Value="ArrowCircleUp"/>
+                                        <Setter Property="Text" Value="▲"/>
+                                        <Setter Property="Foreground" Value="Yellow"/>
+                                    </DataTrigger>
+
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    
+                    <TextBlock FontSize="20">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="▽"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding State}" Value="GoingDown">
+                                        <Setter Property="Text" Value="▼"/>
+                                        <Setter Property="Foreground" Value="Yellow"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </fa:FontAwesome.Style>
-                    </fa:FontAwesome>
-                    <fa:FontAwesome Icon="ArrowDown" FontSize="20">
-                        <fa:FontAwesome.Style>
-                            <Style TargetType="fa:FontAwesome">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding State}" Value="GoingUp">
-                                        <Setter Property="Icon" Value="ArrowCircleDown"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </fa:FontAwesome.Style>
-                    </fa:FontAwesome>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </StackPanel>
+                </Border>
                 <controls:DoorControl Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" DataContext="{Binding Door}" Margin="5" VerticalAlignment="Top" />
                 <controls:ButtonPanelControl  Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" DataContext="{Binding ButtonPanel}" Margin="2" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
             </Grid>

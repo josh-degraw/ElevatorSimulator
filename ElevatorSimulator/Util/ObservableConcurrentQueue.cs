@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace ElevatorApp.Util
 {
-    public class ObservableConcurrentQueue<T> : ICollection<T>, INotifyCollectionChanged, INotifyPropertyChanged
+    public class ObservableConcurrentQueue<T> : ICollection<T>, INotifyCollectionChanged, INotifyPropertyChanged, IReadOnlyCollection<T>
     {
         private readonly ConcurrentQueue<T> _items;
 
@@ -20,18 +20,26 @@ namespace ElevatorApp.Util
             _items = new ConcurrentQueue<T>();
         }
 
+        private void onChange(NotifyCollectionChangedEventArgs args)
+        {
+            CollectionChanged?.Invoke(this, args);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.Count)));
+        }
+
         public ObservableConcurrentQueue(IEnumerable<T> collection)
         {
             List<T> list = collection.ToList();
             _items = new ConcurrentQueue<T>(list);
 
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, changedItems: list));
+            this.onChange(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, changedItems: list));
+            
         }
-
+        
         public void Enqueue(T item)
         {
             _items.Enqueue(item);
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, changedItem: item));
+            this.onChange(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, changedItem: item));
+            
         }
 
         public bool TryDequeue(out T val)
@@ -39,7 +47,7 @@ namespace ElevatorApp.Util
             bool succeeded = _items.TryDequeue(out val);
             if (succeeded)
             {
-                CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, val));
+                this.onChange(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, val));
             }
 
             return succeeded;
@@ -50,6 +58,8 @@ namespace ElevatorApp.Util
         {
             return _items.TryPeek(out val);
         }
+
+        #region Interface implementation
 
         public IEnumerator<T> GetEnumerator()
         {
@@ -89,5 +99,6 @@ namespace ElevatorApp.Util
 
         public int Count => _items?.Count ?? 0;
         public bool IsReadOnly => false;
+        #endregion
     }
 }

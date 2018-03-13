@@ -9,17 +9,18 @@ namespace ElevatorApp
 
     public class SimulatorViewModel : ModelBase
     {
-        public ElevatorMasterController Controller { get; } = new ElevatorMasterController();
+        public ElevatorSimulator Simulator { get; } = new ElevatorSimulator();
+        public ElevatorMasterController Controller => Simulator.Controller;
+        
 
-        public ICollection<Passenger> People { get; } = new  AsyncObservableCollection<Passenger>();
 
         public ILogger Logger => Util.Logger.Instance;
 
         public ButtonPanel SelectedButtonPanel => Controller.Elevators.SingleOrDefault(a => a.ElevatorNumber == SelectedElevatorNumber)?.ButtonPanel;
 
-        public ICollection<Elevator> Elevators => Controller.Elevators;
+        public IReadOnlyCollection<Elevator> Elevators => Controller.Elevators;
 
-        public ICollection<Floor> Floors => Controller.Floors;
+        public IReadOnlyCollection<Floor> Floors => Controller.Floors;
 
         private int _selectedElevatorNumber;
 

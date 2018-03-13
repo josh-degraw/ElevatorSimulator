@@ -16,19 +16,24 @@ namespace ElevatorApp.Models
 
     public class Door : ModelBase, ISubcriber<Elevator>
     {
-        private readonly Duration
-            TRANSITION_TIME = Duration.FromSeconds(2),
-            TIME_SPENT_OPEN = Duration.FromSeconds(10);
+
+        public const int
+            TRANSITION_TIME_SECONDS = 2,
+            TIME_SPENT_OPEN_SECONDS = 8;
+
+        private readonly TimeSpan
+            TRANSITION_TIME = TimeSpan.FromSeconds(TRANSITION_TIME_SECONDS),
+            TIME_SPENT_OPEN = TimeSpan.FromSeconds(TIME_SPENT_OPEN_SECONDS);
 
         #region Event Handlers
 
-        public virtual event DoorStateChangeRequestHandler OnOpening;
-        public virtual event DoorStateChangeRequestHandler OnOpened;
-        public virtual event DoorStateChangeRequestHandler OnClosing;
-        public virtual event DoorStateChangeRequestHandler OnClosed;
+        public virtual event DoorStateChangeRequestHandler Opening;
+        public virtual event DoorStateChangeRequestHandler Opened;
+        public virtual event DoorStateChangeRequestHandler Closing;
+        public virtual event DoorStateChangeRequestHandler Closed;
 
-        public virtual event DoorStateChangeRequestHandler OnCloseRequested;
-        public virtual event DoorStateChangeRequestHandler OnOpenRequested;
+        public virtual event DoorStateChangeRequestHandler CloseRequested;
+        public virtual event DoorStateChangeRequestHandler OpenRequested;
 
         #endregion
 
@@ -37,114 +42,128 @@ namespace ElevatorApp.Models
         public DoorState DoorState
         {
             get => _doorState;
-            set => SetProperty(ref _doorState, value, false);
+            private set => SetProperty(ref _doorState, value);
 
         }
 
         public Door()
         {
-            this.OnOpenRequested += delegate { Logger.LogEvent("Door Open requested"); }; 
-            this.OnCloseRequested += delegate { Logger.LogEvent("Door Close requested"); };
-            this.OnClosing += delegate { Logger.LogEvent("Door Closing"); };
-            this.OnClosed += delegate { Logger.LogEvent("Door Closed"); };
+            this.OpenRequested += delegate { Logger.LogEvent("Door Open requested"); };
+            this.CloseRequested += delegate { Logger.LogEvent("Door Close requested"); };
+            this.Closing += delegate { Logger.LogEvent("Door Closing"); };
+            this.Closed += delegate { Logger.LogEvent("Door Closed"); };
 
-            this.OnOpening += delegate { Logger.LogEvent("Door Opening"); };
-            this.OnOpened += delegate { Logger.LogEvent("Door Opened"); };
+            this.Opening += delegate { Logger.LogEvent("Door Opening"); };
+            this.Opened += delegate { Logger.LogEvent("Door Opened"); };
         }
-        
-        public async Task RequestOpen()
+
+        public Task RequestOpen()
+        {
+            return RequestOpen(false);
+        }
+
+        public Task RequestClose()
+        {
+            return RequestClose(false);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fromCloseRequest">Represents if this call was from </param>
+        /// <returns></returns>
+        private async Task RequestOpen(bool fromCloseRequest)
         {
             try
             {
                 // If the door is already opened, don't do anything
-                if (this.DoorState == DoorState.Opened)
+                if (this.DoorState != DoorState.Opened && DoorState != DoorState.Opening)
                 {
-                    return;
+                    var args = new DoorStateChangeEventArgs();
+
+                    this.OpenRequested?.Invoke(this, args);
+
+                    if (!args.CancelOperation)
+                    {
+                        this.DoorState = DoorState.Opening;
+                        this.Opening?.Invoke(this, args);
+
+                        if (!args.CancelOperation)
+                        {
+                            await Task.Delay(TRANSITION_TIME);
+
+                            if (this.DoorState != DoorState.Opening)
+                                throw new InvalidOperationException("Do not modify the door state while it is transitioning");
+
+                            this.DoorState = DoorState.Opened;
+                            this.Opened?.Invoke(this, args);
+                            await Task.Delay(TIME_SPENT_OPEN);
+                        }
+                    }
+
+                    await this.RequestClose(true);
                 }
 
-                var args = new DoorStateChangeEventArgs();
-                this.OnOpenRequested?.Invoke(this, args);
-                if (args.CancelOperation)
-                    return;
-
-                this.DoorState = DoorState.Opening;
-                this.OnOpening?.Invoke(this, args);
-                await Task.Delay(TRANSITION_TIME.ToTimeSpan()).ConfigureAwait(false);
-
-                if (args.CancelOperation)
-                {
-                    await this.RequestClose().ConfigureAwait(false);
-                    return;
-                }
-
-                this.DoorState = DoorState.Opened;
-                this.OnOpened?.Invoke(this, args);
-
-                await Task.Delay(TIME_SPENT_OPEN.ToTimeSpan()).ConfigureAwait(false);
-
-                await this.RequestClose().ConfigureAwait(false);
             }
             catch (Exception ex)
             {
                 Logger.LogEvent("Error", ("Message", ex.Message));
             }
-
         }
 
-        public async Task RequestClose()
+        private async Task RequestClose(bool fromOpenRequest)
         {
-            // If the door is already closed, don't do anything
-            if (this.DoorState == DoorState.Closed)
-            {
-                return;
-            }
-
             var args = new DoorStateChangeEventArgs();
-
-            this.OnCloseRequested?.Invoke(this, args);
-            if (args.CancelOperation)
+            // If the door is already closed, don't do anything
+            if (this.DoorState != DoorState.Closed && this.DoorState != DoorState.Closing)
             {
-                await this.RequestOpen();
-                return;
+                this.CloseRequested?.Invoke(this, args);
+                if (!args.CancelOperation)
+                {
+                    this.DoorState = DoorState.Closing;
+                    this.Closing?.Invoke(this, args);
+                    if (!args.CancelOperation)
+                    {
+                        await Task.Delay(TRANSITION_TIME);
+                    }
+                }
             }
 
-            this.DoorState = DoorState.Closing;
-            this.OnClosing?.Invoke(this, args);
-            await Task.Delay(TRANSITION_TIME.ToTimeSpan());
-
             if (args.CancelOperation)
             {
-                await this.RequestOpen();
-                return;
+                await this.RequestOpen(true);
             }
-
-            this.DoorState = DoorState.Closed;
-            this.OnClosed?.Invoke(this, args);
+            else if (this.DoorState == DoorState.Closing)
+            {
+                this.DoorState = DoorState.Closed;
+                this.Closed?.Invoke(this, args);
+            }
         }
+
 
         public bool Subscribed { get; private set; }
 
-        public Task Subscribe(Elevator parent)
+        public Task Subscribe(Elevator elevator)
         {
             try
             {
                 if (Subscribed)
                     return Task.CompletedTask;
 
-                parent.ButtonPanel.CloseDoorButton.OnPushed += async (a, b) =>
+                elevator.ButtonPanel.CloseDoorButton.OnPushed += async (a, b) =>
                 {
-                    if (parent.State == ElevatorState.Idle)
+                    if (elevator.State == ElevatorState.Idle)
                         await this.RequestClose().ConfigureAwait(false);
                 };
 
-                parent.ButtonPanel.OpenDoorButton.OnPushed += async (a, b) =>
+                elevator.ButtonPanel.OpenDoorButton.OnPushed += async (a, b) =>
                 {
-                    if (parent.State == ElevatorState.Idle)
+                    if (elevator.State == ElevatorState.Idle)
                         await this.RequestOpen().ConfigureAwait(false);
                 };
 
-                parent.OnArrival += async (e, args) => await this.RequestOpen().ConfigureAwait(false);
-
+                elevator.Arrived += async (e, args) => await this.RequestOpen().ConfigureAwait(false);
+                
                 this.Subscribed = true;
 
             }
