@@ -89,6 +89,12 @@ namespace ElevatorApp.Models
 
         public override string ToString() => $"Path: {this.Path.source} -> {this.Path.destination}";
 
+
+        /// <summary>
+        /// Implicitly convert this <see cref="Passenger"/> to an array of <see cref="Event"/> parameters
+        /// </summary>
+        /// <param name="passenger"></param>
+        /// <returns></returns>
         public static implicit operator (object, object)[] (Passenger passenger)
         {
             const string duration_format = "mm:ss";

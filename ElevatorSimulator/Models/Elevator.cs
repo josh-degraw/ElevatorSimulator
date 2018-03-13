@@ -279,6 +279,7 @@ namespace ElevatorApp.Models
         }
 
         #endregion
+    
         #region Methods
 
         /// <summary>
@@ -293,8 +294,10 @@ namespace ElevatorApp.Models
             // Simulate time it takes to enter the elevator
             await Task.Delay(Passenger.TransitionSpeed);
             passenger.State = PassengerState.In;
+
             this._passengers.AddDistinct(passenger);
             this._path.AddDistinct(new ElevatorCall(passenger.Path.source, passenger.Path.destination));
+
             PassengerAdded?.Invoke(this, passenger);
         }
 

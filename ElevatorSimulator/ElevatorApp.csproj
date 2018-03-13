@@ -89,6 +89,9 @@
     <Compile Include="Controls\ElevatorControl.xaml.cs">
       <DependentUpon>ElevatorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ElevatorMovementControl.xaml.cs">
+      <DependentUpon>ElevatorMovementControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ElevatorShaftControl.xaml.cs">
       <DependentUpon>ElevatorShaftControl.xaml</DependentUpon>
     </Compile>
@@ -128,9 +131,7 @@
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\TestSettings.cs" />
-    <Compile Include="SimulatorViewModel.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="SimulatorViewModel.cs" />
     <Compile Include="Util\Annotations.cs" />
     <Compile Include="Util\AsyncObservableCollection.cs" />
     <Compile Include="Util\DelegateCommand.cs" />
@@ -157,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ElevatorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ElevatorMovementControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

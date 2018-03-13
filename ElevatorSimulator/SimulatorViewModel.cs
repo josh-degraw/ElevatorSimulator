@@ -10,9 +10,8 @@ namespace ElevatorApp
     public class SimulatorViewModel : ModelBase
     {
         public ElevatorSimulator Simulator { get; } = new ElevatorSimulator();
-        public ElevatorMasterController Controller => Simulator.Controller;
-        
 
+        public ElevatorMasterController Controller => Simulator.Controller;
 
         public ILogger Logger => Util.Logger.Instance;
 

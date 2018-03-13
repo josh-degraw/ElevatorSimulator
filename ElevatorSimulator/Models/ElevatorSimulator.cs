@@ -14,9 +14,5 @@ namespace ElevatorApp.Models
             Logger.LogEvent("Initializing Simulator");
         }
 
-        public void DispatchPassenger(int fromFloor, int toFloor)
-        {
-            
-        }
     }
 }
