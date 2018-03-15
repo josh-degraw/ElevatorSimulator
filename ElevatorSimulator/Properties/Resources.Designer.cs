@@ -78,5 +78,15 @@ namespace ElevatorApp.Properties {
                 return ResourceManager.GetStream("elevatorDing", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ElevatorDoorInterior {
+            get {
+                object obj = ResourceManager.GetObject("ElevatorDoorInterior", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
