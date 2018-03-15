@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Interfaces;
+using ElevatorApp.Util;
 
 namespace ElevatorApp.Models
 {
@@ -32,8 +34,6 @@ namespace ElevatorApp.Models
         public ElevatorCallPanel(int floorNum)
         {
             this.FloorNumber = floorNum;
-            this.GoingUpButton = new RequestButton(floorNum);
-            this.GoingDownButton = new RequestButton(floorNum);
         }
 
         /// <summary>
@@ -47,21 +47,20 @@ namespace ElevatorApp.Models
         bool ISubcriber<ElevatorMasterController>.Subscribed => _subscribed;
 
         /// <inheritdoc />
-        public Task Subscribe(ElevatorMasterController masterController)
+        public async Task Subscribe(ElevatorMasterController masterController)
         {
             if (_subscribed)
-                return Task.CompletedTask;
+                return;
 
-            this.GoingUpButton.OnPushed += async (sender, e) =>
-            {
-                await masterController.Dispatch(e).ConfigureAwait(false);
-            };
+            await base.Subscribe(masterController);
+            //Obsolete
+            //this.GoingUpButton.OnPushed += async (sender, e) =>
+            //{
+            //    await masterController.Dispatch(e).ConfigureAwait(false);
+            //};
 
             this._subscribed = true;
-
-            return Task.CompletedTask;
         }
-
 
         /// <summary>
         /// Perform the necessary steps to subscribe to the target.
@@ -78,7 +77,6 @@ namespace ElevatorApp.Models
             }
 
             await base.Subscribe(parent);
-
         }
 
         /// <summary>
@@ -100,6 +98,4 @@ namespace ElevatorApp.Models
         public static ElevatorCallPanel BottomFloorPanel(int floorNum) => new ElevatorCallPanel(floorNum) { GoingDownButton = null };
 
     }
-
-
 }

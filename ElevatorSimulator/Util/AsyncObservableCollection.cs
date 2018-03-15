@@ -44,7 +44,7 @@ namespace ElevatorApp.Util
         {
             this.AddDistinct(next);
         }
-
+        
         /// <summary>
         /// Tries to remove the first item from the collection, mimicking the behavior of <see cref="ConcurrentQueue{T}"/>
         /// </summary>
@@ -66,6 +66,24 @@ namespace ElevatorApp.Util
             catch
             {
                 res = default;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Tries to remove the given item from the collection
+        /// </summary>
+        /// <param name="item">The item to be removed</param>
+        /// <returns>True if it was successfully removed, otherwise false</returns>
+        public bool TryRemove(T item)
+        {
+            try
+            {
+                this.Remove(item);
+                return true;
+            }
+            catch
+            {
                 return false;
             }
         }
@@ -943,7 +961,7 @@ namespace ElevatorApp.Util
             }
         }
     }
-
- 
     #endregion
+
+    
 }

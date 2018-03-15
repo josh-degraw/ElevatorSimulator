@@ -17,13 +17,13 @@ namespace ElevatorApp.Models
         /// <summary>
         /// The number of the <see cref="Floor"/> this <see cref="FloorButton"/> is tied to
         /// </summary>
-        public int FloorNumber { get; }
+        public virtual int FloorNumber { get; }
 
         public FloorButton(int floorNumber, bool startActive = false) : base($"FloorBtn {floorNumber}", startActive)
         {
             this.FloorNumber = floorNumber;
         }
-
+        
         public override void Push()
         {
             this.Pushed(this, this.FloorNumber);
@@ -38,6 +38,9 @@ namespace ElevatorApp.Models
             private set => SetProperty(ref _subscribed, value);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Disable()
         {
             this.IsEnabled = false;
@@ -55,10 +58,11 @@ namespace ElevatorApp.Models
 
             //this.IsEnabled = this.FloorNumber != elevator.CurrentFloor;
 
-            this.OnPushed += async (a, b) =>
+            // This should be handled by the Call panels
+            this.OnPushed += (a, floor) =>
             {
                 Logger.LogEvent($"Pushed floor button {this.FloorNumber}");
-                await controller.Dispatch(new ElevatorCall(elevator.CurrentFloor, this.FloorNumber)).ConfigureAwait(false);
+                ((IObserver<int>)controller).OnNext(this.FloorNumber);
             };
 
             //elevator.Departed += (e, floor) =>
@@ -72,8 +76,8 @@ namespace ElevatorApp.Models
 
             //elevator.Arrived += (e, floor) =>
             //{
-            //    if (floor == this.FloorNumber)
-            //        this.ActionCompleted(e, floor);
+            //    if (floor.DestinationFloor == this.FloorNumber)
+            //        this.ActionCompleted(e, floor.DestinationFloor);
             //};
 
             //elevator.PropertyChanged += (e, args) =>

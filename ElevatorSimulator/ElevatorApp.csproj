@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\ButtonPanelBase.cs" />
+    <Compile Include="Models\ElevatorMovementEventArgs.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Interfaces\IButton.cs" />
     <Compile Include="Models\Interfaces\ISubscriber.cs" />

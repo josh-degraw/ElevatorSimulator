@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
+using MoreLinq;
 
 namespace ElevatorApp.Models
 {
@@ -64,6 +65,10 @@ namespace ElevatorApp.Models
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="destination"></param>
         public void QueuePassenger(int destination)
         {
             this._waitingPassengers.Add(new Passenger(this.FloorNumber, destination));
@@ -81,15 +86,32 @@ namespace ElevatorApp.Models
 
             await this.CallPanel.Subscribe(parent).ConfigureAwait(false);
 
+            parent.Floors.AsParallel().ForAll(floor =>
+            {
+                foreach (FloorButton button in floor.CallPanel)
+                {
+                    button.OnPushed += (_, floorNum) =>
+                    {
+                        this.QueuePassenger(floorNum);
+                    };
+                }
+            });
+
+
             this._controllerSubscribed = true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parents"></param>
+        /// <returns></returns>
         public async Task Subscribe((ElevatorMasterController, Elevator) parents)
         {
             if (this._subscribed)
                 return;
 
-            await this.CallPanel.Subscribe(parents).ConfigureAwait(false);
+            await this.CallPanel.Subscribe(parents);
             var (controller, elevator) = parents;
 
             if (elevator.CurrentFloor == this.FloorNumber)
@@ -152,8 +174,8 @@ namespace ElevatorApp.Models
                     {
                         ; // Ignore
                     }
-                }}
-
+                }
+            }
 
             // Alert the Floor that an elevator is available when one arrives on this floor
             void onElevatorArrivedAtThisFloor(object _, PropertyChangedEventArgs args)
@@ -167,7 +189,7 @@ namespace ElevatorApp.Models
                 }
             }
 
-            void onElevatorDeparted(object _, ElevatorCall call)
+            void onElevatorDeparted(object _, ElevatorMovementEventArgs call)
             {
                 if (controller.ElevatorCount == 1)
                 {
@@ -225,27 +247,35 @@ namespace ElevatorApp.Models
 
         IEnumerable<Passenger> getPassengersToMove(Elevator elevator)
         {
-            ElevatorCall? call = elevator.CurrentCall;
-            if (_waitingPassengers.TryPeek(out Passenger firstPass))
-                call = firstPass.Path;
-
-            if (call != null)
+            var nextDest = this.WaitingPassengers.Min(p => p.Path.destination - elevator.NextFloor);
+            if (nextDest != 0)
             {
-                return this._getPassengersToMove(call.Value);
+                return this._getPassengersToMove(nextDest, elevator);
             }
             return Enumerable.Empty<Passenger>();
         }
 
-        private IEnumerable<Passenger> _getPassengersToMove(ElevatorCall call)
+        private IEnumerable<Passenger> _getPassengersToMove(int destination, Elevator elevator)
         {
-            if (call.RequestDirection == Direction.Up)
-                return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= call.DestinationFloor);
-            else
-                return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= call.DestinationFloor);
+            switch (elevator.Direction)
+            {
+                // If the elevator is already going up, only add passengers who are going up
+                case ElevatorDirection.GoingUp:
+                    return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= destination);
+
+                // If the elevator is already going down, only add passengers who are going down
+                case ElevatorDirection.GoingDown:
+                    return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= destination);
+
+                case ElevatorDirection.None:
+                    return this.WaitingPassengers;
+                default:
+                    return Enumerable.Empty<Passenger>();
+            }
         }
 
 
         #endregion
-        
+
     }
 }
