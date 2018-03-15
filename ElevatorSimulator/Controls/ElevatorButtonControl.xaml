@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:ElevatorApp"
              xmlns:models="clr-namespace:ElevatorApp.Models"
              xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:enums="clr-namespace:ElevatorApp.Models.Enums"
              d:DataContext="{ d:DesignInstance Type=models:DoorButton, IsDesignTimeCreatable=True}"     
         IsEnabled="{Binding IsEnabled}"
              mc:Ignorable="d" >
@@ -24,9 +25,9 @@
                                 <Setter Property="Background" Value="#FFF17D7D">
                                 </Setter>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding DoorButtonType}">
+                            <DataTrigger Binding="{Binding ButtonType}">
                                 <DataTrigger.Value>
-                                    <models:DoorButtonType>RequestUp</models:DoorButtonType>
+                                    <enums:ButtonType>RequestUp</enums:ButtonType>
                                 </DataTrigger.Value>
                                 <Setter Property="Content">
                                     <Setter.Value>
@@ -44,3 +45,4 @@
     
 
 </Button>
+

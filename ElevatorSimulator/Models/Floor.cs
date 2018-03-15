@@ -5,12 +5,13 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
 
 namespace ElevatorApp.Models
 {
-    public class Floor : ModelBase, IFloor, ISubcriber<ElevatorMasterController>, ISubcriber<(ElevatorMasterController, Elevator)>
+    public class Floor : ModelBase, ISubcriber<ElevatorMasterController>, ISubcriber<(ElevatorMasterController, Elevator)>
     {
         #region Backing fields
         private int _floorNum = 1;
@@ -52,7 +53,6 @@ namespace ElevatorApp.Models
             this.FloorNumber = floorNumber;
             this.CallPanel = callPanel;
         }
-
 
         public Floor(int floorNumber) : this(floorNumber, new ElevatorCallPanel(floorNumber))
         {
@@ -152,8 +152,7 @@ namespace ElevatorApp.Models
                     {
                         ; // Ignore
                     }
-                }
-            }
+                }}
 
 
             // Alert the Floor that an elevator is available when one arrives on this floor
@@ -176,7 +175,7 @@ namespace ElevatorApp.Models
                 }
                 else if (controller.ElevatorCount > 1)
                 {
-                    if (!controller.Elevators.Any(a => a.CurrentFloor == this.FloorNumber && a.State == ElevatorState.Idle))
+                    if (!controller.Elevators.Any(a => a.CurrentFloor == this.FloorNumber && a.Direction == ElevatorDirection.None))
                     {
                         this.ElevatorAvailable = false;
                     }
@@ -247,5 +246,6 @@ namespace ElevatorApp.Models
 
 
         #endregion
+        
     }
 }

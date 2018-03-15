@@ -8,6 +8,7 @@ using System.Linq;
 
 namespace ElevatorApp.Util
 {
+    [Obsolete("Use "+ nameof(AsyncObservableCollection<T>) + " instead.")]
     public class ObservableConcurrentQueue<T> : ICollection<T>, INotifyCollectionChanged, INotifyPropertyChanged, IReadOnlyCollection<T>
     {
         private readonly ConcurrentQueue<T> _items;

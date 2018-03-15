@@ -32,7 +32,7 @@ namespace ElevatorApp.Controls
         {
             if (sender is Button b && b.DataContext is FloorButton fb)
             {
-                this.Floor?.QueuePassenger(fb.FloorNum);
+                this.Floor?.QueuePassenger(fb.FloorNumber);
             }
         }
 

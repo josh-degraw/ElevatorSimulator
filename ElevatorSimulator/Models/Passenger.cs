@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Media.Animation;
+using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
 using NodaTime;
-using static ElevatorApp.Util.Logger;
 
 namespace ElevatorApp.Models
 {
     public class Passenger : ModelBase
     {
+        private static int TotalPassengerCount;
+
+
         private Instant Entered = default;
         private Instant Exited = default;
 
-        private Instant WaitStart = Clock.GetCurrentInstant();
+        private Instant WaitStart = LocalSystemClock.GetCurrentInstant();
         private Instant WaitEnd = default;
 
         public Duration TimeWaiting => WaitEnd - WaitStart;
@@ -33,16 +37,16 @@ namespace ElevatorApp.Models
                 switch (value)
                 {
                     case PassengerState.Waiting:
-                        WaitStart = Clock.GetCurrentInstant();
+                        WaitStart = LocalSystemClock.GetCurrentInstant();
                         break;
                     case PassengerState.Transition when oldVal == PassengerState.Waiting:
-                        WaitEnd = Clock.GetCurrentInstant();
+                        WaitEnd = LocalSystemClock.GetCurrentInstant();
                         break;
                     case PassengerState.In:
-                        Entered = Clock.GetCurrentInstant();
+                        Entered = LocalSystemClock.GetCurrentInstant();
                         break;
                     case PassengerState.Out:
-                        Exited = Clock.GetCurrentInstant();
+                        Exited = LocalSystemClock.GetCurrentInstant();
                         break;
                     default:
                         break;
@@ -60,12 +64,14 @@ namespace ElevatorApp.Models
 
         public static readonly TimeSpan TransitionSpeed = TimeSpan.FromSeconds(1.5);
 
+        public int PassengerNumber { get; }
+
         public Passenger()
         {
-
+            this.PassengerNumber = ++TotalPassengerCount;
         }
 
-        public Passenger(int source, int destination)
+        public Passenger(int source, int destination) : this()
         {
             this.Path = (source, destination);
 

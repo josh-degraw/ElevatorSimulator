@@ -48,7 +48,7 @@
                             <Style TargetType="TextBlock">
                                 <Setter Property="Text" Value="△"/>
                                 <Style.Triggers >
-                                    <DataTrigger Binding="{Binding State}" Value="GoingUp">
+                                    <DataTrigger Binding="{Binding Direction}" Value="GoingUp">
                                         <Setter Property="Text" Value="▲"/>
                                         <Setter Property="Foreground" Value="Yellow"/>
                                     </DataTrigger>
@@ -63,7 +63,7 @@
                             <Style TargetType="TextBlock">
                                 <Setter Property="Text" Value="▽"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding State}" Value="GoingDown">
+                                    <DataTrigger Binding="{Binding Direction}" Value="GoingDown">
                                         <Setter Property="Text" Value="▼"/>
                                         <Setter Property="Foreground" Value="Yellow"/>
                                     </DataTrigger>

@@ -18,13 +18,15 @@
                 <RibbonApplicationMenu>
                     <RibbonApplicationMenuItem Header="_Open Test Case"/>
                     <RibbonApplicationMenuItem Header="_Save Test Case"/>
-                    <RibbonApplicationMenuItem Header="E_xit"/>
+                    <RibbonApplicationMenuItem Header="E_xit">
+                        
+                    </RibbonApplicationMenuItem>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
 
             <RibbonTab Header="Home" DataContext="{Binding Controller}">
 
-                <RibbonGroup Header="Elevator Settings" DataContext="{Binding ElevatorSettings}">
+                <!--<RibbonGroup Header="Elevator Settings" DataContext="{Binding ElevatorSettings}">
 
                     <Label ToolTip="Feet per minute">Speed(feet per minute)</Label>
                     <RibbonComboBox>
@@ -62,7 +64,7 @@
                             </RibbonGalleryCategory>
                         </RibbonGallery>
                     </RibbonComboBox>
-                </RibbonGroup>
+                </RibbonGroup>-->
 
                 <RibbonGroup Header="Building Settings">
                     <Label Content="Number of Elevators" />
@@ -93,16 +95,11 @@
                     <RibbonTextBox Text="{Binding FloorHeight, Mode=TwoWay}"/>
 
                 </RibbonGroup>
-                <RibbonGroup Header="Test Settings">
-                    <Label ToolTip="(in minutes)">Test duration</Label>
-                    <RibbonTextBox/>
-                    <Label>Passengers / Minute</Label>
-                    <RibbonTextBox/>
-                </RibbonGroup>
-                <RibbonGroup Header="Run">
-                    <RibbonButton Label="Init" Click="Init_Click"/>
-                    <RibbonButton Label="Run Test"/>
-                </RibbonGroup>
+                <!--<RibbonGroup>
+                    <Label>Help</Label>
+                    <RibbonButton Click="RibbonButton_Click" Content="Documentation Btn"/>
+                    
+                </RibbonGroup>-->
 
             </RibbonTab>
             <RibbonTab Header="">
@@ -121,24 +118,23 @@
                 <RowDefinition Height="9"/>
                 <RowDefinition Height="227*"/>
             </Grid.RowDefinitions>
-            <ScrollViewer DataContext="{Binding Controller}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" MaxHeight="500">
-                <ListView ItemsSource="{Binding Elevators}" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                    <ListView.ItemTemplate>
-                        <DataTemplate >
-                            <StackPanel Mouse.MouseUp="ListView_MouseDown" Tag="{Binding ElevatorNumber}">
-                                <StackPanel.Style>
-                                    <Style TargetType="StackPanel">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding }"/>
-                                        </Style.Triggers>
-                                    </Style>
-                                </StackPanel.Style>
-                                <controls:ElevatorControl DataContext="{Binding}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
+
+            <ListView ItemsSource="{Binding Controller.Elevators}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" MaxHeight="500" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="516">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <StackPanel Mouse.MouseUp="ListView_MouseDown" Tag="{Binding ElevatorNumber}">
+                            <StackPanel.Style>
+                                <Style TargetType="StackPanel">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding }"/>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Style>
+                            <controls:ElevatorControl DataContext="{Binding}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <GridSplitter Grid.Column="0" Grid.Row="1" Height="5" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"/>
             <controls:LoggerView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" />

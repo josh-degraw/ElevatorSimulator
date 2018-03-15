@@ -6,9 +6,9 @@ namespace ElevatorApp.Util
 {
     public interface ILogger
     {
-        IList<Event> Events { get; }
+        IReadOnlyCollection<Event> Events { get; }
 
-        event Logger.LogEventHandler OnItemLogged;
+        event Logger.LogEventHandler ItemLogged;
 
         void AddLogger(TextWriter writer);
         void ClearItems();

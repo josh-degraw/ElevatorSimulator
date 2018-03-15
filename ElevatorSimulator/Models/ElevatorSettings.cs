@@ -1,4 +1,6 @@
-﻿namespace ElevatorApp.Models
+﻿using ElevatorApp.Models.Enums;
+
+namespace ElevatorApp.Models
 {
     public class ElevatorSettings: ModelBase
     {

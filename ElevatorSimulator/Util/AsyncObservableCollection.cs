@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -11,40 +12,45 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Windows.Threading;
+// ReSharper disable All
 
 namespace ElevatorApp.Util
 {
-    /// <inheritdoc />
-    /// <permission>
-    /// All credit for this code, unless explicitly declared otherwise, is from Source: https://pastebin.com/hKQi6EHD
-    /// </permission>
     /// <summary>
-    /// A version of <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> that is locked so that it can be accessed by multiple threads. When you enumerate it (foreach),
-    /// you will get a snapshot of the current contents. Also the <see cref="E:ElevatorApp.Util.AsyncObservableCollection`1.CollectionChanged" /> event will be called on the thread that added it if that
-    /// thread is a Dispatcher (WPF/Silverlight/WinRT) thread. This means that you can update this from any thread and recieve notifications of those updates
-    /// on the UI thread.
-    /// You can't modify the collection during a callback (on the thread that recieved the callback -- other threads can do whatever they want). This is the
+    /// <para>
+    /// A version of <see cref="ObservableCollection{T}" /> that is locked so that it can be accessed by multiple threads. 
+    /// </para>
+    /// <para>
+    /// When you enumerate it (foreach), you will get a snapshot of the current contents. Also the <see cref="INotifyCollectionChanged.CollectionChanged" /> event will be called on the thread that added it if that
+    /// thread is a Dispatcher (WPF/Silverlight/WinRT) thread. This means that you can update this from any thread and recieve notifications of those updates on the UI thread.
+    /// </para>
+    /// <para>
+    /// You can't modify the collection during a callback (on the thread that recieved the callback -- other threads can do whatever they want). This is the</para>
     /// same as <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" />. 
     /// </summary>
+    /// <remarks>
+    /// All credit for this code, unless explicitly declared otherwise, is from source: https://pastebin.com/hKQi6EHD
+    /// </remarks>
+    /// <typeparam name="T">The type of item in the collections</typeparam>
     [Serializable, DebuggerDisplay("Count = {Count}")]
     [SuppressMessage("ReSharper", "InheritdocInvalidUsage")]
     public sealed class AsyncObservableCollection<T> : IList<T>, IReadOnlyList<T>, IList, INotifyCollectionChanged, INotifyPropertyChanged, ISerializable
     {
-
         /// <summary>
-        /// Adds an item to the collection
+        /// Adds an item to the collection, mimicking the behavior of <see cref="ConcurrentQueue{T}"/>
         /// </summary>
-        /// <author>Josh DeGraw</author>
+        /// <remarks>Written by Josh DeGraw</remarks>
         public void Enqueue(T next)
         {
             this.AddDistinct(next);
         }
 
-
         /// <summary>
-        /// Tries to remove the first item from the collection
+        /// Tries to remove the first item from the collection, mimicking the behavior of <see cref="ConcurrentQueue{T}"/>
         /// </summary>
-        /// <author>Josh DeGraw</author>
+        /// <remarks>Written by Josh DeGraw</remarks>
+        /// <param name="res">The item that was dequeud</param>
+        /// <returns>True if an item was successfully dequeued, else false</returns>
         public bool TryDequeue(out T res)
         {
             if (!this.Any())
@@ -67,7 +73,7 @@ namespace ElevatorApp.Util
         /// <summary>
         /// Tries to read the first item in the collection
         /// </summary>
-        /// <author>Josh DeGraw</author>
+        /// <remarks>Written by Josh DeGraw</remarks>
         public bool TryPeek(out T item)
         {
             if (this.Count <= 0)
@@ -91,8 +97,9 @@ namespace ElevatorApp.Util
         /// <summary>
         /// Adds an item if it does not already exist in the collection
         /// </summary>
-        /// <param name="item"></param>
+        /// <param name="item">The item to be added to the <see cref="AsyncObservableCollection{T}"/></param>
         /// <returns>True if the item is newly added, else false</returns>
+        /// <remarks>Written by Josh DeGraw</remarks>
         public bool AddDistinct(T item)
         {
             if (!this.Contains(item))
@@ -114,6 +121,7 @@ namespace ElevatorApp.Util
         private readonly ReaderWriterLockSlim _lock;                // whenever accessing the collection directly, you must aquire the lock
         private volatile int _version;                              // whenever collection is changed, increment this (should only be changed from within write lock, so no atomic needed)
 
+        /// <inheritdoc />
         public AsyncObservableCollection()
         {
             _collection = new ObservableCollection<T>();
@@ -125,6 +133,7 @@ namespace ElevatorApp.Util
             // an extra couple GC cycles. This is a tiny, tiny cost, and reduces the API complexity of this class.
         }
 
+        /// <inheritdoc />
         public AsyncObservableCollection(IEnumerable<T> collection)
         {
             _collection = new ObservableCollection<T>(collection);
@@ -234,6 +243,7 @@ namespace ElevatorApp.Util
         #endregion
 
         #region Read methods
+        /// <inheritdoc />
         public bool Contains(T item)
         {
             _lock.EnterReadLock();
@@ -247,6 +257,7 @@ namespace ElevatorApp.Util
             }
         }
 
+        /// <inheritdoc />
         public int Count
         {
             get
@@ -263,6 +274,7 @@ namespace ElevatorApp.Util
             }
         }
 
+        /// <inheritdoc />
         public int IndexOf(T item)
         {
             _lock.EnterReadLock();
@@ -281,6 +293,7 @@ namespace ElevatorApp.Util
 
         #region Write methods -- VERY repetitive, don't say I didn't warn you
 
+        /// <inheritdoc />
         public void Add(T item)
         {
             ThreadView view = _threadView.Value;
@@ -304,6 +317,7 @@ namespace ElevatorApp.Util
             dispatchWaitingEvents(view);
         }
 
+        /// <inheritdoc />
         public void AddRange(IEnumerable<T> items)
         {
             ThreadView view = _threadView.Value;
@@ -328,6 +342,7 @@ namespace ElevatorApp.Util
             dispatchWaitingEvents(view);
         }
 
+        /// <inheritdoc />
         int IList.Add(object value)
         {
             ThreadView view = _threadView.Value;
@@ -353,6 +368,7 @@ namespace ElevatorApp.Util
             return result;
         }
 
+        /// <inheritdoc />
         public void Insert(int index, T item)
         {
             ThreadView view = _threadView.Value;
@@ -376,6 +392,7 @@ namespace ElevatorApp.Util
             dispatchWaitingEvents(view);
         }
 
+        /// <inheritdoc />
         public bool Remove(T item)
         {
             ThreadView view = _threadView.Value;
@@ -401,6 +418,7 @@ namespace ElevatorApp.Util
             return result;
         }
 
+        /// <inheritdoc />
         public void RemoveAt(int index)
         {
             ThreadView view = _threadView.Value;
@@ -424,6 +442,7 @@ namespace ElevatorApp.Util
             dispatchWaitingEvents(view);
         }
 
+        /// <inheritdoc />
         public void Clear()
         {
             ThreadView view = _threadView.Value;
@@ -447,6 +466,7 @@ namespace ElevatorApp.Util
             dispatchWaitingEvents(view);
         }
 
+        /// <inheritdoc />
         public void Move(int oldIndex, int newIndex)
         {
             ThreadView view = _threadView.Value;
@@ -472,6 +492,7 @@ namespace ElevatorApp.Util
         #endregion
 
         #region A little bit o' both
+        /// <inheritdoc />
         public T this[int index]
         {
             get
@@ -513,24 +534,28 @@ namespace ElevatorApp.Util
         #endregion
 
         #region GetEnumerator and related methods that work on snapshots
+        /// <inheritdoc />
         public IEnumerator<T> GetEnumerator()
         {
             ThreadView view = _threadView.Value;
             return new EnumeratorImpl(view.getSnapshot(), view);
         }
 
+        /// <inheritdoc />
         public void CopyTo(T[] array, int arrayIndex)
         {
             // don't need to worry about re-entry/other iterators here since we're at the bottom of the stack
             _threadView.Value.getSnapshot().CopyTo(array, arrayIndex);
         }
 
+        /// <inheritdoc />
         public T[] ToArray()
         {
             // don't need to worry about re-entry/other iterators here since we're at the bottom of the stack
             return _threadView.Value.getSnapshot().ToArray();
         }
 
+        /// <inheritdoc />
         private sealed class EnumeratorImpl : IEnumerator<T>
         {
             private readonly ThreadView _view;
@@ -593,6 +618,7 @@ namespace ElevatorApp.Util
         // Collection changed
         private readonly AsyncDispatcherEvent<NotifyCollectionChangedEventHandler, NotifyCollectionChangedEventArgs> _collectionChanged = new AsyncDispatcherEvent<NotifyCollectionChangedEventHandler, NotifyCollectionChangedEventArgs>();
         private void onCollectionChangedInternal(object sender, NotifyCollectionChangedEventArgs args) { _threadView.Value.waitingEvents.Add(args); }
+        /// <inheritdoc />
         public event NotifyCollectionChangedEventHandler CollectionChanged
         {
             add
@@ -634,6 +660,7 @@ namespace ElevatorApp.Util
         // Property changed
         private readonly AsyncDispatcherEvent<PropertyChangedEventHandler, PropertyChangedEventArgs> _propertyChanged = new AsyncDispatcherEvent<PropertyChangedEventHandler, PropertyChangedEventArgs>();
         private void onPropertyChangedInternal(object sender, PropertyChangedEventArgs args) { _threadView.Value.waitingEvents.Add(args); }
+        /// <inheritdoc />
         event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
         {
             add
@@ -748,170 +775,175 @@ namespace ElevatorApp.Util
             info.AddValue("values", ToArray(), typeof(T[]));
         }
         #endregion
-    }
-
-    /// <summary>
-    /// Wrapper around an event so that any events added from a Dispatcher thread are invoked on that thread. This means
-    /// that if the UI adds an event and that event is called on a different thread, the callback will be dispatched
-    /// to the UI thread and called asynchronously. If an event is added from a non-dispatcher thread, or the event
-    /// is raised from within the same thread as it was added from, it will be called normally.
-    /// 
-    /// Note that this means that the callback will be asynchronous and may happen at some time in the future rather than as
-    /// soon as the event is raised.
-    /// 
-    /// Example usage:
-    /// -----------
-    /// 
-    ///     private readonly AsyncDispatcherEvent{PropertyChangedEventHandler, PropertyChangedEventArgs} _propertyChanged = 
-    ///        new DispatcherEventHelper{PropertyChangedEventHandler, PropertyChangedEventArgs}();
-    ///
-    ///     public event PropertyChangedEventHandler PropertyChanged
-    ///     {
-    ///         add { _propertyChanged.add(value); }
-    ///         remove { _propertyChanged.remove(value); }
-    ///     }
-    ///     
-    ///     private void OnPropertyChanged(PropertyChangedEventArgs args)
-    ///     {
-    ///         _propertyChanged.invoke(this, args);
-    ///     }
-    /// 
-    /// This class is thread-safe.
-    /// </summary>
-    /// <typeparam name="TEvent">The delagate type to wrap (ie PropertyChangedEventHandler). Must have a void delegate(object, TArgs) signature.</typeparam>
-    /// <typeparam name="TArgs">Second argument of the TEvent. Must be of type EventArgs.</typeparam>
-    public sealed class AsyncDispatcherEvent<TEvent, TArgs> where TEvent : class where TArgs : EventArgs
-    {
+       
         /// <summary>
-        /// Type of a delegate that invokes a delegate. Okay, that sounds weird, but basically, calling this
-        /// with a delegate and its arguments will call the Invoke() method on the delagate itself with those
-        /// arguments.
+        /// <para>
+        /// Wrapper around an event so that any events added from a Dispatcher thread are invoked on that thread. This means
+        /// that if the UI adds an event and that event is called on a different thread, the callback will be dispatched
+        /// to the UI thread and called asynchronously. If an event is added from a non-dispatcher thread, or the event
+        /// is raised from within the same thread as it was added from, it will be called normally.
+        /// </para>
+        /// <para>
+        /// Note that this means that the callback will be asynchronous and may happen at some time in the future rather than as
+        /// soon as the event is raised.
+        /// </para>
+        /// <para>
+        /// This class is thread-safe.</para>
         /// </summary>
-        private delegate void InvokeMethod(TEvent @event, object sender, TArgs args);
-
-        /// <summary>
-        /// Method to invoke the given delegate with the given arguments quickly. It uses reflection once (per type)
-        /// to create this, then it's blazing fast to call because the JIT knows everything is type-safe.
-        /// </summary>
-        private static readonly InvokeMethod _invoke;
-
-        /// <summary>
-        /// Using List{DelegateWrapper} and locking it on every access is what scrubs would do.
-        /// </summary>
-        private event EventHandler<TArgs> _event;
-
-        /// <summary>
-        /// Barely worth worrying about this corner case, but we need to lock on removes in case two identical non-dispatcher
-        /// events are being removed at once.
-        /// </summary>
-        private readonly object _removeLock = new object();
-
-        /// <summary>
-        /// This is absolutely required to have a static constructor, otherwise it would be beforefieldinit which means
-        /// that any type exceptions would be delayed until it's actually called. We can also do some extra checks here to
-        /// make sure the types are correct.
-        /// </summary>
-        static AsyncDispatcherEvent()
+        /// <example>
+        /// <code>
+        ///  private readonly AsyncDispatcherEvent{PropertyChangedEventHandler, PropertyChangedEventArgs} _propertyChanged = 
+        ///        new DispatcherEventHelper{PropertyChangedEventHandler, PropertyChangedEventArgs}();
+        ///
+        ///     public event PropertyChangedEventHandler PropertyChanged
+        ///     {
+        ///         add { _propertyChanged.add(value); }
+        ///         remove { _propertyChanged.remove(value); }
+        ///     }
+        ///     
+        ///     private void OnPropertyChanged(PropertyChangedEventArgs args)
+        ///     {
+        ///         _propertyChanged.invoke(this, args);
+        ///     }
+        /// </code>
+        /// </example>
+        /// <typeparam name="TEvent">The delagate type to wrap (ie PropertyChangedEventHandler). Must have a void delegate(object, TArgs) signature.</typeparam>
+        /// <typeparam name="TArgs">Second argument of the TEvent. Must be of type EventArgs.</typeparam>
+        public sealed class AsyncDispatcherEvent<TEvent, TArgs> where TEvent : class where TArgs : EventArgs
         {
-            Type tEvent = typeof(TEvent);
-            Type tArgs = typeof(TArgs);
-            if (!tEvent.IsSubclassOf(typeof(MulticastDelegate)))
-                throw new InvalidOperationException("TEvent " + tEvent.Name + " is not a subclass of MulticastDelegate");
-            MethodInfo method = tEvent.GetMethod("Invoke", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
-            if (method == null)
-                throw new InvalidOperationException("Could not find method Invoke() on TEvent " + tEvent.Name);
-            if (method.ReturnType != typeof(void))
-                throw new InvalidOperationException("TEvent " + tEvent.Name + " must have return type of void");
-            ParameterInfo[] paramz = method.GetParameters();
-            if (paramz.Length != 2)
-                throw new InvalidOperationException("TEvent " + tEvent.Name + " must have 2 parameters");
-            if (paramz[0].ParameterType != typeof(object))
-                throw new InvalidOperationException("TEvent " + tEvent.Name + " must have first parameter of type object, instead was " + paramz[0].ParameterType.Name);
-            if (paramz[1].ParameterType != tArgs)
-                throw new InvalidOperationException("TEvent " + tEvent.Name + " must have second paramater of type TArgs " + tArgs.Name + ", instead was " + paramz[1].ParameterType.Name);
-            _invoke = (InvokeMethod)method.CreateDelegate(typeof(InvokeMethod));
-            if (_invoke == null)
-                throw new InvalidOperationException("CreateDelegate() returned null");
-        }
+            /// <summary>
+            /// Type of a delegate that invokes a delegate. Okay, that sounds weird, but basically, calling this
+            /// with a delegate and its arguments will call the Invoke() method on the delagate itself with those
+            /// arguments.
+            /// </summary>
+            private delegate void InvokeMethod(TEvent @event, object sender, TArgs args);
 
-        /// <summary>
-        /// Adds the delegate to the event.
-        /// </summary>
-        public void add(TEvent value)
-        {
-            if (value == null)
-                return;
-            _event += (new DelegateWrapper(getDispatcherOrNull(), value)).invoke;
-        }
+            /// <summary>
+            /// Method to invoke the given delegate with the given arguments quickly. It uses reflection once (per type)
+            /// to create this, then it's blazing fast to call because the JIT knows everything is type-safe.
+            /// </summary>
+            private static readonly InvokeMethod _invoke;
 
-        /// <summary>
-        /// Removes the last instance of delegate from the event (if it exists). Only removes events that were added from the current
-        /// dispatcher thread (if they were added from one), so make sure to remove from the same thread that added.
-        /// </summary>
-        public void remove(TEvent value)
-        {
-            if (value == null)
-                return;
-            Dispatcher dispatcher = getDispatcherOrNull();
-            lock (_removeLock) // because events are intrinsically threadsafe, and dispatchers are thread-local, the only time this lock matters is when removing non-dispatcher events
+            /// <summary>
+            /// Using List{DelegateWrapper} and locking it on every access is what scrubs would do.
+            /// </summary>
+            private event EventHandler<TArgs> _event;
+
+            /// <summary>
+            /// Barely worth worrying about this corner case, but we need to lock on removes in case two identical non-dispatcher
+            /// events are being removed at once.
+            /// </summary>
+            private readonly object _removeLock = new object();
+
+            /// <summary>
+            /// This is absolutely required to have a static constructor, otherwise it would be beforefieldinit which means
+            /// that any type exceptions would be delayed until it's actually called. We can also do some extra checks here to
+            /// make sure the types are correct.
+            /// </summary>
+            static AsyncDispatcherEvent()
             {
-                EventHandler<TArgs> evt = _event;
-                if (evt != null)
+                Type tEvent = typeof(TEvent);
+                Type tArgs = typeof(TArgs);
+                if (!tEvent.IsSubclassOf(typeof(MulticastDelegate)))
+                    throw new InvalidOperationException("TEvent " + tEvent.Name + " is not a subclass of MulticastDelegate");
+                MethodInfo method = tEvent.GetMethod("Invoke", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+                if (method == null)
+                    throw new InvalidOperationException("Could not find method Invoke() on TEvent " + tEvent.Name);
+                if (method.ReturnType != typeof(void))
+                    throw new InvalidOperationException("TEvent " + tEvent.Name + " must have return type of void");
+                ParameterInfo[] paramz = method.GetParameters();
+                if (paramz.Length != 2)
+                    throw new InvalidOperationException("TEvent " + tEvent.Name + " must have 2 parameters");
+                if (paramz[0].ParameterType != typeof(object))
+                    throw new InvalidOperationException("TEvent " + tEvent.Name + " must have first parameter of type object, instead was " + paramz[0].ParameterType.Name);
+                if (paramz[1].ParameterType != tArgs)
+                    throw new InvalidOperationException("TEvent " + tEvent.Name + " must have second paramater of type TArgs " + tArgs.Name + ", instead was " + paramz[1].ParameterType.Name);
+                _invoke = (InvokeMethod)method.CreateDelegate(typeof(InvokeMethod));
+                if (_invoke == null)
+                    throw new InvalidOperationException("CreateDelegate() returned null");
+            }
+
+            /// <summary>
+            /// Adds the delegate to the event.
+            /// </summary>
+            public void add(TEvent value)
+            {
+                if (value == null)
+                    return;
+                _event += (new DelegateWrapper(getDispatcherOrNull(), value)).invoke;
+            }
+
+            /// <summary>
+            /// Removes the last instance of delegate from the event (if it exists). Only removes events that were added from the current
+            /// dispatcher thread (if they were added from one), so make sure to remove from the same thread that added.
+            /// </summary>
+            public void remove(TEvent value)
+            {
+                if (value == null)
+                    return;
+                Dispatcher dispatcher = getDispatcherOrNull();
+                lock (_removeLock) // because events are intrinsically threadsafe, and dispatchers are thread-local, the only time this lock matters is when removing non-dispatcher events
                 {
-                    Delegate[] invList = evt.GetInvocationList();
-                    for (int i = invList.Length - 1; i >= 0; i--) // Need to go backwards since that's what event -= something does.
+                    EventHandler<TArgs> evt = _event;
+                    if (evt != null)
                     {
-                        DelegateWrapper wrapper = (DelegateWrapper)invList[i].Target;
-                        // need to use Equals instead of == for delegates
-                        if (wrapper.handler.Equals(value) && wrapper.dispatcher == dispatcher)
+                        Delegate[] invList = evt.GetInvocationList();
+                        for (int i = invList.Length - 1; i >= 0; i--) // Need to go backwards since that's what event -= something does.
                         {
-                            _event -= wrapper.invoke;
-                            return;
+                            DelegateWrapper wrapper = (DelegateWrapper)invList[i].Target;
+                            // need to use Equals instead of == for delegates
+                            if (wrapper.handler.Equals(value) && wrapper.dispatcher == dispatcher)
+                            {
+                                _event -= wrapper.invoke;
+                                return;
+                            }
                         }
                     }
                 }
             }
-        }
 
-        /// <summary>
-        /// Checks if any delegate has been added to this event.
-        /// </summary>
-        public bool isEmpty => _event == null;
+            /// <summary>
+            /// Checks if any delegate has been added to this event.
+            /// </summary>
+            public bool isEmpty => _event == null;
 
-        /// <summary>
-        /// Calls the event.
-        /// </summary>
-        public void raise(object sender, TArgs args)
-        {
-            EventHandler<TArgs> evt = _event;
-            evt?.Invoke(sender, args);
-        }
-
-        private static Dispatcher getDispatcherOrNull()
-        {
-            return Dispatcher.FromThread(Thread.CurrentThread);
-        }
-
-        private sealed class DelegateWrapper
-        {
-            public readonly TEvent handler;
-            public readonly Dispatcher dispatcher;
-
-            public DelegateWrapper(Dispatcher dispatcher, TEvent handler)
+            /// <summary>
+            /// Calls the event.
+            /// </summary>
+            public void raise(object sender, TArgs args)
             {
-                this.dispatcher = dispatcher;
-                this.handler = handler;
+                EventHandler<TArgs> evt = _event;
+                evt?.Invoke(sender, args);
             }
 
-            public void invoke(object sender, TArgs args)
+            private static Dispatcher getDispatcherOrNull()
             {
-                if (dispatcher == null || dispatcher == getDispatcherOrNull())
-                    _invoke(handler, sender, args);
-                else
-                    // ReSharper disable once AssignNullToNotNullAttribute
-                    dispatcher.BeginInvoke(handler as Delegate, DispatcherPriority.DataBind, sender, args);
+                return Dispatcher.FromThread(Thread.CurrentThread);
+            }
+
+            private sealed class DelegateWrapper
+            {
+                public readonly TEvent handler;
+                public readonly Dispatcher dispatcher;
+
+                public DelegateWrapper(Dispatcher dispatcher, TEvent handler)
+                {
+                    this.dispatcher = dispatcher;
+                    this.handler = handler;
+                }
+
+                public void invoke(object sender, TArgs args)
+                {
+                    if (dispatcher == null || dispatcher == getDispatcherOrNull())
+                        _invoke(handler, sender, args);
+                    else
+                        // ReSharper disable once AssignNullToNotNullAttribute
+                        dispatcher.BeginInvoke(handler as Delegate, DispatcherPriority.DataBind, sender, args);
+                }
             }
         }
-        #endregion
     }
+
+ 
+    #endregion
 }

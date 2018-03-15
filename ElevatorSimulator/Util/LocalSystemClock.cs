@@ -3,26 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ElevatorApp.Util.Annotations;
+using JetBrains.Annotations;
 using NodaTime;
 
 namespace ElevatorApp.Util
 {
-    /// <inheritdoc />
+    
     /// <summary>
     /// Class copied from NodaTime <see cref="T:NodaTime.SystemClock" />, to show the local system time instead of UTC
     /// </summary>
     public sealed class LocalSystemClock : IClock
     {
+        /// <summary>
+        /// Gets the singleton instance
+        /// </summary>
         [NotNull]
-        public static LocalSystemClock Instance { get; } = new LocalSystemClock();
+        public static IClock Instance { get; } = new LocalSystemClock();
 
         /// <summary>Constructor present to prevent external construction.</summary>
         private LocalSystemClock()
         {
         }
         
-        public Instant GetCurrentInstant() => NodaConstants.BclEpoch.PlusTicks(DateTime.Now.Ticks);
+        Instant IClock.GetCurrentInstant() => NodaConstants.BclEpoch.PlusTicks(DateTime.Now.Ticks);
 
+        /// <summary>
+        /// Static helper to get the current instant
+        /// </summary>
+        /// <returns>The current <see cref="Instant"/> in time</returns>
+        public static Instant GetCurrentInstant() => Instance.GetCurrentInstant();
     }
 }

@@ -5,25 +5,33 @@ using ElevatorApp.Util;
 
 namespace ElevatorApp.Models
 {
+    /// <inheritdoc cref="ButtonBase{T}" />
+    /// <summary>
+    /// Represents a Button that tells the elevator to go to a specified floor
+    /// </summary>
     public class FloorButton : ButtonBase<int>, ISubcriber<(ElevatorMasterController, Elevator)>
     {
-        public override string Label => this.FloorNum.ToString();
+        /// <inheritdoc />
+        public override string Label => this.FloorNumber.ToString();
 
-        public int FloorNum { get; }
+        /// <summary>
+        /// The number of the <see cref="Floor"/> this <see cref="FloorButton"/> is tied to
+        /// </summary>
+        public int FloorNumber { get; }
 
-        public FloorButton(int floorNum, bool active = false) : base($"FloorBtn {floorNum}")
+        public FloorButton(int floorNumber, bool startActive = false) : base($"FloorBtn {floorNumber}", startActive)
         {
-            this.FloorNum = floorNum;
-            this._active = active;
+            this.FloorNumber = floorNumber;
         }
 
         public override void Push()
         {
-            this.Pushed(this, this.FloorNum);
+            this.Pushed(this, this.FloorNumber);
         }
 
         private bool _subscribed = false;
 
+        /// <inheritdoc />
         public bool Subscribed
         {
             get => _subscribed;
@@ -35,6 +43,7 @@ namespace ElevatorApp.Models
             this.IsEnabled = false;
         }
 
+        /// <inheritdoc />
         public Task Subscribe((ElevatorMasterController, Elevator) parent)
         {
             if (this.Subscribed)
@@ -44,17 +53,17 @@ namespace ElevatorApp.Models
 
             Logger.LogEvent($"Subscribing {nameof(FloorButton)}", ("Elevator", elevator.ElevatorNumber));
 
-            //this.IsEnabled = this.FloorNum != elevator.CurrentFloor;
+            //this.IsEnabled = this.FloorNumber != elevator.CurrentFloor;
 
             this.OnPushed += async (a, b) =>
             {
-                Logger.LogEvent($"Pushed floor button {this.FloorNum}");
-                await controller.Dispatch(new ElevatorCall(elevator.CurrentFloor, this.FloorNum)).ConfigureAwait(false);
+                Logger.LogEvent($"Pushed floor button {this.FloorNumber}");
+                await controller.Dispatch(new ElevatorCall(elevator.CurrentFloor, this.FloorNumber)).ConfigureAwait(false);
             };
 
             //elevator.Departed += (e, floor) =>
             //{
-            //    if (floor == this.FloorNum)
+            //    if (floor == this.FloorNumber)
             //    {
             //        this.IsEnabled = true;
             //        this.Active = false;
@@ -63,7 +72,7 @@ namespace ElevatorApp.Models
 
             //elevator.Arrived += (e, floor) =>
             //{
-            //    if (floor == this.FloorNum)
+            //    if (floor == this.FloorNumber)
             //        this.ActionCompleted(e, floor);
             //};
 
@@ -71,7 +80,7 @@ namespace ElevatorApp.Models
             //{
             //    if (args.PropertyName == nameof(Elevator.CurrentFloor))
             //    {
-            //        this.IsEnabled = this.FloorNum != elevator.CurrentFloor;
+            //        this.IsEnabled = this.FloorNumber != elevator.CurrentFloor;
             //    }
             //};
 

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using ElevatorApp.Models;
 using ElevatorApp.Models.Interfaces;
 
 namespace ElevatorApp.Controls
@@ -9,11 +10,11 @@ namespace ElevatorApp.Controls
     public partial class ElevatorControl : UserControl
     {
 
-        public IElevator Elevator
+        public Elevator Elevator
         {
             get
             {
-                if (this.DataContext is IElevator vm)
+                if (this.DataContext is Elevator vm)
                     return vm;
                 return null;
             }

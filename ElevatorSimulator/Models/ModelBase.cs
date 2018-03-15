@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ElevatorApp.Util;
-using ElevatorApp.Util.Annotations;
+using JetBrains.Annotations;
 
 namespace ElevatorApp.Models
 {
@@ -16,6 +16,7 @@ namespace ElevatorApp.Models
         /// </summary>
         private static bool LogAllPropertyChanges { get; set; } = false;
 
+        /// <inheritdoc />
         public event PropertyChangedEventHandler PropertyChanged = (sender, args) =>
         {
 

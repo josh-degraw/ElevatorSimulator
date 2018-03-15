@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
 using NodaTime;
@@ -11,14 +12,22 @@ using static ElevatorApp.Util.Logger;
 
 namespace ElevatorApp.Models
 {
+    /// <summary>
+    /// Represents an elevator
+    /// </summary>
     public class Elevator : ModelBase, ISubcriber<ElevatorMasterController>
     {
         #region Backing fields
 
         private static int _RegisteredElevators = 0;
+        private ElevatorDirection _direction = ElevatorDirection.None;
+        private ElevatorState _elevatorState = ElevatorState.Idle;
 
-        private int _speed, _totalCapacity, _currentFloor = 1;
-        private ElevatorState _state;
+        private int
+            _speed = 800,
+            _currentSpeed = 0,
+            _totalCapacity,
+            _currentFloor = 1;
 
         #endregion
 
@@ -44,7 +53,36 @@ namespace ElevatorApp.Models
         public int Speed
         {
             get => _speed;
-            set => SetProperty(ref _speed, value);
+            set
+            {
+                SetProperty(ref _speed, value);
+                OnPropertyChanged(this.RelativeSpeed, nameof(this.RelativeSpeed));
+            }
+        }
+
+        /// <summary>
+        /// The relative speed of the <see cref="Elevator"/>. Negative values indicate downward movement.
+        /// </summary>
+        public int RelativeSpeed
+        {
+            get
+            {
+                switch (this.Direction)
+                {
+                    case ElevatorDirection.None: return 0;
+                    case ElevatorDirection.GoingUp: return this.Speed;
+                    case ElevatorDirection.GoingDown: return -this.Speed;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        public int CurrentSpeed
+        {
+            get => _currentSpeed;
+            set => SetProperty(ref _currentSpeed, value);
         }
 
         /// <summary>
@@ -53,12 +91,21 @@ namespace ElevatorApp.Models
         public int CurrentCapacity => Passengers?.Count ?? 0;
 
         /// <summary>
+        /// The direction the elevator is going
+        /// </summary>
+        public ElevatorDirection Direction
+        {
+            get => _direction;
+            set => SetProperty(ref _direction, value);
+        }
+
+        /// <summary>
         /// Represents the state of the elevator
         /// </summary>
         public ElevatorState State
         {
-            get => _state;
-            set => SetProperty(ref _state, value);
+            get => _elevatorState;
+            set => SetProperty(ref _elevatorState, value);
         }
 
         /// <summary>
@@ -70,7 +117,30 @@ namespace ElevatorApp.Models
         public int CurrentFloor
         {
             get => _currentFloor;
-            private set => SetProperty(ref _currentFloor, value);
+            private set
+            {
+                SetProperty(ref _currentFloor, value);
+                OnPropertyChanged(this.NextFloor, nameof(this.NextFloor));
+            }
+        }
+
+        /// <summary>
+        /// Represents the closest elevator, If the <see cref="Elevator"/> is idle, this will be the same as <see cref="CurrentFloor"/>
+        /// </summary>
+        public int NextFloor
+        {
+            get
+            {
+                switch (Direction)
+                {
+                    case ElevatorDirection.None: return this.CurrentFloor;
+                    case ElevatorDirection.GoingUp: return this.CurrentFloor + 1;
+                    case ElevatorDirection.GoingDown: return this.CurrentFloor - 1;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
 
         #endregion
@@ -83,7 +153,7 @@ namespace ElevatorApp.Models
         public int ElevatorNumber { get; }
 
         /// <summary>
-        /// The call that is currently being processed. If the elevator is <see cref="ElevatorState.Idle"/> and there are no <see cref="ElevatorCall"/>s in the queue, this will be <see langword="null"/>
+        /// The call that is currently being processed. If the elevator is <see cref="ElevElevatorDirection.Noneand there are no <see cref="ElevatorCall"/>s in the queue, this will be <see langword="null"/>
         /// </summary>
         public ElevatorCall? CurrentCall
         {
@@ -99,7 +169,7 @@ namespace ElevatorApp.Models
         private readonly AsyncObservableCollection<ElevatorCall> _path = new AsyncObservableCollection<ElevatorCall>();
         private readonly AsyncObservableCollection<Passenger> _passengers = new AsyncObservableCollection<Passenger>();
 
-        /// <inheritdoc />
+        ///<inheritdoc/>
         public bool Subscribed { get; private set; }
 
         /// <summary>
@@ -159,6 +229,7 @@ namespace ElevatorApp.Models
         public event EventHandler<Passenger> PassengerExited = (_, p) => LogEvent("Passenger Exited Elevator", parameters: p);
 
         #endregion
+
         #region Speed values
 
         /// <summary>
@@ -176,18 +247,21 @@ namespace ElevatorApp.Models
         /// </summary>
         public static readonly Duration DECELERATION_DELAY = ACCELERATION_DELAY * 2;
 
+        private readonly AsyncObservableCollection<IObserver<int>> _observers = new AsyncObservableCollection<IObserver<int>>();
+
         /// <summary>
         /// Same as <see cref="FLOOR_MOVEMENT_SPEED"/>, but in a format that can be used by the GUI
         /// </summary>
         public static System.Windows.Duration FloorMovementSpeed => new System.Windows.Duration(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
         #endregion
-        
+
 
         #region Initialization / Finalizaton
         /// <summary>
         /// Instantiates a new <see cref="Elevator"/>
         /// </summary>
-        public Elevator()
+        /// <param name="initialFloor">The floor to start on</param>
+        public Elevator(int initialFloor=1)
         {
             this.ElevatorNumber = ++_RegisteredElevators;
 
@@ -199,12 +273,7 @@ namespace ElevatorApp.Models
             this.Departing += ElevatorDeparting;
             this.Departed += ElevatorDeparted;
         }
-
-        public Elevator(int initialFloor) : this()
-        {
-            this.CurrentFloor = initialFloor;
-        }
-
+        
         /// <summary>
         /// Finalizer. Decrements the global count of elevators
         /// </summary>
@@ -224,8 +293,9 @@ namespace ElevatorApp.Models
         /// <param name="call"></param>
         private void ElevatorDeparting(object sender, ElevatorCall call)
         {
+            this.State = ElevatorState.Departing;
+            this.Direction = (ElevatorDirection)call.RequestDirection;
             LogEvent("Elevator Departing", ("From", call.SourceFloor), ("To", call.DestinationFloor));
-            this.State = (ElevatorState)call.RequestDirection;
         }
 
         /// <summary>
@@ -235,6 +305,7 @@ namespace ElevatorApp.Models
         /// <param name="call"></param>
         private void ElevatorDeparted(object sender, ElevatorCall call)
         {
+            this.State = ElevatorState.Departed;
             LogEvent("Elevator Departed", ("From", call.SourceFloor), ("To", call.DestinationFloor));
         }
 
@@ -245,6 +316,7 @@ namespace ElevatorApp.Models
         /// <param name="e"></param>
         private void ElevatorArriving(object sender, ElevatorCall e)
         {
+            this.State = ElevatorState.Arriving;
             LogEvent("Elevator Arriving", ("At Floor", e.DestinationFloor));
         }
 
@@ -255,6 +327,7 @@ namespace ElevatorApp.Models
         /// <param name="floor">The floor that the elevator is arriving at</param>
         private async void ElevatorArrived(object sender, int floor)
         {
+            this.State = ElevatorState.Arrived;
             LogEvent("Elevator Arrived", ("At Floor", floor));
             IEnumerable<Passenger> leaving = this.Passengers.Where(p => p.Path.destination == floor);
             foreach (Passenger passenger in leaving)
@@ -279,7 +352,7 @@ namespace ElevatorApp.Models
         }
 
         #endregion
-    
+
         #region Methods
 
         /// <summary>
@@ -315,7 +388,7 @@ namespace ElevatorApp.Models
             PassengerExited?.Invoke(this, passenger);
         }
 
-        /// <inheritdoc />
+        
         /// <summary>
         /// Wires up this <see cref="T:ElevatorApp.Models.Elevator" /> to the given <see cref="T:ElevatorApp.Models.ElevatorMasterController" />
         /// </summary>
@@ -323,7 +396,7 @@ namespace ElevatorApp.Models
         {
             if (Subscribed)
                 return;
-
+            
             Logger.LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
             Task subscribeButtonPanel = this.ButtonPanel.Subscribe((controller, this));
             Task subscribeDoor = this.Door.Subscribe(this);
@@ -332,7 +405,6 @@ namespace ElevatorApp.Models
             {
                 if (this.Path.Count > 0)
                     await this.Move();
-
             };
 
             await Task.WhenAll(subscribeButtonPanel, subscribeDoor).ConfigureAwait(false);
@@ -350,9 +422,9 @@ namespace ElevatorApp.Models
         {
             this._path.Enqueue(call);
 
-            if (this.State == ElevatorState.Idle)
+            if (this.Direction == ElevatorDirection.None)
             {
-                this.State = (ElevatorState)call.RequestDirection;
+                this.Direction = (ElevatorDirection)call.RequestDirection;
 
                 // Starts the movement in a seperate thread with Task.Run
                 await Task.Run(() => this.Move().ConfigureAwait(false));
@@ -371,9 +443,9 @@ namespace ElevatorApp.Models
 
             while (this._path.TryDequeue(out ElevatorCall call))
             {
-                this.State = this.CurrentFloor < call.DestinationFloor
-                                 ? ElevatorState.GoingUp
-                                 : ElevatorState.GoingDown;
+                this.Direction = this.CurrentFloor < call.DestinationFloor
+                                 ? ElevatorDirection.GoingUp
+                                 : ElevatorDirection.GoingDown;
 
                 this.Departing?.Invoke(this, call);
                 await Task.Delay(ACCELERATION_DELAY.ToTimeSpan());
@@ -383,6 +455,7 @@ namespace ElevatorApp.Models
                 for (int i = call.SourceFloor; i < call.DestinationFloor; i++)
                 {
                     await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
+
                     LogEvent($"Elevator passing floor {i}");
                 }
 
@@ -392,8 +465,10 @@ namespace ElevatorApp.Models
                 await this.OnArrived(call).ConfigureAwait(false);
             }
 
+            this.Direction = ElevatorDirection.None;
             this.State = ElevatorState.Idle;
         }
         #endregion
+
     }
 }

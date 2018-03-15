@@ -49,5 +49,10 @@ namespace ElevatorApp
             }
 
         }
+
+        private void RibbonButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

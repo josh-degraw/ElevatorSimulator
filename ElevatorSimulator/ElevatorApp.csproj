@@ -107,13 +107,10 @@
     <Compile Include="Controls\PassengerQueueControl.xaml.cs">
       <DependentUpon>PassengerQueueControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\ButtonPanelBase.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Interfaces\IButton.cs" />
-    <Compile Include="Models\Interfaces\IElevator.cs" />
-    <Compile Include="Models\Interfaces\IElevatorCallPanel.cs" />
-    <Compile Include="Models\Interfaces\IElevatorMasterController.cs" />
-    <Compile Include="Models\Interfaces\IFloor.cs" />
     <Compile Include="Models\Interfaces\ISubscriber.cs" />
     <Compile Include="Models\ButtonPanel.cs" />
     <Compile Include="Models\Buttons\ButtonBase.cs" />
@@ -131,6 +128,7 @@
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\TestSettings.cs" />
+    <Compile Include="Models\Unsubscriber.cs" />
     <Compile Include="SimulatorViewModel.cs" />
     <Compile Include="Util\Annotations.cs" />
     <Compile Include="Util\AsyncObservableCollection.cs" />
@@ -219,6 +217,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="docs\Documentation.chm" />
     <None Include="UML_Diagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

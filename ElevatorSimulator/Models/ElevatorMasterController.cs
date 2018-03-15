@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Media;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
+using ElevatorApp.Properties;
 using ElevatorApp.Util;
 using MoreLinq;
 
 namespace ElevatorApp.Models
 {
-    public class ElevatorMasterController : ModelBase//, IElevatorMasterController
+    public class ElevatorMasterController : ModelBase, IObservable<ElevatorCall>
     {
         #region Backing fields
-        private int _floorHeight;
+    private int _floorHeight;
 
         private readonly AsyncObservableCollection<Elevator> _elevators = new AsyncObservableCollection<Elevator>(
             new[] {
@@ -24,6 +27,7 @@ namespace ElevatorApp.Models
 
         private readonly AsyncObservableCollection<Floor> _floors = new AsyncObservableCollection<Floor>(Enumerable.Range(1, 4).Reverse().Select(a => new Floor(a)));
         private readonly AsyncObservableCollection<ElevatorCall> _floorsRequested = new AsyncObservableCollection<ElevatorCall>();
+        private readonly AsyncObservableCollection<IObserver<ElevatorCall>> _observers = new AsyncObservableCollection<IObserver<ElevatorCall>>();
         #endregion
 
         #region Properties
@@ -125,6 +129,8 @@ namespace ElevatorApp.Models
         public event EventHandler<ElevatorCall> OnElevatorRequested;
         #endregion
 
+        private readonly SoundPlayer soundPlayer = new SoundPlayer { Stream = Resources.elevatorDing };
+
         #region Methods
 
         #region Private methods
@@ -134,9 +140,7 @@ namespace ElevatorApp.Models
         /// <param name="elevator"></param>
         private async Task ElevatorArrived(Elevator elevator)
         {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-            player.Stream = Properties.Resources.elevatorDing;
-            player.Play();
+            soundPlayer.Play();
             if (this._floorsRequested.TryPeek(out ElevatorCall val) && val.DestinationFloor == elevator.CurrentFloor)
             {
                 this._floorsRequested.TryDequeue(out _);
@@ -168,11 +172,6 @@ namespace ElevatorApp.Models
         /// <param name="call">The call to be dispatched</param>
         public async Task Dispatch(ElevatorCall call)
         {
-            if (!this._floorsRequested.Contains(call))
-            {
-                this._floorsRequested.Enqueue(call);
-            }
-
             int floor = call.DestinationFloor;
             Direction direction = call.RequestDirection;
 
@@ -180,14 +179,14 @@ namespace ElevatorApp.Models
 
             // First check if any are not moving
             Elevator closest = Elevators
-                .Where(e => e.State == ElevatorState.Idle)
+                .Where(e => e.Direction == ElevatorDirection.None)
                 .MinBy(distanceFromRequestedFloor); // If any were found idle, the closest one to the requested floor is dispatched
 
             if (closest == null)
             {
                 // If none were idle, find the one that's closest to it, going in the direction
                 closest = this.Elevators
-                    .Where(e => e.State == (ElevatorState)direction)
+                    .Where(e => e.Direction == (ElevatorDirection)direction)
                     .MinBy(distanceFromRequestedFloor);
             }
 
@@ -205,8 +204,17 @@ namespace ElevatorApp.Models
             Logger.LogEvent($"Initializing {nameof(ElevatorMasterController)}");
 
             await Task.WhenAll(this.Elevators.Select(SubscribeElevator));
+            this._floorsRequested.CollectionChanged += _floorsRequested_CollectionChanged;
 
             Logger.LogEvent($"Initialized {nameof(ElevatorMasterController)}");
+        }
+
+        private void _floorsRequested_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+
+            }
         }
 
         /// <summary>
@@ -228,7 +236,7 @@ namespace ElevatorApp.Models
             Parallel.ForEach(elevator.ButtonPanel.FloorButtons, b =>
                 b.OnPushed += delegate
                 {
-                    this.OnElevatorRequested?.Invoke(b, new ElevatorCall(elevator.CurrentFloor, b.FloorNum));
+                    this.OnElevatorRequested?.Invoke(b, new ElevatorCall(elevator.CurrentFloor, b.FloorNumber));
                 });
 
 
@@ -250,5 +258,16 @@ namespace ElevatorApp.Models
             // Force execution immediately 
             this.Init().GetAwaiter().GetResult();
         }
+
+        /// <summary>
+        /// Subscribe an item to be notified of floors being requested
+        /// </summary>
+        /// <param name="observer"></param>
+        /// <returns></returns>
+        public IDisposable Subscribe(IObserver<ElevatorCall> observer)
+        {
+            return new Unsubscriber<ElevatorCall>(this._observers, observer);
+        }
     }
+    
 }
