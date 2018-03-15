@@ -3,14 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             
-             xmlns:fa="http://schemas.fontawesome.io/icons/"
-             xmlns:controls="clr-namespace:ElevatorApp.Controls"
+
              xmlns:models="clr-namespace:ElevatorApp.Models"
              d:DataContext="{d:DesignInstance Type=models:Elevator, IsDesignTimeCreatable=True}"
-             mc:Ignorable="d" >
-
-    <Grid>
+             mc:Ignorable="d">
+    <Grid x:Name="grdInside"  Height="190" Width="190" >
         <Grid.Background>
             <ImageBrush ImageSource="/ElevatorApp;component/Resources/ElevatorDoorInterior.jpg" Stretch="Uniform"/>
         </Grid.Background>
