@@ -61,6 +61,15 @@ namespace ElevatorApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Buzzer {
+            get {
+                return ResourceManager.GetStream("Buzzer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ElevatorBack {
@@ -76,6 +85,16 @@ namespace ElevatorApp.Properties {
         internal static System.IO.UnmanagedMemoryStream elevatorDing {
             get {
                 return ResourceManager.GetStream("elevatorDing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ElevatorDoorInterior {
+            get {
+                object obj = ResourceManager.GetObject("ElevatorDoorInterior", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

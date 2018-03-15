@@ -342,6 +342,10 @@ namespace ElevatorApp.Models
         /// <param name="call"></param>
         private Task OnArrived(ElevatorCall call)
         {
+            //Play ding sound on arrival and log it
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+            player.Stream = Properties.Resources.elevatorDing;
+            player.Play();
             Console.WriteLine("Arrived");
             // Simulate slowdown after arriving
             this.Arrived?.Invoke(this, call.DestinationFloor);
@@ -455,7 +459,6 @@ namespace ElevatorApp.Models
                 for (int i = call.SourceFloor; i < call.DestinationFloor; i++)
                 {
                     await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
-
                     LogEvent($"Elevator passing floor {i}");
                 }
 

@@ -101,6 +101,9 @@
     <Compile Include="Controls\FloorsControl.xaml.cs">
       <DependentUpon>FloorsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Interior.xaml.cs">
+      <DependentUpon>Interior.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LoggerView.xaml.cs">
       <DependentUpon>LoggerView.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FloorsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Interior.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,6 +262,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\elevatorDing.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\elevatordoorinterior.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buzzer.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
