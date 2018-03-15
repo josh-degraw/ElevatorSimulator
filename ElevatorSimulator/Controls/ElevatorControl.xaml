@@ -28,7 +28,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Row="0" Grid.Column="0"  Orientation="Horizontal">
                     <Label FontWeight="Bold">Elevator</Label>
@@ -76,7 +76,7 @@
                 </Border>
                 <controls:DoorControl Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" DataContext="{Binding Door}" Margin="5" VerticalAlignment="Top" />
                 <controls:ButtonPanelControl  Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" DataContext="{Binding ButtonPanel}" Margin="2" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
-                <controls:Interior Grid.Column="4" Grid.Row="1" Grid.RowSpan="6" Margin="5" VerticalAlignment="Top" />
+                <controls:Interior Grid.Column="4" Grid.Row="0" Grid.RowSpan="7" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             </Grid>
         </StackPanel>
     </StackPanel>

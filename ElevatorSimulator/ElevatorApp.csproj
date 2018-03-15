@@ -260,7 +260,10 @@
     <None Include="Resources\elevatorDing.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ElevatorDoorInterior.jpg" />
+    <Resource Include="Resources\elevatordoorinterior.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buzzer.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

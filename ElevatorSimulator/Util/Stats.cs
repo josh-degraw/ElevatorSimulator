@@ -8,6 +8,9 @@ using NodaTime;
 
 namespace ElevatorApp.Util
 {
+    /// <summary>
+    /// The Stats class. This class will be able to hold and calculate information about the test during runtime. EG Average wait...
+    /// </summary>
     class Stats
     {
         private ICollection<Duration> passengerWaitTimes;
