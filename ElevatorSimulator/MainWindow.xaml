@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:ElevatorApp.Controls"
         xmlns:models="clr-namespace:ElevatorApp.Models"
         mc:Ignorable="d"
-        Title="Elevator Simulator" Height="935.5" Width="1089" >
+        Title="Elevator Simulator" Height="807.1" Width="1089" >
 
     <Window.DataContext>
         <local:SimulatorViewModel/>
@@ -19,7 +19,7 @@
                     <RibbonApplicationMenuItem Header="_Open Test Case"/>
                     <RibbonApplicationMenuItem Header="_Save Test Case"/>
                     <RibbonApplicationMenuItem Header="E_xit">
-                        
+
                     </RibbonApplicationMenuItem>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
@@ -95,6 +95,9 @@
                     <RibbonTextBox Text="{Binding FloorHeight, Mode=TwoWay}"/>
 
                 </RibbonGroup>
+                <RibbonGroup Width="120">
+                    <RibbonButton Label="Calculate Statistics" VerticalAlignment="Center" Content="Calculate Stats" Margin="0,10,-110,-77" Click="Stats_Click"></RibbonButton>
+                </RibbonGroup>
                 <!--<RibbonGroup>
                     <Label>Help</Label>
                     <RibbonButton Click="RibbonButton_Click" Content="Documentation Btn"/>
@@ -109,17 +112,17 @@
         </Ribbon>
         <Grid DockPanel.Dock="Top" VerticalAlignment="Top" Height="769" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="316*" />
-                <ColumnDefinition Width="417*" />
-                <ColumnDefinition Width="216*" />
+                <ColumnDefinition Width="360*" />
+                <ColumnDefinition Width="387*" />
+                <ColumnDefinition Width="335*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="531*"/>
-                <RowDefinition Height="9"/>
-                <RowDefinition Height="227*"/>
+                <RowDefinition Height="403*"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="366*"/>
             </Grid.RowDefinitions>
 
-            <ListView ItemsSource="{Binding Controller.Elevators}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" MaxHeight="500" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="516">
+            <ListView ItemsSource="{Binding Controller.Elevators}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" MaxHeight="500" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,10,0.2,12.2">
                 <ListView.ItemTemplate>
                     <DataTemplate >
                         <StackPanel Mouse.MouseUp="ListView_MouseDown" Tag="{Binding ElevatorNumber}">
@@ -136,9 +139,9 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <GridSplitter Grid.Column="0" Grid.Row="1" Height="5" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"/>
-            <controls:LoggerView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" />
-            <StackPanel Grid.Row="0" Grid.Column="2">
+            <GridSplitter Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="0,0.8,0.4,250.8"/>
+            <controls:LoggerView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Top" Height="227" Margin="0,0.8,0.4,0" />
+            <StackPanel Grid.Row="0" Grid.Column="2" Margin="4.8,0,0.4,4.2">
                 <controls:ElevatorShaftControl DataContext="{Binding}"/>
             </StackPanel>
 

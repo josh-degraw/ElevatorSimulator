@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              DataContext="{x:Static util:Logger.Instance}">
     <StackPanel>
-        <TreeView ItemsSource="{Binding Events}" Height="196" MinWidth="450" >
+        <TreeView ItemsSource="{Binding Events}" Height="196" MinWidth="450">
             <!--<TreeView.ItemTemplate>
                 <DataTemplate DataType="{x:Type util:LogEvent}">
                     <Grid>
