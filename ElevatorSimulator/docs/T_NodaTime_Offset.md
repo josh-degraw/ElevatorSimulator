@@ -1,0 +1,43 @@
+# Offset Structure
+ 
+
+\[Missing <summary> documentation for "T:NodaTime.Offset"\]
+
+**Namespace:**&nbsp;<a href="N_NodaTime">NodaTime</a><br />**Assembly:**&nbsp;NodaTime (in NodaTime.dll) Version: 2.2.4
+
+## Syntax
+
+**C#**<br />
+``` C#
+[SerializableAttribute]
+public struct Offset : IEquatable<Offset>, 
+	IComparable<Offset>, IFormattable, IComparable, IXmlSerializable, 
+	ISerializable
+```
+
+The Offset type exposes the following members.
+
+
+## Properties
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="P_NodaTime_Offset_Milliseconds">Milliseconds</a></td><td /></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="P_NodaTime_Offset_Nanoseconds">Nanoseconds</a></td><td /></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="P_NodaTime_Offset_Seconds">Seconds</a></td><td /></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="P_NodaTime_Offset_Ticks">Ticks</a></td><td /></tr></table>&nbsp;
+<a href="#offset-structure">Back to Top</a>
+
+## Methods
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_Add">Add</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_NodaTime_Offset_CompareTo">CompareTo</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_NodaTime_Offset_Equals_1">Equals(Object)</a></td><td> (Overrides <a href="http://msdn2.microsoft.com/en-us/library/2dts52z7" target="_blank">ValueType.Equals(Object)</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_NodaTime_Offset_Equals">Equals(Offset)</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_FromHours">FromHours</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_FromHoursAndMinutes">FromHoursAndMinutes</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_FromMilliseconds">FromMilliseconds</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_FromNanoseconds">FromNanoseconds</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_FromSeconds">FromSeconds</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_FromTicks">FromTicks</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_FromTimeSpan">FromTimeSpan</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_NodaTime_Offset_GetHashCode">GetHashCode</a></td><td> (Overrides <a href="http://msdn2.microsoft.com/en-us/library/y3509fc2" target="_blank">ValueType.GetHashCode()</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="http://msdn2.microsoft.com/en-us/library/dfwy45w9" target="_blank">GetType</a></td><td>
+Gets the <a href="http://msdn2.microsoft.com/en-us/library/42892f65" target="_blank">Type</a> of the current instance.
+ (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_Max">Max</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_Min">Min</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_NodaTime_Offset_Minus">Minus</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_Negate">Negate</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_NodaTime_Offset_Plus">Plus</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_Subtract">Subtract</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_NodaTime_Offset_ToString">ToString()</a></td><td> (Overrides <a href="http://msdn2.microsoft.com/en-us/library/wb77sz3h" target="_blank">ValueType.ToString()</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_NodaTime_Offset_ToString_1">ToString(String, IFormatProvider)</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_NodaTime_Offset_ToTimeSpan">ToTimeSpan</a></td><td /></tr></table>&nbsp;
+<a href="#offset-structure">Back to Top</a>
+
+## Operators
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_Addition">Addition</a></td><td /></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_Equality">Equality</a></td><td /></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_GreaterThan">GreaterThan</a></td><td /></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_GreaterThanOrEqual">GreaterThanOrEqual</a></td><td /></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_Inequality">Inequality</a></td><td /></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_LessThan">LessThan</a></td><td /></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_LessThanOrEqual">LessThanOrEqual</a></td><td /></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_Subtraction">Subtraction</a></td><td /></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_UnaryNegation">UnaryNegation</a></td><td /></tr><tr><td>![Public operator](media/puboperator.gif "Public operator")![Static member](media/static.gif "Static member")</td><td><a href="M_NodaTime_Offset_op_UnaryPlus">UnaryPlus</a></td><td /></tr></table>&nbsp;
+<a href="#offset-structure">Back to Top</a>
+
+## Fields
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public field](media/pubfield.gif "Public field")![Static member](media/static.gif "Static member")</td><td><a href="F_NodaTime_Offset_MaxValue">MaxValue</a></td><td /></tr><tr><td>![Public field](media/pubfield.gif "Public field")![Static member](media/static.gif "Static member")</td><td><a href="F_NodaTime_Offset_MinValue">MinValue</a></td><td /></tr><tr><td>![Public field](media/pubfield.gif "Public field")![Static member](media/static.gif "Static member")</td><td><a href="F_NodaTime_Offset_Zero">Zero</a></td><td /></tr></table>&nbsp;
+<a href="#offset-structure">Back to Top</a>
+
+## See Also
+
+
+#### Reference
+<a href="N_NodaTime">NodaTime Namespace</a><br />
