@@ -10,25 +10,30 @@ using ElevatorApp.Util;
 
 namespace ElevatorApp.Models
 {
-    public class ButtonPanelBase : ICollection<FloorButton>, ISubcriber<(ElevatorMasterController, Elevator)>
+    /// <summary>
+    /// Represents the base class of a button panel. Takes care of subscription of 
+    /// </summary>
+    public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<(ElevatorMasterController, Elevator)>, ISubcriber<ElevatorMasterController>, IObservable<int>
     {
-        public ICollection<FloorButton> FloorButtons { get; private set; }
+        /// <summary>
+        /// The actual collection of <see cref="FloorButton"/>s
+        /// </summary>
+        protected abstract AsyncObservableCollection<FloorButton> _floorButtons { get; }
 
-        public ButtonPanelBase()
+        /// <summary>
+        /// A collection of <see cref="FloorButton"/>s that will appear on this panel
+        /// </summary>
+        public virtual IReadOnlyCollection<FloorButton> FloorButtons => _floorButtons;
+        
+        /// <summary>
+        /// Initialize a new ButtonPanelBase
+        /// </summary>
+        protected ButtonPanelBase()
         {
-            Logger.LogEvent($"Initializing ButtonPanel");
-            this.FloorButtons = new  AsyncObservableCollection<FloorButton>
-            {
-                new FloorButton(4),
-                new FloorButton(3),
-                new FloorButton(2),
-                new FloorButton(1),
-            };
-            Logger.LogEvent("Done initializing ButtonPanel");
         }
 
         #region ICollectionImplementation
-        public IEnumerator<FloorButton> GetEnumerator()
+        IEnumerator<FloorButton> IEnumerable<FloorButton>.GetEnumerator()
         {
             return FloorButtons.GetEnumerator();
         }
@@ -37,46 +42,66 @@ namespace ElevatorApp.Models
         {
             return ((IEnumerable)FloorButtons).GetEnumerator();
         }
-
-        public void Add(FloorButton item)
-        {
-            FloorButtons.Add(item);
-        }
-
-        public void Clear()
-        {
-            FloorButtons.Clear();
-        }
-
-        public bool Contains(FloorButton item)
-        {
-            return FloorButtons.Contains(item);
-        }
-
-        void ICollection<FloorButton>.CopyTo(FloorButton[] array, int arrayIndex)
-        {
-            FloorButtons.CopyTo(array, arrayIndex);
-        }
-
-        public bool Remove(FloorButton item)
-        {
-            return FloorButtons.Remove(item);
-        }
-
-        public int Count => FloorButtons.Count;
-
-        public bool IsReadOnly => FloorButtons.IsReadOnly;
+        
+        int IReadOnlyCollection<FloorButton>.Count => FloorButtons.Count;
+        
         #endregion
 
         public bool Subscribed { get; protected set; }
 
+        /// <summary>
+        /// Subscribe to a <see cref="ElevatorMasterController"/> and an <see cref="Elevator"/>.
+        /// </summary>
+        /// <param name="parent">The Pair toi subscribe to</param>
         public virtual async Task Subscribe((ElevatorMasterController, Elevator) parent)
         {
             var (_, elevator) = parent;
 
             Logger.LogEvent($"Subscribing {nameof(ButtonPanelBase)}", ("Elevator", elevator.ElevatorNumber));
             await Task.WhenAll(this.FloorButtons.Select(button => button.Subscribe(parent)));
-            
+
+        }
+
+        private readonly AsyncObservableCollection<IObserver<int>> _observers = new AsyncObservableCollection<IObserver<int>>();
+
+        /// <summary>
+        /// Notify all <see cref="IObserver{T}"/>s that a <see cref="FloorButton"/> has been pushed
+        /// </summary>
+        /// <param name="floor"></param>
+        private void NotifyObservers(int floor)
+        {
+            _observers.AsParallel().ForAll(observer => observer.OnNext(floor));
+        }
+
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Subscribes this <see cref="ButtonPanelBase"/> to an <see cref="IObservable{T}"/>, 
+        /// in order for the subscriber to be notified whenever any of the <see cref="FloorButton"/>s on this <see cref="ButtonPanelBase"/> have been activated.
+        /// </summary>
+        /// <param name="observer"></param>
+        /// <returns>An <see cref="Unsubscriber{T}"/> that can be disposed of to stop receiving updates</returns>
+        public IDisposable Subscribe(IObserver<int> observer)
+        {
+            if (!_observers.Contains(observer))
+            {
+                _observers.Add(observer);
+            }
+
+            return new Unsubscriber<int>(_observers, observer);
+        }
+
+        public virtual async Task Subscribe(ElevatorMasterController parent)
+        {
+            this.Subscribe((IObserver<int>)parent);
+
+            foreach (FloorButton floorButton in this.FloorButtons)
+            {
+                floorButton.OnPushed += (_, floor) =>
+                {
+                    NotifyObservers(floor);
+                };
+            }
         }
     }
 }

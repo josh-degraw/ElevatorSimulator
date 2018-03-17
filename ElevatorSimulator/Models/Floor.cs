@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
+using MoreLinq;
 
 namespace ElevatorApp.Models
 {
@@ -64,6 +66,10 @@ namespace ElevatorApp.Models
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="destination"></param>
         public void QueuePassenger(int destination)
         {
             this._waitingPassengers.Add(new Passenger(this.FloorNumber, destination));
@@ -81,15 +87,32 @@ namespace ElevatorApp.Models
 
             await this.CallPanel.Subscribe(parent).ConfigureAwait(false);
 
+            parent.Floors.AsParallel().ForAll(floor =>
+            {
+                foreach (FloorButton button in floor.CallPanel)
+                {
+                    button.OnPushed += (_, floorNum) =>
+                    {
+                        this.QueuePassenger(floorNum);
+                    };
+                }
+            });
+
+
             this._controllerSubscribed = true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parents"></param>
+        /// <returns></returns>
         public async Task Subscribe((ElevatorMasterController, Elevator) parents)
         {
             if (this._subscribed)
                 return;
 
-            await this.CallPanel.Subscribe(parents).ConfigureAwait(false);
+            await this.CallPanel.Subscribe(parents);
             var (controller, elevator) = parents;
 
             if (elevator.CurrentFloor == this.FloorNumber)
@@ -103,8 +126,9 @@ namespace ElevatorApp.Models
             //elevator.Door.CloseRequested += cancelDoorClosingIfNewPassengerAdded;
             //elevator.Door.Closing += cancelDoorClosingIfNewPassengerAdded;
             elevator.Departed += onElevatorDeparted;
-            // elevator.Arrived += onElevatorArrived;
-            elevator.PropertyChanged += onElevatorArrivedAtThisFloor;
+
+            elevator.Approaching += Elevator_Approaching;
+            elevator.Arrived += onElevatorArrivedAtThisFloor;
 
             #region Local methods for event handlers, which do the real work
 
@@ -133,12 +157,18 @@ namespace ElevatorApp.Models
             {
                 if (elevator.CurrentFloor == this.FloorNumber)
                 {
-                    // TODO: Wait for all passengers to get out
-                    IEnumerable<Passenger> departing = getPassengersToMove(elevator);
-                    await _addPassengersToElevator(departing, elevator);
+                    await _addPassengersToElevator(elevator).ConfigureAwait(false);
                 }
             }
 
+            void Elevator_Approaching(object sender, ElevatorApproachingEventArgs e)
+            {
+                if (e.DestinationFloor == this.FloorNumber)
+                {
+                    if (getPassengersToMove(elevator, e.DestinationFloor).Any())
+                        e.ShouldStop = true;
+                }
+            }
 
             void removePassengerFromQueue(object _, Passenger passenger)
             {
@@ -152,22 +182,19 @@ namespace ElevatorApp.Models
                     {
                         ; // Ignore
                     }
-                }}
-
-
-            // Alert the Floor that an elevator is available when one arrives on this floor
-            void onElevatorArrivedAtThisFloor(object _, PropertyChangedEventArgs args)
-            {
-                if (args.PropertyName == nameof(elevator.CurrentFloor))
-                {
-                    if (elevator.CurrentFloor == this.FloorNumber)
-                    {
-                        this.ElevatorAvailable = true;
-                    }
                 }
             }
 
-            void onElevatorDeparted(object _, ElevatorCall call)
+            // Alert the Floor that an elevator is available when one arrives on this floor
+            void onElevatorArrivedAtThisFloor(object _, ElevatorMovementEventArgs args)
+            {
+                if (args.DestinationFloor == this.FloorNumber)
+                {
+                    this.ElevatorAvailable = true;
+                }
+            }
+
+            void onElevatorDeparted(object _, ElevatorMovementEventArgs call)
             {
                 if (controller.ElevatorCount == 1)
                 {
@@ -194,6 +221,13 @@ namespace ElevatorApp.Models
             #endregion
 
             this._subscribed = true;
+        }
+
+        private async Task _addPassengersToElevator(Elevator elevator)
+        {
+            // TODO: Wait for all passengers to get out
+            IEnumerable<Passenger> departing = getPassengersToMove(elevator);
+            await _addPassengersToElevator(departing, elevator);
         }
 
         /// <summary>
@@ -223,29 +257,42 @@ namespace ElevatorApp.Models
             elevator.Door.Closing -= cancelIfStartsToClose;
         }
 
-        IEnumerable<Passenger> getPassengersToMove(Elevator elevator)
+        IEnumerable<Passenger> getPassengersToMove(Elevator elevator, int? nextFloor = null)
         {
-            ElevatorCall? call = elevator.CurrentCall;
-            if (_waitingPassengers.TryPeek(out Passenger firstPass))
-                call = firstPass.Path;
-
-            if (call != null)
+            try
             {
-                return this._getPassengersToMove(call.Value);
+                int nextDest = this._waitingPassengers.Min(p => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor));
+                if (nextDest != 0)
+                {
+                    return this._getPassengersToMove(nextDest, elevator);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
             }
             return Enumerable.Empty<Passenger>();
         }
 
-        private IEnumerable<Passenger> _getPassengersToMove(ElevatorCall call)
+        private IEnumerable<Passenger> _getPassengersToMove(int destination, Elevator elevator)
         {
-            if (call.RequestDirection == Direction.Up)
-                return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= call.DestinationFloor);
-            else
-                return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= call.DestinationFloor);
+            switch (elevator.Direction)
+            {
+                // If the elevator is already going up, only add passengers who are going up
+                case ElevatorDirection.GoingUp:
+                    return this._waitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= destination);
+
+                // If the elevator is already going down, only add passengers who are going down
+                case ElevatorDirection.GoingDown:
+                    return this._waitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= destination);
+
+                default:
+                    return this._waitingPassengers;
+            }
         }
 
 
         #endregion
-        
+
     }
 }

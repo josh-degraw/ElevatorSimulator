@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls.Ribbon;
+using System.Windows.Data;
 using ElevatorApp.Util;
 
 namespace ElevatorApp
@@ -9,15 +10,12 @@ namespace ElevatorApp
     /// </summary>
     public partial class MainWindow : RibbonWindow
     {
+        private readonly object _locker = new object();
         public MainWindow()
         {
             InitializeComponent();
         }
-
-        private void Logger_OnItemLogged(object sender, Event @event)
-        {
-            // this.txtBxLog.Text += $"{@event}\n";
-        }
+        
 
         public SimulatorViewModel ViewModel
         {
@@ -47,18 +45,23 @@ namespace ElevatorApp
                 if (this.ViewModel.SelectedElevatorNumber != num)
                     this.ViewModel.SelectedElevatorNumber = num;
             }
-
         }
 
         private void RibbonButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
         private void Stats_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Average Passenger Wait Time in Seconds: " + Stats.Instance.GetAverageWaitTime().TotalSeconds);
             Stats.Instance.GetAverageWaitTime();
             Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.GetAverageWaitTime());
+        }
+
+        private void LoggerView_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.Controller.Init();
         }
     }
 }

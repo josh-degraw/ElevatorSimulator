@@ -1,7 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using ElevatorApp.Models;
 using ElevatorApp.Models.Enums;
+using MoreLinq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ElevatorApp.Util
 {
@@ -24,21 +31,23 @@ namespace ElevatorApp.Util
             val = pair.Value;
         }
 
-        /// <summary>
-        /// Extension method to use a <see cref="ElevatorCall"/> as a <see cref="ValueTuple{T1,T2}"/>
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// var (dest, direction) = new ElevatorCall(1, Direction.Up);
-        /// </code>
-        /// </example>
-        /// <param name="self">the <see cref="ElevatorCall"/> to deconstruct</param>
-        /// <param name="destinationFloor"></param>
-        /// <param name="direction"></param>
-        public static void Deconstruct(this ElevatorCall self, out int destinationFloor, out Direction direction)
+        //public static void EnqueueInOrder(this AsyncObservableCollection<int> collection, int value)
+        //{
+        //    collection.Insert(value - 1, value);
+        //}
+
+        public static T MinByOrDefault<T, TKey>(this IEnumerable<T> collection, Func<T, TKey> selector)
         {
-            destinationFloor = self.DestinationFloor;
-            direction = self.RequestDirection;
+            try
+            {
+                return collection.MinBy(selector);
+            }
+            catch
+            {
+                return default;
+            }
         }
+
     }
+
 }

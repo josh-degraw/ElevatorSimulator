@@ -10,7 +10,7 @@
 
              mc:Ignorable="d"
              x:Name="elevator">
-    <Border BorderThickness="2" BorderBrush="Black" Background="AliceBlue">
+    <Border BorderThickness="1" BorderBrush="Black" Background="AliceBlue">
         <StackPanel>
             <!--<Border BorderBrush="Black" Margin="5" BorderThickness="1" Background="#FF275D38">
                 <ItemsControl BorderThickness="0"

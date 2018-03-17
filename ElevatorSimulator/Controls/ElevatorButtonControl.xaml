@@ -25,16 +25,6 @@
                                 <Setter Property="Background" Value="#FFF17D7D">
                                 </Setter>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ButtonType}">
-                                <DataTrigger.Value>
-                                    <enums:ButtonType>RequestUp</enums:ButtonType>
-                                </DataTrigger.Value>
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <fa:FontAwesome Icon="ArrowUp"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
                         </Style.Triggers>
 
                     </Style>

@@ -6,12 +6,15 @@ using ElevatorApp.Util;
 
 namespace ElevatorApp
 {
-
+    /// <summary>
+    /// Represents a 
+    /// </summary>
     public class SimulatorViewModel : ModelBase
     {
-        public ElevatorSimulator Simulator { get; } = new ElevatorSimulator();
-
-        public ElevatorMasterController Controller => Simulator.Controller;
+        /// <summary>
+        /// The root controller for the simulator
+        /// </summary>
+        public ElevatorMasterController Controller { get; } = new ElevatorMasterController();
 
         public ILogger Logger => Util.Logger.Instance;
 

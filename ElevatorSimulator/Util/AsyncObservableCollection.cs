@@ -44,7 +44,7 @@ namespace ElevatorApp.Util
         {
             this.AddDistinct(next);
         }
-
+        
         /// <summary>
         /// Tries to remove the first item from the collection, mimicking the behavior of <see cref="ConcurrentQueue{T}"/>
         /// </summary>
@@ -66,6 +66,24 @@ namespace ElevatorApp.Util
             catch
             {
                 res = default;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Tries to remove the given item from the collection
+        /// </summary>
+        /// <param name="item">The item to be removed</param>
+        /// <returns>True if it was successfully removed, otherwise false</returns>
+        public bool TryRemove(T item)
+        {
+            try
+            {
+                this.Remove(item);
+                return true;
+            }
+            catch
+            {
                 return false;
             }
         }
@@ -545,7 +563,7 @@ namespace ElevatorApp.Util
         public void CopyTo(T[] array, int arrayIndex)
         {
             // don't need to worry about re-entry/other iterators here since we're at the bottom of the stack
-            _threadView.Value.getSnapshot().CopyTo(array, arrayIndex);
+            ((ICollection)_threadView.Value.getSnapshot()).CopyTo(array, arrayIndex);
         }
 
         /// <inheritdoc />
@@ -757,7 +775,12 @@ namespace ElevatorApp.Util
         bool IList.Contains(object value) { return Contains((T)value); }
         object ICollection.SyncRoot => throw new NotSupportedException("AsyncObservableCollection doesn't need external synchronization");
         bool ICollection.IsSynchronized => false;
-        void ICollection.CopyTo(Array array, int index) { CopyTo((T[])array, index); }
+
+        void ICollection.CopyTo(Array array, int index)
+        {
+            // don't need to worry about re-entry/other iterators here since we're at the bottom of the stack
+            ((ICollection)_threadView.Value.getSnapshot()).CopyTo(array, index);
+        }
         int IList.IndexOf(object value) { return IndexOf((T)value); }
         #endregion
 
@@ -943,7 +966,7 @@ namespace ElevatorApp.Util
             }
         }
     }
-
- 
     #endregion
+
+    
 }

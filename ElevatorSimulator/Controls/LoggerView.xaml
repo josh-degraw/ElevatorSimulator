@@ -7,35 +7,50 @@
              xmlns:util="clr-namespace:ElevatorApp.Util"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
+             MinWidth="450"  
+             MinHeight="100"
+             x:Name="loggerView"
              DataContext="{x:Static util:Logger.Instance}">
-    <StackPanel>
-        <TreeView ItemsSource="{Binding Events}" Height="196" MinWidth="450" ScrollViewer.ScrollChanged="Scroll_Down">
-            <!--<TreeView.ItemTemplate>
-                <DataTemplate DataType="{x:Type util:LogEvent}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250"/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Label Content="{Binding Name}"/>
-                        <TreeViewItem Grid.Column="2" AllowDrop="True">
-                            <TreeView ItemsSource="{Binding Parameters}">
-                                <TreeView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel/>
-                                    </ItemsPanelTemplate>
-                                </TreeView.ItemsPanel>
-                            </TreeView>
-                        </TreeViewItem>
-                    </Grid>
-                </DataTemplate>
-            </TreeView.ItemTemplate>-->
-        </TreeView>
+    <Grid Height="{Binding ElementName=loggerView, Path=Height}" Margin="0,0,0,10" >
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="0" x:Name="_scrollViewer" 
+                  ItemsSource="{Binding Events}" 
+                  
+                  VerticalAlignment="Stretch" 
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                  Margin="0,0,0,5"
+                  
+                  ScrollViewer.ScrollChanged="ScrollViewer_ScrollChanged" >
+            <!--<ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type util:Event}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="250"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="{Binding Name}"/>
+                            <TreeViewItem Grid.Column="2" AllowDrop="True">
+                                <TreeView ItemsSource="{Binding Parameters}">
+                                    <TreeView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel/>
+                                        </ItemsPanelTemplate>
+                                    </TreeView.ItemsPanel>
+                                </TreeView>
+                            </TreeViewItem>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+        </ListView>
 
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="35 5">
-            <Button Padding="15,4" Margin="0,0,15,0" Click="Button_Click">Clear</Button>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" >
+            <Button Padding="15,4" Margin="25,0,15,0" Click="Button_Click">Clear</Button>
             <Button Padding="15,4" IsEnabled="False">Save</Button>
         </StackPanel>
-    </StackPanel>
+    </Grid>
 </UserControl>

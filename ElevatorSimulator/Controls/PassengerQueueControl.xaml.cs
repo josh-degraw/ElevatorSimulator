@@ -30,9 +30,10 @@ namespace ElevatorApp.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button b && b.DataContext is FloorButton fb)
+            if (sender is Button b && b.DataContext is RequestButton fb)
             {
-                this.Floor?.QueuePassenger(fb.FloorNumber);
+                Floor?.QueuePassenger(fb.DestinationFloor);
+                fb.Push();
             }
         }
 

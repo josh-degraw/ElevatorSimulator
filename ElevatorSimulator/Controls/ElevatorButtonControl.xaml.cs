@@ -9,9 +9,6 @@ namespace ElevatorApp.Controls
     /// </summary>
     public partial class ElevatorButtonControl : Button
     {
-        //public ICommand Push { get; private set; }
-
-
         public IButton Button
         {
             get

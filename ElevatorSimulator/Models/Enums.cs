@@ -51,7 +51,7 @@
         /// Opens the <see cref="Door"/>
         /// </summary>
         Open,
-        
+
         /// <summary>
         /// Closes the <see cref="Door"/>
         /// </summary>
@@ -78,6 +78,11 @@
     /// </summary>
     public enum Direction
     {
+        /// <summary>
+        /// No movement.
+        /// </summary>
+        None = 0,
+
         /// <summary>
         /// Upwards
         /// </summary>
@@ -129,7 +134,7 @@
         /// The <see cref="Elevator"/> has just left a <see cref="Floor"/>
         /// </summary>
         Departed = 2,
-        
+
         /// <summary>
         /// The <see cref="Elevator"/> has just started slowing down to approach a <see cref="Floor"/>.
         /// </summary>

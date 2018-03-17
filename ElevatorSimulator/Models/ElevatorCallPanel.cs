@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Interfaces;
+using ElevatorApp.Util;
 
 namespace ElevatorApp.Models
 {
@@ -10,15 +12,8 @@ namespace ElevatorApp.Models
     /// </summary>
     public class ElevatorCallPanel : ButtonPanelBase, ISubcriber<ElevatorMasterController>, ISubcriber<(ElevatorMasterController, Elevator)>
     {
-        /// <summary>
-        /// Call an <see cref="Elevator"/> with the intention of going up
-        /// </summary>
-        public RequestButton GoingUpButton { get; private set; }
-
-        /// <summary>
-        /// Call an <see cref="Elevator"/> with the intention of going down
-        /// </summary>
-        public RequestButton GoingDownButton { get; private set; }
+        ///<inheritdoc/>
+        protected override AsyncObservableCollection<FloorButton> _floorButtons { get; }
 
         /// <summary>
         /// The number of the <see cref="Floor"/> this <see cref="ElevatorCallPanel"/> is on
@@ -32,36 +27,45 @@ namespace ElevatorApp.Models
         public ElevatorCallPanel(int floorNum)
         {
             this.FloorNumber = floorNum;
-            this.GoingUpButton = new RequestButton(floorNum);
-            this.GoingDownButton = new RequestButton(floorNum);
+            this._floorButtons = new AsyncObservableCollection<FloorButton>
+            {
+                new RequestButton(floorNum, 4),
+                new RequestButton(floorNum, 3),
+                new RequestButton(floorNum, 2),
+                new RequestButton(floorNum, 1),
+            };
         }
 
-        /// <summary>
-        /// Create a new <see cref="ElevatorCallPanel"/>
-        /// </summary>
-        public ElevatorCallPanel()
-        {
-        }
+        ///// <summary>
+        ///// Create a new <see cref="ElevatorCallPanel"/>
+        ///// </summary>
+        //public ElevatorCallPanel()
+        //{
+        //}
 
         private bool _subscribed;
+
         bool ISubcriber<ElevatorMasterController>.Subscribed => _subscribed;
 
-        /// <inheritdoc />
-        public Task Subscribe(ElevatorMasterController masterController)
+
+        /// <summary>
+        /// Perform the necessary steps to subscribe to the target.
+        /// </summary>
+        /// <param name="masterController">The item this object will be subscribed to</param>
+        public override async Task Subscribe(ElevatorMasterController masterController)
         {
             if (_subscribed)
-                return Task.CompletedTask;
+                return;
 
-            this.GoingUpButton.OnPushed += async (sender, e) =>
-            {
-                await masterController.Dispatch(e).ConfigureAwait(false);
-            };
+            await base.Subscribe(masterController);
+            //Obsolete
+            //this.GoingUpButton.OnPushed += async (sender, e) =>
+            //{
+            //    await masterController.Dispatch(e).ConfigureAwait(false);
+            //};
 
             this._subscribed = true;
-
-            return Task.CompletedTask;
         }
-
 
         /// <summary>
         /// Perform the necessary steps to subscribe to the target.
@@ -69,37 +73,21 @@ namespace ElevatorApp.Models
         /// <param name="parent">The item this object will be subscribed to</param>
         public override async Task Subscribe((ElevatorMasterController, Elevator) parent)
         {
-            var thisBtn = this.FloorButtons.FirstOrDefault(b => b.FloorNumber == this.FloorNumber);
+            var thisBtn = this.FloorButtons.FirstOrDefault(b =>
+            {
+                if (b is RequestButton r)
+                    return r.DestinationFloor == this.FloorNumber;
+
+                return b.FloorNumber == this.FloorNumber;
+            });
 
             // If the button is for this floor, just remove it
             if (thisBtn != null)
             {
-                this.FloorButtons.Remove(thisBtn);
+                this._floorButtons.Remove(thisBtn);
             }
 
             await base.Subscribe(parent);
-
         }
-
-        /// <summary>
-        /// Create an <see cref="ElevatorCallPanel"/> on the top <see cref="Floor"/>
-        /// </summary>
-        /// <param name="floorNum"></param>
-        /// <returns>
-        /// An <see cref="ElevatorCallPanel"/> with no <see cref="GoingUpButton"/>
-        /// </returns>
-        public static ElevatorCallPanel TopFloorPanel(int floorNum) => new ElevatorCallPanel(floorNum) { GoingUpButton = null };
-
-        /// <summary>
-        /// Create an <see cref="ElevatorCallPanel"/> on the bottom <see cref="Floor"/>
-        /// </summary>
-        /// <param name="floorNum"></param>
-        /// <returns>
-        /// An <see cref="ElevatorCallPanel"/> with no <see cref="GoingDownButton"/>
-        /// </returns>
-        public static ElevatorCallPanel BottomFloorPanel(int floorNum) => new ElevatorCallPanel(floorNum) { GoingDownButton = null };
-
     }
-
-
 }

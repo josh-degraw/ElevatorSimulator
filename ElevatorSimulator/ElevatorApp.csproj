@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\ButtonPanelBase.cs" />
+    <Compile Include="Models\ElevatorMovementEventArgs.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Interfaces\IButton.cs" />
     <Compile Include="Models\Interfaces\ISubscriber.cs" />
@@ -122,7 +123,6 @@
     <Compile Include="Models\Buttons\RequestButton.cs" />
     <Compile Include="Models\Door.cs" />
     <Compile Include="Models\Elevator.cs" />
-    <Compile Include="Models\ElevatorCall.cs" />
     <Compile Include="Models\ElevatorCallPanel.cs" />
     <Compile Include="Models\ElevatorMasterController.cs" />
     <Compile Include="Models\ElevatorSettings.cs" />
@@ -224,7 +224,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="docs\Documentation.chm" />
     <None Include="UML_Diagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -235,6 +234,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit">
+      <Version>3.3.0</Version>
+    </PackageReference>
     <PackageReference Include="FontAwesome.WPF">
       <Version>4.7.0.9</Version>
     </PackageReference>
@@ -268,6 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Buzzer.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="docs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
