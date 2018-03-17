@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
@@ -247,10 +248,17 @@ namespace ElevatorApp.Models
 
         IEnumerable<Passenger> getPassengersToMove(Elevator elevator)
         {
-            var nextDest = this.WaitingPassengers.Min(p => p.Path.destination - elevator.NextFloor);
-            if (nextDest != 0)
+            try
             {
-                return this._getPassengersToMove(nextDest, elevator);
+                int nextDest = this._waitingPassengers.Min(p => p.Path.destination - elevator.NextFloor);
+                if (nextDest != 0)
+                {
+                    return this._getPassengersToMove(nextDest, elevator);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
             }
             return Enumerable.Empty<Passenger>();
         }
@@ -261,16 +269,14 @@ namespace ElevatorApp.Models
             {
                 // If the elevator is already going up, only add passengers who are going up
                 case ElevatorDirection.GoingUp:
-                    return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= destination);
+                    return this._waitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= destination);
 
                 // If the elevator is already going down, only add passengers who are going down
                 case ElevatorDirection.GoingDown:
-                    return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= destination);
-
-                case ElevatorDirection.None:
-                    return this.WaitingPassengers;
+                    return this._waitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= destination);
+                    
                 default:
-                    return Enumerable.Empty<Passenger>();
+                    return this._waitingPassengers;
             }
         }
 

@@ -12,13 +12,14 @@ namespace ElevatorApp.Models
     /// </summary>
     public class RequestButton : FloorButton
     {
-        /// <summary>
-        /// The floor that this button requests
-        /// </summary>
+        /// <summary> The number of the <see cref="Floor"/> that this button tells the <see cref="Elevator"/> to go to.</summary>
         public int DestinationFloor { get; }
-        
+
+        ///<inheritdoc/>
+        public override string Label => DestinationFloor.ToString();
+
         /// <summary>
-        /// The number of the floor that this Button is on
+        /// The number of the <see cref="Floor"/>  that this Button is on. Here, it functions as the Source floor.
         /// </summary>
         public override int FloorNumber => base.FloorNumber;
 

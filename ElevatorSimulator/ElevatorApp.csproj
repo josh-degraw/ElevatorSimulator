@@ -120,7 +120,6 @@
     <Compile Include="Models\Buttons\RequestButton.cs" />
     <Compile Include="Models\Door.cs" />
     <Compile Include="Models\Elevator.cs" />
-    <Compile Include="Models\ElevatorCall.cs" />
     <Compile Include="Models\ElevatorCallPanel.cs" />
     <Compile Include="Models\ElevatorMasterController.cs" />
     <Compile Include="Models\ElevatorSettings.cs" />
@@ -218,7 +217,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="docs\Documentation.chm" />
     <None Include="UML_Diagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -256,6 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\elevatorDing.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="docs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

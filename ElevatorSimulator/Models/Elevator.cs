@@ -432,12 +432,22 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
-        /// Adds an <see cref="IElevatorCall"/> to this <see cref="Elevator"/>, and, if the <see cref="Elevator"/> is currently idle, starts up the process
+        /// Adds a floor number to this <see cref="Elevator"/>, and, if the <see cref="Elevator"/> is currently idle, starts up the process.
+        /// <para>
+        /// If the <see cref="Elevator"/> is already at the <see cref="Floor"/> that has been requested, trigger the <see cref="Arrived"/> event and not process any further
+        /// </para>
         /// </summary>
         /// <param name="destination"></param>
         /// <returns></returns>
         internal async Task Dispatch(int destination)
         {
+            // If the elevator is already at the floor that has been requested, trigger the Arrived event and stop worrying about stuff for now.
+            if (this.CurrentFloor == destination)
+            {
+                this.Arrived?.Invoke(this, new ElevatorMovementEventArgs(destination, Enums.Direction.Down));
+                return;
+            }
+
             _floorsToStopAt.AddDistinct(destination);
 
             if (this.Direction == ElevatorDirection.None)
