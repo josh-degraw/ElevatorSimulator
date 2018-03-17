@@ -30,5 +30,10 @@ namespace ElevatorApp.Controls
         {
             Logger.Instance.ClearItems();
         }
+
+        private void Scroll_Down(object sender, RoutedEventArgs e) {
+            var scrollBar = (ScrollViewer)e.OriginalSource;
+            scrollBar.ScrollToBottom();
+        }
     }
 }
