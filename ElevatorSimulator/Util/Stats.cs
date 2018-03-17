@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -13,12 +12,14 @@ namespace ElevatorApp.Util
     /// </summary>
     class Stats
     {
-        private ICollection<Duration> passengerWaitTimes;
+        private readonly ICollection<Duration> passengerWaitTimes;
         public static Stats Instance { get; } = new Stats();
+
         private Stats()
         {
             passengerWaitTimes = new Collection<Duration>();
         }
+
         /// <summary>
         /// This function takes a Duration value and adds it to the collection of passenger wait times. It should be used whenever a passenger exits an elevator
         /// </summary>
@@ -27,6 +28,7 @@ namespace ElevatorApp.Util
         {
             passengerWaitTimes.Add(time);
         }
+
         /// <summary>
         /// This function returns a Duration representing the average wait time for passengers in the system.
         /// </summary>
@@ -47,6 +49,7 @@ namespace ElevatorApp.Util
             else
                 return avg;
         }
+
         /// <summary>
         /// This returns the number of passengers that have passed through the system and completed their trip
         /// </summary>
@@ -55,7 +58,5 @@ namespace ElevatorApp.Util
         {
             return passengerWaitTimes.Count;
         }
-
     }
-  
 }
