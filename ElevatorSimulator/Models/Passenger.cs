@@ -114,7 +114,14 @@ namespace ElevatorApp.Models
                 obj.Add(("Time Spent Waiting:", passenger.TimeWaiting.ToString(duration_format, null)));
 
             if (passenger.Exited != default)
+            {
                 obj.Add(("Time Spent in Elevator:", passenger.TimeSpentInElevator.ToString(duration_format, null)));
+                //This is where I have the passenger add its timings to the stats class for now... certainly a temporary thing
+                Stats.Instance.AddPassengerTime(passenger.TimeSpentInElevator + passenger.TimeWaiting);
+                //I also have it print out
+                obj.Add(("Current Average Wait Time:",Stats.Instance.GetAverageWaitTime().ToString(duration_format,null)));
+                //End this section
+            }
 
             return obj.ToArray();
         }

@@ -31,7 +31,7 @@
                 </TextBlock.Style>
             </TextBlock>
         </StackPanel>
-        <Expander IsExpanded="{Binding ElementName=me, Path=ShowAddButtons}" MouseUp="Expander_MouseUp" Header="Add Passenger">
+        <Expander IsExpanded="False" MouseUp="Expander_MouseUp" Header="Add Passenger">
 
             <StackPanel>
                 <Label>Which floor?</Label>

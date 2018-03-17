@@ -54,5 +54,11 @@ namespace ElevatorApp
         {
 
         }
+        private void Stats_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Average Passenger Wait Time in Seconds: " + Stats.Instance.GetAverageWaitTime().TotalSeconds);
+            Stats.Instance.GetAverageWaitTime();
+            Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.GetAverageWaitTime());
+        }
     }
 }
