@@ -77,6 +77,10 @@ namespace ElevatorApp.Models
 
         }
 
+        /// <summary>
+        /// String representation of how long the <see cref="Passenger"/> has been waiting
+        /// </summary>
+        /// <returns></returns>
         public string GetWaitingString()
         {
             if (WaitEnd == default)
@@ -111,15 +115,15 @@ namespace ElevatorApp.Models
             };
 
             if (passenger.WaitEnd != default)
-                obj.Add(("Time Spent Waiting:", passenger.TimeWaiting.ToString(duration_format, null)));
+                obj.Add(("Time Spent Waiting", passenger.TimeWaiting.ToString(duration_format, null)));
 
             if (passenger.Exited != default)
             {
-                obj.Add(("Time Spent in Elevator:", passenger.TimeSpentInElevator.ToString(duration_format, null)));
+                obj.Add(("Time Spent in Elevator", passenger.TimeSpentInElevator.ToString(duration_format, null)));
                 //This is where I have the passenger add its timings to the stats class for now... certainly a temporary thing
                 Stats.Instance.AddPassengerTime(passenger.TimeSpentInElevator + passenger.TimeWaiting);
                 //I also have it print out
-                obj.Add(("Current Average Wait Time:",Stats.Instance.GetAverageWaitTime().ToString(duration_format,null)));
+                obj.Add(("Current Average Wait Time",Stats.Instance.GetAverageWaitTime().ToString(duration_format,null)));
                 //End this section
             }
 

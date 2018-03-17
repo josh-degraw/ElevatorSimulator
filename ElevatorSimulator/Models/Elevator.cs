@@ -262,7 +262,6 @@ namespace ElevatorApp.Models
         public static System.Windows.Duration FloorMovementSpeed => new System.Windows.Duration(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
         #endregion
 
-
         #region Initialization / Finalizaton
         /// <summary>
         /// Instantiates a new <see cref="Elevator"/>
@@ -347,15 +346,32 @@ namespace ElevatorApp.Models
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args">The floor that the elevator is arriving at</param>
-        private async void ElevatorArrived(object sender, ElevatorMovementEventArgs args)
+        private void ElevatorArrived(object sender, ElevatorMovementEventArgs args)
         {
-            this.State = ElevatorState.Arrived;
-            LogEvent("Elevator Arrived", ("At Floor", args.DestinationFloor));
-            IEnumerable<Passenger> leaving = this.Passengers.Where(p => p.Path.destination == args.DestinationFloor);
-            foreach (Passenger passenger in leaving)
+            try
             {
-                await this.RemovePassenger(passenger);
+                this.State = ElevatorState.Arrived;
+                LogEvent("Elevator Arrived", ("At Floor", args.DestinationFloor));
+
+                IEnumerable<Passenger> leaving = this.Passengers.Where(p => p.Path.destination == args.DestinationFloor);
+
+                foreach (Passenger passenger in leaving)
+                {
+                    try
+                    {
+                        this.RemovePassenger(passenger).GetAwaiter().GetResult();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
         }
 
 
@@ -410,11 +426,11 @@ namespace ElevatorApp.Models
             Task subscribeButtonPanel = this.ButtonPanel.Subscribe((controller, this));
             Task subscribeDoor = this.Door.Subscribe(this);
 
-            this.Door.Closed += async (e, args) =>
-            {
-                if (this.FloorsToStopAt.Count > 0)
-                    await this.Move();
-            };
+            //this.Door.Closed += async (e, args) =>
+            //{
+            //    if (this.FloorsToStopAt.Count > 0)
+            //        await this.Move();
+            //};
 
             await Task.WhenAll(subscribeButtonPanel, subscribeDoor).ConfigureAwait(false);
             this.Subscribed = true;
@@ -452,12 +468,14 @@ namespace ElevatorApp.Models
             if (!_floorsToStopAt.Contains(destination))
                 _floorsToStopAt.AddDistinct(destination);
 
-            if (this.Direction == ElevatorDirection.None)
+            if (this.Direction == ElevatorDirection.None || (!_moving && this.State == ElevatorState.Arrived))
             {
                 // Starts the movement in a seperate thread with Task.Run
                 await Task.Run(this.Move).ConfigureAwait(false);
             }
         }
+
+        private bool _moving = false;
 
         /// <summary>
         /// Handles the logic for the movement of the <see cref="Elevator"/>.
@@ -478,8 +496,10 @@ namespace ElevatorApp.Models
                     // If so, if there are any floors requested, go to the nearest one
                 }
 
-                while (this._floorsToStopAt.TryDequeue(out int destination))
+                while (this._floorsToStopAt.Any())
                 {
+                    _moving = true;
+                    int destination = FloorsToStopAt.MinBy(a => Math.Abs(a - this.CurrentFloor));
                     this.Direction = assignDirection(destination);
 
                     var call = new ElevatorMovementEventArgs(destination, (Direction)this.Direction);
@@ -510,8 +530,9 @@ namespace ElevatorApp.Models
                     }
 
                     await _arriveAtFloor(destination, call);
+                    _floorsToStopAt.Remove(destination);
                 }
-
+                _moving = false;
                 this.Direction = ElevatorDirection.None;
                 this.State = ElevatorState.Idle;
             }

@@ -112,29 +112,31 @@
         </Ribbon>
         <Grid DockPanel.Dock="Top" VerticalAlignment="Stretch"  Background="#FF87A590"  >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="360*" />
-                <ColumnDefinition Width="387*" />
-                <ColumnDefinition Width="335*" />
+                <ColumnDefinition Width="763*" />
+                <ColumnDefinition Width="526*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="3" />
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
 
 
             <ListView ItemsSource="{Binding Controller.Elevators}" 
                       Grid.Column="0" 
                       Grid.Row="0" 
-                      Grid.ColumnSpan="3" 
-                      ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,10,405.4,6.8" BorderBrush="{x:Null}" BorderThickness="4" ClipToBounds="True" Background="#FFD4DDD7">
+                      FontSize="20"
+                      MinHeight="600"
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Center"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="10" BorderBrush="{x:Null}" BorderThickness="4" ClipToBounds="True" Background="#FFD4DDD7">
                 <ListView.ItemTemplate>
                     <DataTemplate >
                         <StackPanel Mouse.MouseUp="ListView_MouseDown" Tag="{Binding ElevatorNumber}">
                             <StackPanel.Style>
                                 <Style TargetType="StackPanel">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding }"/>
+                                        <DataTrigger Binding="{Binding}"/>
                                     </Style.Triggers>
                                 </Style>
                             </StackPanel.Style>
@@ -146,20 +148,23 @@
 
             <GridSplitter Grid.Column="0" 
                           Grid.Row="1" 
-                          Grid.ColumnSpan="3" 
-                          HorizontalAlignment="Stretch" 
-                          Height="3"/>
+                          Grid.ColumnSpan="2" 
+                          HorizontalAlignment="Stretch"/>
 
             <controls:LoggerView 
                 Grid.Column="0" 
                 Grid.Row="2"
                 Background="#FFD4DDD7"
-                Grid.ColumnSpan="3" 
+                Grid.ColumnSpan="2" 
+                
                 VerticalAlignment="Stretch" 
                 Loaded="LoggerView_Loaded" />
 
-            <ScrollViewer Grid.Row="0" Grid.Column="2" Margin="5.2,0,0.4,6.8">
-                <controls:ElevatorShaftControl DataContext="{Binding}" 
+            <ScrollViewer Grid.Row="0" Grid.Column="1" Margin="5,0,0,7">
+                <controls:ElevatorShaftControl DataContext="{Binding}" FontSize="20" 
+                                               Padding="20"
+                                               HorizontalAlignment="Left"
+                                               HorizontalContentAlignment="Left"
                                                Background="#FFD4DDD7" BorderBrush="#FF6F937A" BorderThickness="2" ClipToBounds="True"/>
             </ScrollViewer>
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
@@ -213,17 +214,41 @@ namespace ElevatorApp.Models
 
                 elevator.ButtonPanel.CloseDoorButton.OnPushed += async (a, b) =>
                 {
-                    if (elevator.Direction == ElevatorDirection.None)
-                        await this.RequestClose().ConfigureAwait(false);
+                    try
+                    {
+                        if (elevator.Direction == ElevatorDirection.None)
+                            await this.RequestClose();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Fail(e.Message);
+                    }
                 };
 
                 elevator.ButtonPanel.OpenDoorButton.OnPushed += async (a, b) =>
                 {
-                    if (elevator.Direction == ElevatorDirection.None)
-                        await this.RequestOpen().ConfigureAwait(false);
+                    try
+                    {
+                        if (elevator.Direction == ElevatorDirection.None)
+                            await this.RequestOpen();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Fail(e.Message);
+                    }
                 };
 
-                elevator.Arrived += async (e, args) => await this.RequestOpen().ConfigureAwait(false);
+                elevator.Arrived += async (e, args) =>
+                {
+                    try
+                    {
+                        await this.RequestOpen();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.Fail(ex.Message);
+                    }
+                };
 
                 this.Subscribed = true;
 

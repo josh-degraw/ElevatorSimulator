@@ -21,6 +21,8 @@ namespace ElevatorApp.Models
 
         private bool _subscribed = false, _controllerSubscribed = false, _elevatorAvailable = false;
 
+        private readonly AsyncObservableCollection<Passenger> _waitingPassengers = new AsyncObservableCollection<Passenger>();
+
         #endregion
 
         #region Properties
@@ -43,8 +45,6 @@ namespace ElevatorApp.Models
             get => _elevatorAvailable;
             set => SetProperty(ref _elevatorAvailable, value);
         }
-
-        private readonly AsyncObservableCollection<Passenger> _waitingPassengers = new AsyncObservableCollection<Passenger>();
 
         public IReadOnlyCollection<Passenger> WaitingPassengers => _waitingPassengers;
 
@@ -140,14 +140,21 @@ namespace ElevatorApp.Models
                     // If the elevator is here, add the passengers and get going
                     if (this.ElevatorAvailable)
                     {
-                        if (elevator.Door.DoorState == DoorState.Opened)
+                        try
                         {
-                            IEnumerable<Passenger> departing = getPassengersToMove(elevator);
-                            await _addPassengersToElevator(departing, elevator);
+                            if (elevator.Door.DoorState == DoorState.Opened)
+                            {
+                                IEnumerable<Passenger> departing = getPassengersToMove(elevator);
+                                await _addPassengersToElevator(departing, elevator);
+                            }
+                            else
+                            {
+                                await elevator.Door.RequestOpen();
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            await elevator.Door.RequestOpen();
+                            Debug.WriteLine(ex);
                         }
                     }
                 }
@@ -157,7 +164,14 @@ namespace ElevatorApp.Models
             {
                 if (elevator.CurrentFloor == this.FloorNumber)
                 {
-                    await _addPassengersToElevator(elevator).ConfigureAwait(false);
+                    try
+                    {
+                        await _addPassengersToElevator(elevator);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
+                    }
                 }
             }
 

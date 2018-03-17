@@ -12,7 +12,7 @@
     <UserControl.Resources>
     </UserControl.Resources>
     <StackPanel Orientation="Horizontal">
-        <ItemsControl x:Name="shaftViewer" ItemsSource="{Binding Elevators}" Width="75">
+        <!--<ItemsControl x:Name="shaftViewer" ItemsSource="{Binding Elevators}" Width="75">
             <ItemsControl.ItemTemplate >
                 <DataTemplate>
                     <Grid DataContext="{Binding}">
@@ -50,7 +50,7 @@
                     <StackPanel Width="158" Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
-        </ItemsControl>
+        </ItemsControl>-->
         <StackPanel>
             <ItemsControl ItemsSource="{Binding Floors}">
                 <ItemsControl.ItemTemplate>

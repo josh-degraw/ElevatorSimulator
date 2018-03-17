@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
@@ -40,16 +41,28 @@ namespace ElevatorApp.Models
         public override async Task Subscribe((ElevatorMasterController, Elevator) parent)
         {
             var (controller, elevator) = parent;
-         
+
             // This should be handled by the Call panels
             this.OnPushed += async (a, floor) =>
             {
-                // If the elevator's already here, open the door
-                if (elevator.CurrentFloor == this.FloorNumber)
-                    await elevator.Door.RequestOpen();
+                try
+                {
+                    // If the elevator's already here, open the door
+                    if (elevator.CurrentFloor == this.FloorNumber && elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle)
+                    {
+                        if (elevator.Door.DoorState != DoorState.Opened)
+                        {
+                            await elevator.Door.RequestOpen();
+                        }
+                    }
 
-                Logger.LogEvent($"Pushed floor button {this.FloorNumber}");
-                ((IObserver<int>)controller).OnNext(this.FloorNumber);
+                    Logger.LogEvent($"Pushed floor button {this.FloorNumber}");
+                    ((IObserver<int>)controller).OnNext(this.FloorNumber);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                }
             };
 
             this.Subscribed = true;

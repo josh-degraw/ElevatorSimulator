@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Media;
 using System.Reflection;
@@ -182,7 +183,7 @@ namespace ElevatorApp.Models
 
             // First check if any are not moving
             Elevator closest = Elevators
-                .Where(e => e.Direction == ElevatorDirection.None)
+                //.Where(e => e.Direction == ElevatorDirection.None)
                 .MinByOrDefault(distanceFromRequestedFloor); // If any were found idle, the closest one to the requested floor is dispatched
 
             if (closest == null)
@@ -213,8 +214,18 @@ namespace ElevatorApp.Models
 
             this.OnElevatorRequested += async (sender, destination) =>
              {
-                 this._floorsRequested.AddDistinct(destination);
-                 await this.Dispatch(destination).ConfigureAwait(false);
+                 try
+                 {
+                     if (!this._floorsRequested.Contains(destination))
+                     {
+                         this._floorsRequested.AddDistinct(destination);
+                         await this.Dispatch(destination).ConfigureAwait(false);
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     Debug.WriteLine(ex);
+                 }
              };
 
             await Task.WhenAll(this.Elevators.Select(SubscribeElevator).Concat(this.Floors.Select(floor => floor.CallPanel.Subscribe(this))));
@@ -232,7 +243,15 @@ namespace ElevatorApp.Models
 
             elevator.Arrived += async (a, b) =>
             {
-                await this.ElevatorArrived(elevator, b.Direction);
+                try
+                {
+
+                    await this.ElevatorArrived(elevator, b.Direction);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                }
             };
 
             Parallel.ForEach(elevator.ButtonPanel.FloorButtons, b =>

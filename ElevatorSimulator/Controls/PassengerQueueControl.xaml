@@ -17,14 +17,14 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="{Binding FloorNumber}" VerticalContentAlignment="Top" FontSize="30" Margin="0,14,0,0"/>
-            <StackPanel Grid.Column="1">
-                <StackPanel DataContext="{Binding}" Orientation="Horizontal">
-                    <Label>Passengers Waiting:</Label>
-                    <Label Content="{Binding WaitingPassengers.Count}"/>
-
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
+            <Label Grid.Column="0" 
+                   Background="White" 
+                   Content="{Binding FloorNumber}" 
+                   VerticalContentAlignment="Top" FontSize="30" Margin="10,14,10,10"
+                   Padding="15"
+                   />
+            <StackPanel Grid.Column="1" Margin="5">
+                  <StackPanel Orientation="Horizontal">
                     <Label>Elevator Available:</Label>
                     <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="ExtraBold">
                         <TextBlock.Style>
@@ -41,8 +41,21 @@
                         </TextBlock.Style>
                     </TextBlock>
                 </StackPanel>
+                
+                <StackPanel DataContext="{Binding}" Orientation="Horizontal">
+                    <Label>Waiting 👤 x:</Label>
+                    <Label Content="{Binding WaitingPassengers.Count}"/>
+
+                </StackPanel>
+
             </StackPanel>
-            <Expander IsExpanded="False" Grid.Column="2" MouseUp="Expander_MouseUp" Header="Add Passenger" ExpandDirection="Down" >
+            <Expander 
+                IsExpanded="False" 
+                Grid.Column="2" 
+                MouseUp="Expander_MouseUp" 
+                Header="Add Passenger" 
+                Margin="5"
+                ExpandDirection="Down" >
 
                 <StackPanel>
                     <Label >Which floor?</Label>
