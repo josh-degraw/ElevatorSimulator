@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="eac8d505-fbfe-4631-af38-32f8473e6d49" Title="ElevatorApp" Url="html/N_ElevatorApp.htm">
-    <HelpTOCNode Id="157d6f9f-ff58-468b-b7f0-e1a61f03e0dd" Title="App Class" Url="html/T_ElevatorApp_App.htm">
+  <HelpTOCNode Id="d2fd5b3b-0887-4da5-9ddf-e5265d98ff01" Title="ElevatorApp" Url="html/N_ElevatorApp.htm">
+    <HelpTOCNode Id="8f39bf40-30cf-4069-8fd1-4f7f2a575ace" Title="App Class" Url="html/T_ElevatorApp_App.htm">
       <HelpTOCNode Title="App Constructor " Url="html/M_ElevatorApp_App__ctor.htm" />
       <HelpTOCNode Title="App Properties" Url="html/Properties_T_ElevatorApp_App.htm" />
-      <HelpTOCNode Id="77dd9726-6d3d-44ab-84f2-b73814b7b993" Title="App Methods" Url="html/Methods_T_ElevatorApp_App.htm">
+      <HelpTOCNode Id="4f6a77b9-c83b-40d0-bac0-ecc6391d4c34" Title="App Methods" Url="html/Methods_T_ElevatorApp_App.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_App_InitializeComponent.htm" />
         <HelpTOCNode Title="Main Method " Url="html/M_ElevatorApp_App_Main.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="App Events" Url="html/Events_T_ElevatorApp_App.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="504d79b9-ea62-44ed-845e-829113a2e300" Title="MainWindow Class" Url="html/T_ElevatorApp_MainWindow.htm">
+    <HelpTOCNode Id="5b6c84da-636f-437e-afd7-205e2472a129" Title="MainWindow Class" Url="html/T_ElevatorApp_MainWindow.htm">
       <HelpTOCNode Title="MainWindow Constructor " Url="html/M_ElevatorApp_MainWindow__ctor.htm" />
-      <HelpTOCNode Id="7271203a-2490-4725-b2e3-8873050ae8ed" Title="MainWindow Properties" Url="html/Properties_T_ElevatorApp_MainWindow.htm">
+      <HelpTOCNode Id="22c45c47-9b7c-4408-affe-4a5bdaf07a04" Title="MainWindow Properties" Url="html/Properties_T_ElevatorApp_MainWindow.htm">
         <HelpTOCNode Title="ViewModel Property " Url="html/P_ElevatorApp_MainWindow_ViewModel.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e92fd500-b38d-4e82-b1ae-60bdc8b74dbc" Title="MainWindow Methods" Url="html/Methods_T_ElevatorApp_MainWindow.htm">
+      <HelpTOCNode Id="6935736c-f682-4c26-bf94-0bd5d3d98693" Title="MainWindow Methods" Url="html/Methods_T_ElevatorApp_MainWindow.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_MainWindow_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="MainWindow Events" Url="html/Events_T_ElevatorApp_MainWindow.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="1f5cd6da-d41b-4f72-8cfc-6b56ee56d624" Title="SimulatorViewModel Class" Url="html/T_ElevatorApp_SimulatorViewModel.htm">
+    <HelpTOCNode Id="5f7885ee-38cd-404b-b5e6-725857b1f3b8" Title="SimulatorViewModel Class" Url="html/T_ElevatorApp_SimulatorViewModel.htm">
       <HelpTOCNode Title="SimulatorViewModel Constructor " Url="html/M_ElevatorApp_SimulatorViewModel__ctor.htm" />
-      <HelpTOCNode Id="fabc133a-24b9-45a5-8693-7bd00ad98f75" Title="SimulatorViewModel Properties" Url="html/Properties_T_ElevatorApp_SimulatorViewModel.htm">
+      <HelpTOCNode Id="43127317-2996-4b67-95da-aa9a4058ae3a" Title="SimulatorViewModel Properties" Url="html/Properties_T_ElevatorApp_SimulatorViewModel.htm">
         <HelpTOCNode Title="Controller Property " Url="html/P_ElevatorApp_SimulatorViewModel_Controller.htm" />
         <HelpTOCNode Title="Elevators Property " Url="html/P_ElevatorApp_SimulatorViewModel_Elevators.htm" />
         <HelpTOCNode Title="Floors Property " Url="html/P_ElevatorApp_SimulatorViewModel_Floors.htm" />
@@ -35,123 +35,123 @@
       <HelpTOCNode Title="SimulatorViewModel Events" Url="html/Events_T_ElevatorApp_SimulatorViewModel.htm" />
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="73b75637-af1c-48ba-bf55-0c725e4985a2" Title="ElevatorApp.Controls" Url="html/N_ElevatorApp_Controls.htm">
-    <HelpTOCNode Id="32f6281c-175c-4df3-b33f-da739a894c40" Title="AddPassengerControl Class" Url="html/T_ElevatorApp_Controls_AddPassengerControl.htm">
+  <HelpTOCNode Id="44a05eca-d104-4ab2-a5c3-8b4debc8193e" Title="ElevatorApp.Controls" Url="html/N_ElevatorApp_Controls.htm">
+    <HelpTOCNode Id="f9288320-023e-438f-aeb4-bb6baf1e7a44" Title="AddPassengerControl Class" Url="html/T_ElevatorApp_Controls_AddPassengerControl.htm">
       <HelpTOCNode Title="AddPassengerControl Constructor " Url="html/M_ElevatorApp_Controls_AddPassengerControl__ctor.htm" />
       <HelpTOCNode Title="AddPassengerControl Properties" Url="html/Properties_T_ElevatorApp_Controls_AddPassengerControl.htm" />
-      <HelpTOCNode Id="40652dd5-71b7-4e13-ba4a-782bacb9f5e3" Title="AddPassengerControl Methods" Url="html/Methods_T_ElevatorApp_Controls_AddPassengerControl.htm">
+      <HelpTOCNode Id="0dbeebb0-714a-4233-aeb9-92d40576b7e5" Title="AddPassengerControl Methods" Url="html/Methods_T_ElevatorApp_Controls_AddPassengerControl.htm">
         <HelpTOCNode Title="AddPassenger Method " Url="html/M_ElevatorApp_Controls_AddPassengerControl_AddPassenger.htm" />
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_AddPassengerControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="AddPassengerControl Events" Url="html/Events_T_ElevatorApp_Controls_AddPassengerControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="177007b2-5cd3-4cdd-b66f-a18a10e7a6f9" Title="ButtonPanelControl Class" Url="html/T_ElevatorApp_Controls_ButtonPanelControl.htm">
-      <HelpTOCNode Id="251e5620-35a7-4e55-af4b-0ed51b72d3ed" Title="ButtonPanelControl Constructor " Url="html/Overload_ElevatorApp_Controls_ButtonPanelControl__ctor.htm">
+    <HelpTOCNode Id="2f61f2c5-ea2a-48e0-a097-8b284fc90b67" Title="ButtonPanelControl Class" Url="html/T_ElevatorApp_Controls_ButtonPanelControl.htm">
+      <HelpTOCNode Id="aff54b0a-5883-448f-b104-7f563ba74156" Title="ButtonPanelControl Constructor " Url="html/Overload_ElevatorApp_Controls_ButtonPanelControl__ctor.htm">
         <HelpTOCNode Title="ButtonPanelControl Constructor " Url="html/M_ElevatorApp_Controls_ButtonPanelControl__ctor.htm" />
         <HelpTOCNode Title="ButtonPanelControl Constructor (ButtonPanel)" Url="html/M_ElevatorApp_Controls_ButtonPanelControl__ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ButtonPanelControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ButtonPanelControl.htm" />
-      <HelpTOCNode Id="e70fc63c-4375-4b8a-a8b7-5fb9166a5f6a" Title="ButtonPanelControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ButtonPanelControl.htm">
+      <HelpTOCNode Id="dcb85811-6452-4c79-bd72-bc736dd011c4" Title="ButtonPanelControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ButtonPanelControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ButtonPanelControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ButtonPanelControl Events" Url="html/Events_T_ElevatorApp_Controls_ButtonPanelControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="b8ba0ec4-6e89-4a45-95ea-4f7f36a5839d" Title="DoorControl Class" Url="html/T_ElevatorApp_Controls_DoorControl.htm">
+    <HelpTOCNode Id="b2d1a014-db4c-4161-818a-648b923f84cc" Title="DoorControl Class" Url="html/T_ElevatorApp_Controls_DoorControl.htm">
       <HelpTOCNode Title="DoorControl Constructor " Url="html/M_ElevatorApp_Controls_DoorControl__ctor.htm" />
       <HelpTOCNode Title="DoorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_DoorControl.htm" />
-      <HelpTOCNode Id="117d2a6c-cc49-4454-80e0-2a2953aab36d" Title="DoorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_DoorControl.htm">
+      <HelpTOCNode Id="f75712b7-9f86-46d6-87d2-2f02a2570bf1" Title="DoorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_DoorControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_DoorControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="DoorControl Events" Url="html/Events_T_ElevatorApp_Controls_DoorControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="b1bc4bf7-cd3e-4c67-b8df-6144620d63ae" Title="ElevatorButtonControl Class" Url="html/T_ElevatorApp_Controls_ElevatorButtonControl.htm">
+    <HelpTOCNode Id="1ec6ef36-0666-4afc-875a-3c65afeef12d" Title="ElevatorButtonControl Class" Url="html/T_ElevatorApp_Controls_ElevatorButtonControl.htm">
       <HelpTOCNode Title="ElevatorButtonControl Constructor " Url="html/M_ElevatorApp_Controls_ElevatorButtonControl__ctor.htm" />
-      <HelpTOCNode Id="c631ec69-5527-4ef5-b755-9752b27b7335" Title="ElevatorButtonControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorButtonControl.htm">
+      <HelpTOCNode Id="9f8af647-793a-42ed-b04e-523ac139eb74" Title="ElevatorButtonControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorButtonControl.htm">
         <HelpTOCNode Title="Button Property " Url="html/P_ElevatorApp_Controls_ElevatorButtonControl_Button.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d6193cde-ba74-4612-a8b8-920519c01a7f" Title="ElevatorButtonControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorButtonControl.htm">
+      <HelpTOCNode Id="ed88b6b6-702c-4519-89ab-15de86bf882c" Title="ElevatorButtonControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorButtonControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ElevatorButtonControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorButtonControl Events" Url="html/Events_T_ElevatorApp_Controls_ElevatorButtonControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="e7c948d8-340f-4019-8036-6cdbfdf8e187" Title="ElevatorControl Class" Url="html/T_ElevatorApp_Controls_ElevatorControl.htm">
+    <HelpTOCNode Id="7e790fa1-20f6-48ce-8643-03dd107c9bd2" Title="ElevatorControl Class" Url="html/T_ElevatorApp_Controls_ElevatorControl.htm">
       <HelpTOCNode Title="ElevatorControl Constructor " Url="html/M_ElevatorApp_Controls_ElevatorControl__ctor.htm" />
-      <HelpTOCNode Id="77ff158d-cd9e-4403-8d1e-7359ae8ef93c" Title="ElevatorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorControl.htm">
+      <HelpTOCNode Id="c7837f83-c59c-4981-bdf5-6ed3a1d64a7e" Title="ElevatorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorControl.htm">
         <HelpTOCNode Title="Elevator Property " Url="html/P_ElevatorApp_Controls_ElevatorControl_Elevator.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8ff704b8-e2f6-467e-b1fa-faf39f12de3d" Title="ElevatorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorControl.htm">
+      <HelpTOCNode Id="50796014-bfa0-4cd4-9aac-2be8419bd96f" Title="ElevatorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ElevatorControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorControl Events" Url="html/Events_T_ElevatorApp_Controls_ElevatorControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="91cee8e5-a2e9-4c8b-b14a-6c1390589a34" Title="ElevatorMovementControl Class" Url="html/T_ElevatorApp_Controls_ElevatorMovementControl.htm">
+    <HelpTOCNode Id="601b137d-88af-4e2f-945f-f1c5cc67b61f" Title="ElevatorMovementControl Class" Url="html/T_ElevatorApp_Controls_ElevatorMovementControl.htm">
       <HelpTOCNode Title="ElevatorMovementControl Constructor " Url="html/M_ElevatorApp_Controls_ElevatorMovementControl__ctor.htm" />
       <HelpTOCNode Title="ElevatorMovementControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorMovementControl.htm" />
-      <HelpTOCNode Id="bd76828f-fe20-4d27-ae63-a03a8ee16ef4" Title="ElevatorMovementControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorMovementControl.htm">
+      <HelpTOCNode Id="5e5f3b69-18d9-4356-8631-4b196e032e2e" Title="ElevatorMovementControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorMovementControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ElevatorMovementControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorMovementControl Events" Url="html/Events_T_ElevatorApp_Controls_ElevatorMovementControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="5aec3d04-8bd5-48c8-a245-43136d9df47c" Title="ElevatorShaftControl Class" Url="html/T_ElevatorApp_Controls_ElevatorShaftControl.htm">
+    <HelpTOCNode Id="7682cb90-01a9-480a-ab38-f4eb036710c7" Title="ElevatorShaftControl Class" Url="html/T_ElevatorApp_Controls_ElevatorShaftControl.htm">
       <HelpTOCNode Title="ElevatorShaftControl Constructor " Url="html/M_ElevatorApp_Controls_ElevatorShaftControl__ctor.htm" />
-      <HelpTOCNode Id="edddaabe-02c6-475a-bb38-927ab2ea5e67" Title="ElevatorShaftControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorShaftControl.htm">
+      <HelpTOCNode Id="26d63947-6b0a-4521-a70d-13009a0198b3" Title="ElevatorShaftControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorShaftControl.htm">
         <HelpTOCNode Title="SingleElevator Property " Url="html/P_ElevatorApp_Controls_ElevatorShaftControl_SingleElevator.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b61a6924-967a-46a6-9081-15335d2c264c" Title="ElevatorShaftControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorShaftControl.htm">
+      <HelpTOCNode Id="a61896da-1d0e-4d7d-b7fb-104b79d622b4" Title="ElevatorShaftControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorShaftControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ElevatorShaftControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorShaftControl Events" Url="html/Events_T_ElevatorApp_Controls_ElevatorShaftControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="56298af8-840b-4aca-b1d5-c6b83e353dd1" Title="FloorControl Class" Url="html/T_ElevatorApp_Controls_FloorControl.htm">
+    <HelpTOCNode Id="f65dd43f-4a4d-4826-aa55-5c1b907d0c2c" Title="FloorControl Class" Url="html/T_ElevatorApp_Controls_FloorControl.htm">
       <HelpTOCNode Title="FloorControl Constructor " Url="html/M_ElevatorApp_Controls_FloorControl__ctor.htm" />
-      <HelpTOCNode Id="bd24945f-2978-4966-ba03-96411c019186" Title="FloorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_FloorControl.htm">
+      <HelpTOCNode Id="ac56b4b8-ca90-4a51-8237-f97ec2659b12" Title="FloorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_FloorControl.htm">
         <HelpTOCNode Title="ELevatorReady Property " Url="html/P_ElevatorApp_Controls_FloorControl_ELevatorReady.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="96d7349f-85f5-489f-a14a-e5832cc9de54" Title="FloorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_FloorControl.htm">
+      <HelpTOCNode Id="b532179c-2393-4365-bfa3-e4bf574f5560" Title="FloorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_FloorControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_FloorControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="FloorControl Events" Url="html/Events_T_ElevatorApp_Controls_FloorControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="b9f17f85-ecce-4eb2-9ca2-611b5a05dcfe" Title="FloorsControl Class" Url="html/T_ElevatorApp_Controls_FloorsControl.htm">
+    <HelpTOCNode Id="4f4b0aae-a57a-4c37-8aba-93d24cc8ee87" Title="FloorsControl Class" Url="html/T_ElevatorApp_Controls_FloorsControl.htm">
       <HelpTOCNode Title="FloorsControl Constructor " Url="html/M_ElevatorApp_Controls_FloorsControl__ctor.htm" />
       <HelpTOCNode Title="FloorsControl Properties" Url="html/Properties_T_ElevatorApp_Controls_FloorsControl.htm" />
-      <HelpTOCNode Id="04ac35cc-f327-4b7d-89bf-926ce598d068" Title="FloorsControl Methods" Url="html/Methods_T_ElevatorApp_Controls_FloorsControl.htm">
+      <HelpTOCNode Id="ea8df46a-99c6-45f2-8f71-67c86fdb0543" Title="FloorsControl Methods" Url="html/Methods_T_ElevatorApp_Controls_FloorsControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_FloorsControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="FloorsControl Events" Url="html/Events_T_ElevatorApp_Controls_FloorsControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="34d0b176-4ef7-45c6-a4ce-3a8edf809388" Title="Interior Class" Url="html/T_ElevatorApp_Controls_Interior.htm">
+    <HelpTOCNode Id="28328dc2-8873-4d1c-946b-a9d1a7179f6d" Title="Interior Class" Url="html/T_ElevatorApp_Controls_Interior.htm">
       <HelpTOCNode Title="Interior Constructor " Url="html/M_ElevatorApp_Controls_Interior__ctor.htm" />
       <HelpTOCNode Title="Interior Properties" Url="html/Properties_T_ElevatorApp_Controls_Interior.htm" />
-      <HelpTOCNode Id="f6235f90-eaf3-4bb6-bcc8-3713ca6e3d23" Title="Interior Methods" Url="html/Methods_T_ElevatorApp_Controls_Interior.htm">
+      <HelpTOCNode Id="8fcf4bb2-114a-4c6f-a04c-c9bdf8142ea5" Title="Interior Methods" Url="html/Methods_T_ElevatorApp_Controls_Interior.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_Interior_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Interior Events" Url="html/Events_T_ElevatorApp_Controls_Interior.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="c05da42f-54e4-45cb-974f-7e90d7021e7a" Title="LoggerView Class" Url="html/T_ElevatorApp_Controls_LoggerView.htm">
+    <HelpTOCNode Id="4aa77c52-2269-40cf-aec3-ab5e2623a079" Title="LoggerView Class" Url="html/T_ElevatorApp_Controls_LoggerView.htm">
       <HelpTOCNode Title="LoggerView Constructor " Url="html/M_ElevatorApp_Controls_LoggerView__ctor.htm" />
       <HelpTOCNode Title="LoggerView Properties" Url="html/Properties_T_ElevatorApp_Controls_LoggerView.htm" />
-      <HelpTOCNode Id="5148563a-ee8a-475e-bb82-16d21237f8fc" Title="LoggerView Methods" Url="html/Methods_T_ElevatorApp_Controls_LoggerView.htm">
+      <HelpTOCNode Id="11dab17e-2d8e-4209-b592-217ec9db04c1" Title="LoggerView Methods" Url="html/Methods_T_ElevatorApp_Controls_LoggerView.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_LoggerView_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="LoggerView Events" Url="html/Events_T_ElevatorApp_Controls_LoggerView.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="f3dfbe12-c51d-4f1e-ae66-b5e201a315eb" Title="PassengerQueueControl Class" Url="html/T_ElevatorApp_Controls_PassengerQueueControl.htm">
+    <HelpTOCNode Id="e0e008c9-c066-4a34-8b5d-a1bf0ea0694d" Title="PassengerQueueControl Class" Url="html/T_ElevatorApp_Controls_PassengerQueueControl.htm">
       <HelpTOCNode Title="PassengerQueueControl Constructor " Url="html/M_ElevatorApp_Controls_PassengerQueueControl__ctor.htm" />
-      <HelpTOCNode Id="1f608825-ac3e-4aa5-a11e-b7d1edbd31b7" Title="PassengerQueueControl Properties" Url="html/Properties_T_ElevatorApp_Controls_PassengerQueueControl.htm">
+      <HelpTOCNode Id="48401d83-cac6-4cc7-952f-34c3093251c1" Title="PassengerQueueControl Properties" Url="html/Properties_T_ElevatorApp_Controls_PassengerQueueControl.htm">
         <HelpTOCNode Title="ElevatorAvailable Property " Url="html/P_ElevatorApp_Controls_PassengerQueueControl_ElevatorAvailable.htm" />
         <HelpTOCNode Title="ShowAddButtons Property " Url="html/P_ElevatorApp_Controls_PassengerQueueControl_ShowAddButtons.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="929c66ee-022e-4b23-96f6-42d7cb8622ca" Title="PassengerQueueControl Methods" Url="html/Methods_T_ElevatorApp_Controls_PassengerQueueControl.htm">
+      <HelpTOCNode Id="8595c153-54c0-40e8-ae46-54109a2b03f6" Title="PassengerQueueControl Methods" Url="html/Methods_T_ElevatorApp_Controls_PassengerQueueControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_PassengerQueueControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="PassengerQueueControl Events" Url="html/Events_T_ElevatorApp_Controls_PassengerQueueControl.htm" />
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="04541bcb-35a3-4c7c-9915-56c5243fbf36" Title="ElevatorApp.Models" Url="html/N_ElevatorApp_Models.htm">
-    <HelpTOCNode Id="54b64cbb-e3e8-44ee-beb0-2433f3d51002" Title="ButtonBase(T) Class" Url="html/T_ElevatorApp_Models_ButtonBase_1.htm">
+  <HelpTOCNode Id="50b32408-f47b-4a91-86b9-ce5acd45d6e4" Title="ElevatorApp.Models" Url="html/N_ElevatorApp_Models.htm">
+    <HelpTOCNode Id="bcdeb037-6ad1-4128-ae27-f1174536dda5" Title="ButtonBase(T) Class" Url="html/T_ElevatorApp_Models_ButtonBase_1.htm">
       <HelpTOCNode Title="ButtonBase(T) Constructor " Url="html/M_ElevatorApp_Models_ButtonBase_1__ctor.htm" />
-      <HelpTOCNode Id="eccbb517-c359-4c25-a390-c7d66261c8b5" Title="ButtonBase(T) Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonBase_1.htm">
+      <HelpTOCNode Id="faf2ef7f-02ac-422f-beaf-3d3a14e3ed13" Title="ButtonBase(T) Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonBase_1.htm">
         <HelpTOCNode Title="actionArgs Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_actionArgs.htm" />
         <HelpTOCNode Title="Active Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_Active.htm" />
         <HelpTOCNode Title="ButtonType Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_ButtonType.htm" />
@@ -159,8 +159,8 @@
         <HelpTOCNode Title="IsEnabled Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_IsEnabled.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_Label.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="42d5fea6-54da-4a85-8954-8503aa7fe70e" Title="ButtonBase(T) Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonBase_1.htm">
-        <HelpTOCNode Id="1b1d10de-1659-4093-8ee9-24a5e0489fea" Title="ActionCompleted Method " Url="html/Overload_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm">
+      <HelpTOCNode Id="9e044739-db85-4032-9098-216b3143b61d" Title="ButtonBase(T) Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonBase_1.htm">
+        <HelpTOCNode Id="0a1aece2-2775-479a-b157-000989a3d833" Title="ActionCompleted Method " Url="html/Overload_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm">
           <HelpTOCNode Title="ActionCompleted Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm" />
           <HelpTOCNode Title="ActionCompleted Method (Object, T)" Url="html/M_ElevatorApp_Models_ButtonBase_1_ActionCompleted_1.htm" />
         </HelpTOCNode>
@@ -168,53 +168,53 @@
         <HelpTOCNode Title="Pushed Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_Pushed.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_ToString.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="df478780-219f-4413-aad4-2599e8aa5136" Title="ButtonBase(T) Events" Url="html/Events_T_ElevatorApp_Models_ButtonBase_1.htm">
+      <HelpTOCNode Id="dc3c1312-5dfd-40b5-99ae-ea93d1c07d6a" Title="ButtonBase(T) Events" Url="html/Events_T_ElevatorApp_Models_ButtonBase_1.htm">
         <HelpTOCNode Title="OnActionCompleted Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnActionCompleted.htm" />
         <HelpTOCNode Title="OnActivated Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnActivated.htm" />
         <HelpTOCNode Title="OnDeactivated Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnDeactivated.htm" />
         <HelpTOCNode Title="OnPushed Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnPushed.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="afc75dc8-54de-4ab7-b061-693c18c7d7b2" Title="ButtonPanel Class" Url="html/T_ElevatorApp_Models_ButtonPanel.htm">
+    <HelpTOCNode Id="cdf2c615-3aa6-4e21-a284-8a4f19ace6d4" Title="ButtonPanel Class" Url="html/T_ElevatorApp_Models_ButtonPanel.htm">
       <HelpTOCNode Title="ButtonPanel Constructor " Url="html/M_ElevatorApp_Models_ButtonPanel__ctor.htm" />
-      <HelpTOCNode Id="aa24957c-069f-4d38-8b00-d318332f96e7" Title="ButtonPanel Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonPanel.htm">
+      <HelpTOCNode Id="b8b645ab-ca13-4cb2-94a4-51101a247160" Title="ButtonPanel Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonPanel.htm">
         <HelpTOCNode Title="_floorButtons Property " Url="html/P_ElevatorApp_Models_ButtonPanel__floorButtons.htm" />
         <HelpTOCNode Title="CloseDoorButton Property " Url="html/P_ElevatorApp_Models_ButtonPanel_CloseDoorButton.htm" />
         <HelpTOCNode Title="OpenDoorButton Property " Url="html/P_ElevatorApp_Models_ButtonPanel_OpenDoorButton.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bd3c797a-e528-4ff5-9898-cef635238885" Title="ButtonPanel Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonPanel.htm">
-        <HelpTOCNode Id="3b52d7c0-a04f-463e-8952-104edf7bba02" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanel_Subscribe.htm">
+      <HelpTOCNode Id="d2d24f0f-78d1-4240-8644-fe404fa0451e" Title="ButtonPanel Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonPanel.htm">
+        <HelpTOCNode Id="329bf5c4-ed7c-467e-9718-4fa150e7a258" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanel_Subscribe.htm">
           <HelpTOCNode Title="Subscribe Method (ValueTuple(ElevatorMasterController, Elevator))" Url="html/M_ElevatorApp_Models_ButtonPanel_Subscribe.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="793e7359-e99d-4b6e-88a9-7d691771657a" Title="ButtonPanelBase Class" Url="html/T_ElevatorApp_Models_ButtonPanelBase.htm">
+    <HelpTOCNode Id="702c49ac-3a79-4d24-b059-d1e14ffd64f7" Title="ButtonPanelBase Class" Url="html/T_ElevatorApp_Models_ButtonPanelBase.htm">
       <HelpTOCNode Title="ButtonPanelBase Constructor " Url="html/M_ElevatorApp_Models_ButtonPanelBase__ctor.htm" />
-      <HelpTOCNode Id="339b520c-ca95-4512-9c79-16b6f138667b" Title="ButtonPanelBase Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonPanelBase.htm">
+      <HelpTOCNode Id="ec32ce06-bb6f-4f06-9c34-ecf599c46978" Title="ButtonPanelBase Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonPanelBase.htm">
         <HelpTOCNode Title="_floorButtons Property " Url="html/P_ElevatorApp_Models_ButtonPanelBase__floorButtons.htm" />
         <HelpTOCNode Title="FloorButtons Property " Url="html/P_ElevatorApp_Models_ButtonPanelBase_FloorButtons.htm" />
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_ButtonPanelBase_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="40a49647-c7a9-4aaf-a69f-76349cf491fa" Title="ButtonPanelBase Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonPanelBase.htm">
-        <HelpTOCNode Id="9666bc14-df28-429f-96ad-65934cbb6859" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanelBase_Subscribe.htm">
+      <HelpTOCNode Id="ee33e57c-9599-4030-833d-8ab81317f019" Title="ButtonPanelBase Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonPanelBase.htm">
+        <HelpTOCNode Id="7c45efef-373c-444f-a31b-4975cbde6d5c" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanelBase_Subscribe.htm">
           <HelpTOCNode Title="Subscribe Method (IObserver(Int32))" Url="html/M_ElevatorApp_Models_ButtonPanelBase_Subscribe_1.htm" />
           <HelpTOCNode Title="Subscribe Method (ElevatorMasterController)" Url="html/M_ElevatorApp_Models_ButtonPanelBase_Subscribe.htm" />
           <HelpTOCNode Title="Subscribe Method (ValueTuple(ElevatorMasterController, Elevator))" Url="html/M_ElevatorApp_Models_ButtonPanelBase_Subscribe_2.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="6688b6f6-5f8b-40a9-ac7f-d919a7fe720d" Title="Door Class" Url="html/T_ElevatorApp_Models_Door.htm">
+    <HelpTOCNode Id="cd2a143f-11d0-41bb-b38b-8901476a8780" Title="Door Class" Url="html/T_ElevatorApp_Models_Door.htm">
       <HelpTOCNode Title="Door Constructor " Url="html/M_ElevatorApp_Models_Door__ctor.htm" />
-      <HelpTOCNode Id="1dafa95f-88e4-481a-b29d-f826c74563ce" Title="Door Properties" Url="html/Properties_T_ElevatorApp_Models_Door.htm">
+      <HelpTOCNode Id="1c1fec41-5818-4fe2-81e9-7becefddd1d4" Title="Door Properties" Url="html/Properties_T_ElevatorApp_Models_Door.htm">
         <HelpTOCNode Title="DoorState Property " Url="html/P_ElevatorApp_Models_Door_DoorState.htm" />
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_Door_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="1e022625-2cc1-4ced-8ac2-32c852caac7a" Title="Door Methods" Url="html/Methods_T_ElevatorApp_Models_Door.htm">
+      <HelpTOCNode Id="0d39c007-4363-4aa0-9016-8ff580cc7cb5" Title="Door Methods" Url="html/Methods_T_ElevatorApp_Models_Door.htm">
         <HelpTOCNode Title="RequestClose Method " Url="html/M_ElevatorApp_Models_Door_RequestClose.htm" />
         <HelpTOCNode Title="RequestOpen Method " Url="html/M_ElevatorApp_Models_Door_RequestOpen.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_Door_Subscribe.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="f4acc413-f90b-4aad-8451-8bad8f5e77df" Title="Door Events" Url="html/Events_T_ElevatorApp_Models_Door.htm">
+      <HelpTOCNode Id="e210dab0-6c3e-40ed-8be7-f99198949404" Title="Door Events" Url="html/Events_T_ElevatorApp_Models_Door.htm">
         <HelpTOCNode Title="Closed Event" Url="html/E_ElevatorApp_Models_Door_Closed.htm" />
         <HelpTOCNode Title="CloseRequested Event" Url="html/E_ElevatorApp_Models_Door_CloseRequested.htm" />
         <HelpTOCNode Title="Closing Event" Url="html/E_ElevatorApp_Models_Door_Closing.htm" />
@@ -222,39 +222,39 @@
         <HelpTOCNode Title="Opening Event" Url="html/E_ElevatorApp_Models_Door_Opening.htm" />
         <HelpTOCNode Title="OpenRequested Event" Url="html/E_ElevatorApp_Models_Door_OpenRequested.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8bc450ef-f8d7-4d12-a54f-fc9142541d23" Title="Door Fields" Url="html/Fields_T_ElevatorApp_Models_Door.htm">
+      <HelpTOCNode Id="04c92408-d24a-4a6c-9c68-dffa97a73ef9" Title="Door Fields" Url="html/Fields_T_ElevatorApp_Models_Door.htm">
         <HelpTOCNode Title="TIME_SPENT_OPEN_SECONDS Field" Url="html/F_ElevatorApp_Models_Door_TIME_SPENT_OPEN_SECONDS.htm" />
         <HelpTOCNode Title="TRANSITION_TIME_SECONDS Field" Url="html/F_ElevatorApp_Models_Door_TRANSITION_TIME_SECONDS.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="7f199511-5283-44f5-a073-0f3717bf98a4" Title="DoorButton Class" Url="html/T_ElevatorApp_Models_DoorButton.htm">
+    <HelpTOCNode Id="6b346eb0-ebf7-436e-a575-b375ab769461" Title="DoorButton Class" Url="html/T_ElevatorApp_Models_DoorButton.htm">
       <HelpTOCNode Title="DoorButton Constructor " Url="html/M_ElevatorApp_Models_DoorButton__ctor.htm" />
-      <HelpTOCNode Id="93d7809b-b628-4523-acfc-b3405fb54b17" Title="DoorButton Properties" Url="html/Properties_T_ElevatorApp_Models_DoorButton.htm">
+      <HelpTOCNode Id="163f308e-f7e6-4008-acab-ab875b7289fb" Title="DoorButton Properties" Url="html/Properties_T_ElevatorApp_Models_DoorButton.htm">
         <HelpTOCNode Title="ButtonType Property " Url="html/P_ElevatorApp_Models_DoorButton_ButtonType.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_DoorButton_Label.htm" />
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_DoorButton_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="93592046-e96f-4a06-abc1-2efcfcb042cf" Title="DoorButton Methods" Url="html/Methods_T_ElevatorApp_Models_DoorButton.htm">
+      <HelpTOCNode Id="eb7c40b1-dbba-4240-a51b-e6ca4490a6ad" Title="DoorButton Methods" Url="html/Methods_T_ElevatorApp_Models_DoorButton.htm">
         <HelpTOCNode Title="Close Method " Url="html/M_ElevatorApp_Models_DoorButton_Close.htm" />
         <HelpTOCNode Title="Open Method " Url="html/M_ElevatorApp_Models_DoorButton_Open.htm" />
         <HelpTOCNode Title="Push Method " Url="html/M_ElevatorApp_Models_DoorButton_Push.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_DoorButton_Subscribe.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a66d210b-df03-4814-86d3-1cfc68308694" Title="DoorButton Events" Url="html/Events_T_ElevatorApp_Models_DoorButton.htm">
+      <HelpTOCNode Id="1d03bc39-eb31-4488-9ea4-9941abe9e130" Title="DoorButton Events" Url="html/Events_T_ElevatorApp_Models_DoorButton.htm">
         <HelpTOCNode Title="OnActivated Event" Url="html/E_ElevatorApp_Models_DoorButton_OnActivated.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="4551cd2b-a8f8-4c32-a1c2-47651a8b9f5d" Title="DoorStateChangeEventArgs Class" Url="html/T_ElevatorApp_Models_DoorStateChangeEventArgs.htm">
+    <HelpTOCNode Id="b77344a0-d1bc-447d-8ddf-a7d57969a6e7" Title="DoorStateChangeEventArgs Class" Url="html/T_ElevatorApp_Models_DoorStateChangeEventArgs.htm">
       <HelpTOCNode Title="DoorStateChangeEventArgs Constructor " Url="html/M_ElevatorApp_Models_DoorStateChangeEventArgs__ctor.htm" />
-      <HelpTOCNode Id="774e0ba2-72fc-471d-8595-752f784191fe" Title="DoorStateChangeEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_DoorStateChangeEventArgs.htm">
+      <HelpTOCNode Id="959e7f3c-d468-45cf-8736-fdcfa94710e5" Title="DoorStateChangeEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_DoorStateChangeEventArgs.htm">
         <HelpTOCNode Title="CancelOperation Property " Url="html/P_ElevatorApp_Models_DoorStateChangeEventArgs_CancelOperation.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="DoorStateChangeEventArgs Methods" Url="html/Methods_T_ElevatorApp_Models_DoorStateChangeEventArgs.htm" />
     </HelpTOCNode>
     <HelpTOCNode Title="DoorStateChangeRequestHandler Delegate" Url="html/T_ElevatorApp_Models_DoorStateChangeRequestHandler.htm" />
-    <HelpTOCNode Id="f780b8f4-4437-4883-93cf-02c898fee490" Title="Elevator Class" Url="html/T_ElevatorApp_Models_Elevator.htm">
+    <HelpTOCNode Id="c6ef0973-3e24-4b78-9c59-1d1d2524dd09" Title="Elevator Class" Url="html/T_ElevatorApp_Models_Elevator.htm">
       <HelpTOCNode Title="Elevator Constructor " Url="html/M_ElevatorApp_Models_Elevator__ctor.htm" />
-      <HelpTOCNode Id="7a05c4ea-3b11-4ad3-964a-72d90a92038a" Title="Elevator Properties" Url="html/Properties_T_ElevatorApp_Models_Elevator.htm">
+      <HelpTOCNode Id="3c7c948b-9849-4186-ac44-8a722721e223" Title="Elevator Properties" Url="html/Properties_T_ElevatorApp_Models_Elevator.htm">
         <HelpTOCNode Title="ButtonPanel Property " Url="html/P_ElevatorApp_Models_Elevator_ButtonPanel.htm" />
         <HelpTOCNode Title="CurrentCapacity Property " Url="html/P_ElevatorApp_Models_Elevator_CurrentCapacity.htm" />
         <HelpTOCNode Title="CurrentFloor Property " Url="html/P_ElevatorApp_Models_Elevator_CurrentFloor.htm" />
@@ -272,12 +272,12 @@
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_Elevator_Subscribed.htm" />
         <HelpTOCNode Title="TotalCapacity Property " Url="html/P_ElevatorApp_Models_Elevator_TotalCapacity.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="11fd6786-5deb-4ffa-bbe0-09ed3ef16828" Title="Elevator Methods" Url="html/Methods_T_ElevatorApp_Models_Elevator.htm">
+      <HelpTOCNode Id="90898418-fe95-4326-8eb5-a2b8d8940e34" Title="Elevator Methods" Url="html/Methods_T_ElevatorApp_Models_Elevator.htm">
         <HelpTOCNode Title="AddPassenger Method " Url="html/M_ElevatorApp_Models_Elevator_AddPassenger.htm" />
         <HelpTOCNode Title="Finalize Method " Url="html/M_ElevatorApp_Models_Elevator_Finalize.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_Elevator_Subscribe.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="de4f8dcc-414b-4462-aef2-00fe6c6493fd" Title="Elevator Events" Url="html/Events_T_ElevatorApp_Models_Elevator.htm">
+      <HelpTOCNode Id="e6f2ec72-748a-4359-8ebc-b5f44e563005" Title="Elevator Events" Url="html/Events_T_ElevatorApp_Models_Elevator.htm">
         <HelpTOCNode Title="Approaching Event" Url="html/E_ElevatorApp_Models_Elevator_Approaching.htm" />
         <HelpTOCNode Title="Arrived Event" Url="html/E_ElevatorApp_Models_Elevator_Arrived.htm" />
         <HelpTOCNode Title="Arriving Event" Url="html/E_ElevatorApp_Models_Elevator_Arriving.htm" />
@@ -286,40 +286,40 @@
         <HelpTOCNode Title="PassengerAdded Event" Url="html/E_ElevatorApp_Models_Elevator_PassengerAdded.htm" />
         <HelpTOCNode Title="PassengerExited Event" Url="html/E_ElevatorApp_Models_Elevator_PassengerExited.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="1cec6e43-0510-4f98-a132-6d564f732c82" Title="Elevator Fields" Url="html/Fields_T_ElevatorApp_Models_Elevator.htm">
+      <HelpTOCNode Id="2383facc-0116-4000-a923-0263b6a2d184" Title="Elevator Fields" Url="html/Fields_T_ElevatorApp_Models_Elevator.htm">
         <HelpTOCNode Title="ACCELERATION_DELAY Field" Url="html/F_ElevatorApp_Models_Elevator_ACCELERATION_DELAY.htm" />
         <HelpTOCNode Title="DECELERATION_DELAY Field" Url="html/F_ElevatorApp_Models_Elevator_DECELERATION_DELAY.htm" />
         <HelpTOCNode Title="FLOOR_MOVEMENT_SPEED Field" Url="html/F_ElevatorApp_Models_Elevator_FLOOR_MOVEMENT_SPEED.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="bd771add-8fc2-4c36-994a-e54e9cc8f2ed" Title="ElevatorApproachingEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm">
-      <HelpTOCNode Id="394a5fb1-f80c-4fe7-a926-abeb118a07b2" Title="ElevatorApproachingEventArgs Constructor " Url="html/Overload_ElevatorApp_Models_ElevatorApproachingEventArgs__ctor.htm">
+    <HelpTOCNode Id="1d8341eb-4421-4cfd-80ad-c11b3e3db33c" Title="ElevatorApproachingEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm">
+      <HelpTOCNode Id="a46b794d-ad5b-4d46-8831-acbd9f631328" Title="ElevatorApproachingEventArgs Constructor " Url="html/Overload_ElevatorApp_Models_ElevatorApproachingEventArgs__ctor.htm">
         <HelpTOCNode Title="ElevatorApproachingEventArgs Constructor (ElevatorMovementEventArgs)" Url="html/M_ElevatorApp_Models_ElevatorApproachingEventArgs__ctor.htm" />
         <HelpTOCNode Title="ElevatorApproachingEventArgs Constructor (Int32, Int32, Direction)" Url="html/M_ElevatorApp_Models_ElevatorApproachingEventArgs__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="591ef88c-9d65-4289-ac2e-8c5fbd92a78f" Title="ElevatorApproachingEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm">
+      <HelpTOCNode Id="f46eca57-9fe0-42a4-b00c-14afef0111c8" Title="ElevatorApproachingEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm">
         <HelpTOCNode Title="DestinationFloor Property " Url="html/P_ElevatorApp_Models_ElevatorApproachingEventArgs_DestinationFloor.htm" />
         <HelpTOCNode Title="IntermediateFloor Property " Url="html/P_ElevatorApp_Models_ElevatorApproachingEventArgs_IntermediateFloor.htm" />
         <HelpTOCNode Title="ShouldStop Property " Url="html/P_ElevatorApp_Models_ElevatorApproachingEventArgs_ShouldStop.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorApproachingEventArgs Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="fbf66e88-e16a-45d3-9267-66d96090ae87" Title="ElevatorCallPanel Class" Url="html/T_ElevatorApp_Models_ElevatorCallPanel.htm">
+    <HelpTOCNode Id="3793d305-5d34-4463-a082-77403ce9752b" Title="ElevatorCallPanel Class" Url="html/T_ElevatorApp_Models_ElevatorCallPanel.htm">
       <HelpTOCNode Title="ElevatorCallPanel Constructor " Url="html/M_ElevatorApp_Models_ElevatorCallPanel__ctor.htm" />
-      <HelpTOCNode Id="2117e3c4-9622-436c-a30a-65b2ddfb4059" Title="ElevatorCallPanel Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorCallPanel.htm">
+      <HelpTOCNode Id="eadbf769-a7d7-47e5-b75d-449d50ca5975" Title="ElevatorCallPanel Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorCallPanel.htm">
         <HelpTOCNode Title="_floorButtons Property " Url="html/P_ElevatorApp_Models_ElevatorCallPanel__floorButtons.htm" />
         <HelpTOCNode Title="FloorNumber Property " Url="html/P_ElevatorApp_Models_ElevatorCallPanel_FloorNumber.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9200d5cc-44cb-4459-af50-f3130abb0f6c" Title="ElevatorCallPanel Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorCallPanel.htm">
-        <HelpTOCNode Id="8f177099-7a91-41f2-94bc-84913ddfca58" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ElevatorCallPanel_Subscribe.htm">
+      <HelpTOCNode Id="9e5b7532-6e61-42e6-991d-7842c8a81c7e" Title="ElevatorCallPanel Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorCallPanel.htm">
+        <HelpTOCNode Id="b7c7c10a-7352-49b5-ace9-d9b1d34e13ff" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ElevatorCallPanel_Subscribe.htm">
           <HelpTOCNode Title="Subscribe Method (ElevatorMasterController)" Url="html/M_ElevatorApp_Models_ElevatorCallPanel_Subscribe.htm" />
           <HelpTOCNode Title="Subscribe Method (ValueTuple(ElevatorMasterController, Elevator))" Url="html/M_ElevatorApp_Models_ElevatorCallPanel_Subscribe_1.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="82568ffa-0909-4f1d-adb2-e780481129dd" Title="ElevatorMasterController Class" Url="html/T_ElevatorApp_Models_ElevatorMasterController.htm">
+    <HelpTOCNode Id="ba15c30b-b526-4505-b8cd-4fc299096ce3" Title="ElevatorMasterController Class" Url="html/T_ElevatorApp_Models_ElevatorMasterController.htm">
       <HelpTOCNode Title="ElevatorMasterController Constructor " Url="html/M_ElevatorApp_Models_ElevatorMasterController__ctor.htm" />
-      <HelpTOCNode Id="99472c4b-66d7-45de-bf51-b51e282f3f58" Title="ElevatorMasterController Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorMasterController.htm">
+      <HelpTOCNode Id="a0d6cf52-6b65-43d7-91e3-38ec840bcdb7" Title="ElevatorMasterController Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorMasterController.htm">
         <HelpTOCNode Title="ElevatorCount Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_ElevatorCount.htm" />
         <HelpTOCNode Title="Elevators Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_Elevators.htm" />
         <HelpTOCNode Title="ElevatorSettings Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_ElevatorSettings.htm" />
@@ -328,27 +328,27 @@
         <HelpTOCNode Title="Floors Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_Floors.htm" />
         <HelpTOCNode Title="FloorsRequested Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_FloorsRequested.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8f9bb0d1-5d90-4155-9701-bcf0002e74ba" Title="ElevatorMasterController Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorMasterController.htm">
+      <HelpTOCNode Id="7ff3bc87-b090-46ae-b16a-3a38a1002784" Title="ElevatorMasterController Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorMasterController.htm">
         <HelpTOCNode Title="Dispatch Method " Url="html/M_ElevatorApp_Models_ElevatorMasterController_Dispatch.htm" />
         <HelpTOCNode Title="Init Method " Url="html/M_ElevatorApp_Models_ElevatorMasterController_Init.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="f4b6d938-88aa-4bad-a8c0-69aa4cb99293" Title="ElevatorMasterController Events" Url="html/Events_T_ElevatorApp_Models_ElevatorMasterController.htm">
+      <HelpTOCNode Id="e7f7f0c7-6f4c-4227-9da7-586285726408" Title="ElevatorMasterController Events" Url="html/Events_T_ElevatorApp_Models_ElevatorMasterController.htm">
         <HelpTOCNode Title="OnElevatorRequested Event" Url="html/E_ElevatorApp_Models_ElevatorMasterController_OnElevatorRequested.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="4fac7432-7689-42ea-ac7b-c5445c91a5c0" Title="ElevatorMovementEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
+    <HelpTOCNode Id="b454b75a-1b66-4bfc-9401-6a88678bc301" Title="ElevatorMovementEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
       <HelpTOCNode Title="ElevatorMovementEventArgs Constructor " Url="html/M_ElevatorApp_Models_ElevatorMovementEventArgs__ctor.htm" />
-      <HelpTOCNode Id="c006e5fe-77e5-4f9d-8d68-845faabff592" Title="ElevatorMovementEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
+      <HelpTOCNode Id="d58f7d4b-9cbc-44fb-bc49-b3bed36ed80c" Title="ElevatorMovementEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
         <HelpTOCNode Title="DestinationFloor Property " Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_DestinationFloor.htm" />
         <HelpTOCNode Title="Direction Property " Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_Direction.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="be49f8b8-caf2-419c-aac3-ec5f8ce45948" Title="ElevatorMovementEventArgs Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
+      <HelpTOCNode Id="f1b89623-23e5-4ae9-b51f-0652c2951e00" Title="ElevatorMovementEventArgs Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
         <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Models_ElevatorMovementEventArgs_ToString.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="c66ec80b-9da7-475c-aa08-6cf1b2183e0b" Title="ElevatorSettings Class" Url="html/T_ElevatorApp_Models_ElevatorSettings.htm">
+    <HelpTOCNode Id="407628f7-c910-4d45-a6c9-616b358f52eb" Title="ElevatorSettings Class" Url="html/T_ElevatorApp_Models_ElevatorSettings.htm">
       <HelpTOCNode Title="ElevatorSettings Constructor " Url="html/M_ElevatorApp_Models_ElevatorSettings__ctor.htm" />
-      <HelpTOCNode Id="6557cf71-7e86-4ada-aae9-8c456127498b" Title="ElevatorSettings Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSettings.htm">
+      <HelpTOCNode Id="2e518086-29a4-430f-b6f3-b0c2983f0d0f" Title="ElevatorSettings Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSettings.htm">
         <HelpTOCNode Title="Capacity Property " Url="html/P_ElevatorApp_Models_ElevatorSettings_Capacity.htm" />
         <HelpTOCNode Title="DoorType Property " Url="html/P_ElevatorApp_Models_ElevatorSettings_DoorType.htm" />
         <HelpTOCNode Title="Speed Property " Url="html/P_ElevatorApp_Models_ElevatorSettings_Speed.htm" />
@@ -356,63 +356,63 @@
       <HelpTOCNode Title="ElevatorSettings Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorSettings.htm" />
       <HelpTOCNode Title="ElevatorSettings Events" Url="html/Events_T_ElevatorApp_Models_ElevatorSettings.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="f3191106-10e8-490a-a6f6-7e1a2aabb370" Title="ElevatorSimulator Class" Url="html/T_ElevatorApp_Models_ElevatorSimulator.htm">
+    <HelpTOCNode Id="f65e0a8c-975e-4d25-90d2-624dc5861c39" Title="ElevatorSimulator Class" Url="html/T_ElevatorApp_Models_ElevatorSimulator.htm">
       <HelpTOCNode Title="ElevatorSimulator Constructor " Url="html/M_ElevatorApp_Models_ElevatorSimulator__ctor.htm" />
-      <HelpTOCNode Id="e13346e6-95ab-4dc8-b9c4-b825847b03e7" Title="ElevatorSimulator Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSimulator.htm">
+      <HelpTOCNode Id="4b5a0d82-0adb-45c8-944d-2eb43774ae75" Title="ElevatorSimulator Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSimulator.htm">
         <HelpTOCNode Title="Controller Property " Url="html/P_ElevatorApp_Models_ElevatorSimulator_Controller.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorSimulator Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorSimulator.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="d75ef302-8807-4f70-91ed-103229b209be" Title="Floor Class" Url="html/T_ElevatorApp_Models_Floor.htm">
-      <HelpTOCNode Id="6c5cd132-9df1-4eea-96c3-55b6ac4d0a78" Title="Floor Constructor " Url="html/Overload_ElevatorApp_Models_Floor__ctor.htm">
+    <HelpTOCNode Id="b4b2557c-5390-46aa-bd79-2e84feea4864" Title="Floor Class" Url="html/T_ElevatorApp_Models_Floor.htm">
+      <HelpTOCNode Id="dbdf8b2a-2914-49ea-b192-a13bb0be6b87" Title="Floor Constructor " Url="html/Overload_ElevatorApp_Models_Floor__ctor.htm">
         <HelpTOCNode Title="Floor Constructor " Url="html/M_ElevatorApp_Models_Floor__ctor.htm" />
         <HelpTOCNode Title="Floor Constructor (Int32)" Url="html/M_ElevatorApp_Models_Floor__ctor_1.htm" />
         <HelpTOCNode Title="Floor Constructor (Int32, ElevatorCallPanel)" Url="html/M_ElevatorApp_Models_Floor__ctor_2.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9a50ed4c-5c7d-453e-b62d-6863dc2331fc" Title="Floor Properties" Url="html/Properties_T_ElevatorApp_Models_Floor.htm">
+      <HelpTOCNode Id="57f45aee-00a2-4243-9213-78b5c0478153" Title="Floor Properties" Url="html/Properties_T_ElevatorApp_Models_Floor.htm">
         <HelpTOCNode Title="CallPanel Property " Url="html/P_ElevatorApp_Models_Floor_CallPanel.htm" />
         <HelpTOCNode Title="ElevatorAvailable Property " Url="html/P_ElevatorApp_Models_Floor_ElevatorAvailable.htm" />
         <HelpTOCNode Title="FloorNumber Property " Url="html/P_ElevatorApp_Models_Floor_FloorNumber.htm" />
         <HelpTOCNode Title="WaitingPassengers Property " Url="html/P_ElevatorApp_Models_Floor_WaitingPassengers.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4749471c-76c9-4619-be07-04dc77e9e620" Title="Floor Methods" Url="html/Methods_T_ElevatorApp_Models_Floor.htm">
+      <HelpTOCNode Id="5e718574-6c41-4668-bb56-184a21d6fdcd" Title="Floor Methods" Url="html/Methods_T_ElevatorApp_Models_Floor.htm">
         <HelpTOCNode Title="QueuePassenger Method " Url="html/M_ElevatorApp_Models_Floor_QueuePassenger.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_Floor_Subscribe.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Floor Events" Url="html/Events_T_ElevatorApp_Models_Floor.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="f97bd59d-d51c-4091-bce8-b2d8969357e2" Title="FloorButton Class" Url="html/T_ElevatorApp_Models_FloorButton.htm">
+    <HelpTOCNode Id="ff064c8f-cc42-44fd-b248-1b6406a447b9" Title="FloorButton Class" Url="html/T_ElevatorApp_Models_FloorButton.htm">
       <HelpTOCNode Title="FloorButton Constructor " Url="html/M_ElevatorApp_Models_FloorButton__ctor.htm" />
-      <HelpTOCNode Id="f233e664-5922-4ed2-bfa6-ed400025f341" Title="FloorButton Properties" Url="html/Properties_T_ElevatorApp_Models_FloorButton.htm">
+      <HelpTOCNode Id="78dce1ed-cfe9-4a98-b5cd-ce37caceba7d" Title="FloorButton Properties" Url="html/Properties_T_ElevatorApp_Models_FloorButton.htm">
         <HelpTOCNode Title="ButtonType Property " Url="html/P_ElevatorApp_Models_FloorButton_ButtonType.htm" />
         <HelpTOCNode Title="FloorNumber Property " Url="html/P_ElevatorApp_Models_FloorButton_FloorNumber.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_FloorButton_Label.htm" />
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_FloorButton_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="19ccf152-5a5c-49fb-9d98-a8851b785a2c" Title="FloorButton Methods" Url="html/Methods_T_ElevatorApp_Models_FloorButton.htm">
+      <HelpTOCNode Id="b03de080-2673-43ee-bb84-6cdbf0278999" Title="FloorButton Methods" Url="html/Methods_T_ElevatorApp_Models_FloorButton.htm">
         <HelpTOCNode Title="Disable Method " Url="html/M_ElevatorApp_Models_FloorButton_Disable.htm" />
         <HelpTOCNode Title="Push Method " Url="html/M_ElevatorApp_Models_FloorButton_Push.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_FloorButton_Subscribe.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="FloorButton Events" Url="html/Events_T_ElevatorApp_Models_FloorButton.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="575a1a3f-078b-4b52-8783-b62304a1c3a2" Title="ModelBase Class" Url="html/T_ElevatorApp_Models_ModelBase.htm">
+    <HelpTOCNode Id="5fbce9c7-ca43-4700-8679-2bbcde710f19" Title="ModelBase Class" Url="html/T_ElevatorApp_Models_ModelBase.htm">
       <HelpTOCNode Title="ModelBase Constructor " Url="html/M_ElevatorApp_Models_ModelBase__ctor.htm" />
-      <HelpTOCNode Id="3a5b48da-94e5-4c7a-baa7-e3a31a843105" Title="ModelBase Methods" Url="html/Methods_T_ElevatorApp_Models_ModelBase.htm">
+      <HelpTOCNode Id="2541b14c-35bb-4d48-9740-581f23dab5ff" Title="ModelBase Methods" Url="html/Methods_T_ElevatorApp_Models_ModelBase.htm">
         <HelpTOCNode Title="DependentPropertyChanged Method " Url="html/M_ElevatorApp_Models_ModelBase_DependentPropertyChanged.htm" />
         <HelpTOCNode Title="OnPropertyChanged(T) Method " Url="html/M_ElevatorApp_Models_ModelBase_OnPropertyChanged__1.htm" />
         <HelpTOCNode Title="SetProperty(T) Method " Url="html/M_ElevatorApp_Models_ModelBase_SetProperty__1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ec83cc1c-769e-42ef-a008-a6781ac5cbb0" Title="ModelBase Events" Url="html/Events_T_ElevatorApp_Models_ModelBase.htm">
+      <HelpTOCNode Id="17aeeca6-a0b8-4098-9290-008e5875486d" Title="ModelBase Events" Url="html/Events_T_ElevatorApp_Models_ModelBase.htm">
         <HelpTOCNode Title="PropertyChanged Event" Url="html/E_ElevatorApp_Models_ModelBase_PropertyChanged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="e75f086a-7b1c-4f72-a1b6-00a1129d12c0" Title="Passenger Class" Url="html/T_ElevatorApp_Models_Passenger.htm">
-      <HelpTOCNode Id="6d10dead-3a29-4942-8073-816aef429969" Title="Passenger Constructor " Url="html/Overload_ElevatorApp_Models_Passenger__ctor.htm">
+    <HelpTOCNode Id="a5f0ea18-6c98-4e8a-aafa-f977b3a8b654" Title="Passenger Class" Url="html/T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="67e376af-b392-4dfc-a444-0c3174f5e867" Title="Passenger Constructor " Url="html/Overload_ElevatorApp_Models_Passenger__ctor.htm">
         <HelpTOCNode Title="Passenger Constructor " Url="html/M_ElevatorApp_Models_Passenger__ctor.htm" />
         <HelpTOCNode Title="Passenger Constructor (Int32, Int32)" Url="html/M_ElevatorApp_Models_Passenger__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="355dac9b-1f4e-4b40-931a-c74e84f103e1" Title="Passenger Properties" Url="html/Properties_T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="4c4f0276-a4e1-4ec1-a9ca-3ca53d638f3d" Title="Passenger Properties" Url="html/Properties_T_ElevatorApp_Models_Passenger.htm">
         <HelpTOCNode Title="PassengerNumber Property " Url="html/P_ElevatorApp_Models_Passenger_PassengerNumber.htm" />
         <HelpTOCNode Title="Path Property " Url="html/P_ElevatorApp_Models_Passenger_Path.htm" />
         <HelpTOCNode Title="State Property " Url="html/P_ElevatorApp_Models_Passenger_State.htm" />
@@ -420,34 +420,34 @@
         <HelpTOCNode Title="TimeWaiting Property " Url="html/P_ElevatorApp_Models_Passenger_TimeWaiting.htm" />
         <HelpTOCNode Title="Weight Property " Url="html/P_ElevatorApp_Models_Passenger_Weight.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b0ff8c97-e1e2-427c-b26e-5bf44f9763ea" Title="Passenger Methods" Url="html/Methods_T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="537df0f8-4c07-4c4b-92e8-ab0e56150f30" Title="Passenger Methods" Url="html/Methods_T_ElevatorApp_Models_Passenger.htm">
         <HelpTOCNode Title="GetTimeInElevatorString Method " Url="html/M_ElevatorApp_Models_Passenger_GetTimeInElevatorString.htm" />
         <HelpTOCNode Title="GetWaitingString Method " Url="html/M_ElevatorApp_Models_Passenger_GetWaitingString.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Models_Passenger_ToString.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Passenger Events" Url="html/Events_T_ElevatorApp_Models_Passenger.htm" />
-      <HelpTOCNode Id="c9455b7e-b539-495b-904f-898f8779ae39" Title="Passenger Type Conversions" Url="html/Operators_T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="c2cb2638-f619-41ae-9cc2-fa26096221c4" Title="Passenger Type Conversions" Url="html/Operators_T_ElevatorApp_Models_Passenger.htm">
         <HelpTOCNode Title="Implicit Conversion (Passenger to ValueTuple(Object, Object)[])" Url="html/M_ElevatorApp_Models_Passenger_op_Implicit.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ee87f2bb-ca72-4b20-b287-bed861260747" Title="Passenger Fields" Url="html/Fields_T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="a4c33ac4-2eda-40e9-9035-74baad76317e" Title="Passenger Fields" Url="html/Fields_T_ElevatorApp_Models_Passenger.htm">
         <HelpTOCNode Title="TransitionSpeed Field" Url="html/F_ElevatorApp_Models_Passenger_TransitionSpeed.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="05202487-f21a-4837-b761-562b9399197f" Title="RequestButton Class" Url="html/T_ElevatorApp_Models_RequestButton.htm">
+    <HelpTOCNode Id="5d8d1e2e-4d79-430c-908b-2d415dae87c4" Title="RequestButton Class" Url="html/T_ElevatorApp_Models_RequestButton.htm">
       <HelpTOCNode Title="RequestButton Constructor " Url="html/M_ElevatorApp_Models_RequestButton__ctor.htm" />
-      <HelpTOCNode Id="a036282d-65bf-4ef8-887b-49861efb9faf" Title="RequestButton Properties" Url="html/Properties_T_ElevatorApp_Models_RequestButton.htm">
+      <HelpTOCNode Id="0ff88762-3c51-4dcd-8405-2e6ce6d0b5da" Title="RequestButton Properties" Url="html/Properties_T_ElevatorApp_Models_RequestButton.htm">
         <HelpTOCNode Title="DestinationFloor Property " Url="html/P_ElevatorApp_Models_RequestButton_DestinationFloor.htm" />
         <HelpTOCNode Title="FloorNumber Property " Url="html/P_ElevatorApp_Models_RequestButton_FloorNumber.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_RequestButton_Label.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d427fd81-55df-4620-a974-3080b5d9a459" Title="RequestButton Methods" Url="html/Methods_T_ElevatorApp_Models_RequestButton.htm">
+      <HelpTOCNode Id="8b5497a8-1ff3-490a-b32b-84775e93bfe8" Title="RequestButton Methods" Url="html/Methods_T_ElevatorApp_Models_RequestButton.htm">
         <HelpTOCNode Title="Push Method " Url="html/M_ElevatorApp_Models_RequestButton_Push.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_RequestButton_Subscribe.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="RequestButton Events" Url="html/Events_T_ElevatorApp_Models_RequestButton.htm" />
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="afb65b8b-b445-43cc-ab02-fde567c96026" Title="ElevatorApp.Models.Enums" Url="html/N_ElevatorApp_Models_Enums.htm">
+  <HelpTOCNode Id="aabe60d1-cab2-4cc9-ab99-1f950a9b9cf3" Title="ElevatorApp.Models.Enums" Url="html/N_ElevatorApp_Models_Enums.htm">
     <HelpTOCNode Title="ButtonType Enumeration" Url="html/T_ElevatorApp_Models_Enums_ButtonType.htm" />
     <HelpTOCNode Title="Direction Enumeration" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
     <HelpTOCNode Title="DoorState Enumeration" Url="html/T_ElevatorApp_Models_Enums_DoorState.htm" />
@@ -456,52 +456,52 @@
     <HelpTOCNode Title="ElevatorState Enumeration" Url="html/T_ElevatorApp_Models_Enums_ElevatorState.htm" />
     <HelpTOCNode Title="PassengerState Enumeration" Url="html/T_ElevatorApp_Models_Enums_PassengerState.htm" />
   </HelpTOCNode>
-  <HelpTOCNode Id="08b16f72-d0da-491c-9324-1feb85e588ae" Title="ElevatorApp.Models.Interfaces" Url="html/N_ElevatorApp_Models_Interfaces.htm">
-    <HelpTOCNode Id="46646a93-d187-4039-9344-f24e80854914" Title="IButton Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton.htm">
-      <HelpTOCNode Id="d7ef7086-ab5e-45eb-8521-ccfa81a47a59" Title="IButton Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_IButton.htm">
+  <HelpTOCNode Id="94a5624f-4941-4a8d-adef-3578d61dff70" Title="ElevatorApp.Models.Interfaces" Url="html/N_ElevatorApp_Models_Interfaces.htm">
+    <HelpTOCNode Id="34572183-a049-4758-b4f8-77c0b3f5857b" Title="IButton Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton.htm">
+      <HelpTOCNode Id="8937460b-b2bf-4db5-80ba-3d770ef7372e" Title="IButton Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_IButton.htm">
         <HelpTOCNode Title="Active Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_Active.htm" />
         <HelpTOCNode Title="ButtonType Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_ButtonType.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_Label.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4f94040c-de5d-4e5e-b2d0-67e966dc5d33" Title="IButton Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton.htm">
+      <HelpTOCNode Id="1a1ea619-457d-4ebd-bbea-e813628ab6f3" Title="IButton Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton.htm">
         <HelpTOCNode Title="Push Method " Url="html/M_ElevatorApp_Models_Interfaces_IButton_Push.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9fc30bff-f7b4-4fc7-a5ca-e114c15eeebf" Title="IButton Events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton.htm">
+      <HelpTOCNode Id="803b8ddb-c286-4c15-ad13-c9119c59d945" Title="IButton Events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton.htm">
         <HelpTOCNode Title="OnActivated Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_OnActivated.htm" />
         <HelpTOCNode Title="OnDeactivated Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_OnDeactivated.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d0978ceb-7738-485e-a0c2-5bb9a290e729" Title="IButton(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton_1.htm">
+    <HelpTOCNode Id="4174ce5a-7a9f-427d-80eb-788a9a827419" Title="IButton(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton_1.htm">
       <HelpTOCNode Title="IButton(T) Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_IButton_1.htm" />
-      <HelpTOCNode Id="531ef4a0-fff4-4a91-b286-d0f1779b6a04" Title="IButton(T) Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton_1.htm">
+      <HelpTOCNode Id="f7841b35-7eb5-4773-9333-80ed510d8203" Title="IButton(T) Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton_1.htm">
         <HelpTOCNode Title="ActionCompleted Method " Url="html/M_ElevatorApp_Models_Interfaces_IButton_1_ActionCompleted.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a7616e50-9942-434d-b02b-82fc46c523f3" Title="IButton(T) Events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton_1.htm">
+      <HelpTOCNode Id="725d0bb3-04d1-4e22-8b90-2c1a0202346f" Title="IButton(T) Events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton_1.htm">
         <HelpTOCNode Title="OnActionCompleted Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnActionCompleted.htm" />
         <HelpTOCNode Title="OnPushed Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnPushed.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="0ed5e317-e54b-44d6-96ee-d5340186831e" Title="ISubcriber(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
-      <HelpTOCNode Id="25f4c58b-2021-4cbf-a3d6-cdd29a563499" Title="ISubcriber(T) Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
+    <HelpTOCNode Id="d49eb3e4-9567-4acd-9da0-76f1f4f7b167" Title="ISubcriber(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
+      <HelpTOCNode Id="15545d12-5532-4f98-ad0b-1278a0c1f7e2" Title="ISubcriber(T) Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_Interfaces_ISubcriber_1_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="39cfb0ee-a440-44f8-af6d-90c26604340d" Title="ISubcriber(T) Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
+      <HelpTOCNode Id="8ec00776-7ca2-4f3c-8dca-279324168034" Title="ISubcriber(T) Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_Interfaces_ISubcriber_1_Subscribe.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="43432466-aeb1-4072-a6ab-e23ba62c7884" Title="ElevatorApp.Util" Url="html/N_ElevatorApp_Util.htm">
-    <HelpTOCNode Id="5e1b0222-b627-4103-825e-748ffddcf714" Title="AsyncObservableCollection(T) Class" Url="html/T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
-      <HelpTOCNode Id="b84568bc-9c20-43b3-ae6b-ceb79497fc3c" Title="AsyncObservableCollection(T) Constructor " Url="html/Overload_ElevatorApp_Util_AsyncObservableCollection_1__ctor.htm">
+  <HelpTOCNode Id="2315e896-f964-4ec5-b462-146af5f1d856" Title="ElevatorApp.Util" Url="html/N_ElevatorApp_Util.htm">
+    <HelpTOCNode Id="62837a43-9052-49db-b127-d376f2547fc8" Title="AsyncObservableCollection(T) Class" Url="html/T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
+      <HelpTOCNode Id="0b4a9bdb-bbc1-44ae-aeaf-7d1a172e6d87" Title="AsyncObservableCollection(T) Constructor " Url="html/Overload_ElevatorApp_Util_AsyncObservableCollection_1__ctor.htm">
         <HelpTOCNode Title="AsyncObservableCollection(T) Constructor " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1__ctor.htm" />
         <HelpTOCNode Title="AsyncObservableCollection(T) Constructor (IEnumerable(T))" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1__ctor_1.htm" />
         <HelpTOCNode Title="AsyncObservableCollection(T) Constructor (SerializationInfo, StreamingContext)" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1__ctor_2.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8a8f2459-0dcc-42ba-8e45-fb2600110f9a" Title="AsyncObservableCollection(T) Properties" Url="html/Properties_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
+      <HelpTOCNode Id="ad428efb-9ff1-4522-bca8-c020fef061fb" Title="AsyncObservableCollection(T) Properties" Url="html/Properties_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
         <HelpTOCNode Title="Count Property " Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Count.htm" />
         <HelpTOCNode Title="Item Property " Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Item.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="0d8a8b57-9302-4c74-adc9-972c2f3028dd" Title="AsyncObservableCollection(T) Methods" Url="html/Methods_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
+      <HelpTOCNode Id="265ee2c8-c5d7-4675-941d-63928e4e1834" Title="AsyncObservableCollection(T) Methods" Url="html/Methods_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
         <HelpTOCNode Title="Add Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Add.htm" />
         <HelpTOCNode Title="AddDistinct Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddDistinct.htm" />
         <HelpTOCNode Title="AddRange Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddRange.htm" />
@@ -520,1072 +520,214 @@
         <HelpTOCNode Title="TryPeek Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryPeek.htm" />
         <HelpTOCNode Title="TryRemove Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryRemove.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="cf8da024-247f-4a63-bb07-2b0560e94000" Title="AsyncObservableCollection(T) Events" Url="html/Events_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
+      <HelpTOCNode Id="94ff7591-f58b-47eb-8060-e260b5c981b9" Title="AsyncObservableCollection(T) Events" Url="html/Events_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
         <HelpTOCNode Title="CollectionChanged Event" Url="html/E_ElevatorApp_Util_AsyncObservableCollection_1_CollectionChanged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="dd4f5945-ec4e-4f74-b697-6c778d58d300" Title="AsyncObservableCollection(T).AsyncDispatcherEvent(TEvent, TArgs) Class" Url="html/T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
+    <HelpTOCNode Id="34151450-769d-4bcf-b5ae-241fce165358" Title="AsyncObservableCollection(T).AsyncDispatcherEvent(TEvent, TArgs) Class" Url="html/T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
       <HelpTOCNode Title="AsyncObservableCollection(T).AsyncDispatcherEvent(TEvent, TArgs) Constructor " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2__ctor.htm" />
-      <HelpTOCNode Id="babfc723-d886-44c2-aa82-245059dfdd73" Title="AsyncDispatcherEvent(TEvent, TArgs) Properties" Url="html/Properties_T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
+      <HelpTOCNode Id="4a0a310f-75d3-44b8-ae40-f2a9a69f2e11" Title="AsyncDispatcherEvent(TEvent, TArgs) Properties" Url="html/Properties_T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
         <HelpTOCNode Title="isEmpty Property " Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_isEmpty.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="450392f8-47a0-428c-bddb-7f5cad9469e0" Title="AsyncDispatcherEvent(TEvent, TArgs) Methods" Url="html/Methods_T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
+      <HelpTOCNode Id="e67f8014-ff1e-473a-93bd-bbb5297a6a28" Title="AsyncDispatcherEvent(TEvent, TArgs) Methods" Url="html/Methods_T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
         <HelpTOCNode Title="add Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_add.htm" />
         <HelpTOCNode Title="raise Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_raise.htm" />
         <HelpTOCNode Title="remove Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_remove.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d9ac0338-515e-417b-8b2c-a3bba441d729" Title="Event Structure" Url="html/T_ElevatorApp_Util_Event.htm">
+    <HelpTOCNode Id="5e18cf60-498e-4e30-8172-c3ff9e41363e" Title="Event Structure" Url="html/T_ElevatorApp_Util_Event.htm">
       <HelpTOCNode Title="Event Constructor " Url="html/M_ElevatorApp_Util_Event__ctor.htm" />
-      <HelpTOCNode Id="f13b3085-fc4f-4161-a9bf-7353fbca0b98" Title="Event Properties" Url="html/Properties_T_ElevatorApp_Util_Event.htm">
+      <HelpTOCNode Id="169aaa66-4e0d-4662-99d7-0abbc458365e" Title="Event Properties" Url="html/Properties_T_ElevatorApp_Util_Event.htm">
         <HelpTOCNode Title="Name Property " Url="html/P_ElevatorApp_Util_Event_Name.htm" />
         <HelpTOCNode Title="Parameters Property " Url="html/P_ElevatorApp_Util_Event_Parameters.htm" />
         <HelpTOCNode Title="Timestamp Property " Url="html/P_ElevatorApp_Util_Event_Timestamp.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a174e251-b060-45f3-85fe-8211fb387543" Title="Event Methods" Url="html/Methods_T_ElevatorApp_Util_Event.htm">
+      <HelpTOCNode Id="ed6c927a-5d3e-453b-8eca-5ad07acc4bf0" Title="Event Methods" Url="html/Methods_T_ElevatorApp_Util_Event.htm">
         <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Util_Event_ToString.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="7c1db45d-e3bc-4a17-b980-f48d43a03f0f" Title="Event Fields" Url="html/Fields_T_ElevatorApp_Util_Event.htm">
+      <HelpTOCNode Id="14092eaf-9818-4ac9-9a7f-46de695afacc" Title="Event Fields" Url="html/Fields_T_ElevatorApp_Util_Event.htm">
         <HelpTOCNode Title="TIMESTAMP_FORMAT Field" Url="html/F_ElevatorApp_Util_Event_TIMESTAMP_FORMAT.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="3f83afd2-c85b-40de-88ea-054c39f9ef4c" Title="Extensions Class" Url="html/T_ElevatorApp_Util_Extensions.htm">
-      <HelpTOCNode Id="01cbf7ef-2ab4-48a5-94e6-0a029db8625d" Title="Extensions Methods" Url="html/Methods_T_ElevatorApp_Util_Extensions.htm">
+    <HelpTOCNode Id="7dd14440-bae9-4336-8fe8-12da027eddeb" Title="Extensions Class" Url="html/T_ElevatorApp_Util_Extensions.htm">
+      <HelpTOCNode Id="da60d309-8d52-4019-8168-2703b56ec69c" Title="Extensions Methods" Url="html/Methods_T_ElevatorApp_Util_Extensions.htm">
         <HelpTOCNode Title="Deconstruct(TKey, TValue) Method " Url="html/M_ElevatorApp_Util_Extensions_Deconstruct__2.htm" />
         <HelpTOCNode Title="MinByOrDefault(T, TKey) Method " Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d64ce2fb-3a2f-474b-aba3-a96e9872c6cf" Title="ILogger Interface" Url="html/T_ElevatorApp_Util_ILogger.htm">
-      <HelpTOCNode Id="6bf8de92-098e-474e-8694-52dda7531e5e" Title="ILogger Properties" Url="html/Properties_T_ElevatorApp_Util_ILogger.htm">
+    <HelpTOCNode Id="9bc7d90a-4ee9-4e7e-b6c3-f32a2266419c" Title="ILogger Interface" Url="html/T_ElevatorApp_Util_ILogger.htm">
+      <HelpTOCNode Id="7a273182-a4b7-4c2d-b4c9-5c14c3bbbb01" Title="ILogger Properties" Url="html/Properties_T_ElevatorApp_Util_ILogger.htm">
         <HelpTOCNode Title="Events Property " Url="html/P_ElevatorApp_Util_ILogger_Events.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bc7e607c-3378-425a-9b76-bbc381d013ed" Title="ILogger Methods" Url="html/Methods_T_ElevatorApp_Util_ILogger.htm">
+      <HelpTOCNode Id="8697a2f1-30df-4cc9-b467-72dd30614d64" Title="ILogger Methods" Url="html/Methods_T_ElevatorApp_Util_ILogger.htm">
         <HelpTOCNode Title="AddLogger Method " Url="html/M_ElevatorApp_Util_ILogger_AddLogger.htm" />
         <HelpTOCNode Title="ClearItems Method " Url="html/M_ElevatorApp_Util_ILogger_ClearItems.htm" />
-        <HelpTOCNode Id="576453cd-39e3-4ddb-8c4b-6327473130db" Title="LogEvent Method " Url="html/Overload_ElevatorApp_Util_ILogger_LogEvent.htm">
+        <HelpTOCNode Id="fcb3392d-13d2-40c4-9a46-57c428f92ce8" Title="LogEvent Method " Url="html/Overload_ElevatorApp_Util_ILogger_LogEvent.htm">
           <HelpTOCNode Title="LogEvent Method (String, ValueTuple(Object, Object)[])" Url="html/M_ElevatorApp_Util_ILogger_LogEvent_1.htm" />
           <HelpTOCNode Title="LogEvent Method (Event, Int32)" Url="html/M_ElevatorApp_Util_ILogger_LogEvent.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="58c606c8-07a7-4118-8165-de8bcf5772c2" Title="ILogger Events" Url="html/Events_T_ElevatorApp_Util_ILogger.htm">
+      <HelpTOCNode Id="de9216d3-4f4c-4192-adda-77d822ffa002" Title="ILogger Events" Url="html/Events_T_ElevatorApp_Util_ILogger.htm">
         <HelpTOCNode Title="ItemLogged Event" Url="html/E_ElevatorApp_Util_ILogger_ItemLogged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="3b5aeb9a-66fa-40c5-9578-c73cc7cf3990" Title="LocalSystemClock Class" Url="html/T_ElevatorApp_Util_LocalSystemClock.htm">
-      <HelpTOCNode Id="dc490959-75f6-43c1-bc60-8d3bcb142fa8" Title="LocalSystemClock Properties" Url="html/Properties_T_ElevatorApp_Util_LocalSystemClock.htm">
+    <HelpTOCNode Id="83651f8a-fabb-47d3-9a30-63d2489b3e7a" Title="IStatistic Interface" Url="html/T_ElevatorApp_Util_IStatistic.htm">
+      <HelpTOCNode Id="d1357841-a42e-49b7-a60c-4b1a2a14e439" Title="IStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_IStatistic.htm">
+        <HelpTOCNode Title="Count Property " Url="html/P_ElevatorApp_Util_IStatistic_Count.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="27117fe2-7db2-4f5d-beeb-81ecf6641d84" Title="LocalSystemClock Class" Url="html/T_ElevatorApp_Util_LocalSystemClock.htm">
+      <HelpTOCNode Id="9cb44f08-55a8-4c48-973b-1d2fad8e89d9" Title="LocalSystemClock Properties" Url="html/Properties_T_ElevatorApp_Util_LocalSystemClock.htm">
         <HelpTOCNode Title="Instance Property " Url="html/P_ElevatorApp_Util_LocalSystemClock_Instance.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8ce66f26-f217-4030-862d-b12a8ce54464" Title="LocalSystemClock Methods" Url="html/Methods_T_ElevatorApp_Util_LocalSystemClock.htm">
+      <HelpTOCNode Id="6173d0be-c2fa-4382-aead-12e0dcd25849" Title="LocalSystemClock Methods" Url="html/Methods_T_ElevatorApp_Util_LocalSystemClock.htm">
         <HelpTOCNode Title="GetCurrentInstant Method " Url="html/M_ElevatorApp_Util_LocalSystemClock_GetCurrentInstant.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="2d4e1ad8-6af9-432a-a54b-d2aaf8fd0c97" Title="Logger Class" Url="html/T_ElevatorApp_Util_Logger.htm">
-      <HelpTOCNode Id="3526376b-5827-4155-9981-1deabcea47e5" Title="Logger Properties" Url="html/Properties_T_ElevatorApp_Util_Logger.htm">
+    <HelpTOCNode Id="7aeaba9c-2fbf-4273-970d-130e7bbdcf35" Title="Logger Class" Url="html/T_ElevatorApp_Util_Logger.htm">
+      <HelpTOCNode Id="fc84819b-91dc-46ba-b9d7-180c3bc8062b" Title="Logger Properties" Url="html/Properties_T_ElevatorApp_Util_Logger.htm">
         <HelpTOCNode Title="Events Property " Url="html/P_ElevatorApp_Util_Logger_Events.htm" />
         <HelpTOCNode Title="Instance Property " Url="html/P_ElevatorApp_Util_Logger_Instance.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="75ab3dcf-c8cb-4208-bccc-ce94cd6ff86b" Title="Logger Methods" Url="html/Methods_T_ElevatorApp_Util_Logger.htm">
+      <HelpTOCNode Id="6830ddb3-095e-408f-a4ea-e1d987249f49" Title="Logger Methods" Url="html/Methods_T_ElevatorApp_Util_Logger.htm">
         <HelpTOCNode Title="AddLogger Method " Url="html/M_ElevatorApp_Util_Logger_AddLogger.htm" />
         <HelpTOCNode Title="ClearItems Method " Url="html/M_ElevatorApp_Util_Logger_ClearItems.htm" />
         <HelpTOCNode Title="LogEvent Method " Url="html/M_ElevatorApp_Util_Logger_LogEvent.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="c4d0c6f7-48e0-4590-952f-dea7b9916b1f" Title="Logger Events" Url="html/Events_T_ElevatorApp_Util_Logger.htm">
+      <HelpTOCNode Id="036f0900-8811-4e44-b0da-429a01887b02" Title="Logger Events" Url="html/Events_T_ElevatorApp_Util_Logger.htm">
         <HelpTOCNode Title="ItemLogged Event" Url="html/E_ElevatorApp_Util_Logger_ItemLogged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="Logger.LogEventHandler Delegate" Url="html/T_ElevatorApp_Util_Logger_LogEventHandler.htm" />
-    <HelpTOCNode Id="5ad432eb-799b-4e7a-a6ea-202cc950b5c9" Title="ObservableConcurrentQueue(T) Class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
-      <HelpTOCNode Id="e55ab66b-1655-4579-a266-6e7aeb327c00" Title="ObservableConcurrentQueue(T) Constructor " Url="html/Overload_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm">
+    <HelpTOCNode Id="28dda715-4d2a-4bed-b9a6-c24b4930efff" Title="ObservableConcurrentQueue(T) Class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
+      <HelpTOCNode Id="d79a72df-c0de-40b3-b068-861ba7d983ea" Title="ObservableConcurrentQueue(T) Constructor " Url="html/Overload_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm">
         <HelpTOCNode Title="ObservableConcurrentQueue(T) Constructor " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm" />
         <HelpTOCNode Title="ObservableConcurrentQueue(T) Constructor (IEnumerable(T))" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ed397ae6-86d4-4a28-9f7c-efab6ab7a8d4" Title="ObservableConcurrentQueue(T) Properties" Url="html/Properties_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
+      <HelpTOCNode Id="05acd8d2-8e76-46c8-beda-292b647deebf" Title="ObservableConcurrentQueue(T) Properties" Url="html/Properties_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
         <HelpTOCNode Title="Count Property " Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_Count.htm" />
         <HelpTOCNode Title="IsReadOnly Property " Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_IsReadOnly.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="83172c25-df4a-4e6b-80fc-b273c62bdb23" Title="ObservableConcurrentQueue(T) Methods" Url="html/Methods_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
+      <HelpTOCNode Id="dff2dd14-c38b-4f1c-a218-d11f56bc30ae" Title="ObservableConcurrentQueue(T) Methods" Url="html/Methods_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
         <HelpTOCNode Title="Enqueue Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_Enqueue.htm" />
         <HelpTOCNode Title="GetEnumerator Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_GetEnumerator.htm" />
         <HelpTOCNode Title="TryDequeue Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryDequeue.htm" />
         <HelpTOCNode Title="TryPeek Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryPeek.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="6a2bfb98-f45d-47dc-b340-99d27f997dbe" Title="ObservableConcurrentQueue(T) Events" Url="html/Events_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
+      <HelpTOCNode Id="5b7cb396-b67e-454b-8726-212e911ec398" Title="ObservableConcurrentQueue(T) Events" Url="html/Events_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
         <HelpTOCNode Title="CollectionChanged Event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_CollectionChanged.htm" />
         <HelpTOCNode Title="PropertyChanged Event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_PropertyChanged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
+    <HelpTOCNode Id="9fdb2a36-d66a-4986-94d0-a0bcf8bb8727" Title="SimpleStatistic(T) Class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm">
+      <HelpTOCNode Id="a2d60fa9-37e6-4f39-a76d-7ac95256fe11" Title="SimpleStatistic(T) Constructor " Url="html/Overload_ElevatorApp_Util_SimpleStatistic_1__ctor.htm">
+        <HelpTOCNode Title="SimpleStatistic(T) Constructor " Url="html/M_ElevatorApp_Util_SimpleStatistic_1__ctor.htm" />
+        <HelpTOCNode Title="SimpleStatistic(T) Constructor (IEnumerable(T))" Url="html/M_ElevatorApp_Util_SimpleStatistic_1__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="SimpleStatistic(T) Properties" Url="html/Properties_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+      <HelpTOCNode Title="SimpleStatistic(T) Methods" Url="html/Methods_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+      <HelpTOCNode Title="SimpleStatistic(T) Events" Url="html/Events_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="7ade1459-3cca-427f-a6b8-61f7ca639d3c" Title="Statistic(TStat, TAggregate) Class" Url="html/T_ElevatorApp_Util_Statistic_2.htm">
+      <HelpTOCNode Id="01047f69-cb3c-4475-a1e3-3e7f0a7b9ba3" Title="Statistic(TStat, TAggregate) Constructor " Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm">
+        <HelpTOCNode Title="Statistic(TStat, TAggregate) Constructor " Url="html/M_ElevatorApp_Util_Statistic_2__ctor.htm" />
+        <HelpTOCNode Title="Statistic(TStat, TAggregate) Constructor (IEnumerable(TStat))" Url="html/M_ElevatorApp_Util_Statistic_2__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f131f287-6611-4b1d-9b91-b9883dad3181" Title="Statistic(TStat, TAggregate) Properties" Url="html/Properties_T_ElevatorApp_Util_Statistic_2.htm">
+        <HelpTOCNode Title="_collection Property " Url="html/P_ElevatorApp_Util_Statistic_2__collection.htm" />
+        <HelpTOCNode Title="Average Property " Url="html/P_ElevatorApp_Util_Statistic_2_Average.htm" />
+        <HelpTOCNode Title="Count Property " Url="html/P_ElevatorApp_Util_Statistic_2_Count.htm" />
+        <HelpTOCNode Title="Max Property " Url="html/P_ElevatorApp_Util_Statistic_2_Max.htm" />
+        <HelpTOCNode Title="Min Property " Url="html/P_ElevatorApp_Util_Statistic_2_Min.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b4f50a34-d3e0-4ec8-8272-a717edec0ad4" Title="Statistic(TStat, TAggregate) Methods" Url="html/Methods_T_ElevatorApp_Util_Statistic_2.htm">
+        <HelpTOCNode Title="Add Method " Url="html/M_ElevatorApp_Util_Statistic_2_Add.htm" />
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistic_2_AddItems.htm" />
+        <HelpTOCNode Title="AddRange Method " Url="html/M_ElevatorApp_Util_Statistic_2_AddRange.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistic_2_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistic_2_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistic_2_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistic_2_SubtractItems.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Util_Statistic_2_ToString.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Statistic(TStat, TAggregate) Events" Url="html/Events_T_ElevatorApp_Util_Statistic_2.htm" />
+    </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="252aa8cb-944f-4b75-a604-9b5f04e1594a" Title="NodaTime" Url="html/N_NodaTime.htm">
-    <HelpTOCNode Id="ba4141ed-8275-4a93-be8f-1241edcab5c8" Title="AmbiguousTimeException Class" Url="html/T_NodaTime_AmbiguousTimeException.htm">
-      <HelpTOCNode Title="AmbiguousTimeException Constructor " Url="html/M_NodaTime_AmbiguousTimeException__ctor.htm" />
-      <HelpTOCNode Id="97f8490f-e570-4b3e-ba77-3479b3a48129" Title="AmbiguousTimeException Properties" Url="html/Properties_T_NodaTime_AmbiguousTimeException.htm">
-        <HelpTOCNode Title="EarlierMapping Property " Url="html/P_NodaTime_AmbiguousTimeException_EarlierMapping.htm" />
-        <HelpTOCNode Title="LaterMapping Property " Url="html/P_NodaTime_AmbiguousTimeException_LaterMapping.htm" />
-        <HelpTOCNode Title="Zone Property " Url="html/P_NodaTime_AmbiguousTimeException_Zone.htm" />
+  <HelpTOCNode Id="d2ac3e4c-8765-43f0-9bc1-497dc8cf0f51" Title="ElevatorApp.Util.Statistics" Url="html/N_ElevatorApp_Util_Statistics.htm">
+    <HelpTOCNode Id="25702723-7112-4017-b33b-10d401149f2b" Title="DecimalStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_DecimalStatistic.htm">
+      <HelpTOCNode Id="ad37ff5a-8c5a-4881-8860-a381e2686879" Title="DecimalStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_DecimalStatistic__ctor.htm">
+        <HelpTOCNode Title="DecimalStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic__ctor.htm" />
+        <HelpTOCNode Title="DecimalStatistic Constructor (IEnumerable(Decimal))" Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Title="AmbiguousTimeException Methods" Url="html/Methods_T_NodaTime_AmbiguousTimeException.htm" />
+      <HelpTOCNode Title="DecimalStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_DecimalStatistic.htm" />
+      <HelpTOCNode Id="f9f9bb7e-0db4-42f2-9c7b-cecd73c45f4a" Title="DecimalStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_DecimalStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_SubtractItems.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DecimalStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_DecimalStatistic.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="8e75eb74-9697-4f08-859b-79bf5ae4032a" Title="AnnualDate Structure" Url="html/T_NodaTime_AnnualDate.htm">
-      <HelpTOCNode Title="AnnualDate Constructor " Url="html/M_NodaTime_AnnualDate__ctor.htm" />
-      <HelpTOCNode Id="2a6e4a9e-6481-4bfc-865e-d292b54c0b57" Title="AnnualDate Properties" Url="html/Properties_T_NodaTime_AnnualDate.htm">
-        <HelpTOCNode Title="Day Property " Url="html/P_NodaTime_AnnualDate_Day.htm" />
-        <HelpTOCNode Title="Month Property " Url="html/P_NodaTime_AnnualDate_Month.htm" />
+    <HelpTOCNode Id="467efc97-8eed-46c0-ba6b-18f92eef620e" Title="DoubleStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_DoubleStatistic.htm">
+      <HelpTOCNode Id="c9eb0f03-f056-474f-aa5e-85d5d1b7b44e" Title="DoubleStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_DoubleStatistic__ctor.htm">
+        <HelpTOCNode Title="DoubleStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic__ctor.htm" />
+        <HelpTOCNode Title="DoubleStatistic Constructor (IEnumerable(Double))" Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="295d9605-19cf-4857-9b6e-b106e3e3eaa5" Title="AnnualDate Methods" Url="html/Methods_T_NodaTime_AnnualDate.htm">
-        <HelpTOCNode Title="CompareTo Method " Url="html/M_NodaTime_AnnualDate_CompareTo.htm" />
-        <HelpTOCNode Id="cee6ec59-fb31-4b4d-b18f-2c9af224f838" Title="Equals Method " Url="html/Overload_NodaTime_AnnualDate_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_AnnualDate_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (AnnualDate)" Url="html/M_NodaTime_AnnualDate_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_AnnualDate_GetHashCode.htm" />
-        <HelpTOCNode Title="InYear Method " Url="html/M_NodaTime_AnnualDate_InYear.htm" />
-        <HelpTOCNode Title="IsValidYear Method " Url="html/M_NodaTime_AnnualDate_IsValidYear.htm" />
-        <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_AnnualDate_ToString.htm" />
+      <HelpTOCNode Title="DoubleStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_DoubleStatistic.htm" />
+      <HelpTOCNode Id="835e3072-ab7c-4c2c-a86d-affefe4198d0" Title="DoubleStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_DoubleStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_SubtractItems.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a0f87e65-351f-4a72-9825-89e8040bf63f" Title="AnnualDate Operators" Url="html/Operators_T_NodaTime_AnnualDate.htm">
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_AnnualDate_op_Equality.htm" />
-        <HelpTOCNode Title="GreaterThan Operator " Url="html/M_NodaTime_AnnualDate_op_GreaterThan.htm" />
-        <HelpTOCNode Title="GreaterThanOrEqual Operator " Url="html/M_NodaTime_AnnualDate_op_GreaterThanOrEqual.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_AnnualDate_op_Inequality.htm" />
-        <HelpTOCNode Title="LessThan Operator " Url="html/M_NodaTime_AnnualDate_op_LessThan.htm" />
-        <HelpTOCNode Title="LessThanOrEqual Operator " Url="html/M_NodaTime_AnnualDate_op_LessThanOrEqual.htm" />
-      </HelpTOCNode>
+      <HelpTOCNode Title="DoubleStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_DoubleStatistic.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="04a50234-e41b-4f20-9676-4a0eaf7f7582" Title="CalendarSystem Class" Url="html/T_NodaTime_CalendarSystem.htm">
-      <HelpTOCNode Id="5344f926-1287-4f6c-b0a5-3f801a5ad3b2" Title="CalendarSystem Properties" Url="html/Properties_T_NodaTime_CalendarSystem.htm">
-        <HelpTOCNode Title="Coptic Property " Url="html/P_NodaTime_CalendarSystem_Coptic.htm" />
-        <HelpTOCNode Title="Eras Property " Url="html/P_NodaTime_CalendarSystem_Eras.htm" />
-        <HelpTOCNode Title="Gregorian Property " Url="html/P_NodaTime_CalendarSystem_Gregorian.htm" />
-        <HelpTOCNode Title="HebrewCivil Property " Url="html/P_NodaTime_CalendarSystem_HebrewCivil.htm" />
-        <HelpTOCNode Title="HebrewScriptural Property " Url="html/P_NodaTime_CalendarSystem_HebrewScriptural.htm" />
-        <HelpTOCNode Title="Id Property " Url="html/P_NodaTime_CalendarSystem_Id.htm" />
-        <HelpTOCNode Title="Ids Property " Url="html/P_NodaTime_CalendarSystem_Ids.htm" />
-        <HelpTOCNode Title="IslamicBcl Property " Url="html/P_NodaTime_CalendarSystem_IslamicBcl.htm" />
-        <HelpTOCNode Title="Iso Property " Url="html/P_NodaTime_CalendarSystem_Iso.htm" />
-        <HelpTOCNode Title="Julian Property " Url="html/P_NodaTime_CalendarSystem_Julian.htm" />
-        <HelpTOCNode Title="MaxYear Property " Url="html/P_NodaTime_CalendarSystem_MaxYear.htm" />
-        <HelpTOCNode Title="MinYear Property " Url="html/P_NodaTime_CalendarSystem_MinYear.htm" />
-        <HelpTOCNode Title="Name Property " Url="html/P_NodaTime_CalendarSystem_Name.htm" />
-        <HelpTOCNode Title="PersianArithmetic Property " Url="html/P_NodaTime_CalendarSystem_PersianArithmetic.htm" />
-        <HelpTOCNode Title="PersianAstronomical Property " Url="html/P_NodaTime_CalendarSystem_PersianAstronomical.htm" />
-        <HelpTOCNode Title="PersianSimple Property " Url="html/P_NodaTime_CalendarSystem_PersianSimple.htm" />
-        <HelpTOCNode Title="UmAlQura Property " Url="html/P_NodaTime_CalendarSystem_UmAlQura.htm" />
+    <HelpTOCNode Id="1dc3f502-3b0b-483d-aa3b-b01071609739" Title="DurationStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_DurationStatistic.htm">
+      <HelpTOCNode Id="87182a50-2bc0-4b63-b38a-c84b32cd0d97" Title="DurationStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_DurationStatistic__ctor.htm">
+        <HelpTOCNode Title="DurationStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic__ctor.htm" />
+        <HelpTOCNode Title="DurationStatistic Constructor (IEnumerable(Duration))" Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e5722524-4b8d-4b44-a107-c716466606b2" Title="CalendarSystem Methods" Url="html/Methods_T_NodaTime_CalendarSystem.htm">
-        <HelpTOCNode Title="ForId Method " Url="html/M_NodaTime_CalendarSystem_ForId.htm" />
-        <HelpTOCNode Title="GetAbsoluteYear Method " Url="html/M_NodaTime_CalendarSystem_GetAbsoluteYear.htm" />
-        <HelpTOCNode Title="GetDaysInMonth Method " Url="html/M_NodaTime_CalendarSystem_GetDaysInMonth.htm" />
-        <HelpTOCNode Title="GetDaysInYear Method " Url="html/M_NodaTime_CalendarSystem_GetDaysInYear.htm" />
-        <HelpTOCNode Title="GetHebrewCalendar Method " Url="html/M_NodaTime_CalendarSystem_GetHebrewCalendar.htm" />
-        <HelpTOCNode Title="GetIslamicCalendar Method " Url="html/M_NodaTime_CalendarSystem_GetIslamicCalendar.htm" />
-        <HelpTOCNode Title="GetMaxYearOfEra Method " Url="html/M_NodaTime_CalendarSystem_GetMaxYearOfEra.htm" />
-        <HelpTOCNode Title="GetMinYearOfEra Method " Url="html/M_NodaTime_CalendarSystem_GetMinYearOfEra.htm" />
-        <HelpTOCNode Title="GetMonthsInYear Method " Url="html/M_NodaTime_CalendarSystem_GetMonthsInYear.htm" />
-        <HelpTOCNode Title="IsLeapYear Method " Url="html/M_NodaTime_CalendarSystem_IsLeapYear.htm" />
-        <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_CalendarSystem_ToString.htm" />
+      <HelpTOCNode Title="DurationStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_DurationStatistic.htm" />
+      <HelpTOCNode Id="70e2d3bc-0149-4131-ae61-56b70af0f5fd" Title="DurationStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_DurationStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_SubtractItems.htm" />
       </HelpTOCNode>
+      <HelpTOCNode Title="DurationStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_DurationStatistic.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="f94e73b0-c37d-4ef0-aee6-799bb5b2527d" Title="DateAdjusters Class" Url="html/T_NodaTime_DateAdjusters.htm">
-      <HelpTOCNode Id="f0bd36ee-32ae-4369-8adf-4556881dcd71" Title="DateAdjusters Properties" Url="html/Properties_T_NodaTime_DateAdjusters.htm">
-        <HelpTOCNode Title="EndOfMonth Property " Url="html/P_NodaTime_DateAdjusters_EndOfMonth.htm" />
-        <HelpTOCNode Title="StartOfMonth Property " Url="html/P_NodaTime_DateAdjusters_StartOfMonth.htm" />
+    <HelpTOCNode Id="da6d795a-662a-4f7e-a46b-fdb3d4ac34dd" Title="IntStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_IntStatistic.htm">
+      <HelpTOCNode Id="ff181d14-fe4a-47b3-8bdc-7a3b6e2d47e4" Title="IntStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_IntStatistic__ctor.htm">
+        <HelpTOCNode Title="IntStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic__ctor.htm" />
+        <HelpTOCNode Title="IntStatistic Constructor (IEnumerable(Int32))" Url="html/M_ElevatorApp_Util_Statistics_IntStatistic__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9c9efc9c-39c5-44f5-bfc6-a1acaba1c059" Title="DateAdjusters Methods" Url="html/Methods_T_NodaTime_DateAdjusters.htm">
-        <HelpTOCNode Title="DayOfMonth Method " Url="html/M_NodaTime_DateAdjusters_DayOfMonth.htm" />
-        <HelpTOCNode Title="Month Method " Url="html/M_NodaTime_DateAdjusters_Month.htm" />
-        <HelpTOCNode Title="Next Method " Url="html/M_NodaTime_DateAdjusters_Next.htm" />
-        <HelpTOCNode Title="NextOrSame Method " Url="html/M_NodaTime_DateAdjusters_NextOrSame.htm" />
-        <HelpTOCNode Title="Previous Method " Url="html/M_NodaTime_DateAdjusters_Previous.htm" />
-        <HelpTOCNode Title="PreviousOrSame Method " Url="html/M_NodaTime_DateAdjusters_PreviousOrSame.htm" />
+      <HelpTOCNode Title="IntStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_IntStatistic.htm" />
+      <HelpTOCNode Id="4b1576e9-b9f2-4859-97bb-b64b0ffc2e0f" Title="IntStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_IntStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_SubtractItems.htm" />
       </HelpTOCNode>
+      <HelpTOCNode Title="IntStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_IntStatistic.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="dd1994c9-5feb-42c1-ad7f-fb2f27965e7e" Title="DateInterval Class" Url="html/T_NodaTime_DateInterval.htm">
-      <HelpTOCNode Title="DateInterval Constructor " Url="html/M_NodaTime_DateInterval__ctor.htm" />
-      <HelpTOCNode Id="8521c8a3-cf53-4884-b40c-a0cc81c42df4" Title="DateInterval Properties" Url="html/Properties_T_NodaTime_DateInterval.htm">
-        <HelpTOCNode Title="End Property " Url="html/P_NodaTime_DateInterval_End.htm" />
-        <HelpTOCNode Title="Length Property " Url="html/P_NodaTime_DateInterval_Length.htm" />
-        <HelpTOCNode Title="Start Property " Url="html/P_NodaTime_DateInterval_Start.htm" />
+    <HelpTOCNode Id="d8f2f80b-a996-4ece-9753-e80c1d4e68eb" Title="LongStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_LongStatistic.htm">
+      <HelpTOCNode Id="63e0307b-e937-476a-81f6-1b1cc008cda6" Title="LongStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_LongStatistic__ctor.htm">
+        <HelpTOCNode Title="LongStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic__ctor.htm" />
+        <HelpTOCNode Title="LongStatistic Constructor (IEnumerable(Int64))" Url="html/M_ElevatorApp_Util_Statistics_LongStatistic__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a5b9b182-0d19-4af9-ae7d-9f0054a44da9" Title="DateInterval Methods" Url="html/Methods_T_NodaTime_DateInterval.htm">
-        <HelpTOCNode Title="Contains Method " Url="html/M_NodaTime_DateInterval_Contains.htm" />
-        <HelpTOCNode Id="d05a22fc-2a8b-4743-8787-7ed6b50ec1d7" Title="Equals Method " Url="html/Overload_NodaTime_DateInterval_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_DateInterval_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (DateInterval)" Url="html/M_NodaTime_DateInterval_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_DateInterval_GetHashCode.htm" />
-        <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_DateInterval_ToString.htm" />
+      <HelpTOCNode Title="LongStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_LongStatistic.htm" />
+      <HelpTOCNode Id="5582e964-6961-4334-b3bb-31c4d7bab9fe" Title="LongStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_LongStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_SubtractItems.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bceee15a-44c4-456b-801f-9806412e7ad1" Title="DateInterval Operators" Url="html/Operators_T_NodaTime_DateInterval.htm">
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_DateInterval_op_Equality.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_DateInterval_op_Inequality.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="45fde851-17d4-4180-a060-e9fd76159014" Title="DateTimeZone Class" Url="html/T_NodaTime_DateTimeZone.htm">
-      <HelpTOCNode Title="DateTimeZone Constructor " Url="html/M_NodaTime_DateTimeZone__ctor.htm" />
-      <HelpTOCNode Id="5d15653f-48c7-4f2e-858f-46b2daabaa4c" Title="DateTimeZone Properties" Url="html/Properties_T_NodaTime_DateTimeZone.htm">
-        <HelpTOCNode Title="Id Property " Url="html/P_NodaTime_DateTimeZone_Id.htm" />
-        <HelpTOCNode Title="MaxOffset Property " Url="html/P_NodaTime_DateTimeZone_MaxOffset.htm" />
-        <HelpTOCNode Title="MinOffset Property " Url="html/P_NodaTime_DateTimeZone_MinOffset.htm" />
-        <HelpTOCNode Title="Utc Property " Url="html/P_NodaTime_DateTimeZone_Utc.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="e1e0694c-1ebf-4ac5-9bcc-2b8bcdb29321" Title="DateTimeZone Methods" Url="html/Methods_T_NodaTime_DateTimeZone.htm">
-        <HelpTOCNode Title="AtLeniently Method " Url="html/M_NodaTime_DateTimeZone_AtLeniently.htm" />
-        <HelpTOCNode Title="AtStartOfDay Method " Url="html/M_NodaTime_DateTimeZone_AtStartOfDay.htm" />
-        <HelpTOCNode Title="AtStrictly Method " Url="html/M_NodaTime_DateTimeZone_AtStrictly.htm" />
-        <HelpTOCNode Title="ForOffset Method " Url="html/M_NodaTime_DateTimeZone_ForOffset.htm" />
-        <HelpTOCNode Title="GetUtcOffset Method " Url="html/M_NodaTime_DateTimeZone_GetUtcOffset.htm" />
-        <HelpTOCNode Title="GetZoneInterval Method " Url="html/M_NodaTime_DateTimeZone_GetZoneInterval.htm" />
-        <HelpTOCNode Id="0f2271e2-f0db-4a70-b7a2-74988de29802" Title="GetZoneIntervals Method " Url="html/Overload_NodaTime_DateTimeZone_GetZoneIntervals.htm">
-          <HelpTOCNode Title="GetZoneIntervals Method (Interval)" Url="html/M_NodaTime_DateTimeZone_GetZoneIntervals_1.htm" />
-          <HelpTOCNode Title="GetZoneIntervals Method (Instant, Instant)" Url="html/M_NodaTime_DateTimeZone_GetZoneIntervals.htm" />
-          <HelpTOCNode Title="GetZoneIntervals Method (Interval, ZoneEqualityComparer.Options)" Url="html/M_NodaTime_DateTimeZone_GetZoneIntervals_2.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="MapLocal Method " Url="html/M_NodaTime_DateTimeZone_MapLocal.htm" />
-        <HelpTOCNode Title="ResolveLocal Method " Url="html/M_NodaTime_DateTimeZone_ResolveLocal.htm" />
-        <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_DateTimeZone_ToString.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="00da8374-1538-4b18-ad55-2bf2b8bd4cf1" Title="DateTimeZoneProviders Class" Url="html/T_NodaTime_DateTimeZoneProviders.htm">
-      <HelpTOCNode Id="bb9c2665-e1f8-4ba3-b1b0-74d6e5218895" Title="DateTimeZoneProviders Properties" Url="html/Properties_T_NodaTime_DateTimeZoneProviders.htm">
-        <HelpTOCNode Title="Bcl Property " Url="html/P_NodaTime_DateTimeZoneProviders_Bcl.htm" />
-        <HelpTOCNode Title="Serialization Property " Url="html/P_NodaTime_DateTimeZoneProviders_Serialization.htm" />
-        <HelpTOCNode Title="Tzdb Property " Url="html/P_NodaTime_DateTimeZoneProviders_Tzdb.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="14aba814-d339-442e-a594-f3741a2f7060" Title="Duration Structure" Url="html/T_NodaTime_Duration.htm">
-      <HelpTOCNode Id="38b94368-71a0-4f25-9b7a-c3c2c4da0fbe" Title="Duration Properties" Url="html/Properties_T_NodaTime_Duration.htm">
-        <HelpTOCNode Title="BclCompatibleTicks Property " Url="html/P_NodaTime_Duration_BclCompatibleTicks.htm" />
-        <HelpTOCNode Title="Days Property " Url="html/P_NodaTime_Duration_Days.htm" />
-        <HelpTOCNode Title="Epsilon Property " Url="html/P_NodaTime_Duration_Epsilon.htm" />
-        <HelpTOCNode Title="Hours Property " Url="html/P_NodaTime_Duration_Hours.htm" />
-        <HelpTOCNode Title="MaxValue Property " Url="html/P_NodaTime_Duration_MaxValue.htm" />
-        <HelpTOCNode Title="Milliseconds Property " Url="html/P_NodaTime_Duration_Milliseconds.htm" />
-        <HelpTOCNode Title="Minutes Property " Url="html/P_NodaTime_Duration_Minutes.htm" />
-        <HelpTOCNode Title="MinValue Property " Url="html/P_NodaTime_Duration_MinValue.htm" />
-        <HelpTOCNode Title="NanosecondOfDay Property " Url="html/P_NodaTime_Duration_NanosecondOfDay.htm" />
-        <HelpTOCNode Title="Seconds Property " Url="html/P_NodaTime_Duration_Seconds.htm" />
-        <HelpTOCNode Title="SubsecondNanoseconds Property " Url="html/P_NodaTime_Duration_SubsecondNanoseconds.htm" />
-        <HelpTOCNode Title="SubsecondTicks Property " Url="html/P_NodaTime_Duration_SubsecondTicks.htm" />
-        <HelpTOCNode Title="TotalDays Property " Url="html/P_NodaTime_Duration_TotalDays.htm" />
-        <HelpTOCNode Title="TotalHours Property " Url="html/P_NodaTime_Duration_TotalHours.htm" />
-        <HelpTOCNode Title="TotalMilliseconds Property " Url="html/P_NodaTime_Duration_TotalMilliseconds.htm" />
-        <HelpTOCNode Title="TotalMinutes Property " Url="html/P_NodaTime_Duration_TotalMinutes.htm" />
-        <HelpTOCNode Title="TotalNanoseconds Property " Url="html/P_NodaTime_Duration_TotalNanoseconds.htm" />
-        <HelpTOCNode Title="TotalSeconds Property " Url="html/P_NodaTime_Duration_TotalSeconds.htm" />
-        <HelpTOCNode Title="TotalTicks Property " Url="html/P_NodaTime_Duration_TotalTicks.htm" />
-        <HelpTOCNode Title="Zero Property " Url="html/P_NodaTime_Duration_Zero.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="5b8c5ccb-fb5e-4a59-9971-9e3a387afa59" Title="Duration Methods" Url="html/Methods_T_NodaTime_Duration.htm">
-        <HelpTOCNode Title="Add Method " Url="html/M_NodaTime_Duration_Add.htm" />
-        <HelpTOCNode Title="CompareTo Method " Url="html/M_NodaTime_Duration_CompareTo.htm" />
-        <HelpTOCNode Id="8cefd4da-e361-41e5-ab3e-7a9d789e7c15" Title="Divide Method " Url="html/Overload_NodaTime_Duration_Divide.htm">
-          <HelpTOCNode Title="Divide Method (Duration, Duration)" Url="html/M_NodaTime_Duration_Divide.htm" />
-          <HelpTOCNode Title="Divide Method (Duration, Double)" Url="html/M_NodaTime_Duration_Divide_1.htm" />
-          <HelpTOCNode Title="Divide Method (Duration, Int64)" Url="html/M_NodaTime_Duration_Divide_2.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="b3f72dfb-30a3-4652-b5bc-ae9b566dc142" Title="Equals Method " Url="html/Overload_NodaTime_Duration_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_Duration_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (Duration)" Url="html/M_NodaTime_Duration_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="72c588d7-7810-4326-9c80-85019f89f262" Title="FromDays Method " Url="html/Overload_NodaTime_Duration_FromDays.htm">
-          <HelpTOCNode Title="FromDays Method (Double)" Url="html/M_NodaTime_Duration_FromDays.htm" />
-          <HelpTOCNode Title="FromDays Method (Int32)" Url="html/M_NodaTime_Duration_FromDays_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="c8b0dd17-1be7-42c2-884a-d8bcf1ceecb9" Title="FromHours Method " Url="html/Overload_NodaTime_Duration_FromHours.htm">
-          <HelpTOCNode Title="FromHours Method (Double)" Url="html/M_NodaTime_Duration_FromHours.htm" />
-          <HelpTOCNode Title="FromHours Method (Int32)" Url="html/M_NodaTime_Duration_FromHours_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="613cfd78-2cfc-406b-b6e4-3eef5b95dc4a" Title="FromMilliseconds Method " Url="html/Overload_NodaTime_Duration_FromMilliseconds.htm">
-          <HelpTOCNode Title="FromMilliseconds Method (Double)" Url="html/M_NodaTime_Duration_FromMilliseconds.htm" />
-          <HelpTOCNode Title="FromMilliseconds Method (Int64)" Url="html/M_NodaTime_Duration_FromMilliseconds_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="92a05f90-e8ac-462d-bcc3-e64003639c83" Title="FromMinutes Method " Url="html/Overload_NodaTime_Duration_FromMinutes.htm">
-          <HelpTOCNode Title="FromMinutes Method (Double)" Url="html/M_NodaTime_Duration_FromMinutes.htm" />
-          <HelpTOCNode Title="FromMinutes Method (Int64)" Url="html/M_NodaTime_Duration_FromMinutes_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="78356259-e899-4b30-b0c2-d484f9e8a7d0" Title="FromNanoseconds Method " Url="html/Overload_NodaTime_Duration_FromNanoseconds.htm">
-          <HelpTOCNode Title="FromNanoseconds Method (Double)" Url="html/M_NodaTime_Duration_FromNanoseconds.htm" />
-          <HelpTOCNode Title="FromNanoseconds Method (Int64)" Url="html/M_NodaTime_Duration_FromNanoseconds_1.htm" />
-          <HelpTOCNode Title="FromNanoseconds Method (BigInteger)" Url="html/M_NodaTime_Duration_FromNanoseconds_2.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="72aee1cc-a540-45ae-b5fc-c019ab94836b" Title="FromSeconds Method " Url="html/Overload_NodaTime_Duration_FromSeconds.htm">
-          <HelpTOCNode Title="FromSeconds Method (Double)" Url="html/M_NodaTime_Duration_FromSeconds.htm" />
-          <HelpTOCNode Title="FromSeconds Method (Int64)" Url="html/M_NodaTime_Duration_FromSeconds_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="995d3d96-9f37-48f4-9921-86cdbb4536b8" Title="FromTicks Method " Url="html/Overload_NodaTime_Duration_FromTicks.htm">
-          <HelpTOCNode Title="FromTicks Method (Double)" Url="html/M_NodaTime_Duration_FromTicks.htm" />
-          <HelpTOCNode Title="FromTicks Method (Int64)" Url="html/M_NodaTime_Duration_FromTicks_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="FromTimeSpan Method " Url="html/M_NodaTime_Duration_FromTimeSpan.htm" />
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_Duration_GetHashCode.htm" />
-        <HelpTOCNode Title="Minus Method " Url="html/M_NodaTime_Duration_Minus.htm" />
-        <HelpTOCNode Id="84a59826-6f1a-47cc-bd48-dfef6c290323" Title="Multiply Method " Url="html/Overload_NodaTime_Duration_Multiply.htm">
-          <HelpTOCNode Title="Multiply Method (Int64, Duration)" Url="html/M_NodaTime_Duration_Multiply_2.htm" />
-          <HelpTOCNode Title="Multiply Method (Duration, Double)" Url="html/M_NodaTime_Duration_Multiply.htm" />
-          <HelpTOCNode Title="Multiply Method (Duration, Int64)" Url="html/M_NodaTime_Duration_Multiply_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Negate Method " Url="html/M_NodaTime_Duration_Negate.htm" />
-        <HelpTOCNode Title="Plus Method " Url="html/M_NodaTime_Duration_Plus.htm" />
-        <HelpTOCNode Title="Subtract Method " Url="html/M_NodaTime_Duration_Subtract.htm" />
-        <HelpTOCNode Title="ToBigIntegerNanoseconds Method " Url="html/M_NodaTime_Duration_ToBigIntegerNanoseconds.htm" />
-        <HelpTOCNode Title="ToInt64Nanoseconds Method " Url="html/M_NodaTime_Duration_ToInt64Nanoseconds.htm" />
-        <HelpTOCNode Id="aa14f550-feb8-442b-b0a1-0628ff50b989" Title="ToString Method " Url="html/Overload_NodaTime_Duration_ToString.htm">
-          <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_Duration_ToString.htm" />
-          <HelpTOCNode Title="ToString Method (String, IFormatProvider)" Url="html/M_NodaTime_Duration_ToString_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="ToTimeSpan Method " Url="html/M_NodaTime_Duration_ToTimeSpan.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="a148276d-9b9a-4c86-81f5-bfd2ce892b31" Title="Duration Operators" Url="html/Operators_T_NodaTime_Duration.htm">
-        <HelpTOCNode Title="Addition Operator " Url="html/M_NodaTime_Duration_op_Addition.htm" />
-        <HelpTOCNode Id="c23a5ec8-94f1-46dc-aa84-6bf888beac23" Title="Division Operator " Url="html/Overload_NodaTime_Duration_op_Division.htm">
-          <HelpTOCNode Title="Division Operator (Duration, Duration)" Url="html/M_NodaTime_Duration_op_Division.htm" />
-          <HelpTOCNode Title="Division Operator (Duration, Double)" Url="html/M_NodaTime_Duration_op_Division_1.htm" />
-          <HelpTOCNode Title="Division Operator (Duration, Int64)" Url="html/M_NodaTime_Duration_op_Division_2.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_Duration_op_Equality.htm" />
-        <HelpTOCNode Title="GreaterThan Operator " Url="html/M_NodaTime_Duration_op_GreaterThan.htm" />
-        <HelpTOCNode Title="GreaterThanOrEqual Operator " Url="html/M_NodaTime_Duration_op_GreaterThanOrEqual.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_Duration_op_Inequality.htm" />
-        <HelpTOCNode Title="LessThan Operator " Url="html/M_NodaTime_Duration_op_LessThan.htm" />
-        <HelpTOCNode Title="LessThanOrEqual Operator " Url="html/M_NodaTime_Duration_op_LessThanOrEqual.htm" />
-        <HelpTOCNode Id="5336a6c3-60f8-48f5-87b0-12bdd300d2bd" Title="Multiply Operator " Url="html/Overload_NodaTime_Duration_op_Multiply.htm">
-          <HelpTOCNode Title="Multiply Operator (Int64, Duration)" Url="html/M_NodaTime_Duration_op_Multiply_2.htm" />
-          <HelpTOCNode Title="Multiply Operator (Duration, Double)" Url="html/M_NodaTime_Duration_op_Multiply.htm" />
-          <HelpTOCNode Title="Multiply Operator (Duration, Int64)" Url="html/M_NodaTime_Duration_op_Multiply_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Subtraction Operator " Url="html/M_NodaTime_Duration_op_Subtraction.htm" />
-        <HelpTOCNode Title="UnaryNegation Operator " Url="html/M_NodaTime_Duration_op_UnaryNegation.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="a3a7d1d0-f7af-4eed-98db-86b7134c2e25" Title="IClock Interface" Url="html/T_NodaTime_IClock.htm">
-      <HelpTOCNode Id="fb995c02-d2bb-4aac-837d-78008cbc9629" Title="IClock Methods" Url="html/Methods_T_NodaTime_IClock.htm">
-        <HelpTOCNode Title="GetCurrentInstant Method " Url="html/M_NodaTime_IClock_GetCurrentInstant.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="e9109375-1c4d-420d-b620-6f53b2705ad3" Title="IDateTimeZoneProvider Interface" Url="html/T_NodaTime_IDateTimeZoneProvider.htm">
-      <HelpTOCNode Id="1c4a2a24-e93d-4900-a7b1-173e23915443" Title="IDateTimeZoneProvider Properties" Url="html/Properties_T_NodaTime_IDateTimeZoneProvider.htm">
-        <HelpTOCNode Title="Ids Property " Url="html/P_NodaTime_IDateTimeZoneProvider_Ids.htm" />
-        <HelpTOCNode Title="Item Property " Url="html/P_NodaTime_IDateTimeZoneProvider_Item.htm" />
-        <HelpTOCNode Title="VersionId Property " Url="html/P_NodaTime_IDateTimeZoneProvider_VersionId.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="f5ced84b-939f-4fce-a031-ea0ea895036a" Title="IDateTimeZoneProvider Methods" Url="html/Methods_T_NodaTime_IDateTimeZoneProvider.htm">
-        <HelpTOCNode Title="GetSystemDefault Method " Url="html/M_NodaTime_IDateTimeZoneProvider_GetSystemDefault.htm" />
-        <HelpTOCNode Title="GetZoneOrNull Method " Url="html/M_NodaTime_IDateTimeZoneProvider_GetZoneOrNull.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="f5536c1d-60ab-4465-9552-c756eb34d3eb" Title="Instant Structure" Url="html/T_NodaTime_Instant.htm">
-      <HelpTOCNode Id="89f4b801-b98c-45d9-adfa-07b386089a52" Title="Instant Properties" Url="html/Properties_T_NodaTime_Instant.htm">
-        <HelpTOCNode Title="MaxValue Property " Url="html/P_NodaTime_Instant_MaxValue.htm" />
-        <HelpTOCNode Title="MinValue Property " Url="html/P_NodaTime_Instant_MinValue.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="bf08cec1-2e40-43c0-8612-0205bc46873a" Title="Instant Methods" Url="html/Methods_T_NodaTime_Instant.htm">
-        <HelpTOCNode Title="Add Method " Url="html/M_NodaTime_Instant_Add.htm" />
-        <HelpTOCNode Title="CompareTo Method " Url="html/M_NodaTime_Instant_CompareTo.htm" />
-        <HelpTOCNode Id="72342f4f-f081-45a2-8db5-b75021bf65d3" Title="Equals Method " Url="html/Overload_NodaTime_Instant_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_Instant_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (Instant)" Url="html/M_NodaTime_Instant_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="FromDateTimeOffset Method " Url="html/M_NodaTime_Instant_FromDateTimeOffset.htm" />
-        <HelpTOCNode Title="FromDateTimeUtc Method " Url="html/M_NodaTime_Instant_FromDateTimeUtc.htm" />
-        <HelpTOCNode Title="FromJulianDate Method " Url="html/M_NodaTime_Instant_FromJulianDate.htm" />
-        <HelpTOCNode Title="FromUnixTimeMilliseconds Method " Url="html/M_NodaTime_Instant_FromUnixTimeMilliseconds.htm" />
-        <HelpTOCNode Title="FromUnixTimeSeconds Method " Url="html/M_NodaTime_Instant_FromUnixTimeSeconds.htm" />
-        <HelpTOCNode Title="FromUnixTimeTicks Method " Url="html/M_NodaTime_Instant_FromUnixTimeTicks.htm" />
-        <HelpTOCNode Id="4d8b4742-bb42-41d7-bb21-592a811b2f70" Title="FromUtc Method " Url="html/Overload_NodaTime_Instant_FromUtc.htm">
-          <HelpTOCNode Title="FromUtc Method (Int32, Int32, Int32, Int32, Int32)" Url="html/M_NodaTime_Instant_FromUtc.htm" />
-          <HelpTOCNode Title="FromUtc Method (Int32, Int32, Int32, Int32, Int32, Int32)" Url="html/M_NodaTime_Instant_FromUtc_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_Instant_GetHashCode.htm" />
-        <HelpTOCNode Title="InUtc Method " Url="html/M_NodaTime_Instant_InUtc.htm" />
-        <HelpTOCNode Id="255953d0-4f65-451c-84ad-ab8535c71de2" Title="InZone Method " Url="html/Overload_NodaTime_Instant_InZone.htm">
-          <HelpTOCNode Title="InZone Method (DateTimeZone)" Url="html/M_NodaTime_Instant_InZone.htm" />
-          <HelpTOCNode Title="InZone Method (DateTimeZone, CalendarSystem)" Url="html/M_NodaTime_Instant_InZone_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Max Method " Url="html/M_NodaTime_Instant_Max.htm" />
-        <HelpTOCNode Title="Min Method " Url="html/M_NodaTime_Instant_Min.htm" />
-        <HelpTOCNode Id="f08f5dd3-6c71-4544-a5f3-af65f7a7b0a4" Title="Minus Method " Url="html/Overload_NodaTime_Instant_Minus.htm">
-          <HelpTOCNode Title="Minus Method (Duration)" Url="html/M_NodaTime_Instant_Minus.htm" />
-          <HelpTOCNode Title="Minus Method (Instant)" Url="html/M_NodaTime_Instant_Minus_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Plus Method " Url="html/M_NodaTime_Instant_Plus.htm" />
-        <HelpTOCNode Title="PlusNanoseconds Method " Url="html/M_NodaTime_Instant_PlusNanoseconds.htm" />
-        <HelpTOCNode Title="PlusTicks Method " Url="html/M_NodaTime_Instant_PlusTicks.htm" />
-        <HelpTOCNode Id="64393cf4-b574-4383-a148-91e7b1e96840" Title="Subtract Method " Url="html/Overload_NodaTime_Instant_Subtract.htm">
-          <HelpTOCNode Title="Subtract Method (Instant, Duration)" Url="html/M_NodaTime_Instant_Subtract.htm" />
-          <HelpTOCNode Title="Subtract Method (Instant, Instant)" Url="html/M_NodaTime_Instant_Subtract_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="ToDateTimeOffset Method " Url="html/M_NodaTime_Instant_ToDateTimeOffset.htm" />
-        <HelpTOCNode Title="ToDateTimeUtc Method " Url="html/M_NodaTime_Instant_ToDateTimeUtc.htm" />
-        <HelpTOCNode Title="ToJulianDate Method " Url="html/M_NodaTime_Instant_ToJulianDate.htm" />
-        <HelpTOCNode Id="368d0416-dd80-49a3-9dbf-d235c75b62ab" Title="ToString Method " Url="html/Overload_NodaTime_Instant_ToString.htm">
-          <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_Instant_ToString.htm" />
-          <HelpTOCNode Title="ToString Method (String, IFormatProvider)" Url="html/M_NodaTime_Instant_ToString_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="ToUnixTimeMilliseconds Method " Url="html/M_NodaTime_Instant_ToUnixTimeMilliseconds.htm" />
-        <HelpTOCNode Title="ToUnixTimeSeconds Method " Url="html/M_NodaTime_Instant_ToUnixTimeSeconds.htm" />
-        <HelpTOCNode Title="ToUnixTimeTicks Method " Url="html/M_NodaTime_Instant_ToUnixTimeTicks.htm" />
-        <HelpTOCNode Id="04c25fb7-df2f-46fd-870c-81e090e0b0ed" Title="WithOffset Method " Url="html/Overload_NodaTime_Instant_WithOffset.htm">
-          <HelpTOCNode Title="WithOffset Method (Offset)" Url="html/M_NodaTime_Instant_WithOffset.htm" />
-          <HelpTOCNode Title="WithOffset Method (Offset, CalendarSystem)" Url="html/M_NodaTime_Instant_WithOffset_1.htm" />
-        </HelpTOCNode>
-      </HelpTOCNode>
-      <HelpTOCNode Id="8049b0c6-9a3c-40d1-98c1-d40370a27b43" Title="Instant Operators" Url="html/Operators_T_NodaTime_Instant.htm">
-        <HelpTOCNode Title="Addition Operator " Url="html/M_NodaTime_Instant_op_Addition.htm" />
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_Instant_op_Equality.htm" />
-        <HelpTOCNode Title="GreaterThan Operator " Url="html/M_NodaTime_Instant_op_GreaterThan.htm" />
-        <HelpTOCNode Title="GreaterThanOrEqual Operator " Url="html/M_NodaTime_Instant_op_GreaterThanOrEqual.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_Instant_op_Inequality.htm" />
-        <HelpTOCNode Title="LessThan Operator " Url="html/M_NodaTime_Instant_op_LessThan.htm" />
-        <HelpTOCNode Title="LessThanOrEqual Operator " Url="html/M_NodaTime_Instant_op_LessThanOrEqual.htm" />
-        <HelpTOCNode Id="270ed66a-e88b-45bb-bfc4-2ebbbb0d02a8" Title="Subtraction Operator " Url="html/Overload_NodaTime_Instant_op_Subtraction.htm">
-          <HelpTOCNode Title="Subtraction Operator (Instant, Duration)" Url="html/M_NodaTime_Instant_op_Subtraction.htm" />
-          <HelpTOCNode Title="Subtraction Operator (Instant, Instant)" Url="html/M_NodaTime_Instant_op_Subtraction_1.htm" />
-        </HelpTOCNode>
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="2e85ae42-e911-4787-b926-1c1e1738803a" Title="Interval Structure" Url="html/T_NodaTime_Interval.htm">
-      <HelpTOCNode Id="65513936-9e2b-493c-92c0-a0046165442b" Title="Interval Constructor " Url="html/Overload_NodaTime_Interval__ctor.htm">
-        <HelpTOCNode Title="Interval Constructor (Instant, Instant)" Url="html/M_NodaTime_Interval__ctor.htm" />
-        <HelpTOCNode Title="Interval Constructor (Nullable(Instant), Nullable(Instant))" Url="html/M_NodaTime_Interval__ctor_1.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="3f127ee4-8e1c-4f06-94fb-e44f7c0afe97" Title="Interval Properties" Url="html/Properties_T_NodaTime_Interval.htm">
-        <HelpTOCNode Title="Duration Property " Url="html/P_NodaTime_Interval_Duration.htm" />
-        <HelpTOCNode Title="End Property " Url="html/P_NodaTime_Interval_End.htm" />
-        <HelpTOCNode Title="HasEnd Property " Url="html/P_NodaTime_Interval_HasEnd.htm" />
-        <HelpTOCNode Title="HasStart Property " Url="html/P_NodaTime_Interval_HasStart.htm" />
-        <HelpTOCNode Title="Start Property " Url="html/P_NodaTime_Interval_Start.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="0f318fe4-05de-4f77-a003-20bd4faf140d" Title="Interval Methods" Url="html/Methods_T_NodaTime_Interval.htm">
-        <HelpTOCNode Title="Contains Method " Url="html/M_NodaTime_Interval_Contains.htm" />
-        <HelpTOCNode Id="41c8cc93-4053-487b-a869-ac395f5898ed" Title="Equals Method " Url="html/Overload_NodaTime_Interval_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_Interval_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (Interval)" Url="html/M_NodaTime_Interval_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_Interval_GetHashCode.htm" />
-        <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_Interval_ToString.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="c84a8d2b-f660-4923-b841-9d423f0a96b7" Title="Interval Operators" Url="html/Operators_T_NodaTime_Interval.htm">
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_Interval_op_Equality.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_Interval_op_Inequality.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Title="IsoDayOfWeek Enumeration" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-    <HelpTOCNode Id="3f43c04b-f57c-4694-8bac-e6ca250a56b4" Title="LocalDate Structure" Url="html/T_NodaTime_LocalDate.htm">
-      <HelpTOCNode Id="30e451c9-b4ea-4fb8-bee1-de2930304739" Title="LocalDate Constructor " Url="html/Overload_NodaTime_LocalDate__ctor.htm">
-        <HelpTOCNode Title="LocalDate Constructor (Int32, Int32, Int32)" Url="html/M_NodaTime_LocalDate__ctor_2.htm" />
-        <HelpTOCNode Title="LocalDate Constructor (Era, Int32, Int32, Int32)" Url="html/M_NodaTime_LocalDate__ctor.htm" />
-        <HelpTOCNode Title="LocalDate Constructor (Int32, Int32, Int32, CalendarSystem)" Url="html/M_NodaTime_LocalDate__ctor_3.htm" />
-        <HelpTOCNode Title="LocalDate Constructor (Era, Int32, Int32, Int32, CalendarSystem)" Url="html/M_NodaTime_LocalDate__ctor_1.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="7ce5900f-9bdd-4ab4-a4ba-8c166a3422c8" Title="LocalDate Properties" Url="html/Properties_T_NodaTime_LocalDate.htm">
-        <HelpTOCNode Title="Calendar Property " Url="html/P_NodaTime_LocalDate_Calendar.htm" />
-        <HelpTOCNode Title="Day Property " Url="html/P_NodaTime_LocalDate_Day.htm" />
-        <HelpTOCNode Title="DayOfWeek Property " Url="html/P_NodaTime_LocalDate_DayOfWeek.htm" />
-        <HelpTOCNode Title="DayOfYear Property " Url="html/P_NodaTime_LocalDate_DayOfYear.htm" />
-        <HelpTOCNode Title="Era Property " Url="html/P_NodaTime_LocalDate_Era.htm" />
-        <HelpTOCNode Title="MaxIsoValue Property " Url="html/P_NodaTime_LocalDate_MaxIsoValue.htm" />
-        <HelpTOCNode Title="MinIsoValue Property " Url="html/P_NodaTime_LocalDate_MinIsoValue.htm" />
-        <HelpTOCNode Title="Month Property " Url="html/P_NodaTime_LocalDate_Month.htm" />
-        <HelpTOCNode Title="Year Property " Url="html/P_NodaTime_LocalDate_Year.htm" />
-        <HelpTOCNode Title="YearOfEra Property " Url="html/P_NodaTime_LocalDate_YearOfEra.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="f2bc4eaf-95b1-4026-bed3-9620191247f0" Title="LocalDate Methods" Url="html/Methods_T_NodaTime_LocalDate.htm">
-        <HelpTOCNode Title="Add Method " Url="html/M_NodaTime_LocalDate_Add.htm" />
-        <HelpTOCNode Title="At Method " Url="html/M_NodaTime_LocalDate_At.htm" />
-        <HelpTOCNode Title="AtMidnight Method " Url="html/M_NodaTime_LocalDate_AtMidnight.htm" />
-        <HelpTOCNode Title="AtStartOfDayInZone Method " Url="html/M_NodaTime_LocalDate_AtStartOfDayInZone.htm" />
-        <HelpTOCNode Title="CompareTo Method " Url="html/M_NodaTime_LocalDate_CompareTo.htm" />
-        <HelpTOCNode Id="d37923b5-6989-4652-a587-5dbdce9f4eac" Title="Equals Method " Url="html/Overload_NodaTime_LocalDate_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_LocalDate_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (LocalDate)" Url="html/M_NodaTime_LocalDate_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="0a0179c1-11e4-44b7-8e56-c59fd94f6915" Title="FromDateTime Method " Url="html/Overload_NodaTime_LocalDate_FromDateTime.htm">
-          <HelpTOCNode Title="FromDateTime Method (DateTime)" Url="html/M_NodaTime_LocalDate_FromDateTime.htm" />
-          <HelpTOCNode Title="FromDateTime Method (DateTime, CalendarSystem)" Url="html/M_NodaTime_LocalDate_FromDateTime_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="FromWeekYearWeekAndDay Method " Url="html/M_NodaTime_LocalDate_FromWeekYearWeekAndDay.htm" />
-        <HelpTOCNode Title="FromYearMonthWeekAndDay Method " Url="html/M_NodaTime_LocalDate_FromYearMonthWeekAndDay.htm" />
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_LocalDate_GetHashCode.htm" />
-        <HelpTOCNode Id="0c31bc8d-6e3f-423c-b4a9-07cfa70697c1" Title="Minus Method " Url="html/Overload_NodaTime_LocalDate_Minus.htm">
-          <HelpTOCNode Title="Minus Method (LocalDate)" Url="html/M_NodaTime_LocalDate_Minus.htm" />
-          <HelpTOCNode Title="Minus Method (Period)" Url="html/M_NodaTime_LocalDate_Minus_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Next Method " Url="html/M_NodaTime_LocalDate_Next.htm" />
-        <HelpTOCNode Title="Plus Method " Url="html/M_NodaTime_LocalDate_Plus.htm" />
-        <HelpTOCNode Title="PlusDays Method " Url="html/M_NodaTime_LocalDate_PlusDays.htm" />
-        <HelpTOCNode Title="PlusMonths Method " Url="html/M_NodaTime_LocalDate_PlusMonths.htm" />
-        <HelpTOCNode Title="PlusWeeks Method " Url="html/M_NodaTime_LocalDate_PlusWeeks.htm" />
-        <HelpTOCNode Title="PlusYears Method " Url="html/M_NodaTime_LocalDate_PlusYears.htm" />
-        <HelpTOCNode Title="Previous Method " Url="html/M_NodaTime_LocalDate_Previous.htm" />
-        <HelpTOCNode Id="218292ad-b219-4e1c-a83b-d79c45af51b0" Title="Subtract Method " Url="html/Overload_NodaTime_LocalDate_Subtract.htm">
-          <HelpTOCNode Title="Subtract Method (LocalDate, LocalDate)" Url="html/M_NodaTime_LocalDate_Subtract.htm" />
-          <HelpTOCNode Title="Subtract Method (LocalDate, Period)" Url="html/M_NodaTime_LocalDate_Subtract_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="ToDateTimeUnspecified Method " Url="html/M_NodaTime_LocalDate_ToDateTimeUnspecified.htm" />
-        <HelpTOCNode Id="f3cffa5f-15db-4974-a1c3-c1dadb44f988" Title="ToString Method " Url="html/Overload_NodaTime_LocalDate_ToString.htm">
-          <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_LocalDate_ToString.htm" />
-          <HelpTOCNode Title="ToString Method (String, IFormatProvider)" Url="html/M_NodaTime_LocalDate_ToString_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="With Method " Url="html/M_NodaTime_LocalDate_With.htm" />
-        <HelpTOCNode Title="WithCalendar Method " Url="html/M_NodaTime_LocalDate_WithCalendar.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="451c64d3-13c4-4d92-a405-5f0970f761dc" Title="LocalDate Operators" Url="html/Operators_T_NodaTime_LocalDate.htm">
-        <HelpTOCNode Id="147eb726-d094-4790-b8e4-9cbcb5dae239" Title="Addition Operator " Url="html/Overload_NodaTime_LocalDate_op_Addition.htm">
-          <HelpTOCNode Title="Addition Operator (LocalDate, LocalTime)" Url="html/M_NodaTime_LocalDate_op_Addition.htm" />
-          <HelpTOCNode Title="Addition Operator (LocalDate, Period)" Url="html/M_NodaTime_LocalDate_op_Addition_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_LocalDate_op_Equality.htm" />
-        <HelpTOCNode Title="GreaterThan Operator " Url="html/M_NodaTime_LocalDate_op_GreaterThan.htm" />
-        <HelpTOCNode Title="GreaterThanOrEqual Operator " Url="html/M_NodaTime_LocalDate_op_GreaterThanOrEqual.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_LocalDate_op_Inequality.htm" />
-        <HelpTOCNode Title="LessThan Operator " Url="html/M_NodaTime_LocalDate_op_LessThan.htm" />
-        <HelpTOCNode Title="LessThanOrEqual Operator " Url="html/M_NodaTime_LocalDate_op_LessThanOrEqual.htm" />
-        <HelpTOCNode Id="bbe30390-dfb2-434f-ab10-6671bfdc126e" Title="Subtraction Operator " Url="html/Overload_NodaTime_LocalDate_op_Subtraction.htm">
-          <HelpTOCNode Title="Subtraction Operator (LocalDate, LocalDate)" Url="html/M_NodaTime_LocalDate_op_Subtraction.htm" />
-          <HelpTOCNode Title="Subtraction Operator (LocalDate, Period)" Url="html/M_NodaTime_LocalDate_op_Subtraction_1.htm" />
-        </HelpTOCNode>
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="87ed5e92-826b-4b6a-b678-fb2a2395fece" Title="LocalDateTime Structure" Url="html/T_NodaTime_LocalDateTime.htm">
-      <HelpTOCNode Id="3f9058ac-66e0-4afb-8fc2-baac1a8cb323" Title="LocalDateTime Constructor " Url="html/Overload_NodaTime_LocalDateTime__ctor.htm">
-        <HelpTOCNode Title="LocalDateTime Constructor (Int32, Int32, Int32, Int32, Int32)" Url="html/M_NodaTime_LocalDateTime__ctor.htm" />
-        <HelpTOCNode Title="LocalDateTime Constructor (Int32, Int32, Int32, Int32, Int32, CalendarSystem)" Url="html/M_NodaTime_LocalDateTime__ctor_1.htm" />
-        <HelpTOCNode Title="LocalDateTime Constructor (Int32, Int32, Int32, Int32, Int32, Int32)" Url="html/M_NodaTime_LocalDateTime__ctor_2.htm" />
-        <HelpTOCNode Title="LocalDateTime Constructor (Int32, Int32, Int32, Int32, Int32, Int32, CalendarSystem)" Url="html/M_NodaTime_LocalDateTime__ctor_3.htm" />
-        <HelpTOCNode Title="LocalDateTime Constructor (Int32, Int32, Int32, Int32, Int32, Int32, Int32)" Url="html/M_NodaTime_LocalDateTime__ctor_4.htm" />
-        <HelpTOCNode Title="LocalDateTime Constructor (Int32, Int32, Int32, Int32, Int32, Int32, Int32, CalendarSystem)" Url="html/M_NodaTime_LocalDateTime__ctor_5.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="22b4cdad-ddf8-45ee-abf4-8a85e3ec0e61" Title="LocalDateTime Properties" Url="html/Properties_T_NodaTime_LocalDateTime.htm">
-        <HelpTOCNode Title="Calendar Property " Url="html/P_NodaTime_LocalDateTime_Calendar.htm" />
-        <HelpTOCNode Title="ClockHourOfHalfDay Property " Url="html/P_NodaTime_LocalDateTime_ClockHourOfHalfDay.htm" />
-        <HelpTOCNode Title="Date Property " Url="html/P_NodaTime_LocalDateTime_Date.htm" />
-        <HelpTOCNode Title="Day Property " Url="html/P_NodaTime_LocalDateTime_Day.htm" />
-        <HelpTOCNode Title="DayOfWeek Property " Url="html/P_NodaTime_LocalDateTime_DayOfWeek.htm" />
-        <HelpTOCNode Title="DayOfYear Property " Url="html/P_NodaTime_LocalDateTime_DayOfYear.htm" />
-        <HelpTOCNode Title="Era Property " Url="html/P_NodaTime_LocalDateTime_Era.htm" />
-        <HelpTOCNode Title="Hour Property " Url="html/P_NodaTime_LocalDateTime_Hour.htm" />
-        <HelpTOCNode Title="Millisecond Property " Url="html/P_NodaTime_LocalDateTime_Millisecond.htm" />
-        <HelpTOCNode Title="Minute Property " Url="html/P_NodaTime_LocalDateTime_Minute.htm" />
-        <HelpTOCNode Title="Month Property " Url="html/P_NodaTime_LocalDateTime_Month.htm" />
-        <HelpTOCNode Title="NanosecondOfDay Property " Url="html/P_NodaTime_LocalDateTime_NanosecondOfDay.htm" />
-        <HelpTOCNode Title="NanosecondOfSecond Property " Url="html/P_NodaTime_LocalDateTime_NanosecondOfSecond.htm" />
-        <HelpTOCNode Title="Second Property " Url="html/P_NodaTime_LocalDateTime_Second.htm" />
-        <HelpTOCNode Title="TickOfDay Property " Url="html/P_NodaTime_LocalDateTime_TickOfDay.htm" />
-        <HelpTOCNode Title="TickOfSecond Property " Url="html/P_NodaTime_LocalDateTime_TickOfSecond.htm" />
-        <HelpTOCNode Title="TimeOfDay Property " Url="html/P_NodaTime_LocalDateTime_TimeOfDay.htm" />
-        <HelpTOCNode Title="Year Property " Url="html/P_NodaTime_LocalDateTime_Year.htm" />
-        <HelpTOCNode Title="YearOfEra Property " Url="html/P_NodaTime_LocalDateTime_YearOfEra.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="52117afc-4b92-4342-8aed-a5a41cc127c7" Title="LocalDateTime Methods" Url="html/Methods_T_NodaTime_LocalDateTime.htm">
-        <HelpTOCNode Title="Add Method " Url="html/M_NodaTime_LocalDateTime_Add.htm" />
-        <HelpTOCNode Title="CompareTo Method " Url="html/M_NodaTime_LocalDateTime_CompareTo.htm" />
-        <HelpTOCNode Id="74673cee-bf17-4818-bf34-9a073a4844b4" Title="Equals Method " Url="html/Overload_NodaTime_LocalDateTime_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_LocalDateTime_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (LocalDateTime)" Url="html/M_NodaTime_LocalDateTime_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="01faa888-6eb1-45c1-a9a2-edff59c0929f" Title="FromDateTime Method " Url="html/Overload_NodaTime_LocalDateTime_FromDateTime.htm">
-          <HelpTOCNode Title="FromDateTime Method (DateTime)" Url="html/M_NodaTime_LocalDateTime_FromDateTime.htm" />
-          <HelpTOCNode Title="FromDateTime Method (DateTime, CalendarSystem)" Url="html/M_NodaTime_LocalDateTime_FromDateTime_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_LocalDateTime_GetHashCode.htm" />
-        <HelpTOCNode Title="InUtc Method " Url="html/M_NodaTime_LocalDateTime_InUtc.htm" />
-        <HelpTOCNode Title="InZone Method " Url="html/M_NodaTime_LocalDateTime_InZone.htm" />
-        <HelpTOCNode Title="InZoneLeniently Method " Url="html/M_NodaTime_LocalDateTime_InZoneLeniently.htm" />
-        <HelpTOCNode Title="InZoneStrictly Method " Url="html/M_NodaTime_LocalDateTime_InZoneStrictly.htm" />
-        <HelpTOCNode Id="aceaa4b3-3fff-4bd0-99fa-0ed81def485d" Title="Minus Method " Url="html/Overload_NodaTime_LocalDateTime_Minus.htm">
-          <HelpTOCNode Title="Minus Method (LocalDateTime)" Url="html/M_NodaTime_LocalDateTime_Minus.htm" />
-          <HelpTOCNode Title="Minus Method (Period)" Url="html/M_NodaTime_LocalDateTime_Minus_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Next Method " Url="html/M_NodaTime_LocalDateTime_Next.htm" />
-        <HelpTOCNode Title="Plus Method " Url="html/M_NodaTime_LocalDateTime_Plus.htm" />
-        <HelpTOCNode Title="PlusDays Method " Url="html/M_NodaTime_LocalDateTime_PlusDays.htm" />
-        <HelpTOCNode Title="PlusHours Method " Url="html/M_NodaTime_LocalDateTime_PlusHours.htm" />
-        <HelpTOCNode Title="PlusMilliseconds Method " Url="html/M_NodaTime_LocalDateTime_PlusMilliseconds.htm" />
-        <HelpTOCNode Title="PlusMinutes Method " Url="html/M_NodaTime_LocalDateTime_PlusMinutes.htm" />
-        <HelpTOCNode Title="PlusMonths Method " Url="html/M_NodaTime_LocalDateTime_PlusMonths.htm" />
-        <HelpTOCNode Title="PlusNanoseconds Method " Url="html/M_NodaTime_LocalDateTime_PlusNanoseconds.htm" />
-        <HelpTOCNode Title="PlusSeconds Method " Url="html/M_NodaTime_LocalDateTime_PlusSeconds.htm" />
-        <HelpTOCNode Title="PlusTicks Method " Url="html/M_NodaTime_LocalDateTime_PlusTicks.htm" />
-        <HelpTOCNode Title="PlusWeeks Method " Url="html/M_NodaTime_LocalDateTime_PlusWeeks.htm" />
-        <HelpTOCNode Title="PlusYears Method " Url="html/M_NodaTime_LocalDateTime_PlusYears.htm" />
-        <HelpTOCNode Title="Previous Method " Url="html/M_NodaTime_LocalDateTime_Previous.htm" />
-        <HelpTOCNode Id="fcc86de2-d406-462b-a4d0-d701295b7218" Title="Subtract Method " Url="html/Overload_NodaTime_LocalDateTime_Subtract.htm">
-          <HelpTOCNode Title="Subtract Method (LocalDateTime, LocalDateTime)" Url="html/M_NodaTime_LocalDateTime_Subtract.htm" />
-          <HelpTOCNode Title="Subtract Method (LocalDateTime, Period)" Url="html/M_NodaTime_LocalDateTime_Subtract_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="ToDateTimeUnspecified Method " Url="html/M_NodaTime_LocalDateTime_ToDateTimeUnspecified.htm" />
-        <HelpTOCNode Id="3e87d01a-1823-43d9-937e-24208d1589dd" Title="ToString Method " Url="html/Overload_NodaTime_LocalDateTime_ToString.htm">
-          <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_LocalDateTime_ToString.htm" />
-          <HelpTOCNode Title="ToString Method (String, IFormatProvider)" Url="html/M_NodaTime_LocalDateTime_ToString_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="4b82c91e-db32-491b-9de3-e404d9c061aa" Title="With Method " Url="html/Overload_NodaTime_LocalDateTime_With.htm">
-          <HelpTOCNode Title="With Method (Func(LocalDate, LocalDate))" Url="html/M_NodaTime_LocalDateTime_With.htm" />
-          <HelpTOCNode Title="With Method (Func(LocalTime, LocalTime))" Url="html/M_NodaTime_LocalDateTime_With_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="WithCalendar Method " Url="html/M_NodaTime_LocalDateTime_WithCalendar.htm" />
-        <HelpTOCNode Title="WithOffset Method " Url="html/M_NodaTime_LocalDateTime_WithOffset.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="33ef5fbb-c8bd-4521-85b7-beeaf0bad878" Title="LocalDateTime Operators" Url="html/Operators_T_NodaTime_LocalDateTime.htm">
-        <HelpTOCNode Title="Addition Operator " Url="html/M_NodaTime_LocalDateTime_op_Addition.htm" />
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_LocalDateTime_op_Equality.htm" />
-        <HelpTOCNode Title="GreaterThan Operator " Url="html/M_NodaTime_LocalDateTime_op_GreaterThan.htm" />
-        <HelpTOCNode Title="GreaterThanOrEqual Operator " Url="html/M_NodaTime_LocalDateTime_op_GreaterThanOrEqual.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_LocalDateTime_op_Inequality.htm" />
-        <HelpTOCNode Title="LessThan Operator " Url="html/M_NodaTime_LocalDateTime_op_LessThan.htm" />
-        <HelpTOCNode Title="LessThanOrEqual Operator " Url="html/M_NodaTime_LocalDateTime_op_LessThanOrEqual.htm" />
-        <HelpTOCNode Id="5b937a1b-ccea-4566-8cd4-58ba763642c7" Title="Subtraction Operator " Url="html/Overload_NodaTime_LocalDateTime_op_Subtraction.htm">
-          <HelpTOCNode Title="Subtraction Operator (LocalDateTime, LocalDateTime)" Url="html/M_NodaTime_LocalDateTime_op_Subtraction.htm" />
-          <HelpTOCNode Title="Subtraction Operator (LocalDateTime, Period)" Url="html/M_NodaTime_LocalDateTime_op_Subtraction_1.htm" />
-        </HelpTOCNode>
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="927fbf06-47d9-4068-8783-21004cc44efa" Title="LocalTime Structure" Url="html/T_NodaTime_LocalTime.htm">
-      <HelpTOCNode Id="31b7b5d2-7f9e-42ee-87a6-36e58451f923" Title="LocalTime Constructor " Url="html/Overload_NodaTime_LocalTime__ctor.htm">
-        <HelpTOCNode Title="LocalTime Constructor (Int32, Int32)" Url="html/M_NodaTime_LocalTime__ctor.htm" />
-        <HelpTOCNode Title="LocalTime Constructor (Int32, Int32, Int32)" Url="html/M_NodaTime_LocalTime__ctor_1.htm" />
-        <HelpTOCNode Title="LocalTime Constructor (Int32, Int32, Int32, Int32)" Url="html/M_NodaTime_LocalTime__ctor_2.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="bcc264a6-ac45-4b54-a6c0-478fa5a49422" Title="LocalTime Properties" Url="html/Properties_T_NodaTime_LocalTime.htm">
-        <HelpTOCNode Title="ClockHourOfHalfDay Property " Url="html/P_NodaTime_LocalTime_ClockHourOfHalfDay.htm" />
-        <HelpTOCNode Title="Hour Property " Url="html/P_NodaTime_LocalTime_Hour.htm" />
-        <HelpTOCNode Title="MaxValue Property " Url="html/P_NodaTime_LocalTime_MaxValue.htm" />
-        <HelpTOCNode Title="Midnight Property " Url="html/P_NodaTime_LocalTime_Midnight.htm" />
-        <HelpTOCNode Title="Millisecond Property " Url="html/P_NodaTime_LocalTime_Millisecond.htm" />
-        <HelpTOCNode Title="Minute Property " Url="html/P_NodaTime_LocalTime_Minute.htm" />
-        <HelpTOCNode Title="MinValue Property " Url="html/P_NodaTime_LocalTime_MinValue.htm" />
-        <HelpTOCNode Title="NanosecondOfDay Property " Url="html/P_NodaTime_LocalTime_NanosecondOfDay.htm" />
-        <HelpTOCNode Title="NanosecondOfSecond Property " Url="html/P_NodaTime_LocalTime_NanosecondOfSecond.htm" />
-        <HelpTOCNode Title="Noon Property " Url="html/P_NodaTime_LocalTime_Noon.htm" />
-        <HelpTOCNode Title="Second Property " Url="html/P_NodaTime_LocalTime_Second.htm" />
-        <HelpTOCNode Title="TickOfDay Property " Url="html/P_NodaTime_LocalTime_TickOfDay.htm" />
-        <HelpTOCNode Title="TickOfSecond Property " Url="html/P_NodaTime_LocalTime_TickOfSecond.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="2dfe3ada-b9b0-4aae-a0f8-6d4723bd2edd" Title="LocalTime Methods" Url="html/Methods_T_NodaTime_LocalTime.htm">
-        <HelpTOCNode Title="Add Method " Url="html/M_NodaTime_LocalTime_Add.htm" />
-        <HelpTOCNode Title="CompareTo Method " Url="html/M_NodaTime_LocalTime_CompareTo.htm" />
-        <HelpTOCNode Id="fa278ab8-4ce8-4c1b-aceb-32afe65faa7d" Title="Equals Method " Url="html/Overload_NodaTime_LocalTime_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_LocalTime_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (LocalTime)" Url="html/M_NodaTime_LocalTime_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="FromHourMinuteSecondMillisecondTick Method " Url="html/M_NodaTime_LocalTime_FromHourMinuteSecondMillisecondTick.htm" />
-        <HelpTOCNode Title="FromHourMinuteSecondNanosecond Method " Url="html/M_NodaTime_LocalTime_FromHourMinuteSecondNanosecond.htm" />
-        <HelpTOCNode Title="FromHourMinuteSecondTick Method " Url="html/M_NodaTime_LocalTime_FromHourMinuteSecondTick.htm" />
-        <HelpTOCNode Title="FromMillisecondsSinceMidnight Method " Url="html/M_NodaTime_LocalTime_FromMillisecondsSinceMidnight.htm" />
-        <HelpTOCNode Title="FromSecondsSinceMidnight Method " Url="html/M_NodaTime_LocalTime_FromSecondsSinceMidnight.htm" />
-        <HelpTOCNode Title="FromTicksSinceMidnight Method " Url="html/M_NodaTime_LocalTime_FromTicksSinceMidnight.htm" />
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_LocalTime_GetHashCode.htm" />
-        <HelpTOCNode Id="ebae5c2b-1603-45c8-b495-1a7cde012214" Title="Minus Method " Url="html/Overload_NodaTime_LocalTime_Minus.htm">
-          <HelpTOCNode Title="Minus Method (LocalTime)" Url="html/M_NodaTime_LocalTime_Minus.htm" />
-          <HelpTOCNode Title="Minus Method (Period)" Url="html/M_NodaTime_LocalTime_Minus_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="On Method " Url="html/M_NodaTime_LocalTime_On.htm" />
-        <HelpTOCNode Title="Plus Method " Url="html/M_NodaTime_LocalTime_Plus.htm" />
-        <HelpTOCNode Title="PlusHours Method " Url="html/M_NodaTime_LocalTime_PlusHours.htm" />
-        <HelpTOCNode Title="PlusMilliseconds Method " Url="html/M_NodaTime_LocalTime_PlusMilliseconds.htm" />
-        <HelpTOCNode Title="PlusMinutes Method " Url="html/M_NodaTime_LocalTime_PlusMinutes.htm" />
-        <HelpTOCNode Title="PlusNanoseconds Method " Url="html/M_NodaTime_LocalTime_PlusNanoseconds.htm" />
-        <HelpTOCNode Title="PlusSeconds Method " Url="html/M_NodaTime_LocalTime_PlusSeconds.htm" />
-        <HelpTOCNode Title="PlusTicks Method " Url="html/M_NodaTime_LocalTime_PlusTicks.htm" />
-        <HelpTOCNode Id="fdf4400a-ae5c-4ea4-a38b-f9412ef58770" Title="Subtract Method " Url="html/Overload_NodaTime_LocalTime_Subtract.htm">
-          <HelpTOCNode Title="Subtract Method (LocalTime, LocalTime)" Url="html/M_NodaTime_LocalTime_Subtract.htm" />
-          <HelpTOCNode Title="Subtract Method (LocalTime, Period)" Url="html/M_NodaTime_LocalTime_Subtract_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="a8c64017-96a0-49c5-95b1-fac10cd3e648" Title="ToString Method " Url="html/Overload_NodaTime_LocalTime_ToString.htm">
-          <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_LocalTime_ToString.htm" />
-          <HelpTOCNode Title="ToString Method (String, IFormatProvider)" Url="html/M_NodaTime_LocalTime_ToString_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="With Method " Url="html/M_NodaTime_LocalTime_With.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="109a1595-6e75-4dd7-b83d-298b41688b26" Title="LocalTime Operators" Url="html/Operators_T_NodaTime_LocalTime.htm">
-        <HelpTOCNode Title="Addition Operator " Url="html/M_NodaTime_LocalTime_op_Addition.htm" />
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_LocalTime_op_Equality.htm" />
-        <HelpTOCNode Title="GreaterThan Operator " Url="html/M_NodaTime_LocalTime_op_GreaterThan.htm" />
-        <HelpTOCNode Title="GreaterThanOrEqual Operator " Url="html/M_NodaTime_LocalTime_op_GreaterThanOrEqual.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_LocalTime_op_Inequality.htm" />
-        <HelpTOCNode Title="LessThan Operator " Url="html/M_NodaTime_LocalTime_op_LessThan.htm" />
-        <HelpTOCNode Title="LessThanOrEqual Operator " Url="html/M_NodaTime_LocalTime_op_LessThanOrEqual.htm" />
-        <HelpTOCNode Id="3be9bbf1-4379-49e2-a51e-1b841d401ff4" Title="Subtraction Operator " Url="html/Overload_NodaTime_LocalTime_op_Subtraction.htm">
-          <HelpTOCNode Title="Subtraction Operator (LocalTime, LocalTime)" Url="html/M_NodaTime_LocalTime_op_Subtraction.htm" />
-          <HelpTOCNode Title="Subtraction Operator (LocalTime, Period)" Url="html/M_NodaTime_LocalTime_op_Subtraction_1.htm" />
-        </HelpTOCNode>
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="b5ee684e-a93f-41c7-8670-eb4891deab6a" Title="NodaConstants Class" Url="html/T_NodaTime_NodaConstants.htm">
-      <HelpTOCNode Id="c5ef9d5d-2644-4a9c-aa0d-17114e906a0e" Title="NodaConstants Properties" Url="html/Properties_T_NodaTime_NodaConstants.htm">
-        <HelpTOCNode Title="BclEpoch Property " Url="html/P_NodaTime_NodaConstants_BclEpoch.htm" />
-        <HelpTOCNode Title="JulianEpoch Property " Url="html/P_NodaTime_NodaConstants_JulianEpoch.htm" />
-        <HelpTOCNode Title="UnixEpoch Property " Url="html/P_NodaTime_NodaConstants_UnixEpoch.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="23811502-a3cc-4bbc-a022-7bd3099e926a" Title="NodaConstants Fields" Url="html/Fields_T_NodaTime_NodaConstants.htm">
-        <HelpTOCNode Title="DaysPerWeek Field" Url="html/F_NodaTime_NodaConstants_DaysPerWeek.htm" />
-        <HelpTOCNode Title="HoursPerDay Field" Url="html/F_NodaTime_NodaConstants_HoursPerDay.htm" />
-        <HelpTOCNode Title="HoursPerWeek Field" Url="html/F_NodaTime_NodaConstants_HoursPerWeek.htm" />
-        <HelpTOCNode Title="MillisecondsPerDay Field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerDay.htm" />
-        <HelpTOCNode Title="MillisecondsPerHour Field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerHour.htm" />
-        <HelpTOCNode Title="MillisecondsPerMinute Field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerMinute.htm" />
-        <HelpTOCNode Title="MillisecondsPerSecond Field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerSecond.htm" />
-        <HelpTOCNode Title="MillisecondsPerWeek Field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerWeek.htm" />
-        <HelpTOCNode Title="MinutesPerDay Field" Url="html/F_NodaTime_NodaConstants_MinutesPerDay.htm" />
-        <HelpTOCNode Title="MinutesPerHour Field" Url="html/F_NodaTime_NodaConstants_MinutesPerHour.htm" />
-        <HelpTOCNode Title="MinutesPerWeek Field" Url="html/F_NodaTime_NodaConstants_MinutesPerWeek.htm" />
-        <HelpTOCNode Title="NanosecondsPerDay Field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerDay.htm" />
-        <HelpTOCNode Title="NanosecondsPerHour Field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerHour.htm" />
-        <HelpTOCNode Title="NanosecondsPerMillisecond Field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerMillisecond.htm" />
-        <HelpTOCNode Title="NanosecondsPerMinute Field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerMinute.htm" />
-        <HelpTOCNode Title="NanosecondsPerSecond Field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerSecond.htm" />
-        <HelpTOCNode Title="NanosecondsPerTick Field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerTick.htm" />
-        <HelpTOCNode Title="NanosecondsPerWeek Field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerWeek.htm" />
-        <HelpTOCNode Title="SecondsPerDay Field" Url="html/F_NodaTime_NodaConstants_SecondsPerDay.htm" />
-        <HelpTOCNode Title="SecondsPerHour Field" Url="html/F_NodaTime_NodaConstants_SecondsPerHour.htm" />
-        <HelpTOCNode Title="SecondsPerMinute Field" Url="html/F_NodaTime_NodaConstants_SecondsPerMinute.htm" />
-        <HelpTOCNode Title="SecondsPerWeek Field" Url="html/F_NodaTime_NodaConstants_SecondsPerWeek.htm" />
-        <HelpTOCNode Title="TicksPerDay Field" Url="html/F_NodaTime_NodaConstants_TicksPerDay.htm" />
-        <HelpTOCNode Title="TicksPerHour Field" Url="html/F_NodaTime_NodaConstants_TicksPerHour.htm" />
-        <HelpTOCNode Title="TicksPerMillisecond Field" Url="html/F_NodaTime_NodaConstants_TicksPerMillisecond.htm" />
-        <HelpTOCNode Title="TicksPerMinute Field" Url="html/F_NodaTime_NodaConstants_TicksPerMinute.htm" />
-        <HelpTOCNode Title="TicksPerSecond Field" Url="html/F_NodaTime_NodaConstants_TicksPerSecond.htm" />
-        <HelpTOCNode Title="TicksPerWeek Field" Url="html/F_NodaTime_NodaConstants_TicksPerWeek.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="8349f508-5c01-4fbe-90a2-a9b66cfe2452" Title="Offset Structure" Url="html/T_NodaTime_Offset.htm">
-      <HelpTOCNode Id="cdfafbbb-1808-498f-895f-700c42ab3304" Title="Offset Properties" Url="html/Properties_T_NodaTime_Offset.htm">
-        <HelpTOCNode Title="Milliseconds Property " Url="html/P_NodaTime_Offset_Milliseconds.htm" />
-        <HelpTOCNode Title="Nanoseconds Property " Url="html/P_NodaTime_Offset_Nanoseconds.htm" />
-        <HelpTOCNode Title="Seconds Property " Url="html/P_NodaTime_Offset_Seconds.htm" />
-        <HelpTOCNode Title="Ticks Property " Url="html/P_NodaTime_Offset_Ticks.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="63f2d847-2cf7-403b-b775-32501d9d4630" Title="Offset Methods" Url="html/Methods_T_NodaTime_Offset.htm">
-        <HelpTOCNode Title="Add Method " Url="html/M_NodaTime_Offset_Add.htm" />
-        <HelpTOCNode Title="CompareTo Method " Url="html/M_NodaTime_Offset_CompareTo.htm" />
-        <HelpTOCNode Id="cbf0b4ae-680a-4c22-8205-4f0dd47908f6" Title="Equals Method " Url="html/Overload_NodaTime_Offset_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_Offset_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (Offset)" Url="html/M_NodaTime_Offset_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="FromHours Method " Url="html/M_NodaTime_Offset_FromHours.htm" />
-        <HelpTOCNode Title="FromHoursAndMinutes Method " Url="html/M_NodaTime_Offset_FromHoursAndMinutes.htm" />
-        <HelpTOCNode Title="FromMilliseconds Method " Url="html/M_NodaTime_Offset_FromMilliseconds.htm" />
-        <HelpTOCNode Title="FromNanoseconds Method " Url="html/M_NodaTime_Offset_FromNanoseconds.htm" />
-        <HelpTOCNode Title="FromSeconds Method " Url="html/M_NodaTime_Offset_FromSeconds.htm" />
-        <HelpTOCNode Title="FromTicks Method " Url="html/M_NodaTime_Offset_FromTicks.htm" />
-        <HelpTOCNode Title="FromTimeSpan Method " Url="html/M_NodaTime_Offset_FromTimeSpan.htm" />
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_Offset_GetHashCode.htm" />
-        <HelpTOCNode Title="Max Method " Url="html/M_NodaTime_Offset_Max.htm" />
-        <HelpTOCNode Title="Min Method " Url="html/M_NodaTime_Offset_Min.htm" />
-        <HelpTOCNode Title="Minus Method " Url="html/M_NodaTime_Offset_Minus.htm" />
-        <HelpTOCNode Title="Negate Method " Url="html/M_NodaTime_Offset_Negate.htm" />
-        <HelpTOCNode Title="Plus Method " Url="html/M_NodaTime_Offset_Plus.htm" />
-        <HelpTOCNode Title="Subtract Method " Url="html/M_NodaTime_Offset_Subtract.htm" />
-        <HelpTOCNode Id="8925f366-7aa3-42b5-aed9-cf40b44cc91e" Title="ToString Method " Url="html/Overload_NodaTime_Offset_ToString.htm">
-          <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_Offset_ToString.htm" />
-          <HelpTOCNode Title="ToString Method (String, IFormatProvider)" Url="html/M_NodaTime_Offset_ToString_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="ToTimeSpan Method " Url="html/M_NodaTime_Offset_ToTimeSpan.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="2c226a31-5d71-4183-b642-12a100f1fcea" Title="Offset Operators" Url="html/Operators_T_NodaTime_Offset.htm">
-        <HelpTOCNode Title="Addition Operator " Url="html/M_NodaTime_Offset_op_Addition.htm" />
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_Offset_op_Equality.htm" />
-        <HelpTOCNode Title="GreaterThan Operator " Url="html/M_NodaTime_Offset_op_GreaterThan.htm" />
-        <HelpTOCNode Title="GreaterThanOrEqual Operator " Url="html/M_NodaTime_Offset_op_GreaterThanOrEqual.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_Offset_op_Inequality.htm" />
-        <HelpTOCNode Title="LessThan Operator " Url="html/M_NodaTime_Offset_op_LessThan.htm" />
-        <HelpTOCNode Title="LessThanOrEqual Operator " Url="html/M_NodaTime_Offset_op_LessThanOrEqual.htm" />
-        <HelpTOCNode Title="Subtraction Operator " Url="html/M_NodaTime_Offset_op_Subtraction.htm" />
-        <HelpTOCNode Title="UnaryNegation Operator " Url="html/M_NodaTime_Offset_op_UnaryNegation.htm" />
-        <HelpTOCNode Title="UnaryPlus Operator " Url="html/M_NodaTime_Offset_op_UnaryPlus.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="b4b19950-4719-4708-af89-e3fc7f65b929" Title="Offset Fields" Url="html/Fields_T_NodaTime_Offset.htm">
-        <HelpTOCNode Title="MaxValue Field" Url="html/F_NodaTime_Offset_MaxValue.htm" />
-        <HelpTOCNode Title="MinValue Field" Url="html/F_NodaTime_Offset_MinValue.htm" />
-        <HelpTOCNode Title="Zero Field" Url="html/F_NodaTime_Offset_Zero.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="b301039a-f3d4-45c1-be8b-19ee4e4c8702" Title="OffsetDateTime Structure" Url="html/T_NodaTime_OffsetDateTime.htm">
-      <HelpTOCNode Title="OffsetDateTime Constructor " Url="html/M_NodaTime_OffsetDateTime__ctor.htm" />
-      <HelpTOCNode Id="69a0265d-fc5f-48cd-8ec6-8ceafa5bd251" Title="OffsetDateTime Properties" Url="html/Properties_T_NodaTime_OffsetDateTime.htm">
-        <HelpTOCNode Title="Calendar Property " Url="html/P_NodaTime_OffsetDateTime_Calendar.htm" />
-        <HelpTOCNode Title="ClockHourOfHalfDay Property " Url="html/P_NodaTime_OffsetDateTime_ClockHourOfHalfDay.htm" />
-        <HelpTOCNode Title="Date Property " Url="html/P_NodaTime_OffsetDateTime_Date.htm" />
-        <HelpTOCNode Title="Day Property " Url="html/P_NodaTime_OffsetDateTime_Day.htm" />
-        <HelpTOCNode Title="DayOfWeek Property " Url="html/P_NodaTime_OffsetDateTime_DayOfWeek.htm" />
-        <HelpTOCNode Title="DayOfYear Property " Url="html/P_NodaTime_OffsetDateTime_DayOfYear.htm" />
-        <HelpTOCNode Title="Era Property " Url="html/P_NodaTime_OffsetDateTime_Era.htm" />
-        <HelpTOCNode Title="Hour Property " Url="html/P_NodaTime_OffsetDateTime_Hour.htm" />
-        <HelpTOCNode Title="LocalDateTime Property " Url="html/P_NodaTime_OffsetDateTime_LocalDateTime.htm" />
-        <HelpTOCNode Title="Millisecond Property " Url="html/P_NodaTime_OffsetDateTime_Millisecond.htm" />
-        <HelpTOCNode Title="Minute Property " Url="html/P_NodaTime_OffsetDateTime_Minute.htm" />
-        <HelpTOCNode Title="Month Property " Url="html/P_NodaTime_OffsetDateTime_Month.htm" />
-        <HelpTOCNode Title="NanosecondOfDay Property " Url="html/P_NodaTime_OffsetDateTime_NanosecondOfDay.htm" />
-        <HelpTOCNode Title="NanosecondOfSecond Property " Url="html/P_NodaTime_OffsetDateTime_NanosecondOfSecond.htm" />
-        <HelpTOCNode Title="Offset Property " Url="html/P_NodaTime_OffsetDateTime_Offset.htm" />
-        <HelpTOCNode Title="Second Property " Url="html/P_NodaTime_OffsetDateTime_Second.htm" />
-        <HelpTOCNode Title="TickOfDay Property " Url="html/P_NodaTime_OffsetDateTime_TickOfDay.htm" />
-        <HelpTOCNode Title="TickOfSecond Property " Url="html/P_NodaTime_OffsetDateTime_TickOfSecond.htm" />
-        <HelpTOCNode Title="TimeOfDay Property " Url="html/P_NodaTime_OffsetDateTime_TimeOfDay.htm" />
-        <HelpTOCNode Title="Year Property " Url="html/P_NodaTime_OffsetDateTime_Year.htm" />
-        <HelpTOCNode Title="YearOfEra Property " Url="html/P_NodaTime_OffsetDateTime_YearOfEra.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="d381805b-2826-440b-ab25-4394d6e6ee06" Title="OffsetDateTime Methods" Url="html/Methods_T_NodaTime_OffsetDateTime.htm">
-        <HelpTOCNode Title="Add Method " Url="html/M_NodaTime_OffsetDateTime_Add.htm" />
-        <HelpTOCNode Id="af6db3bc-09b9-4948-b090-8470e8312e90" Title="Equals Method " Url="html/Overload_NodaTime_OffsetDateTime_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_OffsetDateTime_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (OffsetDateTime)" Url="html/M_NodaTime_OffsetDateTime_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="FromDateTimeOffset Method " Url="html/M_NodaTime_OffsetDateTime_FromDateTimeOffset.htm" />
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_OffsetDateTime_GetHashCode.htm" />
-        <HelpTOCNode Title="InFixedZone Method " Url="html/M_NodaTime_OffsetDateTime_InFixedZone.htm" />
-        <HelpTOCNode Id="09a83412-e20a-4cd4-9b5c-a45e9387e77a" Title="Minus Method " Url="html/Overload_NodaTime_OffsetDateTime_Minus.htm">
-          <HelpTOCNode Title="Minus Method (Duration)" Url="html/M_NodaTime_OffsetDateTime_Minus.htm" />
-          <HelpTOCNode Title="Minus Method (OffsetDateTime)" Url="html/M_NodaTime_OffsetDateTime_Minus_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Plus Method " Url="html/M_NodaTime_OffsetDateTime_Plus.htm" />
-        <HelpTOCNode Title="PlusHours Method " Url="html/M_NodaTime_OffsetDateTime_PlusHours.htm" />
-        <HelpTOCNode Title="PlusMilliseconds Method " Url="html/M_NodaTime_OffsetDateTime_PlusMilliseconds.htm" />
-        <HelpTOCNode Title="PlusMinutes Method " Url="html/M_NodaTime_OffsetDateTime_PlusMinutes.htm" />
-        <HelpTOCNode Title="PlusNanoseconds Method " Url="html/M_NodaTime_OffsetDateTime_PlusNanoseconds.htm" />
-        <HelpTOCNode Title="PlusSeconds Method " Url="html/M_NodaTime_OffsetDateTime_PlusSeconds.htm" />
-        <HelpTOCNode Title="PlusTicks Method " Url="html/M_NodaTime_OffsetDateTime_PlusTicks.htm" />
-        <HelpTOCNode Id="f81551d8-b7fe-4ec3-88fd-592021d6c56b" Title="Subtract Method " Url="html/Overload_NodaTime_OffsetDateTime_Subtract.htm">
-          <HelpTOCNode Title="Subtract Method (OffsetDateTime, Duration)" Url="html/M_NodaTime_OffsetDateTime_Subtract.htm" />
-          <HelpTOCNode Title="Subtract Method (OffsetDateTime, OffsetDateTime)" Url="html/M_NodaTime_OffsetDateTime_Subtract_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="ToDateTimeOffset Method " Url="html/M_NodaTime_OffsetDateTime_ToDateTimeOffset.htm" />
-        <HelpTOCNode Title="ToInstant Method " Url="html/M_NodaTime_OffsetDateTime_ToInstant.htm" />
-        <HelpTOCNode Id="2cf17bca-58d9-49fb-9668-1fa436f4605f" Title="ToString Method " Url="html/Overload_NodaTime_OffsetDateTime_ToString.htm">
-          <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_OffsetDateTime_ToString.htm" />
-          <HelpTOCNode Title="ToString Method (String, IFormatProvider)" Url="html/M_NodaTime_OffsetDateTime_ToString_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="4173c14c-4862-48f8-baac-a4f27c97027e" Title="With Method " Url="html/Overload_NodaTime_OffsetDateTime_With.htm">
-          <HelpTOCNode Title="With Method (Func(LocalDate, LocalDate))" Url="html/M_NodaTime_OffsetDateTime_With.htm" />
-          <HelpTOCNode Title="With Method (Func(LocalTime, LocalTime))" Url="html/M_NodaTime_OffsetDateTime_With_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="WithCalendar Method " Url="html/M_NodaTime_OffsetDateTime_WithCalendar.htm" />
-        <HelpTOCNode Title="WithOffset Method " Url="html/M_NodaTime_OffsetDateTime_WithOffset.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="598a7980-e5ee-4b00-a970-3bc1cf12556c" Title="OffsetDateTime Operators" Url="html/Operators_T_NodaTime_OffsetDateTime.htm">
-        <HelpTOCNode Title="Addition Operator " Url="html/M_NodaTime_OffsetDateTime_op_Addition.htm" />
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_OffsetDateTime_op_Equality.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_OffsetDateTime_op_Inequality.htm" />
-        <HelpTOCNode Id="9f377f61-8eff-4a30-9979-13787b4a1f07" Title="Subtraction Operator " Url="html/Overload_NodaTime_OffsetDateTime_op_Subtraction.htm">
-          <HelpTOCNode Title="Subtraction Operator (OffsetDateTime, Duration)" Url="html/M_NodaTime_OffsetDateTime_op_Subtraction.htm" />
-          <HelpTOCNode Title="Subtraction Operator (OffsetDateTime, OffsetDateTime)" Url="html/M_NodaTime_OffsetDateTime_op_Subtraction_1.htm" />
-        </HelpTOCNode>
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="feb3e6e9-edae-4c83-9a9a-0235ef4fdb3b" Title="OffsetDateTime.Comparer Class" Url="html/T_NodaTime_OffsetDateTime_Comparer.htm">
-      <HelpTOCNode Id="8f8150b1-9aa5-487b-9bdb-6b78bdebb78b" Title="Comparer Properties" Url="html/Properties_T_NodaTime_OffsetDateTime_Comparer.htm">
-        <HelpTOCNode Title="Instant Property " Url="html/P_NodaTime_OffsetDateTime_Comparer_Instant.htm" />
-        <HelpTOCNode Title="Local Property " Url="html/P_NodaTime_OffsetDateTime_Comparer_Local.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="4e00ba31-72c4-4d02-89e8-4d870b26a275" Title="Comparer Methods" Url="html/Methods_T_NodaTime_OffsetDateTime_Comparer.htm">
-        <HelpTOCNode Title="Compare Method " Url="html/M_NodaTime_OffsetDateTime_Comparer_Compare.htm" />
-        <HelpTOCNode Id="0987353e-89c7-4a02-a735-ab7239218fff" Title="Equals Method " Url="html/Overload_NodaTime_OffsetDateTime_Comparer_Equals.htm">
-          <HelpTOCNode Title="Equals Method (OffsetDateTime, OffsetDateTime)" Url="html/M_NodaTime_OffsetDateTime_Comparer_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="d4551010-45f3-4947-bb8c-38033a087866" Title="GetHashCode Method " Url="html/Overload_NodaTime_OffsetDateTime_Comparer_GetHashCode.htm">
-          <HelpTOCNode Title="GetHashCode Method (OffsetDateTime)" Url="html/M_NodaTime_OffsetDateTime_Comparer_GetHashCode.htm" />
-        </HelpTOCNode>
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="ab8a950f-fcf7-4f96-bda1-689a5170194e" Title="Period Class" Url="html/T_NodaTime_Period.htm">
-      <HelpTOCNode Id="bc2e5f39-2122-4a79-bbf0-7668b574e6b0" Title="Period Properties" Url="html/Properties_T_NodaTime_Period.htm">
-        <HelpTOCNode Title="Days Property " Url="html/P_NodaTime_Period_Days.htm" />
-        <HelpTOCNode Title="HasDateComponent Property " Url="html/P_NodaTime_Period_HasDateComponent.htm" />
-        <HelpTOCNode Title="HasTimeComponent Property " Url="html/P_NodaTime_Period_HasTimeComponent.htm" />
-        <HelpTOCNode Title="Hours Property " Url="html/P_NodaTime_Period_Hours.htm" />
-        <HelpTOCNode Title="Milliseconds Property " Url="html/P_NodaTime_Period_Milliseconds.htm" />
-        <HelpTOCNode Title="Minutes Property " Url="html/P_NodaTime_Period_Minutes.htm" />
-        <HelpTOCNode Title="Months Property " Url="html/P_NodaTime_Period_Months.htm" />
-        <HelpTOCNode Title="Nanoseconds Property " Url="html/P_NodaTime_Period_Nanoseconds.htm" />
-        <HelpTOCNode Title="NormalizingEqualityComparer Property " Url="html/P_NodaTime_Period_NormalizingEqualityComparer.htm" />
-        <HelpTOCNode Title="Seconds Property " Url="html/P_NodaTime_Period_Seconds.htm" />
-        <HelpTOCNode Title="Ticks Property " Url="html/P_NodaTime_Period_Ticks.htm" />
-        <HelpTOCNode Title="Weeks Property " Url="html/P_NodaTime_Period_Weeks.htm" />
-        <HelpTOCNode Title="Years Property " Url="html/P_NodaTime_Period_Years.htm" />
-        <HelpTOCNode Title="Zero Property " Url="html/P_NodaTime_Period_Zero.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="1cf4c1c7-6b73-47b0-8ae8-ea8e85c7e006" Title="Period Methods" Url="html/Methods_T_NodaTime_Period.htm">
-        <HelpTOCNode Id="6eedb831-a8b1-42d6-b79b-3021dad59316" Title="Between Method " Url="html/Overload_NodaTime_Period_Between.htm">
-          <HelpTOCNode Title="Between Method (LocalDate, LocalDate)" Url="html/M_NodaTime_Period_Between.htm" />
-          <HelpTOCNode Title="Between Method (LocalDateTime, LocalDateTime)" Url="html/M_NodaTime_Period_Between_2.htm" />
-          <HelpTOCNode Title="Between Method (LocalTime, LocalTime)" Url="html/M_NodaTime_Period_Between_4.htm" />
-          <HelpTOCNode Title="Between Method (LocalDate, LocalDate, PeriodUnits)" Url="html/M_NodaTime_Period_Between_1.htm" />
-          <HelpTOCNode Title="Between Method (LocalDateTime, LocalDateTime, PeriodUnits)" Url="html/M_NodaTime_Period_Between_3.htm" />
-          <HelpTOCNode Title="Between Method (LocalTime, LocalTime, PeriodUnits)" Url="html/M_NodaTime_Period_Between_5.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="CreateComparer Method " Url="html/M_NodaTime_Period_CreateComparer.htm" />
-        <HelpTOCNode Id="4c99ffc3-5ff9-430f-8121-7ab803abb97e" Title="Equals Method " Url="html/Overload_NodaTime_Period_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_Period_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (Period)" Url="html/M_NodaTime_Period_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="FromDays Method " Url="html/M_NodaTime_Period_FromDays.htm" />
-        <HelpTOCNode Title="FromHours Method " Url="html/M_NodaTime_Period_FromHours.htm" />
-        <HelpTOCNode Title="FromMilliseconds Method " Url="html/M_NodaTime_Period_FromMilliseconds.htm" />
-        <HelpTOCNode Title="FromMinutes Method " Url="html/M_NodaTime_Period_FromMinutes.htm" />
-        <HelpTOCNode Title="FromMonths Method " Url="html/M_NodaTime_Period_FromMonths.htm" />
-        <HelpTOCNode Title="FromNanoseconds Method " Url="html/M_NodaTime_Period_FromNanoseconds.htm" />
-        <HelpTOCNode Title="FromSeconds Method " Url="html/M_NodaTime_Period_FromSeconds.htm" />
-        <HelpTOCNode Title="FromTicks Method " Url="html/M_NodaTime_Period_FromTicks.htm" />
-        <HelpTOCNode Title="FromWeeks Method " Url="html/M_NodaTime_Period_FromWeeks.htm" />
-        <HelpTOCNode Title="FromYears Method " Url="html/M_NodaTime_Period_FromYears.htm" />
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_Period_GetHashCode.htm" />
-        <HelpTOCNode Title="Normalize Method " Url="html/M_NodaTime_Period_Normalize.htm" />
-        <HelpTOCNode Title="ToBuilder Method " Url="html/M_NodaTime_Period_ToBuilder.htm" />
-        <HelpTOCNode Title="ToDuration Method " Url="html/M_NodaTime_Period_ToDuration.htm" />
-        <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_Period_ToString.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="0168d35c-a039-4595-9130-d08f92b6863c" Title="Period Operators" Url="html/Operators_T_NodaTime_Period.htm">
-        <HelpTOCNode Title="Addition Operator " Url="html/M_NodaTime_Period_op_Addition.htm" />
-        <HelpTOCNode Title="Subtraction Operator " Url="html/M_NodaTime_Period_op_Subtraction.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="4a13bc0b-8531-4250-864c-91b68a0fc50a" Title="PeriodBuilder Class" Url="html/T_NodaTime_PeriodBuilder.htm">
-      <HelpTOCNode Id="af08e85d-5e91-4105-b52f-f620302bdad5" Title="PeriodBuilder Constructor " Url="html/Overload_NodaTime_PeriodBuilder__ctor.htm">
-        <HelpTOCNode Title="PeriodBuilder Constructor " Url="html/M_NodaTime_PeriodBuilder__ctor.htm" />
-        <HelpTOCNode Title="PeriodBuilder Constructor (Period)" Url="html/M_NodaTime_PeriodBuilder__ctor_1.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="aa974c17-9830-44c9-86c5-4cfc5edb4318" Title="PeriodBuilder Properties" Url="html/Properties_T_NodaTime_PeriodBuilder.htm">
-        <HelpTOCNode Title="Days Property " Url="html/P_NodaTime_PeriodBuilder_Days.htm" />
-        <HelpTOCNode Title="Hours Property " Url="html/P_NodaTime_PeriodBuilder_Hours.htm" />
-        <HelpTOCNode Title="Item Property " Url="html/P_NodaTime_PeriodBuilder_Item.htm" />
-        <HelpTOCNode Title="Milliseconds Property " Url="html/P_NodaTime_PeriodBuilder_Milliseconds.htm" />
-        <HelpTOCNode Title="Minutes Property " Url="html/P_NodaTime_PeriodBuilder_Minutes.htm" />
-        <HelpTOCNode Title="Months Property " Url="html/P_NodaTime_PeriodBuilder_Months.htm" />
-        <HelpTOCNode Title="Nanoseconds Property " Url="html/P_NodaTime_PeriodBuilder_Nanoseconds.htm" />
-        <HelpTOCNode Title="Seconds Property " Url="html/P_NodaTime_PeriodBuilder_Seconds.htm" />
-        <HelpTOCNode Title="Ticks Property " Url="html/P_NodaTime_PeriodBuilder_Ticks.htm" />
-        <HelpTOCNode Title="Weeks Property " Url="html/P_NodaTime_PeriodBuilder_Weeks.htm" />
-        <HelpTOCNode Title="Years Property " Url="html/P_NodaTime_PeriodBuilder_Years.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="f1ae055a-248e-461f-8490-e60ccfeaa001" Title="PeriodBuilder Methods" Url="html/Methods_T_NodaTime_PeriodBuilder.htm">
-        <HelpTOCNode Title="Build Method " Url="html/M_NodaTime_PeriodBuilder_Build.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Title="PeriodUnits Enumeration" Url="html/T_NodaTime_PeriodUnits.htm" />
-    <HelpTOCNode Id="00731185-b54d-45ca-a4b7-04c86aca425e" Title="SkippedTimeException Class" Url="html/T_NodaTime_SkippedTimeException.htm">
-      <HelpTOCNode Title="SkippedTimeException Constructor " Url="html/M_NodaTime_SkippedTimeException__ctor.htm" />
-      <HelpTOCNode Id="40035583-269e-4eba-bb88-5d1aaab371ce" Title="SkippedTimeException Properties" Url="html/Properties_T_NodaTime_SkippedTimeException.htm">
-        <HelpTOCNode Title="LocalDateTime Property " Url="html/P_NodaTime_SkippedTimeException_LocalDateTime.htm" />
-        <HelpTOCNode Title="Zone Property " Url="html/P_NodaTime_SkippedTimeException_Zone.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="SkippedTimeException Methods" Url="html/Methods_T_NodaTime_SkippedTimeException.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="090caca1-fb6e-46f9-92be-f49dd668e9a4" Title="SystemClock Class" Url="html/T_NodaTime_SystemClock.htm">
-      <HelpTOCNode Id="176741af-3781-40ff-8f3e-8e0cecd52035" Title="SystemClock Properties" Url="html/Properties_T_NodaTime_SystemClock.htm">
-        <HelpTOCNode Title="Instance Property " Url="html/P_NodaTime_SystemClock_Instance.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="999f48ab-1274-48e9-985b-3ffa48a40281" Title="SystemClock Methods" Url="html/Methods_T_NodaTime_SystemClock.htm">
-        <HelpTOCNode Title="GetCurrentInstant Method " Url="html/M_NodaTime_SystemClock_GetCurrentInstant.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="3feb63b1-2bc0-4be2-894e-bcbbe01373de" Title="TimeAdjusters Class" Url="html/T_NodaTime_TimeAdjusters.htm">
-      <HelpTOCNode Id="f05e6363-a82a-4309-a969-9b2a156a73db" Title="TimeAdjusters Properties" Url="html/Properties_T_NodaTime_TimeAdjusters.htm">
-        <HelpTOCNode Title="TruncateToHour Property " Url="html/P_NodaTime_TimeAdjusters_TruncateToHour.htm" />
-        <HelpTOCNode Title="TruncateToMinute Property " Url="html/P_NodaTime_TimeAdjusters_TruncateToMinute.htm" />
-        <HelpTOCNode Title="TruncateToSecond Property " Url="html/P_NodaTime_TimeAdjusters_TruncateToSecond.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="b68729ff-2221-41ef-888e-f7111674cdfe" Title="ZonedClock Class" Url="html/T_NodaTime_ZonedClock.htm">
-      <HelpTOCNode Title="ZonedClock Constructor " Url="html/M_NodaTime_ZonedClock__ctor.htm" />
-      <HelpTOCNode Id="c2ec555d-65fa-4a1b-8bf6-4d693fc932b5" Title="ZonedClock Methods" Url="html/Methods_T_NodaTime_ZonedClock.htm">
-        <HelpTOCNode Title="GetCurrentDate Method " Url="html/M_NodaTime_ZonedClock_GetCurrentDate.htm" />
-        <HelpTOCNode Title="GetCurrentInstant Method " Url="html/M_NodaTime_ZonedClock_GetCurrentInstant.htm" />
-        <HelpTOCNode Title="GetCurrentLocalDateTime Method " Url="html/M_NodaTime_ZonedClock_GetCurrentLocalDateTime.htm" />
-        <HelpTOCNode Title="GetCurrentOffsetDateTime Method " Url="html/M_NodaTime_ZonedClock_GetCurrentOffsetDateTime.htm" />
-        <HelpTOCNode Title="GetCurrentTimeOfDay Method " Url="html/M_NodaTime_ZonedClock_GetCurrentTimeOfDay.htm" />
-        <HelpTOCNode Title="GetCurrentZonedDateTime Method " Url="html/M_NodaTime_ZonedClock_GetCurrentZonedDateTime.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="2aa5d224-f4c1-458e-a1fc-559416641802" Title="ZonedDateTime Structure" Url="html/T_NodaTime_ZonedDateTime.htm">
-      <HelpTOCNode Id="9de34a64-4746-4392-9ea1-ab48d7d9110d" Title="ZonedDateTime Constructor " Url="html/Overload_NodaTime_ZonedDateTime__ctor.htm">
-        <HelpTOCNode Title="ZonedDateTime Constructor (Instant, DateTimeZone)" Url="html/M_NodaTime_ZonedDateTime__ctor.htm" />
-        <HelpTOCNode Title="ZonedDateTime Constructor (Instant, DateTimeZone, CalendarSystem)" Url="html/M_NodaTime_ZonedDateTime__ctor_1.htm" />
-        <HelpTOCNode Title="ZonedDateTime Constructor (LocalDateTime, DateTimeZone, Offset)" Url="html/M_NodaTime_ZonedDateTime__ctor_2.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="f674d79b-6622-4d4b-a21f-09023a21998b" Title="ZonedDateTime Properties" Url="html/Properties_T_NodaTime_ZonedDateTime.htm">
-        <HelpTOCNode Title="Calendar Property " Url="html/P_NodaTime_ZonedDateTime_Calendar.htm" />
-        <HelpTOCNode Title="ClockHourOfHalfDay Property " Url="html/P_NodaTime_ZonedDateTime_ClockHourOfHalfDay.htm" />
-        <HelpTOCNode Title="Date Property " Url="html/P_NodaTime_ZonedDateTime_Date.htm" />
-        <HelpTOCNode Title="Day Property " Url="html/P_NodaTime_ZonedDateTime_Day.htm" />
-        <HelpTOCNode Title="DayOfWeek Property " Url="html/P_NodaTime_ZonedDateTime_DayOfWeek.htm" />
-        <HelpTOCNode Title="DayOfYear Property " Url="html/P_NodaTime_ZonedDateTime_DayOfYear.htm" />
-        <HelpTOCNode Title="Era Property " Url="html/P_NodaTime_ZonedDateTime_Era.htm" />
-        <HelpTOCNode Title="Hour Property " Url="html/P_NodaTime_ZonedDateTime_Hour.htm" />
-        <HelpTOCNode Title="LocalDateTime Property " Url="html/P_NodaTime_ZonedDateTime_LocalDateTime.htm" />
-        <HelpTOCNode Title="Millisecond Property " Url="html/P_NodaTime_ZonedDateTime_Millisecond.htm" />
-        <HelpTOCNode Title="Minute Property " Url="html/P_NodaTime_ZonedDateTime_Minute.htm" />
-        <HelpTOCNode Title="Month Property " Url="html/P_NodaTime_ZonedDateTime_Month.htm" />
-        <HelpTOCNode Title="NanosecondOfDay Property " Url="html/P_NodaTime_ZonedDateTime_NanosecondOfDay.htm" />
-        <HelpTOCNode Title="NanosecondOfSecond Property " Url="html/P_NodaTime_ZonedDateTime_NanosecondOfSecond.htm" />
-        <HelpTOCNode Title="Offset Property " Url="html/P_NodaTime_ZonedDateTime_Offset.htm" />
-        <HelpTOCNode Title="Second Property " Url="html/P_NodaTime_ZonedDateTime_Second.htm" />
-        <HelpTOCNode Title="TickOfDay Property " Url="html/P_NodaTime_ZonedDateTime_TickOfDay.htm" />
-        <HelpTOCNode Title="TickOfSecond Property " Url="html/P_NodaTime_ZonedDateTime_TickOfSecond.htm" />
-        <HelpTOCNode Title="TimeOfDay Property " Url="html/P_NodaTime_ZonedDateTime_TimeOfDay.htm" />
-        <HelpTOCNode Title="Year Property " Url="html/P_NodaTime_ZonedDateTime_Year.htm" />
-        <HelpTOCNode Title="YearOfEra Property " Url="html/P_NodaTime_ZonedDateTime_YearOfEra.htm" />
-        <HelpTOCNode Title="Zone Property " Url="html/P_NodaTime_ZonedDateTime_Zone.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="4c751a67-face-4cf9-9259-f06a04beaa0e" Title="ZonedDateTime Methods" Url="html/Methods_T_NodaTime_ZonedDateTime.htm">
-        <HelpTOCNode Title="Add Method " Url="html/M_NodaTime_ZonedDateTime_Add.htm" />
-        <HelpTOCNode Id="bed8715a-5318-4c8a-b1bd-5c1a3e6ae715" Title="Equals Method " Url="html/Overload_NodaTime_ZonedDateTime_Equals.htm">
-          <HelpTOCNode Title="Equals Method (Object)" Url="html/M_NodaTime_ZonedDateTime_Equals_1.htm" />
-          <HelpTOCNode Title="Equals Method (ZonedDateTime)" Url="html/M_NodaTime_ZonedDateTime_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="FromDateTimeOffset Method " Url="html/M_NodaTime_ZonedDateTime_FromDateTimeOffset.htm" />
-        <HelpTOCNode Title="GetHashCode Method " Url="html/M_NodaTime_ZonedDateTime_GetHashCode.htm" />
-        <HelpTOCNode Title="GetZoneInterval Method " Url="html/M_NodaTime_ZonedDateTime_GetZoneInterval.htm" />
-        <HelpTOCNode Title="IsDaylightSavingTime Method " Url="html/M_NodaTime_ZonedDateTime_IsDaylightSavingTime.htm" />
-        <HelpTOCNode Id="283c12a2-2c3f-4a20-8b17-c36f00304953" Title="Minus Method " Url="html/Overload_NodaTime_ZonedDateTime_Minus.htm">
-          <HelpTOCNode Title="Minus Method (Duration)" Url="html/M_NodaTime_ZonedDateTime_Minus.htm" />
-          <HelpTOCNode Title="Minus Method (ZonedDateTime)" Url="html/M_NodaTime_ZonedDateTime_Minus_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Plus Method " Url="html/M_NodaTime_ZonedDateTime_Plus.htm" />
-        <HelpTOCNode Title="PlusHours Method " Url="html/M_NodaTime_ZonedDateTime_PlusHours.htm" />
-        <HelpTOCNode Title="PlusMilliseconds Method " Url="html/M_NodaTime_ZonedDateTime_PlusMilliseconds.htm" />
-        <HelpTOCNode Title="PlusMinutes Method " Url="html/M_NodaTime_ZonedDateTime_PlusMinutes.htm" />
-        <HelpTOCNode Title="PlusNanoseconds Method " Url="html/M_NodaTime_ZonedDateTime_PlusNanoseconds.htm" />
-        <HelpTOCNode Title="PlusSeconds Method " Url="html/M_NodaTime_ZonedDateTime_PlusSeconds.htm" />
-        <HelpTOCNode Title="PlusTicks Method " Url="html/M_NodaTime_ZonedDateTime_PlusTicks.htm" />
-        <HelpTOCNode Id="77d43bdd-712d-446a-937f-567f6a6d9866" Title="Subtract Method " Url="html/Overload_NodaTime_ZonedDateTime_Subtract.htm">
-          <HelpTOCNode Title="Subtract Method (ZonedDateTime, Duration)" Url="html/M_NodaTime_ZonedDateTime_Subtract.htm" />
-          <HelpTOCNode Title="Subtract Method (ZonedDateTime, ZonedDateTime)" Url="html/M_NodaTime_ZonedDateTime_Subtract_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="ToDateTimeOffset Method " Url="html/M_NodaTime_ZonedDateTime_ToDateTimeOffset.htm" />
-        <HelpTOCNode Title="ToDateTimeUnspecified Method " Url="html/M_NodaTime_ZonedDateTime_ToDateTimeUnspecified.htm" />
-        <HelpTOCNode Title="ToDateTimeUtc Method " Url="html/M_NodaTime_ZonedDateTime_ToDateTimeUtc.htm" />
-        <HelpTOCNode Title="ToInstant Method " Url="html/M_NodaTime_ZonedDateTime_ToInstant.htm" />
-        <HelpTOCNode Title="ToOffsetDateTime Method " Url="html/M_NodaTime_ZonedDateTime_ToOffsetDateTime.htm" />
-        <HelpTOCNode Id="1a198116-1d9d-4b37-ae15-c1b88fd8506c" Title="ToString Method " Url="html/Overload_NodaTime_ZonedDateTime_ToString.htm">
-          <HelpTOCNode Title="ToString Method " Url="html/M_NodaTime_ZonedDateTime_ToString.htm" />
-          <HelpTOCNode Title="ToString Method (String, IFormatProvider)" Url="html/M_NodaTime_ZonedDateTime_ToString_1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="WithCalendar Method " Url="html/M_NodaTime_ZonedDateTime_WithCalendar.htm" />
-        <HelpTOCNode Title="WithZone Method " Url="html/M_NodaTime_ZonedDateTime_WithZone.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="7b348554-284f-4fbe-9f85-0035740bcd64" Title="ZonedDateTime Operators" Url="html/Operators_T_NodaTime_ZonedDateTime.htm">
-        <HelpTOCNode Title="Addition Operator " Url="html/M_NodaTime_ZonedDateTime_op_Addition.htm" />
-        <HelpTOCNode Title="Equality Operator " Url="html/M_NodaTime_ZonedDateTime_op_Equality.htm" />
-        <HelpTOCNode Title="Inequality Operator " Url="html/M_NodaTime_ZonedDateTime_op_Inequality.htm" />
-        <HelpTOCNode Id="637f3f54-5e69-425f-a2ef-7c9bc890b8e9" Title="Subtraction Operator " Url="html/Overload_NodaTime_ZonedDateTime_op_Subtraction.htm">
-          <HelpTOCNode Title="Subtraction Operator (ZonedDateTime, Duration)" Url="html/M_NodaTime_ZonedDateTime_op_Subtraction.htm" />
-          <HelpTOCNode Title="Subtraction Operator (ZonedDateTime, ZonedDateTime)" Url="html/M_NodaTime_ZonedDateTime_op_Subtraction_1.htm" />
-        </HelpTOCNode>
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="839ad5d1-b8bd-4697-aaf1-0d67c12ed375" Title="ZonedDateTime.Comparer Class" Url="html/T_NodaTime_ZonedDateTime_Comparer.htm">
-      <HelpTOCNode Id="f0b28748-5272-4e1b-b1b0-06ab87da593f" Title="Comparer Properties" Url="html/Properties_T_NodaTime_ZonedDateTime_Comparer.htm">
-        <HelpTOCNode Title="Instant Property " Url="html/P_NodaTime_ZonedDateTime_Comparer_Instant.htm" />
-        <HelpTOCNode Title="Local Property " Url="html/P_NodaTime_ZonedDateTime_Comparer_Local.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="4178500e-3826-4c9d-8926-56c7175699bd" Title="Comparer Methods" Url="html/Methods_T_NodaTime_ZonedDateTime_Comparer.htm">
-        <HelpTOCNode Title="Compare Method " Url="html/M_NodaTime_ZonedDateTime_Comparer_Compare.htm" />
-        <HelpTOCNode Id="411e1936-7113-4fba-ad89-744f793e74e0" Title="Equals Method " Url="html/Overload_NodaTime_ZonedDateTime_Comparer_Equals.htm">
-          <HelpTOCNode Title="Equals Method (ZonedDateTime, ZonedDateTime)" Url="html/M_NodaTime_ZonedDateTime_Comparer_Equals.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="afb62233-30d3-40ed-9fb0-92dcd2758bbf" Title="GetHashCode Method " Url="html/Overload_NodaTime_ZonedDateTime_Comparer_GetHashCode.htm">
-          <HelpTOCNode Title="GetHashCode Method (ZonedDateTime)" Url="html/M_NodaTime_ZonedDateTime_Comparer_GetHashCode.htm" />
-        </HelpTOCNode>
-      </HelpTOCNode>
+      <HelpTOCNode Title="LongStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_LongStatistic.htm" />
     </HelpTOCNode>
   </HelpTOCNode>
 </HelpTOC>

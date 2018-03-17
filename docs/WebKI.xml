@@ -10,29 +10,19 @@
     <HelpKINode Title="ButtonBase(T).Active Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_Active.htm" />
     <HelpKINode Title="IButton.Active Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_Active.htm" />
   </HelpKINode>
-  <HelpKINode Title="add method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_add.htm" />
   <HelpKINode Title="Add method">
     <HelpKINode Title="AsyncObservableCollection(T).Add Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Add.htm" />
-    <HelpKINode Title="Duration.Add Method " Url="html/M_NodaTime_Duration_Add.htm" />
-    <HelpKINode Title="Instant.Add Method " Url="html/M_NodaTime_Instant_Add.htm" />
-    <HelpKINode Title="LocalDate.Add Method " Url="html/M_NodaTime_LocalDate_Add.htm" />
-    <HelpKINode Title="LocalDateTime.Add Method " Url="html/M_NodaTime_LocalDateTime_Add.htm" />
-    <HelpKINode Title="LocalTime.Add Method " Url="html/M_NodaTime_LocalTime_Add.htm" />
-    <HelpKINode Title="Offset.Add Method " Url="html/M_NodaTime_Offset_Add.htm" />
-    <HelpKINode Title="OffsetDateTime.Add Method " Url="html/M_NodaTime_OffsetDateTime_Add.htm" />
-    <HelpKINode Title="ZonedDateTime.Add Method " Url="html/M_NodaTime_ZonedDateTime_Add.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).Add Method " Url="html/M_ElevatorApp_Util_Statistic_2_Add.htm" />
   </HelpKINode>
+  <HelpKINode Title="add method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_add.htm" />
   <HelpKINode Title="AddDistinct method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddDistinct.htm" />
-  <HelpKINode Title="Addition operator">
-    <HelpKINode Title="Duration.Addition Operator " Url="html/M_NodaTime_Duration_op_Addition.htm" />
-    <HelpKINode Title="Instant.Addition Operator " Url="html/M_NodaTime_Instant_op_Addition.htm" />
-    <HelpKINode Title="LocalDate.Addition Operator " Url="html/Overload_NodaTime_LocalDate_op_Addition.htm" />
-    <HelpKINode Title="LocalDateTime.Addition Operator " Url="html/M_NodaTime_LocalDateTime_op_Addition.htm" />
-    <HelpKINode Title="LocalTime.Addition Operator " Url="html/M_NodaTime_LocalTime_op_Addition.htm" />
-    <HelpKINode Title="Offset.Addition Operator " Url="html/M_NodaTime_Offset_op_Addition.htm" />
-    <HelpKINode Title="OffsetDateTime.Addition Operator " Url="html/M_NodaTime_OffsetDateTime_op_Addition.htm" />
-    <HelpKINode Title="Period.Addition Operator " Url="html/M_NodaTime_Period_op_Addition.htm" />
-    <HelpKINode Title="ZonedDateTime.Addition Operator " Url="html/M_NodaTime_ZonedDateTime_op_Addition.htm" />
+  <HelpKINode Title="AddItems method">
+    <HelpKINode Title="DecimalStatistic.AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_AddItems.htm" />
+    <HelpKINode Title="DoubleStatistic.AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_AddItems.htm" />
+    <HelpKINode Title="DurationStatistic.AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_AddItems.htm" />
+    <HelpKINode Title="IntStatistic.AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_AddItems.htm" />
+    <HelpKINode Title="LongStatistic.AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_AddItems.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).AddItems Method " Url="html/M_ElevatorApp_Util_Statistic_2_AddItems.htm" />
   </HelpKINode>
   <HelpKINode Title="AddLogger method">
     <HelpKINode Title="ILogger.AddLogger Method " Url="html/M_ElevatorApp_Util_ILogger_AddLogger.htm" />
@@ -52,42 +42,10 @@
   <HelpKINode Title="AddPassengerControl.AddPassenger method" Url="html/M_ElevatorApp_Controls_AddPassengerControl_AddPassenger.htm" />
   <HelpKINode Title="AddPassengerControl.AddPassengerControl constructor" Url="html/M_ElevatorApp_Controls_AddPassengerControl__ctor.htm" />
   <HelpKINode Title="AddPassengerControl.InitializeComponent method" Url="html/M_ElevatorApp_Controls_AddPassengerControl_InitializeComponent.htm" />
-  <HelpKINode Title="AddRange method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddRange.htm" />
-  <HelpKINode Title="AllDateUnits enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="AllTimeUnits enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="AllUnits enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="AmbiguousTimeException class">
-    <HelpKINode Title="AmbiguousTimeException Class" Url="html/T_NodaTime_AmbiguousTimeException.htm" />
-    <HelpKINode Title="constructor" Url="html/M_NodaTime_AmbiguousTimeException__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_AmbiguousTimeException.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_AmbiguousTimeException.htm" />
+  <HelpKINode Title="AddRange method">
+    <HelpKINode Title="AsyncObservableCollection(T).AddRange Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddRange.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).AddRange Method " Url="html/M_ElevatorApp_Util_Statistic_2_AddRange.htm" />
   </HelpKINode>
-  <HelpKINode Title="AmbiguousTimeException.AmbiguousTimeException constructor" Url="html/M_NodaTime_AmbiguousTimeException__ctor.htm" />
-  <HelpKINode Title="AmbiguousTimeException.EarlierMapping property" Url="html/P_NodaTime_AmbiguousTimeException_EarlierMapping.htm" />
-  <HelpKINode Title="AmbiguousTimeException.LaterMapping property" Url="html/P_NodaTime_AmbiguousTimeException_LaterMapping.htm" />
-  <HelpKINode Title="AmbiguousTimeException.Zone property" Url="html/P_NodaTime_AmbiguousTimeException_Zone.htm" />
-  <HelpKINode Title="AnnualDate structure">
-    <HelpKINode Title="AnnualDate Structure" Url="html/T_NodaTime_AnnualDate.htm" />
-    <HelpKINode Title="constructor" Url="html/M_NodaTime_AnnualDate__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_AnnualDate.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_AnnualDate.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_AnnualDate.htm" />
-  </HelpKINode>
-  <HelpKINode Title="AnnualDate.AnnualDate constructor" Url="html/M_NodaTime_AnnualDate__ctor.htm" />
-  <HelpKINode Title="AnnualDate.CompareTo method" Url="html/M_NodaTime_AnnualDate_CompareTo.htm" />
-  <HelpKINode Title="AnnualDate.Day property" Url="html/P_NodaTime_AnnualDate_Day.htm" />
-  <HelpKINode Title="AnnualDate.Equality operator" Url="html/M_NodaTime_AnnualDate_op_Equality.htm" />
-  <HelpKINode Title="AnnualDate.Equals method" Url="html/Overload_NodaTime_AnnualDate_Equals.htm" />
-  <HelpKINode Title="AnnualDate.GetHashCode method" Url="html/M_NodaTime_AnnualDate_GetHashCode.htm" />
-  <HelpKINode Title="AnnualDate.GreaterThan operator" Url="html/M_NodaTime_AnnualDate_op_GreaterThan.htm" />
-  <HelpKINode Title="AnnualDate.GreaterThanOrEqual operator" Url="html/M_NodaTime_AnnualDate_op_GreaterThanOrEqual.htm" />
-  <HelpKINode Title="AnnualDate.Inequality operator" Url="html/M_NodaTime_AnnualDate_op_Inequality.htm" />
-  <HelpKINode Title="AnnualDate.InYear method" Url="html/M_NodaTime_AnnualDate_InYear.htm" />
-  <HelpKINode Title="AnnualDate.IsValidYear method" Url="html/M_NodaTime_AnnualDate_IsValidYear.htm" />
-  <HelpKINode Title="AnnualDate.LessThan operator" Url="html/M_NodaTime_AnnualDate_op_LessThan.htm" />
-  <HelpKINode Title="AnnualDate.LessThanOrEqual operator" Url="html/M_NodaTime_AnnualDate_op_LessThanOrEqual.htm" />
-  <HelpKINode Title="AnnualDate.Month property" Url="html/P_NodaTime_AnnualDate_Month.htm" />
-  <HelpKINode Title="AnnualDate.ToString method" Url="html/M_NodaTime_AnnualDate_ToString.htm" />
   <HelpKINode Title="App class">
     <HelpKINode Title="App Class" Url="html/T_ElevatorApp_App.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_App__ctor.htm" />
@@ -185,17 +143,7 @@
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.TryDequeue method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryDequeue.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.TryPeek method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryPeek.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.TryRemove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryRemove.htm" />
-  <HelpKINode Title="At method" Url="html/M_NodaTime_LocalDate_At.htm" />
-  <HelpKINode Title="AtLeniently method" Url="html/M_NodaTime_DateTimeZone_AtLeniently.htm" />
-  <HelpKINode Title="AtMidnight method" Url="html/M_NodaTime_LocalDate_AtMidnight.htm" />
-  <HelpKINode Title="AtStartOfDay method" Url="html/M_NodaTime_DateTimeZone_AtStartOfDay.htm" />
-  <HelpKINode Title="AtStartOfDayInZone method" Url="html/M_NodaTime_LocalDate_AtStartOfDayInZone.htm" />
-  <HelpKINode Title="AtStrictly method" Url="html/M_NodaTime_DateTimeZone_AtStrictly.htm" />
-  <HelpKINode Title="Bcl property" Url="html/P_NodaTime_DateTimeZoneProviders_Bcl.htm" />
-  <HelpKINode Title="BclCompatibleTicks property" Url="html/P_NodaTime_Duration_BclCompatibleTicks.htm" />
-  <HelpKINode Title="BclEpoch property" Url="html/P_NodaTime_NodaConstants_BclEpoch.htm" />
-  <HelpKINode Title="Between method" Url="html/Overload_NodaTime_Period_Between.htm" />
-  <HelpKINode Title="Build method" Url="html/M_NodaTime_PeriodBuilder_Build.htm" />
+  <HelpKINode Title="Average property" Url="html/P_ElevatorApp_Util_Statistic_2_Average.htm" />
   <HelpKINode Title="Button property" Url="html/P_ElevatorApp_Controls_ElevatorButtonControl_Button.htm" />
   <HelpKINode Title="ButtonBase(Of T) class">
     <HelpKINode Title="ButtonBase(T) Class" Url="html/T_ElevatorApp_Models_ButtonBase_1.htm" />
@@ -280,45 +228,14 @@
     <HelpKINode Title="FloorButton.ButtonType Property " Url="html/P_ElevatorApp_Models_FloorButton_ButtonType.htm" />
     <HelpKINode Title="IButton.ButtonType Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_ButtonType.htm" />
   </HelpKINode>
-  <HelpKINode Title="Calendar property">
-    <HelpKINode Title="LocalDate.Calendar Property " Url="html/P_NodaTime_LocalDate_Calendar.htm" />
-    <HelpKINode Title="LocalDateTime.Calendar Property " Url="html/P_NodaTime_LocalDateTime_Calendar.htm" />
-    <HelpKINode Title="OffsetDateTime.Calendar Property " Url="html/P_NodaTime_OffsetDateTime_Calendar.htm" />
-    <HelpKINode Title="ZonedDateTime.Calendar Property " Url="html/P_NodaTime_ZonedDateTime_Calendar.htm" />
+  <HelpKINode Title="CalculateAverage method">
+    <HelpKINode Title="DecimalStatistic.CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_CalculateAverage.htm" />
+    <HelpKINode Title="DoubleStatistic.CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_CalculateAverage.htm" />
+    <HelpKINode Title="DurationStatistic.CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_CalculateAverage.htm" />
+    <HelpKINode Title="IntStatistic.CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_CalculateAverage.htm" />
+    <HelpKINode Title="LongStatistic.CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_CalculateAverage.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistic_2_CalculateAverage.htm" />
   </HelpKINode>
-  <HelpKINode Title="CalendarSystem class">
-    <HelpKINode Title="CalendarSystem Class" Url="html/T_NodaTime_CalendarSystem.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_CalendarSystem.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_CalendarSystem.htm" />
-  </HelpKINode>
-  <HelpKINode Title="CalendarSystem.Coptic property" Url="html/P_NodaTime_CalendarSystem_Coptic.htm" />
-  <HelpKINode Title="CalendarSystem.Eras property" Url="html/P_NodaTime_CalendarSystem_Eras.htm" />
-  <HelpKINode Title="CalendarSystem.ForId method" Url="html/M_NodaTime_CalendarSystem_ForId.htm" />
-  <HelpKINode Title="CalendarSystem.GetAbsoluteYear method" Url="html/M_NodaTime_CalendarSystem_GetAbsoluteYear.htm" />
-  <HelpKINode Title="CalendarSystem.GetDaysInMonth method" Url="html/M_NodaTime_CalendarSystem_GetDaysInMonth.htm" />
-  <HelpKINode Title="CalendarSystem.GetDaysInYear method" Url="html/M_NodaTime_CalendarSystem_GetDaysInYear.htm" />
-  <HelpKINode Title="CalendarSystem.GetHebrewCalendar method" Url="html/M_NodaTime_CalendarSystem_GetHebrewCalendar.htm" />
-  <HelpKINode Title="CalendarSystem.GetIslamicCalendar method" Url="html/M_NodaTime_CalendarSystem_GetIslamicCalendar.htm" />
-  <HelpKINode Title="CalendarSystem.GetMaxYearOfEra method" Url="html/M_NodaTime_CalendarSystem_GetMaxYearOfEra.htm" />
-  <HelpKINode Title="CalendarSystem.GetMinYearOfEra method" Url="html/M_NodaTime_CalendarSystem_GetMinYearOfEra.htm" />
-  <HelpKINode Title="CalendarSystem.GetMonthsInYear method" Url="html/M_NodaTime_CalendarSystem_GetMonthsInYear.htm" />
-  <HelpKINode Title="CalendarSystem.Gregorian property" Url="html/P_NodaTime_CalendarSystem_Gregorian.htm" />
-  <HelpKINode Title="CalendarSystem.HebrewCivil property" Url="html/P_NodaTime_CalendarSystem_HebrewCivil.htm" />
-  <HelpKINode Title="CalendarSystem.HebrewScriptural property" Url="html/P_NodaTime_CalendarSystem_HebrewScriptural.htm" />
-  <HelpKINode Title="CalendarSystem.Id property" Url="html/P_NodaTime_CalendarSystem_Id.htm" />
-  <HelpKINode Title="CalendarSystem.Ids property" Url="html/P_NodaTime_CalendarSystem_Ids.htm" />
-  <HelpKINode Title="CalendarSystem.IslamicBcl property" Url="html/P_NodaTime_CalendarSystem_IslamicBcl.htm" />
-  <HelpKINode Title="CalendarSystem.IsLeapYear method" Url="html/M_NodaTime_CalendarSystem_IsLeapYear.htm" />
-  <HelpKINode Title="CalendarSystem.Iso property" Url="html/P_NodaTime_CalendarSystem_Iso.htm" />
-  <HelpKINode Title="CalendarSystem.Julian property" Url="html/P_NodaTime_CalendarSystem_Julian.htm" />
-  <HelpKINode Title="CalendarSystem.MaxYear property" Url="html/P_NodaTime_CalendarSystem_MaxYear.htm" />
-  <HelpKINode Title="CalendarSystem.MinYear property" Url="html/P_NodaTime_CalendarSystem_MinYear.htm" />
-  <HelpKINode Title="CalendarSystem.Name property" Url="html/P_NodaTime_CalendarSystem_Name.htm" />
-  <HelpKINode Title="CalendarSystem.PersianArithmetic property" Url="html/P_NodaTime_CalendarSystem_PersianArithmetic.htm" />
-  <HelpKINode Title="CalendarSystem.PersianAstronomical property" Url="html/P_NodaTime_CalendarSystem_PersianAstronomical.htm" />
-  <HelpKINode Title="CalendarSystem.PersianSimple property" Url="html/P_NodaTime_CalendarSystem_PersianSimple.htm" />
-  <HelpKINode Title="CalendarSystem.ToString method" Url="html/M_NodaTime_CalendarSystem_ToString.htm" />
-  <HelpKINode Title="CalendarSystem.UmAlQura property" Url="html/P_NodaTime_CalendarSystem_UmAlQura.htm" />
   <HelpKINode Title="CallPanel property" Url="html/P_ElevatorApp_Models_Floor_CallPanel.htm" />
   <HelpKINode Title="CancelOperation property" Url="html/P_ElevatorApp_Models_DoorStateChangeEventArgs_CancelOperation.htm" />
   <HelpKINode Title="Capacity property" Url="html/P_ElevatorApp_Models_ElevatorSettings_Capacity.htm" />
@@ -326,12 +243,6 @@
   <HelpKINode Title="ClearItems method">
     <HelpKINode Title="ILogger.ClearItems Method " Url="html/M_ElevatorApp_Util_ILogger_ClearItems.htm" />
     <HelpKINode Title="Logger.ClearItems Method " Url="html/M_ElevatorApp_Util_Logger_ClearItems.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ClockHourOfHalfDay property">
-    <HelpKINode Title="LocalDateTime.ClockHourOfHalfDay Property " Url="html/P_NodaTime_LocalDateTime_ClockHourOfHalfDay.htm" />
-    <HelpKINode Title="LocalTime.ClockHourOfHalfDay Property " Url="html/P_NodaTime_LocalTime_ClockHourOfHalfDay.htm" />
-    <HelpKINode Title="OffsetDateTime.ClockHourOfHalfDay Property " Url="html/P_NodaTime_OffsetDateTime_ClockHourOfHalfDay.htm" />
-    <HelpKINode Title="ZonedDateTime.ClockHourOfHalfDay Property " Url="html/P_NodaTime_ZonedDateTime_ClockHourOfHalfDay.htm" />
   </HelpKINode>
   <HelpKINode Title="Close enumeration member" Url="html/T_ElevatorApp_Models_Enums_ButtonType.htm" />
   <HelpKINode Title="Close method" Url="html/M_ElevatorApp_Models_DoorButton_Close.htm" />
@@ -345,136 +256,35 @@
     <HelpKINode Title="AsyncObservableCollection(T).CollectionChanged Event" Url="html/E_ElevatorApp_Util_AsyncObservableCollection_1_CollectionChanged.htm" />
     <HelpKINode Title="ObservableConcurrentQueue(T).CollectionChanged Event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_CollectionChanged.htm" />
   </HelpKINode>
-  <HelpKINode Title="Compare method">
-    <HelpKINode Title="OffsetDateTime.Comparer.Compare Method " Url="html/M_NodaTime_OffsetDateTime_Comparer_Compare.htm" />
-    <HelpKINode Title="ZonedDateTime.Comparer.Compare Method " Url="html/M_NodaTime_ZonedDateTime_Comparer_Compare.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Comparer class">
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_OffsetDateTime_Comparer.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_ZonedDateTime_Comparer.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_ZonedDateTime_Comparer.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_OffsetDateTime_Comparer.htm" />
-  </HelpKINode>
-  <HelpKINode Title="CompareTo method">
-    <HelpKINode Title="AnnualDate.CompareTo Method " Url="html/M_NodaTime_AnnualDate_CompareTo.htm" />
-    <HelpKINode Title="Duration.CompareTo Method " Url="html/M_NodaTime_Duration_CompareTo.htm" />
-    <HelpKINode Title="Instant.CompareTo Method " Url="html/M_NodaTime_Instant_CompareTo.htm" />
-    <HelpKINode Title="LocalDate.CompareTo Method " Url="html/M_NodaTime_LocalDate_CompareTo.htm" />
-    <HelpKINode Title="LocalDateTime.CompareTo Method " Url="html/M_NodaTime_LocalDateTime_CompareTo.htm" />
-    <HelpKINode Title="LocalTime.CompareTo Method " Url="html/M_NodaTime_LocalTime_CompareTo.htm" />
-    <HelpKINode Title="Offset.CompareTo Method " Url="html/M_NodaTime_Offset_CompareTo.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Contains method">
-    <HelpKINode Title="AsyncObservableCollection(T).Contains Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Contains.htm" />
-    <HelpKINode Title="DateInterval.Contains Method " Url="html/M_NodaTime_DateInterval_Contains.htm" />
-    <HelpKINode Title="Interval.Contains Method " Url="html/M_NodaTime_Interval_Contains.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Contains method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Contains.htm" />
   <HelpKINode Title="Controller property">
     <HelpKINode Title="ElevatorSimulator.Controller Property " Url="html/P_ElevatorApp_Models_ElevatorSimulator_Controller.htm" />
     <HelpKINode Title="SimulatorViewModel.Controller Property " Url="html/P_ElevatorApp_SimulatorViewModel_Controller.htm" />
   </HelpKINode>
-  <HelpKINode Title="Coptic property" Url="html/P_NodaTime_CalendarSystem_Coptic.htm" />
   <HelpKINode Title="CopyTo method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_CopyTo.htm" />
   <HelpKINode Title="Count property">
     <HelpKINode Title="AsyncObservableCollection(T).Count Property " Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Count.htm" />
+    <HelpKINode Title="IStatistic.Count Property " Url="html/P_ElevatorApp_Util_IStatistic_Count.htm" />
     <HelpKINode Title="ObservableConcurrentQueue(T).Count Property " Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_Count.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).Count Property " Url="html/P_ElevatorApp_Util_Statistic_2_Count.htm" />
   </HelpKINode>
-  <HelpKINode Title="CreateComparer method" Url="html/M_NodaTime_Period_CreateComparer.htm" />
   <HelpKINode Title="CurrentCapacity property" Url="html/P_ElevatorApp_Models_Elevator_CurrentCapacity.htm" />
   <HelpKINode Title="CurrentFloor property" Url="html/P_ElevatorApp_Models_Elevator_CurrentFloor.htm" />
   <HelpKINode Title="CurrentSpeed property" Url="html/P_ElevatorApp_Models_Elevator_CurrentSpeed.htm" />
-  <HelpKINode Title="Date property">
-    <HelpKINode Title="LocalDateTime.Date Property " Url="html/P_NodaTime_LocalDateTime_Date.htm" />
-    <HelpKINode Title="OffsetDateTime.Date Property " Url="html/P_NodaTime_OffsetDateTime_Date.htm" />
-    <HelpKINode Title="ZonedDateTime.Date Property " Url="html/P_NodaTime_ZonedDateTime_Date.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DateAdjusters class">
-    <HelpKINode Title="DateAdjusters Class" Url="html/T_NodaTime_DateAdjusters.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_DateAdjusters.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_DateAdjusters.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DateAdjusters.DayOfMonth method" Url="html/M_NodaTime_DateAdjusters_DayOfMonth.htm" />
-  <HelpKINode Title="DateAdjusters.EndOfMonth property" Url="html/P_NodaTime_DateAdjusters_EndOfMonth.htm" />
-  <HelpKINode Title="DateAdjusters.Month method" Url="html/M_NodaTime_DateAdjusters_Month.htm" />
-  <HelpKINode Title="DateAdjusters.Next method" Url="html/M_NodaTime_DateAdjusters_Next.htm" />
-  <HelpKINode Title="DateAdjusters.NextOrSame method" Url="html/M_NodaTime_DateAdjusters_NextOrSame.htm" />
-  <HelpKINode Title="DateAdjusters.Previous method" Url="html/M_NodaTime_DateAdjusters_Previous.htm" />
-  <HelpKINode Title="DateAdjusters.PreviousOrSame method" Url="html/M_NodaTime_DateAdjusters_PreviousOrSame.htm" />
-  <HelpKINode Title="DateAdjusters.StartOfMonth property" Url="html/P_NodaTime_DateAdjusters_StartOfMonth.htm" />
-  <HelpKINode Title="DateAndTime enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="DateInterval class">
-    <HelpKINode Title="DateInterval Class" Url="html/T_NodaTime_DateInterval.htm" />
-    <HelpKINode Title="constructor" Url="html/M_NodaTime_DateInterval__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_DateInterval.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_DateInterval.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_DateInterval.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DateInterval.Contains method" Url="html/M_NodaTime_DateInterval_Contains.htm" />
-  <HelpKINode Title="DateInterval.DateInterval constructor" Url="html/M_NodaTime_DateInterval__ctor.htm" />
-  <HelpKINode Title="DateInterval.End property" Url="html/P_NodaTime_DateInterval_End.htm" />
-  <HelpKINode Title="DateInterval.Equality operator" Url="html/M_NodaTime_DateInterval_op_Equality.htm" />
-  <HelpKINode Title="DateInterval.Equals method" Url="html/Overload_NodaTime_DateInterval_Equals.htm" />
-  <HelpKINode Title="DateInterval.GetHashCode method" Url="html/M_NodaTime_DateInterval_GetHashCode.htm" />
-  <HelpKINode Title="DateInterval.Inequality operator" Url="html/M_NodaTime_DateInterval_op_Inequality.htm" />
-  <HelpKINode Title="DateInterval.Length property" Url="html/P_NodaTime_DateInterval_Length.htm" />
-  <HelpKINode Title="DateInterval.Start property" Url="html/P_NodaTime_DateInterval_Start.htm" />
-  <HelpKINode Title="DateInterval.ToString method" Url="html/M_NodaTime_DateInterval_ToString.htm" />
-  <HelpKINode Title="DateTimeZone class">
-    <HelpKINode Title="DateTimeZone Class" Url="html/T_NodaTime_DateTimeZone.htm" />
-    <HelpKINode Title="constructor" Url="html/M_NodaTime_DateTimeZone__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_DateTimeZone.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_DateTimeZone.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DateTimeZone.AtLeniently method" Url="html/M_NodaTime_DateTimeZone_AtLeniently.htm" />
-  <HelpKINode Title="DateTimeZone.AtStartOfDay method" Url="html/M_NodaTime_DateTimeZone_AtStartOfDay.htm" />
-  <HelpKINode Title="DateTimeZone.AtStrictly method" Url="html/M_NodaTime_DateTimeZone_AtStrictly.htm" />
-  <HelpKINode Title="DateTimeZone.DateTimeZone constructor" Url="html/M_NodaTime_DateTimeZone__ctor.htm" />
-  <HelpKINode Title="DateTimeZone.ForOffset method" Url="html/M_NodaTime_DateTimeZone_ForOffset.htm" />
-  <HelpKINode Title="DateTimeZone.GetUtcOffset method" Url="html/M_NodaTime_DateTimeZone_GetUtcOffset.htm" />
-  <HelpKINode Title="DateTimeZone.GetZoneInterval method" Url="html/M_NodaTime_DateTimeZone_GetZoneInterval.htm" />
-  <HelpKINode Title="DateTimeZone.GetZoneIntervals method" Url="html/Overload_NodaTime_DateTimeZone_GetZoneIntervals.htm" />
-  <HelpKINode Title="DateTimeZone.Id property" Url="html/P_NodaTime_DateTimeZone_Id.htm" />
-  <HelpKINode Title="DateTimeZone.MapLocal method" Url="html/M_NodaTime_DateTimeZone_MapLocal.htm" />
-  <HelpKINode Title="DateTimeZone.MaxOffset property" Url="html/P_NodaTime_DateTimeZone_MaxOffset.htm" />
-  <HelpKINode Title="DateTimeZone.MinOffset property" Url="html/P_NodaTime_DateTimeZone_MinOffset.htm" />
-  <HelpKINode Title="DateTimeZone.ResolveLocal method" Url="html/M_NodaTime_DateTimeZone_ResolveLocal.htm" />
-  <HelpKINode Title="DateTimeZone.ToString method" Url="html/M_NodaTime_DateTimeZone_ToString.htm" />
-  <HelpKINode Title="DateTimeZone.Utc property" Url="html/P_NodaTime_DateTimeZone_Utc.htm" />
-  <HelpKINode Title="DateTimeZoneProviders class">
-    <HelpKINode Title="DateTimeZoneProviders Class" Url="html/T_NodaTime_DateTimeZoneProviders.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_DateTimeZoneProviders.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DateTimeZoneProviders.Bcl property" Url="html/P_NodaTime_DateTimeZoneProviders_Bcl.htm" />
-  <HelpKINode Title="DateTimeZoneProviders.Serialization property" Url="html/P_NodaTime_DateTimeZoneProviders_Serialization.htm" />
-  <HelpKINode Title="DateTimeZoneProviders.Tzdb property" Url="html/P_NodaTime_DateTimeZoneProviders_Tzdb.htm" />
-  <HelpKINode Title="Day property">
-    <HelpKINode Title="AnnualDate.Day Property " Url="html/P_NodaTime_AnnualDate_Day.htm" />
-    <HelpKINode Title="LocalDate.Day Property " Url="html/P_NodaTime_LocalDate_Day.htm" />
-    <HelpKINode Title="LocalDateTime.Day Property " Url="html/P_NodaTime_LocalDateTime_Day.htm" />
-    <HelpKINode Title="OffsetDateTime.Day Property " Url="html/P_NodaTime_OffsetDateTime_Day.htm" />
-    <HelpKINode Title="ZonedDateTime.Day Property " Url="html/P_NodaTime_ZonedDateTime_Day.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DayOfMonth method" Url="html/M_NodaTime_DateAdjusters_DayOfMonth.htm" />
-  <HelpKINode Title="DayOfWeek property">
-    <HelpKINode Title="LocalDate.DayOfWeek Property " Url="html/P_NodaTime_LocalDate_DayOfWeek.htm" />
-    <HelpKINode Title="LocalDateTime.DayOfWeek Property " Url="html/P_NodaTime_LocalDateTime_DayOfWeek.htm" />
-    <HelpKINode Title="OffsetDateTime.DayOfWeek Property " Url="html/P_NodaTime_OffsetDateTime_DayOfWeek.htm" />
-    <HelpKINode Title="ZonedDateTime.DayOfWeek Property " Url="html/P_NodaTime_ZonedDateTime_DayOfWeek.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DayOfYear property">
-    <HelpKINode Title="LocalDate.DayOfYear Property " Url="html/P_NodaTime_LocalDate_DayOfYear.htm" />
-    <HelpKINode Title="LocalDateTime.DayOfYear Property " Url="html/P_NodaTime_LocalDateTime_DayOfYear.htm" />
-    <HelpKINode Title="OffsetDateTime.DayOfYear Property " Url="html/P_NodaTime_OffsetDateTime_DayOfYear.htm" />
-    <HelpKINode Title="ZonedDateTime.DayOfYear Property " Url="html/P_NodaTime_ZonedDateTime_DayOfYear.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Days enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Days property">
-    <HelpKINode Title="Duration.Days Property " Url="html/P_NodaTime_Duration_Days.htm" />
-    <HelpKINode Title="Period.Days Property " Url="html/P_NodaTime_Period_Days.htm" />
-    <HelpKINode Title="PeriodBuilder.Days Property " Url="html/P_NodaTime_PeriodBuilder_Days.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DaysPerWeek field" Url="html/F_NodaTime_NodaConstants_DaysPerWeek.htm" />
   <HelpKINode Title="DECELERATION_DELAY field" Url="html/F_ElevatorApp_Models_Elevator_DECELERATION_DELAY.htm" />
+  <HelpKINode Title="DecimalStatistic class">
+    <HelpKINode Title="DecimalStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_DecimalStatistic.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_Statistics_DecimalStatistic__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_Statistics_DecimalStatistic.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_DecimalStatistic.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_DecimalStatistic.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DecimalStatistic.AddItems method" Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_AddItems.htm" />
+  <HelpKINode Title="DecimalStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_CalculateAverage.htm" />
+  <HelpKINode Title="DecimalStatistic.DecimalStatistic constructor" Url="html/Overload_ElevatorApp_Util_Statistics_DecimalStatistic__ctor.htm" />
+  <HelpKINode Title="DecimalStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_DivideItems.htm" />
+  <HelpKINode Title="DecimalStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_MultiplyItems.htm" />
+  <HelpKINode Title="DecimalStatistic.SubtractItems method" Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_SubtractItems.htm" />
   <HelpKINode Title="Deconstruct(Of TKey, TValue) method" Url="html/M_ElevatorApp_Util_Extensions_Deconstruct__2.htm" />
   <HelpKINode Title="Deconstruct&lt;TKey, TValue&gt; method" Url="html/M_ElevatorApp_Util_Extensions_Deconstruct__2.htm" />
   <HelpKINode Title="Departed enumeration member" Url="html/T_ElevatorApp_Models_Enums_ElevatorState.htm" />
@@ -494,8 +304,14 @@
   </HelpKINode>
   <HelpKINode Title="Disable method" Url="html/M_ElevatorApp_Models_FloorButton_Disable.htm" />
   <HelpKINode Title="Dispatch method" Url="html/M_ElevatorApp_Models_ElevatorMasterController_Dispatch.htm" />
-  <HelpKINode Title="Divide method" Url="html/Overload_NodaTime_Duration_Divide.htm" />
-  <HelpKINode Title="Division operator" Url="html/Overload_NodaTime_Duration_op_Division.htm" />
+  <HelpKINode Title="DivideItems method">
+    <HelpKINode Title="DecimalStatistic.DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_DivideItems.htm" />
+    <HelpKINode Title="DoubleStatistic.DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_DivideItems.htm" />
+    <HelpKINode Title="DurationStatistic.DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_DivideItems.htm" />
+    <HelpKINode Title="IntStatistic.DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_DivideItems.htm" />
+    <HelpKINode Title="LongStatistic.DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_DivideItems.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).DivideItems Method " Url="html/M_ElevatorApp_Util_Statistic_2_DivideItems.htm" />
+  </HelpKINode>
   <HelpKINode Title="Door class">
     <HelpKINode Title="Door Class" Url="html/T_ElevatorApp_Models_Door.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_Door__ctor.htm" />
@@ -558,68 +374,33 @@
   <HelpKINode Title="DoorType enumeration" Url="html/T_ElevatorApp_Models_Enums_DoorType.htm" />
   <HelpKINode Title="DoorType property" Url="html/P_ElevatorApp_Models_ElevatorSettings_DoorType.htm" />
   <HelpKINode Title="Double enumeration member" Url="html/T_ElevatorApp_Models_Enums_DoorType.htm" />
-  <HelpKINode Title="Down enumeration member" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
-  <HelpKINode Title="Duration property" Url="html/P_NodaTime_Interval_Duration.htm" />
-  <HelpKINode Title="Duration structure">
-    <HelpKINode Title="Duration Structure" Url="html/T_NodaTime_Duration.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_Duration.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_Duration.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_Duration.htm" />
+  <HelpKINode Title="DoubleStatistic class">
+    <HelpKINode Title="DoubleStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_DoubleStatistic.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_Statistics_DoubleStatistic__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_Statistics_DoubleStatistic.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_DoubleStatistic.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_DoubleStatistic.htm" />
   </HelpKINode>
-  <HelpKINode Title="Duration.Add method" Url="html/M_NodaTime_Duration_Add.htm" />
-  <HelpKINode Title="Duration.Addition operator" Url="html/M_NodaTime_Duration_op_Addition.htm" />
-  <HelpKINode Title="Duration.BclCompatibleTicks property" Url="html/P_NodaTime_Duration_BclCompatibleTicks.htm" />
-  <HelpKINode Title="Duration.CompareTo method" Url="html/M_NodaTime_Duration_CompareTo.htm" />
-  <HelpKINode Title="Duration.Days property" Url="html/P_NodaTime_Duration_Days.htm" />
-  <HelpKINode Title="Duration.Divide method" Url="html/Overload_NodaTime_Duration_Divide.htm" />
-  <HelpKINode Title="Duration.Division operator" Url="html/Overload_NodaTime_Duration_op_Division.htm" />
-  <HelpKINode Title="Duration.Epsilon property" Url="html/P_NodaTime_Duration_Epsilon.htm" />
-  <HelpKINode Title="Duration.Equality operator" Url="html/M_NodaTime_Duration_op_Equality.htm" />
-  <HelpKINode Title="Duration.Equals method" Url="html/Overload_NodaTime_Duration_Equals.htm" />
-  <HelpKINode Title="Duration.FromDays method" Url="html/Overload_NodaTime_Duration_FromDays.htm" />
-  <HelpKINode Title="Duration.FromHours method" Url="html/Overload_NodaTime_Duration_FromHours.htm" />
-  <HelpKINode Title="Duration.FromMilliseconds method" Url="html/Overload_NodaTime_Duration_FromMilliseconds.htm" />
-  <HelpKINode Title="Duration.FromMinutes method" Url="html/Overload_NodaTime_Duration_FromMinutes.htm" />
-  <HelpKINode Title="Duration.FromNanoseconds method" Url="html/Overload_NodaTime_Duration_FromNanoseconds.htm" />
-  <HelpKINode Title="Duration.FromSeconds method" Url="html/Overload_NodaTime_Duration_FromSeconds.htm" />
-  <HelpKINode Title="Duration.FromTicks method" Url="html/Overload_NodaTime_Duration_FromTicks.htm" />
-  <HelpKINode Title="Duration.FromTimeSpan method" Url="html/M_NodaTime_Duration_FromTimeSpan.htm" />
-  <HelpKINode Title="Duration.GetHashCode method" Url="html/M_NodaTime_Duration_GetHashCode.htm" />
-  <HelpKINode Title="Duration.GreaterThan operator" Url="html/M_NodaTime_Duration_op_GreaterThan.htm" />
-  <HelpKINode Title="Duration.GreaterThanOrEqual operator" Url="html/M_NodaTime_Duration_op_GreaterThanOrEqual.htm" />
-  <HelpKINode Title="Duration.Hours property" Url="html/P_NodaTime_Duration_Hours.htm" />
-  <HelpKINode Title="Duration.Inequality operator" Url="html/M_NodaTime_Duration_op_Inequality.htm" />
-  <HelpKINode Title="Duration.LessThan operator" Url="html/M_NodaTime_Duration_op_LessThan.htm" />
-  <HelpKINode Title="Duration.LessThanOrEqual operator" Url="html/M_NodaTime_Duration_op_LessThanOrEqual.htm" />
-  <HelpKINode Title="Duration.MaxValue property" Url="html/P_NodaTime_Duration_MaxValue.htm" />
-  <HelpKINode Title="Duration.Milliseconds property" Url="html/P_NodaTime_Duration_Milliseconds.htm" />
-  <HelpKINode Title="Duration.Minus method" Url="html/M_NodaTime_Duration_Minus.htm" />
-  <HelpKINode Title="Duration.Minutes property" Url="html/P_NodaTime_Duration_Minutes.htm" />
-  <HelpKINode Title="Duration.MinValue property" Url="html/P_NodaTime_Duration_MinValue.htm" />
-  <HelpKINode Title="Duration.Multiply method" Url="html/Overload_NodaTime_Duration_Multiply.htm" />
-  <HelpKINode Title="Duration.Multiply operator" Url="html/Overload_NodaTime_Duration_op_Multiply.htm" />
-  <HelpKINode Title="Duration.NanosecondOfDay property" Url="html/P_NodaTime_Duration_NanosecondOfDay.htm" />
-  <HelpKINode Title="Duration.Negate method" Url="html/M_NodaTime_Duration_Negate.htm" />
-  <HelpKINode Title="Duration.Plus method" Url="html/M_NodaTime_Duration_Plus.htm" />
-  <HelpKINode Title="Duration.Seconds property" Url="html/P_NodaTime_Duration_Seconds.htm" />
-  <HelpKINode Title="Duration.SubsecondNanoseconds property" Url="html/P_NodaTime_Duration_SubsecondNanoseconds.htm" />
-  <HelpKINode Title="Duration.SubsecondTicks property" Url="html/P_NodaTime_Duration_SubsecondTicks.htm" />
-  <HelpKINode Title="Duration.Subtract method" Url="html/M_NodaTime_Duration_Subtract.htm" />
-  <HelpKINode Title="Duration.Subtraction operator" Url="html/M_NodaTime_Duration_op_Subtraction.htm" />
-  <HelpKINode Title="Duration.ToBigIntegerNanoseconds method" Url="html/M_NodaTime_Duration_ToBigIntegerNanoseconds.htm" />
-  <HelpKINode Title="Duration.ToInt64Nanoseconds method" Url="html/M_NodaTime_Duration_ToInt64Nanoseconds.htm" />
-  <HelpKINode Title="Duration.ToString method" Url="html/Overload_NodaTime_Duration_ToString.htm" />
-  <HelpKINode Title="Duration.TotalDays property" Url="html/P_NodaTime_Duration_TotalDays.htm" />
-  <HelpKINode Title="Duration.TotalHours property" Url="html/P_NodaTime_Duration_TotalHours.htm" />
-  <HelpKINode Title="Duration.TotalMilliseconds property" Url="html/P_NodaTime_Duration_TotalMilliseconds.htm" />
-  <HelpKINode Title="Duration.TotalMinutes property" Url="html/P_NodaTime_Duration_TotalMinutes.htm" />
-  <HelpKINode Title="Duration.TotalNanoseconds property" Url="html/P_NodaTime_Duration_TotalNanoseconds.htm" />
-  <HelpKINode Title="Duration.TotalSeconds property" Url="html/P_NodaTime_Duration_TotalSeconds.htm" />
-  <HelpKINode Title="Duration.TotalTicks property" Url="html/P_NodaTime_Duration_TotalTicks.htm" />
-  <HelpKINode Title="Duration.ToTimeSpan method" Url="html/M_NodaTime_Duration_ToTimeSpan.htm" />
-  <HelpKINode Title="Duration.UnaryNegation operator" Url="html/M_NodaTime_Duration_op_UnaryNegation.htm" />
-  <HelpKINode Title="Duration.Zero property" Url="html/P_NodaTime_Duration_Zero.htm" />
-  <HelpKINode Title="EarlierMapping property" Url="html/P_NodaTime_AmbiguousTimeException_EarlierMapping.htm" />
+  <HelpKINode Title="DoubleStatistic.AddItems method" Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_AddItems.htm" />
+  <HelpKINode Title="DoubleStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_CalculateAverage.htm" />
+  <HelpKINode Title="DoubleStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_DivideItems.htm" />
+  <HelpKINode Title="DoubleStatistic.DoubleStatistic constructor" Url="html/Overload_ElevatorApp_Util_Statistics_DoubleStatistic__ctor.htm" />
+  <HelpKINode Title="DoubleStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_MultiplyItems.htm" />
+  <HelpKINode Title="DoubleStatistic.SubtractItems method" Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_SubtractItems.htm" />
+  <HelpKINode Title="Down enumeration member" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
+  <HelpKINode Title="DurationStatistic class">
+    <HelpKINode Title="DurationStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_DurationStatistic.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_Statistics_DurationStatistic__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_Statistics_DurationStatistic.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_DurationStatistic.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_DurationStatistic.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DurationStatistic.AddItems method" Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_AddItems.htm" />
+  <HelpKINode Title="DurationStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_CalculateAverage.htm" />
+  <HelpKINode Title="DurationStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_DivideItems.htm" />
+  <HelpKINode Title="DurationStatistic.DurationStatistic constructor" Url="html/Overload_ElevatorApp_Util_Statistics_DurationStatistic__ctor.htm" />
+  <HelpKINode Title="DurationStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_MultiplyItems.htm" />
+  <HelpKINode Title="DurationStatistic.SubtractItems method" Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_SubtractItems.htm" />
   <HelpKINode Title="Elevator class">
     <HelpKINode Title="Elevator Class" Url="html/T_ElevatorApp_Models_Elevator.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_Elevator__ctor.htm" />
@@ -719,11 +500,22 @@
   <HelpKINode Title="ElevatorApp.Util.Event structure" Url="html/T_ElevatorApp_Util_Event.htm" />
   <HelpKINode Title="ElevatorApp.Util.Extensions class" Url="html/T_ElevatorApp_Util_Extensions.htm" />
   <HelpKINode Title="ElevatorApp.Util.ILogger interface" Url="html/T_ElevatorApp_Util_ILogger.htm" />
+  <HelpKINode Title="ElevatorApp.Util.IStatistic interface" Url="html/T_ElevatorApp_Util_IStatistic.htm" />
   <HelpKINode Title="ElevatorApp.Util.LocalSystemClock class" Url="html/T_ElevatorApp_Util_LocalSystemClock.htm" />
   <HelpKINode Title="ElevatorApp.Util.Logger class" Url="html/T_ElevatorApp_Util_Logger.htm" />
   <HelpKINode Title="ElevatorApp.Util.Logger.LogEventHandler delegate" Url="html/T_ElevatorApp_Util_Logger_LogEventHandler.htm" />
   <HelpKINode Title="ElevatorApp.Util.ObservableConcurrentQueue(Of T) class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
   <HelpKINode Title="ElevatorApp.Util.ObservableConcurrentQueue&lt;T&gt; class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
+  <HelpKINode Title="ElevatorApp.Util.SimpleStatistic(Of T) class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+  <HelpKINode Title="ElevatorApp.Util.SimpleStatistic&lt;T&gt; class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+  <HelpKINode Title="ElevatorApp.Util.Statistic(Of TStat, TAggregate) class" Url="html/T_ElevatorApp_Util_Statistic_2.htm" />
+  <HelpKINode Title="ElevatorApp.Util.Statistic&lt;TStat, TAggregate&gt; class" Url="html/T_ElevatorApp_Util_Statistic_2.htm" />
+  <HelpKINode Title="ElevatorApp.Util.Statistics namespace" Url="html/N_ElevatorApp_Util_Statistics.htm" />
+  <HelpKINode Title="ElevatorApp.Util.Statistics.DecimalStatistic class" Url="html/T_ElevatorApp_Util_Statistics_DecimalStatistic.htm" />
+  <HelpKINode Title="ElevatorApp.Util.Statistics.DoubleStatistic class" Url="html/T_ElevatorApp_Util_Statistics_DoubleStatistic.htm" />
+  <HelpKINode Title="ElevatorApp.Util.Statistics.DurationStatistic class" Url="html/T_ElevatorApp_Util_Statistics_DurationStatistic.htm" />
+  <HelpKINode Title="ElevatorApp.Util.Statistics.IntStatistic class" Url="html/T_ElevatorApp_Util_Statistics_IntStatistic.htm" />
+  <HelpKINode Title="ElevatorApp.Util.Statistics.LongStatistic class" Url="html/T_ElevatorApp_Util_Statistics_LongStatistic.htm" />
   <HelpKINode Title="ElevatorApproachingEventArgs class">
     <HelpKINode Title="ElevatorApproachingEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm" />
     <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Models_ElevatorApproachingEventArgs__ctor.htm" />
@@ -844,52 +636,10 @@
   <HelpKINode Title="ElevatorSimulator.Controller property" Url="html/P_ElevatorApp_Models_ElevatorSimulator_Controller.htm" />
   <HelpKINode Title="ElevatorSimulator.ElevatorSimulator constructor" Url="html/M_ElevatorApp_Models_ElevatorSimulator__ctor.htm" />
   <HelpKINode Title="ElevatorState enumeration" Url="html/T_ElevatorApp_Models_Enums_ElevatorState.htm" />
-  <HelpKINode Title="End property">
-    <HelpKINode Title="DateInterval.End Property " Url="html/P_NodaTime_DateInterval_End.htm" />
-    <HelpKINode Title="Interval.End Property " Url="html/P_NodaTime_Interval_End.htm" />
-  </HelpKINode>
-  <HelpKINode Title="EndOfMonth property" Url="html/P_NodaTime_DateAdjusters_EndOfMonth.htm" />
   <HelpKINode Title="Enqueue method">
     <HelpKINode Title="AsyncObservableCollection(T).Enqueue Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Enqueue.htm" />
     <HelpKINode Title="ObservableConcurrentQueue(T).Enqueue Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_Enqueue.htm" />
   </HelpKINode>
-  <HelpKINode Title="Epsilon property" Url="html/P_NodaTime_Duration_Epsilon.htm" />
-  <HelpKINode Title="Equality operator">
-    <HelpKINode Title="AnnualDate.Equality Operator " Url="html/M_NodaTime_AnnualDate_op_Equality.htm" />
-    <HelpKINode Title="DateInterval.Equality Operator " Url="html/M_NodaTime_DateInterval_op_Equality.htm" />
-    <HelpKINode Title="Duration.Equality Operator " Url="html/M_NodaTime_Duration_op_Equality.htm" />
-    <HelpKINode Title="Instant.Equality Operator " Url="html/M_NodaTime_Instant_op_Equality.htm" />
-    <HelpKINode Title="Interval.Equality Operator " Url="html/M_NodaTime_Interval_op_Equality.htm" />
-    <HelpKINode Title="LocalDate.Equality Operator " Url="html/M_NodaTime_LocalDate_op_Equality.htm" />
-    <HelpKINode Title="LocalDateTime.Equality Operator " Url="html/M_NodaTime_LocalDateTime_op_Equality.htm" />
-    <HelpKINode Title="LocalTime.Equality Operator " Url="html/M_NodaTime_LocalTime_op_Equality.htm" />
-    <HelpKINode Title="Offset.Equality Operator " Url="html/M_NodaTime_Offset_op_Equality.htm" />
-    <HelpKINode Title="OffsetDateTime.Equality Operator " Url="html/M_NodaTime_OffsetDateTime_op_Equality.htm" />
-    <HelpKINode Title="ZonedDateTime.Equality Operator " Url="html/M_NodaTime_ZonedDateTime_op_Equality.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Equals method">
-    <HelpKINode Title="AnnualDate.Equals Method " Url="html/Overload_NodaTime_AnnualDate_Equals.htm" />
-    <HelpKINode Title="Comparer.Equals Method " Url="html/Overload_NodaTime_OffsetDateTime_Comparer_Equals.htm" />
-    <HelpKINode Title="Comparer.Equals Method " Url="html/Overload_NodaTime_ZonedDateTime_Comparer_Equals.htm" />
-    <HelpKINode Title="DateInterval.Equals Method " Url="html/Overload_NodaTime_DateInterval_Equals.htm" />
-    <HelpKINode Title="Duration.Equals Method " Url="html/Overload_NodaTime_Duration_Equals.htm" />
-    <HelpKINode Title="Instant.Equals Method " Url="html/Overload_NodaTime_Instant_Equals.htm" />
-    <HelpKINode Title="Interval.Equals Method " Url="html/Overload_NodaTime_Interval_Equals.htm" />
-    <HelpKINode Title="LocalDate.Equals Method " Url="html/Overload_NodaTime_LocalDate_Equals.htm" />
-    <HelpKINode Title="LocalDateTime.Equals Method " Url="html/Overload_NodaTime_LocalDateTime_Equals.htm" />
-    <HelpKINode Title="LocalTime.Equals Method " Url="html/Overload_NodaTime_LocalTime_Equals.htm" />
-    <HelpKINode Title="Offset.Equals Method " Url="html/Overload_NodaTime_Offset_Equals.htm" />
-    <HelpKINode Title="OffsetDateTime.Equals Method " Url="html/Overload_NodaTime_OffsetDateTime_Equals.htm" />
-    <HelpKINode Title="Period.Equals Method " Url="html/Overload_NodaTime_Period_Equals.htm" />
-    <HelpKINode Title="ZonedDateTime.Equals Method " Url="html/Overload_NodaTime_ZonedDateTime_Equals.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Era property">
-    <HelpKINode Title="LocalDate.Era Property " Url="html/P_NodaTime_LocalDate_Era.htm" />
-    <HelpKINode Title="LocalDateTime.Era Property " Url="html/P_NodaTime_LocalDateTime_Era.htm" />
-    <HelpKINode Title="OffsetDateTime.Era Property " Url="html/P_NodaTime_OffsetDateTime_Era.htm" />
-    <HelpKINode Title="ZonedDateTime.Era Property " Url="html/P_NodaTime_ZonedDateTime_Era.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Eras property" Url="html/P_NodaTime_CalendarSystem_Eras.htm" />
   <HelpKINode Title="Event structure">
     <HelpKINode Title="Event Structure" Url="html/T_ElevatorApp_Util_Event.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Util_Event__ctor.htm" />
@@ -982,164 +732,15 @@
   <HelpKINode Title="FloorsRequested property" Url="html/P_ElevatorApp_Models_ElevatorMasterController_FloorsRequested.htm" />
   <HelpKINode Title="FloorsToStopAt property" Url="html/P_ElevatorApp_Models_Elevator_FloorsToStopAt.htm" />
   <HelpKINode Title="FLOOR_MOVEMENT_SPEED field" Url="html/F_ElevatorApp_Models_Elevator_FLOOR_MOVEMENT_SPEED.htm" />
-  <HelpKINode Title="ForId method" Url="html/M_NodaTime_CalendarSystem_ForId.htm" />
-  <HelpKINode Title="ForOffset method" Url="html/M_NodaTime_DateTimeZone_ForOffset.htm" />
-  <HelpKINode Title="Friday enumeration member" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-  <HelpKINode Title="FromDateTime method">
-    <HelpKINode Title="LocalDate.FromDateTime Method " Url="html/Overload_NodaTime_LocalDate_FromDateTime.htm" />
-    <HelpKINode Title="LocalDateTime.FromDateTime Method " Url="html/Overload_NodaTime_LocalDateTime_FromDateTime.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromDateTimeOffset method">
-    <HelpKINode Title="Instant.FromDateTimeOffset Method " Url="html/M_NodaTime_Instant_FromDateTimeOffset.htm" />
-    <HelpKINode Title="OffsetDateTime.FromDateTimeOffset Method " Url="html/M_NodaTime_OffsetDateTime_FromDateTimeOffset.htm" />
-    <HelpKINode Title="ZonedDateTime.FromDateTimeOffset Method " Url="html/M_NodaTime_ZonedDateTime_FromDateTimeOffset.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromDateTimeUtc method" Url="html/M_NodaTime_Instant_FromDateTimeUtc.htm" />
-  <HelpKINode Title="FromDays method">
-    <HelpKINode Title="Duration.FromDays Method " Url="html/Overload_NodaTime_Duration_FromDays.htm" />
-    <HelpKINode Title="Period.FromDays Method " Url="html/M_NodaTime_Period_FromDays.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromHourMinuteSecondMillisecondTick method" Url="html/M_NodaTime_LocalTime_FromHourMinuteSecondMillisecondTick.htm" />
-  <HelpKINode Title="FromHourMinuteSecondNanosecond method" Url="html/M_NodaTime_LocalTime_FromHourMinuteSecondNanosecond.htm" />
-  <HelpKINode Title="FromHourMinuteSecondTick method" Url="html/M_NodaTime_LocalTime_FromHourMinuteSecondTick.htm" />
-  <HelpKINode Title="FromHours method">
-    <HelpKINode Title="Duration.FromHours Method " Url="html/Overload_NodaTime_Duration_FromHours.htm" />
-    <HelpKINode Title="Offset.FromHours Method " Url="html/M_NodaTime_Offset_FromHours.htm" />
-    <HelpKINode Title="Period.FromHours Method " Url="html/M_NodaTime_Period_FromHours.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromHoursAndMinutes method" Url="html/M_NodaTime_Offset_FromHoursAndMinutes.htm" />
-  <HelpKINode Title="FromJulianDate method" Url="html/M_NodaTime_Instant_FromJulianDate.htm" />
-  <HelpKINode Title="FromMilliseconds method">
-    <HelpKINode Title="Duration.FromMilliseconds Method " Url="html/Overload_NodaTime_Duration_FromMilliseconds.htm" />
-    <HelpKINode Title="Offset.FromMilliseconds Method " Url="html/M_NodaTime_Offset_FromMilliseconds.htm" />
-    <HelpKINode Title="Period.FromMilliseconds Method " Url="html/M_NodaTime_Period_FromMilliseconds.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromMillisecondsSinceMidnight method" Url="html/M_NodaTime_LocalTime_FromMillisecondsSinceMidnight.htm" />
-  <HelpKINode Title="FromMinutes method">
-    <HelpKINode Title="Duration.FromMinutes Method " Url="html/Overload_NodaTime_Duration_FromMinutes.htm" />
-    <HelpKINode Title="Period.FromMinutes Method " Url="html/M_NodaTime_Period_FromMinutes.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromMonths method" Url="html/M_NodaTime_Period_FromMonths.htm" />
-  <HelpKINode Title="FromNanoseconds method">
-    <HelpKINode Title="Duration.FromNanoseconds Method " Url="html/Overload_NodaTime_Duration_FromNanoseconds.htm" />
-    <HelpKINode Title="Offset.FromNanoseconds Method " Url="html/M_NodaTime_Offset_FromNanoseconds.htm" />
-    <HelpKINode Title="Period.FromNanoseconds Method " Url="html/M_NodaTime_Period_FromNanoseconds.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromSeconds method">
-    <HelpKINode Title="Duration.FromSeconds Method " Url="html/Overload_NodaTime_Duration_FromSeconds.htm" />
-    <HelpKINode Title="Offset.FromSeconds Method " Url="html/M_NodaTime_Offset_FromSeconds.htm" />
-    <HelpKINode Title="Period.FromSeconds Method " Url="html/M_NodaTime_Period_FromSeconds.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromSecondsSinceMidnight method" Url="html/M_NodaTime_LocalTime_FromSecondsSinceMidnight.htm" />
-  <HelpKINode Title="FromTicks method">
-    <HelpKINode Title="Duration.FromTicks Method " Url="html/Overload_NodaTime_Duration_FromTicks.htm" />
-    <HelpKINode Title="Offset.FromTicks Method " Url="html/M_NodaTime_Offset_FromTicks.htm" />
-    <HelpKINode Title="Period.FromTicks Method " Url="html/M_NodaTime_Period_FromTicks.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromTicksSinceMidnight method" Url="html/M_NodaTime_LocalTime_FromTicksSinceMidnight.htm" />
-  <HelpKINode Title="FromTimeSpan method">
-    <HelpKINode Title="Duration.FromTimeSpan Method " Url="html/M_NodaTime_Duration_FromTimeSpan.htm" />
-    <HelpKINode Title="Offset.FromTimeSpan Method " Url="html/M_NodaTime_Offset_FromTimeSpan.htm" />
-  </HelpKINode>
-  <HelpKINode Title="FromUnixTimeMilliseconds method" Url="html/M_NodaTime_Instant_FromUnixTimeMilliseconds.htm" />
-  <HelpKINode Title="FromUnixTimeSeconds method" Url="html/M_NodaTime_Instant_FromUnixTimeSeconds.htm" />
-  <HelpKINode Title="FromUnixTimeTicks method" Url="html/M_NodaTime_Instant_FromUnixTimeTicks.htm" />
-  <HelpKINode Title="FromUtc method" Url="html/Overload_NodaTime_Instant_FromUtc.htm" />
-  <HelpKINode Title="FromWeeks method" Url="html/M_NodaTime_Period_FromWeeks.htm" />
-  <HelpKINode Title="FromWeekYearWeekAndDay method" Url="html/M_NodaTime_LocalDate_FromWeekYearWeekAndDay.htm" />
-  <HelpKINode Title="FromYearMonthWeekAndDay method" Url="html/M_NodaTime_LocalDate_FromYearMonthWeekAndDay.htm" />
-  <HelpKINode Title="FromYears method" Url="html/M_NodaTime_Period_FromYears.htm" />
-  <HelpKINode Title="GetAbsoluteYear method" Url="html/M_NodaTime_CalendarSystem_GetAbsoluteYear.htm" />
-  <HelpKINode Title="GetCurrentDate method" Url="html/M_NodaTime_ZonedClock_GetCurrentDate.htm" />
-  <HelpKINode Title="GetCurrentInstant method">
-    <HelpKINode Title="IClock.GetCurrentInstant Method " Url="html/M_NodaTime_IClock_GetCurrentInstant.htm" />
-    <HelpKINode Title="LocalSystemClock.GetCurrentInstant Method " Url="html/M_ElevatorApp_Util_LocalSystemClock_GetCurrentInstant.htm" />
-    <HelpKINode Title="SystemClock.GetCurrentInstant Method " Url="html/M_NodaTime_SystemClock_GetCurrentInstant.htm" />
-    <HelpKINode Title="ZonedClock.GetCurrentInstant Method " Url="html/M_NodaTime_ZonedClock_GetCurrentInstant.htm" />
-  </HelpKINode>
-  <HelpKINode Title="GetCurrentLocalDateTime method" Url="html/M_NodaTime_ZonedClock_GetCurrentLocalDateTime.htm" />
-  <HelpKINode Title="GetCurrentOffsetDateTime method" Url="html/M_NodaTime_ZonedClock_GetCurrentOffsetDateTime.htm" />
-  <HelpKINode Title="GetCurrentTimeOfDay method" Url="html/M_NodaTime_ZonedClock_GetCurrentTimeOfDay.htm" />
-  <HelpKINode Title="GetCurrentZonedDateTime method" Url="html/M_NodaTime_ZonedClock_GetCurrentZonedDateTime.htm" />
-  <HelpKINode Title="GetDaysInMonth method" Url="html/M_NodaTime_CalendarSystem_GetDaysInMonth.htm" />
-  <HelpKINode Title="GetDaysInYear method" Url="html/M_NodaTime_CalendarSystem_GetDaysInYear.htm" />
+  <HelpKINode Title="GetCurrentInstant method" Url="html/M_ElevatorApp_Util_LocalSystemClock_GetCurrentInstant.htm" />
   <HelpKINode Title="GetEnumerator method">
     <HelpKINode Title="AsyncObservableCollection(T).GetEnumerator Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_GetEnumerator.htm" />
     <HelpKINode Title="ObservableConcurrentQueue(T).GetEnumerator Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_GetEnumerator.htm" />
   </HelpKINode>
-  <HelpKINode Title="GetHashCode method">
-    <HelpKINode Title="AnnualDate.GetHashCode Method " Url="html/M_NodaTime_AnnualDate_GetHashCode.htm" />
-    <HelpKINode Title="Comparer.GetHashCode Method " Url="html/Overload_NodaTime_ZonedDateTime_Comparer_GetHashCode.htm" />
-    <HelpKINode Title="Comparer.GetHashCode Method " Url="html/Overload_NodaTime_OffsetDateTime_Comparer_GetHashCode.htm" />
-    <HelpKINode Title="DateInterval.GetHashCode Method " Url="html/M_NodaTime_DateInterval_GetHashCode.htm" />
-    <HelpKINode Title="Duration.GetHashCode Method " Url="html/M_NodaTime_Duration_GetHashCode.htm" />
-    <HelpKINode Title="Instant.GetHashCode Method " Url="html/M_NodaTime_Instant_GetHashCode.htm" />
-    <HelpKINode Title="Interval.GetHashCode Method " Url="html/M_NodaTime_Interval_GetHashCode.htm" />
-    <HelpKINode Title="LocalDate.GetHashCode Method " Url="html/M_NodaTime_LocalDate_GetHashCode.htm" />
-    <HelpKINode Title="LocalDateTime.GetHashCode Method " Url="html/M_NodaTime_LocalDateTime_GetHashCode.htm" />
-    <HelpKINode Title="LocalTime.GetHashCode Method " Url="html/M_NodaTime_LocalTime_GetHashCode.htm" />
-    <HelpKINode Title="Offset.GetHashCode Method " Url="html/M_NodaTime_Offset_GetHashCode.htm" />
-    <HelpKINode Title="OffsetDateTime.GetHashCode Method " Url="html/M_NodaTime_OffsetDateTime_GetHashCode.htm" />
-    <HelpKINode Title="Period.GetHashCode Method " Url="html/M_NodaTime_Period_GetHashCode.htm" />
-    <HelpKINode Title="ZonedDateTime.GetHashCode Method " Url="html/M_NodaTime_ZonedDateTime_GetHashCode.htm" />
-  </HelpKINode>
-  <HelpKINode Title="GetHebrewCalendar method" Url="html/M_NodaTime_CalendarSystem_GetHebrewCalendar.htm" />
-  <HelpKINode Title="GetIslamicCalendar method" Url="html/M_NodaTime_CalendarSystem_GetIslamicCalendar.htm" />
-  <HelpKINode Title="GetMaxYearOfEra method" Url="html/M_NodaTime_CalendarSystem_GetMaxYearOfEra.htm" />
-  <HelpKINode Title="GetMinYearOfEra method" Url="html/M_NodaTime_CalendarSystem_GetMinYearOfEra.htm" />
-  <HelpKINode Title="GetMonthsInYear method" Url="html/M_NodaTime_CalendarSystem_GetMonthsInYear.htm" />
-  <HelpKINode Title="GetSystemDefault method" Url="html/M_NodaTime_IDateTimeZoneProvider_GetSystemDefault.htm" />
   <HelpKINode Title="GetTimeInElevatorString method" Url="html/M_ElevatorApp_Models_Passenger_GetTimeInElevatorString.htm" />
-  <HelpKINode Title="GetUtcOffset method" Url="html/M_NodaTime_DateTimeZone_GetUtcOffset.htm" />
   <HelpKINode Title="GetWaitingString method" Url="html/M_ElevatorApp_Models_Passenger_GetWaitingString.htm" />
-  <HelpKINode Title="GetZoneInterval method">
-    <HelpKINode Title="DateTimeZone.GetZoneInterval Method " Url="html/M_NodaTime_DateTimeZone_GetZoneInterval.htm" />
-    <HelpKINode Title="ZonedDateTime.GetZoneInterval Method " Url="html/M_NodaTime_ZonedDateTime_GetZoneInterval.htm" />
-  </HelpKINode>
-  <HelpKINode Title="GetZoneIntervals method" Url="html/Overload_NodaTime_DateTimeZone_GetZoneIntervals.htm" />
-  <HelpKINode Title="GetZoneOrNull method" Url="html/M_NodaTime_IDateTimeZoneProvider_GetZoneOrNull.htm" />
   <HelpKINode Title="GoingDown enumeration member" Url="html/T_ElevatorApp_Models_Enums_ElevatorDirection.htm" />
   <HelpKINode Title="GoingUp enumeration member" Url="html/T_ElevatorApp_Models_Enums_ElevatorDirection.htm" />
-  <HelpKINode Title="GreaterThan operator">
-    <HelpKINode Title="AnnualDate.GreaterThan Operator " Url="html/M_NodaTime_AnnualDate_op_GreaterThan.htm" />
-    <HelpKINode Title="Duration.GreaterThan Operator " Url="html/M_NodaTime_Duration_op_GreaterThan.htm" />
-    <HelpKINode Title="Instant.GreaterThan Operator " Url="html/M_NodaTime_Instant_op_GreaterThan.htm" />
-    <HelpKINode Title="LocalDate.GreaterThan Operator " Url="html/M_NodaTime_LocalDate_op_GreaterThan.htm" />
-    <HelpKINode Title="LocalDateTime.GreaterThan Operator " Url="html/M_NodaTime_LocalDateTime_op_GreaterThan.htm" />
-    <HelpKINode Title="LocalTime.GreaterThan Operator " Url="html/M_NodaTime_LocalTime_op_GreaterThan.htm" />
-    <HelpKINode Title="Offset.GreaterThan Operator " Url="html/M_NodaTime_Offset_op_GreaterThan.htm" />
-  </HelpKINode>
-  <HelpKINode Title="GreaterThanOrEqual operator">
-    <HelpKINode Title="AnnualDate.GreaterThanOrEqual Operator " Url="html/M_NodaTime_AnnualDate_op_GreaterThanOrEqual.htm" />
-    <HelpKINode Title="Duration.GreaterThanOrEqual Operator " Url="html/M_NodaTime_Duration_op_GreaterThanOrEqual.htm" />
-    <HelpKINode Title="Instant.GreaterThanOrEqual Operator " Url="html/M_NodaTime_Instant_op_GreaterThanOrEqual.htm" />
-    <HelpKINode Title="LocalDate.GreaterThanOrEqual Operator " Url="html/M_NodaTime_LocalDate_op_GreaterThanOrEqual.htm" />
-    <HelpKINode Title="LocalDateTime.GreaterThanOrEqual Operator " Url="html/M_NodaTime_LocalDateTime_op_GreaterThanOrEqual.htm" />
-    <HelpKINode Title="LocalTime.GreaterThanOrEqual Operator " Url="html/M_NodaTime_LocalTime_op_GreaterThanOrEqual.htm" />
-    <HelpKINode Title="Offset.GreaterThanOrEqual Operator " Url="html/M_NodaTime_Offset_op_GreaterThanOrEqual.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Gregorian property" Url="html/P_NodaTime_CalendarSystem_Gregorian.htm" />
-  <HelpKINode Title="HasDateComponent property" Url="html/P_NodaTime_Period_HasDateComponent.htm" />
-  <HelpKINode Title="HasEnd property" Url="html/P_NodaTime_Interval_HasEnd.htm" />
-  <HelpKINode Title="HasStart property" Url="html/P_NodaTime_Interval_HasStart.htm" />
-  <HelpKINode Title="HasTimeComponent property" Url="html/P_NodaTime_Period_HasTimeComponent.htm" />
-  <HelpKINode Title="HebrewCivil property" Url="html/P_NodaTime_CalendarSystem_HebrewCivil.htm" />
-  <HelpKINode Title="HebrewScriptural property" Url="html/P_NodaTime_CalendarSystem_HebrewScriptural.htm" />
-  <HelpKINode Title="Hour property">
-    <HelpKINode Title="LocalDateTime.Hour Property " Url="html/P_NodaTime_LocalDateTime_Hour.htm" />
-    <HelpKINode Title="LocalTime.Hour Property " Url="html/P_NodaTime_LocalTime_Hour.htm" />
-    <HelpKINode Title="OffsetDateTime.Hour Property " Url="html/P_NodaTime_OffsetDateTime_Hour.htm" />
-    <HelpKINode Title="ZonedDateTime.Hour Property " Url="html/P_NodaTime_ZonedDateTime_Hour.htm" />
-  </HelpKINode>
-  <HelpKINode Title="HourMinuteSecond enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Hours enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Hours property">
-    <HelpKINode Title="Duration.Hours Property " Url="html/P_NodaTime_Duration_Hours.htm" />
-    <HelpKINode Title="Period.Hours Property " Url="html/P_NodaTime_Period_Hours.htm" />
-    <HelpKINode Title="PeriodBuilder.Hours Property " Url="html/P_NodaTime_PeriodBuilder_Hours.htm" />
-  </HelpKINode>
-  <HelpKINode Title="HoursPerDay field" Url="html/F_NodaTime_NodaConstants_HoursPerDay.htm" />
-  <HelpKINode Title="HoursPerWeek field" Url="html/F_NodaTime_NodaConstants_HoursPerWeek.htm" />
   <HelpKINode Title="IButton interface">
     <HelpKINode Title="IButton Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton.htm" />
     <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton.htm" />
@@ -1170,31 +771,8 @@
   <HelpKINode Title="IButton&lt;T&gt;.ActionCompleted method" Url="html/M_ElevatorApp_Models_Interfaces_IButton_1_ActionCompleted.htm" />
   <HelpKINode Title="IButton&lt;T&gt;.OnActionCompleted event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnActionCompleted.htm" />
   <HelpKINode Title="IButton&lt;T&gt;.OnPushed event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnPushed.htm" />
-  <HelpKINode Title="IClock interface">
-    <HelpKINode Title="IClock Interface" Url="html/T_NodaTime_IClock.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_IClock.htm" />
-  </HelpKINode>
-  <HelpKINode Title="IClock.GetCurrentInstant method" Url="html/M_NodaTime_IClock_GetCurrentInstant.htm" />
-  <HelpKINode Title="Id property">
-    <HelpKINode Title="ButtonBase(T).Id Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_Id.htm" />
-    <HelpKINode Title="CalendarSystem.Id Property " Url="html/P_NodaTime_CalendarSystem_Id.htm" />
-    <HelpKINode Title="DateTimeZone.Id Property " Url="html/P_NodaTime_DateTimeZone_Id.htm" />
-  </HelpKINode>
-  <HelpKINode Title="IDateTimeZoneProvider interface">
-    <HelpKINode Title="IDateTimeZoneProvider Interface" Url="html/T_NodaTime_IDateTimeZoneProvider.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_IDateTimeZoneProvider.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_IDateTimeZoneProvider.htm" />
-  </HelpKINode>
-  <HelpKINode Title="IDateTimeZoneProvider.GetSystemDefault method" Url="html/M_NodaTime_IDateTimeZoneProvider_GetSystemDefault.htm" />
-  <HelpKINode Title="IDateTimeZoneProvider.GetZoneOrNull method" Url="html/M_NodaTime_IDateTimeZoneProvider_GetZoneOrNull.htm" />
-  <HelpKINode Title="IDateTimeZoneProvider.Ids property" Url="html/P_NodaTime_IDateTimeZoneProvider_Ids.htm" />
-  <HelpKINode Title="IDateTimeZoneProvider.Item property" Url="html/P_NodaTime_IDateTimeZoneProvider_Item.htm" />
-  <HelpKINode Title="IDateTimeZoneProvider.VersionId property" Url="html/P_NodaTime_IDateTimeZoneProvider_VersionId.htm" />
+  <HelpKINode Title="Id property" Url="html/P_ElevatorApp_Models_ButtonBase_1_Id.htm" />
   <HelpKINode Title="Idle enumeration member" Url="html/T_ElevatorApp_Models_Enums_ElevatorState.htm" />
-  <HelpKINode Title="Ids property">
-    <HelpKINode Title="CalendarSystem.Ids Property " Url="html/P_NodaTime_CalendarSystem_Ids.htm" />
-    <HelpKINode Title="IDateTimeZoneProvider.Ids Property " Url="html/P_NodaTime_IDateTimeZoneProvider_Ids.htm" />
-  </HelpKINode>
   <HelpKINode Title="ILogger interface">
     <HelpKINode Title="ILogger Interface" Url="html/T_ElevatorApp_Util_ILogger.htm" />
     <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_ILogger.htm" />
@@ -1208,20 +786,6 @@
   <HelpKINode Title="ILogger.LogEvent method" Url="html/Overload_ElevatorApp_Util_ILogger_LogEvent.htm" />
   <HelpKINode Title="In enumeration member" Url="html/T_ElevatorApp_Models_Enums_PassengerState.htm" />
   <HelpKINode Title="IndexOf method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_IndexOf.htm" />
-  <HelpKINode Title="Inequality operator">
-    <HelpKINode Title="AnnualDate.Inequality Operator " Url="html/M_NodaTime_AnnualDate_op_Inequality.htm" />
-    <HelpKINode Title="DateInterval.Inequality Operator " Url="html/M_NodaTime_DateInterval_op_Inequality.htm" />
-    <HelpKINode Title="Duration.Inequality Operator " Url="html/M_NodaTime_Duration_op_Inequality.htm" />
-    <HelpKINode Title="Instant.Inequality Operator " Url="html/M_NodaTime_Instant_op_Inequality.htm" />
-    <HelpKINode Title="Interval.Inequality Operator " Url="html/M_NodaTime_Interval_op_Inequality.htm" />
-    <HelpKINode Title="LocalDate.Inequality Operator " Url="html/M_NodaTime_LocalDate_op_Inequality.htm" />
-    <HelpKINode Title="LocalDateTime.Inequality Operator " Url="html/M_NodaTime_LocalDateTime_op_Inequality.htm" />
-    <HelpKINode Title="LocalTime.Inequality Operator " Url="html/M_NodaTime_LocalTime_op_Inequality.htm" />
-    <HelpKINode Title="Offset.Inequality Operator " Url="html/M_NodaTime_Offset_op_Inequality.htm" />
-    <HelpKINode Title="OffsetDateTime.Inequality Operator " Url="html/M_NodaTime_OffsetDateTime_op_Inequality.htm" />
-    <HelpKINode Title="ZonedDateTime.Inequality Operator " Url="html/M_NodaTime_ZonedDateTime_op_Inequality.htm" />
-  </HelpKINode>
-  <HelpKINode Title="InFixedZone method" Url="html/M_NodaTime_OffsetDateTime_InFixedZone.htm" />
   <HelpKINode Title="Init method" Url="html/M_ElevatorApp_Models_ElevatorMasterController_Init.htm" />
   <HelpKINode Title="InitializeComponent method">
     <HelpKINode Title="AddPassengerControl.InitializeComponent Method " Url="html/M_ElevatorApp_Controls_AddPassengerControl_InitializeComponent.htm" />
@@ -1243,56 +807,7 @@
   <HelpKINode Title="Instance property">
     <HelpKINode Title="LocalSystemClock.Instance Property " Url="html/P_ElevatorApp_Util_LocalSystemClock_Instance.htm" />
     <HelpKINode Title="Logger.Instance Property " Url="html/P_ElevatorApp_Util_Logger_Instance.htm" />
-    <HelpKINode Title="SystemClock.Instance Property " Url="html/P_NodaTime_SystemClock_Instance.htm" />
   </HelpKINode>
-  <HelpKINode Title="Instant property">
-    <HelpKINode Title="OffsetDateTime.Comparer.Instant Property " Url="html/P_NodaTime_OffsetDateTime_Comparer_Instant.htm" />
-    <HelpKINode Title="ZonedDateTime.Comparer.Instant Property " Url="html/P_NodaTime_ZonedDateTime_Comparer_Instant.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Instant structure">
-    <HelpKINode Title="Instant Structure" Url="html/T_NodaTime_Instant.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_Instant.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_Instant.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_Instant.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Instant.Add method" Url="html/M_NodaTime_Instant_Add.htm" />
-  <HelpKINode Title="Instant.Addition operator" Url="html/M_NodaTime_Instant_op_Addition.htm" />
-  <HelpKINode Title="Instant.CompareTo method" Url="html/M_NodaTime_Instant_CompareTo.htm" />
-  <HelpKINode Title="Instant.Equality operator" Url="html/M_NodaTime_Instant_op_Equality.htm" />
-  <HelpKINode Title="Instant.Equals method" Url="html/Overload_NodaTime_Instant_Equals.htm" />
-  <HelpKINode Title="Instant.FromDateTimeOffset method" Url="html/M_NodaTime_Instant_FromDateTimeOffset.htm" />
-  <HelpKINode Title="Instant.FromDateTimeUtc method" Url="html/M_NodaTime_Instant_FromDateTimeUtc.htm" />
-  <HelpKINode Title="Instant.FromJulianDate method" Url="html/M_NodaTime_Instant_FromJulianDate.htm" />
-  <HelpKINode Title="Instant.FromUnixTimeMilliseconds method" Url="html/M_NodaTime_Instant_FromUnixTimeMilliseconds.htm" />
-  <HelpKINode Title="Instant.FromUnixTimeSeconds method" Url="html/M_NodaTime_Instant_FromUnixTimeSeconds.htm" />
-  <HelpKINode Title="Instant.FromUnixTimeTicks method" Url="html/M_NodaTime_Instant_FromUnixTimeTicks.htm" />
-  <HelpKINode Title="Instant.FromUtc method" Url="html/Overload_NodaTime_Instant_FromUtc.htm" />
-  <HelpKINode Title="Instant.GetHashCode method" Url="html/M_NodaTime_Instant_GetHashCode.htm" />
-  <HelpKINode Title="Instant.GreaterThan operator" Url="html/M_NodaTime_Instant_op_GreaterThan.htm" />
-  <HelpKINode Title="Instant.GreaterThanOrEqual operator" Url="html/M_NodaTime_Instant_op_GreaterThanOrEqual.htm" />
-  <HelpKINode Title="Instant.Inequality operator" Url="html/M_NodaTime_Instant_op_Inequality.htm" />
-  <HelpKINode Title="Instant.InUtc method" Url="html/M_NodaTime_Instant_InUtc.htm" />
-  <HelpKINode Title="Instant.InZone method" Url="html/Overload_NodaTime_Instant_InZone.htm" />
-  <HelpKINode Title="Instant.LessThan operator" Url="html/M_NodaTime_Instant_op_LessThan.htm" />
-  <HelpKINode Title="Instant.LessThanOrEqual operator" Url="html/M_NodaTime_Instant_op_LessThanOrEqual.htm" />
-  <HelpKINode Title="Instant.Max method" Url="html/M_NodaTime_Instant_Max.htm" />
-  <HelpKINode Title="Instant.MaxValue property" Url="html/P_NodaTime_Instant_MaxValue.htm" />
-  <HelpKINode Title="Instant.Min method" Url="html/M_NodaTime_Instant_Min.htm" />
-  <HelpKINode Title="Instant.Minus method" Url="html/Overload_NodaTime_Instant_Minus.htm" />
-  <HelpKINode Title="Instant.MinValue property" Url="html/P_NodaTime_Instant_MinValue.htm" />
-  <HelpKINode Title="Instant.Plus method" Url="html/M_NodaTime_Instant_Plus.htm" />
-  <HelpKINode Title="Instant.PlusNanoseconds method" Url="html/M_NodaTime_Instant_PlusNanoseconds.htm" />
-  <HelpKINode Title="Instant.PlusTicks method" Url="html/M_NodaTime_Instant_PlusTicks.htm" />
-  <HelpKINode Title="Instant.Subtract method" Url="html/Overload_NodaTime_Instant_Subtract.htm" />
-  <HelpKINode Title="Instant.Subtraction operator" Url="html/Overload_NodaTime_Instant_op_Subtraction.htm" />
-  <HelpKINode Title="Instant.ToDateTimeOffset method" Url="html/M_NodaTime_Instant_ToDateTimeOffset.htm" />
-  <HelpKINode Title="Instant.ToDateTimeUtc method" Url="html/M_NodaTime_Instant_ToDateTimeUtc.htm" />
-  <HelpKINode Title="Instant.ToJulianDate method" Url="html/M_NodaTime_Instant_ToJulianDate.htm" />
-  <HelpKINode Title="Instant.ToString method" Url="html/Overload_NodaTime_Instant_ToString.htm" />
-  <HelpKINode Title="Instant.ToUnixTimeMilliseconds method" Url="html/M_NodaTime_Instant_ToUnixTimeMilliseconds.htm" />
-  <HelpKINode Title="Instant.ToUnixTimeSeconds method" Url="html/M_NodaTime_Instant_ToUnixTimeSeconds.htm" />
-  <HelpKINode Title="Instant.ToUnixTimeTicks method" Url="html/M_NodaTime_Instant_ToUnixTimeTicks.htm" />
-  <HelpKINode Title="Instant.WithOffset method" Url="html/Overload_NodaTime_Instant_WithOffset.htm" />
   <HelpKINode Title="Interior class">
     <HelpKINode Title="Interior Class" Url="html/T_ElevatorApp_Controls_Interior.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Controls_Interior__ctor.htm" />
@@ -1303,44 +818,27 @@
   <HelpKINode Title="Interior.InitializeComponent method" Url="html/M_ElevatorApp_Controls_Interior_InitializeComponent.htm" />
   <HelpKINode Title="Interior.Interior constructor" Url="html/M_ElevatorApp_Controls_Interior__ctor.htm" />
   <HelpKINode Title="IntermediateFloor property" Url="html/P_ElevatorApp_Models_ElevatorApproachingEventArgs_IntermediateFloor.htm" />
-  <HelpKINode Title="Interval structure">
-    <HelpKINode Title="Interval Structure" Url="html/T_NodaTime_Interval.htm" />
-    <HelpKINode Title="constructor" Url="html/Overload_NodaTime_Interval__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_Interval.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_Interval.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_Interval.htm" />
+  <HelpKINode Title="IntStatistic class">
+    <HelpKINode Title="IntStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_IntStatistic.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_Statistics_IntStatistic__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_Statistics_IntStatistic.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_IntStatistic.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_IntStatistic.htm" />
   </HelpKINode>
-  <HelpKINode Title="Interval.Contains method" Url="html/M_NodaTime_Interval_Contains.htm" />
-  <HelpKINode Title="Interval.Duration property" Url="html/P_NodaTime_Interval_Duration.htm" />
-  <HelpKINode Title="Interval.End property" Url="html/P_NodaTime_Interval_End.htm" />
-  <HelpKINode Title="Interval.Equality operator" Url="html/M_NodaTime_Interval_op_Equality.htm" />
-  <HelpKINode Title="Interval.Equals method" Url="html/Overload_NodaTime_Interval_Equals.htm" />
-  <HelpKINode Title="Interval.GetHashCode method" Url="html/M_NodaTime_Interval_GetHashCode.htm" />
-  <HelpKINode Title="Interval.HasEnd property" Url="html/P_NodaTime_Interval_HasEnd.htm" />
-  <HelpKINode Title="Interval.HasStart property" Url="html/P_NodaTime_Interval_HasStart.htm" />
-  <HelpKINode Title="Interval.Inequality operator" Url="html/M_NodaTime_Interval_op_Inequality.htm" />
-  <HelpKINode Title="Interval.Interval constructor" Url="html/Overload_NodaTime_Interval__ctor.htm" />
-  <HelpKINode Title="Interval.Start property" Url="html/P_NodaTime_Interval_Start.htm" />
-  <HelpKINode Title="Interval.ToString method" Url="html/M_NodaTime_Interval_ToString.htm" />
-  <HelpKINode Title="InUtc method">
-    <HelpKINode Title="Instant.InUtc Method " Url="html/M_NodaTime_Instant_InUtc.htm" />
-    <HelpKINode Title="LocalDateTime.InUtc Method " Url="html/M_NodaTime_LocalDateTime_InUtc.htm" />
-  </HelpKINode>
-  <HelpKINode Title="InYear method" Url="html/M_NodaTime_AnnualDate_InYear.htm" />
-  <HelpKINode Title="InZone method">
-    <HelpKINode Title="Instant.InZone Method " Url="html/Overload_NodaTime_Instant_InZone.htm" />
-    <HelpKINode Title="LocalDateTime.InZone Method " Url="html/M_NodaTime_LocalDateTime_InZone.htm" />
-  </HelpKINode>
-  <HelpKINode Title="InZoneLeniently method" Url="html/M_NodaTime_LocalDateTime_InZoneLeniently.htm" />
-  <HelpKINode Title="InZoneStrictly method" Url="html/M_NodaTime_LocalDateTime_InZoneStrictly.htm" />
-  <HelpKINode Title="IsDaylightSavingTime method" Url="html/M_NodaTime_ZonedDateTime_IsDaylightSavingTime.htm" />
+  <HelpKINode Title="IntStatistic.AddItems method" Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_AddItems.htm" />
+  <HelpKINode Title="IntStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_CalculateAverage.htm" />
+  <HelpKINode Title="IntStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_DivideItems.htm" />
+  <HelpKINode Title="IntStatistic.IntStatistic constructor" Url="html/Overload_ElevatorApp_Util_Statistics_IntStatistic__ctor.htm" />
+  <HelpKINode Title="IntStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_MultiplyItems.htm" />
+  <HelpKINode Title="IntStatistic.SubtractItems method" Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_SubtractItems.htm" />
   <HelpKINode Title="isEmpty property" Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_isEmpty.htm" />
   <HelpKINode Title="IsEnabled property" Url="html/P_ElevatorApp_Models_ButtonBase_1_IsEnabled.htm" />
-  <HelpKINode Title="IslamicBcl property" Url="html/P_NodaTime_CalendarSystem_IslamicBcl.htm" />
-  <HelpKINode Title="IsLeapYear method" Url="html/M_NodaTime_CalendarSystem_IsLeapYear.htm" />
-  <HelpKINode Title="Iso property" Url="html/P_NodaTime_CalendarSystem_Iso.htm" />
-  <HelpKINode Title="IsoDayOfWeek enumeration" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
   <HelpKINode Title="IsReadOnly property" Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_IsReadOnly.htm" />
+  <HelpKINode Title="IStatistic interface">
+    <HelpKINode Title="IStatistic Interface" Url="html/T_ElevatorApp_Util_IStatistic.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_IStatistic.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IStatistic.Count property" Url="html/P_ElevatorApp_Util_IStatistic_Count.htm" />
   <HelpKINode Title="ISubcriber(Of T) interface">
     <HelpKINode Title="ISubcriber(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm" />
@@ -1355,18 +853,11 @@
   </HelpKINode>
   <HelpKINode Title="ISubcriber&lt;T&gt;.Subscribe method" Url="html/M_ElevatorApp_Models_Interfaces_ISubcriber_1_Subscribe.htm" />
   <HelpKINode Title="ISubcriber&lt;T&gt;.Subscribed property" Url="html/P_ElevatorApp_Models_Interfaces_ISubcriber_1_Subscribed.htm" />
-  <HelpKINode Title="IsValidYear method" Url="html/M_NodaTime_AnnualDate_IsValidYear.htm" />
-  <HelpKINode Title="Item property">
-    <HelpKINode Title="AsyncObservableCollection(T).Item Property " Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Item.htm" />
-    <HelpKINode Title="IDateTimeZoneProvider.Item Property " Url="html/P_NodaTime_IDateTimeZoneProvider_Item.htm" />
-    <HelpKINode Title="PeriodBuilder.Item Property " Url="html/P_NodaTime_PeriodBuilder_Item.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Item property" Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Item.htm" />
   <HelpKINode Title="ItemLogged event">
     <HelpKINode Title="ILogger.ItemLogged Event" Url="html/E_ElevatorApp_Util_ILogger_ItemLogged.htm" />
     <HelpKINode Title="Logger.ItemLogged Event" Url="html/E_ElevatorApp_Util_Logger_ItemLogged.htm" />
   </HelpKINode>
-  <HelpKINode Title="Julian property" Url="html/P_NodaTime_CalendarSystem_Julian.htm" />
-  <HelpKINode Title="JulianEpoch property" Url="html/P_NodaTime_NodaConstants_JulianEpoch.htm" />
   <HelpKINode Title="Label property">
     <HelpKINode Title="ButtonBase(T).Label Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_Label.htm" />
     <HelpKINode Title="DoorButton.Label Property " Url="html/P_ElevatorApp_Models_DoorButton_Label.htm" />
@@ -1374,148 +865,6 @@
     <HelpKINode Title="IButton.Label Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_Label.htm" />
     <HelpKINode Title="RequestButton.Label Property " Url="html/P_ElevatorApp_Models_RequestButton_Label.htm" />
   </HelpKINode>
-  <HelpKINode Title="LaterMapping property" Url="html/P_NodaTime_AmbiguousTimeException_LaterMapping.htm" />
-  <HelpKINode Title="Length property" Url="html/P_NodaTime_DateInterval_Length.htm" />
-  <HelpKINode Title="LessThan operator">
-    <HelpKINode Title="AnnualDate.LessThan Operator " Url="html/M_NodaTime_AnnualDate_op_LessThan.htm" />
-    <HelpKINode Title="Duration.LessThan Operator " Url="html/M_NodaTime_Duration_op_LessThan.htm" />
-    <HelpKINode Title="Instant.LessThan Operator " Url="html/M_NodaTime_Instant_op_LessThan.htm" />
-    <HelpKINode Title="LocalDate.LessThan Operator " Url="html/M_NodaTime_LocalDate_op_LessThan.htm" />
-    <HelpKINode Title="LocalDateTime.LessThan Operator " Url="html/M_NodaTime_LocalDateTime_op_LessThan.htm" />
-    <HelpKINode Title="LocalTime.LessThan Operator " Url="html/M_NodaTime_LocalTime_op_LessThan.htm" />
-    <HelpKINode Title="Offset.LessThan Operator " Url="html/M_NodaTime_Offset_op_LessThan.htm" />
-  </HelpKINode>
-  <HelpKINode Title="LessThanOrEqual operator">
-    <HelpKINode Title="AnnualDate.LessThanOrEqual Operator " Url="html/M_NodaTime_AnnualDate_op_LessThanOrEqual.htm" />
-    <HelpKINode Title="Duration.LessThanOrEqual Operator " Url="html/M_NodaTime_Duration_op_LessThanOrEqual.htm" />
-    <HelpKINode Title="Instant.LessThanOrEqual Operator " Url="html/M_NodaTime_Instant_op_LessThanOrEqual.htm" />
-    <HelpKINode Title="LocalDate.LessThanOrEqual Operator " Url="html/M_NodaTime_LocalDate_op_LessThanOrEqual.htm" />
-    <HelpKINode Title="LocalDateTime.LessThanOrEqual Operator " Url="html/M_NodaTime_LocalDateTime_op_LessThanOrEqual.htm" />
-    <HelpKINode Title="LocalTime.LessThanOrEqual Operator " Url="html/M_NodaTime_LocalTime_op_LessThanOrEqual.htm" />
-    <HelpKINode Title="Offset.LessThanOrEqual Operator " Url="html/M_NodaTime_Offset_op_LessThanOrEqual.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Local property">
-    <HelpKINode Title="OffsetDateTime.Comparer.Local Property " Url="html/P_NodaTime_OffsetDateTime_Comparer_Local.htm" />
-    <HelpKINode Title="ZonedDateTime.Comparer.Local Property " Url="html/P_NodaTime_ZonedDateTime_Comparer_Local.htm" />
-  </HelpKINode>
-  <HelpKINode Title="LocalDate structure">
-    <HelpKINode Title="LocalDate Structure" Url="html/T_NodaTime_LocalDate.htm" />
-    <HelpKINode Title="constructor" Url="html/Overload_NodaTime_LocalDate__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_LocalDate.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_LocalDate.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_LocalDate.htm" />
-  </HelpKINode>
-  <HelpKINode Title="LocalDate.Add method" Url="html/M_NodaTime_LocalDate_Add.htm" />
-  <HelpKINode Title="LocalDate.Addition operator" Url="html/Overload_NodaTime_LocalDate_op_Addition.htm" />
-  <HelpKINode Title="LocalDate.At method" Url="html/M_NodaTime_LocalDate_At.htm" />
-  <HelpKINode Title="LocalDate.AtMidnight method" Url="html/M_NodaTime_LocalDate_AtMidnight.htm" />
-  <HelpKINode Title="LocalDate.AtStartOfDayInZone method" Url="html/M_NodaTime_LocalDate_AtStartOfDayInZone.htm" />
-  <HelpKINode Title="LocalDate.Calendar property" Url="html/P_NodaTime_LocalDate_Calendar.htm" />
-  <HelpKINode Title="LocalDate.CompareTo method" Url="html/M_NodaTime_LocalDate_CompareTo.htm" />
-  <HelpKINode Title="LocalDate.Day property" Url="html/P_NodaTime_LocalDate_Day.htm" />
-  <HelpKINode Title="LocalDate.DayOfWeek property" Url="html/P_NodaTime_LocalDate_DayOfWeek.htm" />
-  <HelpKINode Title="LocalDate.DayOfYear property" Url="html/P_NodaTime_LocalDate_DayOfYear.htm" />
-  <HelpKINode Title="LocalDate.Equality operator" Url="html/M_NodaTime_LocalDate_op_Equality.htm" />
-  <HelpKINode Title="LocalDate.Equals method" Url="html/Overload_NodaTime_LocalDate_Equals.htm" />
-  <HelpKINode Title="LocalDate.Era property" Url="html/P_NodaTime_LocalDate_Era.htm" />
-  <HelpKINode Title="LocalDate.FromDateTime method" Url="html/Overload_NodaTime_LocalDate_FromDateTime.htm" />
-  <HelpKINode Title="LocalDate.FromWeekYearWeekAndDay method" Url="html/M_NodaTime_LocalDate_FromWeekYearWeekAndDay.htm" />
-  <HelpKINode Title="LocalDate.FromYearMonthWeekAndDay method" Url="html/M_NodaTime_LocalDate_FromYearMonthWeekAndDay.htm" />
-  <HelpKINode Title="LocalDate.GetHashCode method" Url="html/M_NodaTime_LocalDate_GetHashCode.htm" />
-  <HelpKINode Title="LocalDate.GreaterThan operator" Url="html/M_NodaTime_LocalDate_op_GreaterThan.htm" />
-  <HelpKINode Title="LocalDate.GreaterThanOrEqual operator" Url="html/M_NodaTime_LocalDate_op_GreaterThanOrEqual.htm" />
-  <HelpKINode Title="LocalDate.Inequality operator" Url="html/M_NodaTime_LocalDate_op_Inequality.htm" />
-  <HelpKINode Title="LocalDate.LessThan operator" Url="html/M_NodaTime_LocalDate_op_LessThan.htm" />
-  <HelpKINode Title="LocalDate.LessThanOrEqual operator" Url="html/M_NodaTime_LocalDate_op_LessThanOrEqual.htm" />
-  <HelpKINode Title="LocalDate.LocalDate constructor" Url="html/Overload_NodaTime_LocalDate__ctor.htm" />
-  <HelpKINode Title="LocalDate.MaxIsoValue property" Url="html/P_NodaTime_LocalDate_MaxIsoValue.htm" />
-  <HelpKINode Title="LocalDate.MinIsoValue property" Url="html/P_NodaTime_LocalDate_MinIsoValue.htm" />
-  <HelpKINode Title="LocalDate.Minus method" Url="html/Overload_NodaTime_LocalDate_Minus.htm" />
-  <HelpKINode Title="LocalDate.Month property" Url="html/P_NodaTime_LocalDate_Month.htm" />
-  <HelpKINode Title="LocalDate.Next method" Url="html/M_NodaTime_LocalDate_Next.htm" />
-  <HelpKINode Title="LocalDate.Plus method" Url="html/M_NodaTime_LocalDate_Plus.htm" />
-  <HelpKINode Title="LocalDate.PlusDays method" Url="html/M_NodaTime_LocalDate_PlusDays.htm" />
-  <HelpKINode Title="LocalDate.PlusMonths method" Url="html/M_NodaTime_LocalDate_PlusMonths.htm" />
-  <HelpKINode Title="LocalDate.PlusWeeks method" Url="html/M_NodaTime_LocalDate_PlusWeeks.htm" />
-  <HelpKINode Title="LocalDate.PlusYears method" Url="html/M_NodaTime_LocalDate_PlusYears.htm" />
-  <HelpKINode Title="LocalDate.Previous method" Url="html/M_NodaTime_LocalDate_Previous.htm" />
-  <HelpKINode Title="LocalDate.Subtract method" Url="html/Overload_NodaTime_LocalDate_Subtract.htm" />
-  <HelpKINode Title="LocalDate.Subtraction operator" Url="html/Overload_NodaTime_LocalDate_op_Subtraction.htm" />
-  <HelpKINode Title="LocalDate.ToDateTimeUnspecified method" Url="html/M_NodaTime_LocalDate_ToDateTimeUnspecified.htm" />
-  <HelpKINode Title="LocalDate.ToString method" Url="html/Overload_NodaTime_LocalDate_ToString.htm" />
-  <HelpKINode Title="LocalDate.With method" Url="html/M_NodaTime_LocalDate_With.htm" />
-  <HelpKINode Title="LocalDate.WithCalendar method" Url="html/M_NodaTime_LocalDate_WithCalendar.htm" />
-  <HelpKINode Title="LocalDate.Year property" Url="html/P_NodaTime_LocalDate_Year.htm" />
-  <HelpKINode Title="LocalDate.YearOfEra property" Url="html/P_NodaTime_LocalDate_YearOfEra.htm" />
-  <HelpKINode Title="LocalDateTime property">
-    <HelpKINode Title="OffsetDateTime.LocalDateTime Property " Url="html/P_NodaTime_OffsetDateTime_LocalDateTime.htm" />
-    <HelpKINode Title="SkippedTimeException.LocalDateTime Property " Url="html/P_NodaTime_SkippedTimeException_LocalDateTime.htm" />
-    <HelpKINode Title="ZonedDateTime.LocalDateTime Property " Url="html/P_NodaTime_ZonedDateTime_LocalDateTime.htm" />
-  </HelpKINode>
-  <HelpKINode Title="LocalDateTime structure">
-    <HelpKINode Title="LocalDateTime Structure" Url="html/T_NodaTime_LocalDateTime.htm" />
-    <HelpKINode Title="constructor" Url="html/Overload_NodaTime_LocalDateTime__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_LocalDateTime.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_LocalDateTime.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_LocalDateTime.htm" />
-  </HelpKINode>
-  <HelpKINode Title="LocalDateTime.Add method" Url="html/M_NodaTime_LocalDateTime_Add.htm" />
-  <HelpKINode Title="LocalDateTime.Addition operator" Url="html/M_NodaTime_LocalDateTime_op_Addition.htm" />
-  <HelpKINode Title="LocalDateTime.Calendar property" Url="html/P_NodaTime_LocalDateTime_Calendar.htm" />
-  <HelpKINode Title="LocalDateTime.ClockHourOfHalfDay property" Url="html/P_NodaTime_LocalDateTime_ClockHourOfHalfDay.htm" />
-  <HelpKINode Title="LocalDateTime.CompareTo method" Url="html/M_NodaTime_LocalDateTime_CompareTo.htm" />
-  <HelpKINode Title="LocalDateTime.Date property" Url="html/P_NodaTime_LocalDateTime_Date.htm" />
-  <HelpKINode Title="LocalDateTime.Day property" Url="html/P_NodaTime_LocalDateTime_Day.htm" />
-  <HelpKINode Title="LocalDateTime.DayOfWeek property" Url="html/P_NodaTime_LocalDateTime_DayOfWeek.htm" />
-  <HelpKINode Title="LocalDateTime.DayOfYear property" Url="html/P_NodaTime_LocalDateTime_DayOfYear.htm" />
-  <HelpKINode Title="LocalDateTime.Equality operator" Url="html/M_NodaTime_LocalDateTime_op_Equality.htm" />
-  <HelpKINode Title="LocalDateTime.Equals method" Url="html/Overload_NodaTime_LocalDateTime_Equals.htm" />
-  <HelpKINode Title="LocalDateTime.Era property" Url="html/P_NodaTime_LocalDateTime_Era.htm" />
-  <HelpKINode Title="LocalDateTime.FromDateTime method" Url="html/Overload_NodaTime_LocalDateTime_FromDateTime.htm" />
-  <HelpKINode Title="LocalDateTime.GetHashCode method" Url="html/M_NodaTime_LocalDateTime_GetHashCode.htm" />
-  <HelpKINode Title="LocalDateTime.GreaterThan operator" Url="html/M_NodaTime_LocalDateTime_op_GreaterThan.htm" />
-  <HelpKINode Title="LocalDateTime.GreaterThanOrEqual operator" Url="html/M_NodaTime_LocalDateTime_op_GreaterThanOrEqual.htm" />
-  <HelpKINode Title="LocalDateTime.Hour property" Url="html/P_NodaTime_LocalDateTime_Hour.htm" />
-  <HelpKINode Title="LocalDateTime.Inequality operator" Url="html/M_NodaTime_LocalDateTime_op_Inequality.htm" />
-  <HelpKINode Title="LocalDateTime.InUtc method" Url="html/M_NodaTime_LocalDateTime_InUtc.htm" />
-  <HelpKINode Title="LocalDateTime.InZone method" Url="html/M_NodaTime_LocalDateTime_InZone.htm" />
-  <HelpKINode Title="LocalDateTime.InZoneLeniently method" Url="html/M_NodaTime_LocalDateTime_InZoneLeniently.htm" />
-  <HelpKINode Title="LocalDateTime.InZoneStrictly method" Url="html/M_NodaTime_LocalDateTime_InZoneStrictly.htm" />
-  <HelpKINode Title="LocalDateTime.LessThan operator" Url="html/M_NodaTime_LocalDateTime_op_LessThan.htm" />
-  <HelpKINode Title="LocalDateTime.LessThanOrEqual operator" Url="html/M_NodaTime_LocalDateTime_op_LessThanOrEqual.htm" />
-  <HelpKINode Title="LocalDateTime.LocalDateTime constructor" Url="html/Overload_NodaTime_LocalDateTime__ctor.htm" />
-  <HelpKINode Title="LocalDateTime.Millisecond property" Url="html/P_NodaTime_LocalDateTime_Millisecond.htm" />
-  <HelpKINode Title="LocalDateTime.Minus method" Url="html/Overload_NodaTime_LocalDateTime_Minus.htm" />
-  <HelpKINode Title="LocalDateTime.Minute property" Url="html/P_NodaTime_LocalDateTime_Minute.htm" />
-  <HelpKINode Title="LocalDateTime.Month property" Url="html/P_NodaTime_LocalDateTime_Month.htm" />
-  <HelpKINode Title="LocalDateTime.NanosecondOfDay property" Url="html/P_NodaTime_LocalDateTime_NanosecondOfDay.htm" />
-  <HelpKINode Title="LocalDateTime.NanosecondOfSecond property" Url="html/P_NodaTime_LocalDateTime_NanosecondOfSecond.htm" />
-  <HelpKINode Title="LocalDateTime.Next method" Url="html/M_NodaTime_LocalDateTime_Next.htm" />
-  <HelpKINode Title="LocalDateTime.Plus method" Url="html/M_NodaTime_LocalDateTime_Plus.htm" />
-  <HelpKINode Title="LocalDateTime.PlusDays method" Url="html/M_NodaTime_LocalDateTime_PlusDays.htm" />
-  <HelpKINode Title="LocalDateTime.PlusHours method" Url="html/M_NodaTime_LocalDateTime_PlusHours.htm" />
-  <HelpKINode Title="LocalDateTime.PlusMilliseconds method" Url="html/M_NodaTime_LocalDateTime_PlusMilliseconds.htm" />
-  <HelpKINode Title="LocalDateTime.PlusMinutes method" Url="html/M_NodaTime_LocalDateTime_PlusMinutes.htm" />
-  <HelpKINode Title="LocalDateTime.PlusMonths method" Url="html/M_NodaTime_LocalDateTime_PlusMonths.htm" />
-  <HelpKINode Title="LocalDateTime.PlusNanoseconds method" Url="html/M_NodaTime_LocalDateTime_PlusNanoseconds.htm" />
-  <HelpKINode Title="LocalDateTime.PlusSeconds method" Url="html/M_NodaTime_LocalDateTime_PlusSeconds.htm" />
-  <HelpKINode Title="LocalDateTime.PlusTicks method" Url="html/M_NodaTime_LocalDateTime_PlusTicks.htm" />
-  <HelpKINode Title="LocalDateTime.PlusWeeks method" Url="html/M_NodaTime_LocalDateTime_PlusWeeks.htm" />
-  <HelpKINode Title="LocalDateTime.PlusYears method" Url="html/M_NodaTime_LocalDateTime_PlusYears.htm" />
-  <HelpKINode Title="LocalDateTime.Previous method" Url="html/M_NodaTime_LocalDateTime_Previous.htm" />
-  <HelpKINode Title="LocalDateTime.Second property" Url="html/P_NodaTime_LocalDateTime_Second.htm" />
-  <HelpKINode Title="LocalDateTime.Subtract method" Url="html/Overload_NodaTime_LocalDateTime_Subtract.htm" />
-  <HelpKINode Title="LocalDateTime.Subtraction operator" Url="html/Overload_NodaTime_LocalDateTime_op_Subtraction.htm" />
-  <HelpKINode Title="LocalDateTime.TickOfDay property" Url="html/P_NodaTime_LocalDateTime_TickOfDay.htm" />
-  <HelpKINode Title="LocalDateTime.TickOfSecond property" Url="html/P_NodaTime_LocalDateTime_TickOfSecond.htm" />
-  <HelpKINode Title="LocalDateTime.TimeOfDay property" Url="html/P_NodaTime_LocalDateTime_TimeOfDay.htm" />
-  <HelpKINode Title="LocalDateTime.ToDateTimeUnspecified method" Url="html/M_NodaTime_LocalDateTime_ToDateTimeUnspecified.htm" />
-  <HelpKINode Title="LocalDateTime.ToString method" Url="html/Overload_NodaTime_LocalDateTime_ToString.htm" />
-  <HelpKINode Title="LocalDateTime.With method" Url="html/Overload_NodaTime_LocalDateTime_With.htm" />
-  <HelpKINode Title="LocalDateTime.WithCalendar method" Url="html/M_NodaTime_LocalDateTime_WithCalendar.htm" />
-  <HelpKINode Title="LocalDateTime.WithOffset method" Url="html/M_NodaTime_LocalDateTime_WithOffset.htm" />
-  <HelpKINode Title="LocalDateTime.Year property" Url="html/P_NodaTime_LocalDateTime_Year.htm" />
-  <HelpKINode Title="LocalDateTime.YearOfEra property" Url="html/P_NodaTime_LocalDateTime_YearOfEra.htm" />
   <HelpKINode Title="LocalSystemClock class">
     <HelpKINode Title="LocalSystemClock Class" Url="html/T_ElevatorApp_Util_LocalSystemClock.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_LocalSystemClock.htm" />
@@ -1523,57 +872,6 @@
   </HelpKINode>
   <HelpKINode Title="LocalSystemClock.GetCurrentInstant method" Url="html/M_ElevatorApp_Util_LocalSystemClock_GetCurrentInstant.htm" />
   <HelpKINode Title="LocalSystemClock.Instance property" Url="html/P_ElevatorApp_Util_LocalSystemClock_Instance.htm" />
-  <HelpKINode Title="LocalTime structure">
-    <HelpKINode Title="LocalTime Structure" Url="html/T_NodaTime_LocalTime.htm" />
-    <HelpKINode Title="constructor" Url="html/Overload_NodaTime_LocalTime__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_LocalTime.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_LocalTime.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_LocalTime.htm" />
-  </HelpKINode>
-  <HelpKINode Title="LocalTime.Add method" Url="html/M_NodaTime_LocalTime_Add.htm" />
-  <HelpKINode Title="LocalTime.Addition operator" Url="html/M_NodaTime_LocalTime_op_Addition.htm" />
-  <HelpKINode Title="LocalTime.ClockHourOfHalfDay property" Url="html/P_NodaTime_LocalTime_ClockHourOfHalfDay.htm" />
-  <HelpKINode Title="LocalTime.CompareTo method" Url="html/M_NodaTime_LocalTime_CompareTo.htm" />
-  <HelpKINode Title="LocalTime.Equality operator" Url="html/M_NodaTime_LocalTime_op_Equality.htm" />
-  <HelpKINode Title="LocalTime.Equals method" Url="html/Overload_NodaTime_LocalTime_Equals.htm" />
-  <HelpKINode Title="LocalTime.FromHourMinuteSecondMillisecondTick method" Url="html/M_NodaTime_LocalTime_FromHourMinuteSecondMillisecondTick.htm" />
-  <HelpKINode Title="LocalTime.FromHourMinuteSecondNanosecond method" Url="html/M_NodaTime_LocalTime_FromHourMinuteSecondNanosecond.htm" />
-  <HelpKINode Title="LocalTime.FromHourMinuteSecondTick method" Url="html/M_NodaTime_LocalTime_FromHourMinuteSecondTick.htm" />
-  <HelpKINode Title="LocalTime.FromMillisecondsSinceMidnight method" Url="html/M_NodaTime_LocalTime_FromMillisecondsSinceMidnight.htm" />
-  <HelpKINode Title="LocalTime.FromSecondsSinceMidnight method" Url="html/M_NodaTime_LocalTime_FromSecondsSinceMidnight.htm" />
-  <HelpKINode Title="LocalTime.FromTicksSinceMidnight method" Url="html/M_NodaTime_LocalTime_FromTicksSinceMidnight.htm" />
-  <HelpKINode Title="LocalTime.GetHashCode method" Url="html/M_NodaTime_LocalTime_GetHashCode.htm" />
-  <HelpKINode Title="LocalTime.GreaterThan operator" Url="html/M_NodaTime_LocalTime_op_GreaterThan.htm" />
-  <HelpKINode Title="LocalTime.GreaterThanOrEqual operator" Url="html/M_NodaTime_LocalTime_op_GreaterThanOrEqual.htm" />
-  <HelpKINode Title="LocalTime.Hour property" Url="html/P_NodaTime_LocalTime_Hour.htm" />
-  <HelpKINode Title="LocalTime.Inequality operator" Url="html/M_NodaTime_LocalTime_op_Inequality.htm" />
-  <HelpKINode Title="LocalTime.LessThan operator" Url="html/M_NodaTime_LocalTime_op_LessThan.htm" />
-  <HelpKINode Title="LocalTime.LessThanOrEqual operator" Url="html/M_NodaTime_LocalTime_op_LessThanOrEqual.htm" />
-  <HelpKINode Title="LocalTime.LocalTime constructor" Url="html/Overload_NodaTime_LocalTime__ctor.htm" />
-  <HelpKINode Title="LocalTime.MaxValue property" Url="html/P_NodaTime_LocalTime_MaxValue.htm" />
-  <HelpKINode Title="LocalTime.Midnight property" Url="html/P_NodaTime_LocalTime_Midnight.htm" />
-  <HelpKINode Title="LocalTime.Millisecond property" Url="html/P_NodaTime_LocalTime_Millisecond.htm" />
-  <HelpKINode Title="LocalTime.Minus method" Url="html/Overload_NodaTime_LocalTime_Minus.htm" />
-  <HelpKINode Title="LocalTime.Minute property" Url="html/P_NodaTime_LocalTime_Minute.htm" />
-  <HelpKINode Title="LocalTime.MinValue property" Url="html/P_NodaTime_LocalTime_MinValue.htm" />
-  <HelpKINode Title="LocalTime.NanosecondOfDay property" Url="html/P_NodaTime_LocalTime_NanosecondOfDay.htm" />
-  <HelpKINode Title="LocalTime.NanosecondOfSecond property" Url="html/P_NodaTime_LocalTime_NanosecondOfSecond.htm" />
-  <HelpKINode Title="LocalTime.Noon property" Url="html/P_NodaTime_LocalTime_Noon.htm" />
-  <HelpKINode Title="LocalTime.On method" Url="html/M_NodaTime_LocalTime_On.htm" />
-  <HelpKINode Title="LocalTime.Plus method" Url="html/M_NodaTime_LocalTime_Plus.htm" />
-  <HelpKINode Title="LocalTime.PlusHours method" Url="html/M_NodaTime_LocalTime_PlusHours.htm" />
-  <HelpKINode Title="LocalTime.PlusMilliseconds method" Url="html/M_NodaTime_LocalTime_PlusMilliseconds.htm" />
-  <HelpKINode Title="LocalTime.PlusMinutes method" Url="html/M_NodaTime_LocalTime_PlusMinutes.htm" />
-  <HelpKINode Title="LocalTime.PlusNanoseconds method" Url="html/M_NodaTime_LocalTime_PlusNanoseconds.htm" />
-  <HelpKINode Title="LocalTime.PlusSeconds method" Url="html/M_NodaTime_LocalTime_PlusSeconds.htm" />
-  <HelpKINode Title="LocalTime.PlusTicks method" Url="html/M_NodaTime_LocalTime_PlusTicks.htm" />
-  <HelpKINode Title="LocalTime.Second property" Url="html/P_NodaTime_LocalTime_Second.htm" />
-  <HelpKINode Title="LocalTime.Subtract method" Url="html/Overload_NodaTime_LocalTime_Subtract.htm" />
-  <HelpKINode Title="LocalTime.Subtraction operator" Url="html/Overload_NodaTime_LocalTime_op_Subtraction.htm" />
-  <HelpKINode Title="LocalTime.TickOfDay property" Url="html/P_NodaTime_LocalTime_TickOfDay.htm" />
-  <HelpKINode Title="LocalTime.TickOfSecond property" Url="html/P_NodaTime_LocalTime_TickOfSecond.htm" />
-  <HelpKINode Title="LocalTime.ToString method" Url="html/Overload_NodaTime_LocalTime_ToString.htm" />
-  <HelpKINode Title="LocalTime.With method" Url="html/M_NodaTime_LocalTime_With.htm" />
   <HelpKINode Title="LogEvent method">
     <HelpKINode Title="ILogger.LogEvent Method " Url="html/Overload_ElevatorApp_Util_ILogger_LogEvent.htm" />
     <HelpKINode Title="Logger.LogEvent Method " Url="html/M_ElevatorApp_Util_Logger_LogEvent.htm" />
@@ -1601,6 +899,19 @@
   </HelpKINode>
   <HelpKINode Title="LoggerView.InitializeComponent method" Url="html/M_ElevatorApp_Controls_LoggerView_InitializeComponent.htm" />
   <HelpKINode Title="LoggerView.LoggerView constructor" Url="html/M_ElevatorApp_Controls_LoggerView__ctor.htm" />
+  <HelpKINode Title="LongStatistic class">
+    <HelpKINode Title="LongStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_LongStatistic.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_Statistics_LongStatistic__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_Statistics_LongStatistic.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_LongStatistic.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_LongStatistic.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LongStatistic.AddItems method" Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_AddItems.htm" />
+  <HelpKINode Title="LongStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_CalculateAverage.htm" />
+  <HelpKINode Title="LongStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_DivideItems.htm" />
+  <HelpKINode Title="LongStatistic.LongStatistic constructor" Url="html/Overload_ElevatorApp_Util_Statistics_LongStatistic__ctor.htm" />
+  <HelpKINode Title="LongStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_MultiplyItems.htm" />
+  <HelpKINode Title="LongStatistic.SubtractItems method" Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_SubtractItems.htm" />
   <HelpKINode Title="Main method" Url="html/M_ElevatorApp_App_Main.htm" />
   <HelpKINode Title="MainWindow class">
     <HelpKINode Title="MainWindow Class" Url="html/T_ElevatorApp_MainWindow.htm" />
@@ -1612,79 +923,10 @@
   <HelpKINode Title="MainWindow.InitializeComponent method" Url="html/M_ElevatorApp_MainWindow_InitializeComponent.htm" />
   <HelpKINode Title="MainWindow.MainWindow constructor" Url="html/M_ElevatorApp_MainWindow__ctor.htm" />
   <HelpKINode Title="MainWindow.ViewModel property" Url="html/P_ElevatorApp_MainWindow_ViewModel.htm" />
-  <HelpKINode Title="MapLocal method" Url="html/M_NodaTime_DateTimeZone_MapLocal.htm" />
-  <HelpKINode Title="Max method">
-    <HelpKINode Title="Instant.Max Method " Url="html/M_NodaTime_Instant_Max.htm" />
-    <HelpKINode Title="Offset.Max Method " Url="html/M_NodaTime_Offset_Max.htm" />
-  </HelpKINode>
-  <HelpKINode Title="MaxIsoValue property" Url="html/P_NodaTime_LocalDate_MaxIsoValue.htm" />
-  <HelpKINode Title="MaxOffset property" Url="html/P_NodaTime_DateTimeZone_MaxOffset.htm" />
-  <HelpKINode Title="MaxValue field" Url="html/F_NodaTime_Offset_MaxValue.htm" />
-  <HelpKINode Title="MaxValue property">
-    <HelpKINode Title="Duration.MaxValue Property " Url="html/P_NodaTime_Duration_MaxValue.htm" />
-    <HelpKINode Title="Instant.MaxValue Property " Url="html/P_NodaTime_Instant_MaxValue.htm" />
-    <HelpKINode Title="LocalTime.MaxValue Property " Url="html/P_NodaTime_LocalTime_MaxValue.htm" />
-  </HelpKINode>
-  <HelpKINode Title="MaxYear property" Url="html/P_NodaTime_CalendarSystem_MaxYear.htm" />
-  <HelpKINode Title="Midnight property" Url="html/P_NodaTime_LocalTime_Midnight.htm" />
-  <HelpKINode Title="Millisecond property">
-    <HelpKINode Title="LocalDateTime.Millisecond Property " Url="html/P_NodaTime_LocalDateTime_Millisecond.htm" />
-    <HelpKINode Title="LocalTime.Millisecond Property " Url="html/P_NodaTime_LocalTime_Millisecond.htm" />
-    <HelpKINode Title="OffsetDateTime.Millisecond Property " Url="html/P_NodaTime_OffsetDateTime_Millisecond.htm" />
-    <HelpKINode Title="ZonedDateTime.Millisecond Property " Url="html/P_NodaTime_ZonedDateTime_Millisecond.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Milliseconds enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Milliseconds property">
-    <HelpKINode Title="Duration.Milliseconds Property " Url="html/P_NodaTime_Duration_Milliseconds.htm" />
-    <HelpKINode Title="Offset.Milliseconds Property " Url="html/P_NodaTime_Offset_Milliseconds.htm" />
-    <HelpKINode Title="Period.Milliseconds Property " Url="html/P_NodaTime_Period_Milliseconds.htm" />
-    <HelpKINode Title="PeriodBuilder.Milliseconds Property " Url="html/P_NodaTime_PeriodBuilder_Milliseconds.htm" />
-  </HelpKINode>
-  <HelpKINode Title="MillisecondsPerDay field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerDay.htm" />
-  <HelpKINode Title="MillisecondsPerHour field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerHour.htm" />
-  <HelpKINode Title="MillisecondsPerMinute field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerMinute.htm" />
-  <HelpKINode Title="MillisecondsPerSecond field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerSecond.htm" />
-  <HelpKINode Title="MillisecondsPerWeek field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerWeek.htm" />
-  <HelpKINode Title="Min method">
-    <HelpKINode Title="Instant.Min Method " Url="html/M_NodaTime_Instant_Min.htm" />
-    <HelpKINode Title="Offset.Min Method " Url="html/M_NodaTime_Offset_Min.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Max property" Url="html/P_ElevatorApp_Util_Statistic_2_Max.htm" />
+  <HelpKINode Title="Min property" Url="html/P_ElevatorApp_Util_Statistic_2_Min.htm" />
   <HelpKINode Title="MinByOrDefault(Of T, TKey) method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
   <HelpKINode Title="MinByOrDefault&lt;T, TKey&gt; method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
-  <HelpKINode Title="MinIsoValue property" Url="html/P_NodaTime_LocalDate_MinIsoValue.htm" />
-  <HelpKINode Title="MinOffset property" Url="html/P_NodaTime_DateTimeZone_MinOffset.htm" />
-  <HelpKINode Title="Minus method">
-    <HelpKINode Title="Duration.Minus Method " Url="html/M_NodaTime_Duration_Minus.htm" />
-    <HelpKINode Title="Instant.Minus Method " Url="html/Overload_NodaTime_Instant_Minus.htm" />
-    <HelpKINode Title="LocalDate.Minus Method " Url="html/Overload_NodaTime_LocalDate_Minus.htm" />
-    <HelpKINode Title="LocalDateTime.Minus Method " Url="html/Overload_NodaTime_LocalDateTime_Minus.htm" />
-    <HelpKINode Title="LocalTime.Minus Method " Url="html/Overload_NodaTime_LocalTime_Minus.htm" />
-    <HelpKINode Title="Offset.Minus Method " Url="html/M_NodaTime_Offset_Minus.htm" />
-    <HelpKINode Title="OffsetDateTime.Minus Method " Url="html/Overload_NodaTime_OffsetDateTime_Minus.htm" />
-    <HelpKINode Title="ZonedDateTime.Minus Method " Url="html/Overload_NodaTime_ZonedDateTime_Minus.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Minute property">
-    <HelpKINode Title="LocalDateTime.Minute Property " Url="html/P_NodaTime_LocalDateTime_Minute.htm" />
-    <HelpKINode Title="LocalTime.Minute Property " Url="html/P_NodaTime_LocalTime_Minute.htm" />
-    <HelpKINode Title="OffsetDateTime.Minute Property " Url="html/P_NodaTime_OffsetDateTime_Minute.htm" />
-    <HelpKINode Title="ZonedDateTime.Minute Property " Url="html/P_NodaTime_ZonedDateTime_Minute.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Minutes enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Minutes property">
-    <HelpKINode Title="Duration.Minutes Property " Url="html/P_NodaTime_Duration_Minutes.htm" />
-    <HelpKINode Title="Period.Minutes Property " Url="html/P_NodaTime_Period_Minutes.htm" />
-    <HelpKINode Title="PeriodBuilder.Minutes Property " Url="html/P_NodaTime_PeriodBuilder_Minutes.htm" />
-  </HelpKINode>
-  <HelpKINode Title="MinutesPerDay field" Url="html/F_NodaTime_NodaConstants_MinutesPerDay.htm" />
-  <HelpKINode Title="MinutesPerHour field" Url="html/F_NodaTime_NodaConstants_MinutesPerHour.htm" />
-  <HelpKINode Title="MinutesPerWeek field" Url="html/F_NodaTime_NodaConstants_MinutesPerWeek.htm" />
-  <HelpKINode Title="MinValue field" Url="html/F_NodaTime_Offset_MinValue.htm" />
-  <HelpKINode Title="MinValue property">
-    <HelpKINode Title="Duration.MinValue Property " Url="html/P_NodaTime_Duration_MinValue.htm" />
-    <HelpKINode Title="Instant.MinValue Property " Url="html/P_NodaTime_Instant_MinValue.htm" />
-    <HelpKINode Title="LocalTime.MinValue Property " Url="html/P_NodaTime_LocalTime_MinValue.htm" />
-  </HelpKINode>
-  <HelpKINode Title="MinYear property" Url="html/P_NodaTime_CalendarSystem_MinYear.htm" />
   <HelpKINode Title="ModelBase class">
     <HelpKINode Title="ModelBase Class" Url="html/T_ElevatorApp_Models_ModelBase.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_ModelBase__ctor.htm" />
@@ -1698,139 +940,21 @@
   <HelpKINode Title="ModelBase.PropertyChanged event" Url="html/E_ElevatorApp_Models_ModelBase_PropertyChanged.htm" />
   <HelpKINode Title="ModelBase.SetProperty(Of T) method" Url="html/M_ElevatorApp_Models_ModelBase_SetProperty__1.htm" />
   <HelpKINode Title="ModelBase.SetProperty&lt;T&gt; method" Url="html/M_ElevatorApp_Models_ModelBase_SetProperty__1.htm" />
-  <HelpKINode Title="Monday enumeration member" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-  <HelpKINode Title="Month method" Url="html/M_NodaTime_DateAdjusters_Month.htm" />
-  <HelpKINode Title="Month property">
-    <HelpKINode Title="AnnualDate.Month Property " Url="html/P_NodaTime_AnnualDate_Month.htm" />
-    <HelpKINode Title="LocalDate.Month Property " Url="html/P_NodaTime_LocalDate_Month.htm" />
-    <HelpKINode Title="LocalDateTime.Month Property " Url="html/P_NodaTime_LocalDateTime_Month.htm" />
-    <HelpKINode Title="OffsetDateTime.Month Property " Url="html/P_NodaTime_OffsetDateTime_Month.htm" />
-    <HelpKINode Title="ZonedDateTime.Month Property " Url="html/P_NodaTime_ZonedDateTime_Month.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Months enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Months property">
-    <HelpKINode Title="Period.Months Property " Url="html/P_NodaTime_Period_Months.htm" />
-    <HelpKINode Title="PeriodBuilder.Months Property " Url="html/P_NodaTime_PeriodBuilder_Months.htm" />
-  </HelpKINode>
   <HelpKINode Title="Move method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Move.htm" />
-  <HelpKINode Title="Multiply method" Url="html/Overload_NodaTime_Duration_Multiply.htm" />
-  <HelpKINode Title="Multiply operator" Url="html/Overload_NodaTime_Duration_op_Multiply.htm" />
-  <HelpKINode Title="Name property">
-    <HelpKINode Title="CalendarSystem.Name Property " Url="html/P_NodaTime_CalendarSystem_Name.htm" />
-    <HelpKINode Title="Event.Name Property " Url="html/P_ElevatorApp_Util_Event_Name.htm" />
+  <HelpKINode Title="MultiplyItems method">
+    <HelpKINode Title="DecimalStatistic.MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_MultiplyItems.htm" />
+    <HelpKINode Title="DoubleStatistic.MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_MultiplyItems.htm" />
+    <HelpKINode Title="DurationStatistic.MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_MultiplyItems.htm" />
+    <HelpKINode Title="IntStatistic.MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_MultiplyItems.htm" />
+    <HelpKINode Title="LongStatistic.MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_MultiplyItems.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistic_2_MultiplyItems.htm" />
   </HelpKINode>
-  <HelpKINode Title="NanosecondOfDay property">
-    <HelpKINode Title="Duration.NanosecondOfDay Property " Url="html/P_NodaTime_Duration_NanosecondOfDay.htm" />
-    <HelpKINode Title="LocalDateTime.NanosecondOfDay Property " Url="html/P_NodaTime_LocalDateTime_NanosecondOfDay.htm" />
-    <HelpKINode Title="LocalTime.NanosecondOfDay Property " Url="html/P_NodaTime_LocalTime_NanosecondOfDay.htm" />
-    <HelpKINode Title="OffsetDateTime.NanosecondOfDay Property " Url="html/P_NodaTime_OffsetDateTime_NanosecondOfDay.htm" />
-    <HelpKINode Title="ZonedDateTime.NanosecondOfDay Property " Url="html/P_NodaTime_ZonedDateTime_NanosecondOfDay.htm" />
-  </HelpKINode>
-  <HelpKINode Title="NanosecondOfSecond property">
-    <HelpKINode Title="LocalDateTime.NanosecondOfSecond Property " Url="html/P_NodaTime_LocalDateTime_NanosecondOfSecond.htm" />
-    <HelpKINode Title="LocalTime.NanosecondOfSecond Property " Url="html/P_NodaTime_LocalTime_NanosecondOfSecond.htm" />
-    <HelpKINode Title="OffsetDateTime.NanosecondOfSecond Property " Url="html/P_NodaTime_OffsetDateTime_NanosecondOfSecond.htm" />
-    <HelpKINode Title="ZonedDateTime.NanosecondOfSecond Property " Url="html/P_NodaTime_ZonedDateTime_NanosecondOfSecond.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Nanoseconds enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Nanoseconds property">
-    <HelpKINode Title="Offset.Nanoseconds Property " Url="html/P_NodaTime_Offset_Nanoseconds.htm" />
-    <HelpKINode Title="Period.Nanoseconds Property " Url="html/P_NodaTime_Period_Nanoseconds.htm" />
-    <HelpKINode Title="PeriodBuilder.Nanoseconds Property " Url="html/P_NodaTime_PeriodBuilder_Nanoseconds.htm" />
-  </HelpKINode>
-  <HelpKINode Title="NanosecondsPerDay field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerDay.htm" />
-  <HelpKINode Title="NanosecondsPerHour field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerHour.htm" />
-  <HelpKINode Title="NanosecondsPerMillisecond field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerMillisecond.htm" />
-  <HelpKINode Title="NanosecondsPerMinute field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerMinute.htm" />
-  <HelpKINode Title="NanosecondsPerSecond field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerSecond.htm" />
-  <HelpKINode Title="NanosecondsPerTick field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerTick.htm" />
-  <HelpKINode Title="NanosecondsPerWeek field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerWeek.htm" />
-  <HelpKINode Title="Negate method">
-    <HelpKINode Title="Duration.Negate Method " Url="html/M_NodaTime_Duration_Negate.htm" />
-    <HelpKINode Title="Offset.Negate Method " Url="html/M_NodaTime_Offset_Negate.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Next method">
-    <HelpKINode Title="DateAdjusters.Next Method " Url="html/M_NodaTime_DateAdjusters_Next.htm" />
-    <HelpKINode Title="LocalDate.Next Method " Url="html/M_NodaTime_LocalDate_Next.htm" />
-    <HelpKINode Title="LocalDateTime.Next Method " Url="html/M_NodaTime_LocalDateTime_Next.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Name property" Url="html/P_ElevatorApp_Util_Event_Name.htm" />
   <HelpKINode Title="NextFloor property" Url="html/P_ElevatorApp_Models_Elevator_NextFloor.htm" />
-  <HelpKINode Title="NextOrSame method" Url="html/M_NodaTime_DateAdjusters_NextOrSame.htm" />
-  <HelpKINode Title="NodaConstants class">
-    <HelpKINode Title="NodaConstants Class" Url="html/T_NodaTime_NodaConstants.htm" />
-    <HelpKINode Title="fields" Url="html/Fields_T_NodaTime_NodaConstants.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_NodaConstants.htm" />
-  </HelpKINode>
-  <HelpKINode Title="NodaConstants.BclEpoch property" Url="html/P_NodaTime_NodaConstants_BclEpoch.htm" />
-  <HelpKINode Title="NodaConstants.DaysPerWeek field" Url="html/F_NodaTime_NodaConstants_DaysPerWeek.htm" />
-  <HelpKINode Title="NodaConstants.HoursPerDay field" Url="html/F_NodaTime_NodaConstants_HoursPerDay.htm" />
-  <HelpKINode Title="NodaConstants.HoursPerWeek field" Url="html/F_NodaTime_NodaConstants_HoursPerWeek.htm" />
-  <HelpKINode Title="NodaConstants.JulianEpoch property" Url="html/P_NodaTime_NodaConstants_JulianEpoch.htm" />
-  <HelpKINode Title="NodaConstants.MillisecondsPerDay field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerDay.htm" />
-  <HelpKINode Title="NodaConstants.MillisecondsPerHour field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerHour.htm" />
-  <HelpKINode Title="NodaConstants.MillisecondsPerMinute field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerMinute.htm" />
-  <HelpKINode Title="NodaConstants.MillisecondsPerSecond field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerSecond.htm" />
-  <HelpKINode Title="NodaConstants.MillisecondsPerWeek field" Url="html/F_NodaTime_NodaConstants_MillisecondsPerWeek.htm" />
-  <HelpKINode Title="NodaConstants.MinutesPerDay field" Url="html/F_NodaTime_NodaConstants_MinutesPerDay.htm" />
-  <HelpKINode Title="NodaConstants.MinutesPerHour field" Url="html/F_NodaTime_NodaConstants_MinutesPerHour.htm" />
-  <HelpKINode Title="NodaConstants.MinutesPerWeek field" Url="html/F_NodaTime_NodaConstants_MinutesPerWeek.htm" />
-  <HelpKINode Title="NodaConstants.NanosecondsPerDay field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerDay.htm" />
-  <HelpKINode Title="NodaConstants.NanosecondsPerHour field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerHour.htm" />
-  <HelpKINode Title="NodaConstants.NanosecondsPerMillisecond field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerMillisecond.htm" />
-  <HelpKINode Title="NodaConstants.NanosecondsPerMinute field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerMinute.htm" />
-  <HelpKINode Title="NodaConstants.NanosecondsPerSecond field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerSecond.htm" />
-  <HelpKINode Title="NodaConstants.NanosecondsPerTick field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerTick.htm" />
-  <HelpKINode Title="NodaConstants.NanosecondsPerWeek field" Url="html/F_NodaTime_NodaConstants_NanosecondsPerWeek.htm" />
-  <HelpKINode Title="NodaConstants.SecondsPerDay field" Url="html/F_NodaTime_NodaConstants_SecondsPerDay.htm" />
-  <HelpKINode Title="NodaConstants.SecondsPerHour field" Url="html/F_NodaTime_NodaConstants_SecondsPerHour.htm" />
-  <HelpKINode Title="NodaConstants.SecondsPerMinute field" Url="html/F_NodaTime_NodaConstants_SecondsPerMinute.htm" />
-  <HelpKINode Title="NodaConstants.SecondsPerWeek field" Url="html/F_NodaTime_NodaConstants_SecondsPerWeek.htm" />
-  <HelpKINode Title="NodaConstants.TicksPerDay field" Url="html/F_NodaTime_NodaConstants_TicksPerDay.htm" />
-  <HelpKINode Title="NodaConstants.TicksPerHour field" Url="html/F_NodaTime_NodaConstants_TicksPerHour.htm" />
-  <HelpKINode Title="NodaConstants.TicksPerMillisecond field" Url="html/F_NodaTime_NodaConstants_TicksPerMillisecond.htm" />
-  <HelpKINode Title="NodaConstants.TicksPerMinute field" Url="html/F_NodaTime_NodaConstants_TicksPerMinute.htm" />
-  <HelpKINode Title="NodaConstants.TicksPerSecond field" Url="html/F_NodaTime_NodaConstants_TicksPerSecond.htm" />
-  <HelpKINode Title="NodaConstants.TicksPerWeek field" Url="html/F_NodaTime_NodaConstants_TicksPerWeek.htm" />
-  <HelpKINode Title="NodaConstants.UnixEpoch property" Url="html/P_NodaTime_NodaConstants_UnixEpoch.htm" />
-  <HelpKINode Title="NodaTime namespace" Url="html/N_NodaTime.htm" />
-  <HelpKINode Title="NodaTime.AmbiguousTimeException class" Url="html/T_NodaTime_AmbiguousTimeException.htm" />
-  <HelpKINode Title="NodaTime.AnnualDate structure" Url="html/T_NodaTime_AnnualDate.htm" />
-  <HelpKINode Title="NodaTime.CalendarSystem class" Url="html/T_NodaTime_CalendarSystem.htm" />
-  <HelpKINode Title="NodaTime.DateAdjusters class" Url="html/T_NodaTime_DateAdjusters.htm" />
-  <HelpKINode Title="NodaTime.DateInterval class" Url="html/T_NodaTime_DateInterval.htm" />
-  <HelpKINode Title="NodaTime.DateTimeZone class" Url="html/T_NodaTime_DateTimeZone.htm" />
-  <HelpKINode Title="NodaTime.DateTimeZoneProviders class" Url="html/T_NodaTime_DateTimeZoneProviders.htm" />
-  <HelpKINode Title="NodaTime.Duration structure" Url="html/T_NodaTime_Duration.htm" />
-  <HelpKINode Title="NodaTime.IClock interface" Url="html/T_NodaTime_IClock.htm" />
-  <HelpKINode Title="NodaTime.IDateTimeZoneProvider interface" Url="html/T_NodaTime_IDateTimeZoneProvider.htm" />
-  <HelpKINode Title="NodaTime.Instant structure" Url="html/T_NodaTime_Instant.htm" />
-  <HelpKINode Title="NodaTime.Interval structure" Url="html/T_NodaTime_Interval.htm" />
-  <HelpKINode Title="NodaTime.IsoDayOfWeek enumeration" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-  <HelpKINode Title="NodaTime.LocalDate structure" Url="html/T_NodaTime_LocalDate.htm" />
-  <HelpKINode Title="NodaTime.LocalDateTime structure" Url="html/T_NodaTime_LocalDateTime.htm" />
-  <HelpKINode Title="NodaTime.LocalTime structure" Url="html/T_NodaTime_LocalTime.htm" />
-  <HelpKINode Title="NodaTime.NodaConstants class" Url="html/T_NodaTime_NodaConstants.htm" />
-  <HelpKINode Title="NodaTime.Offset structure" Url="html/T_NodaTime_Offset.htm" />
-  <HelpKINode Title="NodaTime.OffsetDateTime structure" Url="html/T_NodaTime_OffsetDateTime.htm" />
-  <HelpKINode Title="NodaTime.OffsetDateTime.Comparer class" Url="html/T_NodaTime_OffsetDateTime_Comparer.htm" />
-  <HelpKINode Title="NodaTime.Period class" Url="html/T_NodaTime_Period.htm" />
-  <HelpKINode Title="NodaTime.PeriodBuilder class" Url="html/T_NodaTime_PeriodBuilder.htm" />
-  <HelpKINode Title="NodaTime.PeriodUnits enumeration" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="NodaTime.SkippedTimeException class" Url="html/T_NodaTime_SkippedTimeException.htm" />
-  <HelpKINode Title="NodaTime.SystemClock class" Url="html/T_NodaTime_SystemClock.htm" />
-  <HelpKINode Title="NodaTime.TimeAdjusters class" Url="html/T_NodaTime_TimeAdjusters.htm" />
-  <HelpKINode Title="NodaTime.ZonedClock class" Url="html/T_NodaTime_ZonedClock.htm" />
-  <HelpKINode Title="NodaTime.ZonedDateTime structure" Url="html/T_NodaTime_ZonedDateTime.htm" />
-  <HelpKINode Title="NodaTime.ZonedDateTime.Comparer class" Url="html/T_NodaTime_ZonedDateTime_Comparer.htm" />
   <HelpKINode Title="None enumeration member">
     <HelpKINode Title="Direction Enumeration" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
     <HelpKINode Title="ElevatorDirection Enumeration" Url="html/T_ElevatorApp_Models_Enums_ElevatorDirection.htm" />
-    <HelpKINode Title="IsoDayOfWeek Enumeration" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-    <HelpKINode Title="PeriodUnits Enumeration" Url="html/T_NodaTime_PeriodUnits.htm" />
   </HelpKINode>
-  <HelpKINode Title="Noon property" Url="html/P_NodaTime_LocalTime_Noon.htm" />
-  <HelpKINode Title="Normalize method" Url="html/M_NodaTime_Period_Normalize.htm" />
-  <HelpKINode Title="NormalizingEqualityComparer property" Url="html/P_NodaTime_Period_NormalizingEqualityComparer.htm" />
   <HelpKINode Title="ObservableConcurrentQueue(Of T) class">
     <HelpKINode Title="ObservableConcurrentQueue(T) Class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
     <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm" />
@@ -1863,113 +987,6 @@
   <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.PropertyChanged event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_PropertyChanged.htm" />
   <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.TryDequeue method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryDequeue.htm" />
   <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.TryPeek method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryPeek.htm" />
-  <HelpKINode Title="Offset property">
-    <HelpKINode Title="OffsetDateTime.Offset Property " Url="html/P_NodaTime_OffsetDateTime_Offset.htm" />
-    <HelpKINode Title="ZonedDateTime.Offset Property " Url="html/P_NodaTime_ZonedDateTime_Offset.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Offset structure">
-    <HelpKINode Title="Offset Structure" Url="html/T_NodaTime_Offset.htm" />
-    <HelpKINode Title="fields" Url="html/Fields_T_NodaTime_Offset.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_Offset.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_Offset.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_Offset.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Offset.Add method" Url="html/M_NodaTime_Offset_Add.htm" />
-  <HelpKINode Title="Offset.Addition operator" Url="html/M_NodaTime_Offset_op_Addition.htm" />
-  <HelpKINode Title="Offset.CompareTo method" Url="html/M_NodaTime_Offset_CompareTo.htm" />
-  <HelpKINode Title="Offset.Equality operator" Url="html/M_NodaTime_Offset_op_Equality.htm" />
-  <HelpKINode Title="Offset.Equals method" Url="html/Overload_NodaTime_Offset_Equals.htm" />
-  <HelpKINode Title="Offset.FromHours method" Url="html/M_NodaTime_Offset_FromHours.htm" />
-  <HelpKINode Title="Offset.FromHoursAndMinutes method" Url="html/M_NodaTime_Offset_FromHoursAndMinutes.htm" />
-  <HelpKINode Title="Offset.FromMilliseconds method" Url="html/M_NodaTime_Offset_FromMilliseconds.htm" />
-  <HelpKINode Title="Offset.FromNanoseconds method" Url="html/M_NodaTime_Offset_FromNanoseconds.htm" />
-  <HelpKINode Title="Offset.FromSeconds method" Url="html/M_NodaTime_Offset_FromSeconds.htm" />
-  <HelpKINode Title="Offset.FromTicks method" Url="html/M_NodaTime_Offset_FromTicks.htm" />
-  <HelpKINode Title="Offset.FromTimeSpan method" Url="html/M_NodaTime_Offset_FromTimeSpan.htm" />
-  <HelpKINode Title="Offset.GetHashCode method" Url="html/M_NodaTime_Offset_GetHashCode.htm" />
-  <HelpKINode Title="Offset.GreaterThan operator" Url="html/M_NodaTime_Offset_op_GreaterThan.htm" />
-  <HelpKINode Title="Offset.GreaterThanOrEqual operator" Url="html/M_NodaTime_Offset_op_GreaterThanOrEqual.htm" />
-  <HelpKINode Title="Offset.Inequality operator" Url="html/M_NodaTime_Offset_op_Inequality.htm" />
-  <HelpKINode Title="Offset.LessThan operator" Url="html/M_NodaTime_Offset_op_LessThan.htm" />
-  <HelpKINode Title="Offset.LessThanOrEqual operator" Url="html/M_NodaTime_Offset_op_LessThanOrEqual.htm" />
-  <HelpKINode Title="Offset.Max method" Url="html/M_NodaTime_Offset_Max.htm" />
-  <HelpKINode Title="Offset.MaxValue field" Url="html/F_NodaTime_Offset_MaxValue.htm" />
-  <HelpKINode Title="Offset.Milliseconds property" Url="html/P_NodaTime_Offset_Milliseconds.htm" />
-  <HelpKINode Title="Offset.Min method" Url="html/M_NodaTime_Offset_Min.htm" />
-  <HelpKINode Title="Offset.Minus method" Url="html/M_NodaTime_Offset_Minus.htm" />
-  <HelpKINode Title="Offset.MinValue field" Url="html/F_NodaTime_Offset_MinValue.htm" />
-  <HelpKINode Title="Offset.Nanoseconds property" Url="html/P_NodaTime_Offset_Nanoseconds.htm" />
-  <HelpKINode Title="Offset.Negate method" Url="html/M_NodaTime_Offset_Negate.htm" />
-  <HelpKINode Title="Offset.Plus method" Url="html/M_NodaTime_Offset_Plus.htm" />
-  <HelpKINode Title="Offset.Seconds property" Url="html/P_NodaTime_Offset_Seconds.htm" />
-  <HelpKINode Title="Offset.Subtract method" Url="html/M_NodaTime_Offset_Subtract.htm" />
-  <HelpKINode Title="Offset.Subtraction operator" Url="html/M_NodaTime_Offset_op_Subtraction.htm" />
-  <HelpKINode Title="Offset.Ticks property" Url="html/P_NodaTime_Offset_Ticks.htm" />
-  <HelpKINode Title="Offset.ToString method" Url="html/Overload_NodaTime_Offset_ToString.htm" />
-  <HelpKINode Title="Offset.ToTimeSpan method" Url="html/M_NodaTime_Offset_ToTimeSpan.htm" />
-  <HelpKINode Title="Offset.UnaryNegation operator" Url="html/M_NodaTime_Offset_op_UnaryNegation.htm" />
-  <HelpKINode Title="Offset.UnaryPlus operator" Url="html/M_NodaTime_Offset_op_UnaryPlus.htm" />
-  <HelpKINode Title="Offset.Zero field" Url="html/F_NodaTime_Offset_Zero.htm" />
-  <HelpKINode Title="OffsetDateTime structure">
-    <HelpKINode Title="OffsetDateTime Structure" Url="html/T_NodaTime_OffsetDateTime.htm" />
-    <HelpKINode Title="constructor" Url="html/M_NodaTime_OffsetDateTime__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_OffsetDateTime.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_OffsetDateTime.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_OffsetDateTime.htm" />
-  </HelpKINode>
-  <HelpKINode Title="OffsetDateTime.Add method" Url="html/M_NodaTime_OffsetDateTime_Add.htm" />
-  <HelpKINode Title="OffsetDateTime.Addition operator" Url="html/M_NodaTime_OffsetDateTime_op_Addition.htm" />
-  <HelpKINode Title="OffsetDateTime.Calendar property" Url="html/P_NodaTime_OffsetDateTime_Calendar.htm" />
-  <HelpKINode Title="OffsetDateTime.ClockHourOfHalfDay property" Url="html/P_NodaTime_OffsetDateTime_ClockHourOfHalfDay.htm" />
-  <HelpKINode Title="OffsetDateTime.Comparer class" Url="html/T_NodaTime_OffsetDateTime_Comparer.htm" />
-  <HelpKINode Title="OffsetDateTime.Comparer.Compare method" Url="html/M_NodaTime_OffsetDateTime_Comparer_Compare.htm" />
-  <HelpKINode Title="OffsetDateTime.Comparer.Equals method" Url="html/Overload_NodaTime_OffsetDateTime_Comparer_Equals.htm" />
-  <HelpKINode Title="OffsetDateTime.Comparer.GetHashCode method" Url="html/Overload_NodaTime_OffsetDateTime_Comparer_GetHashCode.htm" />
-  <HelpKINode Title="OffsetDateTime.Comparer.Instant property" Url="html/P_NodaTime_OffsetDateTime_Comparer_Instant.htm" />
-  <HelpKINode Title="OffsetDateTime.Comparer.Local property" Url="html/P_NodaTime_OffsetDateTime_Comparer_Local.htm" />
-  <HelpKINode Title="OffsetDateTime.Date property" Url="html/P_NodaTime_OffsetDateTime_Date.htm" />
-  <HelpKINode Title="OffsetDateTime.Day property" Url="html/P_NodaTime_OffsetDateTime_Day.htm" />
-  <HelpKINode Title="OffsetDateTime.DayOfWeek property" Url="html/P_NodaTime_OffsetDateTime_DayOfWeek.htm" />
-  <HelpKINode Title="OffsetDateTime.DayOfYear property" Url="html/P_NodaTime_OffsetDateTime_DayOfYear.htm" />
-  <HelpKINode Title="OffsetDateTime.Equality operator" Url="html/M_NodaTime_OffsetDateTime_op_Equality.htm" />
-  <HelpKINode Title="OffsetDateTime.Equals method" Url="html/Overload_NodaTime_OffsetDateTime_Equals.htm" />
-  <HelpKINode Title="OffsetDateTime.Era property" Url="html/P_NodaTime_OffsetDateTime_Era.htm" />
-  <HelpKINode Title="OffsetDateTime.FromDateTimeOffset method" Url="html/M_NodaTime_OffsetDateTime_FromDateTimeOffset.htm" />
-  <HelpKINode Title="OffsetDateTime.GetHashCode method" Url="html/M_NodaTime_OffsetDateTime_GetHashCode.htm" />
-  <HelpKINode Title="OffsetDateTime.Hour property" Url="html/P_NodaTime_OffsetDateTime_Hour.htm" />
-  <HelpKINode Title="OffsetDateTime.Inequality operator" Url="html/M_NodaTime_OffsetDateTime_op_Inequality.htm" />
-  <HelpKINode Title="OffsetDateTime.InFixedZone method" Url="html/M_NodaTime_OffsetDateTime_InFixedZone.htm" />
-  <HelpKINode Title="OffsetDateTime.LocalDateTime property" Url="html/P_NodaTime_OffsetDateTime_LocalDateTime.htm" />
-  <HelpKINode Title="OffsetDateTime.Millisecond property" Url="html/P_NodaTime_OffsetDateTime_Millisecond.htm" />
-  <HelpKINode Title="OffsetDateTime.Minus method" Url="html/Overload_NodaTime_OffsetDateTime_Minus.htm" />
-  <HelpKINode Title="OffsetDateTime.Minute property" Url="html/P_NodaTime_OffsetDateTime_Minute.htm" />
-  <HelpKINode Title="OffsetDateTime.Month property" Url="html/P_NodaTime_OffsetDateTime_Month.htm" />
-  <HelpKINode Title="OffsetDateTime.NanosecondOfDay property" Url="html/P_NodaTime_OffsetDateTime_NanosecondOfDay.htm" />
-  <HelpKINode Title="OffsetDateTime.NanosecondOfSecond property" Url="html/P_NodaTime_OffsetDateTime_NanosecondOfSecond.htm" />
-  <HelpKINode Title="OffsetDateTime.Offset property" Url="html/P_NodaTime_OffsetDateTime_Offset.htm" />
-  <HelpKINode Title="OffsetDateTime.OffsetDateTime constructor" Url="html/M_NodaTime_OffsetDateTime__ctor.htm" />
-  <HelpKINode Title="OffsetDateTime.Plus method" Url="html/M_NodaTime_OffsetDateTime_Plus.htm" />
-  <HelpKINode Title="OffsetDateTime.PlusHours method" Url="html/M_NodaTime_OffsetDateTime_PlusHours.htm" />
-  <HelpKINode Title="OffsetDateTime.PlusMilliseconds method" Url="html/M_NodaTime_OffsetDateTime_PlusMilliseconds.htm" />
-  <HelpKINode Title="OffsetDateTime.PlusMinutes method" Url="html/M_NodaTime_OffsetDateTime_PlusMinutes.htm" />
-  <HelpKINode Title="OffsetDateTime.PlusNanoseconds method" Url="html/M_NodaTime_OffsetDateTime_PlusNanoseconds.htm" />
-  <HelpKINode Title="OffsetDateTime.PlusSeconds method" Url="html/M_NodaTime_OffsetDateTime_PlusSeconds.htm" />
-  <HelpKINode Title="OffsetDateTime.PlusTicks method" Url="html/M_NodaTime_OffsetDateTime_PlusTicks.htm" />
-  <HelpKINode Title="OffsetDateTime.Second property" Url="html/P_NodaTime_OffsetDateTime_Second.htm" />
-  <HelpKINode Title="OffsetDateTime.Subtract method" Url="html/Overload_NodaTime_OffsetDateTime_Subtract.htm" />
-  <HelpKINode Title="OffsetDateTime.Subtraction operator" Url="html/Overload_NodaTime_OffsetDateTime_op_Subtraction.htm" />
-  <HelpKINode Title="OffsetDateTime.TickOfDay property" Url="html/P_NodaTime_OffsetDateTime_TickOfDay.htm" />
-  <HelpKINode Title="OffsetDateTime.TickOfSecond property" Url="html/P_NodaTime_OffsetDateTime_TickOfSecond.htm" />
-  <HelpKINode Title="OffsetDateTime.TimeOfDay property" Url="html/P_NodaTime_OffsetDateTime_TimeOfDay.htm" />
-  <HelpKINode Title="OffsetDateTime.ToDateTimeOffset method" Url="html/M_NodaTime_OffsetDateTime_ToDateTimeOffset.htm" />
-  <HelpKINode Title="OffsetDateTime.ToInstant method" Url="html/M_NodaTime_OffsetDateTime_ToInstant.htm" />
-  <HelpKINode Title="OffsetDateTime.ToString method" Url="html/Overload_NodaTime_OffsetDateTime_ToString.htm" />
-  <HelpKINode Title="OffsetDateTime.With method" Url="html/Overload_NodaTime_OffsetDateTime_With.htm" />
-  <HelpKINode Title="OffsetDateTime.WithCalendar method" Url="html/M_NodaTime_OffsetDateTime_WithCalendar.htm" />
-  <HelpKINode Title="OffsetDateTime.WithOffset method" Url="html/M_NodaTime_OffsetDateTime_WithOffset.htm" />
-  <HelpKINode Title="OffsetDateTime.Year property" Url="html/P_NodaTime_OffsetDateTime_Year.htm" />
-  <HelpKINode Title="OffsetDateTime.YearOfEra property" Url="html/P_NodaTime_OffsetDateTime_YearOfEra.htm" />
-  <HelpKINode Title="On method" Url="html/M_NodaTime_LocalTime_On.htm" />
   <HelpKINode Title="OnActionCompleted event">
     <HelpKINode Title="ButtonBase(T).OnActionCompleted Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnActionCompleted.htm" />
     <HelpKINode Title="IButton(T).OnActionCompleted Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnActionCompleted.htm" />
@@ -2039,139 +1056,6 @@
   <HelpKINode Title="Passengers property" Url="html/P_ElevatorApp_Models_Elevator_Passengers.htm" />
   <HelpKINode Title="PassengerState enumeration" Url="html/T_ElevatorApp_Models_Enums_PassengerState.htm" />
   <HelpKINode Title="Path property" Url="html/P_ElevatorApp_Models_Passenger_Path.htm" />
-  <HelpKINode Title="Period class">
-    <HelpKINode Title="Period Class" Url="html/T_NodaTime_Period.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_Period.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_Period.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_Period.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Period.Addition operator" Url="html/M_NodaTime_Period_op_Addition.htm" />
-  <HelpKINode Title="Period.Between method" Url="html/Overload_NodaTime_Period_Between.htm" />
-  <HelpKINode Title="Period.CreateComparer method" Url="html/M_NodaTime_Period_CreateComparer.htm" />
-  <HelpKINode Title="Period.Days property" Url="html/P_NodaTime_Period_Days.htm" />
-  <HelpKINode Title="Period.Equals method" Url="html/Overload_NodaTime_Period_Equals.htm" />
-  <HelpKINode Title="Period.FromDays method" Url="html/M_NodaTime_Period_FromDays.htm" />
-  <HelpKINode Title="Period.FromHours method" Url="html/M_NodaTime_Period_FromHours.htm" />
-  <HelpKINode Title="Period.FromMilliseconds method" Url="html/M_NodaTime_Period_FromMilliseconds.htm" />
-  <HelpKINode Title="Period.FromMinutes method" Url="html/M_NodaTime_Period_FromMinutes.htm" />
-  <HelpKINode Title="Period.FromMonths method" Url="html/M_NodaTime_Period_FromMonths.htm" />
-  <HelpKINode Title="Period.FromNanoseconds method" Url="html/M_NodaTime_Period_FromNanoseconds.htm" />
-  <HelpKINode Title="Period.FromSeconds method" Url="html/M_NodaTime_Period_FromSeconds.htm" />
-  <HelpKINode Title="Period.FromTicks method" Url="html/M_NodaTime_Period_FromTicks.htm" />
-  <HelpKINode Title="Period.FromWeeks method" Url="html/M_NodaTime_Period_FromWeeks.htm" />
-  <HelpKINode Title="Period.FromYears method" Url="html/M_NodaTime_Period_FromYears.htm" />
-  <HelpKINode Title="Period.GetHashCode method" Url="html/M_NodaTime_Period_GetHashCode.htm" />
-  <HelpKINode Title="Period.HasDateComponent property" Url="html/P_NodaTime_Period_HasDateComponent.htm" />
-  <HelpKINode Title="Period.HasTimeComponent property" Url="html/P_NodaTime_Period_HasTimeComponent.htm" />
-  <HelpKINode Title="Period.Hours property" Url="html/P_NodaTime_Period_Hours.htm" />
-  <HelpKINode Title="Period.Milliseconds property" Url="html/P_NodaTime_Period_Milliseconds.htm" />
-  <HelpKINode Title="Period.Minutes property" Url="html/P_NodaTime_Period_Minutes.htm" />
-  <HelpKINode Title="Period.Months property" Url="html/P_NodaTime_Period_Months.htm" />
-  <HelpKINode Title="Period.Nanoseconds property" Url="html/P_NodaTime_Period_Nanoseconds.htm" />
-  <HelpKINode Title="Period.Normalize method" Url="html/M_NodaTime_Period_Normalize.htm" />
-  <HelpKINode Title="Period.NormalizingEqualityComparer property" Url="html/P_NodaTime_Period_NormalizingEqualityComparer.htm" />
-  <HelpKINode Title="Period.Seconds property" Url="html/P_NodaTime_Period_Seconds.htm" />
-  <HelpKINode Title="Period.Subtraction operator" Url="html/M_NodaTime_Period_op_Subtraction.htm" />
-  <HelpKINode Title="Period.Ticks property" Url="html/P_NodaTime_Period_Ticks.htm" />
-  <HelpKINode Title="Period.ToBuilder method" Url="html/M_NodaTime_Period_ToBuilder.htm" />
-  <HelpKINode Title="Period.ToDuration method" Url="html/M_NodaTime_Period_ToDuration.htm" />
-  <HelpKINode Title="Period.ToString method" Url="html/M_NodaTime_Period_ToString.htm" />
-  <HelpKINode Title="Period.Weeks property" Url="html/P_NodaTime_Period_Weeks.htm" />
-  <HelpKINode Title="Period.Years property" Url="html/P_NodaTime_Period_Years.htm" />
-  <HelpKINode Title="Period.Zero property" Url="html/P_NodaTime_Period_Zero.htm" />
-  <HelpKINode Title="PeriodBuilder class">
-    <HelpKINode Title="PeriodBuilder Class" Url="html/T_NodaTime_PeriodBuilder.htm" />
-    <HelpKINode Title="constructor" Url="html/Overload_NodaTime_PeriodBuilder__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_PeriodBuilder.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_PeriodBuilder.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PeriodBuilder.Build method" Url="html/M_NodaTime_PeriodBuilder_Build.htm" />
-  <HelpKINode Title="PeriodBuilder.Days property" Url="html/P_NodaTime_PeriodBuilder_Days.htm" />
-  <HelpKINode Title="PeriodBuilder.Hours property" Url="html/P_NodaTime_PeriodBuilder_Hours.htm" />
-  <HelpKINode Title="PeriodBuilder.Item property" Url="html/P_NodaTime_PeriodBuilder_Item.htm" />
-  <HelpKINode Title="PeriodBuilder.Milliseconds property" Url="html/P_NodaTime_PeriodBuilder_Milliseconds.htm" />
-  <HelpKINode Title="PeriodBuilder.Minutes property" Url="html/P_NodaTime_PeriodBuilder_Minutes.htm" />
-  <HelpKINode Title="PeriodBuilder.Months property" Url="html/P_NodaTime_PeriodBuilder_Months.htm" />
-  <HelpKINode Title="PeriodBuilder.Nanoseconds property" Url="html/P_NodaTime_PeriodBuilder_Nanoseconds.htm" />
-  <HelpKINode Title="PeriodBuilder.PeriodBuilder constructor" Url="html/Overload_NodaTime_PeriodBuilder__ctor.htm" />
-  <HelpKINode Title="PeriodBuilder.Seconds property" Url="html/P_NodaTime_PeriodBuilder_Seconds.htm" />
-  <HelpKINode Title="PeriodBuilder.Ticks property" Url="html/P_NodaTime_PeriodBuilder_Ticks.htm" />
-  <HelpKINode Title="PeriodBuilder.Weeks property" Url="html/P_NodaTime_PeriodBuilder_Weeks.htm" />
-  <HelpKINode Title="PeriodBuilder.Years property" Url="html/P_NodaTime_PeriodBuilder_Years.htm" />
-  <HelpKINode Title="PeriodUnits enumeration" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="PersianArithmetic property" Url="html/P_NodaTime_CalendarSystem_PersianArithmetic.htm" />
-  <HelpKINode Title="PersianAstronomical property" Url="html/P_NodaTime_CalendarSystem_PersianAstronomical.htm" />
-  <HelpKINode Title="PersianSimple property" Url="html/P_NodaTime_CalendarSystem_PersianSimple.htm" />
-  <HelpKINode Title="Plus method">
-    <HelpKINode Title="Duration.Plus Method " Url="html/M_NodaTime_Duration_Plus.htm" />
-    <HelpKINode Title="Instant.Plus Method " Url="html/M_NodaTime_Instant_Plus.htm" />
-    <HelpKINode Title="LocalDate.Plus Method " Url="html/M_NodaTime_LocalDate_Plus.htm" />
-    <HelpKINode Title="LocalDateTime.Plus Method " Url="html/M_NodaTime_LocalDateTime_Plus.htm" />
-    <HelpKINode Title="LocalTime.Plus Method " Url="html/M_NodaTime_LocalTime_Plus.htm" />
-    <HelpKINode Title="Offset.Plus Method " Url="html/M_NodaTime_Offset_Plus.htm" />
-    <HelpKINode Title="OffsetDateTime.Plus Method " Url="html/M_NodaTime_OffsetDateTime_Plus.htm" />
-    <HelpKINode Title="ZonedDateTime.Plus Method " Url="html/M_NodaTime_ZonedDateTime_Plus.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusDays method">
-    <HelpKINode Title="LocalDate.PlusDays Method " Url="html/M_NodaTime_LocalDate_PlusDays.htm" />
-    <HelpKINode Title="LocalDateTime.PlusDays Method " Url="html/M_NodaTime_LocalDateTime_PlusDays.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusHours method">
-    <HelpKINode Title="LocalDateTime.PlusHours Method " Url="html/M_NodaTime_LocalDateTime_PlusHours.htm" />
-    <HelpKINode Title="LocalTime.PlusHours Method " Url="html/M_NodaTime_LocalTime_PlusHours.htm" />
-    <HelpKINode Title="OffsetDateTime.PlusHours Method " Url="html/M_NodaTime_OffsetDateTime_PlusHours.htm" />
-    <HelpKINode Title="ZonedDateTime.PlusHours Method " Url="html/M_NodaTime_ZonedDateTime_PlusHours.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusMilliseconds method">
-    <HelpKINode Title="LocalDateTime.PlusMilliseconds Method " Url="html/M_NodaTime_LocalDateTime_PlusMilliseconds.htm" />
-    <HelpKINode Title="LocalTime.PlusMilliseconds Method " Url="html/M_NodaTime_LocalTime_PlusMilliseconds.htm" />
-    <HelpKINode Title="OffsetDateTime.PlusMilliseconds Method " Url="html/M_NodaTime_OffsetDateTime_PlusMilliseconds.htm" />
-    <HelpKINode Title="ZonedDateTime.PlusMilliseconds Method " Url="html/M_NodaTime_ZonedDateTime_PlusMilliseconds.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusMinutes method">
-    <HelpKINode Title="LocalDateTime.PlusMinutes Method " Url="html/M_NodaTime_LocalDateTime_PlusMinutes.htm" />
-    <HelpKINode Title="LocalTime.PlusMinutes Method " Url="html/M_NodaTime_LocalTime_PlusMinutes.htm" />
-    <HelpKINode Title="OffsetDateTime.PlusMinutes Method " Url="html/M_NodaTime_OffsetDateTime_PlusMinutes.htm" />
-    <HelpKINode Title="ZonedDateTime.PlusMinutes Method " Url="html/M_NodaTime_ZonedDateTime_PlusMinutes.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusMonths method">
-    <HelpKINode Title="LocalDate.PlusMonths Method " Url="html/M_NodaTime_LocalDate_PlusMonths.htm" />
-    <HelpKINode Title="LocalDateTime.PlusMonths Method " Url="html/M_NodaTime_LocalDateTime_PlusMonths.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusNanoseconds method">
-    <HelpKINode Title="Instant.PlusNanoseconds Method " Url="html/M_NodaTime_Instant_PlusNanoseconds.htm" />
-    <HelpKINode Title="LocalDateTime.PlusNanoseconds Method " Url="html/M_NodaTime_LocalDateTime_PlusNanoseconds.htm" />
-    <HelpKINode Title="LocalTime.PlusNanoseconds Method " Url="html/M_NodaTime_LocalTime_PlusNanoseconds.htm" />
-    <HelpKINode Title="OffsetDateTime.PlusNanoseconds Method " Url="html/M_NodaTime_OffsetDateTime_PlusNanoseconds.htm" />
-    <HelpKINode Title="ZonedDateTime.PlusNanoseconds Method " Url="html/M_NodaTime_ZonedDateTime_PlusNanoseconds.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusSeconds method">
-    <HelpKINode Title="LocalDateTime.PlusSeconds Method " Url="html/M_NodaTime_LocalDateTime_PlusSeconds.htm" />
-    <HelpKINode Title="LocalTime.PlusSeconds Method " Url="html/M_NodaTime_LocalTime_PlusSeconds.htm" />
-    <HelpKINode Title="OffsetDateTime.PlusSeconds Method " Url="html/M_NodaTime_OffsetDateTime_PlusSeconds.htm" />
-    <HelpKINode Title="ZonedDateTime.PlusSeconds Method " Url="html/M_NodaTime_ZonedDateTime_PlusSeconds.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusTicks method">
-    <HelpKINode Title="Instant.PlusTicks Method " Url="html/M_NodaTime_Instant_PlusTicks.htm" />
-    <HelpKINode Title="LocalDateTime.PlusTicks Method " Url="html/M_NodaTime_LocalDateTime_PlusTicks.htm" />
-    <HelpKINode Title="LocalTime.PlusTicks Method " Url="html/M_NodaTime_LocalTime_PlusTicks.htm" />
-    <HelpKINode Title="OffsetDateTime.PlusTicks Method " Url="html/M_NodaTime_OffsetDateTime_PlusTicks.htm" />
-    <HelpKINode Title="ZonedDateTime.PlusTicks Method " Url="html/M_NodaTime_ZonedDateTime_PlusTicks.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusWeeks method">
-    <HelpKINode Title="LocalDate.PlusWeeks Method " Url="html/M_NodaTime_LocalDate_PlusWeeks.htm" />
-    <HelpKINode Title="LocalDateTime.PlusWeeks Method " Url="html/M_NodaTime_LocalDateTime_PlusWeeks.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PlusYears method">
-    <HelpKINode Title="LocalDate.PlusYears Method " Url="html/M_NodaTime_LocalDate_PlusYears.htm" />
-    <HelpKINode Title="LocalDateTime.PlusYears Method " Url="html/M_NodaTime_LocalDateTime_PlusYears.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Previous method">
-    <HelpKINode Title="DateAdjusters.Previous Method " Url="html/M_NodaTime_DateAdjusters_Previous.htm" />
-    <HelpKINode Title="LocalDate.Previous Method " Url="html/M_NodaTime_LocalDate_Previous.htm" />
-    <HelpKINode Title="LocalDateTime.Previous Method " Url="html/M_NodaTime_LocalDateTime_Previous.htm" />
-  </HelpKINode>
-  <HelpKINode Title="PreviousOrSame method" Url="html/M_NodaTime_DateAdjusters_PreviousOrSame.htm" />
   <HelpKINode Title="PropertyChanged event">
     <HelpKINode Title="ModelBase.PropertyChanged Event" Url="html/E_ElevatorApp_Models_ModelBase_PropertyChanged.htm" />
     <HelpKINode Title="ObservableConcurrentQueue(T).PropertyChanged Event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_PropertyChanged.htm" />
@@ -2187,8 +1071,8 @@
   <HelpKINode Title="QueuePassenger method" Url="html/M_ElevatorApp_Models_Floor_QueuePassenger.htm" />
   <HelpKINode Title="raise method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_raise.htm" />
   <HelpKINode Title="RelativeSpeed property" Url="html/P_ElevatorApp_Models_Elevator_RelativeSpeed.htm" />
-  <HelpKINode Title="Remove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Remove.htm" />
   <HelpKINode Title="remove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_remove.htm" />
+  <HelpKINode Title="Remove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Remove.htm" />
   <HelpKINode Title="RemoveAt method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_RemoveAt.htm" />
   <HelpKINode Title="RequestButton class">
     <HelpKINode Title="RequestButton Class" Url="html/T_ElevatorApp_Models_RequestButton.htm" />
@@ -2207,32 +1091,28 @@
   <HelpKINode Title="RequestDown enumeration member" Url="html/T_ElevatorApp_Models_Enums_ButtonType.htm" />
   <HelpKINode Title="RequestOpen method" Url="html/M_ElevatorApp_Models_Door_RequestOpen.htm" />
   <HelpKINode Title="RequestUp enumeration member" Url="html/T_ElevatorApp_Models_Enums_ButtonType.htm" />
-  <HelpKINode Title="ResolveLocal method" Url="html/M_NodaTime_DateTimeZone_ResolveLocal.htm" />
-  <HelpKINode Title="Saturday enumeration member" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-  <HelpKINode Title="Second property">
-    <HelpKINode Title="LocalDateTime.Second Property " Url="html/P_NodaTime_LocalDateTime_Second.htm" />
-    <HelpKINode Title="LocalTime.Second Property " Url="html/P_NodaTime_LocalTime_Second.htm" />
-    <HelpKINode Title="OffsetDateTime.Second Property " Url="html/P_NodaTime_OffsetDateTime_Second.htm" />
-    <HelpKINode Title="ZonedDateTime.Second Property " Url="html/P_NodaTime_ZonedDateTime_Second.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Seconds enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Seconds property">
-    <HelpKINode Title="Duration.Seconds Property " Url="html/P_NodaTime_Duration_Seconds.htm" />
-    <HelpKINode Title="Offset.Seconds Property " Url="html/P_NodaTime_Offset_Seconds.htm" />
-    <HelpKINode Title="Period.Seconds Property " Url="html/P_NodaTime_Period_Seconds.htm" />
-    <HelpKINode Title="PeriodBuilder.Seconds Property " Url="html/P_NodaTime_PeriodBuilder_Seconds.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SecondsPerDay field" Url="html/F_NodaTime_NodaConstants_SecondsPerDay.htm" />
-  <HelpKINode Title="SecondsPerHour field" Url="html/F_NodaTime_NodaConstants_SecondsPerHour.htm" />
-  <HelpKINode Title="SecondsPerMinute field" Url="html/F_NodaTime_NodaConstants_SecondsPerMinute.htm" />
-  <HelpKINode Title="SecondsPerWeek field" Url="html/F_NodaTime_NodaConstants_SecondsPerWeek.htm" />
   <HelpKINode Title="SelectedButtonPanel property" Url="html/P_ElevatorApp_SimulatorViewModel_SelectedButtonPanel.htm" />
   <HelpKINode Title="SelectedElevatorNumber property" Url="html/P_ElevatorApp_SimulatorViewModel_SelectedElevatorNumber.htm" />
-  <HelpKINode Title="Serialization property" Url="html/P_NodaTime_DateTimeZoneProviders_Serialization.htm" />
   <HelpKINode Title="SetProperty(Of T) method" Url="html/M_ElevatorApp_Models_ModelBase_SetProperty__1.htm" />
   <HelpKINode Title="SetProperty&lt;T&gt; method" Url="html/M_ElevatorApp_Models_ModelBase_SetProperty__1.htm" />
   <HelpKINode Title="ShouldStop property" Url="html/P_ElevatorApp_Models_ElevatorApproachingEventArgs_ShouldStop.htm" />
   <HelpKINode Title="ShowAddButtons property" Url="html/P_ElevatorApp_Controls_PassengerQueueControl_ShowAddButtons.htm" />
+  <HelpKINode Title="SimpleStatistic(Of T) class">
+    <HelpKINode Title="SimpleStatistic(T) Class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_SimpleStatistic_1__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SimpleStatistic(Of T).SimpleStatistic constructor" Url="html/Overload_ElevatorApp_Util_SimpleStatistic_1__ctor.htm" />
+  <HelpKINode Title="SimpleStatistic&lt;T&gt; class">
+    <HelpKINode Title="SimpleStatistic(T) Class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_SimpleStatistic_1__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SimpleStatistic&lt;T&gt;.SimpleStatistic constructor" Url="html/Overload_ElevatorApp_Util_SimpleStatistic_1__ctor.htm" />
   <HelpKINode Title="SimulatorViewModel class">
     <HelpKINode Title="SimulatorViewModel Class" Url="html/T_ElevatorApp_SimulatorViewModel.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_SimulatorViewModel__ctor.htm" />
@@ -2249,28 +1129,56 @@
   <HelpKINode Title="SimulatorViewModel.SimulatorViewModel constructor" Url="html/M_ElevatorApp_SimulatorViewModel__ctor.htm" />
   <HelpKINode Title="Single enumeration member" Url="html/T_ElevatorApp_Models_Enums_DoorType.htm" />
   <HelpKINode Title="SingleElevator property" Url="html/P_ElevatorApp_Controls_ElevatorShaftControl_SingleElevator.htm" />
-  <HelpKINode Title="SkippedTimeException class">
-    <HelpKINode Title="SkippedTimeException Class" Url="html/T_NodaTime_SkippedTimeException.htm" />
-    <HelpKINode Title="constructor" Url="html/M_NodaTime_SkippedTimeException__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_SkippedTimeException.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_SkippedTimeException.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SkippedTimeException.LocalDateTime property" Url="html/P_NodaTime_SkippedTimeException_LocalDateTime.htm" />
-  <HelpKINode Title="SkippedTimeException.SkippedTimeException constructor" Url="html/M_NodaTime_SkippedTimeException__ctor.htm" />
-  <HelpKINode Title="SkippedTimeException.Zone property" Url="html/P_NodaTime_SkippedTimeException_Zone.htm" />
   <HelpKINode Title="Speed property">
     <HelpKINode Title="Elevator.Speed Property " Url="html/P_ElevatorApp_Models_Elevator_Speed.htm" />
     <HelpKINode Title="ElevatorSettings.Speed Property " Url="html/P_ElevatorApp_Models_ElevatorSettings_Speed.htm" />
   </HelpKINode>
-  <HelpKINode Title="Start property">
-    <HelpKINode Title="DateInterval.Start Property " Url="html/P_NodaTime_DateInterval_Start.htm" />
-    <HelpKINode Title="Interval.Start Property " Url="html/P_NodaTime_Interval_Start.htm" />
-  </HelpKINode>
-  <HelpKINode Title="StartOfMonth property" Url="html/P_NodaTime_DateAdjusters_StartOfMonth.htm" />
   <HelpKINode Title="State property">
     <HelpKINode Title="Elevator.State Property " Url="html/P_ElevatorApp_Models_Elevator_State.htm" />
     <HelpKINode Title="Passenger.State Property " Url="html/P_ElevatorApp_Models_Passenger_State.htm" />
   </HelpKINode>
+  <HelpKINode Title="Statistic(Of TStat, TAggregate) class">
+    <HelpKINode Title="Statistic(TStat, TAggregate) Class" Url="html/T_ElevatorApp_Util_Statistic_2.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_Statistic_2.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_Statistic_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_Statistic_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).Add method" Url="html/M_ElevatorApp_Util_Statistic_2_Add.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).AddItems method" Url="html/M_ElevatorApp_Util_Statistic_2_AddItems.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).AddRange method" Url="html/M_ElevatorApp_Util_Statistic_2_AddRange.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).Average property" Url="html/P_ElevatorApp_Util_Statistic_2_Average.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).CalculateAverage method" Url="html/M_ElevatorApp_Util_Statistic_2_CalculateAverage.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).Count property" Url="html/P_ElevatorApp_Util_Statistic_2_Count.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).DivideItems method" Url="html/M_ElevatorApp_Util_Statistic_2_DivideItems.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).Max property" Url="html/P_ElevatorApp_Util_Statistic_2_Max.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).Min property" Url="html/P_ElevatorApp_Util_Statistic_2_Min.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).MultiplyItems method" Url="html/M_ElevatorApp_Util_Statistic_2_MultiplyItems.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).Statistic constructor" Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).SubtractItems method" Url="html/M_ElevatorApp_Util_Statistic_2_SubtractItems.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).ToString method" Url="html/M_ElevatorApp_Util_Statistic_2_ToString.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate)._collection property" Url="html/P_ElevatorApp_Util_Statistic_2__collection.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt; class">
+    <HelpKINode Title="Statistic(TStat, TAggregate) Class" Url="html/T_ElevatorApp_Util_Statistic_2.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_Statistic_2.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_Statistic_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_Statistic_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Add method" Url="html/M_ElevatorApp_Util_Statistic_2_Add.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.AddItems method" Url="html/M_ElevatorApp_Util_Statistic_2_AddItems.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.AddRange method" Url="html/M_ElevatorApp_Util_Statistic_2_AddRange.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Average property" Url="html/P_ElevatorApp_Util_Statistic_2_Average.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.CalculateAverage method" Url="html/M_ElevatorApp_Util_Statistic_2_CalculateAverage.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Count property" Url="html/P_ElevatorApp_Util_Statistic_2_Count.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.DivideItems method" Url="html/M_ElevatorApp_Util_Statistic_2_DivideItems.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Max property" Url="html/P_ElevatorApp_Util_Statistic_2_Max.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Min property" Url="html/P_ElevatorApp_Util_Statistic_2_Min.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.MultiplyItems method" Url="html/M_ElevatorApp_Util_Statistic_2_MultiplyItems.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Statistic constructor" Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.SubtractItems method" Url="html/M_ElevatorApp_Util_Statistic_2_SubtractItems.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.ToString method" Url="html/M_ElevatorApp_Util_Statistic_2_ToString.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;._collection property" Url="html/P_ElevatorApp_Util_Statistic_2__collection.htm" />
   <HelpKINode Title="Subscribe method">
     <HelpKINode Title="ButtonPanel.Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanel_Subscribe.htm" />
     <HelpKINode Title="ButtonPanelBase.Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanelBase_Subscribe.htm" />
@@ -2291,73 +1199,13 @@
     <HelpKINode Title="FloorButton.Subscribed Property " Url="html/P_ElevatorApp_Models_FloorButton_Subscribed.htm" />
     <HelpKINode Title="ISubcriber(T).Subscribed Property " Url="html/P_ElevatorApp_Models_Interfaces_ISubcriber_1_Subscribed.htm" />
   </HelpKINode>
-  <HelpKINode Title="SubsecondNanoseconds property" Url="html/P_NodaTime_Duration_SubsecondNanoseconds.htm" />
-  <HelpKINode Title="SubsecondTicks property" Url="html/P_NodaTime_Duration_SubsecondTicks.htm" />
-  <HelpKINode Title="Subtract method">
-    <HelpKINode Title="Duration.Subtract Method " Url="html/M_NodaTime_Duration_Subtract.htm" />
-    <HelpKINode Title="Instant.Subtract Method " Url="html/Overload_NodaTime_Instant_Subtract.htm" />
-    <HelpKINode Title="LocalDate.Subtract Method " Url="html/Overload_NodaTime_LocalDate_Subtract.htm" />
-    <HelpKINode Title="LocalDateTime.Subtract Method " Url="html/Overload_NodaTime_LocalDateTime_Subtract.htm" />
-    <HelpKINode Title="LocalTime.Subtract Method " Url="html/Overload_NodaTime_LocalTime_Subtract.htm" />
-    <HelpKINode Title="Offset.Subtract Method " Url="html/M_NodaTime_Offset_Subtract.htm" />
-    <HelpKINode Title="OffsetDateTime.Subtract Method " Url="html/Overload_NodaTime_OffsetDateTime_Subtract.htm" />
-    <HelpKINode Title="ZonedDateTime.Subtract Method " Url="html/Overload_NodaTime_ZonedDateTime_Subtract.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Subtraction operator">
-    <HelpKINode Title="Duration.Subtraction Operator " Url="html/M_NodaTime_Duration_op_Subtraction.htm" />
-    <HelpKINode Title="Instant.Subtraction Operator " Url="html/Overload_NodaTime_Instant_op_Subtraction.htm" />
-    <HelpKINode Title="LocalDate.Subtraction Operator " Url="html/Overload_NodaTime_LocalDate_op_Subtraction.htm" />
-    <HelpKINode Title="LocalDateTime.Subtraction Operator " Url="html/Overload_NodaTime_LocalDateTime_op_Subtraction.htm" />
-    <HelpKINode Title="LocalTime.Subtraction Operator " Url="html/Overload_NodaTime_LocalTime_op_Subtraction.htm" />
-    <HelpKINode Title="Offset.Subtraction Operator " Url="html/M_NodaTime_Offset_op_Subtraction.htm" />
-    <HelpKINode Title="OffsetDateTime.Subtraction Operator " Url="html/Overload_NodaTime_OffsetDateTime_op_Subtraction.htm" />
-    <HelpKINode Title="Period.Subtraction Operator " Url="html/M_NodaTime_Period_op_Subtraction.htm" />
-    <HelpKINode Title="ZonedDateTime.Subtraction Operator " Url="html/Overload_NodaTime_ZonedDateTime_op_Subtraction.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Sunday enumeration member" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-  <HelpKINode Title="SystemClock class">
-    <HelpKINode Title="SystemClock Class" Url="html/T_NodaTime_SystemClock.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_SystemClock.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_SystemClock.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SystemClock.GetCurrentInstant method" Url="html/M_NodaTime_SystemClock_GetCurrentInstant.htm" />
-  <HelpKINode Title="SystemClock.Instance property" Url="html/P_NodaTime_SystemClock_Instance.htm" />
-  <HelpKINode Title="Thursday enumeration member" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-  <HelpKINode Title="TickOfDay property">
-    <HelpKINode Title="LocalDateTime.TickOfDay Property " Url="html/P_NodaTime_LocalDateTime_TickOfDay.htm" />
-    <HelpKINode Title="LocalTime.TickOfDay Property " Url="html/P_NodaTime_LocalTime_TickOfDay.htm" />
-    <HelpKINode Title="OffsetDateTime.TickOfDay Property " Url="html/P_NodaTime_OffsetDateTime_TickOfDay.htm" />
-    <HelpKINode Title="ZonedDateTime.TickOfDay Property " Url="html/P_NodaTime_ZonedDateTime_TickOfDay.htm" />
-  </HelpKINode>
-  <HelpKINode Title="TickOfSecond property">
-    <HelpKINode Title="LocalDateTime.TickOfSecond Property " Url="html/P_NodaTime_LocalDateTime_TickOfSecond.htm" />
-    <HelpKINode Title="LocalTime.TickOfSecond Property " Url="html/P_NodaTime_LocalTime_TickOfSecond.htm" />
-    <HelpKINode Title="OffsetDateTime.TickOfSecond Property " Url="html/P_NodaTime_OffsetDateTime_TickOfSecond.htm" />
-    <HelpKINode Title="ZonedDateTime.TickOfSecond Property " Url="html/P_NodaTime_ZonedDateTime_TickOfSecond.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Ticks enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Ticks property">
-    <HelpKINode Title="Offset.Ticks Property " Url="html/P_NodaTime_Offset_Ticks.htm" />
-    <HelpKINode Title="Period.Ticks Property " Url="html/P_NodaTime_Period_Ticks.htm" />
-    <HelpKINode Title="PeriodBuilder.Ticks Property " Url="html/P_NodaTime_PeriodBuilder_Ticks.htm" />
-  </HelpKINode>
-  <HelpKINode Title="TicksPerDay field" Url="html/F_NodaTime_NodaConstants_TicksPerDay.htm" />
-  <HelpKINode Title="TicksPerHour field" Url="html/F_NodaTime_NodaConstants_TicksPerHour.htm" />
-  <HelpKINode Title="TicksPerMillisecond field" Url="html/F_NodaTime_NodaConstants_TicksPerMillisecond.htm" />
-  <HelpKINode Title="TicksPerMinute field" Url="html/F_NodaTime_NodaConstants_TicksPerMinute.htm" />
-  <HelpKINode Title="TicksPerSecond field" Url="html/F_NodaTime_NodaConstants_TicksPerSecond.htm" />
-  <HelpKINode Title="TicksPerWeek field" Url="html/F_NodaTime_NodaConstants_TicksPerWeek.htm" />
-  <HelpKINode Title="TimeAdjusters class">
-    <HelpKINode Title="TimeAdjusters Class" Url="html/T_NodaTime_TimeAdjusters.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_TimeAdjusters.htm" />
-  </HelpKINode>
-  <HelpKINode Title="TimeAdjusters.TruncateToHour property" Url="html/P_NodaTime_TimeAdjusters_TruncateToHour.htm" />
-  <HelpKINode Title="TimeAdjusters.TruncateToMinute property" Url="html/P_NodaTime_TimeAdjusters_TruncateToMinute.htm" />
-  <HelpKINode Title="TimeAdjusters.TruncateToSecond property" Url="html/P_NodaTime_TimeAdjusters_TruncateToSecond.htm" />
-  <HelpKINode Title="TimeOfDay property">
-    <HelpKINode Title="LocalDateTime.TimeOfDay Property " Url="html/P_NodaTime_LocalDateTime_TimeOfDay.htm" />
-    <HelpKINode Title="OffsetDateTime.TimeOfDay Property " Url="html/P_NodaTime_OffsetDateTime_TimeOfDay.htm" />
-    <HelpKINode Title="ZonedDateTime.TimeOfDay Property " Url="html/P_NodaTime_ZonedDateTime_TimeOfDay.htm" />
+  <HelpKINode Title="SubtractItems method">
+    <HelpKINode Title="DecimalStatistic.SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_SubtractItems.htm" />
+    <HelpKINode Title="DoubleStatistic.SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_SubtractItems.htm" />
+    <HelpKINode Title="DurationStatistic.SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_SubtractItems.htm" />
+    <HelpKINode Title="IntStatistic.SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_SubtractItems.htm" />
+    <HelpKINode Title="LongStatistic.SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_SubtractItems.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistic_2_SubtractItems.htm" />
   </HelpKINode>
   <HelpKINode Title="TimeSpentInElevator property" Url="html/P_ElevatorApp_Models_Passenger_TimeSpentInElevator.htm" />
   <HelpKINode Title="Timestamp property" Url="html/P_ElevatorApp_Util_Event_Timestamp.htm" />
@@ -2365,71 +1213,17 @@
   <HelpKINode Title="TimeWaiting property" Url="html/P_ElevatorApp_Models_Passenger_TimeWaiting.htm" />
   <HelpKINode Title="TIME_SPENT_OPEN_SECONDS field" Url="html/F_ElevatorApp_Models_Door_TIME_SPENT_OPEN_SECONDS.htm" />
   <HelpKINode Title="ToArray method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_ToArray.htm" />
-  <HelpKINode Title="ToBigIntegerNanoseconds method" Url="html/M_NodaTime_Duration_ToBigIntegerNanoseconds.htm" />
-  <HelpKINode Title="ToBuilder method" Url="html/M_NodaTime_Period_ToBuilder.htm" />
-  <HelpKINode Title="ToDateTimeOffset method">
-    <HelpKINode Title="Instant.ToDateTimeOffset Method " Url="html/M_NodaTime_Instant_ToDateTimeOffset.htm" />
-    <HelpKINode Title="OffsetDateTime.ToDateTimeOffset Method " Url="html/M_NodaTime_OffsetDateTime_ToDateTimeOffset.htm" />
-    <HelpKINode Title="ZonedDateTime.ToDateTimeOffset Method " Url="html/M_NodaTime_ZonedDateTime_ToDateTimeOffset.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ToDateTimeUnspecified method">
-    <HelpKINode Title="LocalDate.ToDateTimeUnspecified Method " Url="html/M_NodaTime_LocalDate_ToDateTimeUnspecified.htm" />
-    <HelpKINode Title="LocalDateTime.ToDateTimeUnspecified Method " Url="html/M_NodaTime_LocalDateTime_ToDateTimeUnspecified.htm" />
-    <HelpKINode Title="ZonedDateTime.ToDateTimeUnspecified Method " Url="html/M_NodaTime_ZonedDateTime_ToDateTimeUnspecified.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ToDateTimeUtc method">
-    <HelpKINode Title="Instant.ToDateTimeUtc Method " Url="html/M_NodaTime_Instant_ToDateTimeUtc.htm" />
-    <HelpKINode Title="ZonedDateTime.ToDateTimeUtc Method " Url="html/M_NodaTime_ZonedDateTime_ToDateTimeUtc.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ToDuration method" Url="html/M_NodaTime_Period_ToDuration.htm" />
-  <HelpKINode Title="ToInstant method">
-    <HelpKINode Title="OffsetDateTime.ToInstant Method " Url="html/M_NodaTime_OffsetDateTime_ToInstant.htm" />
-    <HelpKINode Title="ZonedDateTime.ToInstant Method " Url="html/M_NodaTime_ZonedDateTime_ToInstant.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ToInt64Nanoseconds method" Url="html/M_NodaTime_Duration_ToInt64Nanoseconds.htm" />
-  <HelpKINode Title="ToJulianDate method" Url="html/M_NodaTime_Instant_ToJulianDate.htm" />
-  <HelpKINode Title="ToOffsetDateTime method" Url="html/M_NodaTime_ZonedDateTime_ToOffsetDateTime.htm" />
   <HelpKINode Title="ToString method">
-    <HelpKINode Title="AnnualDate.ToString Method " Url="html/M_NodaTime_AnnualDate_ToString.htm" />
     <HelpKINode Title="ButtonBase(T).ToString Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_ToString.htm" />
-    <HelpKINode Title="CalendarSystem.ToString Method " Url="html/M_NodaTime_CalendarSystem_ToString.htm" />
-    <HelpKINode Title="DateInterval.ToString Method " Url="html/M_NodaTime_DateInterval_ToString.htm" />
-    <HelpKINode Title="DateTimeZone.ToString Method " Url="html/M_NodaTime_DateTimeZone_ToString.htm" />
-    <HelpKINode Title="Duration.ToString Method " Url="html/Overload_NodaTime_Duration_ToString.htm" />
     <HelpKINode Title="ElevatorMovementEventArgs.ToString Method " Url="html/M_ElevatorApp_Models_ElevatorMovementEventArgs_ToString.htm" />
     <HelpKINode Title="Event.ToString Method " Url="html/M_ElevatorApp_Util_Event_ToString.htm" />
-    <HelpKINode Title="Instant.ToString Method " Url="html/Overload_NodaTime_Instant_ToString.htm" />
-    <HelpKINode Title="Interval.ToString Method " Url="html/M_NodaTime_Interval_ToString.htm" />
-    <HelpKINode Title="LocalDate.ToString Method " Url="html/Overload_NodaTime_LocalDate_ToString.htm" />
-    <HelpKINode Title="LocalDateTime.ToString Method " Url="html/Overload_NodaTime_LocalDateTime_ToString.htm" />
-    <HelpKINode Title="LocalTime.ToString Method " Url="html/Overload_NodaTime_LocalTime_ToString.htm" />
-    <HelpKINode Title="Offset.ToString Method " Url="html/Overload_NodaTime_Offset_ToString.htm" />
-    <HelpKINode Title="OffsetDateTime.ToString Method " Url="html/Overload_NodaTime_OffsetDateTime_ToString.htm" />
     <HelpKINode Title="Passenger.ToString Method " Url="html/M_ElevatorApp_Models_Passenger_ToString.htm" />
-    <HelpKINode Title="Period.ToString Method " Url="html/M_NodaTime_Period_ToString.htm" />
-    <HelpKINode Title="ZonedDateTime.ToString Method " Url="html/Overload_NodaTime_ZonedDateTime_ToString.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).ToString Method " Url="html/M_ElevatorApp_Util_Statistic_2_ToString.htm" />
   </HelpKINode>
   <HelpKINode Title="TotalCapacity property" Url="html/P_ElevatorApp_Models_Elevator_TotalCapacity.htm" />
-  <HelpKINode Title="TotalDays property" Url="html/P_NodaTime_Duration_TotalDays.htm" />
-  <HelpKINode Title="TotalHours property" Url="html/P_NodaTime_Duration_TotalHours.htm" />
-  <HelpKINode Title="TotalMilliseconds property" Url="html/P_NodaTime_Duration_TotalMilliseconds.htm" />
-  <HelpKINode Title="TotalMinutes property" Url="html/P_NodaTime_Duration_TotalMinutes.htm" />
-  <HelpKINode Title="TotalNanoseconds property" Url="html/P_NodaTime_Duration_TotalNanoseconds.htm" />
-  <HelpKINode Title="TotalSeconds property" Url="html/P_NodaTime_Duration_TotalSeconds.htm" />
-  <HelpKINode Title="TotalTicks property" Url="html/P_NodaTime_Duration_TotalTicks.htm" />
-  <HelpKINode Title="ToTimeSpan method">
-    <HelpKINode Title="Duration.ToTimeSpan Method " Url="html/M_NodaTime_Duration_ToTimeSpan.htm" />
-    <HelpKINode Title="Offset.ToTimeSpan Method " Url="html/M_NodaTime_Offset_ToTimeSpan.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ToUnixTimeMilliseconds method" Url="html/M_NodaTime_Instant_ToUnixTimeMilliseconds.htm" />
-  <HelpKINode Title="ToUnixTimeSeconds method" Url="html/M_NodaTime_Instant_ToUnixTimeSeconds.htm" />
-  <HelpKINode Title="ToUnixTimeTicks method" Url="html/M_NodaTime_Instant_ToUnixTimeTicks.htm" />
   <HelpKINode Title="Transition enumeration member" Url="html/T_ElevatorApp_Models_Enums_PassengerState.htm" />
   <HelpKINode Title="TransitionSpeed field" Url="html/F_ElevatorApp_Models_Passenger_TransitionSpeed.htm" />
   <HelpKINode Title="TRANSITION_TIME_SECONDS field" Url="html/F_ElevatorApp_Models_Door_TRANSITION_TIME_SECONDS.htm" />
-  <HelpKINode Title="TruncateToHour property" Url="html/P_NodaTime_TimeAdjusters_TruncateToHour.htm" />
-  <HelpKINode Title="TruncateToMinute property" Url="html/P_NodaTime_TimeAdjusters_TruncateToMinute.htm" />
-  <HelpKINode Title="TruncateToSecond property" Url="html/P_NodaTime_TimeAdjusters_TruncateToSecond.htm" />
   <HelpKINode Title="TryDequeue method">
     <HelpKINode Title="AsyncObservableCollection(T).TryDequeue Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryDequeue.htm" />
     <HelpKINode Title="ObservableConcurrentQueue(T).TryDequeue Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryDequeue.htm" />
@@ -2439,149 +1233,12 @@
     <HelpKINode Title="ObservableConcurrentQueue(T).TryPeek Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryPeek.htm" />
   </HelpKINode>
   <HelpKINode Title="TryRemove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryRemove.htm" />
-  <HelpKINode Title="Tuesday enumeration member" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-  <HelpKINode Title="Tzdb property" Url="html/P_NodaTime_DateTimeZoneProviders_Tzdb.htm" />
-  <HelpKINode Title="UmAlQura property" Url="html/P_NodaTime_CalendarSystem_UmAlQura.htm" />
-  <HelpKINode Title="UnaryNegation operator">
-    <HelpKINode Title="Duration.UnaryNegation Operator " Url="html/M_NodaTime_Duration_op_UnaryNegation.htm" />
-    <HelpKINode Title="Offset.UnaryNegation Operator " Url="html/M_NodaTime_Offset_op_UnaryNegation.htm" />
-  </HelpKINode>
-  <HelpKINode Title="UnaryPlus operator" Url="html/M_NodaTime_Offset_op_UnaryPlus.htm" />
-  <HelpKINode Title="UnixEpoch property" Url="html/P_NodaTime_NodaConstants_UnixEpoch.htm" />
   <HelpKINode Title="Up enumeration member" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
-  <HelpKINode Title="Utc property" Url="html/P_NodaTime_DateTimeZone_Utc.htm" />
-  <HelpKINode Title="VersionId property" Url="html/P_NodaTime_IDateTimeZoneProvider_VersionId.htm" />
   <HelpKINode Title="ViewModel property" Url="html/P_ElevatorApp_MainWindow_ViewModel.htm" />
   <HelpKINode Title="Waiting enumeration member" Url="html/T_ElevatorApp_Models_Enums_PassengerState.htm" />
   <HelpKINode Title="WaitingPassengers property" Url="html/P_ElevatorApp_Models_Floor_WaitingPassengers.htm" />
-  <HelpKINode Title="Wednesday enumeration member" Url="html/T_NodaTime_IsoDayOfWeek.htm" />
-  <HelpKINode Title="Weeks enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Weeks property">
-    <HelpKINode Title="Period.Weeks Property " Url="html/P_NodaTime_Period_Weeks.htm" />
-    <HelpKINode Title="PeriodBuilder.Weeks Property " Url="html/P_NodaTime_PeriodBuilder_Weeks.htm" />
-  </HelpKINode>
   <HelpKINode Title="Weight property" Url="html/P_ElevatorApp_Models_Passenger_Weight.htm" />
-  <HelpKINode Title="With method">
-    <HelpKINode Title="LocalDate.With Method " Url="html/M_NodaTime_LocalDate_With.htm" />
-    <HelpKINode Title="LocalDateTime.With Method " Url="html/Overload_NodaTime_LocalDateTime_With.htm" />
-    <HelpKINode Title="LocalTime.With Method " Url="html/M_NodaTime_LocalTime_With.htm" />
-    <HelpKINode Title="OffsetDateTime.With Method " Url="html/Overload_NodaTime_OffsetDateTime_With.htm" />
-  </HelpKINode>
-  <HelpKINode Title="WithCalendar method">
-    <HelpKINode Title="LocalDate.WithCalendar Method " Url="html/M_NodaTime_LocalDate_WithCalendar.htm" />
-    <HelpKINode Title="LocalDateTime.WithCalendar Method " Url="html/M_NodaTime_LocalDateTime_WithCalendar.htm" />
-    <HelpKINode Title="OffsetDateTime.WithCalendar Method " Url="html/M_NodaTime_OffsetDateTime_WithCalendar.htm" />
-    <HelpKINode Title="ZonedDateTime.WithCalendar Method " Url="html/M_NodaTime_ZonedDateTime_WithCalendar.htm" />
-  </HelpKINode>
-  <HelpKINode Title="WithOffset method">
-    <HelpKINode Title="Instant.WithOffset Method " Url="html/Overload_NodaTime_Instant_WithOffset.htm" />
-    <HelpKINode Title="LocalDateTime.WithOffset Method " Url="html/M_NodaTime_LocalDateTime_WithOffset.htm" />
-    <HelpKINode Title="OffsetDateTime.WithOffset Method " Url="html/M_NodaTime_OffsetDateTime_WithOffset.htm" />
-  </HelpKINode>
-  <HelpKINode Title="WithZone method" Url="html/M_NodaTime_ZonedDateTime_WithZone.htm" />
-  <HelpKINode Title="Year property">
-    <HelpKINode Title="LocalDate.Year Property " Url="html/P_NodaTime_LocalDate_Year.htm" />
-    <HelpKINode Title="LocalDateTime.Year Property " Url="html/P_NodaTime_LocalDateTime_Year.htm" />
-    <HelpKINode Title="OffsetDateTime.Year Property " Url="html/P_NodaTime_OffsetDateTime_Year.htm" />
-    <HelpKINode Title="ZonedDateTime.Year Property " Url="html/P_NodaTime_ZonedDateTime_Year.htm" />
-  </HelpKINode>
-  <HelpKINode Title="YearMonthDay enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="YearOfEra property">
-    <HelpKINode Title="LocalDate.YearOfEra Property " Url="html/P_NodaTime_LocalDate_YearOfEra.htm" />
-    <HelpKINode Title="LocalDateTime.YearOfEra Property " Url="html/P_NodaTime_LocalDateTime_YearOfEra.htm" />
-    <HelpKINode Title="OffsetDateTime.YearOfEra Property " Url="html/P_NodaTime_OffsetDateTime_YearOfEra.htm" />
-    <HelpKINode Title="ZonedDateTime.YearOfEra Property " Url="html/P_NodaTime_ZonedDateTime_YearOfEra.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Years enumeration member" Url="html/T_NodaTime_PeriodUnits.htm" />
-  <HelpKINode Title="Years property">
-    <HelpKINode Title="Period.Years Property " Url="html/P_NodaTime_Period_Years.htm" />
-    <HelpKINode Title="PeriodBuilder.Years Property " Url="html/P_NodaTime_PeriodBuilder_Years.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Zero field" Url="html/F_NodaTime_Offset_Zero.htm" />
-  <HelpKINode Title="Zero property">
-    <HelpKINode Title="Duration.Zero Property " Url="html/P_NodaTime_Duration_Zero.htm" />
-    <HelpKINode Title="Period.Zero Property " Url="html/P_NodaTime_Period_Zero.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Zone property">
-    <HelpKINode Title="AmbiguousTimeException.Zone Property " Url="html/P_NodaTime_AmbiguousTimeException_Zone.htm" />
-    <HelpKINode Title="SkippedTimeException.Zone Property " Url="html/P_NodaTime_SkippedTimeException_Zone.htm" />
-    <HelpKINode Title="ZonedDateTime.Zone Property " Url="html/P_NodaTime_ZonedDateTime_Zone.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ZonedClock class">
-    <HelpKINode Title="ZonedClock Class" Url="html/T_NodaTime_ZonedClock.htm" />
-    <HelpKINode Title="constructor" Url="html/M_NodaTime_ZonedClock__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_ZonedClock.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ZonedClock.GetCurrentDate method" Url="html/M_NodaTime_ZonedClock_GetCurrentDate.htm" />
-  <HelpKINode Title="ZonedClock.GetCurrentInstant method" Url="html/M_NodaTime_ZonedClock_GetCurrentInstant.htm" />
-  <HelpKINode Title="ZonedClock.GetCurrentLocalDateTime method" Url="html/M_NodaTime_ZonedClock_GetCurrentLocalDateTime.htm" />
-  <HelpKINode Title="ZonedClock.GetCurrentOffsetDateTime method" Url="html/M_NodaTime_ZonedClock_GetCurrentOffsetDateTime.htm" />
-  <HelpKINode Title="ZonedClock.GetCurrentTimeOfDay method" Url="html/M_NodaTime_ZonedClock_GetCurrentTimeOfDay.htm" />
-  <HelpKINode Title="ZonedClock.GetCurrentZonedDateTime method" Url="html/M_NodaTime_ZonedClock_GetCurrentZonedDateTime.htm" />
-  <HelpKINode Title="ZonedClock.ZonedClock constructor" Url="html/M_NodaTime_ZonedClock__ctor.htm" />
-  <HelpKINode Title="ZonedDateTime structure">
-    <HelpKINode Title="ZonedDateTime Structure" Url="html/T_NodaTime_ZonedDateTime.htm" />
-    <HelpKINode Title="constructor" Url="html/Overload_NodaTime_ZonedDateTime__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_NodaTime_ZonedDateTime.htm" />
-    <HelpKINode Title="operators" Url="html/Operators_T_NodaTime_ZonedDateTime.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_NodaTime_ZonedDateTime.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ZonedDateTime.Add method" Url="html/M_NodaTime_ZonedDateTime_Add.htm" />
-  <HelpKINode Title="ZonedDateTime.Addition operator" Url="html/M_NodaTime_ZonedDateTime_op_Addition.htm" />
-  <HelpKINode Title="ZonedDateTime.Calendar property" Url="html/P_NodaTime_ZonedDateTime_Calendar.htm" />
-  <HelpKINode Title="ZonedDateTime.ClockHourOfHalfDay property" Url="html/P_NodaTime_ZonedDateTime_ClockHourOfHalfDay.htm" />
-  <HelpKINode Title="ZonedDateTime.Comparer class" Url="html/T_NodaTime_ZonedDateTime_Comparer.htm" />
-  <HelpKINode Title="ZonedDateTime.Comparer.Compare method" Url="html/M_NodaTime_ZonedDateTime_Comparer_Compare.htm" />
-  <HelpKINode Title="ZonedDateTime.Comparer.Equals method" Url="html/Overload_NodaTime_ZonedDateTime_Comparer_Equals.htm" />
-  <HelpKINode Title="ZonedDateTime.Comparer.GetHashCode method" Url="html/Overload_NodaTime_ZonedDateTime_Comparer_GetHashCode.htm" />
-  <HelpKINode Title="ZonedDateTime.Comparer.Instant property" Url="html/P_NodaTime_ZonedDateTime_Comparer_Instant.htm" />
-  <HelpKINode Title="ZonedDateTime.Comparer.Local property" Url="html/P_NodaTime_ZonedDateTime_Comparer_Local.htm" />
-  <HelpKINode Title="ZonedDateTime.Date property" Url="html/P_NodaTime_ZonedDateTime_Date.htm" />
-  <HelpKINode Title="ZonedDateTime.Day property" Url="html/P_NodaTime_ZonedDateTime_Day.htm" />
-  <HelpKINode Title="ZonedDateTime.DayOfWeek property" Url="html/P_NodaTime_ZonedDateTime_DayOfWeek.htm" />
-  <HelpKINode Title="ZonedDateTime.DayOfYear property" Url="html/P_NodaTime_ZonedDateTime_DayOfYear.htm" />
-  <HelpKINode Title="ZonedDateTime.Equality operator" Url="html/M_NodaTime_ZonedDateTime_op_Equality.htm" />
-  <HelpKINode Title="ZonedDateTime.Equals method" Url="html/Overload_NodaTime_ZonedDateTime_Equals.htm" />
-  <HelpKINode Title="ZonedDateTime.Era property" Url="html/P_NodaTime_ZonedDateTime_Era.htm" />
-  <HelpKINode Title="ZonedDateTime.FromDateTimeOffset method" Url="html/M_NodaTime_ZonedDateTime_FromDateTimeOffset.htm" />
-  <HelpKINode Title="ZonedDateTime.GetHashCode method" Url="html/M_NodaTime_ZonedDateTime_GetHashCode.htm" />
-  <HelpKINode Title="ZonedDateTime.GetZoneInterval method" Url="html/M_NodaTime_ZonedDateTime_GetZoneInterval.htm" />
-  <HelpKINode Title="ZonedDateTime.Hour property" Url="html/P_NodaTime_ZonedDateTime_Hour.htm" />
-  <HelpKINode Title="ZonedDateTime.Inequality operator" Url="html/M_NodaTime_ZonedDateTime_op_Inequality.htm" />
-  <HelpKINode Title="ZonedDateTime.IsDaylightSavingTime method" Url="html/M_NodaTime_ZonedDateTime_IsDaylightSavingTime.htm" />
-  <HelpKINode Title="ZonedDateTime.LocalDateTime property" Url="html/P_NodaTime_ZonedDateTime_LocalDateTime.htm" />
-  <HelpKINode Title="ZonedDateTime.Millisecond property" Url="html/P_NodaTime_ZonedDateTime_Millisecond.htm" />
-  <HelpKINode Title="ZonedDateTime.Minus method" Url="html/Overload_NodaTime_ZonedDateTime_Minus.htm" />
-  <HelpKINode Title="ZonedDateTime.Minute property" Url="html/P_NodaTime_ZonedDateTime_Minute.htm" />
-  <HelpKINode Title="ZonedDateTime.Month property" Url="html/P_NodaTime_ZonedDateTime_Month.htm" />
-  <HelpKINode Title="ZonedDateTime.NanosecondOfDay property" Url="html/P_NodaTime_ZonedDateTime_NanosecondOfDay.htm" />
-  <HelpKINode Title="ZonedDateTime.NanosecondOfSecond property" Url="html/P_NodaTime_ZonedDateTime_NanosecondOfSecond.htm" />
-  <HelpKINode Title="ZonedDateTime.Offset property" Url="html/P_NodaTime_ZonedDateTime_Offset.htm" />
-  <HelpKINode Title="ZonedDateTime.Plus method" Url="html/M_NodaTime_ZonedDateTime_Plus.htm" />
-  <HelpKINode Title="ZonedDateTime.PlusHours method" Url="html/M_NodaTime_ZonedDateTime_PlusHours.htm" />
-  <HelpKINode Title="ZonedDateTime.PlusMilliseconds method" Url="html/M_NodaTime_ZonedDateTime_PlusMilliseconds.htm" />
-  <HelpKINode Title="ZonedDateTime.PlusMinutes method" Url="html/M_NodaTime_ZonedDateTime_PlusMinutes.htm" />
-  <HelpKINode Title="ZonedDateTime.PlusNanoseconds method" Url="html/M_NodaTime_ZonedDateTime_PlusNanoseconds.htm" />
-  <HelpKINode Title="ZonedDateTime.PlusSeconds method" Url="html/M_NodaTime_ZonedDateTime_PlusSeconds.htm" />
-  <HelpKINode Title="ZonedDateTime.PlusTicks method" Url="html/M_NodaTime_ZonedDateTime_PlusTicks.htm" />
-  <HelpKINode Title="ZonedDateTime.Second property" Url="html/P_NodaTime_ZonedDateTime_Second.htm" />
-  <HelpKINode Title="ZonedDateTime.Subtract method" Url="html/Overload_NodaTime_ZonedDateTime_Subtract.htm" />
-  <HelpKINode Title="ZonedDateTime.Subtraction operator" Url="html/Overload_NodaTime_ZonedDateTime_op_Subtraction.htm" />
-  <HelpKINode Title="ZonedDateTime.TickOfDay property" Url="html/P_NodaTime_ZonedDateTime_TickOfDay.htm" />
-  <HelpKINode Title="ZonedDateTime.TickOfSecond property" Url="html/P_NodaTime_ZonedDateTime_TickOfSecond.htm" />
-  <HelpKINode Title="ZonedDateTime.TimeOfDay property" Url="html/P_NodaTime_ZonedDateTime_TimeOfDay.htm" />
-  <HelpKINode Title="ZonedDateTime.ToDateTimeOffset method" Url="html/M_NodaTime_ZonedDateTime_ToDateTimeOffset.htm" />
-  <HelpKINode Title="ZonedDateTime.ToDateTimeUnspecified method" Url="html/M_NodaTime_ZonedDateTime_ToDateTimeUnspecified.htm" />
-  <HelpKINode Title="ZonedDateTime.ToDateTimeUtc method" Url="html/M_NodaTime_ZonedDateTime_ToDateTimeUtc.htm" />
-  <HelpKINode Title="ZonedDateTime.ToInstant method" Url="html/M_NodaTime_ZonedDateTime_ToInstant.htm" />
-  <HelpKINode Title="ZonedDateTime.ToOffsetDateTime method" Url="html/M_NodaTime_ZonedDateTime_ToOffsetDateTime.htm" />
-  <HelpKINode Title="ZonedDateTime.ToString method" Url="html/Overload_NodaTime_ZonedDateTime_ToString.htm" />
-  <HelpKINode Title="ZonedDateTime.WithCalendar method" Url="html/M_NodaTime_ZonedDateTime_WithCalendar.htm" />
-  <HelpKINode Title="ZonedDateTime.WithZone method" Url="html/M_NodaTime_ZonedDateTime_WithZone.htm" />
-  <HelpKINode Title="ZonedDateTime.Year property" Url="html/P_NodaTime_ZonedDateTime_Year.htm" />
-  <HelpKINode Title="ZonedDateTime.YearOfEra property" Url="html/P_NodaTime_ZonedDateTime_YearOfEra.htm" />
-  <HelpKINode Title="ZonedDateTime.Zone property" Url="html/P_NodaTime_ZonedDateTime_Zone.htm" />
-  <HelpKINode Title="ZonedDateTime.ZonedDateTime constructor" Url="html/Overload_NodaTime_ZonedDateTime__ctor.htm" />
+  <HelpKINode Title="_collection property" Url="html/P_ElevatorApp_Util_Statistic_2__collection.htm" />
   <HelpKINode Title="_floorButtons property">
     <HelpKINode Title="ButtonPanel._floorButtons Property " Url="html/P_ElevatorApp_Models_ButtonPanel__floorButtons.htm" />
     <HelpKINode Title="ButtonPanelBase._floorButtons Property " Url="html/P_ElevatorApp_Models_ButtonPanelBase__floorButtons.htm" />
