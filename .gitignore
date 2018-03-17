@@ -261,5 +261,5 @@ __pycache__/
 *.pyc
 *.pdf
 *.zip
-/docs
+
 /Help
