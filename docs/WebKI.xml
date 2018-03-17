@@ -10,11 +10,11 @@
     <HelpKINode Title="ButtonBase(T).Active Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_Active.htm" />
     <HelpKINode Title="IButton.Active Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_Active.htm" />
   </HelpKINode>
+  <HelpKINode Title="add method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_add.htm" />
   <HelpKINode Title="Add method">
     <HelpKINode Title="AsyncObservableCollection(T).Add Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Add.htm" />
     <HelpKINode Title="Statistic(TStat, TAggregate).Add Method " Url="html/M_ElevatorApp_Util_Statistic_2_Add.htm" />
   </HelpKINode>
-  <HelpKINode Title="add method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_add.htm" />
   <HelpKINode Title="AddDistinct method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddDistinct.htm" />
   <HelpKINode Title="AddItems method">
     <HelpKINode Title="DecimalStatistic.AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_AddItems.htm" />
