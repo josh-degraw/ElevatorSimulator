@@ -39,7 +39,7 @@ namespace ElevatorApp.Models
         public bool Subscribed
         {
             get => _subscribed;
-            private set => SetProperty(ref _subscribed, value);
+            protected set => SetProperty(ref _subscribed, value);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace ElevatorApp.Models
         }
 
         /// <inheritdoc />
-        public Task Subscribe((ElevatorMasterController, Elevator) parent)
+        public virtual Task Subscribe((ElevatorMasterController, Elevator) parent)
         {
             if (this.Subscribed)
                 return Task.CompletedTask;
@@ -83,14 +83,7 @@ namespace ElevatorApp.Models
             //    if (floor.DestinationFloor == this.FloorNumber)
             //        this.ActionCompleted(e, floor.DestinationFloor);
             //};
-
-            //elevator.PropertyChanged += (e, args) =>
-            //{
-            //    if (args.PropertyName == nameof(Elevator.CurrentFloor))
-            //    {
-            //        this.IsEnabled = this.FloorNumber != elevator.CurrentFloor;
-            //    }
-            //};
+            
 
             this.Subscribed = true;
             return Task.CompletedTask;

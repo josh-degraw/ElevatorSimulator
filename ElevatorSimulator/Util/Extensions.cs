@@ -31,10 +31,10 @@ namespace ElevatorApp.Util
             val = pair.Value;
         }
 
-        public static void EnqueueInOrder(this AsyncObservableCollection<int> collection, int value)
-        {
-            collection.Insert(value - 1, value);
-        }
+        //public static void EnqueueInOrder(this AsyncObservableCollection<int> collection, int value)
+        //{
+        //    collection.Insert(value - 1, value);
+        //}
 
         public static T MinByOrDefault<T, TKey>(this IEnumerable<T> collection, Func<T, TKey> selector)
         {

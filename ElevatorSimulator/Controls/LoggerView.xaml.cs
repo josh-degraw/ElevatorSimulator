@@ -70,9 +70,10 @@ namespace ElevatorApp.Controls
 
         }
 
-
+        private readonly object _locker = new object();
         public LoggerView()
         {
+            BindingOperations.EnableCollectionSynchronization(Logger.Events, _locker);
             InitializeComponent();
         }
 

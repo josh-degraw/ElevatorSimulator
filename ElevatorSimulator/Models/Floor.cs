@@ -126,9 +126,9 @@ namespace ElevatorApp.Models
             //elevator.Door.CloseRequested += cancelDoorClosingIfNewPassengerAdded;
             //elevator.Door.Closing += cancelDoorClosingIfNewPassengerAdded;
             elevator.Departed += onElevatorDeparted;
-            // elevator.Arrived += onElevatorArrived;
+
             elevator.Approaching += Elevator_Approaching;
-            elevator.PropertyChanged += onElevatorArrivedAtThisFloor;
+            elevator.Arrived += onElevatorArrivedAtThisFloor;
 
             #region Local methods for event handlers, which do the real work
 
@@ -186,14 +186,11 @@ namespace ElevatorApp.Models
             }
 
             // Alert the Floor that an elevator is available when one arrives on this floor
-            void onElevatorArrivedAtThisFloor(object _, PropertyChangedEventArgs args)
+            void onElevatorArrivedAtThisFloor(object _, ElevatorMovementEventArgs args)
             {
-                if (args.PropertyName == nameof(elevator.CurrentFloor))
+                if (args.DestinationFloor == this.FloorNumber)
                 {
-                    if (elevator.CurrentFloor == this.FloorNumber)
-                    {
-                        this.ElevatorAvailable = true;
-                    }
+                    this.ElevatorAvailable = true;
                 }
             }
 

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using ElevatorApp.Models;
 using NodaTime;
 using MoreLinq;
@@ -25,9 +26,9 @@ namespace ElevatorApp.Util
     public class Logger : ModelBase, ILogger
     {
         private object _locker = new object();
-
         private Logger()
         {
+
         }
 
         /// <summary>
@@ -55,7 +56,12 @@ namespace ElevatorApp.Util
         /// <summary>
         /// A collection of the <see cref="Event"/>s that have been logged 
         /// </summary>
-        public IReadOnlyCollection<Event> Events => _events;
+        public static IReadOnlyCollection<Event> Events => ((ILogger)Instance).Events;
+
+        /// <summary>
+        /// A collection of the <see cref="Event"/>s that have been logged 
+        /// </summary>
+        IReadOnlyCollection<Event> ILogger.Events => _events;
 
         /// <summary>
         /// Log a new <see cref="Event"/>
@@ -75,18 +81,27 @@ namespace ElevatorApp.Util
             ((ILogger)this).LogEvent(new Event(name, parameters));
         }
 
-        void ILogger.LogEvent(Event message)
+        void ILogger.LogEvent(Event message, int retryTimes = 3)
         {
-            try
+            var prevCount = _events.Count;
+            int i = 0;
+            do
             {
-                lock (_locker)
+                try
+                {
                     _events.Add(message);
-                ItemLogged(this, message);
-            }
-            catch (Exception e)
-            {
-                Debug.Fail(e.Message);
-            }
+                    ItemLogged?.Invoke(this, message);
+                }
+                catch (Exception e)
+                {
+                    if (prevCount == _events.Count)
+                    {
+                        Debug.Write(e.Message);
+                    }
+                }
+
+            } while (_events.Count == prevCount && i++ < retryTimes);
+
         }
 
         /// <summary>

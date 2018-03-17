@@ -563,7 +563,7 @@ namespace ElevatorApp.Util
         public void CopyTo(T[] array, int arrayIndex)
         {
             // don't need to worry about re-entry/other iterators here since we're at the bottom of the stack
-            _threadView.Value.getSnapshot().CopyTo(array, arrayIndex);
+            ((ICollection)_threadView.Value.getSnapshot()).CopyTo(array, arrayIndex);
         }
 
         /// <inheritdoc />
@@ -775,7 +775,12 @@ namespace ElevatorApp.Util
         bool IList.Contains(object value) { return Contains((T)value); }
         object ICollection.SyncRoot => throw new NotSupportedException("AsyncObservableCollection doesn't need external synchronization");
         bool ICollection.IsSynchronized => false;
-        void ICollection.CopyTo(Array array, int index) { CopyTo((T[])array, index); }
+
+        void ICollection.CopyTo(Array array, int index)
+        {
+            // don't need to worry about re-entry/other iterators here since we're at the bottom of the stack
+            ((ICollection)_threadView.Value.getSnapshot()).CopyTo(array, index);
+        }
         int IList.IndexOf(object value) { return IndexOf((T)value); }
         #endregion
 

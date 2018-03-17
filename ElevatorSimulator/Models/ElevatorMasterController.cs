@@ -264,8 +264,6 @@ namespace ElevatorApp.Models
         /// </summary>
         public ElevatorMasterController()
         {
-            // Force execution immediately 
-            this.Init().GetAwaiter().GetResult();
         }
 
         ///<inheritdoc/>

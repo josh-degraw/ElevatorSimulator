@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
+using ElevatorApp.Util;
 using FontAwesome;
 
 namespace ElevatorApp.Models
@@ -32,8 +34,25 @@ namespace ElevatorApp.Models
         ///<inheritdoc/>
         public override void Push()
         {
-            base.Pushed(this, FloorNumber);
             base.Pushed(this, DestinationFloor);
+        }
+
+        public override async Task Subscribe((ElevatorMasterController, Elevator) parent)
+        {
+            var (controller, elevator) = parent;
+         
+            // This should be handled by the Call panels
+            this.OnPushed += async (a, floor) =>
+            {
+                // If the elevator's already here, open the door
+                if (elevator.CurrentFloor == this.FloorNumber)
+                    await elevator.Door.RequestOpen();
+
+                Logger.LogEvent($"Pushed floor button {this.FloorNumber}");
+                ((IObserver<int>)controller).OnNext(this.FloorNumber);
+            };
+
+            this.Subscribed = true;
         }
     }
 }
