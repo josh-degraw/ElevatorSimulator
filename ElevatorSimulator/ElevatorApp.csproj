@@ -274,5 +274,8 @@
   <ItemGroup>
     <Folder Include="docs\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stick-figure-black.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

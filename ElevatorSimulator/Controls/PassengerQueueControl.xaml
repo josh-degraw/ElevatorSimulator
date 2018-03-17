@@ -7,49 +7,61 @@
              xmlns:models="clr-namespace:ElevatorApp.Models"
              d:DataContext="{d:DesignInstance Type=models:Floor, IsDesignTimeCreatable=True}"
              x:Name="me"
+             
+             
              mc:Ignorable="d" >
-    <StackPanel>
-        <StackPanel DataContext="{Binding}" Orientation="Horizontal">
-            <Label>Floor</Label>
-            <Label Content="{Binding FloorNumber}"/>
-            <Label>Passengers Waiting:</Label>
-            <Label Content="{Binding WaitingPassengers.Count}"/>
+    <Border Margin="5" Padding="5" Background="LightGray">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="{Binding FloorNumber}" VerticalContentAlignment="Top" FontSize="30" Margin="0,14,0,0"/>
+            <StackPanel Grid.Column="1">
+                <StackPanel DataContext="{Binding}" Orientation="Horizontal">
+                    <Label>Passengers Waiting:</Label>
+                    <Label Content="{Binding WaitingPassengers.Count}"/>
 
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Label>Elevator Available:</Label>
-            <TextBlock VerticalAlignment="Center">
-                <TextBlock.Style>
-                    <Style>
-                        <Setter Property="TextBlock.Text" Value="✕"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElevatorAvailable}" Value="True">
-                                <Setter Property="TextBlock.Text" Value="✔"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
-        </StackPanel>
-        <Expander IsExpanded="False" MouseUp="Expander_MouseUp" Header="Add Passenger">
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Elevator Available:</Label>
+                    <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="ExtraBold">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="✕"/>
+                                <Setter Property="Foreground" Value="Red"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElevatorAvailable}" Value="True">
+                                        <Setter Property="Text" Value="✔"/>
+                                        <Setter Property="Foreground" Value="Green"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <Expander IsExpanded="False" Grid.Column="2" MouseUp="Expander_MouseUp" Header="Add Passenger" ExpandDirection="Down" >
 
-            <StackPanel>
-                <Label>Which floor?</Label>
-                <ItemsControl BorderThickness="0"
+                <StackPanel>
+                    <Label >Which floor?</Label>
+                    <ItemsControl BorderThickness="0"
                                   Background="Transparent"
                                   ItemsSource="{Binding CallPanel.FloorButtons}" BorderBrush="Black" >
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button Content="{Binding Label}" DataContext="{Binding}" IsEnabled="{Binding IsEnabled, FallbackValue=true}" Margin="2" Width="25" Height="25" FontSize="11" Click="Button_Click" />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-            </StackPanel>
-        </Expander>
-    </StackPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Label}" DataContext="{Binding}" IsEnabled="{Binding IsEnabled, FallbackValue=true}" Margin="2" Width="25" Height="25" FontSize="11" Click="Button_Click" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </StackPanel>
+            </Expander>
+        </Grid>
+    </Border>
 </UserControl>
