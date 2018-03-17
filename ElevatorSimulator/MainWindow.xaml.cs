@@ -60,5 +60,10 @@ namespace ElevatorApp
             Stats.Instance.GetAverageWaitTime();
             Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.GetAverageWaitTime());
         }
+
+        private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Logger.Instance.ClearItems();
+        }
     }
 }

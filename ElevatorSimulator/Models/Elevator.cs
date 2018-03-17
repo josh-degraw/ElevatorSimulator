@@ -444,7 +444,7 @@ namespace ElevatorApp.Models
             // If the elevator is already at the floor that has been requested, trigger the Arrived event and stop worrying about stuff for now.
             if (this.CurrentFloor == destination)
             {
-                this.Arrived?.Invoke(this, new ElevatorMovementEventArgs(destination, Enums.Direction.Down));
+                this.Arrived?.Invoke(this, new ElevatorMovementEventArgs(destination, Enums.Direction.None));
                 return;
             }
 
@@ -487,15 +487,21 @@ namespace ElevatorApp.Models
                     await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
                     int nextFloor = i + 1;
 
-                    var args = new ElevatorApproachingEventArgs(nextFloor, call.Direction);
+                    var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
 
-                    // If the elevator stopped at this floor
-                    if (await _approachFloor(nextFloor, args))
+                    // If the elevator should stop at this floor
+                    if (_approachFloor(args))
                     {
+                        LogEvent($"Elevator approaching floor {nextFloor}");
+                        await _arriveAtFloor(nextFloor, args);
+
                         // Start moving to the next floor
                         call = new ElevatorMovementEventArgs(++i, call.Direction);
                         await _startMovement(call);
                     }
+                    else
+                        this.CurrentFloor = nextFloor; // Set the current
+
                 }
 
                 await _arriveAtFloor(destination, call);
@@ -508,24 +514,16 @@ namespace ElevatorApp.Models
         /// <summary>
         /// When the elevator is about to get near a floor
         /// </summary>
-        /// <param name="nextFloor">The floor that the elevator is approaching</param>
         /// <param name="args"></param>
-        /// <returns></returns>
-        private async Task<bool> _approachFloor(int nextFloor, ElevatorApproachingEventArgs args)
+        /// <returns><see langword="true"/> if the <see cref="Elevator"/> should stop</returns>
+        private bool _approachFloor(ElevatorApproachingEventArgs args)
         {
-            LogEvent($"Elevator approaching floor {nextFloor}");
+            LogEvent($"Elevator approaching floor {args.IntermediateFloor}");
 
             // TODO: If any passengers have called to here, let them get on
             this.Approaching?.Invoke(this, args);
 
-            if (args.ShouldStop)
-            {
-                LogEvent($"Elevator approaching floor {nextFloor}");
-                await _arriveAtFloor(nextFloor, args).ConfigureAwait(false);
-                return true;
-            }
-
-            return false;
+            return args.ShouldStop;
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using ElevatorApp.Models.Enums;
 
 namespace ElevatorApp.Models.Interfaces
 {
@@ -9,6 +10,8 @@ namespace ElevatorApp.Models.Interfaces
         void Push();
         event EventHandler OnActivated;
         event EventHandler OnDeactivated;
+
+        ButtonType ButtonType { get; }
     }
 
     public interface IButton<T> : IButton

@@ -18,12 +18,14 @@ using MoreLinq;
 
 namespace ElevatorApp.Util
 {
-    
+
     /// <summary>
     /// Singleton object used to log events. Can be accessed statically or via <see cref="Logger.Instance"/>.
     /// </summary>
     public class Logger : ModelBase, ILogger
     {
+        private object _locker = new object();
+
         private Logger()
         {
         }
@@ -45,7 +47,7 @@ namespace ElevatorApp.Util
                 .ConfigureAwait(false);
 
         };
-        
+
         private readonly ConcurrentBag<TextWriter> _loggers = new ConcurrentBag<TextWriter>();
 
         private readonly AsyncObservableCollection<Event> _events = new AsyncObservableCollection<Event>();
@@ -77,7 +79,8 @@ namespace ElevatorApp.Util
         {
             try
             {
-                _events.Add(message);
+                lock (_locker)
+                    _events.Add(message);
                 ItemLogged(this, message);
             }
             catch (Exception e)
@@ -85,7 +88,7 @@ namespace ElevatorApp.Util
                 Debug.Fail(e.Message);
             }
         }
-        
+
         /// <summary>
         /// Add a <see cref="TextWriter"/> to automatically write any new log item as it's added.
         /// </summary>

@@ -12,7 +12,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// The destination of the current movement
         /// </summary>
-        public int DestinationFloor { get; }
+        public virtual int DestinationFloor { get; }
 
         /// <summary>
         /// The direction the elevator is going
@@ -33,7 +33,7 @@ namespace ElevatorApp.Models
         ///<inheritdoc/>
         public override string ToString()
         {
-            return $"To: {DestinationFloor}. Direction: {Direction}";
+            return $"{DestinationFloor}. Direction: {Direction}";
         }
     }
 
@@ -45,9 +45,20 @@ namespace ElevatorApp.Models
         /// </summary>
         public bool ShouldStop { get; set; }
 
+        /// <summary>
+        /// The actual floor that is being approached
+        /// </summary>
+        public int IntermediateFloor { get; }
+
+        /// <summary>
+        /// The final destination of the <see cref="Elevator"/> in the current path
+        /// </summary>
+        public override int DestinationFloor => base.DestinationFloor;
+
         /// <inheritdoc />
-        public ElevatorApproachingEventArgs(int destination, Direction direction) : base(destination, direction)
+        public ElevatorApproachingEventArgs(int intermediateFloor, int destination, Direction direction) : base(destination, direction)
         {
+            this.IntermediateFloor = intermediateFloor;
         }
 
         /// <inheritdoc />

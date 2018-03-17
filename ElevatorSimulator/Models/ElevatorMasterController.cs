@@ -140,7 +140,7 @@ namespace ElevatorApp.Models
         /// Runs when an elevator is has arrived
         /// </summary>
         /// <param name="elevator"></param>
-        private async Task ElevatorArrived(Elevator elevator)
+        private async Task ElevatorArrived(Elevator elevator, Direction direction)
         {
             soundPlayer.Play();
 
@@ -151,10 +151,11 @@ namespace ElevatorApp.Models
             //    this._floorsRequested.TryDequeue(out _);
             //}
 
-            foreach (var destination in this._floorsRequested)
-            {
-                await this.Dispatch(destination, elevator);
-            }
+            //if (direction != Direction.None)
+            //    foreach (var destination in this._floorsRequested)
+            //    {
+            //        await this.Dispatch(destination, elevator);
+            //    }
         }
 
         /// <summary>
@@ -229,7 +230,10 @@ namespace ElevatorApp.Models
         {
             await elevator.Subscribe(this);
 
-            elevator.Arrived += async (a, b) => await this.ElevatorArrived(elevator);
+            elevator.Arrived += async (a, b) =>
+            {
+                await this.ElevatorArrived(elevator, b.Direction);
+            };
 
             Parallel.ForEach(elevator.ButtonPanel.FloorButtons, b =>
                 b.OnPushed += delegate

@@ -11,16 +11,11 @@ namespace ElevatorApp.Models
     /// </summary>
     public class DoorButton : ButtonBase<ButtonType>, IButton, ISubcriber<Door>
     {
-        private ButtonType _buttonType;
 
         /// <summary>
         /// Indicates whether this <see cref="DoorButton"/> is used to request the <see cref="Door"/> to open or close
         /// </summary>
-        public ButtonType ButtonType
-        {
-            get => _buttonType;
-            set => SetProperty(ref _buttonType, value);
-        }
+        public override ButtonType ButtonType { get; }
 
         /// <summary>
         /// Indicates the type of Button this is
@@ -51,7 +46,7 @@ namespace ElevatorApp.Models
 
         private DoorButton(ButtonType type) : base($"DoorBtn {type}")
         {
-            this._buttonType = type;
+            this.ButtonType = type;
         }
 
         /// <summary>
@@ -83,7 +78,7 @@ namespace ElevatorApp.Models
             if (this.Subscribed)
                 return Task.CompletedTask;
 
-            if (this._buttonType == ButtonType.Open)
+            if (this.ButtonType == ButtonType.Open)
                 door.Opened += (e, args) => base.ActionCompleted(e, this.ButtonType);
             else
                 door.Closed += (e, args) => base.ActionCompleted(e, this.ButtonType);

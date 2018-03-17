@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
 
@@ -15,6 +16,11 @@ namespace ElevatorApp.Models
         /// The text on the button
         /// </summary>
         public abstract string Label { get; }
+
+        /// <summary>
+        /// The type of button this is
+        /// </summary>
+        public abstract ButtonType ButtonType { get; }
 
         private bool _active;
         private bool _isEnabled = true;

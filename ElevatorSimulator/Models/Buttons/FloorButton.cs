@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
 
@@ -13,6 +14,9 @@ namespace ElevatorApp.Models
     {
         /// <inheritdoc />
         public override string Label => this.FloorNumber.ToString();
+
+        /// <inheritdoc />
+        public override ButtonType ButtonType => ButtonType.Floor;
 
         /// <summary>
         /// The number of the <see cref="Floor"/> this <see cref="FloorButton"/> is tied to
