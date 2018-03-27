@@ -72,7 +72,7 @@
                 <Label Grid.Row="2" Grid.Column="1" Content="{Binding State, FallbackValue=Idle}"/>
 
                 <WrapPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" >
-                    <Label Content="Passengers: 👤 x"/>
+                    <Label Content="Passengers: "/>
                     <Label Content="{Binding Passengers.Count, FallbackValue=0}"/>
 
                 </WrapPanel>

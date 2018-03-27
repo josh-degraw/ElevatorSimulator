@@ -40,7 +40,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// The number of seconds the <see cref="Door"/> stays open
         /// </summary>
-        public const int TIME_SPENT_OPEN_SECONDS = 8;
+        public const int TIME_SPENT_OPEN_SECONDS = 5;
 
         private readonly TimeSpan
             TRANSITION_TIME = TimeSpan.FromSeconds(TRANSITION_TIME_SECONDS),

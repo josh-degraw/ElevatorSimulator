@@ -48,7 +48,7 @@ namespace ElevatorApp.Models
                 try
                 {
                     // If the elevator's already here, open the door
-                    if (elevator.CurrentFloor == this.FloorNumber && elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle)
+                    if (elevator.CurrentFloor == this.FloorNumber && (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
                     {
                         if (elevator.Door.DoorState != DoorState.Opened)
                         {

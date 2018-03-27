@@ -43,7 +43,7 @@
                 </StackPanel>
                 
                 <StackPanel DataContext="{Binding}" Orientation="Horizontal">
-                    <Label>Waiting 👤 x:</Label>
+                    <Label>Waiting 👤:</Label>
                     <Label Content="{Binding WaitingPassengers.Count}"/>
 
                 </StackPanel>
@@ -58,7 +58,7 @@
                 ExpandDirection="Down" >
 
                 <StackPanel>
-                    <Label >Which floor?</Label>
+                    <Label >Destination:</Label>
                     <ItemsControl BorderThickness="0"
                                   Background="Transparent"
                                   ItemsSource="{Binding CallPanel.FloorButtons}" BorderBrush="Black" >
