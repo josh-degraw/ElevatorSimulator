@@ -396,6 +396,14 @@ namespace ElevatorApp.Models
             this._floorsToStopAt.AddDistinct(passenger.Path.destination);
 
             PassengerAdded?.Invoke(this, passenger);
+            //!!!Note about the next section: Uncommenting this allows the elevator to work perfectly
+            //when using the same floor as the elevator is on, but commenting this causes the opposite scenario
+            //to occur. The problem is the "dispatch isn't being sent when using the same floor but DOES when not
+
+            /*
+            int destination = FloorsToStopAt.MinBy(a => Math.Abs(a - this.CurrentFloor));
+            await Dispatch(destination);
+            */
         }
 
         /// <summary>
@@ -501,26 +509,54 @@ namespace ElevatorApp.Models
 
                     await _startMovement(call);
 
-                    for (int i = this.CurrentFloor; i < destination; i++)
+                    if(this.Direction == ElevatorDirection.GoingUp)
                     {
-                        await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
-                        int nextFloor = i + 1;
-
-                        var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
-
-                        // If the elevator should stop at this floor
-                        if (_approachFloor(args))
+                        for (int i = this.CurrentFloor; i < destination; i++)
                         {
-                            LogEvent($"Elevator approaching floor {nextFloor}");
-                            await _arriveAtFloor(nextFloor, args);
+                            await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
+                            int nextFloor = i + 1;
 
-                            // Start moving to the next floor
-                            call = new ElevatorMovementEventArgs(++i, call.Direction);
-                            await _startMovement(call);
+                            var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
+
+                            // If the elevator should stop at this floor
+                            if (_approachFloor(args))
+                            {
+                                LogEvent($"Elevator approaching floor {nextFloor}");
+                                await _arriveAtFloor(nextFloor, args);
+
+                                // Start moving to the next floor
+                                call = new ElevatorMovementEventArgs(++i, call.Direction);
+                                await _startMovement(call);
+                            }
+                            else if (nextFloor != destination)
+                            {
+                                this.CurrentFloor = nextFloor; // Set the current floor
+                            }
                         }
-                        else if (nextFloor != destination)
+                    }
+                    else if (this.Direction == ElevatorDirection.GoingDown)
+                    {
+                        for (int i = this.CurrentFloor; i > destination; i--)
                         {
-                            this.CurrentFloor = nextFloor; // Set the current floor
+                            await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
+                            int nextFloor = i - 1;
+
+                            var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
+
+                            // If the elevator should stop at this floor
+                            if (_approachFloor(args))
+                            {
+                                LogEvent($"Elevator approaching floor {nextFloor}");
+                                await _arriveAtFloor(nextFloor, args);
+
+                                // Start moving to the next floor
+                                call = new ElevatorMovementEventArgs(++i, call.Direction);
+                                await _startMovement(call);
+                            }
+                            else if (nextFloor != destination)
+                            {
+                                this.CurrentFloor = nextFloor; // Set the current floor
+                            }
                         }
                     }
 
