@@ -13,6 +13,10 @@ using MoreLinq;
 
 namespace ElevatorApp.Models
 {
+
+    /// <summary>
+    /// Represents a floor of a building.
+    /// </summary>
     public class Floor : ModelBase, ISubcriber<ElevatorMasterController>, ISubcriber<(ElevatorMasterController, Elevator)>
     {
         #region Backing fields
@@ -27,6 +31,9 @@ namespace ElevatorApp.Models
 
         #region Properties
 
+        /// <summary>
+        /// The number of the floor
+        /// </summary>
         public int FloorNumber
         {
             get => _floorNum;
@@ -34,40 +41,61 @@ namespace ElevatorApp.Models
 
         }
 
+
+        /// <summary>
+        /// The panel outside of the <see cref="Elevator"/>, used to call the elevator to the floor.
+        /// </summary>
         public ElevatorCallPanel CallPanel
         {
             get => _callPanel;
             set => SetProperty(ref _callPanel, value);
         }
 
+        /// <summary>
+        /// Represents whether the <see cref="Elevator"/> is at this floor at the given moment
+        /// </summary>
         public bool ElevatorAvailable
         {
             get => _elevatorAvailable;
-            set => SetProperty(ref _elevatorAvailable, value);
+            private set => SetProperty(ref _elevatorAvailable, value);
         }
 
+        /// <summary>
+        /// The passengers waiting on the floor for the <see cref="Elevator"/>
+        /// </summary>
         public IReadOnlyCollection<Passenger> WaitingPassengers => _waitingPassengers;
 
         #endregion
 
+        /// <summary>
+        /// Constructs a new <see cref="Floor"/> with the given floor number and call panel passed in
+        /// </summary>
         public Floor(int floorNumber, ElevatorCallPanel callPanel)
         {
             this.FloorNumber = floorNumber;
             this.CallPanel = callPanel;
         }
 
+
+        /// <summary>
+        /// Constructs a new <see cref="Floor"/> with the given floor number
+        /// </summary>
         public Floor(int floorNumber) : this(floorNumber, new ElevatorCallPanel(floorNumber))
         {
 
         }
 
+
+        /// <summary>
+        /// Parameterless constructor. Shouldn't be called directly. Only for use with the designer
+        /// </summary>
         public Floor()
         {
 
         }
 
         /// <summary>
-        /// 
+        /// Adds a passenger to the list of waiting passengers
         /// </summary>
         /// <param name="destination"></param>
         public void QueuePassenger(int destination)
@@ -76,10 +104,13 @@ namespace ElevatorApp.Models
         }
 
         #region Subscription
-
+        /// <inheritdoc />
         bool ISubcriber<(ElevatorMasterController, Elevator)>.Subscribed => _subscribed;
+
+        /// <inheritdoc />
         bool ISubcriber<ElevatorMasterController>.Subscribed => _controllerSubscribed;
 
+        /// <inheritdoc />
         async Task ISubcriber<ElevatorMasterController>.Subscribe(ElevatorMasterController parent)
         {
             if (_controllerSubscribed)
@@ -103,7 +134,7 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
-        /// 
+        /// Subscribes the <see cref="Floor"/> to the given master controller and elevator
         /// </summary>
         /// <param name="parents"></param>
         /// <returns></returns>
@@ -180,7 +211,9 @@ namespace ElevatorApp.Models
                 if (e.DestinationFloor == this.FloorNumber)
                 {
                     if (getPassengersToMove(elevator, e.DestinationFloor).Any())
+                    {
                         e.ShouldStop = true;
+                    }
                 }
             }
 
@@ -208,6 +241,7 @@ namespace ElevatorApp.Models
                 }
             }
 
+
             void onElevatorDeparted(object _, ElevatorMovementEventArgs call)
             {
                 if (controller.ElevatorCount == 1)
@@ -216,21 +250,12 @@ namespace ElevatorApp.Models
                 }
                 else if (controller.ElevatorCount > 1)
                 {
-                    if (!controller.Elevators.Any(a => a.CurrentFloor == this.FloorNumber && a.Direction == ElevatorDirection.None))
+                    if (!controller.Elevators.Any(a => a.CurrentFloor == this.FloorNumber && a.Direction == Direction.None))
                     {
                         this.ElevatorAvailable = false;
                     }
                 }
             }
-
-            //void cancelDoorClosingIfNewPassengerAdded(object sender, DoorStateChangeEventArgs args)
-            //{
-            //    List<Passenger> shouldGetOn = getPassengersToMove(elevator).ToList();
-            //    if (shouldGetOn.Count > 0)
-            //    {
-            //        args.CancelOperation = true;
-            //    }
-            //}
 
             #endregion
 
@@ -271,11 +296,25 @@ namespace ElevatorApp.Models
             elevator.Door.Closing -= cancelIfStartsToClose;
         }
 
+        /// <summary>
+        /// Gets the passengers that are going 
+        /// </summary>
         IEnumerable<Passenger> getPassengersToMove(Elevator elevator, int? nextFloor = null)
         {
             try
             {
-                int nextDest = this._waitingPassengers.Min(p => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor));
+                int nextDest = 0;
+                if (elevator.Direction == Direction.None)
+                {
+                
+                }
+                else
+                {
+                    nextDest = this.WaitingPassengers
+                        .Where(p => p.Direction == elevator.Direction)
+                        .Min(p => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor));
+                }
+
                 if (nextDest != 0)
                 {
                     return this._getPassengersToMove(nextDest, elevator);
@@ -293,15 +332,15 @@ namespace ElevatorApp.Models
             switch (elevator.Direction)
             {
                 // If the elevator is already going up, only add passengers who are going up
-                case ElevatorDirection.GoingUp:
-                    return this._waitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= destination);
+                case Direction.Up:
+                    return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= destination);
 
                 // If the elevator is already going down, only add passengers who are going down
-                case ElevatorDirection.GoingDown:
-                    return this._waitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= destination);
+                case Direction.Down:
+                    return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= destination);
 
                 default:
-                    return this._waitingPassengers;
+                    return this.WaitingPassengers;
             }
         }
 

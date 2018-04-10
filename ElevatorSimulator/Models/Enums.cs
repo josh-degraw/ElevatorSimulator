@@ -1,4 +1,5 @@
-﻿namespace ElevatorApp.Models.Enums
+﻿using System;
+namespace ElevatorApp.Models.Enums
 {
     /// <summary>
     /// Represent the state of a <see cref="Door"/>
@@ -92,27 +93,6 @@
         /// Downwards
         /// </summary>
         Down = 2
-    }
-
-    /// <summary>
-    /// Represents the direction an <see cref="Elevator"/> is currently moving in.
-    /// </summary>
-    public enum ElevatorDirection
-    {
-        /// <summary>
-        /// The <see cref="Elevator"/> is not moving.
-        /// </summary>
-        None = 0,
-
-        /// <summary>
-        /// The <see cref="Elevator"/> is currently going up
-        /// </summary>
-        GoingUp = 1,
-
-        /// <summary>
-        /// The <see cref="Elevator"/> is currently going down
-        /// </summary>
-        GoingDown = 2
     }
 
     /// <summary>

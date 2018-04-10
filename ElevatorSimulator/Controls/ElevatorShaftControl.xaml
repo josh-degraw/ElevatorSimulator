@@ -25,7 +25,7 @@
                             <Rectangle.Style>
                                 <Style>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding State}" Value="GoingUp" >
+                                        <DataTrigger Binding="{Binding State}" Value="Up" >
                                             <DataTrigger.EnterActions>
                                                 <BeginStoryboard x:Name="stryBoard">
                                                     <Storyboard>

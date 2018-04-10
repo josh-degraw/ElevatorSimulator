@@ -36,13 +36,6 @@ namespace ElevatorApp.Models
             };
         }
 
-        ///// <summary>
-        ///// Create a new <see cref="ElevatorCallPanel"/>
-        ///// </summary>
-        //public ElevatorCallPanel()
-        //{
-        //}
-
         private bool _subscribed;
 
         bool ISubcriber<ElevatorMasterController>.Subscribed => _subscribed;

@@ -16,6 +16,10 @@ using MoreLinq;
 
 namespace ElevatorApp.Models
 {
+    
+    /// <summary>
+    /// Represents the master controller for the system. Contains the Elevator and the floors
+    /// </summary>
     public class ElevatorMasterController : ModelBase, IObserver<int>
     {
         #region Backing fields
@@ -60,6 +64,10 @@ namespace ElevatorApp.Models
 
         public ElevatorSettings ElevatorSettings { get; } = new ElevatorSettings();
 
+
+        /// <summary>
+        /// Adjusts a private collection of the <see cref="ElevatorMasterController"/> based on the number of elements the collection is supposed to contain
+        /// </summary>
         private void AdjustCollection<T>(ICollection<T> collection, int value, Func<int, T> generator, [CallerMemberName] string memberName = null) where T : ISubcriber<ElevatorMasterController>
         {
             if (collection.Count == value)
@@ -129,6 +137,10 @@ namespace ElevatorApp.Models
 
         #region Events
 
+        
+        /// <summary>
+        /// Called when 
+        /// </summary>
         public event EventHandler<int> OnElevatorRequested;
         #endregion
 
@@ -183,7 +195,7 @@ namespace ElevatorApp.Models
 
             // First check if any are not moving
             Elevator closest = Elevators
-                //.Where(e => e.Direction == ElevatorDirection.None)
+                //.Where(e => e.Direction == Direction.None)
                 .MinByOrDefault(distanceFromRequestedFloor); // If any were found idle, the closest one to the requested floor is dispatched
 
             if (closest == null)
@@ -194,7 +206,7 @@ namespace ElevatorApp.Models
                     //.Where(e =>
                     //{
                     //    Direction direction = e.Direction;
-                    //    return e.Direction == (ElevatorDirection) direction;
+                    //    return e.Direction == (Direction) direction;
                     //})
                     .MinByOrDefault(distanceFromRequestedFloor);
             }
@@ -245,7 +257,6 @@ namespace ElevatorApp.Models
             {
                 try
                 {
-
                     await this.ElevatorArrived(elevator, b.Direction);
                 }
                 catch (Exception ex)

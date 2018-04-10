@@ -15,6 +15,7 @@ namespace ElevatorApp.Models
     {
         /// <summary>
         /// If set to true, the next operation(s) in the chain will not be processed.
+        /// <para>This may be set in any event handler</para>
         /// </summary>
         public bool CancelOperation { get; set; }
     }
@@ -27,7 +28,7 @@ namespace ElevatorApp.Models
     public delegate void DoorStateChangeRequestHandler(object sender, DoorStateChangeEventArgs args);
 
     /// <summary>
-    /// Represents the door of the elevator
+    /// Represents the door of the <see cref="Elevator"/>
     /// </summary>
     public class Door : ModelBase, ISubcriber<Elevator>
     {
@@ -43,7 +44,15 @@ namespace ElevatorApp.Models
         public const int TIME_SPENT_OPEN_SECONDS = 5;
 
         private readonly TimeSpan
+
+            /// <summary>
+            /// The number of seconds it takes for the <see cref="Door"/> to close and to open
+            /// </summary>            
             TRANSITION_TIME = TimeSpan.FromSeconds(TRANSITION_TIME_SECONDS),
+
+            /// <summary>
+            /// The number of seconds the <see cref="Door"/> stays open
+            /// </summary>
             TIME_SPENT_OPEN = TimeSpan.FromSeconds(TIME_SPENT_OPEN_SECONDS);
 
         #region Event Handlers
@@ -136,7 +145,7 @@ namespace ElevatorApp.Models
                 if (this.DoorState != DoorState.Opened && DoorState != DoorState.Opening)
                 {
                     var args = new DoorStateChangeEventArgs();
-
+                    
                     this.OpenRequested?.Invoke(this, args);
 
                     if (!args.CancelOperation)
@@ -216,7 +225,7 @@ namespace ElevatorApp.Models
                 {
                     try
                     {
-                        if (elevator.Direction == ElevatorDirection.None)
+                        if (elevator.Direction == Direction.None)
                             await this.RequestClose();
                     }
                     catch (Exception e)
@@ -229,7 +238,7 @@ namespace ElevatorApp.Models
                 {
                     try
                     {
-                        if (elevator.Direction == ElevatorDirection.None)
+                        if (elevator.Direction == Direction.None)
                             await this.RequestOpen();
                     }
                     catch (Exception e)

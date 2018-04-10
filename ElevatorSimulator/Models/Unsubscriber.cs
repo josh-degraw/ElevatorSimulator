@@ -12,6 +12,10 @@ namespace ElevatorApp.Models
     /// <typeparam name="T"></typeparam>
     internal class Unsubscriber<T> : IDisposable
     {
+
+        /// <summary>
+        /// Indicates that this has unsubscribed
+        /// </summary>
         public bool Disposed { get; private set; } = false;
 
         private readonly Action _remove;
@@ -27,6 +31,7 @@ namespace ElevatorApp.Models
             };
         }
 
+        /// <inheritdoc/>
         public void Dispose()
         {
             if (!Disposed)

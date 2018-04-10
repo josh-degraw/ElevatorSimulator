@@ -25,7 +25,7 @@ namespace ElevatorApp.Models
         #region Backing fields
 
         private static int _RegisteredElevators = 0;
-        private ElevatorDirection _direction = ElevatorDirection.None;
+        private Direction _direction = Direction.None;
         private ElevatorState _elevatorState = ElevatorState.Idle;
 
         private int
@@ -79,9 +79,9 @@ namespace ElevatorApp.Models
             {
                 switch (this.Direction)
                 {
-                    case ElevatorDirection.None: return 0;
-                    case ElevatorDirection.GoingUp: return this.Speed;
-                    case ElevatorDirection.GoingDown: return -this.Speed;
+                    case Direction.None: return 0;
+                    case Direction.Up: return this.Speed;
+                    case Direction.Down: return -this.Speed;
 
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -106,7 +106,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// The direction the elevator is going
         /// </summary>
-        public ElevatorDirection Direction
+        public Direction Direction
         {
             get => _direction;
             set => SetProperty(ref _direction, value);
@@ -146,9 +146,9 @@ namespace ElevatorApp.Models
             {
                 switch (Direction)
                 {
-                    case ElevatorDirection.None: return this.CurrentFloor;
-                    case ElevatorDirection.GoingUp: return this.CurrentFloor + 1;
-                    case ElevatorDirection.GoingDown: return this.CurrentFloor - 1;
+                    case Direction.None: return this.CurrentFloor;
+                    case Direction.Up: return this.CurrentFloor + 1;
+                    case Direction.Down: return this.CurrentFloor - 1;
 
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -305,15 +305,15 @@ namespace ElevatorApp.Models
 
             if (this.CurrentFloor < args.DestinationFloor)
             {
-                this.Direction = ElevatorDirection.GoingUp;
+                this.Direction = Direction.Up;
             }
             else if (this.CurrentFloor > args.DestinationFloor)
             {
-                this.Direction = ElevatorDirection.GoingDown;
+                this.Direction = Direction.Down;
             }
             else
             {
-                this.Direction = ElevatorDirection.None;
+                this.Direction = Direction.None;
             }
 
             LogEvent("Elevator Departing", ("From", this.CurrentFloor), ("To", args.DestinationFloor));
@@ -426,26 +426,20 @@ namespace ElevatorApp.Models
             Task subscribeButtonPanel = this.ButtonPanel.Subscribe((controller, this));
             Task subscribeDoor = this.Door.Subscribe(this);
 
-            //this.Door.Closed += async (e, args) =>
-            //{
-            //    if (this.FloorsToStopAt.Count > 0)
-            //        await this.Move();
-            //};
-
             await Task.WhenAll(subscribeButtonPanel, subscribeDoor).ConfigureAwait(false);
             this.Subscribed = true;
         }
 
-        private ElevatorDirection assignDirection(int destination)
+        private Direction assignDirection(int destination)
         {
             if (this.CurrentFloor == destination)
-                return ElevatorDirection.None;
+                return Direction.None;
 
             else if (this.CurrentFloor < destination)
-                return ElevatorDirection.GoingUp;
+                return Direction.Up;
 
             else
-                return ElevatorDirection.GoingDown;
+                return Direction.Down;
         }
 
         /// <summary>
@@ -468,7 +462,7 @@ namespace ElevatorApp.Models
             if (!_floorsToStopAt.Contains(destination))
                 _floorsToStopAt.AddDistinct(destination);
 
-            if (this.Direction == ElevatorDirection.None || (!_moving && this.State == ElevatorState.Arrived))
+            if (this.Direction == Direction.None || (!_moving && this.State == ElevatorState.Arrived))
             {
                 // Starts the movement in a seperate thread with Task.Run
                 await Task.Run(this.Move).ConfigureAwait(false);
@@ -499,6 +493,7 @@ namespace ElevatorApp.Models
                 while (this._floorsToStopAt.Any())
                 {
                     _moving = true;
+
                     int destination = FloorsToStopAt.MinBy(a => Math.Abs(a - this.CurrentFloor));
                     this.Direction = assignDirection(destination);
 
@@ -533,7 +528,7 @@ namespace ElevatorApp.Models
                     _floorsToStopAt.Remove(destination);
                 }
                 _moving = false;
-                this.Direction = ElevatorDirection.None;
+                this.Direction = Direction.None;
                 this.State = ElevatorState.Idle;
             }
             catch (Exception ex)
@@ -588,9 +583,12 @@ namespace ElevatorApp.Models
         {
             try
             {
-                this.State = ElevatorState.Arriving;
-                this.Arriving?.Invoke(this, args);
-                await Task.Delay(DECELERATION_DELAY.ToTimeSpan());
+                if (this.State == ElevatorState.Departed || this.CurrentFloor == nextDestination)
+                {
+                    this.State = ElevatorState.Arriving;
+                    this.Arriving?.Invoke(this, args);
+                    await Task.Delay(DECELERATION_DELAY.ToTimeSpan());
+                }
 
                 this.CurrentFloor = nextDestination;
 

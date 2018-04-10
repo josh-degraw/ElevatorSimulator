@@ -7,11 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
+using MoreLinq;
 
 namespace ElevatorApp.Models
 {
     /// <summary>
-    /// Represents the base class of a button panel. Takes care of subscription of 
+    /// Represents the base class of a button panel. 
+    /// Subscribes all of the <see cref="Button"/>s it contains to the <see cref="Elevator"/>
     /// </summary>
     public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<(ElevatorMasterController, Elevator)>, ISubcriber<ElevatorMasterController>, IObservable<int>
     {
@@ -47,12 +49,14 @@ namespace ElevatorApp.Models
         
         #endregion
 
+
+        ///<inheritdoc/>
         public bool Subscribed { get; protected set; }
 
         /// <summary>
         /// Subscribe to a <see cref="ElevatorMasterController"/> and an <see cref="Elevator"/>.
         /// </summary>
-        /// <param name="parent">The Pair toi subscribe to</param>
+        /// <param name="parent">The Pair to subscribe to</param>
         public virtual async Task Subscribe((ElevatorMasterController, Elevator) parent)
         {
             var (_, elevator) = parent;
@@ -70,9 +74,11 @@ namespace ElevatorApp.Models
         /// <param name="floor"></param>
         private void NotifyObservers(int floor)
         {
-            _observers.AsParallel().ForAll(observer => observer.OnNext(floor));
+            foreach (var observer in _observers)
+            {
+                observer.OnNext(floor)
+            }
         }
-
 
         /// <inheritdoc />
         /// <summary>
@@ -91,7 +97,10 @@ namespace ElevatorApp.Models
             return new Unsubscriber<int>(_observers, observer);
         }
 
-        public virtual async Task Subscribe(ElevatorMasterController parent)
+        /// <summary>
+        /// Subscribes this Button panel to the <see cref="ElevatorMasterController"/>
+        /// </summary>
+        public virtual Task Subscribe(ElevatorMasterController parent)
         {
             this.Subscribe((IObserver<int>)parent);
 
@@ -102,6 +111,8 @@ namespace ElevatorApp.Models
                     NotifyObservers(floor);
                 };
             }
+
+            return Task.CompletedTask;
         }
     }
 }
