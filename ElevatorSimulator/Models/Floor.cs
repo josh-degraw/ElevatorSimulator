@@ -260,6 +260,12 @@ namespace ElevatorApp.Models
             {
                 args.CancelOperation = true;
             }
+            //There's probably a better way to do this. But the doors were being forced to stay open when adding
+            //passengers because CancelOperations was being left "true"
+            void resetCancelOp(object sender, DoorStateChangeEventArgs args)
+            {
+                args.CancelOperation = false;
+            }
 
             elevator.Door.Closing += cancelIfStartsToClose;
             foreach (Passenger passenger in departing)
@@ -269,6 +275,8 @@ namespace ElevatorApp.Models
 
             // Remove the event handler now because we can let the door close, since all the passengers are on now
             elevator.Door.Closing -= cancelIfStartsToClose;
+            //Allow doors to close after keeping them open. 
+            elevator.Door.Closing += resetCancelOp;
         }
 
         IEnumerable<Passenger> getPassengersToMove(Elevator elevator, int? nextFloor = null)
