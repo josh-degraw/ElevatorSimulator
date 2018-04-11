@@ -72,12 +72,12 @@
             <Label Grid.Row="2" Grid.Column="1" Content="{Binding State, FallbackValue=Idle}"/>
 
             <WrapPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" >
-                <Label Content="Passengers: "/>
+                <Label Content="Passengers: 👤 x"/>
                 <Label Content="{Binding Passengers.Count, FallbackValue=0}"/>
             </WrapPanel>
 
             <WrapPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical" Grid.RowSpan="3" >
-                <Label Content="FLoors requested: "/>
+                <Label Content="Floors requested: "/>
 
                 <ItemsControl ItemsSource="{Binding FloorsToStopAt}">
                     <ItemsControl.ItemsPanel>
