@@ -43,13 +43,15 @@ namespace ElevatorApp.Models
         /// and therefore is being changed
         /// </returns>
         [NotifyPropertyChangedInvocator]
-        protected virtual bool SetProperty<T>(ref T prop, T value, bool alwaysLog = false,
-            [CallerMemberName] string propertyName = null)
+        protected virtual bool SetProperty<T>(ref T prop, T value, bool alwaysLog = false, [CallerMemberName] string propertyName = null)
         {
-            if (EqualityComparer<T>.Default.Equals(prop, value)) return false;
+            if (prop.Equals(value))
+            {
+                return false;
+            }
 
             if (LogAllPropertyChanges || alwaysLog)
-                Logger.LogEvent($"Property Changed: {propertyName}.", ($"{prop} -->", value?.ToString()));
+                Logger.LogEvent($"Property Changed: {propertyName}.", ($"{prop}", value?.ToString()));
 
             prop = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -38,34 +38,49 @@ namespace ElevatorApp.Models
             base.Pushed(this, DestinationFloor);
         }
 
-        public override async Task Subscribe((ElevatorMasterController, Elevator) parent)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="controller"></param>
+        /// <returns></returns>
+        public override Task Subscribe(ElevatorMasterController controller)
         {
-            var (controller, elevator) = parent;
-
-            // This should be handled by the Call panels
-            this.OnPushed += async (a, floor) =>
+            if (!this.Subscribed)
             {
-                try
+                var elevator = controller.Elevator;
+                // This should be handled by the Call panels
+                this.OnPushed += async (a, floor) =>
                 {
-                    // If the elevator's already here, open the door
-                    if (elevator.CurrentFloor == this.FloorNumber && (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
+                    try
                     {
-                        if (elevator.Door.DoorState != DoorState.Opened)
+                        Logger.LogEvent($"Pushed floor button {this.DestinationFloor}");
+                        // If the elevator's already here, open the door
+                        if (elevator.CurrentFloor == this.FloorNumber &&
+                            (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
                         {
-                            await elevator.Door.RequestOpen();
+                            if (elevator.Door.DoorState != DoorState.Opened)
+                            {
+                                await elevator.Door.RequestOpen();
+                            }
                         }
+                        else
+                        {
+                            ((IObserver<int>)controller).OnNext(this.FloorNumber);
+                        }
+
+                        ((IObserver<int>)controller).OnNext(this.DestinationFloor);
+
                     }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
+                    }
+                };
 
-                    Logger.LogEvent($"Pushed floor button {this.FloorNumber}");
-                    ((IObserver<int>)controller).OnNext(this.FloorNumber);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex);
-                }
-            };
+                this.Subscribed = true;
+            }
 
-            this.Subscribed = true;
+            return Task.CompletedTask;
         }
     }
 }

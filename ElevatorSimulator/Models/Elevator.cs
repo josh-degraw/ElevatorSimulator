@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
-using NodaTime;
 using MoreLinq;
+using NodaTime;
 using static ElevatorApp.Util.Logger;
 
 namespace ElevatorApp.Models
@@ -63,7 +62,7 @@ namespace ElevatorApp.Models
         public int Speed
         {
             get => _speed;
-            set
+            private set
             {
                 SetProperty(ref _speed, value);
                 OnPropertyChanged(this.RelativeSpeed, nameof(this.RelativeSpeed));
@@ -95,7 +94,7 @@ namespace ElevatorApp.Models
         public int CurrentSpeed
         {
             get => _currentSpeed;
-            set => SetProperty(ref _currentSpeed, value);
+            private set => SetProperty(ref _currentSpeed, value);
         }
 
         /// <summary>
@@ -109,7 +108,7 @@ namespace ElevatorApp.Models
         public Direction Direction
         {
             get => _direction;
-            set => SetProperty(ref _direction, value);
+            private set => SetProperty(ref _direction, value);
         }
 
         /// <summary>
@@ -118,7 +117,38 @@ namespace ElevatorApp.Models
         public ElevatorState State
         {
             get => _elevatorState;
-            set => SetProperty(ref _elevatorState, value);
+            private set
+            {
+                Debug.Assert(_validateStateChange(_elevatorState, value), "Invalid state change for elevator", "{0} -> {1}", _elevatorState, value);
+                SetProperty(ref _elevatorState, value);
+            }
+        }
+
+        private bool _validateStateChange(ElevatorState prev, ElevatorState next)
+        {
+            if (prev == next)
+                return true;
+
+            switch (prev)
+            {
+                case ElevatorState.Idle:
+                    return next == ElevatorState.Departing;
+
+                case ElevatorState.Departing:
+                    return next == ElevatorState.Departed;
+
+                case ElevatorState.Departed:
+                    return next == ElevatorState.Arriving;
+
+                case ElevatorState.Arriving:
+                    return next == ElevatorState.Arrived;
+
+                case ElevatorState.Arrived:
+                    return next.EqualsAny(ElevatorState.Departing, ElevatorState.Idle);
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(prev), prev, null);
+            }
         }
 
         /// <summary>
@@ -273,11 +303,17 @@ namespace ElevatorApp.Models
 
             Logger.LogEvent("Initializing Elevator", ("ElevatorNumber", this.ElevatorNumber));
             this.ButtonPanel = new ButtonPanel();
-            this.Arriving += ElevatorArriving;
-            this.Arrived += ElevatorArrived;
 
-            this.Departing += ElevatorDeparting;
-            this.Departed += ElevatorDeparted;
+            this._floorsToStopAt.CollectionChanged += (sender, args) =>
+            {
+                Logger.LogEvent("Elevator Queue changed", ("Path", _floorsToStopAt.OrderBy(a => a).ToDelimitedString(",")));
+            };
+
+            this.Arriving = ElevatorArriving;
+            this.Arrived = ElevatorArrived;
+
+            this.Departing = ElevatorDeparting;
+            this.Departed = ElevatorDeparted;
         }
 
         /// <summary>
@@ -300,23 +336,11 @@ namespace ElevatorApp.Models
         /// <param name="args"></param>
         private void ElevatorDeparting(object sender, ElevatorMovementEventArgs args)
         {
+            if (this.CurrentFloor == args.DestinationFloor)
+                return;
+
             this.State = ElevatorState.Departing;
-
-
-            if (this.CurrentFloor < args.DestinationFloor)
-            {
-                this.Direction = Direction.Up;
-            }
-            else if (this.CurrentFloor > args.DestinationFloor)
-            {
-                this.Direction = Direction.Down;
-            }
-            else
-            {
-                this.Direction = Direction.None;
-            }
-
-            LogEvent("Elevator Departing", ("From", this.CurrentFloor), ("To", args.DestinationFloor));
+            LogEvent("Elevator Departing", (this.CurrentFloor, args.DestinationFloor));
         }
 
         /// <summary>
@@ -326,8 +350,11 @@ namespace ElevatorApp.Models
         /// <param name="args"></param>
         private void ElevatorDeparted(object sender, ElevatorMovementEventArgs args)
         {
+            if (args.DestinationFloor == this.CurrentFloor)
+                return;
+
             this.State = ElevatorState.Departed;
-            LogEvent("Elevator Departed", ("From", this.CurrentFloor), ("To", args));
+            LogEvent("Elevator Departed", (this.CurrentFloor, args.DestinationFloor));
         }
 
         /// <summary>
@@ -338,7 +365,7 @@ namespace ElevatorApp.Models
         private void ElevatorArriving(object sender, ElevatorMovementEventArgs args)
         {
             this.State = ElevatorState.Arriving;
-            LogEvent("Elevator Arriving", ("At Floor", args));
+            LogEvent("Elevator Arriving", ("Floor", args));
         }
 
         /// <summary>
@@ -346,20 +373,23 @@ namespace ElevatorApp.Models
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args">The floor that the elevator is arriving at</param>
-        private void ElevatorArrived(object sender, ElevatorMovementEventArgs args)
+        private async void ElevatorArrived(object sender, ElevatorMovementEventArgs args)
         {
             try
             {
+                _floorsToStopAt.TryRemove(args.DestinationFloor);
+                this.CurrentFloor = args.DestinationFloor;
                 this.State = ElevatorState.Arrived;
-                LogEvent("Elevator Arrived", ("At Floor", args.DestinationFloor));
+                LogEvent("Elevator Arrived", ("Floor", args.DestinationFloor));
 
                 IEnumerable<Passenger> leaving = this.Passengers.Where(p => p.Path.destination == args.DestinationFloor);
+                await WaitForDoorToOpen();
 
                 foreach (Passenger passenger in leaving)
                 {
                     try
                     {
-                        this.RemovePassenger(passenger).GetAwaiter().GetResult();
+                        await this.RemovePassenger(passenger).ConfigureAwait(false);
                     }
                     catch (Exception ex)
                     {
@@ -393,13 +423,13 @@ namespace ElevatorApp.Models
             passenger.State = PassengerState.In;
 
             this._passengers.AddDistinct(passenger);
-            this._floorsToStopAt.AddDistinct(passenger.Path.destination);
 
             PassengerAdded?.Invoke(this, passenger);
             //!!!Note about the next section: Uncommenting this allows the elevator to work perfectly
             //when using the same floor as the elevator is on, but commenting this causes the opposite scenario
             //to occur. The problem is the "dispatch isn't being sent when using the same floor but DOES when not
 
+            //await Dispatch(passenger.Path.destination);
             /*
             int destination = FloorsToStopAt.MinBy(a => Math.Abs(a - this.CurrentFloor));
             await Dispatch(destination);
@@ -431,7 +461,7 @@ namespace ElevatorApp.Models
                 return;
 
             Logger.LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
-            Task subscribeButtonPanel = this.ButtonPanel.Subscribe((controller, this));
+            Task subscribeButtonPanel = this.ButtonPanel.Subscribe(controller);
             Task subscribeDoor = this.Door.Subscribe(this);
 
             await Task.WhenAll(subscribeButtonPanel, subscribeDoor).ConfigureAwait(false);
@@ -460,24 +490,32 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         internal async Task Dispatch(int destination)
         {
-            // If the elevator is already at the floor that has been requested, trigger the Arrived event and stop worrying about stuff for now.
-            if (this.CurrentFloor == destination)
-            {
-                this.Arrived?.Invoke(this, new ElevatorMovementEventArgs(destination, Enums.Direction.None));
-                return;
-            }
-
             if (!_floorsToStopAt.Contains(destination))
                 _floorsToStopAt.AddDistinct(destination);
 
-            if (this.Direction == Direction.None || (!_moving && this.State == ElevatorState.Arrived))
+            if (!_moving && this.Direction == Direction.None)
             {
                 // Starts the movement in a seperate thread with Task.Run
-                await Task.Run(this.Move).ConfigureAwait(false);
+                await this.Move().ConfigureAwait(false);
             }
         }
 
         private bool _moving = false;
+        private object _lock = new object();
+
+
+        private async Task WaitForDoorToClose()
+        {
+            //Wait for the door to be closed
+            while (this.Door.DoorState != DoorState.Closed)
+                await Task.Delay(1);
+        }
+        private async Task WaitForDoorToOpen()
+        {
+            //Wait for the door to be closed
+            while (this.Door.DoorState != DoorState.Opened)
+                await Task.Delay(1);
+        }
 
         /// <summary>
         /// Handles the logic for the movement of the <see cref="Elevator"/>.
@@ -487,9 +525,8 @@ namespace ElevatorApp.Models
         {
             try
             {
-                //Wait for the door to be closed
-                while (this.Door.DoorState != DoorState.Closed)
-                    await Task.Delay(1);
+                await WaitForDoorToClose();
+                var s = this.Departing?.GetInvocationList();
 
                 // Get the closest floor to the current
                 if (NextFloor == this.CurrentFloor)
@@ -502,67 +539,84 @@ namespace ElevatorApp.Models
                 {
                     _moving = true;
 
-                    int destination = FloorsToStopAt.MinBy(a => Math.Abs(a - this.CurrentFloor));
-                    this.Direction = assignDirection(destination);
+                    int destination = FloorsToStopAt.Where(a => a != this.CurrentFloor).MinBy(a => Math.Abs(a - this.CurrentFloor));
 
-                    var call = new ElevatorMovementEventArgs(destination, (Direction)this.Direction);
+                    this.Direction = assignDirection(destination);
+                    if (this.Direction == Direction.None)
+                        break;
+
+                    var call = new ElevatorMovementEventArgs(destination, this.Direction);
+
+                    await WaitForDoorToClose();
 
                     await _startMovement(call);
 
-                    if(this.Direction == ElevatorDirection.GoingUp)
+                    switch (this.Direction)
                     {
-                        for (int i = this.CurrentFloor; i < destination; i++)
-                        {
-                            await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
-                            int nextFloor = i + 1;
-
-                            var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
-
-                            // If the elevator should stop at this floor
-                            if (_approachFloor(args))
+                        case Direction.Up:
+                            Trace.Indent();
+                            for (int i = this.CurrentFloor; i < destination; i++)
                             {
-                                LogEvent($"Elevator approaching floor {nextFloor}");
-                                await _arriveAtFloor(nextFloor, args);
+                                await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
+                                int nextFloor = i + 1;
 
-                                // Start moving to the next floor
-                                call = new ElevatorMovementEventArgs(++i, call.Direction);
-                                await _startMovement(call);
+                                var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
+
+                                // If the elevator should stop at this floor
+                                bool shouldStop = false;
+                                lock (_lock)
+                                    shouldStop = _approachFloor(args);
+                                if (shouldStop)
+                                {
+                                    LogEvent($"Elevator approaching floor {nextFloor}");
+                                    await _arriveAtFloor(new ElevatorMovementEventArgs(nextFloor, call.Direction));
+
+                                    // Start moving to the next floor
+                                    ++i;
+                                    call = new ElevatorMovementEventArgs(nextFloor + 1, call.Direction);
+                                    await _startMovement(call);
+                                }
+                                else if (nextFloor != destination)
+                                {
+                                    this.CurrentFloor = nextFloor; // Set the current floor
+                                }
                             }
-                            else if (nextFloor != destination)
+                            Trace.IndentLevel--;
+
+                            break;
+
+                        case Direction.Down:
+                            Trace.Indent();
+                            for (int i = this.CurrentFloor; i > destination; i--)
                             {
-                                this.CurrentFloor = nextFloor; // Set the current floor
+                                await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
+                                int nextFloor = i - 1;
+
+                                var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
+
+                                // If the elevator should stop at this floor
+                                if (_approachFloor(args))
+                                {
+                                    await _arriveAtFloor(new ElevatorMovementEventArgs(nextFloor, call.Direction));
+
+                                    // Start moving to the next floor
+                                    --i;
+                                    call = new ElevatorMovementEventArgs(nextFloor - 1, call.Direction);
+                                    await _startMovement(call);
+                                }
+                                else if (nextFloor != destination)
+                                {
+                                    this.CurrentFloor = nextFloor; // Set the current floor
+                                }
                             }
-                        }
+                            Trace.IndentLevel--;
+
+                            break;
                     }
-                    else if (this.Direction == ElevatorDirection.GoingDown)
-                    {
-                        for (int i = this.CurrentFloor; i > destination; i--)
-                        {
-                            await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
-                            int nextFloor = i - 1;
 
-                            var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
-
-                            // If the elevator should stop at this floor
-                            if (_approachFloor(args))
-                            {
-                                LogEvent($"Elevator approaching floor {nextFloor}");
-                                await _arriveAtFloor(nextFloor, args);
-
-                                // Start moving to the next floor
-                                call = new ElevatorMovementEventArgs(++i, call.Direction);
-                                await _startMovement(call);
-                            }
-                            else if (nextFloor != destination)
-                            {
-                                this.CurrentFloor = nextFloor; // Set the current floor
-                            }
-                        }
-                    }
-
-                    await _arriveAtFloor(destination, call);
-                    _floorsToStopAt.Remove(destination);
+                    await _arriveAtFloor(call);
                 }
+
                 _moving = false;
                 this.Direction = Direction.None;
                 this.State = ElevatorState.Idle;
@@ -583,7 +637,8 @@ namespace ElevatorApp.Models
             LogEvent($"Elevator approaching floor {args.IntermediateFloor}");
 
             // TODO: If any passengers have called to here, let them get on
-            this.Approaching?.Invoke(this, args);
+            lock (_lock)
+                this.Approaching?.Invoke(this, args);
 
             return args.ShouldStop;
         }
@@ -594,14 +649,18 @@ namespace ElevatorApp.Models
         /// <param name="args"></param>
         private async Task _startMovement(ElevatorMovementEventArgs args)
         {
+            if (args.Handled)
+                return;
             try
             {
-                this.State = ElevatorState.Departing;
-                this.Departing?.Invoke(this, args);
+                await WaitForDoorToClose();
+                lock (_lock)
+                    this.Departing?.Invoke(this, args);
+
                 await Task.Delay(ACCELERATION_DELAY.ToTimeSpan());
 
-                this.State = ElevatorState.Departed;
-                this.Departed?.Invoke(this, args);
+                lock (_lock)
+                    this.Departed?.Invoke(this, args);
             }
             catch (Exception ex)
             {
@@ -612,24 +671,29 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Handles arriving at a floor
         /// </summary>
-        /// <param name="nextDestination"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        private async Task _arriveAtFloor(int nextDestination, ElevatorMovementEventArgs args)
+        private async Task _arriveAtFloor(ElevatorMovementEventArgs args)
         {
             try
             {
-                if (this.State == ElevatorState.Departed || this.CurrentFloor == nextDestination)
+                if (this.State == ElevatorState.Departed)
                 {
-                    this.State = ElevatorState.Arriving;
-                    this.Arriving?.Invoke(this, args);
+                    lock (_lock)
+                    {
+                        this.Arriving?.Invoke(this, args);
+                    }
+
                     await Task.Delay(DECELERATION_DELAY.ToTimeSpan());
                 }
 
-                this.CurrentFloor = nextDestination;
-
-                this.State = ElevatorState.Arrived;
-                this.Arrived?.Invoke(this, args);
+                if (this.State == ElevatorState.Arriving)
+                {
+                    lock (_lock)
+                    {
+                        this.Arrived?.Invoke(this, args);
+                    }
+                }
             }
             catch (Exception ex)
             {

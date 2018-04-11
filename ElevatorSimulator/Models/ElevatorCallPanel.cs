@@ -10,7 +10,7 @@ namespace ElevatorApp.Models
     /// <summary>
     /// Represents a panel of buttons used to call an <see cref="Elevator"/>, from outside of the <see cref="Elevator"/> (e.g. on a <see cref="Floor"/>).
     /// </summary>
-    public class ElevatorCallPanel : ButtonPanelBase, ISubcriber<ElevatorMasterController>, ISubcriber<(ElevatorMasterController, Elevator)>
+    public class ElevatorCallPanel : ButtonPanelBase, ISubcriber<ElevatorMasterController>
     {
         ///<inheritdoc/>
         protected override AsyncObservableCollection<FloorButton> _floorButtons { get; }
@@ -51,21 +51,6 @@ namespace ElevatorApp.Models
                 return;
 
             await base.Subscribe(masterController);
-            //Obsolete
-            //this.GoingUpButton.OnPushed += async (sender, e) =>
-            //{
-            //    await masterController.Dispatch(e).ConfigureAwait(false);
-            //};
-
-            this._subscribed = true;
-        }
-
-        /// <summary>
-        /// Perform the necessary steps to subscribe to the target.
-        /// </summary>
-        /// <param name="parent">The item this object will be subscribed to</param>
-        public override async Task Subscribe((ElevatorMasterController, Elevator) parent)
-        {
             var thisBtn = this.FloorButtons.FirstOrDefault(b =>
             {
                 if (b is RequestButton r)
@@ -80,7 +65,11 @@ namespace ElevatorApp.Models
                 this._floorButtons.Remove(thisBtn);
             }
 
-            await base.Subscribe(parent);
+            await base.Subscribe(masterController);
+
+
+            this._subscribed = true;
         }
+
     }
 }

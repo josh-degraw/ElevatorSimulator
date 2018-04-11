@@ -48,6 +48,18 @@ namespace ElevatorApp.Util
             }
         }
 
+        /// <summary>
+        /// Returns true if any of the given values match the current item
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="item"></param>
+        /// <param name="toCompare"></param>
+        /// <returns></returns>
+        public static bool EqualsAny<T>(this T item, params T[] toCompare)
+        {
+            return toCompare.Any(t => t.Equals(item));
+        }
+
     }
 
 }

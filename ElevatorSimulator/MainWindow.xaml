@@ -122,29 +122,19 @@
             </Grid.RowDefinitions>
 
 
-            <ListView ItemsSource="{Binding Controller.Elevators}" 
+            <controls:ElevatorControl DataContext="{Binding Elevator}" 
                       Grid.Column="0" 
                       Grid.Row="0" 
                       FontSize="20"
                       MinHeight="600"
                       HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Center"
-                      ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="10" BorderBrush="{x:Null}" BorderThickness="4" ClipToBounds="True" Background="#FFD4DDD7" SelectionChanged="ListView_SelectionChanged">
-                <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <StackPanel Mouse.MouseUp="ListView_MouseDown" Tag="{Binding ElevatorNumber}">
-                            <StackPanel.Style>
-                                <Style TargetType="StackPanel">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding}"/>
-                                    </Style.Triggers>
-                                </Style>
-                            </StackPanel.Style>
-                            <controls:ElevatorControl DataContext="{Binding}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="10" 
+                                      BorderBrush="{x:Null}" 
+                                      BorderThickness="4" 
+                                      ClipToBounds="True" Background="#FFD4DDD7">
+                
+            </controls:ElevatorControl>
 
             <GridSplitter Grid.Column="0" 
                           Grid.Row="1" 

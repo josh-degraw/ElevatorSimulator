@@ -28,8 +28,6 @@ namespace ElevatorApp.Controls
             
         }
 
-        public Elevator SingleElevator => Controller?.Elevators.FirstOrDefault();
-
         private SimulatorViewModel Controller
         {
             get

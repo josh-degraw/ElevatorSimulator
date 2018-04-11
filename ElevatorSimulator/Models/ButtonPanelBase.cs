@@ -15,7 +15,7 @@ namespace ElevatorApp.Models
     /// Represents the base class of a button panel. 
     /// Subscribes all of the <see cref="Button"/>s it contains to the <see cref="Elevator"/>
     /// </summary>
-    public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<(ElevatorMasterController, Elevator)>, ISubcriber<ElevatorMasterController>, IObservable<int>
+    public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<ElevatorMasterController>, IObservable<int>
     {
         /// <summary>
         /// The actual collection of <see cref="FloorButton"/>s
@@ -53,19 +53,7 @@ namespace ElevatorApp.Models
         ///<inheritdoc/>
         public bool Subscribed { get; protected set; }
 
-        /// <summary>
-        /// Subscribe to a <see cref="ElevatorMasterController"/> and an <see cref="Elevator"/>.
-        /// </summary>
-        /// <param name="parent">The Pair to subscribe to</param>
-        public virtual async Task Subscribe((ElevatorMasterController, Elevator) parent)
-        {
-            var (_, elevator) = parent;
-
-            Logger.LogEvent($"Subscribing {nameof(ButtonPanelBase)}", ("Elevator", elevator.ElevatorNumber));
-            await Task.WhenAll(this.FloorButtons.Select(button => button.Subscribe(parent)));
-
-        }
-
+   
         private readonly AsyncObservableCollection<IObserver<int>> _observers = new AsyncObservableCollection<IObserver<int>>();
 
         /// <summary>
@@ -76,7 +64,7 @@ namespace ElevatorApp.Models
         {
             foreach (var observer in _observers)
             {
-                observer.OnNext(floor)
+                observer.OnNext(floor);
             }
         }
 
@@ -106,11 +94,14 @@ namespace ElevatorApp.Models
 
             foreach (FloorButton floorButton in this.FloorButtons)
             {
+                floorButton.Subscribe(parent);
                 floorButton.OnPushed += (_, floor) =>
                 {
                     NotifyObservers(floor);
                 };
             }
+
+            Logger.LogEvent($"Subscribing {nameof(ButtonPanelBase)}");
 
             return Task.CompletedTask;
         }

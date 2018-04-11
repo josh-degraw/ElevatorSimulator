@@ -7,7 +7,7 @@ using ElevatorApp.Util;
 namespace ElevatorApp
 {
     /// <summary>
-    /// Represents a 
+    /// ViewModel for the Elevator simulator
     /// </summary>
     public class SimulatorViewModel : ModelBase
     {
@@ -16,30 +16,21 @@ namespace ElevatorApp
         /// </summary>
         public ElevatorMasterController Controller { get; } = new ElevatorMasterController();
 
+        /// <summary>
+        /// A reference to the singleton instance of <see cref="Util.Logger"/>
+        /// </summary>
         public ILogger Logger => Util.Logger.Instance;
+        
+        /// <summary>
+        /// The elevator 
+        /// </summary>
+        public Elevator Elevator => Controller.Elevator;
 
-        public ButtonPanel SelectedButtonPanel => Controller.Elevators.SingleOrDefault(a => a.ElevatorNumber == SelectedElevatorNumber)?.ButtonPanel;
-
-        public IReadOnlyCollection<Elevator> Elevators => Controller.Elevators;
-
+        /// <summary>
+        /// The <see cref="Floor"/>s of the <see cref="ElevatorMasterController"/>
+        /// </summary>
         public IReadOnlyCollection<Floor> Floors => Controller.Floors;
-
-        private int _selectedElevatorNumber;
-
-        public int SelectedElevatorNumber
-        {
-            get => _selectedElevatorNumber;
-            set
-            {
-                if (_selectedElevatorNumber != value)
-                {
-                    SetProperty(ref _selectedElevatorNumber, value);
-
-                    base.DependentPropertyChanged(nameof(SelectedButtonPanel));
-                }
-            }
-        }
-
+        
 
     }
 }

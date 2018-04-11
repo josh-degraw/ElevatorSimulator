@@ -9,7 +9,7 @@ using ElevatorApp.Util;
 namespace ElevatorApp.Models
 {
     ///<inheritdoc/>
-    public class ButtonPanel : ButtonPanelBase, ISubcriber<(ElevatorMasterController, Elevator)>
+    public class ButtonPanel : ButtonPanelBase, ISubcriber<ElevatorMasterController>
     {
         public DoorButton OpenDoorButton { get; }
         public DoorButton CloseDoorButton { get; }
@@ -34,17 +34,16 @@ namespace ElevatorApp.Models
 
 
         ///<inheritdoc/>
-        public override async Task Subscribe((ElevatorMasterController, Elevator) parent)
+        public override async Task Subscribe(ElevatorMasterController parent)
         {
             if (Subscribed)
                 return;
 
-            await base.Subscribe(parent);
             await Task.WhenAll(
-                OpenDoorButton.Subscribe(parent.Item2.Door),
-                CloseDoorButton.Subscribe(parent.Item2.Door));
+                OpenDoorButton.Subscribe(parent.Elevator.Door),
+                CloseDoorButton.Subscribe(parent.Elevator.Door));
 
-            this.Subscribed = true;
+            await base.Subscribe(parent);
         }
 
     }

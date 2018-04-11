@@ -10,7 +10,7 @@ namespace ElevatorApp.Models
     /// <summary>
     /// Represents a Button that tells the elevator to go to a specified floor
     /// </summary>
-    public class FloorButton : ButtonBase<int>, ISubcriber<(ElevatorMasterController, Elevator)>
+    public class FloorButton : ButtonBase<int>, ISubcriber<ElevatorMasterController>
     {
         /// <inheritdoc />
         public override string Label => this.FloorNumber.ToString();
@@ -51,14 +51,13 @@ namespace ElevatorApp.Models
         }
 
         /// <inheritdoc />
-        public virtual Task Subscribe((ElevatorMasterController, Elevator) parent)
+        public virtual Task Subscribe(ElevatorMasterController parent)
         {
             if (this.Subscribed)
                 return Task.CompletedTask;
 
-            var (controller, elevator) = parent;
 
-            Logger.LogEvent($"Subscribing {nameof(FloorButton)}", ("Elevator", elevator.ElevatorNumber));
+            Logger.LogEvent($"Subscribing {nameof(FloorButton)}", ("Elevator", parent.Elevator.ElevatorNumber));
 
             //this.IsEnabled = this.FloorNumber != elevator.CurrentFloor;
 
@@ -66,7 +65,7 @@ namespace ElevatorApp.Models
             this.OnPushed += (a, floor) =>
             {
                 Logger.LogEvent($"Pushed floor button {this.FloorNumber}");
-                ((IObserver<int>)controller).OnNext(this.FloorNumber);
+                ((IObserver<int>)parent).OnNext(this.FloorNumber);
             };
 
             //elevator.Departed += (e, floor) =>

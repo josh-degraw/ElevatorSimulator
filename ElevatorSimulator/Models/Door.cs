@@ -43,17 +43,15 @@ namespace ElevatorApp.Models
         /// </summary>
         public const int TIME_SPENT_OPEN_SECONDS = 5;
 
-        private readonly TimeSpan
+        /// <summary>
+        /// The number of seconds it takes for the <see cref="Door"/> to close and to open
+        /// </summary>            
+        private readonly TimeSpan TRANSITION_TIME = TimeSpan.FromSeconds(TRANSITION_TIME_SECONDS);
 
-            /// <summary>
-            /// The number of seconds it takes for the <see cref="Door"/> to close and to open
-            /// </summary>            
-            TRANSITION_TIME = TimeSpan.FromSeconds(TRANSITION_TIME_SECONDS),
-
-            /// <summary>
-            /// The number of seconds the <see cref="Door"/> stays open
-            /// </summary>
-            TIME_SPENT_OPEN = TimeSpan.FromSeconds(TIME_SPENT_OPEN_SECONDS);
+        /// <summary>
+        /// The number of seconds the <see cref="Door"/> stays open
+        /// </summary>
+        private readonly TimeSpan TIME_SPENT_OPEN = TimeSpan.FromSeconds(TIME_SPENT_OPEN_SECONDS);
 
         #region Event Handlers
 
@@ -91,14 +89,46 @@ namespace ElevatorApp.Models
 
         private DoorState _doorState = DoorState.Closed;
 
+        private readonly object _locker = new object();
+
         /// <summary>
         /// The state of the <see cref="Door"/>
         /// </summary>
         public DoorState DoorState
         {
             get => _doorState;
-            private set => SetProperty(ref _doorState, value);
+            private set
+            {
+                lock (_locker)
+                {
+                    Debug.Assert(IsValidStateTransition(_doorState, value), "Invalid state transition", "{0} -> {1}", _doorState, value);
+                    SetProperty(ref _doorState, value);
+                }
+            }
+        }
 
+        private bool IsValidStateTransition(DoorState prev, DoorState next)
+        {
+            if (prev == next)
+                return true;
+
+            switch (prev)
+            {
+                case DoorState.Closed:
+                    return next == DoorState.Opening;
+
+                case DoorState.Closing:
+                    return next.EqualsAny(DoorState.Closed, DoorState.Opening);
+
+                case DoorState.Opened:
+                    return next == DoorState.Closing;
+
+                case DoorState.Opening:
+                    return next.EqualsAny(DoorState.Opened, DoorState.Closing);
+
+                default:
+                    return false;
+            }
         }
 
         /// <summary>
@@ -118,34 +148,21 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Ask the <see cref="Door"/> to open
         /// </summary>
-        public Task RequestOpen()
+        public async Task RequestOpen()
         {
-            return RequestOpen(false);
+            await RequestOpen(false).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Ask the <see cref="Door"/> to close
-        /// </summary>
-        /// <returns></returns>
-        public Task RequestClose()
-        {
-            return RequestClose(false);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="fromCloseRequest">Represents if this call was from within <see cref="RequestClose()"/></param>
-        /// <returns></returns>
-        private async Task RequestOpen(bool fromCloseRequest)
+        private async Task RequestOpen(bool fromRequestClose)
         {
             try
             {
+                //Trace.TraceInformation(Environment.StackTrace);
                 // If the door is already opened, don't do anything
-                if (this.DoorState != DoorState.Opened && DoorState != DoorState.Opening)
+                if (this.IsNotOpenedOrOpening)
                 {
                     var args = new DoorStateChangeEventArgs();
-                    
+
                     this.OpenRequested?.Invoke(this, args);
 
                     if (!args.CancelOperation)
@@ -166,7 +183,8 @@ namespace ElevatorApp.Models
                         }
                     }
 
-                    await this.RequestClose(true);
+                    if (!fromRequestClose)
+                        await this.RequestClose();
                 }
 
             }
@@ -176,34 +194,47 @@ namespace ElevatorApp.Models
             }
         }
 
-        private async Task RequestClose(bool fromOpenRequest)
+        public bool IsNotOpenedOrOpening => this.DoorState != DoorState.Opened && DoorState != DoorState.Opening;
+
+        public bool IsNotClosedOrClosing => this.DoorState != DoorState.Closed && this.DoorState != DoorState.Closing;
+
+
+        /// <summary>
+        /// Ask the <see cref="Door"/> to close
+        /// </summary>
+        /// <returns></returns>
+        public async Task RequestClose()
         {
+            //Trace.TraceInformation(Environment.StackTrace);
             var args = new DoorStateChangeEventArgs();
             // If the door is already closed, don't do anything
-            if (this.DoorState != DoorState.Closed && this.DoorState != DoorState.Closing)
+            if (this.IsNotClosedOrClosing)
             {
                 this.CloseRequested?.Invoke(this, args);
                 if (!args.CancelOperation)
                 {
                     this.DoorState = DoorState.Closing;
                     this.Closing?.Invoke(this, args);
+
                     if (!args.CancelOperation)
                     {
                         await Task.Delay(TRANSITION_TIME);
                     }
                 }
+
+                if (args.CancelOperation)
+                {
+                    await this.RequestOpen(true);
+                }
             }
 
-            if (args.CancelOperation)
-            {
-                await this.RequestOpen(true);
-            }
-            else if (this.DoorState == DoorState.Closing)
+            if (this.DoorState == DoorState.Closing)
             {
                 this.DoorState = DoorState.Closed;
                 this.Closed?.Invoke(this, args);
             }
         }
+
 
         /// <summary>
         /// Represents if this <see cref="Door"/> has been subscribed

@@ -17,7 +17,7 @@ namespace ElevatorApp.Models
     /// <summary>
     /// Represents a floor of a building.
     /// </summary>
-    public class Floor : ModelBase, ISubcriber<ElevatorMasterController>, ISubcriber<(ElevatorMasterController, Elevator)>
+    public class Floor : ModelBase, ISubcriber<ElevatorMasterController>
     {
         #region Backing fields
         private int _floorNum = 1;
@@ -104,8 +104,6 @@ namespace ElevatorApp.Models
         }
 
         #region Subscription
-        /// <inheritdoc />
-        bool ISubcriber<(ElevatorMasterController, Elevator)>.Subscribed => _subscribed;
 
         /// <inheritdoc />
         bool ISubcriber<ElevatorMasterController>.Subscribed => _controllerSubscribed;
@@ -129,22 +127,22 @@ namespace ElevatorApp.Models
                 }
             });
 
-
             this._controllerSubscribed = true;
         }
 
         /// <summary>
         /// Subscribes the <see cref="Floor"/> to the given master controller and elevator
         /// </summary>
-        /// <param name="parents"></param>
+        /// <param name="controller"></param>
         /// <returns></returns>
-        public async Task Subscribe((ElevatorMasterController, Elevator) parents)
+        public async Task Subscribe(ElevatorMasterController controller)
         {
             if (this._subscribed)
                 return;
 
-            await this.CallPanel.Subscribe(parents);
-            var (controller, elevator) = parents;
+            await this.CallPanel.Subscribe(controller);
+
+            var elevator = controller.Elevator;
 
             if (elevator.CurrentFloor == this.FloorNumber)
             {
@@ -208,12 +206,9 @@ namespace ElevatorApp.Models
 
             void Elevator_Approaching(object sender, ElevatorApproachingEventArgs e)
             {
-                if (e.DestinationFloor == this.FloorNumber)
+                if (e.IntermediateFloor == this.FloorNumber)
                 {
-                    if (getPassengersToMove(elevator, e.DestinationFloor).Any())
-                    {
-                        e.ShouldStop = true;
-                    }
+                    e.ShouldStop = getPassengersToMove(elevator, e.DestinationFloor).Any();
                 }
             }
 
@@ -241,20 +236,9 @@ namespace ElevatorApp.Models
                 }
             }
 
-
             void onElevatorDeparted(object _, ElevatorMovementEventArgs call)
             {
-                if (controller.ElevatorCount == 1)
-                {
-                    this.ElevatorAvailable = false;
-                }
-                else if (controller.ElevatorCount > 1)
-                {
-                    if (!controller.Elevators.Any(a => a.CurrentFloor == this.FloorNumber && a.Direction == Direction.None))
-                    {
-                        this.ElevatorAvailable = false;
-                    }
-                }
+                this.ElevatorAvailable = false;
             }
 
             #endregion
@@ -280,10 +264,11 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         private async Task _addPassengersToElevator(IEnumerable<Passenger> departing, Elevator elevator)
         {
+            bool adding = false;
             // Event handler to make sure the door stays open while passengers are trying to get in
             void cancelIfStartsToClose(object sender, DoorStateChangeEventArgs args)
             {
-                args.CancelOperation = true;
+                args.CancelOperation = adding;
             }
             //There's probably a better way to do this. But the doors were being forced to stay open when adding
             //passengers because CancelOperations was being left "true"
@@ -293,10 +278,12 @@ namespace ElevatorApp.Models
             }
 
             elevator.Door.Closing += cancelIfStartsToClose;
+            adding = true;
             foreach (Passenger passenger in departing)
             {
                 await elevator.AddPassenger(passenger);
             }
+            adding = false;
 
             // Remove the event handler now because we can let the door close, since all the passengers are on now
             elevator.Door.Closing -= cancelIfStartsToClose;
@@ -312,43 +299,57 @@ namespace ElevatorApp.Models
             try
             {
                 int nextDest = 0;
+                var direction = Direction.None;
                 if (elevator.Direction == Direction.None)
                 {
-                
+                    // Get the floor of the first passenger added to the waitlist. 
+                    Passenger pass = this.WaitingPassengers
+                        .MinByOrDefault(p => p.PassengerNumber);
+
+                    direction = pass?.Direction?? Direction.None;
+
+                    nextDest = pass?.Path.destination ?? elevator.NextFloor;
                 }
                 else
                 {
-                    nextDest = this.WaitingPassengers
+                    Passenger pass = this.WaitingPassengers
                         .Where(p => p.Direction == elevator.Direction)
-                        .Min(p => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor));
+                        .MinByOrDefault(p => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor));
+
+                    direction = pass?.Direction ?? Direction.None;
+                    nextDest = pass?.Path.destination ?? elevator.NextFloor;
                 }
 
-                if (nextDest != 0)
-                {
-                    return this._getPassengersToMove(nextDest, elevator);
-                }
+                if (direction != Direction.None)
+                    return this._getPassengersToMove(nextDest, direction);
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
             }
+
             return Enumerable.Empty<Passenger>();
         }
 
-        private IEnumerable<Passenger> _getPassengersToMove(int destination, Elevator elevator)
+        private IEnumerable<Passenger> _getPassengersToMove(int destination, Direction direction)
         {
-            switch (elevator.Direction)
+            var waiting = this.WaitingPassengers
+                .Where(p => p.State == PassengerState.Waiting && p.Direction == direction);
+
+            switch (direction)
             {
                 // If the elevator is already going up, only add passengers who are going up
                 case Direction.Up:
-                    return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination >= destination);
+                    return waiting
+                            .Where(p => p.Path.destination >= destination);
 
                 // If the elevator is already going down, only add passengers who are going down
                 case Direction.Down:
-                    return this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting && p.Path.destination <= destination);
+                    return this.WaitingPassengers
+                        .Where(p => p.Path.destination <= destination);
 
                 default:
-                    return this.WaitingPassengers;
+                    throw new InvalidOperationException("Direction cannot be None");
             }
         }
 

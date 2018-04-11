@@ -20,6 +20,11 @@ namespace ElevatorApp.Models
         public Direction Direction { get; }
 
         /// <summary>
+        /// Set to <see langword="true"/> to prevent other events in the chain from being processed
+        /// </summary>
+        public bool Handled { get; set; }
+
+        /// <summary>
         /// Construct a new instance of <see cref="ElevatorMovementEventArgs"/>
         /// </summary>
         /// <param name="destination"></param>

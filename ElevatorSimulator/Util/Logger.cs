@@ -28,7 +28,7 @@ namespace ElevatorApp.Util
         private object _locker = new object();
         private Logger()
         {
-
+            Trace.Listeners.Add(new EventTraceListener("ElevatorSimulatorEvents.log"));
         }
 
         /// <summary>
@@ -44,10 +44,18 @@ namespace ElevatorApp.Util
             var self = (Logger)Instance;
 
             if (self._loggers.Any())
+            {
                 await Task.WhenAll(self._loggers.Select(writer => writer.WriteLineAsync(@event.ToString())))
-                .ConfigureAwait(false);
+                    .ConfigureAwait(false);
+            }
 
+            Debug.WriteLine(@event.ToString());
         };
+
+        public static void LogStackTrace()
+        {
+            Trace.TraceInformation(Environment.StackTrace);
+        }
 
         private readonly ConcurrentBag<TextWriter> _loggers = new ConcurrentBag<TextWriter>();
 
@@ -75,7 +83,7 @@ namespace ElevatorApp.Util
         {
             Instance.LogEvent(name, parameters);
         }
-
+        
         void ILogger.LogEvent(string name, params (object, object)[] parameters)
         {
             ((ILogger)this).LogEvent(new Event(name, parameters));
@@ -171,13 +179,25 @@ namespace ElevatorApp.Util
         /// <returns>The <see cref="Timestamp"/> of this <see cref="Event"/>, followed by the <see cref="Name"/>, with any <see cref="Parameters"/> appearing below</returns>
         public override string ToString()
         {
-            string timeStamp = this.Timestamp.ToString(TIMESTAMP_FORMAT, null);
-            string baseStr = $"{timeStamp} --\t{this.Name}";
+            return this.ToString(true);
+        }
+        
+        public string ToString(bool includeTimeStamp)
+        {
+            string baseStr = $"{this.Name,-70}";
+            if (includeTimeStamp)
+            {
+                string timeStamp = this.Timestamp.ToString(TIMESTAMP_FORMAT, null);
+                baseStr = $"{timeStamp} -- {baseStr}";
 
+            }
             if (this.Parameters?.Length == 0)
                 return baseStr;
 
-            return baseStr + "\n" + this.Parameters?.Select(param => $"\t\t{param.name}: {param.value}").ToDelimitedString($"\n") ?? "";
+            return
+                baseStr
+                + (this.Parameters?.Length == 1 ? "" : "\n")
+                + this.Parameters?.Select(param => $"{param.name + ":",-15} {param.value,-30}").ToDelimitedString($"\n") ?? "";
         }
 
         /// <summary>

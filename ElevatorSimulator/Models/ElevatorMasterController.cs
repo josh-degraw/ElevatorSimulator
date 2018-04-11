@@ -16,7 +16,7 @@ using MoreLinq;
 
 namespace ElevatorApp.Models
 {
-    
+
     /// <summary>
     /// Represents the master controller for the system. Contains the Elevator and the floors
     /// </summary>
@@ -25,11 +25,7 @@ namespace ElevatorApp.Models
         #region Backing fields
         private int _floorHeight;
 
-        private readonly AsyncObservableCollection<Elevator> _elevators = new AsyncObservableCollection<Elevator>(
-            new[] {
-                new Elevator(1)
-            }
-        );
+        private readonly Elevator _elevator = new Elevator();
 
         private readonly AsyncObservableCollection<Floor> _floors = new AsyncObservableCollection<Floor>(Enumerable.Range(1, 4).Reverse().Select(a => new Floor(a)));
         private readonly AsyncObservableCollection<int> _floorsRequested = new AsyncObservableCollection<int>();
@@ -38,9 +34,9 @@ namespace ElevatorApp.Models
 
         #region Properties
         /// <summary>
-        /// A Read-only collection of <see cref="Elevator"/> objects that will be managed by this <see cref="ElevatorMasterController"/>
+        /// A Read-only collection of <see cref="Models.Elevator"/> objects that will be managed by this <see cref="ElevatorMasterController"/>
         /// </summary>
-        public IReadOnlyCollection<Elevator> Elevators => _elevators;
+        public Elevator Elevator => _elevator;
 
         /// <summary>
         /// <para>A Read-only collection of <see cref="Floor"/> objects that will be managed by this <see cref="ElevatorMasterController"/>.</para>
@@ -84,14 +80,10 @@ namespace ElevatorApp.Models
                         this.SubscribeElevator(e).GetAwaiter().GetResult();
                     }
                     else
-                        newItem.Subscribe(this);
-                    if (newItem is ISubcriber<(ElevatorMasterController, Elevator)> subscriber)
                     {
-                        foreach (Elevator elevator in this.Elevators)
-                        {
-                            subscriber.Subscribe((this, elevator));
-                        }
+                        newItem.Subscribe(this);
                     }
+
                     collection.Add(newItem);
                 }
             }
@@ -122,26 +114,15 @@ namespace ElevatorApp.Models
             set => AdjustCollection(_floors, value, floorNum => new Floor(floorNum));
         }
 
-        /// <summary>
-        /// The number of elevators currently being tracked.
-        /// <para>
-        /// <warning>Changing this number will change the number of elements in <see cref="Elevators"/></warning>
-        /// </para> 
-        /// </summary>
-        public int ElevatorCount
-        {
-            get => Elevators.Count;
-            set => AdjustCollection(_elevators, value, _ => new Elevator());
-        }
         #endregion
 
         #region Events
 
-        
+
         /// <summary>
         /// Called when 
         /// </summary>
-        public event EventHandler<int> OnElevatorRequested;
+        public event EventHandler<int> ElevatorRequested;
         #endregion
 
         private readonly SoundPlayer soundPlayer = new SoundPlayer { Stream = Resources.elevatorDing };
@@ -171,50 +152,7 @@ namespace ElevatorApp.Models
             //    }
         }
 
-        /// <summary>
-        /// Dispatches an <see cref="Elevator"/> to go to the given floor
-        /// </summary>
-        /// <param name="destination">The destination to be handled</param>
-        /// <param name="elevator">The elevator to respond to the destination</param>
-        private async Task Dispatch(int destination, Elevator elevator)
-        {
-            if (elevator != null)
-                await elevator.Dispatch(destination).ConfigureAwait(false);
-        }
-
         #endregion
-
-        /// <summary>
-        /// Dispatch an elevator to go to the given floor
-        /// <para>This will add the <paramref name="destination"/> to <see cref="FloorsRequested"/> and be processed further by the <see cref="Elevator"/> that is chosen to respond</para>
-        /// </summary>
-        /// <param name="destination">The destination to be dispatched</param>
-        public async Task Dispatch(int destination)
-        {
-            int distanceFromRequestedFloor(Elevator e) => Math.Abs(destination - e.CurrentFloor);
-
-            // First check if any are not moving
-            Elevator closest = Elevators
-                //.Where(e => e.Direction == Direction.None)
-                .MinByOrDefault(distanceFromRequestedFloor); // If any were found idle, the closest one to the requested floor is dispatched
-
-            if (closest == null)
-            {
-                // If none were idle, find the one that's closest to it, going in the direction
-                closest = this.Elevators
-                    // TODO: reapply direction-based logic here
-                    //.Where(e =>
-                    //{
-                    //    Direction direction = e.Direction;
-                    //    return e.Direction == (Direction) direction;
-                    //})
-                    .MinByOrDefault(distanceFromRequestedFloor);
-            }
-
-            if (closest != null)
-                await Dispatch(destination, closest).ConfigureAwait(false);
-
-        }
 
         /// <summary>
         /// Subscribes the elevators to this <see cref="ElevatorMasterController"/>
@@ -224,29 +162,25 @@ namespace ElevatorApp.Models
         {
             Logger.LogEvent($"Initializing {nameof(ElevatorMasterController)}");
 
-            this.OnElevatorRequested += async (sender, destination) =>
+            this.ElevatorRequested += async (sender, destination) =>
              {
                  try
                  {
-                     if (!this._floorsRequested.Contains(destination))
-                     {
-                         this._floorsRequested.AddDistinct(destination);
-                         await this.Dispatch(destination).ConfigureAwait(false);
-                     }
+                     await this.Elevator.Dispatch(destination).ConfigureAwait(false);
                  }
                  catch (Exception ex)
                  {
                      Debug.WriteLine(ex);
                  }
              };
-
-            await Task.WhenAll(this.Elevators.Select(SubscribeElevator).Concat(this.Floors.Select(floor => floor.CallPanel.Subscribe(this))));
+            await SubscribeElevator(this.Elevator);
+            await Task.WhenAll(this.Floors.Select(floor => floor.CallPanel.Subscribe(this)));
 
             Logger.LogEvent($"Initialized {nameof(ElevatorMasterController)}");
         }
 
         /// <summary>
-        /// Runs the necessary functions to have the given <see cref="Elevator"/> respond appropriately to this <see cref="ElevatorMasterController"/>
+        /// Runs the necessary functions to have the given <see cref="Models.Elevator"/> respond appropriately to this <see cref="ElevatorMasterController"/>
         /// </summary>
         /// <param name="elevator">The elevator to be subscribed</param>
         private async Task SubscribeElevator(Elevator elevator)
@@ -265,26 +199,28 @@ namespace ElevatorApp.Models
                 }
             };
 
-            Parallel.ForEach(elevator.ButtonPanel.FloorButtons, b =>
-                b.OnPushed += delegate
-                {
-                    this.OnElevatorRequested?.Invoke(b, b.FloorNumber);
-                });
+            //foreach (var b in elevator.ButtonPanel.FloorButtons)
+            //{
+            //    b.OnPushed += delegate
+            //    {
+            //        this.ElevatorRequested?.Invoke(b, b.FloorNumber);
+            //    };
+            //}
 
 
-            Parallel.ForEach(this.Floors, floor =>
-            {
-                foreach (FloorButton button in floor.CallPanel.FloorButtons)
-                {
-                    button.OnPushed += delegate
-                      {
-                          this.OnElevatorRequested?.Invoke(button, button.FloorNumber);
-                      };
-                }
+            //foreach (var floor in this.Floors)
+            //{
+            //    foreach (FloorButton button in floor.CallPanel.FloorButtons)
+            //    {
+            //        await floor.Subscribe(this);
+            //        //button.OnPushed += delegate
+            //        //  {
+            //        //      this.ElevatorRequested?.Invoke(button, button.FloorNumber);
+            //        //  };
+            //    }
+            //}
 
-            });
-
-            await Task.WhenAll(this.Floors.Select(floor => floor.Subscribe((this, elevator))));
+            await Task.WhenAll(this.Floors.Select(floor => floor.Subscribe(this)));
         }
 
         #endregion
@@ -302,8 +238,7 @@ namespace ElevatorApp.Models
         /// </summary>
         void IObserver<int>.OnNext(int value)
         {
-            Logger.LogEvent("Elevator requested", ("Floor", value));
-            this._floorsRequested.AddDistinct(value);
+            ElevatorRequested?.Invoke(this, value);
         }
 
         ///<inheritdoc/>

@@ -11,75 +11,86 @@
              mc:Ignorable="d" >
 
 
-        <StackPanel  Orientation="Horizontal">
-            <Grid Height="265">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                    <!--<ColumnDefinition/>-->
-                    <!--<ColumnDefinition/>-->
-                    <!--<ColumnDefinition Width="300"/>-->
-                </Grid.ColumnDefinitions>
-                <!--<StackPanel Grid.Row="0" Grid.Column="0"  Orientation="Horizontal">
+    <StackPanel  Orientation="Horizontal">
+        <Grid Height="265">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <!--<ColumnDefinition/>-->
+                <!--<ColumnDefinition/>-->
+                <!--<ColumnDefinition Width="300"/>-->
+            </Grid.ColumnDefinitions>
+            <!--<StackPanel Grid.Row="0" Grid.Column="0"  Orientation="Horizontal">
                     <Label FontWeight="Bold">Elevator</Label>
                     <Label Content="{Binding ElevatorNumber, FallbackValue=0}"/>
                 </StackPanel>-->
 
 
-                <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFA6A6A6" Padding="2">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                        <TextBlock FontSize="20" Foreground="White">
-                            <TextBlock.Style>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Text" Value="△"/>
-                                    <Style.Triggers >
-                                        <DataTrigger Binding="{Binding Direction}" Value="Up">
-                                            <Setter Property="Text" Value="▲"/>
-                                            <Setter Property="Foreground" Value="Yellow"/>
-                                        </DataTrigger>
+            <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFA6A6A6" Padding="2">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <TextBlock FontSize="20" Foreground="White">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="△"/>
+                                <Style.Triggers >
+                                    <DataTrigger Binding="{Binding Direction}" Value="Up">
+                                        <Setter Property="Text" Value="▲"/>
+                                        <Setter Property="Foreground" Value="Yellow"/>
+                                    </DataTrigger>
 
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                        <Label Foreground="OrangeRed" Background="Black" Margin="5,0" FontFamily="OCR A Extended"  Content="{Binding CurrentFloor, FallbackValue=1}" OpacityMask="#CC000000" FontSize="18"/>
-                        <TextBlock FontSize="20" Foreground="White">
-                            <TextBlock.Style>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Text" Value="▽"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Direction}" Value="Down">
-                                            <Setter Property="Text" Value="▼"/>
-                                            <Setter Property="Foreground" Value="Yellow"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                    </StackPanel>
-                </Border>
-                
-                <controls:DoorControl Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" DataContext="{Binding Door}" Margin="5" VerticalAlignment="Top" />
-                <Label Grid.Row="2" Grid.Column="1" Content="{Binding State, FallbackValue=Idle}"/>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <Label Foreground="OrangeRed" Background="Black" Margin="5,0" FontFamily="OCR A Extended"  Content="{Binding CurrentFloor, FallbackValue=1}" OpacityMask="#CC000000" FontSize="18"/>
+                    <TextBlock FontSize="20" Foreground="White">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="▽"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Direction}" Value="Down">
+                                        <Setter Property="Text" Value="▼"/>
+                                        <Setter Property="Foreground" Value="Yellow"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
 
-                <WrapPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" >
-                    <Label Content="Passengers: "/>
-                    <Label Content="{Binding Passengers.Count, FallbackValue=0}"/>
+            <controls:DoorControl Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" DataContext="{Binding Door}" Margin="5" VerticalAlignment="Top" />
+            <Label Grid.Row="2" Grid.Column="1" Content="{Binding State, FallbackValue=Idle}"/>
 
-                </WrapPanel>
+            <WrapPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" >
+                <Label Content="Passengers: "/>
+                <Label Content="{Binding Passengers.Count, FallbackValue=0}"/>
+            </WrapPanel>
 
-                <!--<controls:ButtonPanelControl  Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" DataContext="{Binding ButtonPanel}" Margin="2" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>-->
-                <!--<controls:Interior Grid.Column="4" Grid.Row="0" Grid.RowSpan="7" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
-            </Grid>
-        </StackPanel>
+            <WrapPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical" Grid.RowSpan="3" >
+                <Label Content="FLoors requested: "/>
+
+                <ItemsControl ItemsSource="{Binding FloorsToStopAt}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel DataContext="{Binding}" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    
+                </ItemsControl>
+            </WrapPanel>
+            <!--<controls:ButtonPanelControl  Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" DataContext="{Binding ButtonPanel}" Margin="2" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>-->
+            <!--<controls:Interior Grid.Column="4" Grid.Row="0" Grid.RowSpan="7" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
+        </Grid>
+    </StackPanel>
 
 </UserControl>

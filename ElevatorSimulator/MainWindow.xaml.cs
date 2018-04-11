@@ -40,11 +40,6 @@ namespace ElevatorApp
 
         private void ListView_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (sender is FrameworkElement el && el.Tag is int num)
-            {
-                if (this.ViewModel.SelectedElevatorNumber != num)
-                    this.ViewModel.SelectedElevatorNumber = num;
-            }
         }
 
         private void RibbonButton_Click(object sender, RoutedEventArgs e)
