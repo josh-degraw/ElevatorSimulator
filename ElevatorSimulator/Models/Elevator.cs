@@ -580,7 +580,7 @@ namespace ElevatorApp.Models
 
                                     // Start moving to the next floor
                                     ++i;
-                                    call = new ElevatorMovementEventArgs(nextFloor + 1, call.Direction);
+                                    call = new ElevatorMovementEventArgs(nextFloor, call.Direction);
                                     await _startMovement(call);
                                 }
                                 else if (nextFloor != destination)
