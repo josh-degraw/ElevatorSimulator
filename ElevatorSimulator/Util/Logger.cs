@@ -184,20 +184,20 @@ namespace ElevatorApp.Util
         
         public string ToString(bool includeTimeStamp)
         {
-            string baseStr = $"{this.Name,-70}";
+            string baseStr = $"{this.Name} ";
             if (includeTimeStamp)
             {
                 string timeStamp = this.Timestamp.ToString(TIMESTAMP_FORMAT, null);
                 baseStr = $"{timeStamp} -- {baseStr}";
-
             }
+
             if (this.Parameters?.Length == 0)
                 return baseStr;
 
             return
                 baseStr
                 + (this.Parameters?.Length == 1 ? "" : "\n")
-                + this.Parameters?.Select(param => $"{param.name + ":",-15} {param.value,-30}").ToDelimitedString($"\n") ?? "";
+                + this.Parameters?.Select(param => $"{param.name + ":"} {param.value}").ToDelimitedString($"\n") ?? "";
         }
 
         /// <summary>
