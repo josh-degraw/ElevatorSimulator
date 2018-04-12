@@ -11,11 +11,11 @@ namespace ElevatorApp.Util
     public class DurationStatistic : SimpleStatistic<Duration>
     {
         ///<inheritdoc/>
-        public DurationStatistic() : base()
+        public DurationStatistic(string name) : base(name)
         { }
 
         ///<inheritdoc/>
-        public DurationStatistic(IEnumerable<Duration> collection) : base(collection)
+        public DurationStatistic(string name, IEnumerable<Duration> collection) : base(name, collection)
         { }
         ///<inheritdoc/>
         protected override Duration AddItems(Duration left, Duration right) => left + right;
@@ -37,11 +37,11 @@ namespace ElevatorApp.Util
     public class DoubleStatistic : SimpleStatistic<double>
     {
         ///<inheritdoc/>
-        public DoubleStatistic() : base()
+        public DoubleStatistic(string name) : base(name)
         { }
 
         ///<inheritdoc/>
-        public DoubleStatistic(IEnumerable<double> collection) : base(collection)
+        public DoubleStatistic(string name, IEnumerable<double> collection) : base(name, collection)
         { }
 
         ///<inheritdoc/>
@@ -64,11 +64,11 @@ namespace ElevatorApp.Util
     public class DecimalStatistic : SimpleStatistic<decimal>
     {
         ///<inheritdoc/>
-        public DecimalStatistic() : base()
+        public DecimalStatistic(string name) : base(name)
         { }
 
         ///<inheritdoc/>
-        public DecimalStatistic(IEnumerable<decimal> collection) : base(collection)
+        public DecimalStatistic(string name, IEnumerable<decimal> collection) : base(name, collection)
         { }
 
         ///<inheritdoc/>
@@ -91,11 +91,11 @@ namespace ElevatorApp.Util
     public class IntStatistic : Statistic<int, double>
     {
         ///<inheritdoc/>
-        public IntStatistic() : base()
+        public IntStatistic(string name) : base(name)
         { }
 
         ///<inheritdoc/>
-        public IntStatistic(IEnumerable<int> collection) : base(collection)
+        public IntStatistic(string name, IEnumerable<int> collection) : base(name, collection)
         { }
 
         ///<inheritdoc/>
@@ -118,11 +118,11 @@ namespace ElevatorApp.Util
     public class LongStatistic : Statistic<long, double>
     {
         ///<inheritdoc/>
-        public LongStatistic() : base()
+        public LongStatistic(string name) : base(name)
         { }
 
         ///<inheritdoc/>
-        public LongStatistic(IEnumerable<long> collection) : base(collection)
+        public LongStatistic(string name, IEnumerable<long> collection) : base(name, collection)
         { }
 
         ///<inheritdoc/>

@@ -6,15 +6,32 @@ using ElevatorApp.Models;
 
 namespace ElevatorApp.Util
 {
+
     /// <summary>
     /// The base interface for statistical calculations
     /// </summary>
     public interface IStatistic
     {
+
         /// <summary>
         /// The number of values encountered
         /// </summary>
         int Count { get; }
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TStat"></typeparam>
+    /// <typeparam name="TAggregate"></typeparam>
+    public interface IStatistic<TStat, TAggregate> : IStatistic
+    {
+        string Name { get; }
+
+        TStat Min { get; }
+        TStat Max { get; }
+        TAggregate Average { get; }
     }
 
     /// <summary>
@@ -22,7 +39,7 @@ namespace ElevatorApp.Util
     /// </summary>
     /// <typeparam name="TStat">The type of statistic that is being calculated</typeparam>
     /// <typeparam name="TAggregate">The type that is used for aggregate values e.g. the average</typeparam>
-    public abstract class Statistic<TStat, TAggregate> : ModelBase, IStatistic
+    public abstract class Statistic<TStat, TAggregate> : ModelBase, IStatistic<TStat, TAggregate>
         where TStat : struct, IComparable<TStat>
         where TAggregate : struct, IComparable<TAggregate>
     {
@@ -44,7 +61,9 @@ namespace ElevatorApp.Util
 
         #endregion
 
-        #region Statistical values
+        #region Properties and Statistical values
+
+        public string Name { get; }
 
         /// <summary>
         /// The minimum value encountered
@@ -164,16 +183,19 @@ namespace ElevatorApp.Util
         /// <summary>
         /// Constructs a new <see cref="Statistic{TStat, TAggregate}"/> object
         /// </summary>
-        protected Statistic()
+        protected Statistic(string name)
         {
+            this.Name = name;
             _stats = new ConcurrentBag<TStat>();
         }
+
 
         /// <summary>
         /// Constructs a new <see cref="Statistic{TStat, TAggregate}"/> object, with the given collection as the initial values
         /// </summary>
+        /// <param name="name"></param>
         /// <param name="collection"></param>
-        protected Statistic(IEnumerable<TStat> collection) : this()
+        protected Statistic(string name, IEnumerable<TStat> collection) : this(name)
         {
             this.AddRange(collection);
         }
@@ -230,7 +252,7 @@ namespace ElevatorApp.Util
     public abstract class SimpleStatistic<T> : Statistic<T, T> where T : struct, IComparable<T>
     {
         /// <inheritdoc/>
-        protected SimpleStatistic() : base()
+        protected SimpleStatistic(string name) : base(name)
         { }
 
         /// <inheritdoc/>
@@ -238,7 +260,7 @@ namespace ElevatorApp.Util
         /// Constructs a new <see cref="SimpleStatistic{T}"/> object, with the given collection as the initial values
         /// </summary>
         /// <param name="collection"></param>
-        protected SimpleStatistic(IEnumerable<T> collection) : base(collection)
+        protected SimpleStatistic(string name, IEnumerable<T> collection) : base(name, collection)
         {
         }
     }
