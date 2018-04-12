@@ -12,6 +12,9 @@ namespace ElevatorApp.Util
     /// </summary>
     class Stats
     {
+
+        public DurationStatistic PassengerWaitTimes { get; } = new DurationStatistic("Passenger wait times");
+
         private readonly ICollection<Duration> passengerWaitTimes;
         public static Stats Instance { get; } = new Stats();
 

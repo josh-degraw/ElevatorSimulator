@@ -6,13 +6,13 @@ using ElevatorApp.Models;
 
 namespace ElevatorApp.Util
 {
+    public delegate string ToStringMethod<in T>(T item);
 
     /// <summary>
     /// The base interface for statistical calculations
     /// </summary>
     public interface IStatistic
     {
-
         /// <summary>
         /// The number of values encountered
         /// </summary>
@@ -235,12 +235,16 @@ namespace ElevatorApp.Util
                 this.Add(item);
             }
         }
+        
+        protected virtual ToStringMethod<TStat> StateToString { get; } = t => t.ToString();
+        protected virtual ToStringMethod<TAggregate> AggregateToString { get; } = t => t.ToString();
 
         /// <inheritdoc/>
         [Pure]
         public override string ToString()
         {
-            return $"Average = {Average}; Min = {Min}; Max = {Max}; Count = {Count}";
+
+            return string.Format($@"Average = {AggregateToString(Average)}; Min = {StateToString(Min)}; Max = {StateToString(Max)}; Count = {Count}");
         }
     }
 
