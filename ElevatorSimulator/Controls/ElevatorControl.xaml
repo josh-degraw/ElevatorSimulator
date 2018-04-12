@@ -79,14 +79,9 @@
             <WrapPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical" Grid.RowSpan="3" >
                 <Label Content="Floors requested: "/>
 
-                <ItemsControl ItemsSource="{Binding FloorsToStopAt}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel DataContext="{Binding}" Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-
-                </ItemsControl>
+                <WrapPanel>
+                    <Label Content="{Binding FloorsToStopAtString}" />
+                </WrapPanel>
             </WrapPanel>
             <!--<controls:ButtonPanelControl  Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" DataContext="{Binding ButtonPanel}" Margin="2" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>-->
             <!--<controls:Interior Grid.Column="4" Grid.Row="0" Grid.RowSpan="7" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>-->

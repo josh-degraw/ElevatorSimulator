@@ -307,6 +307,7 @@ namespace ElevatorApp.Models
             this._floorsToStopAt.CollectionChanged += (sender, args) =>
             {
                 Logger.LogEvent("Elevator Queue changed", ("Path", _floorsToStopAt.OrderBy(a => a).ToDelimitedString(",")));
+                base.OnPropertyChanged(FloorsToStopAtString, nameof(FloorsToStopAtString));
             };
 
             this.Arriving = ElevatorArriving;
@@ -315,6 +316,11 @@ namespace ElevatorApp.Models
             this.Departing = ElevatorDeparting;
             this.Departed = ElevatorDeparted;
         }
+
+        /// <summary>
+        /// A string representation of the floors that are currently in the queue
+        /// </summary>
+        public string FloorsToStopAtString => FloorsToStopAt.OrderBy(a => a).ToDelimitedString(", ");
 
         /// <summary>
         /// Finalizer. Decrements the global count of elevators
@@ -566,6 +572,7 @@ namespace ElevatorApp.Models
                                 bool shouldStop = false;
                                 lock (_lock)
                                     shouldStop = _approachFloor(args);
+
                                 if (shouldStop)
                                 {
                                     LogEvent($"Elevator approaching floor {nextFloor}");
