@@ -5,26 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              
              xmlns:models="clr-namespace:ElevatorApp.Models"
-             mc:Ignorable="d" Height="190" Width="190" 
-             d:DataContext="{d:DesignInstance Type=models:Door, IsDesignTimeCreatable=True}">
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=models:Door, IsDesignTimeCreatable=True}" 
+             d:DesignWidth="272" d:DesignHeight="280">
 
     <UserControl.Resources>
         <Storyboard x:Key="animOpening" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="120" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="60" Duration="0:0:2"/>
         </Storyboard>
-        <Storyboard  x:Key="animClosing" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="0" Duration="0:0:2"/>
+        <Storyboard x:Key="animClosing" >
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="60" Duration="0:0:2"/>
         </Storyboard>
-        <Storyboard  x:Key="animOpened" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="120" Duration="0:0:0"/>
+        <Storyboard x:Key="animOpened" >
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="180" Duration="0:0:2"/>
         </Storyboard>
-        <Storyboard  x:Key="animClosed" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="0" Duration="0:0:0"/>
+        <Storyboard x:Key="animClosed" >
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="0" Duration="0:0:1:5"/>
         </Storyboard>
 
     </UserControl.Resources>
 
-    <Grid x:Name="grdDoor"  Height="190" Width="190" >
+    <Grid x:Name="grdDoor"  >
         <Grid.Background>
             <ImageBrush ImageSource="/ElevatorApp;component/Resources/ElevatorBack.jpg" Stretch="Uniform"/>
         </Grid.Background>
@@ -35,7 +36,7 @@
         </Grid.ColumnDefinitions>
 
         <Rectangle Grid.Column="0" x:Name="left" Fill="Gray" Stroke="Black" />
-        <UserControl Grid.Column="1" x:Name="mid" Width="0" MinWidth="0" MaxWidth="120" Background="Transparent">
+        <UserControl Grid.Column="1" x:Name="mid" Width="0" MinWidth="0" Background="Transparent">
             <UserControl.Style>
                 <Style TargetType="UserControl">
                     <Style.Triggers>
@@ -47,7 +48,7 @@
                                 <StopStoryboard BeginStoryboardName="stryBoardClosed"/>
                             </DataTrigger.ExitActions>
                         </DataTrigger>
-                        
+
                         <DataTrigger Binding="{Binding Path=DoorState}" Value="Opening">
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard x:Name="stryBoardOpening" Storyboard="{StaticResource ResourceKey=animOpening}"/>

@@ -25,58 +25,7 @@
             </Ribbon.ApplicationMenu>
 
             <RibbonTab Header="Home" DataContext="{Binding Controller}">
-
-                <!--<RibbonGroup Header="Elevator Settings" DataContext="{Binding ElevatorSettings}">
-
-                    <Label ToolTip="Feet per minute">Speed(feet per minute)</Label>
-                    <RibbonComboBox>
-                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
-                                       SelectedValue="{Binding Speed, Mode=TwoWay}">
-                            <RibbonGalleryCategory>
-                                <RibbonGalleryItem IsSelected="True">800</RibbonGalleryItem>
-                                <RibbonGalleryItem>1200</RibbonGalleryItem>
-                            </RibbonGalleryCategory>
-                        </RibbonGallery>
-                    </RibbonComboBox>
-
-                    <Label ToolTip="Total weight">TotalCapacity(persons)</Label>
-                    <RibbonComboBox>
-                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1" 
-                                       SelectedValue="{Binding Capacity, Mode=TwoWay}">
-                            <RibbonGalleryCategory>
-                                <RibbonGalleryItem IsSelected="True">19</RibbonGalleryItem>
-                                <RibbonGalleryItem>22</RibbonGalleryItem>
-                            </RibbonGalleryCategory>
-                        </RibbonGallery>
-                    </RibbonComboBox>
-
-                    <Label>Door Category</Label>
-                    <RibbonComboBox>
-                        <RibbonGallery SelectedValuePath="Content" MaxColumnCount="1"   CanAddToQuickAccessToolBarDirectly="False"
-                                       SelectedValue="{Binding DoorType, Mode=TwoWay}">
-                            <RibbonGalleryCategory>
-                                <RibbonGalleryItem>
-                                    <models:DoorType>Single</models:DoorType>
-                                </RibbonGalleryItem>
-                                <RibbonGalleryItem IsEnabled="False">
-                                    <models:DoorType >Double</models:DoorType>
-                                </RibbonGalleryItem>
-                            </RibbonGalleryCategory>
-                        </RibbonGallery>
-                    </RibbonComboBox>
-                </RibbonGroup>-->
-
                 <RibbonGroup Header="Building Settings">
-                    <Label Content="Number of Elevators" />
-                    <RibbonComboBox>
-                        <RibbonGallery MaxColumnCount="1"  SelectedValuePath="Content"  CanAddToQuickAccessToolBarDirectly="False"
-                                       SelectedValue="{Binding ElevatorCount, Mode=TwoWay}">
-                            <RibbonGalleryCategory Name="Elevator">
-                                <RibbonGalleryItem IsSelected="True">1</RibbonGalleryItem>
-                                <RibbonGalleryItem IsEnabled="False">2</RibbonGalleryItem>
-                            </RibbonGalleryCategory>
-                        </RibbonGallery>
-                    </RibbonComboBox>
 
                     <Label>Number of Floors</Label>
                     <RibbonComboBox>
@@ -122,18 +71,20 @@
             </Grid.RowDefinitions>
 
 
-            <controls:ElevatorControl DataContext="{Binding Elevator}" 
+            <controls:ElevatorControl 
+                    DataContext="{Binding Elevator}" 
                       Grid.Column="0" 
                       Grid.Row="0" 
-                      FontSize="20"
+                      FontSize="15"
                       MinHeight="600"
                       HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Center"
-                      ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="10" 
-                                      BorderBrush="{x:Null}" 
-                                      BorderThickness="4" 
-                                      ClipToBounds="True" Background="#FFD4DDD7">
-                
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      Margin="10" 
+                      BorderBrush="{x:Null}" 
+                      BorderThickness="4" 
+                      ClipToBounds="True" Background="#FFD4DDD7">
+
             </controls:ElevatorControl>
 
             <GridSplitter Grid.Column="0" 
@@ -155,7 +106,7 @@
                                                Padding="20"
                                                HorizontalAlignment="Left"
                                                HorizontalContentAlignment="Left"
-                                               Background="#FFD4DDD7" BorderBrush="#FF6F937A" BorderThickness="2" ClipToBounds="True"/>
+                                               Background="#FFD4DDD7" BorderBrush="#FF6F937A" BorderThickness="2" ClipToBounds="True" Width="498"/>
             </ScrollViewer>
 
             <!--<StackPanel  Grid.Column="2" Grid.Row="0" Background="#FFF4F4F5">

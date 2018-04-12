@@ -12,7 +12,7 @@
 
 
     <StackPanel  Orientation="Horizontal">
-        <Grid Height="265">
+        <Grid Height="382" Width="449">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -68,7 +68,7 @@
                 </StackPanel>
             </Border>
 
-            <controls:DoorControl Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" DataContext="{Binding Door}" Margin="5" VerticalAlignment="Top" />
+            <controls:DoorControl Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" DataContext="{Binding Door}" Margin="10,0" VerticalAlignment="Top" Height="317" />
             <Label Grid.Row="2" Grid.Column="1" Content="{Binding State, FallbackValue=Idle}"/>
 
             <WrapPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" >
@@ -85,7 +85,7 @@
                             <WrapPanel DataContext="{Binding}" Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-                    
+
                 </ItemsControl>
             </WrapPanel>
             <!--<controls:ButtonPanelControl  Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" DataContext="{Binding ButtonPanel}" Margin="2" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>-->
