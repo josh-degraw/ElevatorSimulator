@@ -90,17 +90,11 @@
     <Compile Include="Controls\ElevatorControl.xaml.cs">
       <DependentUpon>ElevatorControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ElevatorMovementControl.xaml.cs">
-      <DependentUpon>ElevatorMovementControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ElevatorShaftControl.xaml.cs">
       <DependentUpon>ElevatorShaftControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FloorControl.xaml.cs">
       <DependentUpon>FloorControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\FloorsControl.xaml.cs">
-      <DependentUpon>FloorsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Interior.xaml.cs">
       <DependentUpon>Interior.xaml</DependentUpon>
@@ -168,19 +162,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\ElevatorMovementControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\ElevatorShaftControl.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\FloorControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\FloorsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

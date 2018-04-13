@@ -25,7 +25,8 @@ namespace ElevatorApp.Models
 
         private bool _subscribed = false, _controllerSubscribed = false, _elevatorAvailable = false;
 
-        private readonly AsyncObservableCollection<Passenger> _waitingPassengers = new AsyncObservableCollection<Passenger>();
+        private readonly AsyncObservableCollection<Passenger> _waitingPassengers_Up = new AsyncObservableCollection<Passenger>();
+        private readonly AsyncObservableCollection<Passenger> _waitingPassengers_Down = new AsyncObservableCollection<Passenger>();
 
         #endregion
 
@@ -40,8 +41,7 @@ namespace ElevatorApp.Models
             private set => SetProperty(ref _floorNum, value);
 
         }
-
-
+        
         /// <summary>
         /// The panel outside of the <see cref="Elevator"/>, used to call the elevator to the floor.
         /// </summary>
@@ -63,7 +63,12 @@ namespace ElevatorApp.Models
         /// <summary>
         /// The passengers waiting on the floor for the <see cref="Elevator"/>
         /// </summary>
-        public IReadOnlyCollection<Passenger> WaitingPassengers => _waitingPassengers;
+        public IReadOnlyCollection<Passenger> WaitingPassengersUp => _waitingPassengers_Up;
+        
+        /// <summary>
+        /// The passengers waiting on the floor for the <see cref="Elevator"/>
+        /// </summary>
+        public IReadOnlyCollection<Passenger> WaitingPassengersDown => _waitingPassengers_Down;
 
         #endregion
 
@@ -100,7 +105,19 @@ namespace ElevatorApp.Models
         /// <param name="destination"></param>
         public void QueuePassenger(int destination)
         {
-            this._waitingPassengers.Add(new Passenger(this.FloorNumber, destination));
+            var passenger = new Passenger(this.FloorNumber, destination);
+
+            switch (passenger.Direction)
+            {
+                case Direction.Up:
+                    this._waitingPassengers_Up.Add(passenger);
+                    break;
+                case Direction.Down:
+                    this._waitingPassengers_Down.Add(passenger);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         #region Subscription
@@ -136,7 +153,8 @@ namespace ElevatorApp.Models
                 this.ElevatorAvailable = true;
             }
 
-            _waitingPassengers.CollectionChanged += onPassengerAdded;
+            _waitingPassengers_Down.CollectionChanged += onPassengerAdded;
+            _waitingPassengers_Up.CollectionChanged += onPassengerAdded;
             elevator.PassengerAdded += removePassengerFromQueue;
             elevator.Door.Opened += addPassengersToElevator;
             //elevator.Door.CloseRequested += cancelDoorClosingIfNewPassengerAdded;
@@ -203,7 +221,18 @@ namespace ElevatorApp.Models
             {
                 try
                 {
-                    this._waitingPassengers.Remove(passenger);
+                    switch (passenger.Direction)
+                    {
+                        case Direction.Up:
+                            this._waitingPassengers_Up.Remove(passenger);
+                            break;
+                        case Direction.Down:
+                            this._waitingPassengers_Down.Remove(passenger);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -288,25 +317,36 @@ namespace ElevatorApp.Models
             try
             {
                 int nextDest = 0;
-                var direction = Direction.None;
-                if (elevator.Direction == Direction.None)
+                var direction = elevator.Direction;
+
+                Func<Passenger, int> minBySelector = p => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor);
+
+                switch (elevator.Direction)
                 {
-                    // Get the floor of the first passenger added to the waitlist. 
-                    Passenger pass = this.WaitingPassengers
-                        .MinByOrDefault(p => p.PassengerNumber);
+                    case Direction.None:
+                    {
+                        // Get the floor of the first passenger added to the waitlist. 
+                        Passenger pass = this.WaitingPassengersUp.Concat(this.WaitingPassengersDown).MinByOrDefault(p => p.PassengerNumber);
 
-                    direction = pass?.Direction ?? Direction.None;
+                        direction = pass?.Direction ?? Direction.None;
 
-                    nextDest = pass?.Path.destination ?? elevator.NextFloor;
-                }
-                else
-                {
-                    Passenger pass = this.WaitingPassengers
-                        .Where(p => p.Direction == elevator.Direction)
-                        .MinByOrDefault(p => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor));
+                        nextDest = pass?.Path.destination ?? elevator.NextFloor;
+                        break;
+                    }
+                    case Direction.Down:
+                    {
+                        Passenger pass = this.WaitingPassengersDown.MinByOrDefault(minBySelector);
 
-                    direction = pass?.Direction ?? Direction.None;
-                    nextDest = pass?.Path.destination ?? elevator.NextFloor;
+                        nextDest = pass?.Path.destination ?? elevator.NextFloor;
+                        break;
+                    }
+                    case Direction.Up:
+                    {
+                        Passenger pass = this.WaitingPassengersUp.MinByOrDefault(minBySelector);
+
+                        nextDest = pass?.Path.destination ?? elevator.NextFloor;
+                        break;
+                    }
                 }
 
                 if (direction != Direction.None)
@@ -322,20 +362,18 @@ namespace ElevatorApp.Models
 
         private IEnumerable<Passenger> _getPassengersToMove(int destination, Direction direction)
         {
-            var waiting = this.WaitingPassengers
-                .Where(p => p.State == PassengerState.Waiting && p.Direction == direction);
-
             switch (direction)
             {
                 // If the elevator is already going up, only add passengers who are going up
                 case Direction.Up:
-                    return waiting
-                            .Where(p => p.Path.destination >= destination);
+
+                    return this.WaitingPassengersUp
+                            .Where(p => p.State == PassengerState.Waiting && p.Path.destination >= destination);
 
                 // If the elevator is already going down, only add passengers who are going down
                 case Direction.Down:
-                    return this.WaitingPassengers
-                        .Where(p => p.Path.destination <= destination);
+                    return this.WaitingPassengersDown
+                        .Where(p => p.State == PassengerState.Waiting && p.Path.destination <= destination);
 
                 default:
                     throw new InvalidOperationException("Direction cannot be None");

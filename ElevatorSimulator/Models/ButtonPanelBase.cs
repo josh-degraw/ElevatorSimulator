@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
 using MoreLinq;
@@ -15,7 +17,7 @@ namespace ElevatorApp.Models
     /// Represents the base class of a button panel. 
     /// Subscribes all of the <see cref="Button"/>s it contains to the <see cref="Elevator"/>
     /// </summary>
-    public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<ElevatorMasterController>, IObservable<int>
+    public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<ElevatorMasterController>, IObservable<(int, Direction)>
     {
         /// <summary>
         /// The actual collection of <see cref="FloorButton"/>s
@@ -26,7 +28,7 @@ namespace ElevatorApp.Models
         /// A collection of <see cref="FloorButton"/>s that will appear on this panel
         /// </summary>
         public virtual IReadOnlyCollection<FloorButton> FloorButtons => _floorButtons;
-        
+
         /// <summary>
         /// Initialize a new ButtonPanelBase
         /// </summary>
@@ -44,29 +46,18 @@ namespace ElevatorApp.Models
         {
             return ((IEnumerable)FloorButtons).GetEnumerator();
         }
-        
+
         int IReadOnlyCollection<FloorButton>.Count => FloorButtons.Count;
-        
+
         #endregion
 
 
         ///<inheritdoc/>
         public bool Subscribed { get; protected set; }
 
-   
-        private readonly AsyncObservableCollection<IObserver<int>> _observers = new AsyncObservableCollection<IObserver<int>>();
 
-        /// <summary>
-        /// Notify all <see cref="IObserver{T}"/>s that a <see cref="FloorButton"/> has been pushed
-        /// </summary>
-        /// <param name="floor"></param>
-        private void NotifyObservers(int floor)
-        {
-            foreach (var observer in _observers)
-            {
-                observer.OnNext(floor);
-            }
-        }
+        private readonly AsyncObservableCollection<IObserver<(int, Direction)>> _observers = new AsyncObservableCollection<IObserver<(int, Direction)>>();
+
 
         /// <inheritdoc />
         /// <summary>
@@ -75,14 +66,14 @@ namespace ElevatorApp.Models
         /// </summary>
         /// <param name="observer"></param>
         /// <returns>An <see cref="Unsubscriber{T}"/> that can be disposed of to stop receiving updates</returns>
-        public IDisposable Subscribe(IObserver<int> observer)
+        public IDisposable Subscribe(IObserver<(int, Direction)> observer)
         {
             if (!_observers.Contains(observer))
             {
                 _observers.Add(observer);
             }
 
-            return new Unsubscriber<int>(_observers, observer);
+            return new Unsubscriber<(int, Direction)>(_observers, observer);
         }
 
         /// <summary>

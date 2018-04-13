@@ -18,6 +18,8 @@ namespace ElevatorApp.Models
         /// <summary> The number of the <see cref="Floor"/> that this button tells the <see cref="Elevator"/> to go to.</summary>
         public int DestinationFloor { get; }
 
+        private Direction RequestDirection => DestinationFloor > FloorNumber ? Direction.Up : Direction.Down;
+
         ///<inheritdoc/>
         public override string Label => DestinationFloor.ToString();
 
@@ -66,7 +68,7 @@ namespace ElevatorApp.Models
                         else
                         {
                             // If the elevator isn't already here, tell it to come here
-                            controller.Elevator.OnNext(this.FloorNumber);
+                            controller.Elevator.OnNext((this.FloorNumber, RequestDirection));
                         }
 
                     }

@@ -19,7 +19,7 @@ namespace ElevatorApp.Models
     /// Represents an elevator.
     /// <para>Implements <see cref="IObserver{T}"/> to observe when a floor wants an elevator</para>
     /// </summary>
-    public class Elevator : ModelBase, ISubcriber<ElevatorMasterController>, IObserver<int>
+    public class Elevator : ModelBase, ISubcriber<ElevatorMasterController>, IObserver<(int, Direction)>
     {
         #region Backing fields
 
@@ -36,7 +36,7 @@ namespace ElevatorApp.Models
         //[Obsolete]
         //private readonly AsyncObservableCollection<ElevatorCall> _path = new AsyncObservableCollection<ElevatorCall>();
         private readonly AsyncObservableCollection<Passenger> _passengers = new AsyncObservableCollection<Passenger>();
-        private readonly AsyncObservableCollection<int> _floorsToStopAt = new AsyncObservableCollection<int>();
+        private readonly AsyncObservableCollection<(int Floor, Direction Direction)> _floorsToStopAt = new AsyncObservableCollection<(int, Direction)>();
 
         #endregion
 
@@ -150,9 +150,7 @@ namespace ElevatorApp.Models
                     throw new ArgumentOutOfRangeException(nameof(prev), prev, null);
             }
         }
-
-        private int MaxFloor { get; }
-
+        
         /// <summary>
         /// Represents the current floor of the <see cref="Elevator"/>
         /// <para>
@@ -208,7 +206,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// A collection of the floor numbers that want the <see cref="Elevator"/> to stop there
         /// </summary>
-        public IReadOnlyCollection<int> FloorsToStopAt => _floorsToStopAt;
+        public IReadOnlyCollection<(int Floor, Direction Direction)> FloorsToStopAt => _floorsToStopAt;
 
         /// <summary>
         /// The people currently inside the <see cref="Elevator"/>
@@ -320,7 +318,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// A string representation of the floors that are currently in the queue
         /// </summary>
-        public string FloorsToStopAtString => FloorsToStopAt.OrderBy(a => a).ToDelimitedString(", ");
+        public string FloorsToStopAtString => FloorsToStopAt.ToDelimitedString(", ");
 
         /// <summary>
         /// Finalizer. Decrements the global count of elevators
@@ -384,7 +382,7 @@ namespace ElevatorApp.Models
         {
             try
             {
-                _floorsToStopAt.TryRemove(args.DestinationFloor);
+                _floorsToStopAt.TryRemove((args.DestinationFloor, args.Direction));
                 this.CurrentFloor = args.DestinationFloor;
                 this.State = ElevatorState.Arrived;
                 soundPlayer.Play();
@@ -433,9 +431,12 @@ namespace ElevatorApp.Models
             this._passengers.AddDistinct(passenger);
 
             PassengerAdded?.Invoke(this, passenger);
-            if (!this.FloorsToStopAt.Contains(passenger.Path.destination))
+
+            var path = (passenger.Path.destination, passenger.Direction);
+
+            if (!this.FloorsToStopAt.Contains(path))
             {
-                this._floorsToStopAt.Add(passenger.Path.destination);
+                this._floorsToStopAt.Add(path);
             }
     }
 
@@ -489,7 +490,7 @@ namespace ElevatorApp.Models
         /// </summary>
         /// <param name="destination"></param>
         /// <returns></returns>
-        internal async Task Dispatch(int destination)
+        internal async Task Dispatch((int, Direction) destination)
         {
             if (!_floorsToStopAt.Contains(destination))
                 _floorsToStopAt.AddDistinct(destination);
@@ -531,7 +532,6 @@ namespace ElevatorApp.Models
             try
             {
                 await WaitForDoorToClose();
-                var s = this.Departing?.GetInvocationList();
 
                 // Get the closest floor to the current
                 if (NextFloor == this.CurrentFloor)
@@ -543,14 +543,24 @@ namespace ElevatorApp.Models
                 while (this._floorsToStopAt.Any())
                 {
                     _moving = true;
+                    
+                    var destination = FloorsToStopAt
+                        .Where(a =>
+                        {
+                            if (this.Direction == Direction.None)
+                            {
+                                return a.Floor != this.CurrentFloor;
+                            }
 
-                    int destination = FloorsToStopAt.Where(a => a != this.CurrentFloor).MinBy(a => Math.Abs(a - this.CurrentFloor));
+                            return a.Direction == this.Direction && a.Floor != this.CurrentFloor;
+                        })
+                        .MinBy(a => Math.Abs(a.Floor - this.CurrentFloor));
 
-                    this.Direction = assignDirection(destination);
+                    this.Direction = destination.Direction;//assignDirection(destination.Floor);
                     if (this.Direction == Direction.None)
                         break;
 
-                    var call = new ElevatorMovementEventArgs(destination, this.Direction);
+                    var call = new ElevatorMovementEventArgs(destination.Floor, destination.Direction);
 
                     await WaitForDoorToClose();
 
@@ -560,12 +570,12 @@ namespace ElevatorApp.Models
                     {
                         case Direction.Up:
                             Trace.Indent();
-                            for (int i = this.CurrentFloor; i < destination; i++)
+                            for (int i = this.CurrentFloor; i < destination.Floor; i++)
                             {
                                 await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
                                 int nextFloor = i + 1;
 
-                                var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
+                                var args = new ElevatorApproachingEventArgs(nextFloor, destination.Floor, call.Direction);
 
                                 // If the elevator should stop at this floor
                                 bool shouldStop = false;
@@ -582,7 +592,7 @@ namespace ElevatorApp.Models
                                     call = new ElevatorMovementEventArgs(nextFloor, call.Direction);
                                     await _startMovement(call);
                                 }
-                                else if (nextFloor != destination)
+                                else if (nextFloor != destination.Floor)
                                 {
                                     this.CurrentFloor = nextFloor; // Set the current floor
                                 }
@@ -593,12 +603,12 @@ namespace ElevatorApp.Models
 
                         case Direction.Down:
                             Trace.Indent();
-                            for (int i = this.CurrentFloor; i > destination; i--)
+                            for (int i = this.CurrentFloor; i > destination.Floor; i--)
                             {
                                 await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan());
                                 int nextFloor = i - 1;
 
-                                var args = new ElevatorApproachingEventArgs(nextFloor, destination, call.Direction);
+                                var args = new ElevatorApproachingEventArgs(nextFloor, destination.Floor, call.Direction);
 
                                 // If the elevator should stop at this floor
                                 if (_approachFloor(args))
@@ -610,7 +620,7 @@ namespace ElevatorApp.Models
                                     call = new ElevatorMovementEventArgs(nextFloor - 1, call.Direction);
                                     await _startMovement(call);
                                 }
-                                else if (nextFloor != destination)
+                                else if (nextFloor != destination.Floor)
                                 {
                                     this.CurrentFloor = nextFloor; // Set the current floor
                                 }
@@ -709,7 +719,7 @@ namespace ElevatorApp.Models
 
         #endregion
 
-        public async void OnNext(int value)
+        public async void OnNext((int, Direction ) value)
         {
             await this.Dispatch(value).ConfigureAwait(false);
         }
