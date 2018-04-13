@@ -194,8 +194,14 @@ namespace ElevatorApp.Models
             }
         }
 
+        /// <summary>
+        /// Helper property to know if the door is either already opened or in the process of opening
+        /// </summary>
         public bool IsNotOpenedOrOpening => this.DoorState != DoorState.Opened && DoorState != DoorState.Opening;
 
+        /// <summary>
+        /// Helper property to know if the door is either already closed or in the process of closing
+        /// </summary>
         public bool IsNotClosedOrClosing => this.DoorState != DoorState.Closed && this.DoorState != DoorState.Closing;
 
 
@@ -251,33 +257,7 @@ namespace ElevatorApp.Models
             {
                 if (Subscribed)
                     return Task.CompletedTask;
-
-                elevator.ButtonPanel.CloseDoorButton.OnPushed += async (a, b) =>
-                {
-                    try
-                    {
-                        if (elevator.Direction == Direction.None)
-                            await this.RequestClose();
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.Fail(e.Message);
-                    }
-                };
-
-                elevator.ButtonPanel.OpenDoorButton.OnPushed += async (a, b) =>
-                {
-                    try
-                    {
-                        if (elevator.Direction == Direction.None)
-                            await this.RequestOpen();
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.Fail(e.Message);
-                    }
-                };
-
+                
                 elevator.Arrived += async (e, args) =>
                 {
                     try

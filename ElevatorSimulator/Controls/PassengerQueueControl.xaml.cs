@@ -32,7 +32,6 @@ namespace ElevatorApp.Controls
         {
             if (sender is Button b && b.DataContext is RequestButton fb)
             {
-                Floor?.QueuePassenger(fb.DestinationFloor);
                 fb.Push();
             }
         }

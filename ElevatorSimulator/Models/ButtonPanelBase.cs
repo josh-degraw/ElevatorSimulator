@@ -90,19 +90,23 @@ namespace ElevatorApp.Models
         /// </summary>
         public virtual Task Subscribe(ElevatorMasterController parent)
         {
-            this.Subscribe((IObserver<int>)parent);
+            if (this.Subscribed)
+                return Task.CompletedTask;
+
+            Logger.LogEvent($"Subscribing {nameof(ButtonPanelBase)}");
+
+            this.Subscribe(parent.Elevator);
 
             foreach (FloorButton floorButton in this.FloorButtons)
             {
                 floorButton.Subscribe(parent);
-                floorButton.OnPushed += (_, floor) =>
-                {
-                    NotifyObservers(floor);
-                };
+                //floorButton.OnPushed += (_, floor) =>
+                //{
+                //    NotifyObservers(floor);
+                //};
             }
 
-            Logger.LogEvent($"Subscribing {nameof(ButtonPanelBase)}");
-
+            this.Subscribed = true;
             return Task.CompletedTask;
         }
     }

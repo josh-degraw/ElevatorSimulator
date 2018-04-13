@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
+using ElevatorApp.Properties;
 using ElevatorApp.Util;
 using MoreLinq;
 using NodaTime;
@@ -17,10 +19,8 @@ namespace ElevatorApp.Models
     /// Represents an elevator.
     /// <para>Implements <see cref="IObserver{T}"/> to observe when a floor wants an elevator</para>
     /// </summary>
-    public class Elevator : ModelBase, ISubcriber<ElevatorMasterController>
+    public class Elevator : ModelBase, ISubcriber<ElevatorMasterController>, IObserver<int>
     {
-
-        private IDisposable _unsubscriber;
         #region Backing fields
 
         private static int _RegisteredElevators = 0;
@@ -151,10 +151,11 @@ namespace ElevatorApp.Models
             }
         }
 
+        private int MaxFloor { get; }
+
         /// <summary>
         /// Represents the current floor of the <see cref="Elevator"/>
         /// <para>
-        /// TODO: Either switch this to int? and have <see langword="null"/> mean it's moving, or figure out a better way to show the floor it's passing while it's moving
         /// </para>
         /// </summary>
         public int CurrentFloor
@@ -217,7 +218,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// The button panel inside of the elevator
         /// </summary>
-        [Obsolete("For purposes of the program, this is being handled by the floors")]
+        [Obsolete("For purposes of the program, this is being handled by the floors", true)]
         public ButtonPanel ButtonPanel { get; }
 
         /// <summary>
@@ -302,7 +303,6 @@ namespace ElevatorApp.Models
             this.ElevatorNumber = ++_RegisteredElevators;
 
             Logger.LogEvent("Initializing Elevator", ("ElevatorNumber", this.ElevatorNumber));
-            this.ButtonPanel = new ButtonPanel();
 
             this._floorsToStopAt.CollectionChanged += (sender, args) =>
             {
@@ -373,6 +373,7 @@ namespace ElevatorApp.Models
             this.State = ElevatorState.Arriving;
             LogEvent("Elevator Arriving", ("Floor", args));
         }
+        private readonly SoundPlayer soundPlayer = new SoundPlayer { Stream = Resources.elevatorDing };
 
         /// <summary>
         /// Handles the <see cref="Arrived"/> event. Logs a message, and removes the passengers that are getting off at the given floor.
@@ -386,6 +387,7 @@ namespace ElevatorApp.Models
                 _floorsToStopAt.TryRemove(args.DestinationFloor);
                 this.CurrentFloor = args.DestinationFloor;
                 this.State = ElevatorState.Arrived;
+                soundPlayer.Play();
                 LogEvent("Elevator Arrived", ("Floor", args.DestinationFloor));
 
                 IEnumerable<Passenger> leaving = this.Passengers.Where(p => p.Path.destination == args.DestinationFloor);
@@ -410,7 +412,6 @@ namespace ElevatorApp.Models
 
         }
 
-
         #endregion
 
         #region Methods
@@ -424,6 +425,7 @@ namespace ElevatorApp.Models
             LogEvent("Adding Passenger to Elevator");
             passenger.State = PassengerState.Transition;
 
+
             // Simulate time it takes to enter the elevator
             await Task.Delay(Passenger.TransitionSpeed);
             passenger.State = PassengerState.In;
@@ -431,16 +433,11 @@ namespace ElevatorApp.Models
             this._passengers.AddDistinct(passenger);
 
             PassengerAdded?.Invoke(this, passenger);
-            //!!!Note about the next section: Uncommenting this allows the elevator to work perfectly
-            //when using the same floor as the elevator is on, but commenting this causes the opposite scenario
-            //to occur. The problem is the "dispatch isn't being sent when using the same floor but DOES when not
-
-            //await Dispatch(passenger.Path.destination);
-            /*
-            int destination = FloorsToStopAt.MinBy(a => Math.Abs(a - this.CurrentFloor));
-            await Dispatch(destination);
-            */
-        }
+            if (!this.FloorsToStopAt.Contains(passenger.Path.destination))
+            {
+                this._floorsToStopAt.Add(passenger.Path.destination);
+            }
+    }
 
         /// <summary>
         /// Moves a <see cref="Passenger"/> off of the <see cref="Elevator"/>
@@ -467,10 +464,8 @@ namespace ElevatorApp.Models
                 return;
 
             Logger.LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
-            Task subscribeButtonPanel = this.ButtonPanel.Subscribe(controller);
-            Task subscribeDoor = this.Door.Subscribe(this);
 
-            await Task.WhenAll(subscribeButtonPanel, subscribeDoor).ConfigureAwait(false);
+            await this.Door.Subscribe(this).ConfigureAwait(false);
             this.Subscribed = true;
         }
 
@@ -507,7 +502,11 @@ namespace ElevatorApp.Models
         }
 
         private bool _moving = false;
-        private object _lock = new object();
+
+        /// <summary>
+        /// Lock object to help with synchronization
+        /// </summary>
+        private readonly object _lock = new object();
 
 
         private async Task WaitForDoorToClose()
@@ -710,5 +709,19 @@ namespace ElevatorApp.Models
 
         #endregion
 
+        public async void OnNext(int value)
+        {
+            await this.Dispatch(value).ConfigureAwait(false);
+        }
+
+        public void OnError(Exception error)
+        {
+            ;// Not implemented
+        }
+
+        public void OnCompleted()
+        {
+            ;// Not implemented
+        }
     }
 }
