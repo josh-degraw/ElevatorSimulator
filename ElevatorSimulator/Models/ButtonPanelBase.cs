@@ -55,7 +55,6 @@ namespace ElevatorApp.Models
         ///<inheritdoc/>
         public bool Subscribed { get; protected set; }
 
-
         private readonly AsyncObservableCollection<IObserver<(int, Direction)>> _observers = new AsyncObservableCollection<IObserver<(int, Direction)>>();
 
 
@@ -91,10 +90,6 @@ namespace ElevatorApp.Models
             foreach (FloorButton floorButton in this.FloorButtons)
             {
                 floorButton.Subscribe(parent);
-                //floorButton.OnPushed += (_, floor) =>
-                //{
-                //    NotifyObservers(floor);
-                //};
             }
 
             this.Subscribed = true;

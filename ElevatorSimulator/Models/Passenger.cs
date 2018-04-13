@@ -101,6 +101,8 @@ namespace ElevatorApp.Models
         /// </summary>
         public Direction Direction => this.Path.destination > this.Path.source ? Direction.Up : Direction.Down;
 
+        public (int floor, Direction direction ) Call => (this.Path.destination, this.Direction);
+
         /// <summary>
         /// The amount of time it takes for this <see cref="Passenger"/> to transition into or out of the <see cref="Elevator"/>
         /// </summary>

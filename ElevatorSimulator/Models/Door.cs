@@ -253,11 +253,11 @@ namespace ElevatorApp.Models
         /// <param name="elevator"></param>
         public Task Subscribe(Elevator elevator)
         {
+            if (Subscribed)
+                return Task.CompletedTask;
             try
             {
-                if (Subscribed)
-                    return Task.CompletedTask;
-                
+
                 elevator.Arrived += async (e, args) =>
                 {
                     try

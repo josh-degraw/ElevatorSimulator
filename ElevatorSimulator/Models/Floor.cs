@@ -25,8 +25,8 @@ namespace ElevatorApp.Models
 
         private bool _subscribed = false, _controllerSubscribed = false, _elevatorAvailable = false;
 
-        private readonly AsyncObservableCollection<Passenger> _waitingPassengers_Up = new AsyncObservableCollection<Passenger>();
-        private readonly AsyncObservableCollection<Passenger> _waitingPassengers_Down = new AsyncObservableCollection<Passenger>();
+        private readonly AsyncObservableCollection<Passenger> _waitingPassengers = new AsyncObservableCollection<Passenger>();
+        // private readonly AsyncObservableCollection<Passenger> _waitingPassengers_Down = new AsyncObservableCollection<Passenger>();
 
         #endregion
 
@@ -41,7 +41,7 @@ namespace ElevatorApp.Models
             private set => SetProperty(ref _floorNum, value);
 
         }
-        
+
         /// <summary>
         /// The panel outside of the <see cref="Elevator"/>, used to call the elevator to the floor.
         /// </summary>
@@ -63,12 +63,12 @@ namespace ElevatorApp.Models
         /// <summary>
         /// The passengers waiting on the floor for the <see cref="Elevator"/>
         /// </summary>
-        public IReadOnlyCollection<Passenger> WaitingPassengersUp => _waitingPassengers_Up;
-        
+        public IReadOnlyCollection<Passenger> WaitingPassengers => _waitingPassengers;
+
         /// <summary>
         /// The passengers waiting on the floor for the <see cref="Elevator"/>
         /// </summary>
-        public IReadOnlyCollection<Passenger> WaitingPassengersDown => _waitingPassengers_Down;
+        // public IReadOnlyCollection<Passenger> WaitingPassengersDown => _waitingPassengers_Down;
 
         #endregion
 
@@ -107,17 +107,16 @@ namespace ElevatorApp.Models
         {
             var passenger = new Passenger(this.FloorNumber, destination);
 
-            switch (passenger.Direction)
-            {
-                case Direction.Up:
-                    this._waitingPassengers_Up.Add(passenger);
-                    break;
-                case Direction.Down:
-                    this._waitingPassengers_Down.Add(passenger);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            this._waitingPassengers.Add(passenger);
+            //switch (passenger.Direction)
+            //{
+            //    case Direction.Down:
+            //    case Direction.Up:
+            //        break;
+
+            //    default:
+            //        throw new ArgumentOutOfRangeException();
+            //}
         }
 
         #region Subscription
@@ -153,12 +152,11 @@ namespace ElevatorApp.Models
                 this.ElevatorAvailable = true;
             }
 
-            _waitingPassengers_Down.CollectionChanged += onPassengerAdded;
-            _waitingPassengers_Up.CollectionChanged += onPassengerAdded;
+            _waitingPassengers.CollectionChanged += onPassengerAdded;
             elevator.PassengerAdded += removePassengerFromQueue;
             elevator.Door.Opened += addPassengersToElevator;
-            //elevator.Door.CloseRequested += cancelDoorClosingIfNewPassengerAdded;
-            //elevator.Door.Closing += cancelDoorClosingIfNewPassengerAdded;
+            elevator.Door.CloseRequested += cancelIfStartsToClose;
+            elevator.Door.Closing += cancelIfStartsToClose;
             elevator.Departed += onElevatorDeparted;
 
             elevator.Approaching += Elevator_Approaching;
@@ -221,16 +219,13 @@ namespace ElevatorApp.Models
             {
                 try
                 {
-                    switch (passenger.Direction)
+                    if (this._waitingPassengers.TryRemove(passenger))
                     {
-                        case Direction.Up:
-                            this._waitingPassengers_Up.Remove(passenger);
-                            break;
-                        case Direction.Down:
-                            this._waitingPassengers_Down.Remove(passenger);
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
+                        ; // Successfully removed
+                    }
+                    else
+                    {
+                        ; // Passenger was already removed
                     }
 
                 }
@@ -274,7 +269,7 @@ namespace ElevatorApp.Models
         {
             args.CancelOperation = _adding;
         }
-        
+
         /// <summary>
         /// Takes care of:
         /// <para>Opening the Elevator door</para>
@@ -286,31 +281,18 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         private async Task _addPassengersToElevator(IEnumerable<Passenger> departing, Elevator elevator)
         {
-            // Event handler to make sure the door stays open while passengers are trying to get in
-
-            //There's probably a better way to do this. But the doors were being forced to stay open when adding
-            //passengers because CancelOperations was being left "true"
-            //void resetCancelOp(object sender, DoorStateChangeEventArgs args)
-            //{
-            //    args.CancelOperation = false;
-            //}
-
-            elevator.Door.Closing += cancelIfStartsToClose;
             _adding = true;
             foreach (Passenger passenger in departing)
             {
                 await elevator.AddPassenger(passenger);
             }
             _adding = false;
-            if(elevator.Direction == Direction.None)
+
+            if (elevator.Direction == Direction.None)
             {
-                await elevator.Dispatch(elevator.FloorsToStopAt.MinBy(a => Math.Abs(a - elevator.CurrentFloor)));
+                elevator.OnNext(elevator.FloorsToStopAt.MinBy(a => Math.Abs(a.Floor - elevator.CurrentFloor)));
             }
 
-            //// Remove the event handler now because we can let the door close, since all the passengers are on now
-            //elevator.Door.Closing -= cancelIfStartsToClose;
-            ////Allow doors to close after keeping them open. 
-            //elevator.Door.Closing += resetCancelOp;
         }
 
         /// <summary>
@@ -323,34 +305,28 @@ namespace ElevatorApp.Models
                 int nextDest = 0;
                 var direction = elevator.Direction;
 
-                Func<Passenger, int> minBySelector = p => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor);
+                int minBySelector(Passenger p) => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor);
 
                 switch (elevator.Direction)
                 {
                     case Direction.None:
-                    {
-                        // Get the floor of the first passenger added to the waitlist. 
-                        Passenger pass = this.WaitingPassengersUp.Concat(this.WaitingPassengersDown).MinByOrDefault(p => p.PassengerNumber);
+                        {
+                            // Get the floor of the first passenger added to the waitlist. 
+                            Passenger pass = this.WaitingPassengers.MinByOrDefault(p => p.PassengerNumber);
 
-                        direction = pass?.Direction ?? Direction.None;
+                            direction = pass?.Direction ?? Direction.None;
 
-                        nextDest = pass?.Path.destination ?? elevator.NextFloor;
-                        break;
-                    }
-                    case Direction.Down:
-                    {
-                        Passenger pass = this.WaitingPassengersDown.MinByOrDefault(minBySelector);
-
-                        nextDest = pass?.Path.destination ?? elevator.NextFloor;
-                        break;
-                    }
+                            nextDest = pass?.Path.destination ?? elevator.NextFloor;
+                            break;
+                        }
                     case Direction.Up:
-                    {
-                        Passenger pass = this.WaitingPassengersUp.MinByOrDefault(minBySelector);
+                    case Direction.Down:
+                        {
+                            Passenger pass = this.WaitingPassengers.MinByOrDefault(minBySelector);
 
-                        nextDest = pass?.Path.destination ?? elevator.NextFloor;
-                        break;
-                    }
+                            nextDest = pass?.Path.destination ?? elevator.NextFloor;
+                            break;
+                        }
                 }
 
                 if (direction != Direction.None)
@@ -366,18 +342,20 @@ namespace ElevatorApp.Models
 
         private IEnumerable<Passenger> _getPassengersToMove(int destination, Direction direction)
         {
+            IEnumerable<Passenger> waiting = this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting);
+
             switch (direction)
             {
                 // If the elevator is already going up, only add passengers who are going up
                 case Direction.Up:
 
-                    return this.WaitingPassengersUp
-                            .Where(p => p.State == PassengerState.Waiting && p.Path.destination >= destination);
+                    return waiting
+                            .Where(p => p.Path.destination >= destination);
 
                 // If the elevator is already going down, only add passengers who are going down
                 case Direction.Down:
-                    return this.WaitingPassengersDown
-                        .Where(p => p.State == PassengerState.Waiting && p.Path.destination <= destination);
+                    return waiting
+                        .Where(p => p.Path.destination <= destination);
 
                 default:
                     throw new InvalidOperationException("Direction cannot be None");

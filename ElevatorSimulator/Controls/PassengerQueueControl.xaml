@@ -44,7 +44,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label>Waiting ▲ 👤:</Label>
-                    <Label Content="{Binding WaitingPassengersUp.Count}"/>
+                    <Label Content="{Binding WaitingPassengers.Count}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label>Waiting ▼ 👤:</Label>
