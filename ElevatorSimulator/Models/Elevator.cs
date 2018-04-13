@@ -402,6 +402,13 @@ namespace ElevatorApp.Models
                         Debug.WriteLine(ex);
                     }
                 }
+                //Check to see if the elevator still needs to move and everyones gone(ie waiting on another floor). If it DOES, then dispatch the elevator to the nearest destination
+                if (this.FloorsToStopAt.Any() && !this.Passengers.Any())
+                {
+                    //Reset the direction and then get the next floor to pick up a passenger at
+                    this.Direction = this.assignDirection(FloorsToStopAt.MinBy(a => Math.Abs(a - this.CurrentFloor)));
+                    await this.Move().ConfigureAwait(false);
+                }
             }
             catch (Exception ex)
             {

@@ -302,6 +302,10 @@ namespace ElevatorApp.Models
                 await elevator.AddPassenger(passenger);
             }
             _adding = false;
+            if(elevator.Direction == Direction.None)
+            {
+                await elevator.Dispatch(elevator.FloorsToStopAt.MinBy(a => Math.Abs(a - elevator.CurrentFloor)));
+            }
 
             //// Remove the event handler now because we can let the door close, since all the passengers are on now
             //elevator.Door.Closing -= cancelIfStartsToClose;
