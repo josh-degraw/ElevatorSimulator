@@ -334,12 +334,12 @@ namespace ElevatorApp.Models
                 // If the elevator is already going up, only add passengers who are going up
                 case Direction.Up:
                     return waiting
-                            .Where(p => p.Path.destination >= destination);
+                            .Where(p => p.Path.destination >= this.FloorNumber);
 
                 // If the elevator is already going down, only add passengers who are going down
                 case Direction.Down:
                     return this.WaitingPassengers
-                        .Where(p => p.Path.destination <= destination);
+                        .Where(p => p.Path.destination <= this.FloorNumber);
 
                 default:
                     throw new InvalidOperationException("Direction cannot be None");
