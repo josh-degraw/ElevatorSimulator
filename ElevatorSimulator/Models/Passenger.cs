@@ -99,7 +99,9 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Computed property representing the direction the passenger wants to go
         /// </summary>
-        public Direction Direction => this.Path.destination > this.Path.source? Direction.Up : Direction.Down;
+        public Direction Direction => this.Path.destination > this.Path.source ? Direction.Up : Direction.Down;
+
+        public (int floor, Direction direction ) Call => (this.Path.destination, this.Direction);
 
         /// <summary>
         /// The amount of time it takes for this <see cref="Passenger"/> to transition into or out of the <see cref="Elevator"/>
@@ -127,7 +129,7 @@ namespace ElevatorApp.Models
         /// <param name="destination">The floor that the passenger is going to</param>
         public Passenger(int source, int destination) : this()
         {
-            if(source == destination)
+            if (source == destination)
                 throw new ArgumentException("Source and destination must not be the same.");
 
             this.Path = (source, destination);

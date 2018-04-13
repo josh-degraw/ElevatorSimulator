@@ -57,7 +57,6 @@ namespace ElevatorApp.Models
             if (Subscribed)
                 return;
 
-            await base.Subscribe(masterController);
             var thisBtn = this.FloorButtons.FirstOrDefault(b =>
             {
                 if (b is RequestButton r)
@@ -73,7 +72,6 @@ namespace ElevatorApp.Models
             }
 
             await base.Subscribe(masterController);
-
 
             this.Subscribed = true;
         }

@@ -65,7 +65,7 @@ namespace ElevatorApp.Models
             this.OnPushed += (a, floor) =>
             {
                 Logger.LogEvent($"Pushed floor button {this.FloorNumber}");
-                parent.Elevator.OnNext(this.FloorNumber);
+                parent.Elevator.OnNext((this.FloorNumber, parent.Elevator.Direction));
             };
 
             //elevator.Departed += (e, floor) =>

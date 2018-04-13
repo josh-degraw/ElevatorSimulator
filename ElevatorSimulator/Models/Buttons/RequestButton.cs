@@ -18,6 +18,8 @@ namespace ElevatorApp.Models
         /// <summary> The number of the <see cref="Floor"/> that this button tells the <see cref="Elevator"/> to go to.</summary>
         public int DestinationFloor { get; }
 
+        private Direction RequestDirection => DestinationFloor > FloorNumber ? Direction.Up : Direction.Down;
+
         ///<inheritdoc/>
         public override string Label => DestinationFloor.ToString();
 
@@ -45,39 +47,39 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         public override Task Subscribe(ElevatorMasterController controller)
         {
-            if (!this.Subscribed)
+            if (this.Subscribed)
+                return Task.CompletedTask;
+
+            var elevator = controller.Elevator;
+            // This should be handled by the Call panels
+            this.OnPushed += async (a, floor) =>
             {
-                var elevator = controller.Elevator;
-                // This should be handled by the Call panels
-                this.OnPushed += async (a, floor) =>
+                try
                 {
-                    try
+                    Logger.LogEvent("Elevator Requested", ("From floor", this.FloorNumber));
+                    // If the elevator's already here, open the door
+                    if (elevator.CurrentFloor == this.FloorNumber &&
+                        (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
                     {
-                        Logger.LogEvent("Elevator Requested", ("From floor", this.FloorNumber));
-                        // If the elevator's already here, open the door
-                        if (elevator.CurrentFloor == this.FloorNumber &&
-                            (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
+                        if (elevator.Door.DoorState != DoorState.Opened)
                         {
-                            if (elevator.Door.DoorState != DoorState.Opened)
-                            {
-                                await elevator.Door.RequestOpen();
-                            }
+                            await elevator.Door.RequestOpen();
                         }
-                        else
-                        {
-                            // If the elevator isn't already here, tell it to come here
-                            controller.Elevator.OnNext(this.FloorNumber);
-                        }
-
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Debug.WriteLine(ex);
+                        // If the elevator isn't already here, tell it to come here
+                        controller.Elevator.OnNext((this.FloorNumber, RequestDirection));
                     }
-                };
 
-                this.Subscribed = true;
-            }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                }
+            };
+
+            this.Subscribed = true;
 
             return Task.CompletedTask;
         }

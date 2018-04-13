@@ -41,13 +41,15 @@
                         </TextBlock.Style>
                     </TextBlock>
                 </StackPanel>
-                
-                <StackPanel DataContext="{Binding}" Orientation="Horizontal">
-                    <Label>Waiting 👤:</Label>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label>Waiting ▲ 👤:</Label>
                     <Label Content="{Binding WaitingPassengers.Count}"/>
-
                 </StackPanel>
-
+                <StackPanel Orientation="Horizontal">
+                    <Label>Waiting ▼ 👤:</Label>
+                    <Label Content="{Binding WaitingPassengersDown.Count}"/>
+                </StackPanel>
             </StackPanel>
             <Expander 
                 IsExpanded="False" 
