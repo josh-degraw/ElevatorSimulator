@@ -106,29 +106,8 @@ namespace ElevatorApp.Models
         #region Subscription
 
         /// <inheritdoc />
-        bool ISubcriber<ElevatorMasterController>.Subscribed => _controllerSubscribed;
+        public bool Subscribed { get; private set; }
 
-        /// <inheritdoc />
-        async Task ISubcriber<ElevatorMasterController>.Subscribe(ElevatorMasterController parent)
-        {
-            if (_controllerSubscribed)
-                return;
-
-            await this.CallPanel.Subscribe(parent).ConfigureAwait(false);
-
-            parent.Floors.AsParallel().ForAll(floor =>
-            {
-                foreach (FloorButton button in floor.CallPanel)
-                {
-                    button.OnPushed += (_, floorNum) =>
-                    {
-                        this.QueuePassenger(floorNum);
-                    };
-                }
-            });
-
-            this._controllerSubscribed = true;
-        }
 
         /// <summary>
         /// Subscribes the <see cref="Floor"/> to the given master controller and elevator
@@ -137,8 +116,16 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         public async Task Subscribe(ElevatorMasterController controller)
         {
-            if (this._subscribed)
+            if (this.Subscribed)
                 return;
+
+            foreach (FloorButton button in this.CallPanel)
+            {
+                button.OnPushed += (_, floorNum) =>
+                {
+                    this.QueuePassenger(floorNum);
+                };
+            }
 
             await this.CallPanel.Subscribe(controller);
 
@@ -243,7 +230,7 @@ namespace ElevatorApp.Models
 
             #endregion
 
-            this._subscribed = true;
+            this.Subscribed = true;
         }
 
         private async Task _addPassengersToElevator(Elevator elevator)
@@ -253,6 +240,12 @@ namespace ElevatorApp.Models
             await _addPassengersToElevator(departing, elevator);
         }
 
+        private bool _adding = false;
+        void cancelIfStartsToClose(object sender, DoorStateChangeEventArgs args)
+        {
+            args.CancelOperation = _adding;
+        }
+        
         /// <summary>
         /// Takes care of:
         /// <para>Opening the Elevator door</para>
@@ -264,31 +257,27 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         private async Task _addPassengersToElevator(IEnumerable<Passenger> departing, Elevator elevator)
         {
-            bool adding = false;
             // Event handler to make sure the door stays open while passengers are trying to get in
-            void cancelIfStartsToClose(object sender, DoorStateChangeEventArgs args)
-            {
-                args.CancelOperation = adding;
-            }
+
             //There's probably a better way to do this. But the doors were being forced to stay open when adding
             //passengers because CancelOperations was being left "true"
-            void resetCancelOp(object sender, DoorStateChangeEventArgs args)
-            {
-                args.CancelOperation = false;
-            }
+            //void resetCancelOp(object sender, DoorStateChangeEventArgs args)
+            //{
+            //    args.CancelOperation = false;
+            //}
 
             elevator.Door.Closing += cancelIfStartsToClose;
-            adding = true;
+            _adding = true;
             foreach (Passenger passenger in departing)
             {
                 await elevator.AddPassenger(passenger);
             }
-            adding = false;
+            _adding = false;
 
-            // Remove the event handler now because we can let the door close, since all the passengers are on now
-            elevator.Door.Closing -= cancelIfStartsToClose;
-            //Allow doors to close after keeping them open. 
-            elevator.Door.Closing += resetCancelOp;
+            //// Remove the event handler now because we can let the door close, since all the passengers are on now
+            //elevator.Door.Closing -= cancelIfStartsToClose;
+            ////Allow doors to close after keeping them open. 
+            //elevator.Door.Closing += resetCancelOp;
         }
 
         /// <summary>
@@ -306,7 +295,7 @@ namespace ElevatorApp.Models
                     Passenger pass = this.WaitingPassengers
                         .MinByOrDefault(p => p.PassengerNumber);
 
-                    direction = pass?.Direction?? Direction.None;
+                    direction = pass?.Direction ?? Direction.None;
 
                     nextDest = pass?.Path.destination ?? elevator.NextFloor;
                 }

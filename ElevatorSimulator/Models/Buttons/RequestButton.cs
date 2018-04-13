@@ -53,7 +53,7 @@ namespace ElevatorApp.Models
                 {
                     try
                     {
-                        Logger.LogEvent($"Pushed floor button {this.DestinationFloor}");
+                        Logger.LogEvent("Elevator Requested", ("From floor", this.FloorNumber));
                         // If the elevator's already here, open the door
                         if (elevator.CurrentFloor == this.FloorNumber &&
                             (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
@@ -65,10 +65,9 @@ namespace ElevatorApp.Models
                         }
                         else
                         {
-                            ((IObserver<int>)controller).OnNext(this.FloorNumber);
+                            // If the elevator isn't already here, tell it to come here
+                            controller.Elevator.OnNext(this.FloorNumber);
                         }
-
-                        //((IObserver<int>)controller).OnNext(this.DestinationFloor);
 
                     }
                     catch (Exception ex)
@@ -82,5 +81,6 @@ namespace ElevatorApp.Models
 
             return Task.CompletedTask;
         }
+
     }
 }

@@ -9,9 +9,16 @@ using ElevatorApp.Util;
 namespace ElevatorApp.Models
 {
     ///<inheritdoc/>
-    public class ButtonPanel : ButtonPanelBase, ISubcriber<ElevatorMasterController>
+    public class ButtonPanel : ButtonPanelBase
     {
+        /// <summary>
+        /// Opens the door of the <see cref="Elevator"/>
+        /// </summary>
         public DoorButton OpenDoorButton { get; }
+
+        /// <summary>
+        /// Close the door of the <see cref="Elevator"/>
+        /// </summary>
         public DoorButton CloseDoorButton { get; }
 
         ///<inheritdoc/>

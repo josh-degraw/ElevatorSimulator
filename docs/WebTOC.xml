@@ -1,157 +1,153 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="ffa39e2b-feb8-4899-a98e-8e2b1e5db409" Title="ElevatorApp" Url="html/N_ElevatorApp.htm">
-    <HelpTOCNode Id="b7b92dbc-8973-422b-8df6-f3864a1bfafa" Title="App Class" Url="html/T_ElevatorApp_App.htm">
+  <HelpTOCNode Id="3d4eb417-ae5c-4050-b6c4-110b3cb78681" Title="ElevatorApp" Url="html/N_ElevatorApp.htm">
+    <HelpTOCNode Id="b86b11c1-71fe-4332-8426-3343332bcfa9" Title="App Class" Url="html/T_ElevatorApp_App.htm">
       <HelpTOCNode Title="App Constructor " Url="html/M_ElevatorApp_App__ctor.htm" />
       <HelpTOCNode Title="App Properties" Url="html/Properties_T_ElevatorApp_App.htm" />
-      <HelpTOCNode Id="d45d4c35-0a1e-47b9-a378-7c67f6b6aaf8" Title="App Methods" Url="html/Methods_T_ElevatorApp_App.htm">
+      <HelpTOCNode Id="9d74219f-4884-402e-9385-f5f7478fc9f7" Title="App Methods" Url="html/Methods_T_ElevatorApp_App.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_App_InitializeComponent.htm" />
         <HelpTOCNode Title="Main Method " Url="html/M_ElevatorApp_App_Main.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="App Events" Url="html/Events_T_ElevatorApp_App.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="35c4efd3-2a28-490c-b434-2407adcf1aab" Title="MainWindow Class" Url="html/T_ElevatorApp_MainWindow.htm">
+    <HelpTOCNode Id="5ce3b302-09de-41ab-bb8c-d49e8d97c9f5" Title="MainWindow Class" Url="html/T_ElevatorApp_MainWindow.htm">
       <HelpTOCNode Title="MainWindow Constructor " Url="html/M_ElevatorApp_MainWindow__ctor.htm" />
-      <HelpTOCNode Id="9ecc133c-5941-4877-abaf-2a87b0522d77" Title="MainWindow Properties" Url="html/Properties_T_ElevatorApp_MainWindow.htm">
+      <HelpTOCNode Id="a3ab97bb-f73d-4c0c-8c64-cee69dbc82bc" Title="MainWindow Properties" Url="html/Properties_T_ElevatorApp_MainWindow.htm">
         <HelpTOCNode Title="ViewModel Property " Url="html/P_ElevatorApp_MainWindow_ViewModel.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5826410d-2369-4bd4-8d3d-03240fe63349" Title="MainWindow Methods" Url="html/Methods_T_ElevatorApp_MainWindow.htm">
+      <HelpTOCNode Id="f4fa2dd5-e682-40d2-ae4d-97478f92afca" Title="MainWindow Methods" Url="html/Methods_T_ElevatorApp_MainWindow.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_MainWindow_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="MainWindow Events" Url="html/Events_T_ElevatorApp_MainWindow.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="ef3e1e34-431b-4ab8-97be-8478b35c40ee" Title="SimulatorViewModel Class" Url="html/T_ElevatorApp_SimulatorViewModel.htm">
+    <HelpTOCNode Id="cc79a85a-a721-4fa4-a2ad-e5b9b05bcd07" Title="SimulatorViewModel Class" Url="html/T_ElevatorApp_SimulatorViewModel.htm">
       <HelpTOCNode Title="SimulatorViewModel Constructor " Url="html/M_ElevatorApp_SimulatorViewModel__ctor.htm" />
-      <HelpTOCNode Id="7ee3fe41-7cb0-4653-9b70-f467ceb57432" Title="SimulatorViewModel Properties" Url="html/Properties_T_ElevatorApp_SimulatorViewModel.htm">
+      <HelpTOCNode Id="87a3c3fd-eb34-4c00-9082-88930040dce4" Title="SimulatorViewModel Properties" Url="html/Properties_T_ElevatorApp_SimulatorViewModel.htm">
         <HelpTOCNode Title="Controller Property " Url="html/P_ElevatorApp_SimulatorViewModel_Controller.htm" />
-        <HelpTOCNode Title="Elevators Property " Url="html/P_ElevatorApp_SimulatorViewModel_Elevators.htm" />
+        <HelpTOCNode Title="Elevator Property " Url="html/P_ElevatorApp_SimulatorViewModel_Elevator.htm" />
         <HelpTOCNode Title="Floors Property " Url="html/P_ElevatorApp_SimulatorViewModel_Floors.htm" />
         <HelpTOCNode Title="Logger Property " Url="html/P_ElevatorApp_SimulatorViewModel_Logger.htm" />
-        <HelpTOCNode Title="SelectedButtonPanel Property " Url="html/P_ElevatorApp_SimulatorViewModel_SelectedButtonPanel.htm" />
-        <HelpTOCNode Title="SelectedElevatorNumber Property " Url="html/P_ElevatorApp_SimulatorViewModel_SelectedElevatorNumber.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="SimulatorViewModel Methods" Url="html/Methods_T_ElevatorApp_SimulatorViewModel.htm" />
       <HelpTOCNode Title="SimulatorViewModel Events" Url="html/Events_T_ElevatorApp_SimulatorViewModel.htm" />
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="5e4bdf43-f68d-4a92-a301-f23af0d32c08" Title="ElevatorApp.Controls" Url="html/N_ElevatorApp_Controls.htm">
-    <HelpTOCNode Id="ea89de4a-7569-49a7-8901-5086bf7135df" Title="AddPassengerControl Class" Url="html/T_ElevatorApp_Controls_AddPassengerControl.htm">
+  <HelpTOCNode Id="4bab0435-7ba9-4578-8515-d68b7dbeee28" Title="ElevatorApp.Controls" Url="html/N_ElevatorApp_Controls.htm">
+    <HelpTOCNode Id="6c7d8e9b-d77e-457f-a889-bbc992afda1a" Title="AddPassengerControl Class" Url="html/T_ElevatorApp_Controls_AddPassengerControl.htm">
       <HelpTOCNode Title="AddPassengerControl Constructor " Url="html/M_ElevatorApp_Controls_AddPassengerControl__ctor.htm" />
       <HelpTOCNode Title="AddPassengerControl Properties" Url="html/Properties_T_ElevatorApp_Controls_AddPassengerControl.htm" />
-      <HelpTOCNode Id="2a80ff12-952b-4075-97d0-4b50e2d86cd0" Title="AddPassengerControl Methods" Url="html/Methods_T_ElevatorApp_Controls_AddPassengerControl.htm">
+      <HelpTOCNode Id="083cb894-9583-4329-abfe-698aa4ad38ea" Title="AddPassengerControl Methods" Url="html/Methods_T_ElevatorApp_Controls_AddPassengerControl.htm">
         <HelpTOCNode Title="AddPassenger Method " Url="html/M_ElevatorApp_Controls_AddPassengerControl_AddPassenger.htm" />
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_AddPassengerControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="AddPassengerControl Events" Url="html/Events_T_ElevatorApp_Controls_AddPassengerControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="6ef230b4-0109-4bfb-a26a-1dd1a7b9ea1f" Title="ButtonPanelControl Class" Url="html/T_ElevatorApp_Controls_ButtonPanelControl.htm">
-      <HelpTOCNode Id="227178c1-2e6b-4e50-926b-e1cddf641f32" Title="ButtonPanelControl Constructor " Url="html/Overload_ElevatorApp_Controls_ButtonPanelControl__ctor.htm">
+    <HelpTOCNode Id="09cac32c-5f5e-49fa-9bda-38cdff1307fb" Title="ButtonPanelControl Class" Url="html/T_ElevatorApp_Controls_ButtonPanelControl.htm">
+      <HelpTOCNode Id="17083f93-977b-4468-80a9-b71c8f0428c8" Title="ButtonPanelControl Constructor " Url="html/Overload_ElevatorApp_Controls_ButtonPanelControl__ctor.htm">
         <HelpTOCNode Title="ButtonPanelControl Constructor " Url="html/M_ElevatorApp_Controls_ButtonPanelControl__ctor.htm" />
         <HelpTOCNode Title="ButtonPanelControl Constructor (ButtonPanel)" Url="html/M_ElevatorApp_Controls_ButtonPanelControl__ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ButtonPanelControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ButtonPanelControl.htm" />
-      <HelpTOCNode Id="1f2b7135-dabf-41a7-84a6-e9fe2afe604b" Title="ButtonPanelControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ButtonPanelControl.htm">
+      <HelpTOCNode Id="2d9f5a19-18a6-40d7-9b01-1602c134df18" Title="ButtonPanelControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ButtonPanelControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ButtonPanelControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ButtonPanelControl Events" Url="html/Events_T_ElevatorApp_Controls_ButtonPanelControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="97dcc86c-844d-47d4-b48e-c703bd14c69f" Title="DoorControl Class" Url="html/T_ElevatorApp_Controls_DoorControl.htm">
+    <HelpTOCNode Id="769fcfb1-414c-4072-bbc5-7737c48a12c3" Title="DoorControl Class" Url="html/T_ElevatorApp_Controls_DoorControl.htm">
       <HelpTOCNode Title="DoorControl Constructor " Url="html/M_ElevatorApp_Controls_DoorControl__ctor.htm" />
       <HelpTOCNode Title="DoorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_DoorControl.htm" />
-      <HelpTOCNode Id="8b8a0895-1f5e-4547-8fe9-b12a41fbbd60" Title="DoorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_DoorControl.htm">
+      <HelpTOCNode Id="42218a18-cae2-4cf5-88a1-f9268097424f" Title="DoorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_DoorControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_DoorControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="DoorControl Events" Url="html/Events_T_ElevatorApp_Controls_DoorControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="070a4650-ef43-4a9d-9aec-eefcd92bbc76" Title="ElevatorButtonControl Class" Url="html/T_ElevatorApp_Controls_ElevatorButtonControl.htm">
+    <HelpTOCNode Id="dc336c14-cbe5-420e-a91a-b91c4416607b" Title="ElevatorButtonControl Class" Url="html/T_ElevatorApp_Controls_ElevatorButtonControl.htm">
       <HelpTOCNode Title="ElevatorButtonControl Constructor " Url="html/M_ElevatorApp_Controls_ElevatorButtonControl__ctor.htm" />
-      <HelpTOCNode Id="02f94a15-1ab0-436a-80ab-0e31fabfe44f" Title="ElevatorButtonControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorButtonControl.htm">
+      <HelpTOCNode Id="1abfab63-e24a-4234-b1bd-d9ced5d7d981" Title="ElevatorButtonControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorButtonControl.htm">
         <HelpTOCNode Title="Button Property " Url="html/P_ElevatorApp_Controls_ElevatorButtonControl_Button.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="7d6b11ab-68a0-45c7-b4eb-db63ecae2375" Title="ElevatorButtonControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorButtonControl.htm">
+      <HelpTOCNode Id="3323290d-6989-4748-b6eb-8b7074a99929" Title="ElevatorButtonControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorButtonControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ElevatorButtonControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorButtonControl Events" Url="html/Events_T_ElevatorApp_Controls_ElevatorButtonControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="a6d9af7b-7b4c-4a56-9a12-de118557a9d0" Title="ElevatorControl Class" Url="html/T_ElevatorApp_Controls_ElevatorControl.htm">
+    <HelpTOCNode Id="9fffd1d7-8e4b-49ab-bbba-7687d87300c6" Title="ElevatorControl Class" Url="html/T_ElevatorApp_Controls_ElevatorControl.htm">
       <HelpTOCNode Title="ElevatorControl Constructor " Url="html/M_ElevatorApp_Controls_ElevatorControl__ctor.htm" />
-      <HelpTOCNode Id="dfcff9fd-2aee-4ed6-9750-4f1482441af5" Title="ElevatorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorControl.htm">
+      <HelpTOCNode Id="3fdfd60e-787e-487c-91d5-3ac7fbe5116c" Title="ElevatorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorControl.htm">
         <HelpTOCNode Title="Elevator Property " Url="html/P_ElevatorApp_Controls_ElevatorControl_Elevator.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="2e43ab2a-414d-4068-a56b-7c2ed6a049d2" Title="ElevatorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorControl.htm">
+      <HelpTOCNode Id="752f7f1a-c1f1-435f-b72e-fe0d6e8f1073" Title="ElevatorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ElevatorControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorControl Events" Url="html/Events_T_ElevatorApp_Controls_ElevatorControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="fdff5bb4-18bf-4207-8713-6f24cac79efc" Title="ElevatorMovementControl Class" Url="html/T_ElevatorApp_Controls_ElevatorMovementControl.htm">
+    <HelpTOCNode Id="54624dbb-6649-4025-86f9-88862e759c11" Title="ElevatorMovementControl Class" Url="html/T_ElevatorApp_Controls_ElevatorMovementControl.htm">
       <HelpTOCNode Title="ElevatorMovementControl Constructor " Url="html/M_ElevatorApp_Controls_ElevatorMovementControl__ctor.htm" />
       <HelpTOCNode Title="ElevatorMovementControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorMovementControl.htm" />
-      <HelpTOCNode Id="1f0a66c4-5560-4464-8964-508171f6b717" Title="ElevatorMovementControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorMovementControl.htm">
+      <HelpTOCNode Id="a13c9266-8016-41a6-9d60-72c43e488046" Title="ElevatorMovementControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorMovementControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ElevatorMovementControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorMovementControl Events" Url="html/Events_T_ElevatorApp_Controls_ElevatorMovementControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="585f05c4-87f7-4d62-a79a-729e1430cbea" Title="ElevatorShaftControl Class" Url="html/T_ElevatorApp_Controls_ElevatorShaftControl.htm">
+    <HelpTOCNode Id="b0b4c039-4221-4f9f-81b1-3bd13d3e8ba3" Title="ElevatorShaftControl Class" Url="html/T_ElevatorApp_Controls_ElevatorShaftControl.htm">
       <HelpTOCNode Title="ElevatorShaftControl Constructor " Url="html/M_ElevatorApp_Controls_ElevatorShaftControl__ctor.htm" />
-      <HelpTOCNode Id="5abbbc9b-5472-462d-8e92-653c0fa233f5" Title="ElevatorShaftControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorShaftControl.htm">
-        <HelpTOCNode Title="SingleElevator Property " Url="html/P_ElevatorApp_Controls_ElevatorShaftControl_SingleElevator.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="6580c8f8-1cd4-4028-bab0-6b05d0f3d61c" Title="ElevatorShaftControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorShaftControl.htm">
+      <HelpTOCNode Title="ElevatorShaftControl Properties" Url="html/Properties_T_ElevatorApp_Controls_ElevatorShaftControl.htm" />
+      <HelpTOCNode Id="da84d727-907e-4559-8320-542c62c94b8f" Title="ElevatorShaftControl Methods" Url="html/Methods_T_ElevatorApp_Controls_ElevatorShaftControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_ElevatorShaftControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorShaftControl Events" Url="html/Events_T_ElevatorApp_Controls_ElevatorShaftControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="886e69d3-a27f-4de4-b492-0617cbb0e2ba" Title="FloorControl Class" Url="html/T_ElevatorApp_Controls_FloorControl.htm">
+    <HelpTOCNode Id="b52321ea-edc4-4b3d-a546-42211f707197" Title="FloorControl Class" Url="html/T_ElevatorApp_Controls_FloorControl.htm">
       <HelpTOCNode Title="FloorControl Constructor " Url="html/M_ElevatorApp_Controls_FloorControl__ctor.htm" />
-      <HelpTOCNode Id="a5b69f9c-1e01-4e2b-9edb-ffb1045e3b53" Title="FloorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_FloorControl.htm">
+      <HelpTOCNode Id="58fc5dee-2c3b-4a0c-b54a-9274f3343f3d" Title="FloorControl Properties" Url="html/Properties_T_ElevatorApp_Controls_FloorControl.htm">
         <HelpTOCNode Title="ELevatorReady Property " Url="html/P_ElevatorApp_Controls_FloorControl_ELevatorReady.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d5dc0314-5306-4224-b156-23f32b8daa12" Title="FloorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_FloorControl.htm">
+      <HelpTOCNode Id="37b1f94c-1cce-4042-8e15-309ea283d7d8" Title="FloorControl Methods" Url="html/Methods_T_ElevatorApp_Controls_FloorControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_FloorControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="FloorControl Events" Url="html/Events_T_ElevatorApp_Controls_FloorControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="8e56727f-698d-402b-bc28-49d6e10a2c68" Title="FloorsControl Class" Url="html/T_ElevatorApp_Controls_FloorsControl.htm">
+    <HelpTOCNode Id="aa87dda3-b870-4d20-9252-9abffd2eb402" Title="FloorsControl Class" Url="html/T_ElevatorApp_Controls_FloorsControl.htm">
       <HelpTOCNode Title="FloorsControl Constructor " Url="html/M_ElevatorApp_Controls_FloorsControl__ctor.htm" />
       <HelpTOCNode Title="FloorsControl Properties" Url="html/Properties_T_ElevatorApp_Controls_FloorsControl.htm" />
-      <HelpTOCNode Id="b4481506-1a75-41e3-adff-1eeeed1c6477" Title="FloorsControl Methods" Url="html/Methods_T_ElevatorApp_Controls_FloorsControl.htm">
+      <HelpTOCNode Id="39ae577a-b238-4b2b-a33c-4f183ba25677" Title="FloorsControl Methods" Url="html/Methods_T_ElevatorApp_Controls_FloorsControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_FloorsControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="FloorsControl Events" Url="html/Events_T_ElevatorApp_Controls_FloorsControl.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="b014be33-146d-43a4-9d37-ea5cc6c9e18b" Title="Interior Class" Url="html/T_ElevatorApp_Controls_Interior.htm">
+    <HelpTOCNode Id="c7b886db-e7e4-4850-a5c1-29e23e837e43" Title="Interior Class" Url="html/T_ElevatorApp_Controls_Interior.htm">
       <HelpTOCNode Title="Interior Constructor " Url="html/M_ElevatorApp_Controls_Interior__ctor.htm" />
       <HelpTOCNode Title="Interior Properties" Url="html/Properties_T_ElevatorApp_Controls_Interior.htm" />
-      <HelpTOCNode Id="c807b00e-6049-48c8-b152-c826acaf80a9" Title="Interior Methods" Url="html/Methods_T_ElevatorApp_Controls_Interior.htm">
+      <HelpTOCNode Id="c6f327a0-34c7-40b3-af6a-c6dfdfc969c1" Title="Interior Methods" Url="html/Methods_T_ElevatorApp_Controls_Interior.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_Interior_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Interior Events" Url="html/Events_T_ElevatorApp_Controls_Interior.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="ce7b8107-6a52-4a6b-8fb2-b4cab7029dab" Title="LoggerView Class" Url="html/T_ElevatorApp_Controls_LoggerView.htm">
+    <HelpTOCNode Id="ed5e33a8-617b-428f-86c7-a3aab63d848e" Title="LoggerView Class" Url="html/T_ElevatorApp_Controls_LoggerView.htm">
       <HelpTOCNode Title="LoggerView Constructor " Url="html/M_ElevatorApp_Controls_LoggerView__ctor.htm" />
       <HelpTOCNode Title="LoggerView Properties" Url="html/Properties_T_ElevatorApp_Controls_LoggerView.htm" />
-      <HelpTOCNode Id="eb440529-1bed-4c25-9b08-f5494ef8fced" Title="LoggerView Methods" Url="html/Methods_T_ElevatorApp_Controls_LoggerView.htm">
+      <HelpTOCNode Id="9f704dd0-023e-4234-b383-4696cd6ec9d2" Title="LoggerView Methods" Url="html/Methods_T_ElevatorApp_Controls_LoggerView.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_LoggerView_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="LoggerView Events" Url="html/Events_T_ElevatorApp_Controls_LoggerView.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="bfd0c782-d8e7-49a2-a9de-1f600f1e3509" Title="PassengerQueueControl Class" Url="html/T_ElevatorApp_Controls_PassengerQueueControl.htm">
+    <HelpTOCNode Id="e6d0c761-67cf-4e79-9524-0f63b6fd7f4d" Title="PassengerQueueControl Class" Url="html/T_ElevatorApp_Controls_PassengerQueueControl.htm">
       <HelpTOCNode Title="PassengerQueueControl Constructor " Url="html/M_ElevatorApp_Controls_PassengerQueueControl__ctor.htm" />
-      <HelpTOCNode Id="6fbf55a3-724c-4a83-a8d3-e429482fb3ec" Title="PassengerQueueControl Properties" Url="html/Properties_T_ElevatorApp_Controls_PassengerQueueControl.htm">
+      <HelpTOCNode Id="c2f00786-859a-4d9f-8333-d43d9a707e94" Title="PassengerQueueControl Properties" Url="html/Properties_T_ElevatorApp_Controls_PassengerQueueControl.htm">
         <HelpTOCNode Title="ElevatorAvailable Property " Url="html/P_ElevatorApp_Controls_PassengerQueueControl_ElevatorAvailable.htm" />
         <HelpTOCNode Title="ShowAddButtons Property " Url="html/P_ElevatorApp_Controls_PassengerQueueControl_ShowAddButtons.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="2c3d5b9c-3680-4f73-9519-caa1b0d61265" Title="PassengerQueueControl Methods" Url="html/Methods_T_ElevatorApp_Controls_PassengerQueueControl.htm">
+      <HelpTOCNode Id="eee64825-2e0d-46fa-a01e-c5ca088c59ab" Title="PassengerQueueControl Methods" Url="html/Methods_T_ElevatorApp_Controls_PassengerQueueControl.htm">
         <HelpTOCNode Title="InitializeComponent Method " Url="html/M_ElevatorApp_Controls_PassengerQueueControl_InitializeComponent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="PassengerQueueControl Events" Url="html/Events_T_ElevatorApp_Controls_PassengerQueueControl.htm" />
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="a4ef7518-fbe0-4ec3-8b4c-f6a8da033ef7" Title="ElevatorApp.Models" Url="html/N_ElevatorApp_Models.htm">
-    <HelpTOCNode Id="8105dea7-6648-4320-aac9-f5e0a3a49214" Title="ButtonBase(T) Class" Url="html/T_ElevatorApp_Models_ButtonBase_1.htm">
+  <HelpTOCNode Id="20b9b019-ef00-406a-87cb-95459ee21985" Title="ElevatorApp.Models" Url="html/N_ElevatorApp_Models.htm">
+    <HelpTOCNode Id="56bef76a-4c3b-4690-ad38-30cdd6a4488c" Title="ButtonBase(T) Class" Url="html/T_ElevatorApp_Models_ButtonBase_1.htm">
       <HelpTOCNode Title="ButtonBase(T) Constructor " Url="html/M_ElevatorApp_Models_ButtonBase_1__ctor.htm" />
-      <HelpTOCNode Id="f1616f33-041e-4e12-8a93-3509cca4cf0c" Title="ButtonBase(T) Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonBase_1.htm">
+      <HelpTOCNode Id="6b0b4cc7-6ad9-4781-93aa-99060a260bad" Title="ButtonBase(T) Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonBase_1.htm">
         <HelpTOCNode Title="actionArgs Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_actionArgs.htm" />
         <HelpTOCNode Title="Active Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_Active.htm" />
         <HelpTOCNode Title="ButtonType Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_ButtonType.htm" />
@@ -159,8 +155,8 @@
         <HelpTOCNode Title="IsEnabled Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_IsEnabled.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_Label.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="3fb08a5d-0541-40e0-babc-15b92a8df340" Title="ButtonBase(T) Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonBase_1.htm">
-        <HelpTOCNode Id="8386cd54-c24e-4d01-be84-a3f6c6034d0c" Title="ActionCompleted Method " Url="html/Overload_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm">
+      <HelpTOCNode Id="9ff4400b-9d73-4d24-8b18-62519830a633" Title="ButtonBase(T) Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonBase_1.htm">
+        <HelpTOCNode Id="fd31318e-b37a-4000-990b-bc583d881ee4" Title="ActionCompleted Method " Url="html/Overload_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm">
           <HelpTOCNode Title="ActionCompleted Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm" />
           <HelpTOCNode Title="ActionCompleted Method (Object, T)" Url="html/M_ElevatorApp_Models_ButtonBase_1_ActionCompleted_1.htm" />
         </HelpTOCNode>
@@ -168,53 +164,54 @@
         <HelpTOCNode Title="Pushed Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_Pushed.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_ToString.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="477fdbe1-1b4a-450e-9826-2f429f44fd7f" Title="ButtonBase(T) Events" Url="html/Events_T_ElevatorApp_Models_ButtonBase_1.htm">
+      <HelpTOCNode Id="6b349388-40ab-4cc7-b4dc-3a160bf01cba" Title="ButtonBase(T) Events" Url="html/Events_T_ElevatorApp_Models_ButtonBase_1.htm">
         <HelpTOCNode Title="OnActionCompleted Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnActionCompleted.htm" />
         <HelpTOCNode Title="OnActivated Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnActivated.htm" />
         <HelpTOCNode Title="OnDeactivated Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnDeactivated.htm" />
         <HelpTOCNode Title="OnPushed Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnPushed.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="3480a2f9-27d7-4ed5-bd67-11ec7c7139c6" Title="ButtonPanel Class" Url="html/T_ElevatorApp_Models_ButtonPanel.htm">
+    <HelpTOCNode Id="42ee4793-3618-4def-9a4c-1c4e39132276" Title="ButtonPanel Class" Url="html/T_ElevatorApp_Models_ButtonPanel.htm">
       <HelpTOCNode Title="ButtonPanel Constructor " Url="html/M_ElevatorApp_Models_ButtonPanel__ctor.htm" />
-      <HelpTOCNode Id="0012a813-4a70-4311-9681-a676e79fb3d5" Title="ButtonPanel Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonPanel.htm">
+      <HelpTOCNode Id="cbb14773-d823-414e-9911-df5d0d33591d" Title="ButtonPanel Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonPanel.htm">
         <HelpTOCNode Title="_floorButtons Property " Url="html/P_ElevatorApp_Models_ButtonPanel__floorButtons.htm" />
         <HelpTOCNode Title="CloseDoorButton Property " Url="html/P_ElevatorApp_Models_ButtonPanel_CloseDoorButton.htm" />
         <HelpTOCNode Title="OpenDoorButton Property " Url="html/P_ElevatorApp_Models_ButtonPanel_OpenDoorButton.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5acbe468-bf86-4a09-b743-ce16770e122d" Title="ButtonPanel Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonPanel.htm">
-        <HelpTOCNode Id="fa320242-c907-45dc-80d3-fab898853dc9" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanel_Subscribe.htm">
-          <HelpTOCNode Title="Subscribe Method (ValueTuple(ElevatorMasterController, Elevator))" Url="html/M_ElevatorApp_Models_ButtonPanel_Subscribe.htm" />
+      <HelpTOCNode Id="d729106e-1548-4b48-bcfa-3b16aea02919" Title="ButtonPanel Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonPanel.htm">
+        <HelpTOCNode Id="f7c8912c-289d-4cd8-a848-8442a6120526" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanel_Subscribe.htm">
+          <HelpTOCNode Title="Subscribe Method (ElevatorMasterController)" Url="html/M_ElevatorApp_Models_ButtonPanel_Subscribe.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="a8fd808d-9f44-4eac-a4e8-61a59b0a5909" Title="ButtonPanelBase Class" Url="html/T_ElevatorApp_Models_ButtonPanelBase.htm">
+    <HelpTOCNode Id="a7caad62-40d6-4281-a699-32101372367b" Title="ButtonPanelBase Class" Url="html/T_ElevatorApp_Models_ButtonPanelBase.htm">
       <HelpTOCNode Title="ButtonPanelBase Constructor " Url="html/M_ElevatorApp_Models_ButtonPanelBase__ctor.htm" />
-      <HelpTOCNode Id="af4e47b7-074b-47da-b6f0-4bca913df64e" Title="ButtonPanelBase Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonPanelBase.htm">
+      <HelpTOCNode Id="8727f9b7-2f7a-4d88-bad2-1fc179c23fed" Title="ButtonPanelBase Properties" Url="html/Properties_T_ElevatorApp_Models_ButtonPanelBase.htm">
         <HelpTOCNode Title="_floorButtons Property " Url="html/P_ElevatorApp_Models_ButtonPanelBase__floorButtons.htm" />
         <HelpTOCNode Title="FloorButtons Property " Url="html/P_ElevatorApp_Models_ButtonPanelBase_FloorButtons.htm" />
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_ButtonPanelBase_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e8ccbc15-be95-4957-9012-472be843778f" Title="ButtonPanelBase Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonPanelBase.htm">
-        <HelpTOCNode Id="1af7a20c-e09d-4a8c-b967-80009c24eca3" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanelBase_Subscribe.htm">
+      <HelpTOCNode Id="bf44409d-f4f8-40bb-9633-d2f649727e9b" Title="ButtonPanelBase Methods" Url="html/Methods_T_ElevatorApp_Models_ButtonPanelBase.htm">
+        <HelpTOCNode Id="828386ae-5cdf-40fc-8dfd-c72fb67b85f8" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanelBase_Subscribe.htm">
           <HelpTOCNode Title="Subscribe Method (IObserver(Int32))" Url="html/M_ElevatorApp_Models_ButtonPanelBase_Subscribe_1.htm" />
           <HelpTOCNode Title="Subscribe Method (ElevatorMasterController)" Url="html/M_ElevatorApp_Models_ButtonPanelBase_Subscribe.htm" />
-          <HelpTOCNode Title="Subscribe Method (ValueTuple(ElevatorMasterController, Elevator))" Url="html/M_ElevatorApp_Models_ButtonPanelBase_Subscribe_2.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="956bf522-8336-48cf-aca2-f2add712b21b" Title="Door Class" Url="html/T_ElevatorApp_Models_Door.htm">
+    <HelpTOCNode Id="fcf34f7a-3957-4e59-8537-59d8a7c07b5a" Title="Door Class" Url="html/T_ElevatorApp_Models_Door.htm">
       <HelpTOCNode Title="Door Constructor " Url="html/M_ElevatorApp_Models_Door__ctor.htm" />
-      <HelpTOCNode Id="6aa724bd-fb83-45ff-b28d-e28ea33db8db" Title="Door Properties" Url="html/Properties_T_ElevatorApp_Models_Door.htm">
+      <HelpTOCNode Id="2bb72c27-dd36-405f-bf16-37bc5e0ef03f" Title="Door Properties" Url="html/Properties_T_ElevatorApp_Models_Door.htm">
         <HelpTOCNode Title="DoorState Property " Url="html/P_ElevatorApp_Models_Door_DoorState.htm" />
+        <HelpTOCNode Title="IsNotClosedOrClosing Property " Url="html/P_ElevatorApp_Models_Door_IsNotClosedOrClosing.htm" />
+        <HelpTOCNode Title="IsNotOpenedOrOpening Property " Url="html/P_ElevatorApp_Models_Door_IsNotOpenedOrOpening.htm" />
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_Door_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="3206c18f-79e6-4d4f-91ea-15b5760363ec" Title="Door Methods" Url="html/Methods_T_ElevatorApp_Models_Door.htm">
+      <HelpTOCNode Id="3efc6ba5-af55-46f0-90c9-77198072b301" Title="Door Methods" Url="html/Methods_T_ElevatorApp_Models_Door.htm">
         <HelpTOCNode Title="RequestClose Method " Url="html/M_ElevatorApp_Models_Door_RequestClose.htm" />
         <HelpTOCNode Title="RequestOpen Method " Url="html/M_ElevatorApp_Models_Door_RequestOpen.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_Door_Subscribe.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="47f2bcda-c10c-49f2-aa26-19765a2c1f89" Title="Door Events" Url="html/Events_T_ElevatorApp_Models_Door.htm">
+      <HelpTOCNode Id="e7e703df-9aff-43cd-9cc8-a7a0474ec5b6" Title="Door Events" Url="html/Events_T_ElevatorApp_Models_Door.htm">
         <HelpTOCNode Title="Closed Event" Url="html/E_ElevatorApp_Models_Door_Closed.htm" />
         <HelpTOCNode Title="CloseRequested Event" Url="html/E_ElevatorApp_Models_Door_CloseRequested.htm" />
         <HelpTOCNode Title="Closing Event" Url="html/E_ElevatorApp_Models_Door_Closing.htm" />
@@ -222,39 +219,39 @@
         <HelpTOCNode Title="Opening Event" Url="html/E_ElevatorApp_Models_Door_Opening.htm" />
         <HelpTOCNode Title="OpenRequested Event" Url="html/E_ElevatorApp_Models_Door_OpenRequested.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="679c5922-1aac-4a4d-80f0-a1bdefed1991" Title="Door Fields" Url="html/Fields_T_ElevatorApp_Models_Door.htm">
+      <HelpTOCNode Id="4b1baf97-4dcc-48eb-a37e-ef686458701f" Title="Door Fields" Url="html/Fields_T_ElevatorApp_Models_Door.htm">
         <HelpTOCNode Title="TIME_SPENT_OPEN_SECONDS Field" Url="html/F_ElevatorApp_Models_Door_TIME_SPENT_OPEN_SECONDS.htm" />
         <HelpTOCNode Title="TRANSITION_TIME_SECONDS Field" Url="html/F_ElevatorApp_Models_Door_TRANSITION_TIME_SECONDS.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d5fd04c4-5cd1-480c-a73c-f7d0f53958b7" Title="DoorButton Class" Url="html/T_ElevatorApp_Models_DoorButton.htm">
+    <HelpTOCNode Id="017058d2-ccf6-4c01-a48a-5b2cec78d073" Title="DoorButton Class" Url="html/T_ElevatorApp_Models_DoorButton.htm">
       <HelpTOCNode Title="DoorButton Constructor " Url="html/M_ElevatorApp_Models_DoorButton__ctor.htm" />
-      <HelpTOCNode Id="e5f05d82-7fb7-410c-8b28-2b92ee87196e" Title="DoorButton Properties" Url="html/Properties_T_ElevatorApp_Models_DoorButton.htm">
+      <HelpTOCNode Id="bd157aa8-abad-465d-a4d1-a392b26520e2" Title="DoorButton Properties" Url="html/Properties_T_ElevatorApp_Models_DoorButton.htm">
         <HelpTOCNode Title="ButtonType Property " Url="html/P_ElevatorApp_Models_DoorButton_ButtonType.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_DoorButton_Label.htm" />
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_DoorButton_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="93582e4a-c93b-46f6-bc92-9fabb85152d8" Title="DoorButton Methods" Url="html/Methods_T_ElevatorApp_Models_DoorButton.htm">
+      <HelpTOCNode Id="061b9cd2-26a0-4798-a6d5-8c0e7c71b09c" Title="DoorButton Methods" Url="html/Methods_T_ElevatorApp_Models_DoorButton.htm">
         <HelpTOCNode Title="Close Method " Url="html/M_ElevatorApp_Models_DoorButton_Close.htm" />
         <HelpTOCNode Title="Open Method " Url="html/M_ElevatorApp_Models_DoorButton_Open.htm" />
         <HelpTOCNode Title="Push Method " Url="html/M_ElevatorApp_Models_DoorButton_Push.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_DoorButton_Subscribe.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="c8c618ff-0681-4679-81d8-61ba5f0505ea" Title="DoorButton Events" Url="html/Events_T_ElevatorApp_Models_DoorButton.htm">
+      <HelpTOCNode Id="a6cb642c-d2e6-44d8-a95c-c57a5ec3650c" Title="DoorButton Events" Url="html/Events_T_ElevatorApp_Models_DoorButton.htm">
         <HelpTOCNode Title="OnActivated Event" Url="html/E_ElevatorApp_Models_DoorButton_OnActivated.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d0b003d5-2daa-4fe9-8ffd-167101c3ec32" Title="DoorStateChangeEventArgs Class" Url="html/T_ElevatorApp_Models_DoorStateChangeEventArgs.htm">
+    <HelpTOCNode Id="ae28b529-df3a-4873-8999-a1560adfc74c" Title="DoorStateChangeEventArgs Class" Url="html/T_ElevatorApp_Models_DoorStateChangeEventArgs.htm">
       <HelpTOCNode Title="DoorStateChangeEventArgs Constructor " Url="html/M_ElevatorApp_Models_DoorStateChangeEventArgs__ctor.htm" />
-      <HelpTOCNode Id="450a0408-2ebe-4cf9-8ed1-89bef7173e57" Title="DoorStateChangeEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_DoorStateChangeEventArgs.htm">
+      <HelpTOCNode Id="db806109-48e9-4bad-8063-2db5c1cb2b22" Title="DoorStateChangeEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_DoorStateChangeEventArgs.htm">
         <HelpTOCNode Title="CancelOperation Property " Url="html/P_ElevatorApp_Models_DoorStateChangeEventArgs_CancelOperation.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="DoorStateChangeEventArgs Methods" Url="html/Methods_T_ElevatorApp_Models_DoorStateChangeEventArgs.htm" />
     </HelpTOCNode>
     <HelpTOCNode Title="DoorStateChangeRequestHandler Delegate" Url="html/T_ElevatorApp_Models_DoorStateChangeRequestHandler.htm" />
-    <HelpTOCNode Id="4dab933d-3816-441c-8e9d-cb8a728fafb3" Title="Elevator Class" Url="html/T_ElevatorApp_Models_Elevator.htm">
+    <HelpTOCNode Id="189b14db-14c2-40a7-a661-011c24e810e9" Title="Elevator Class" Url="html/T_ElevatorApp_Models_Elevator.htm">
       <HelpTOCNode Title="Elevator Constructor " Url="html/M_ElevatorApp_Models_Elevator__ctor.htm" />
-      <HelpTOCNode Id="f4b2d352-3b51-43f4-a419-7b0bda7f8fd2" Title="Elevator Properties" Url="html/Properties_T_ElevatorApp_Models_Elevator.htm">
+      <HelpTOCNode Id="75c33293-35ff-4640-adae-11280ba28b58" Title="Elevator Properties" Url="html/Properties_T_ElevatorApp_Models_Elevator.htm">
         <HelpTOCNode Title="ButtonPanel Property " Url="html/P_ElevatorApp_Models_Elevator_ButtonPanel.htm" />
         <HelpTOCNode Title="CurrentCapacity Property " Url="html/P_ElevatorApp_Models_Elevator_CurrentCapacity.htm" />
         <HelpTOCNode Title="CurrentFloor Property " Url="html/P_ElevatorApp_Models_Elevator_CurrentFloor.htm" />
@@ -264,6 +261,7 @@
         <HelpTOCNode Title="ElevatorNumber Property " Url="html/P_ElevatorApp_Models_Elevator_ElevatorNumber.htm" />
         <HelpTOCNode Title="FloorMovementSpeed Property " Url="html/P_ElevatorApp_Models_Elevator_FloorMovementSpeed.htm" />
         <HelpTOCNode Title="FloorsToStopAt Property " Url="html/P_ElevatorApp_Models_Elevator_FloorsToStopAt.htm" />
+        <HelpTOCNode Title="FloorsToStopAtString Property " Url="html/P_ElevatorApp_Models_Elevator_FloorsToStopAtString.htm" />
         <HelpTOCNode Title="NextFloor Property " Url="html/P_ElevatorApp_Models_Elevator_NextFloor.htm" />
         <HelpTOCNode Title="Passengers Property " Url="html/P_ElevatorApp_Models_Elevator_Passengers.htm" />
         <HelpTOCNode Title="RelativeSpeed Property " Url="html/P_ElevatorApp_Models_Elevator_RelativeSpeed.htm" />
@@ -272,12 +270,12 @@
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_Elevator_Subscribed.htm" />
         <HelpTOCNode Title="TotalCapacity Property " Url="html/P_ElevatorApp_Models_Elevator_TotalCapacity.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="0c200603-dd30-4254-b4a2-0f6fde500b9e" Title="Elevator Methods" Url="html/Methods_T_ElevatorApp_Models_Elevator.htm">
+      <HelpTOCNode Id="aba76d61-3604-4de8-aec8-34b566447c88" Title="Elevator Methods" Url="html/Methods_T_ElevatorApp_Models_Elevator.htm">
         <HelpTOCNode Title="AddPassenger Method " Url="html/M_ElevatorApp_Models_Elevator_AddPassenger.htm" />
         <HelpTOCNode Title="Finalize Method " Url="html/M_ElevatorApp_Models_Elevator_Finalize.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_Elevator_Subscribe.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="1e31d3b7-2a5b-4b0f-9c57-68de12513586" Title="Elevator Events" Url="html/Events_T_ElevatorApp_Models_Elevator.htm">
+      <HelpTOCNode Id="707082de-fe68-47f6-a0b8-0a369cf30066" Title="Elevator Events" Url="html/Events_T_ElevatorApp_Models_Elevator.htm">
         <HelpTOCNode Title="Approaching Event" Url="html/E_ElevatorApp_Models_Elevator_Approaching.htm" />
         <HelpTOCNode Title="Arrived Event" Url="html/E_ElevatorApp_Models_Elevator_Arrived.htm" />
         <HelpTOCNode Title="Arriving Event" Url="html/E_ElevatorApp_Models_Elevator_Arriving.htm" />
@@ -286,69 +284,67 @@
         <HelpTOCNode Title="PassengerAdded Event" Url="html/E_ElevatorApp_Models_Elevator_PassengerAdded.htm" />
         <HelpTOCNode Title="PassengerExited Event" Url="html/E_ElevatorApp_Models_Elevator_PassengerExited.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="88a6dfc8-7fa0-4286-99e3-292066aa6af2" Title="Elevator Fields" Url="html/Fields_T_ElevatorApp_Models_Elevator.htm">
+      <HelpTOCNode Id="04eece12-bbbf-4530-ac18-ca8586e3aa84" Title="Elevator Fields" Url="html/Fields_T_ElevatorApp_Models_Elevator.htm">
         <HelpTOCNode Title="ACCELERATION_DELAY Field" Url="html/F_ElevatorApp_Models_Elevator_ACCELERATION_DELAY.htm" />
         <HelpTOCNode Title="DECELERATION_DELAY Field" Url="html/F_ElevatorApp_Models_Elevator_DECELERATION_DELAY.htm" />
         <HelpTOCNode Title="FLOOR_MOVEMENT_SPEED Field" Url="html/F_ElevatorApp_Models_Elevator_FLOOR_MOVEMENT_SPEED.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="f20c3d03-9884-44b1-9548-f809014ef5b6" Title="ElevatorApproachingEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm">
-      <HelpTOCNode Id="44fd8a15-8014-4507-844f-52a1d5548a20" Title="ElevatorApproachingEventArgs Constructor " Url="html/Overload_ElevatorApp_Models_ElevatorApproachingEventArgs__ctor.htm">
+    <HelpTOCNode Id="52e284f4-8f3c-4c00-b955-18f9a08f7772" Title="ElevatorApproachingEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm">
+      <HelpTOCNode Id="370ba7f9-15f2-4039-b172-7e5a99037427" Title="ElevatorApproachingEventArgs Constructor " Url="html/Overload_ElevatorApp_Models_ElevatorApproachingEventArgs__ctor.htm">
         <HelpTOCNode Title="ElevatorApproachingEventArgs Constructor (ElevatorMovementEventArgs)" Url="html/M_ElevatorApp_Models_ElevatorApproachingEventArgs__ctor.htm" />
         <HelpTOCNode Title="ElevatorApproachingEventArgs Constructor (Int32, Int32, Direction)" Url="html/M_ElevatorApp_Models_ElevatorApproachingEventArgs__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bb91fb33-dab1-4542-84e8-a95db06f827b" Title="ElevatorApproachingEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm">
+      <HelpTOCNode Id="9e5ac790-bfb2-473a-86a3-7d95434e36a5" Title="ElevatorApproachingEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm">
         <HelpTOCNode Title="DestinationFloor Property " Url="html/P_ElevatorApp_Models_ElevatorApproachingEventArgs_DestinationFloor.htm" />
         <HelpTOCNode Title="IntermediateFloor Property " Url="html/P_ElevatorApp_Models_ElevatorApproachingEventArgs_IntermediateFloor.htm" />
         <HelpTOCNode Title="ShouldStop Property " Url="html/P_ElevatorApp_Models_ElevatorApproachingEventArgs_ShouldStop.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorApproachingEventArgs Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="41b30627-47e6-4548-9abf-4db07dbd7ee0" Title="ElevatorCallPanel Class" Url="html/T_ElevatorApp_Models_ElevatorCallPanel.htm">
+    <HelpTOCNode Id="9c6ccedc-a2eb-48cc-ab18-2e8285a51357" Title="ElevatorCallPanel Class" Url="html/T_ElevatorApp_Models_ElevatorCallPanel.htm">
       <HelpTOCNode Title="ElevatorCallPanel Constructor " Url="html/M_ElevatorApp_Models_ElevatorCallPanel__ctor.htm" />
-      <HelpTOCNode Id="5460a26c-b02c-493f-b45d-38e2e3f29cc6" Title="ElevatorCallPanel Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorCallPanel.htm">
+      <HelpTOCNode Id="10b25946-22b1-413c-a7d5-5859df862f9e" Title="ElevatorCallPanel Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorCallPanel.htm">
         <HelpTOCNode Title="_floorButtons Property " Url="html/P_ElevatorApp_Models_ElevatorCallPanel__floorButtons.htm" />
         <HelpTOCNode Title="FloorNumber Property " Url="html/P_ElevatorApp_Models_ElevatorCallPanel_FloorNumber.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9fce01dc-1536-4e6d-9694-b27bfdcf2c55" Title="ElevatorCallPanel Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorCallPanel.htm">
-        <HelpTOCNode Id="8c4cf39d-95a5-4809-887f-4f877f0d2ff9" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ElevatorCallPanel_Subscribe.htm">
+      <HelpTOCNode Id="db6c204c-4fbd-4d6d-8243-3bc5550e9086" Title="ElevatorCallPanel Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorCallPanel.htm">
+        <HelpTOCNode Id="a8a3e1cc-a98c-48c2-85ef-599331aacd95" Title="Subscribe Method " Url="html/Overload_ElevatorApp_Models_ElevatorCallPanel_Subscribe.htm">
           <HelpTOCNode Title="Subscribe Method (ElevatorMasterController)" Url="html/M_ElevatorApp_Models_ElevatorCallPanel_Subscribe.htm" />
-          <HelpTOCNode Title="Subscribe Method (ValueTuple(ElevatorMasterController, Elevator))" Url="html/M_ElevatorApp_Models_ElevatorCallPanel_Subscribe_1.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="4baeb62a-9ca8-4b71-978d-a629654cac58" Title="ElevatorMasterController Class" Url="html/T_ElevatorApp_Models_ElevatorMasterController.htm">
+    <HelpTOCNode Id="31386702-24a2-44db-b537-748ff66d6b15" Title="ElevatorMasterController Class" Url="html/T_ElevatorApp_Models_ElevatorMasterController.htm">
       <HelpTOCNode Title="ElevatorMasterController Constructor " Url="html/M_ElevatorApp_Models_ElevatorMasterController__ctor.htm" />
-      <HelpTOCNode Id="a5aa864f-1ae7-4eb8-915e-2f607038eebf" Title="ElevatorMasterController Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorMasterController.htm">
-        <HelpTOCNode Title="ElevatorCount Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_ElevatorCount.htm" />
-        <HelpTOCNode Title="Elevators Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_Elevators.htm" />
+      <HelpTOCNode Id="6f38c2e0-6a70-45af-9a15-ce4955d0b702" Title="ElevatorMasterController Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorMasterController.htm">
+        <HelpTOCNode Title="Elevator Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_Elevator.htm" />
         <HelpTOCNode Title="ElevatorSettings Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_ElevatorSettings.htm" />
         <HelpTOCNode Title="FloorCount Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_FloorCount.htm" />
         <HelpTOCNode Title="FloorHeight Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_FloorHeight.htm" />
         <HelpTOCNode Title="Floors Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_Floors.htm" />
         <HelpTOCNode Title="FloorsRequested Property " Url="html/P_ElevatorApp_Models_ElevatorMasterController_FloorsRequested.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9fafc278-bb08-4d3d-ac22-a51d54509fe1" Title="ElevatorMasterController Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorMasterController.htm">
-        <HelpTOCNode Title="Dispatch Method " Url="html/M_ElevatorApp_Models_ElevatorMasterController_Dispatch.htm" />
+      <HelpTOCNode Id="8b1eba67-b4e0-4d27-be54-1ada7f3d6561" Title="ElevatorMasterController Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorMasterController.htm">
         <HelpTOCNode Title="Init Method " Url="html/M_ElevatorApp_Models_ElevatorMasterController_Init.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="0c1b7a0b-f8cd-4d89-b62b-1027adb2a663" Title="ElevatorMasterController Events" Url="html/Events_T_ElevatorApp_Models_ElevatorMasterController.htm">
-        <HelpTOCNode Title="OnElevatorRequested Event" Url="html/E_ElevatorApp_Models_ElevatorMasterController_OnElevatorRequested.htm" />
+      <HelpTOCNode Id="510f8059-17cf-49b5-8206-d82ef44a4fb1" Title="ElevatorMasterController Events" Url="html/Events_T_ElevatorApp_Models_ElevatorMasterController.htm">
+        <HelpTOCNode Title="ElevatorRequested Event" Url="html/E_ElevatorApp_Models_ElevatorMasterController_ElevatorRequested.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="31779f2b-ca50-4eef-9087-6ebc204aae9f" Title="ElevatorMovementEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
+    <HelpTOCNode Id="c085bfd1-d229-4347-a072-db6012695404" Title="ElevatorMovementEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
       <HelpTOCNode Title="ElevatorMovementEventArgs Constructor " Url="html/M_ElevatorApp_Models_ElevatorMovementEventArgs__ctor.htm" />
-      <HelpTOCNode Id="0a3ce09b-9ca4-4125-9157-00da9b921dce" Title="ElevatorMovementEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
+      <HelpTOCNode Id="572e7c4d-5884-4f14-a228-32349947f3b0" Title="ElevatorMovementEventArgs Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
         <HelpTOCNode Title="DestinationFloor Property " Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_DestinationFloor.htm" />
         <HelpTOCNode Title="Direction Property " Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_Direction.htm" />
+        <HelpTOCNode Title="Handled Property " Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_Handled.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5ed777d8-7efb-4fd9-81de-937aef3e5117" Title="ElevatorMovementEventArgs Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
+      <HelpTOCNode Id="78e31ec0-597e-453f-bab3-b0b7ee01b1b5" Title="ElevatorMovementEventArgs Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm">
         <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Models_ElevatorMovementEventArgs_ToString.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="a593b681-662f-46de-bcf2-cb0efc33db35" Title="ElevatorSettings Class" Url="html/T_ElevatorApp_Models_ElevatorSettings.htm">
+    <HelpTOCNode Id="c5d2df9c-39b6-464f-a5aa-fc4152903b85" Title="ElevatorSettings Class" Url="html/T_ElevatorApp_Models_ElevatorSettings.htm">
       <HelpTOCNode Title="ElevatorSettings Constructor " Url="html/M_ElevatorApp_Models_ElevatorSettings__ctor.htm" />
-      <HelpTOCNode Id="8baa4209-6e58-4f38-857e-e94b8b919526" Title="ElevatorSettings Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSettings.htm">
+      <HelpTOCNode Id="82f02723-3595-458c-aecc-c1e17abe77ba" Title="ElevatorSettings Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSettings.htm">
         <HelpTOCNode Title="Capacity Property " Url="html/P_ElevatorApp_Models_ElevatorSettings_Capacity.htm" />
         <HelpTOCNode Title="DoorType Property " Url="html/P_ElevatorApp_Models_ElevatorSettings_DoorType.htm" />
         <HelpTOCNode Title="Speed Property " Url="html/P_ElevatorApp_Models_ElevatorSettings_Speed.htm" />
@@ -356,63 +352,64 @@
       <HelpTOCNode Title="ElevatorSettings Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorSettings.htm" />
       <HelpTOCNode Title="ElevatorSettings Events" Url="html/Events_T_ElevatorApp_Models_ElevatorSettings.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="b2ed3491-3edc-4413-b20b-d664e3381371" Title="ElevatorSimulator Class" Url="html/T_ElevatorApp_Models_ElevatorSimulator.htm">
+    <HelpTOCNode Id="5802b345-b975-4fa4-bf3d-5c580a4a8e2c" Title="ElevatorSimulator Class" Url="html/T_ElevatorApp_Models_ElevatorSimulator.htm">
       <HelpTOCNode Title="ElevatorSimulator Constructor " Url="html/M_ElevatorApp_Models_ElevatorSimulator__ctor.htm" />
-      <HelpTOCNode Id="2dadd138-d8ae-4c72-857a-b3cc5c9e6226" Title="ElevatorSimulator Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSimulator.htm">
+      <HelpTOCNode Id="60a8fe2f-94ac-4e3f-b9d2-17de28a1a137" Title="ElevatorSimulator Properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSimulator.htm">
         <HelpTOCNode Title="Controller Property " Url="html/P_ElevatorApp_Models_ElevatorSimulator_Controller.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ElevatorSimulator Methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorSimulator.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="d2691269-cc5d-4f42-8bf6-a0d8ec2720ee" Title="Floor Class" Url="html/T_ElevatorApp_Models_Floor.htm">
-      <HelpTOCNode Id="ba4abf21-e9ce-4182-a6e1-169a8043cf4c" Title="Floor Constructor " Url="html/Overload_ElevatorApp_Models_Floor__ctor.htm">
+    <HelpTOCNode Id="d009aead-81a7-4fdd-97cb-9651052319a9" Title="Floor Class" Url="html/T_ElevatorApp_Models_Floor.htm">
+      <HelpTOCNode Id="cd027766-c167-4e66-89f2-f8b828cbee99" Title="Floor Constructor " Url="html/Overload_ElevatorApp_Models_Floor__ctor.htm">
         <HelpTOCNode Title="Floor Constructor " Url="html/M_ElevatorApp_Models_Floor__ctor.htm" />
         <HelpTOCNode Title="Floor Constructor (Int32)" Url="html/M_ElevatorApp_Models_Floor__ctor_1.htm" />
         <HelpTOCNode Title="Floor Constructor (Int32, ElevatorCallPanel)" Url="html/M_ElevatorApp_Models_Floor__ctor_2.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="95eb1f5b-da73-4d46-a4d9-0dac790cbd22" Title="Floor Properties" Url="html/Properties_T_ElevatorApp_Models_Floor.htm">
+      <HelpTOCNode Id="2b50f518-3e22-4df8-98d2-0085af1d68a1" Title="Floor Properties" Url="html/Properties_T_ElevatorApp_Models_Floor.htm">
         <HelpTOCNode Title="CallPanel Property " Url="html/P_ElevatorApp_Models_Floor_CallPanel.htm" />
         <HelpTOCNode Title="ElevatorAvailable Property " Url="html/P_ElevatorApp_Models_Floor_ElevatorAvailable.htm" />
         <HelpTOCNode Title="FloorNumber Property " Url="html/P_ElevatorApp_Models_Floor_FloorNumber.htm" />
         <HelpTOCNode Title="WaitingPassengers Property " Url="html/P_ElevatorApp_Models_Floor_WaitingPassengers.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d78dc608-56d4-42e8-9ccf-8186ac358cd1" Title="Floor Methods" Url="html/Methods_T_ElevatorApp_Models_Floor.htm">
+      <HelpTOCNode Id="ef08f6cc-93fe-4ff4-a8c7-4429193d7726" Title="Floor Methods" Url="html/Methods_T_ElevatorApp_Models_Floor.htm">
         <HelpTOCNode Title="QueuePassenger Method " Url="html/M_ElevatorApp_Models_Floor_QueuePassenger.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_Floor_Subscribe.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Floor Events" Url="html/Events_T_ElevatorApp_Models_Floor.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="731b6f1d-ebf1-4da3-94de-075cd2fcb79f" Title="FloorButton Class" Url="html/T_ElevatorApp_Models_FloorButton.htm">
+    <HelpTOCNode Id="bee220e2-d320-4024-9c0c-954bf1a3f747" Title="FloorButton Class" Url="html/T_ElevatorApp_Models_FloorButton.htm">
       <HelpTOCNode Title="FloorButton Constructor " Url="html/M_ElevatorApp_Models_FloorButton__ctor.htm" />
-      <HelpTOCNode Id="c07fbcb4-11fe-40ed-a16b-ef4949d2f04f" Title="FloorButton Properties" Url="html/Properties_T_ElevatorApp_Models_FloorButton.htm">
+      <HelpTOCNode Id="ff2c4e6d-52a7-41a2-864c-5e5cfe8fc188" Title="FloorButton Properties" Url="html/Properties_T_ElevatorApp_Models_FloorButton.htm">
         <HelpTOCNode Title="ButtonType Property " Url="html/P_ElevatorApp_Models_FloorButton_ButtonType.htm" />
         <HelpTOCNode Title="FloorNumber Property " Url="html/P_ElevatorApp_Models_FloorButton_FloorNumber.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_FloorButton_Label.htm" />
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_FloorButton_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8df11dca-b4e7-4210-8704-f8e74bb81564" Title="FloorButton Methods" Url="html/Methods_T_ElevatorApp_Models_FloorButton.htm">
+      <HelpTOCNode Id="612440f6-33eb-4a37-8247-f7b19aecfd6e" Title="FloorButton Methods" Url="html/Methods_T_ElevatorApp_Models_FloorButton.htm">
         <HelpTOCNode Title="Disable Method " Url="html/M_ElevatorApp_Models_FloorButton_Disable.htm" />
         <HelpTOCNode Title="Push Method " Url="html/M_ElevatorApp_Models_FloorButton_Push.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_FloorButton_Subscribe.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="FloorButton Events" Url="html/Events_T_ElevatorApp_Models_FloorButton.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="c7a74078-4947-4803-8ce5-89a9644ec9b9" Title="ModelBase Class" Url="html/T_ElevatorApp_Models_ModelBase.htm">
+    <HelpTOCNode Id="cc107e80-4793-43ce-b704-aad4f8854808" Title="ModelBase Class" Url="html/T_ElevatorApp_Models_ModelBase.htm">
       <HelpTOCNode Title="ModelBase Constructor " Url="html/M_ElevatorApp_Models_ModelBase__ctor.htm" />
-      <HelpTOCNode Id="b97e63b1-d8a9-42ae-82d6-e1c267d00eb7" Title="ModelBase Methods" Url="html/Methods_T_ElevatorApp_Models_ModelBase.htm">
+      <HelpTOCNode Id="871ca322-48f2-42f4-a997-b56cccbcf5f7" Title="ModelBase Methods" Url="html/Methods_T_ElevatorApp_Models_ModelBase.htm">
         <HelpTOCNode Title="DependentPropertyChanged Method " Url="html/M_ElevatorApp_Models_ModelBase_DependentPropertyChanged.htm" />
         <HelpTOCNode Title="OnPropertyChanged(T) Method " Url="html/M_ElevatorApp_Models_ModelBase_OnPropertyChanged__1.htm" />
         <HelpTOCNode Title="SetProperty(T) Method " Url="html/M_ElevatorApp_Models_ModelBase_SetProperty__1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="afb925c8-1373-45c3-8046-65add9344aeb" Title="ModelBase Events" Url="html/Events_T_ElevatorApp_Models_ModelBase.htm">
+      <HelpTOCNode Id="b1d39252-bda5-43f8-9472-bcbb22381eeb" Title="ModelBase Events" Url="html/Events_T_ElevatorApp_Models_ModelBase.htm">
         <HelpTOCNode Title="PropertyChanged Event" Url="html/E_ElevatorApp_Models_ModelBase_PropertyChanged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="8ce1d6bf-4012-4811-853e-50fbf5b7cd28" Title="Passenger Class" Url="html/T_ElevatorApp_Models_Passenger.htm">
-      <HelpTOCNode Id="9e3bc119-2dbf-4b86-ad55-a97d803dfda3" Title="Passenger Constructor " Url="html/Overload_ElevatorApp_Models_Passenger__ctor.htm">
+    <HelpTOCNode Id="ea563f11-157c-4cbb-a6ea-7f012d221a59" Title="Passenger Class" Url="html/T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="adbc93b3-0daa-4e75-be67-5a569e785adf" Title="Passenger Constructor " Url="html/Overload_ElevatorApp_Models_Passenger__ctor.htm">
         <HelpTOCNode Title="Passenger Constructor " Url="html/M_ElevatorApp_Models_Passenger__ctor.htm" />
         <HelpTOCNode Title="Passenger Constructor (Int32, Int32)" Url="html/M_ElevatorApp_Models_Passenger__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="87154de1-1ef3-40e6-ac34-0a97dc26fbe1" Title="Passenger Properties" Url="html/Properties_T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="515c425f-617a-4418-90ec-72cc23064cd9" Title="Passenger Properties" Url="html/Properties_T_ElevatorApp_Models_Passenger.htm">
+        <HelpTOCNode Title="Direction Property " Url="html/P_ElevatorApp_Models_Passenger_Direction.htm" />
         <HelpTOCNode Title="PassengerNumber Property " Url="html/P_ElevatorApp_Models_Passenger_PassengerNumber.htm" />
         <HelpTOCNode Title="Path Property " Url="html/P_ElevatorApp_Models_Passenger_Path.htm" />
         <HelpTOCNode Title="State Property " Url="html/P_ElevatorApp_Models_Passenger_State.htm" />
@@ -420,88 +417,87 @@
         <HelpTOCNode Title="TimeWaiting Property " Url="html/P_ElevatorApp_Models_Passenger_TimeWaiting.htm" />
         <HelpTOCNode Title="Weight Property " Url="html/P_ElevatorApp_Models_Passenger_Weight.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="110678f6-69a3-4829-aab0-471635ff7c5a" Title="Passenger Methods" Url="html/Methods_T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="4aff03c5-7270-4b43-be40-f4b4b225632e" Title="Passenger Methods" Url="html/Methods_T_ElevatorApp_Models_Passenger.htm">
         <HelpTOCNode Title="GetTimeInElevatorString Method " Url="html/M_ElevatorApp_Models_Passenger_GetTimeInElevatorString.htm" />
         <HelpTOCNode Title="GetWaitingString Method " Url="html/M_ElevatorApp_Models_Passenger_GetWaitingString.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Models_Passenger_ToString.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Passenger Events" Url="html/Events_T_ElevatorApp_Models_Passenger.htm" />
-      <HelpTOCNode Id="01ba5517-c529-4f4d-adf6-cf8c61f671f7" Title="Passenger Type Conversions" Url="html/Operators_T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="b4c6a00d-1446-4e54-b632-33a1d8378fca" Title="Passenger Type Conversions" Url="html/Operators_T_ElevatorApp_Models_Passenger.htm">
         <HelpTOCNode Title="Implicit Conversion (Passenger to ValueTuple(Object, Object)[])" Url="html/M_ElevatorApp_Models_Passenger_op_Implicit.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="92bf335f-b8e6-41e3-94a8-9f3d52402da4" Title="Passenger Fields" Url="html/Fields_T_ElevatorApp_Models_Passenger.htm">
+      <HelpTOCNode Id="f9820a0e-ca90-4ca1-8ab0-148e40b59534" Title="Passenger Fields" Url="html/Fields_T_ElevatorApp_Models_Passenger.htm">
         <HelpTOCNode Title="TransitionSpeed Field" Url="html/F_ElevatorApp_Models_Passenger_TransitionSpeed.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="9c693b6f-0a45-476a-bf85-dcd73bc15e3f" Title="RequestButton Class" Url="html/T_ElevatorApp_Models_RequestButton.htm">
+    <HelpTOCNode Id="1f997054-08a2-493c-90ff-e345e5021ce7" Title="RequestButton Class" Url="html/T_ElevatorApp_Models_RequestButton.htm">
       <HelpTOCNode Title="RequestButton Constructor " Url="html/M_ElevatorApp_Models_RequestButton__ctor.htm" />
-      <HelpTOCNode Id="3ad62bcc-d6cc-43d1-bb44-19d153fd7c44" Title="RequestButton Properties" Url="html/Properties_T_ElevatorApp_Models_RequestButton.htm">
+      <HelpTOCNode Id="499f21e9-71f3-46e8-a3fe-34f441ec3b54" Title="RequestButton Properties" Url="html/Properties_T_ElevatorApp_Models_RequestButton.htm">
         <HelpTOCNode Title="DestinationFloor Property " Url="html/P_ElevatorApp_Models_RequestButton_DestinationFloor.htm" />
         <HelpTOCNode Title="FloorNumber Property " Url="html/P_ElevatorApp_Models_RequestButton_FloorNumber.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_RequestButton_Label.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e874e813-5201-47c8-87b2-27023e73479c" Title="RequestButton Methods" Url="html/Methods_T_ElevatorApp_Models_RequestButton.htm">
+      <HelpTOCNode Id="6ff88a80-8b40-4fc3-b4ff-d019325432e0" Title="RequestButton Methods" Url="html/Methods_T_ElevatorApp_Models_RequestButton.htm">
         <HelpTOCNode Title="Push Method " Url="html/M_ElevatorApp_Models_RequestButton_Push.htm" />
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_RequestButton_Subscribe.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="RequestButton Events" Url="html/Events_T_ElevatorApp_Models_RequestButton.htm" />
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="c6d7652d-a18d-4a2d-8ab2-0dc6ec283437" Title="ElevatorApp.Models.Enums" Url="html/N_ElevatorApp_Models_Enums.htm">
+  <HelpTOCNode Id="ee63002e-a44a-417d-84af-79e2fc8de10b" Title="ElevatorApp.Models.Enums" Url="html/N_ElevatorApp_Models_Enums.htm">
     <HelpTOCNode Title="ButtonType Enumeration" Url="html/T_ElevatorApp_Models_Enums_ButtonType.htm" />
     <HelpTOCNode Title="Direction Enumeration" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
     <HelpTOCNode Title="DoorState Enumeration" Url="html/T_ElevatorApp_Models_Enums_DoorState.htm" />
     <HelpTOCNode Title="DoorType Enumeration" Url="html/T_ElevatorApp_Models_Enums_DoorType.htm" />
-    <HelpTOCNode Title="ElevatorDirection Enumeration" Url="html/T_ElevatorApp_Models_Enums_ElevatorDirection.htm" />
     <HelpTOCNode Title="ElevatorState Enumeration" Url="html/T_ElevatorApp_Models_Enums_ElevatorState.htm" />
     <HelpTOCNode Title="PassengerState Enumeration" Url="html/T_ElevatorApp_Models_Enums_PassengerState.htm" />
   </HelpTOCNode>
-  <HelpTOCNode Id="aba48b53-7524-4a20-ad70-913ef51af6ff" Title="ElevatorApp.Models.Interfaces" Url="html/N_ElevatorApp_Models_Interfaces.htm">
-    <HelpTOCNode Id="a7a289d8-19f7-446b-bcb1-86d20de8f98c" Title="IButton Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton.htm">
-      <HelpTOCNode Id="5fd4dd3c-973b-4ee4-ba42-391ebf0e0394" Title="IButton Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_IButton.htm">
+  <HelpTOCNode Id="d447058a-1b41-4833-812f-5ed025b0f904" Title="ElevatorApp.Models.Interfaces" Url="html/N_ElevatorApp_Models_Interfaces.htm">
+    <HelpTOCNode Id="6d1886f8-4d5a-46a3-8415-41ea4b1610fa" Title="IButton Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton.htm">
+      <HelpTOCNode Id="42a414fd-5685-4bae-933e-f4417be93f58" Title="IButton Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_IButton.htm">
         <HelpTOCNode Title="Active Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_Active.htm" />
         <HelpTOCNode Title="ButtonType Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_ButtonType.htm" />
         <HelpTOCNode Title="Label Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_Label.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ecc709dd-3e2f-4307-8f14-f85c7f063d84" Title="IButton Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton.htm">
+      <HelpTOCNode Id="cad0e429-ddb8-48db-b4e3-86691d3bb14b" Title="IButton Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton.htm">
         <HelpTOCNode Title="Push Method " Url="html/M_ElevatorApp_Models_Interfaces_IButton_Push.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9cffe451-fa7c-48cb-b1ea-0fc90ed7a0f8" Title="IButton Events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton.htm">
+      <HelpTOCNode Id="472bc829-2248-4d7c-90eb-dc08d10ea2d6" Title="IButton Events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton.htm">
         <HelpTOCNode Title="OnActivated Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_OnActivated.htm" />
         <HelpTOCNode Title="OnDeactivated Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_OnDeactivated.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="27e2a939-2d36-44b5-a006-bb1e1aa6f00e" Title="IButton(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton_1.htm">
+    <HelpTOCNode Id="29ad547b-0614-4208-8e60-ca0f79353516" Title="IButton(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton_1.htm">
       <HelpTOCNode Title="IButton(T) Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_IButton_1.htm" />
-      <HelpTOCNode Id="d6f7fb81-74c4-48e4-8eec-3bcaaa1b4927" Title="IButton(T) Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton_1.htm">
+      <HelpTOCNode Id="acfc5bc2-7602-470e-8ab9-02357c89f5fa" Title="IButton(T) Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton_1.htm">
         <HelpTOCNode Title="ActionCompleted Method " Url="html/M_ElevatorApp_Models_Interfaces_IButton_1_ActionCompleted.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="43c4310c-ec95-4fd2-8681-1b1a480b2894" Title="IButton(T) Events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton_1.htm">
+      <HelpTOCNode Id="67338c2d-e3db-4ff5-a7ff-e342bc0d337c" Title="IButton(T) Events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton_1.htm">
         <HelpTOCNode Title="OnActionCompleted Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnActionCompleted.htm" />
         <HelpTOCNode Title="OnPushed Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnPushed.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="010e185a-e8d1-488e-8bbb-43f34c18167d" Title="ISubcriber(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
-      <HelpTOCNode Id="9bc3e45a-a537-4e84-9e2d-a7cd1241d91a" Title="ISubcriber(T) Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
+    <HelpTOCNode Id="d3f6d973-51c7-40db-8b02-208de3d9e76c" Title="ISubcriber(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
+      <HelpTOCNode Id="8fbd5537-de0d-4348-b65b-6d04aae50992" Title="ISubcriber(T) Properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
         <HelpTOCNode Title="Subscribed Property " Url="html/P_ElevatorApp_Models_Interfaces_ISubcriber_1_Subscribed.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="c4b338f8-6bc3-4fd3-b9b3-1900ea80799d" Title="ISubcriber(T) Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
+      <HelpTOCNode Id="70c24513-6150-4823-987e-d3767506fcf2" Title="ISubcriber(T) Methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm">
         <HelpTOCNode Title="Subscribe Method " Url="html/M_ElevatorApp_Models_Interfaces_ISubcriber_1_Subscribe.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="653271c4-39f0-4df7-9486-579dc3b066cf" Title="ElevatorApp.Util" Url="html/N_ElevatorApp_Util.htm">
-    <HelpTOCNode Id="fb1920ea-a748-4820-8ce0-56bbb0ca2ce5" Title="AsyncObservableCollection(T) Class" Url="html/T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
-      <HelpTOCNode Id="6a2ba947-4f4e-4dbf-abe3-a8b4a87889ae" Title="AsyncObservableCollection(T) Constructor " Url="html/Overload_ElevatorApp_Util_AsyncObservableCollection_1__ctor.htm">
+  <HelpTOCNode Id="bc9015fe-eb36-4ab8-9af9-ad5781974886" Title="ElevatorApp.Util" Url="html/N_ElevatorApp_Util.htm">
+    <HelpTOCNode Id="282848f6-2fd3-4d88-a001-ab14e88e605f" Title="AsyncObservableCollection(T) Class" Url="html/T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
+      <HelpTOCNode Id="37d62e48-2ce3-4e1b-8471-af07d45ee353" Title="AsyncObservableCollection(T) Constructor " Url="html/Overload_ElevatorApp_Util_AsyncObservableCollection_1__ctor.htm">
         <HelpTOCNode Title="AsyncObservableCollection(T) Constructor " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1__ctor.htm" />
         <HelpTOCNode Title="AsyncObservableCollection(T) Constructor (IEnumerable(T))" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1__ctor_1.htm" />
         <HelpTOCNode Title="AsyncObservableCollection(T) Constructor (SerializationInfo, StreamingContext)" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1__ctor_2.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4808e9c7-763c-4ee6-893a-655c4a77e746" Title="AsyncObservableCollection(T) Properties" Url="html/Properties_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
+      <HelpTOCNode Id="31a6e3e5-6a88-4a1d-9d52-ea15b05459bc" Title="AsyncObservableCollection(T) Properties" Url="html/Properties_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
         <HelpTOCNode Title="Count Property " Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Count.htm" />
         <HelpTOCNode Title="Item Property " Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Item.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="201a7d31-a855-461e-b4b0-b33a32c48bc1" Title="AsyncObservableCollection(T) Methods" Url="html/Methods_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
+      <HelpTOCNode Id="503c7846-b658-4ec3-b8eb-249ca9d36b0c" Title="AsyncObservableCollection(T) Methods" Url="html/Methods_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
         <HelpTOCNode Title="Add Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Add.htm" />
         <HelpTOCNode Title="AddDistinct Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddDistinct.htm" />
         <HelpTOCNode Title="AddRange Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddRange.htm" />
@@ -520,127 +516,235 @@
         <HelpTOCNode Title="TryPeek Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryPeek.htm" />
         <HelpTOCNode Title="TryRemove Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryRemove.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="0dfaad98-06f1-4d45-9f99-9c91984bdfc8" Title="AsyncObservableCollection(T) Events" Url="html/Events_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
+      <HelpTOCNode Id="b9f9201a-3c4d-4494-9b7c-2b2068778362" Title="AsyncObservableCollection(T) Events" Url="html/Events_T_ElevatorApp_Util_AsyncObservableCollection_1.htm">
         <HelpTOCNode Title="CollectionChanged Event" Url="html/E_ElevatorApp_Util_AsyncObservableCollection_1_CollectionChanged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="993c0415-a265-4ce7-bc54-35b6417c424b" Title="AsyncObservableCollection(T).AsyncDispatcherEvent(TEvent, TArgs) Class" Url="html/T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
+    <HelpTOCNode Id="751c4693-d591-48ba-a326-2a8e34a294df" Title="AsyncObservableCollection(T).AsyncDispatcherEvent(TEvent, TArgs) Class" Url="html/T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
       <HelpTOCNode Title="AsyncObservableCollection(T).AsyncDispatcherEvent(TEvent, TArgs) Constructor " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2__ctor.htm" />
-      <HelpTOCNode Id="3b24e2be-c14d-442a-811c-b7b06f4a5932" Title="AsyncDispatcherEvent(TEvent, TArgs) Properties" Url="html/Properties_T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
+      <HelpTOCNode Id="9879f64d-8378-4e93-a7bd-410f6dedaa39" Title="AsyncDispatcherEvent(TEvent, TArgs) Properties" Url="html/Properties_T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
         <HelpTOCNode Title="isEmpty Property " Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_isEmpty.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="94f0ed1a-830f-4d90-8aa0-7fb5775548d0" Title="AsyncDispatcherEvent(TEvent, TArgs) Methods" Url="html/Methods_T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
+      <HelpTOCNode Id="ff881893-8942-4ece-ad30-18ddeffe0ec8" Title="AsyncDispatcherEvent(TEvent, TArgs) Methods" Url="html/Methods_T_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2.htm">
         <HelpTOCNode Title="add Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_add.htm" />
         <HelpTOCNode Title="raise Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_raise.htm" />
         <HelpTOCNode Title="remove Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_remove.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="37579201-124c-4c26-815b-38d6c4333185" Title="Event Structure" Url="html/T_ElevatorApp_Util_Event.htm">
+    <HelpTOCNode Id="ff3ce6fe-6339-4089-acac-e3699ed8f87d" Title="DecimalStatistic Class" Url="html/T_ElevatorApp_Util_DecimalStatistic.htm">
+      <HelpTOCNode Id="28d3d817-8049-433d-b55e-22ae39e78a1f" Title="DecimalStatistic Constructor " Url="html/Overload_ElevatorApp_Util_DecimalStatistic__ctor.htm">
+        <HelpTOCNode Title="DecimalStatistic Constructor (String)" Url="html/M_ElevatorApp_Util_DecimalStatistic__ctor.htm" />
+        <HelpTOCNode Title="DecimalStatistic Constructor (String, IEnumerable(Decimal))" Url="html/M_ElevatorApp_Util_DecimalStatistic__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DecimalStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_DecimalStatistic.htm" />
+      <HelpTOCNode Id="0534bf3a-8e1a-4dc6-bad4-2165cf8a1e27" Title="DecimalStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_DecimalStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_DecimalStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_DecimalStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_DecimalStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_DecimalStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_DecimalStatistic_SubtractItems.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DecimalStatistic Events" Url="html/Events_T_ElevatorApp_Util_DecimalStatistic.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="d1361626-e083-4fcd-aaad-de5e687c00f3" Title="DoubleStatistic Class" Url="html/T_ElevatorApp_Util_DoubleStatistic.htm">
+      <HelpTOCNode Id="3e9906c7-efd0-4115-a383-643d5023e257" Title="DoubleStatistic Constructor " Url="html/Overload_ElevatorApp_Util_DoubleStatistic__ctor.htm">
+        <HelpTOCNode Title="DoubleStatistic Constructor (String)" Url="html/M_ElevatorApp_Util_DoubleStatistic__ctor.htm" />
+        <HelpTOCNode Title="DoubleStatistic Constructor (String, IEnumerable(Double))" Url="html/M_ElevatorApp_Util_DoubleStatistic__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DoubleStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_DoubleStatistic.htm" />
+      <HelpTOCNode Id="2779e14f-db01-42b4-b81e-ca0638507246" Title="DoubleStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_DoubleStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_DoubleStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_DoubleStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_DoubleStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_DoubleStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_DoubleStatistic_SubtractItems.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DoubleStatistic Events" Url="html/Events_T_ElevatorApp_Util_DoubleStatistic.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="ed43ad54-7b50-4962-b61e-1b1bbb7ed704" Title="DurationStatistic Class" Url="html/T_ElevatorApp_Util_DurationStatistic.htm">
+      <HelpTOCNode Id="cde27dbd-4327-4286-8029-de46d1ce7f2e" Title="DurationStatistic Constructor " Url="html/Overload_ElevatorApp_Util_DurationStatistic__ctor.htm">
+        <HelpTOCNode Title="DurationStatistic Constructor (String)" Url="html/M_ElevatorApp_Util_DurationStatistic__ctor.htm" />
+        <HelpTOCNode Title="DurationStatistic Constructor (String, IEnumerable(Duration))" Url="html/M_ElevatorApp_Util_DurationStatistic__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="926e4aaa-2ed7-48fd-81ef-b157177908d8" Title="DurationStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_DurationStatistic.htm">
+        <HelpTOCNode Title="AggregateToString Property " Url="html/P_ElevatorApp_Util_DurationStatistic_AggregateToString.htm" />
+        <HelpTOCNode Title="StateToString Property " Url="html/P_ElevatorApp_Util_DurationStatistic_StateToString.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ae5f3a9c-c846-4346-9668-be35e91d214a" Title="DurationStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_DurationStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_DurationStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_DurationStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_DurationStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_DurationStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_DurationStatistic_SubtractItems.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DurationStatistic Events" Url="html/Events_T_ElevatorApp_Util_DurationStatistic.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="808f889a-cc59-499b-84ab-d3576646fdff" Title="Event Structure" Url="html/T_ElevatorApp_Util_Event.htm">
       <HelpTOCNode Title="Event Constructor " Url="html/M_ElevatorApp_Util_Event__ctor.htm" />
-      <HelpTOCNode Id="a0ce4757-aa4d-442f-9b50-77e874242d9a" Title="Event Properties" Url="html/Properties_T_ElevatorApp_Util_Event.htm">
+      <HelpTOCNode Id="c8dae292-2865-43db-8b93-c3a7cf56ddb8" Title="Event Properties" Url="html/Properties_T_ElevatorApp_Util_Event.htm">
         <HelpTOCNode Title="Name Property " Url="html/P_ElevatorApp_Util_Event_Name.htm" />
         <HelpTOCNode Title="Parameters Property " Url="html/P_ElevatorApp_Util_Event_Parameters.htm" />
         <HelpTOCNode Title="Timestamp Property " Url="html/P_ElevatorApp_Util_Event_Timestamp.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e1c93650-1415-48ae-9d4d-20d3eb300cc4" Title="Event Methods" Url="html/Methods_T_ElevatorApp_Util_Event.htm">
-        <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Util_Event_ToString.htm" />
+      <HelpTOCNode Id="cbaa659f-c2e0-49d1-9ff2-49d04d94d672" Title="Event Methods" Url="html/Methods_T_ElevatorApp_Util_Event.htm">
+        <HelpTOCNode Id="40af0f1a-9b0a-4e62-ae44-a710f93c4629" Title="ToString Method " Url="html/Overload_ElevatorApp_Util_Event_ToString.htm">
+          <HelpTOCNode Title="ToString Method " Url="html/M_ElevatorApp_Util_Event_ToString.htm" />
+          <HelpTOCNode Title="ToString Method (Boolean)" Url="html/M_ElevatorApp_Util_Event_ToString_1.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="88899ad4-095c-4336-934c-aeefe8b720bb" Title="Event Fields" Url="html/Fields_T_ElevatorApp_Util_Event.htm">
+      <HelpTOCNode Id="a393428e-00a8-4dda-9ac2-058fde7eaa2b" Title="Event Fields" Url="html/Fields_T_ElevatorApp_Util_Event.htm">
         <HelpTOCNode Title="TIMESTAMP_FORMAT Field" Url="html/F_ElevatorApp_Util_Event_TIMESTAMP_FORMAT.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="ec6ef832-7bd4-48fc-a970-b1b9a7de5289" Title="Extensions Class" Url="html/T_ElevatorApp_Util_Extensions.htm">
-      <HelpTOCNode Id="3098f56d-cc54-471e-9a13-aa2ce049e74c" Title="Extensions Methods" Url="html/Methods_T_ElevatorApp_Util_Extensions.htm">
+    <HelpTOCNode Id="2d88c677-7e5d-4b57-ab1c-66a3b0522fcd" Title="EventTraceListener Class" Url="html/T_ElevatorApp_Util_EventTraceListener.htm">
+      <HelpTOCNode Title="EventTraceListener Constructor " Url="html/M_ElevatorApp_Util_EventTraceListener__ctor.htm" />
+      <HelpTOCNode Id="66546a02-ee1a-4516-9749-1cbfd04bc79d" Title="EventTraceListener Properties" Url="html/Properties_T_ElevatorApp_Util_EventTraceListener.htm">
+        <HelpTOCNode Title="FileName Property " Url="html/P_ElevatorApp_Util_EventTraceListener_FileName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b258d0a3-7a11-47b8-81a5-41a24ac1304b" Title="EventTraceListener Methods" Url="html/Methods_T_ElevatorApp_Util_EventTraceListener.htm">
+        <HelpTOCNode Id="b9733aaa-b715-4cce-b224-38ff93434819" Title="Write Method " Url="html/Overload_ElevatorApp_Util_EventTraceListener_Write.htm">
+          <HelpTOCNode Title="Write Method (String)" Url="html/M_ElevatorApp_Util_EventTraceListener_Write.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="f0d8dd65-ad86-4ed3-85d3-5fb153fa36cd" Title="WriteLine Method " Url="html/Overload_ElevatorApp_Util_EventTraceListener_WriteLine.htm">
+          <HelpTOCNode Title="WriteLine Method (String)" Url="html/M_ElevatorApp_Util_EventTraceListener_WriteLine.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="278a3d64-7f9d-42ed-a894-f74726fd38a4" Title="Extensions Class" Url="html/T_ElevatorApp_Util_Extensions.htm">
+      <HelpTOCNode Id="11b1a002-d950-4f2e-9c12-3221dbf40ef4" Title="Extensions Methods" Url="html/Methods_T_ElevatorApp_Util_Extensions.htm">
         <HelpTOCNode Title="Deconstruct(TKey, TValue) Method " Url="html/M_ElevatorApp_Util_Extensions_Deconstruct__2.htm" />
+        <HelpTOCNode Title="EqualsAny(T) Method " Url="html/M_ElevatorApp_Util_Extensions_EqualsAny__1.htm" />
         <HelpTOCNode Title="MinByOrDefault(T, TKey) Method " Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d2a484b2-8a72-4ae5-806f-5b0ec8b7bfff" Title="ILogger Interface" Url="html/T_ElevatorApp_Util_ILogger.htm">
-      <HelpTOCNode Id="2077da90-e35e-4086-bada-969f295c078c" Title="ILogger Properties" Url="html/Properties_T_ElevatorApp_Util_ILogger.htm">
+    <HelpTOCNode Id="4bfaf02d-feb8-4f20-9215-c4295eaa8b42" Title="ILogger Interface" Url="html/T_ElevatorApp_Util_ILogger.htm">
+      <HelpTOCNode Id="32ded702-5063-40aa-b7b8-c5a325fea74c" Title="ILogger Properties" Url="html/Properties_T_ElevatorApp_Util_ILogger.htm">
         <HelpTOCNode Title="Events Property " Url="html/P_ElevatorApp_Util_ILogger_Events.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="6ec774b2-9992-4897-b14a-02eab414b8c3" Title="ILogger Methods" Url="html/Methods_T_ElevatorApp_Util_ILogger.htm">
+      <HelpTOCNode Id="c46840f3-cfe7-4a95-85bc-921a1c26986e" Title="ILogger Methods" Url="html/Methods_T_ElevatorApp_Util_ILogger.htm">
         <HelpTOCNode Title="AddLogger Method " Url="html/M_ElevatorApp_Util_ILogger_AddLogger.htm" />
         <HelpTOCNode Title="ClearItems Method " Url="html/M_ElevatorApp_Util_ILogger_ClearItems.htm" />
-        <HelpTOCNode Id="7dcfb080-92c2-47b8-9a1d-39f492231b21" Title="LogEvent Method " Url="html/Overload_ElevatorApp_Util_ILogger_LogEvent.htm">
+        <HelpTOCNode Id="af266a7b-d9c6-4e3c-bef1-2c8458fd8c4b" Title="LogEvent Method " Url="html/Overload_ElevatorApp_Util_ILogger_LogEvent.htm">
           <HelpTOCNode Title="LogEvent Method (String, ValueTuple(Object, Object)[])" Url="html/M_ElevatorApp_Util_ILogger_LogEvent_1.htm" />
           <HelpTOCNode Title="LogEvent Method (Event, Int32)" Url="html/M_ElevatorApp_Util_ILogger_LogEvent.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="ef9e8e3e-9e68-4dad-9bcd-712bc9f5d0b4" Title="ILogger Events" Url="html/Events_T_ElevatorApp_Util_ILogger.htm">
+      <HelpTOCNode Id="53dbc33b-b49e-4578-bdf1-73e41c26d6d5" Title="ILogger Events" Url="html/Events_T_ElevatorApp_Util_ILogger.htm">
         <HelpTOCNode Title="ItemLogged Event" Url="html/E_ElevatorApp_Util_ILogger_ItemLogged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="fb36d229-fc67-47fe-9785-a58cc244483c" Title="IStatistic Interface" Url="html/T_ElevatorApp_Util_IStatistic.htm">
-      <HelpTOCNode Id="4ae5cfd0-d853-48a7-b003-575aa6f55c22" Title="IStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_IStatistic.htm">
+    <HelpTOCNode Id="93922844-2071-4e41-af4e-6d9eb5ceb8a1" Title="IntStatistic Class" Url="html/T_ElevatorApp_Util_IntStatistic.htm">
+      <HelpTOCNode Id="9a20b500-848a-485f-853f-acf9ead0c725" Title="IntStatistic Constructor " Url="html/Overload_ElevatorApp_Util_IntStatistic__ctor.htm">
+        <HelpTOCNode Title="IntStatistic Constructor (String)" Url="html/M_ElevatorApp_Util_IntStatistic__ctor.htm" />
+        <HelpTOCNode Title="IntStatistic Constructor (String, IEnumerable(Int32))" Url="html/M_ElevatorApp_Util_IntStatistic__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="IntStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_IntStatistic.htm" />
+      <HelpTOCNode Id="67d56e50-db92-4b50-998f-ba31d60d1e61" Title="IntStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_IntStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_IntStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_IntStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_IntStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_IntStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_IntStatistic_SubtractItems.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="IntStatistic Events" Url="html/Events_T_ElevatorApp_Util_IntStatistic.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="6b8bf421-ed45-44ec-be24-9d46c0144909" Title="IStatistic Interface" Url="html/T_ElevatorApp_Util_IStatistic.htm">
+      <HelpTOCNode Id="79025a17-17d6-4f3c-a9bc-28598ca5421d" Title="IStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_IStatistic.htm">
         <HelpTOCNode Title="Count Property " Url="html/P_ElevatorApp_Util_IStatistic_Count.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="18a5db84-026e-4dfd-9bfd-01c2ab11692c" Title="LocalSystemClock Class" Url="html/T_ElevatorApp_Util_LocalSystemClock.htm">
-      <HelpTOCNode Id="5406a15b-3c2e-4cb7-b9fb-ed8f61c3aaab" Title="LocalSystemClock Properties" Url="html/Properties_T_ElevatorApp_Util_LocalSystemClock.htm">
+    <HelpTOCNode Id="dfcd7d66-0cec-431e-a680-2a639c5956dc" Title="IStatistic(TStat, TAggregate) Interface" Url="html/T_ElevatorApp_Util_IStatistic_2.htm">
+      <HelpTOCNode Id="d4385d6b-73bf-4482-9c25-8c1082d18af2" Title="IStatistic(TStat, TAggregate) Properties" Url="html/Properties_T_ElevatorApp_Util_IStatistic_2.htm">
+        <HelpTOCNode Title="Average Property " Url="html/P_ElevatorApp_Util_IStatistic_2_Average.htm" />
+        <HelpTOCNode Title="Max Property " Url="html/P_ElevatorApp_Util_IStatistic_2_Max.htm" />
+        <HelpTOCNode Title="Min Property " Url="html/P_ElevatorApp_Util_IStatistic_2_Min.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_ElevatorApp_Util_IStatistic_2_Name.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9a3ac57b-bc9a-43f5-a921-4f3d802fbad4" Title="LocalSystemClock Class" Url="html/T_ElevatorApp_Util_LocalSystemClock.htm">
+      <HelpTOCNode Id="1428652f-7969-4770-a81d-a314bee4f19d" Title="LocalSystemClock Properties" Url="html/Properties_T_ElevatorApp_Util_LocalSystemClock.htm">
         <HelpTOCNode Title="Instance Property " Url="html/P_ElevatorApp_Util_LocalSystemClock_Instance.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="46577671-f2ff-4917-84a0-8563c0465233" Title="LocalSystemClock Methods" Url="html/Methods_T_ElevatorApp_Util_LocalSystemClock.htm">
+      <HelpTOCNode Id="739bed76-712a-48f7-af28-571e22cba5f9" Title="LocalSystemClock Methods" Url="html/Methods_T_ElevatorApp_Util_LocalSystemClock.htm">
         <HelpTOCNode Title="GetCurrentInstant Method " Url="html/M_ElevatorApp_Util_LocalSystemClock_GetCurrentInstant.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="eccb8fbb-0043-476b-ba55-4ff6e8fe3e65" Title="Logger Class" Url="html/T_ElevatorApp_Util_Logger.htm">
-      <HelpTOCNode Id="0e9a5931-9882-40b2-b69d-5fa643da86d5" Title="Logger Properties" Url="html/Properties_T_ElevatorApp_Util_Logger.htm">
+    <HelpTOCNode Id="a4e58f87-f5b5-4dfd-a6ed-3336f5708324" Title="Logger Class" Url="html/T_ElevatorApp_Util_Logger.htm">
+      <HelpTOCNode Id="88c012e8-82c5-425e-8e2c-7d9c4a23cbd0" Title="Logger Properties" Url="html/Properties_T_ElevatorApp_Util_Logger.htm">
         <HelpTOCNode Title="Events Property " Url="html/P_ElevatorApp_Util_Logger_Events.htm" />
         <HelpTOCNode Title="Instance Property " Url="html/P_ElevatorApp_Util_Logger_Instance.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="6e460b53-edff-43a6-942c-5df704b86489" Title="Logger Methods" Url="html/Methods_T_ElevatorApp_Util_Logger.htm">
+      <HelpTOCNode Id="0fa8af78-0d88-4a1d-af73-f3be3df4a5af" Title="Logger Methods" Url="html/Methods_T_ElevatorApp_Util_Logger.htm">
         <HelpTOCNode Title="AddLogger Method " Url="html/M_ElevatorApp_Util_Logger_AddLogger.htm" />
         <HelpTOCNode Title="ClearItems Method " Url="html/M_ElevatorApp_Util_Logger_ClearItems.htm" />
         <HelpTOCNode Title="LogEvent Method " Url="html/M_ElevatorApp_Util_Logger_LogEvent.htm" />
+        <HelpTOCNode Title="LogStackTrace Method " Url="html/M_ElevatorApp_Util_Logger_LogStackTrace.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="7dc6329e-8e41-414a-bbfe-36508c514b99" Title="Logger Events" Url="html/Events_T_ElevatorApp_Util_Logger.htm">
+      <HelpTOCNode Id="e133ce66-f0c0-4133-a7b8-3ebc3b62452e" Title="Logger Events" Url="html/Events_T_ElevatorApp_Util_Logger.htm">
         <HelpTOCNode Title="ItemLogged Event" Url="html/E_ElevatorApp_Util_Logger_ItemLogged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="Logger.LogEventHandler Delegate" Url="html/T_ElevatorApp_Util_Logger_LogEventHandler.htm" />
-    <HelpTOCNode Id="49454797-4aba-4ba5-99fd-4576833396a9" Title="ObservableConcurrentQueue(T) Class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
-      <HelpTOCNode Id="28307e3b-0cc0-41d4-b18f-f807a3bbe773" Title="ObservableConcurrentQueue(T) Constructor " Url="html/Overload_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm">
+    <HelpTOCNode Id="20c8139d-bcbd-4535-8221-ca5bb7786ea3" Title="LongStatistic Class" Url="html/T_ElevatorApp_Util_LongStatistic.htm">
+      <HelpTOCNode Id="d4487349-2efe-4574-9201-e00de9d5a803" Title="LongStatistic Constructor " Url="html/Overload_ElevatorApp_Util_LongStatistic__ctor.htm">
+        <HelpTOCNode Title="LongStatistic Constructor (String)" Url="html/M_ElevatorApp_Util_LongStatistic__ctor.htm" />
+        <HelpTOCNode Title="LongStatistic Constructor (String, IEnumerable(Int64))" Url="html/M_ElevatorApp_Util_LongStatistic__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="LongStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_LongStatistic.htm" />
+      <HelpTOCNode Id="dc0fdf3c-ba8b-4c20-b2a1-572fc701a1a1" Title="LongStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_LongStatistic.htm">
+        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_LongStatistic_AddItems.htm" />
+        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_LongStatistic_CalculateAverage.htm" />
+        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_LongStatistic_DivideItems.htm" />
+        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_LongStatistic_MultiplyItems.htm" />
+        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_LongStatistic_SubtractItems.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="LongStatistic Events" Url="html/Events_T_ElevatorApp_Util_LongStatistic.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="48494666-61da-4c8a-9ab7-ed228353fe85" Title="ObservableConcurrentQueue(T) Class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
+      <HelpTOCNode Id="ba818d89-e4ae-421b-9c1b-a997cafb1b1e" Title="ObservableConcurrentQueue(T) Constructor " Url="html/Overload_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm">
         <HelpTOCNode Title="ObservableConcurrentQueue(T) Constructor " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm" />
         <HelpTOCNode Title="ObservableConcurrentQueue(T) Constructor (IEnumerable(T))" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d4cc3701-d086-4719-a08d-bcb21a11b8e5" Title="ObservableConcurrentQueue(T) Properties" Url="html/Properties_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
+      <HelpTOCNode Id="a9a6e143-d292-4cef-a2e4-4ec6ff26828c" Title="ObservableConcurrentQueue(T) Properties" Url="html/Properties_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
         <HelpTOCNode Title="Count Property " Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_Count.htm" />
         <HelpTOCNode Title="IsReadOnly Property " Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_IsReadOnly.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="dd67cf83-fd92-4fa3-8f65-62949fab04bd" Title="ObservableConcurrentQueue(T) Methods" Url="html/Methods_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
+      <HelpTOCNode Id="cb243a41-097e-43ff-a9e2-c4daaf74e0e1" Title="ObservableConcurrentQueue(T) Methods" Url="html/Methods_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
         <HelpTOCNode Title="Enqueue Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_Enqueue.htm" />
         <HelpTOCNode Title="GetEnumerator Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_GetEnumerator.htm" />
         <HelpTOCNode Title="TryDequeue Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryDequeue.htm" />
         <HelpTOCNode Title="TryPeek Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryPeek.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="35472707-2fe3-460f-8cf3-b00d183ab7d4" Title="ObservableConcurrentQueue(T) Events" Url="html/Events_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
+      <HelpTOCNode Id="fa5c1b10-5d1f-4198-9e14-54c59e1afc03" Title="ObservableConcurrentQueue(T) Events" Url="html/Events_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm">
         <HelpTOCNode Title="CollectionChanged Event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_CollectionChanged.htm" />
         <HelpTOCNode Title="PropertyChanged Event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_PropertyChanged.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="0dc2fdd8-7d9c-4b25-b148-81a4cdb135df" Title="SimpleStatistic(T) Class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm">
-      <HelpTOCNode Id="ed1a1b2b-5ca8-4d34-924f-afb903b14932" Title="SimpleStatistic(T) Constructor " Url="html/Overload_ElevatorApp_Util_SimpleStatistic_1__ctor.htm">
-        <HelpTOCNode Title="SimpleStatistic(T) Constructor " Url="html/M_ElevatorApp_Util_SimpleStatistic_1__ctor.htm" />
-        <HelpTOCNode Title="SimpleStatistic(T) Constructor (IEnumerable(T))" Url="html/M_ElevatorApp_Util_SimpleStatistic_1__ctor_1.htm" />
+    <HelpTOCNode Id="ab6f4702-3d0f-4cb4-b452-f9ac382f519c" Title="SimpleStatistic(T) Class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm">
+      <HelpTOCNode Id="9b4290d0-ab95-4c99-863e-2f7f22f4bec5" Title="SimpleStatistic(T) Constructor " Url="html/Overload_ElevatorApp_Util_SimpleStatistic_1__ctor.htm">
+        <HelpTOCNode Title="SimpleStatistic(T) Constructor (String)" Url="html/M_ElevatorApp_Util_SimpleStatistic_1__ctor.htm" />
+        <HelpTOCNode Title="SimpleStatistic(T) Constructor (String, IEnumerable(T))" Url="html/M_ElevatorApp_Util_SimpleStatistic_1__ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="SimpleStatistic(T) Properties" Url="html/Properties_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
       <HelpTOCNode Title="SimpleStatistic(T) Methods" Url="html/Methods_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
       <HelpTOCNode Title="SimpleStatistic(T) Events" Url="html/Events_T_ElevatorApp_Util_SimpleStatistic_1.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="5497ff18-20b0-4455-8c52-1219fe64b9ff" Title="Statistic(TStat, TAggregate) Class" Url="html/T_ElevatorApp_Util_Statistic_2.htm">
-      <HelpTOCNode Id="6daca48f-a710-4e1a-8d65-156c14c27124" Title="Statistic(TStat, TAggregate) Constructor " Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm">
-        <HelpTOCNode Title="Statistic(TStat, TAggregate) Constructor " Url="html/M_ElevatorApp_Util_Statistic_2__ctor.htm" />
-        <HelpTOCNode Title="Statistic(TStat, TAggregate) Constructor (IEnumerable(TStat))" Url="html/M_ElevatorApp_Util_Statistic_2__ctor_1.htm" />
+    <HelpTOCNode Id="6c5b9f60-e9e3-4bf0-b772-2e8339399e25" Title="Statistic(TStat, TAggregate) Class" Url="html/T_ElevatorApp_Util_Statistic_2.htm">
+      <HelpTOCNode Id="595dc170-0897-45b0-a40c-d80f177efcba" Title="Statistic(TStat, TAggregate) Constructor " Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm">
+        <HelpTOCNode Title="Statistic(TStat, TAggregate) Constructor (String)" Url="html/M_ElevatorApp_Util_Statistic_2__ctor.htm" />
+        <HelpTOCNode Title="Statistic(TStat, TAggregate) Constructor (String, IEnumerable(TStat))" Url="html/M_ElevatorApp_Util_Statistic_2__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="3421214f-1442-4e98-acdc-170156755578" Title="Statistic(TStat, TAggregate) Properties" Url="html/Properties_T_ElevatorApp_Util_Statistic_2.htm">
+      <HelpTOCNode Id="704da258-ccf3-476d-8290-a13b4180a334" Title="Statistic(TStat, TAggregate) Properties" Url="html/Properties_T_ElevatorApp_Util_Statistic_2.htm">
         <HelpTOCNode Title="_collection Property " Url="html/P_ElevatorApp_Util_Statistic_2__collection.htm" />
+        <HelpTOCNode Title="AggregateToString Property " Url="html/P_ElevatorApp_Util_Statistic_2_AggregateToString.htm" />
         <HelpTOCNode Title="Average Property " Url="html/P_ElevatorApp_Util_Statistic_2_Average.htm" />
         <HelpTOCNode Title="Count Property " Url="html/P_ElevatorApp_Util_Statistic_2_Count.htm" />
         <HelpTOCNode Title="Max Property " Url="html/P_ElevatorApp_Util_Statistic_2_Max.htm" />
         <HelpTOCNode Title="Min Property " Url="html/P_ElevatorApp_Util_Statistic_2_Min.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_ElevatorApp_Util_Statistic_2_Name.htm" />
+        <HelpTOCNode Title="StateToString Property " Url="html/P_ElevatorApp_Util_Statistic_2_StateToString.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b14b1fc1-7719-4ed6-859e-00d528d40761" Title="Statistic(TStat, TAggregate) Methods" Url="html/Methods_T_ElevatorApp_Util_Statistic_2.htm">
+      <HelpTOCNode Id="c391ad73-a058-4224-8fee-636e90b5f7e6" Title="Statistic(TStat, TAggregate) Methods" Url="html/Methods_T_ElevatorApp_Util_Statistic_2.htm">
         <HelpTOCNode Title="Add Method " Url="html/M_ElevatorApp_Util_Statistic_2_Add.htm" />
         <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistic_2_AddItems.htm" />
         <HelpTOCNode Title="AddRange Method " Url="html/M_ElevatorApp_Util_Statistic_2_AddRange.htm" />
@@ -652,82 +756,6 @@
       </HelpTOCNode>
       <HelpTOCNode Title="Statistic(TStat, TAggregate) Events" Url="html/Events_T_ElevatorApp_Util_Statistic_2.htm" />
     </HelpTOCNode>
-  </HelpTOCNode>
-  <HelpTOCNode Id="6b7d838e-9b25-4623-bfc5-d33eea21a97f" Title="ElevatorApp.Util.Statistics" Url="html/N_ElevatorApp_Util_Statistics.htm">
-    <HelpTOCNode Id="dc41581e-7d67-47cb-88f2-481c709764be" Title="DecimalStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_DecimalStatistic.htm">
-      <HelpTOCNode Id="936aa3e7-cf50-47e4-8749-0a3640a8402d" Title="DecimalStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_DecimalStatistic__ctor.htm">
-        <HelpTOCNode Title="DecimalStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic__ctor.htm" />
-        <HelpTOCNode Title="DecimalStatistic Constructor (IEnumerable(Decimal))" Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic__ctor_1.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="DecimalStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_DecimalStatistic.htm" />
-      <HelpTOCNode Id="4fc8fcf9-476d-4c82-8fdb-200ad1f1fd85" Title="DecimalStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_DecimalStatistic.htm">
-        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_AddItems.htm" />
-        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_CalculateAverage.htm" />
-        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_DivideItems.htm" />
-        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_MultiplyItems.htm" />
-        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_DecimalStatistic_SubtractItems.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="DecimalStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_DecimalStatistic.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="e88b9c96-f151-4406-b04b-4238ed93cd36" Title="DoubleStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_DoubleStatistic.htm">
-      <HelpTOCNode Id="5634d34e-af1d-4033-a532-903252ec6747" Title="DoubleStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_DoubleStatistic__ctor.htm">
-        <HelpTOCNode Title="DoubleStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic__ctor.htm" />
-        <HelpTOCNode Title="DoubleStatistic Constructor (IEnumerable(Double))" Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic__ctor_1.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="DoubleStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_DoubleStatistic.htm" />
-      <HelpTOCNode Id="bb3097c1-e9c1-47c0-ba4a-85dc4aa26b44" Title="DoubleStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_DoubleStatistic.htm">
-        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_AddItems.htm" />
-        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_CalculateAverage.htm" />
-        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_DivideItems.htm" />
-        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_MultiplyItems.htm" />
-        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_DoubleStatistic_SubtractItems.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="DoubleStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_DoubleStatistic.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="03f90aca-96f5-4562-b0fb-b9bf65e3ea03" Title="DurationStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_DurationStatistic.htm">
-      <HelpTOCNode Id="56e1dd12-dab0-4f77-bb15-f23cbc3cea7f" Title="DurationStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_DurationStatistic__ctor.htm">
-        <HelpTOCNode Title="DurationStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic__ctor.htm" />
-        <HelpTOCNode Title="DurationStatistic Constructor (IEnumerable(Duration))" Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic__ctor_1.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="DurationStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_DurationStatistic.htm" />
-      <HelpTOCNode Id="446bf3fb-7ebf-459a-8d9d-1baafd6d15a9" Title="DurationStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_DurationStatistic.htm">
-        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_AddItems.htm" />
-        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_CalculateAverage.htm" />
-        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_DivideItems.htm" />
-        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_MultiplyItems.htm" />
-        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_DurationStatistic_SubtractItems.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="DurationStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_DurationStatistic.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="425c8bc8-9730-47d4-91d9-144dff46f9be" Title="IntStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_IntStatistic.htm">
-      <HelpTOCNode Id="9f0160f7-d44f-4b11-8433-87d93ce594dd" Title="IntStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_IntStatistic__ctor.htm">
-        <HelpTOCNode Title="IntStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic__ctor.htm" />
-        <HelpTOCNode Title="IntStatistic Constructor (IEnumerable(Int32))" Url="html/M_ElevatorApp_Util_Statistics_IntStatistic__ctor_1.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="IntStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_IntStatistic.htm" />
-      <HelpTOCNode Id="dd3cbb49-3945-475d-9189-4a6f40d9e4d8" Title="IntStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_IntStatistic.htm">
-        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_AddItems.htm" />
-        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_CalculateAverage.htm" />
-        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_DivideItems.htm" />
-        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_MultiplyItems.htm" />
-        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_IntStatistic_SubtractItems.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="IntStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_IntStatistic.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="866daedc-038a-497e-9fb3-f2003aa05455" Title="LongStatistic Class" Url="html/T_ElevatorApp_Util_Statistics_LongStatistic.htm">
-      <HelpTOCNode Id="511aa590-af89-46d3-a548-2ece0b51798a" Title="LongStatistic Constructor " Url="html/Overload_ElevatorApp_Util_Statistics_LongStatistic__ctor.htm">
-        <HelpTOCNode Title="LongStatistic Constructor " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic__ctor.htm" />
-        <HelpTOCNode Title="LongStatistic Constructor (IEnumerable(Int64))" Url="html/M_ElevatorApp_Util_Statistics_LongStatistic__ctor_1.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="LongStatistic Properties" Url="html/Properties_T_ElevatorApp_Util_Statistics_LongStatistic.htm" />
-      <HelpTOCNode Id="8ef5f557-5ca5-45ff-a1da-a134666b7c12" Title="LongStatistic Methods" Url="html/Methods_T_ElevatorApp_Util_Statistics_LongStatistic.htm">
-        <HelpTOCNode Title="AddItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_AddItems.htm" />
-        <HelpTOCNode Title="CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_CalculateAverage.htm" />
-        <HelpTOCNode Title="DivideItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_DivideItems.htm" />
-        <HelpTOCNode Title="MultiplyItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_MultiplyItems.htm" />
-        <HelpTOCNode Title="SubtractItems Method " Url="html/M_ElevatorApp_Util_Statistics_LongStatistic_SubtractItems.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="LongStatistic Events" Url="html/Events_T_ElevatorApp_Util_Statistics_LongStatistic.htm" />
-    </HelpTOCNode>
+    <HelpTOCNode Title="ToStringMethod(T) Delegate" Url="html/T_ElevatorApp_Util_ToStringMethod_1.htm" />
   </HelpTOCNode>
 </HelpTOC>

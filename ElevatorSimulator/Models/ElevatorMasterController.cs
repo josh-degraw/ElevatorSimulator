@@ -20,7 +20,7 @@ namespace ElevatorApp.Models
     /// <summary>
     /// Represents the master controller for the system. Contains the Elevator and the floors
     /// </summary>
-    public class ElevatorMasterController : ModelBase, IObserver<int>
+    public class ElevatorMasterController : ModelBase
     {
         #region Backing fields
         private int _floorHeight;
@@ -28,7 +28,7 @@ namespace ElevatorApp.Models
         private readonly Elevator _elevator = new Elevator();
 
         private readonly AsyncObservableCollection<Floor> _floors = new AsyncObservableCollection<Floor>(Enumerable.Range(1, 4).Reverse().Select(a => new Floor(a)));
-        private readonly AsyncObservableCollection<int> _floorsRequested = new AsyncObservableCollection<int>();
+      //  private readonly AsyncObservableCollection<int> _floorsRequested = new AsyncObservableCollection<int>();
 
         #endregion
 
@@ -43,11 +43,6 @@ namespace ElevatorApp.Models
         /// <para>These represent the floors of the building.</para>
         /// </summary>
         public IReadOnlyCollection<Floor> Floors => _floors;
-
-        /// <summary>
-        /// A Read-only collection of floor numbers that are currently waiting for an elevator
-        /// </summary>
-        public IReadOnlyCollection<int> FloorsRequested => _floorsRequested;
 
         /// <summary>
         /// Represents the height of the floors in feet
@@ -138,18 +133,6 @@ namespace ElevatorApp.Models
         {
             soundPlayer.Play();
 
-            this._floorsRequested.TryRemove(elevator.CurrentFloor);
-
-            //if (this._floorsRequested.TryPeek(out var val) && val == elevator.CurrentFloor)
-            //{
-            //    this._floorsRequested.TryDequeue(out _);
-            //}
-
-            //if (direction != Direction.None)
-            //    foreach (var destination in this._floorsRequested)
-            //    {
-            //        await this.Dispatch(destination, elevator);
-            //    }
         }
 
         #endregion
@@ -162,17 +145,6 @@ namespace ElevatorApp.Models
         {
             Logger.LogEvent($"Initializing {nameof(ElevatorMasterController)}");
 
-            this.ElevatorRequested += async (sender, destination) =>
-             {
-                 try
-                 {
-                     await this.Elevator.Dispatch(destination).ConfigureAwait(false);
-                 }
-                 catch (Exception ex)
-                 {
-                     Debug.WriteLine(ex);
-                 }
-             };
             await SubscribeElevator(this.Elevator);
             await Task.WhenAll(this.Floors.Select(floor => floor.CallPanel.Subscribe(this)));
 
@@ -198,28 +170,6 @@ namespace ElevatorApp.Models
                     Debug.WriteLine(ex);
                 }
             };
-
-            //foreach (var b in elevator.ButtonPanel.FloorButtons)
-            //{
-            //    b.OnPushed += delegate
-            //    {
-            //        this.ElevatorRequested?.Invoke(b, b.FloorNumber);
-            //    };
-            //}
-
-
-            //foreach (var floor in this.Floors)
-            //{
-            //    foreach (FloorButton button in floor.CallPanel.FloorButtons)
-            //    {
-            //        await floor.Subscribe(this);
-            //        //button.OnPushed += delegate
-            //        //  {
-            //        //      this.ElevatorRequested?.Invoke(button, button.FloorNumber);
-            //        //  };
-            //    }
-            //}
-
             await Task.WhenAll(this.Floors.Select(floor => floor.Subscribe(this)));
         }
 
@@ -232,27 +182,7 @@ namespace ElevatorApp.Models
         {
         }
 
-        ///<inheritdoc/>
-        /// <summary>
-        /// Called when a floor has been requested
-        /// </summary>
-        void IObserver<int>.OnNext(int value)
-        {
-            ElevatorRequested?.Invoke(this, value);
-        }
-
-        ///<inheritdoc/>
-        void IObserver<int>.OnError(Exception error)
-        {
-            // not implemented
-        }
-
-        ///<inheritdoc/>
-        void IObserver<int>.OnCompleted()
-        {
-            // Not implemented
-        }
-
+ 
     }
 
 }
