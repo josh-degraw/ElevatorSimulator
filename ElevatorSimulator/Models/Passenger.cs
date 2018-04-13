@@ -99,7 +99,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Computed property representing the direction the passenger wants to go
         /// </summary>
-        public Direction Direction => this.Path.destination > this.Path.source? Direction.Up : Direction.Up;
+        public Direction Direction => this.Path.destination > this.Path.source? Direction.Up : Direction.Down;
 
         /// <summary>
         /// The amount of time it takes for this <see cref="Passenger"/> to transition into or out of the <see cref="Elevator"/>

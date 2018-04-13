@@ -431,15 +431,8 @@ namespace ElevatorApp.Models
             this._passengers.AddDistinct(passenger);
 
             PassengerAdded?.Invoke(this, passenger);
-            //!!!Note about the next section: Uncommenting this allows the elevator to work perfectly
-            //when using the same floor as the elevator is on, but commenting this causes the opposite scenario
-            //to occur. The problem is the "dispatch isn't being sent when using the same floor but DOES when not
-
-            //await Dispatch(passenger.Path.destination);
-            /*
-            int destination = FloorsToStopAt.MinBy(a => Math.Abs(a - this.CurrentFloor));
-            await Dispatch(destination);
-            */
+            this._floorsToStopAt.AddDistinct(passenger.Path.destination);
+            //This is just a failsafe currently. Essentially what can happen is that a passenger gets on an elevator after a floor in FloorsToStopAt is "consumed
         }
 
         /// <summary>
@@ -455,6 +448,14 @@ namespace ElevatorApp.Models
             this._passengers.Remove(passenger);
             passenger.State = PassengerState.Out;
             PassengerExited?.Invoke(this, passenger);
+
+            //Check to see if the elevator still needs to move and everyones gone(ie waiting on another floor). If it DOES, then dispatch the elevator to the nearest destination
+            if (this.FloorsToStopAt.Any() && !this.Passengers.Any())
+            {
+                //Reset the direction and then get the next floor to pick up a passenger at
+                this.Direction = Direction.None;
+                await Dispatch(FloorsToStopAt.MinBy(Math.Abs(a - this.CurrentFloor)));
+            }
         }
 
 
@@ -544,9 +545,21 @@ namespace ElevatorApp.Models
                 while (this._floorsToStopAt.Any())
                 {
                     _moving = true;
+                    //We need to calc destinations based on the direction. This is what was causing the elevator to stop when it shouldn't. Now its fixed
+                    int destination = this.CurrentFloor;
+                    switch (this.Direction)
+                    {
+                        case Direction.None:
+                            destination = FloorsToStopAt.Where(a => a != this.CurrentFloor).MinBy(a => Math.Abs(a - this.CurrentFloor));
+                            break;
+                        case Direction.Up:
+                            destination = FloorsToStopAt.Where(a => a != this.CurrentFloor && a > this.CurrentFloor).MinBy(a => Math.Abs(a - this.CurrentFloor));
+                            break;
+                        case Direction.Down:
+                            destination = FloorsToStopAt.Where(a => a != this.CurrentFloor && a < this.CurrentFloor).MinBy(a => Math.Abs(a - this.CurrentFloor));
+                            break;
 
-                    int destination = FloorsToStopAt.Where(a => a != this.CurrentFloor).MinBy(a => Math.Abs(a - this.CurrentFloor));
-
+                    }
                     this.Direction = assignDirection(destination);
                     if (this.Direction == Direction.None)
                         break;

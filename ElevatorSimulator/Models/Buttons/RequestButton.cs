@@ -68,7 +68,7 @@ namespace ElevatorApp.Models
                             ((IObserver<int>)controller).OnNext(this.FloorNumber);
                         }
 
-                        ((IObserver<int>)controller).OnNext(this.DestinationFloor);
+                        //((IObserver<int>)controller).OnNext(this.DestinationFloor);
 
                     }
                     catch (Exception ex)
