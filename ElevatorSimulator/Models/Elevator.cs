@@ -474,7 +474,7 @@ namespace ElevatorApp.Models
         {
             LogEvent("Passenger Leaving Elevator");
             passenger.State = PassengerState.Transition;
-            await Task.Delay(Passenger.TransitionSpeed);
+            await Task.Delay(Passenger.TransitionSpeed).ConfigureAwait(false);
 
             this._passengers.Remove(passenger);
             passenger.State = PassengerState.Out;
