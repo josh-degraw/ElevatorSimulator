@@ -101,6 +101,9 @@ namespace ElevatorApp.Models
         /// </summary>
         public Direction Direction => this.Path.destination > this.Path.source ? Direction.Up : Direction.Down;
 
+        /// <summary>
+        /// Represents the intended floor and the direction the passenter wants to go
+        /// </summary>
         public (int floor, Direction direction ) Call => (this.Path.destination, this.Direction);
 
         /// <summary>

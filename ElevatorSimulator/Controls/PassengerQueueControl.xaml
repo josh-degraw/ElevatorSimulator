@@ -43,16 +43,16 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label>Waiting ▲ 👤:</Label>
-                    <Label Content="{Binding WaitingPassengers.Count}"/>
+                    <Label Padding="5,5,0,5" >Waiting: 👤 x</Label>
+                    <Label Content="{Binding WaitingPassengers.Count}" Padding="0,5,5,5"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Waiting ▼ 👤:</Label>
+                <!--<StackPanel Orientation="Horizontal">
+                    <Label>Waiting ▲ ▼ 👤:</Label>
                     <Label Content="{Binding WaitingPassengersDown.Count}"/>
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
             <Expander 
-                IsExpanded="False" 
+                IsExpanded="True" 
                 Grid.Column="2" 
                 MouseUp="Expander_MouseUp" 
                 Header="Add Passenger" 
