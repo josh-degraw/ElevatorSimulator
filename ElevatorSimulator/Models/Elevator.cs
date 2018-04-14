@@ -590,7 +590,7 @@ namespace ElevatorApp.Models
         private async Task Move()
         {
             SemaphoreSlim mutex = new SemaphoreSlim(1);
-            await mutex.WaitAsync();
+            await mutex.WaitAsync().ConfigureAwait(false);
             try
             {
                 while (this._floorsToStopAt.Any())
