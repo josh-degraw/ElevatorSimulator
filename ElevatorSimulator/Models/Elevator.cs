@@ -270,12 +270,31 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Called when a <see cref="Passenger"/> has just entered the <see cref="Elevator"/>
         /// </summary>
-        public event EventHandler<Passenger> PassengerAdded = (_, p) => LogEvent("Passenger Added to Elevator", parameters: p);
+        public event EventHandler<Passenger> PassengerAdded = (_, p) =>
+        {
+            try
+            {
+                LogEvent("Passenger Added to Elevator", parameters: p);
+            }
+            catch (Exception e)
+            {
+
+            }
+        };
 
         /// <summary>
         /// Called when a <see cref="Passenger"/> has just left the <see cref="Elevator"/>
         /// </summary>
-        public event EventHandler<Passenger> PassengerExited = (_, p) => LogEvent("Passenger Exited Elevator", parameters: p);
+        public event EventHandler<Passenger> PassengerExited = (_, p) =>
+        {
+            try
+            {
+                LogEvent("Passenger Exited Elevator", parameters: p);
+            }
+            catch (Exception e)
+            {
+            }
+        };
 
         #endregion
 
@@ -402,23 +421,24 @@ namespace ElevatorApp.Models
         {
             try
             {
+                await mutex.WaitAsync().ConfigureAwait(false);
                 this.State = ElevatorState.Arrived;
                 _floorsToStopAt.TryRemove((args.DestinationFloor, args.Direction));
 
                 this.CurrentFloor = args.DestinationFloor;
 
-                soundPlayer.Play();
                 LogEvent("Elevator Arrived", ("Floor", args.DestinationFloor));
 
-                IEnumerable<Passenger> leaving = this.Passengers.Where(p => p.Path.destination == args.DestinationFloor);
+                IEnumerable<Passenger> leaving =
+                    this.Passengers.Where(p => p.Path.destination == args.DestinationFloor);
 
-                await WaitForDoorToOpen();
+                await WaitForDoorToOpen().ConfigureAwait(false);
 
                 foreach (Passenger passenger in leaving)
                 {
                     try
                     {
-                        await this.RemovePassenger(passenger).ConfigureAwait(false);
+                        await this.RemovePassenger(passenger);
                     }
                     catch (Exception ex)
                     {
@@ -430,13 +450,18 @@ namespace ElevatorApp.Models
                 if (!_moving && this.FloorRequests.Any() && !this.Passengers.Any())
                 {
                     //Reset the direction and then get the next floor to pick up a passenger at
-                    this.RequestedDirection = this.assignDirection(FloorRequests.Min(a => Math.Abs(a.Floor - this.CurrentFloor)));
+                    this.RequestedDirection =
+                        this.assignDirection(FloorRequests.Min(a => Math.Abs(a.Floor - this.CurrentFloor)));
                     await this.Move().ConfigureAwait(false);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+            }
+            finally
+            {
+                mutex.Release();
             }
 
         }
@@ -445,25 +470,38 @@ namespace ElevatorApp.Models
 
         #region Methods
 
+        public bool UpdatingPassengers { get; private set; }
+
         /// <summary>
         /// Adds a new <see cref="Passenger"/> to the <see cref="Elevator"/>
         /// </summary>
         /// <param name="passenger">The <see cref="Passenger"/> that will be boarding.</param>
         public async Task AddPassenger(Passenger passenger)
         {
-            LogEvent("Adding Passenger to Elevator");
-            passenger.State = PassengerState.Transition;
+            try
+            {
+                await mutex.WaitAsync().ConfigureAwait(false);
+                UpdatingPassengers = true;
+                LogEvent("Adding Passenger to Elevator");
+                passenger.State = PassengerState.Transition;
 
 
-            // Simulate time it takes to enter the elevator
-            await Task.Delay(Passenger.TransitionSpeed);
-            passenger.State = PassengerState.In;
+                // Simulate time it takes to enter the elevator
+                await Task.Delay(Passenger.TransitionSpeed).ConfigureAwait(false); ;
+                passenger.State = PassengerState.In;
 
-            this._passengers.AddDistinct(passenger);
+                this._passengers.AddDistinct(passenger);
 
-            PassengerAdded?.Invoke(this, passenger);
+                PassengerAdded?.Invoke(this, passenger);
 
-            this.OnNext(passenger.Call);
+                this.OnNext(passenger.Call);
+
+            }
+            finally
+            {
+                UpdatingPassengers = false;
+                mutex.Release();
+            }
         }
 
         /// <summary>
@@ -472,14 +510,24 @@ namespace ElevatorApp.Models
         /// <param name="passenger">The <see cref="Passenger"/> that will be departing.</param>
         private async Task RemovePassenger(Passenger passenger)
         {
-            LogEvent("Passenger Leaving Elevator");
-            passenger.State = PassengerState.Transition;
-            await Task.Delay(Passenger.TransitionSpeed).ConfigureAwait(false);
+            try
+            {
+                await mutex.WaitAsync().ConfigureAwait(false);
+                UpdatingPassengers = true;
+                LogEvent("Passenger Leaving Elevator");
+                passenger.State = PassengerState.Transition;
+                await Task.Delay(Passenger.TransitionSpeed).ConfigureAwait(false);
 
-            this._passengers.Remove(passenger);
-            passenger.State = PassengerState.Out;
-            PassengerExited?.Invoke(this, passenger);
-            Stats.Instance.AddPassengerTime(passenger.TimeWaiting);
+                this._passengers.Remove(passenger);
+                passenger.State = PassengerState.Out;
+                PassengerExited?.Invoke(this, passenger);
+                Stats.Instance.AddPassengerTime(passenger.TimeSpentInElevator + passenger.TimeWaiting);
+            }
+            finally
+            {
+                UpdatingPassengers = false;
+                mutex.Release();
+            }
         }
 
 
@@ -492,6 +540,11 @@ namespace ElevatorApp.Models
                 return;
 
             Logger.LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
+
+            this.Door.Opening += (a, b) =>
+            {
+                soundPlayer.Play();
+            };
 
             await this.Door.Subscribe(this).ConfigureAwait(false);
             this.Subscribed = true;
@@ -526,7 +579,7 @@ namespace ElevatorApp.Models
             {
                 this.RequestedDirection = destination.direction;
                 // Starts the movement in a seperate thread with Task.Run
-                await Task.Run(this.Move).ConfigureAwait(false);
+                await this.Move().ConfigureAwait(false);
             }
         }
 
@@ -557,40 +610,50 @@ namespace ElevatorApp.Models
 
         private async Task PerformMovement(int destination, Direction direction, Func<int, int> floorIncrementer)
         {
-            await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan()).ConfigureAwait(false);
-
-            var args = new ElevatorApproachingEventArgs(this.NextFloor, destination, direction);
-
-            // If the elevator should stop at this floor
-            bool shouldStop = _approachFloor(args);
-
-            if (shouldStop)
+            try
             {
+                await mutex.WaitAsync().ConfigureAwait(false);
+                await Task.Delay(FLOOR_MOVEMENT_SPEED.ToTimeSpan()).ConfigureAwait(false);
 
-                var call = new ElevatorMovementEventArgs(this.NextFloor, direction);
-                await _arriveAtFloor(call);
+                var args = new ElevatorApproachingEventArgs(this.NextFloor, destination, direction);
 
-                this.NextFloor = floorIncrementer(this.CurrentFloor);
+                // If the elevator should stop at this floor
+                bool shouldStop = _approachFloor(args);
 
-                await _startMovement(call);
-                // Start moving to the next floor
+                if (shouldStop)
+                {
+                    var call = new ElevatorMovementEventArgs(this.NextFloor, direction);
+                    await _arriveAtFloor(call);
+
+                    this.NextFloor = floorIncrementer(this.CurrentFloor);
+
+                    await _startMovement(call);
+                    // Start moving to the next floor
+                }
+
+                else if (this.NextFloor != destination)
+                {
+                    this.CurrentFloor = this.NextFloor; // Set the current floor
+                }
             }
-
-            else if (this.NextFloor != destination)
+            catch (Exception ex)
             {
-                this.CurrentFloor = this.NextFloor; // Set the current floor
+
+            }
+            finally
+            {
+                mutex.Release();
             }
 
         }
 
+        private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
         /// <summary>
         /// Handles the logic for the movement of the <see cref="Elevator"/>.
         /// Loops through the <see cref="FloorRequests"/> and moves the <see cref="Elevator"/> accordingly
         /// </summary>
         private async Task Move()
         {
-            SemaphoreSlim mutex = new SemaphoreSlim(1);
-            await mutex.WaitAsync().ConfigureAwait(false);
             try
             {
                 while (this._floorsToStopAt.Any())
@@ -651,9 +714,6 @@ namespace ElevatorApp.Models
                     await _arriveAtFloor(new ElevatorMovementEventArgs(destination, direction));
                 }
 
-                _moving = false;
-                this.RequestedDirection = Direction.None;
-                this.State = ElevatorState.Idle;
             }
             catch (Exception ex)
             {
@@ -661,7 +721,10 @@ namespace ElevatorApp.Models
             }
             finally
             {
-                mutex.Release();
+                _moving = false;
+                this.RequestedDirection = Direction.None;
+                this.State = ElevatorState.Idle;
+                // mutex.Release();
             }
         }
 
