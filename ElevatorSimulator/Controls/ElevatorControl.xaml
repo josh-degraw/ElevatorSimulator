@@ -12,7 +12,7 @@
 
 
     <StackPanel  Orientation="Horizontal">
-        <Grid Height="382" Width="449">
+        <Grid MinHeight="382" MinWidth="449">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -37,10 +37,11 @@
 
             <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFA6A6A6" Padding="2">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <TextBlock FontSize="20" Foreground="White">
+                    <TextBlock FontSize="20" VerticalAlignment="Center">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Setter Property="Text" Value="△"/>
+                                <Setter Property="Foreground" Value="White"/>
                                 <Style.Triggers >
                                     <DataTrigger Binding="{Binding RequestedDirection}" Value="Up">
                                         <Setter Property="Text" Value="▲"/>
@@ -51,11 +52,12 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <Label Foreground="OrangeRed" Background="Black" Margin="5,0" FontFamily="OCR A Extended"  Content="{Binding CurrentFloor, FallbackValue=1}" OpacityMask="#CC000000" FontSize="18"/>
-                    <TextBlock FontSize="20" Foreground="White">
+                    <Label Foreground="OrangeRed" Background="Black" Margin="5,0" FontFamily="OCR A Extended"  Content="{Binding CurrentFloor, FallbackValue=1}" OpacityMask="#CC000000" FontSize="40"/>
+                    <TextBlock FontSize="20"  VerticalAlignment="Center" >
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Setter Property="Text" Value="▽"/>
+                                <Setter Property="Foreground" Value="White"/>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding RequestedDirection}" Value="Down">
                                         <Setter Property="Text" Value="▼"/>
@@ -71,20 +73,39 @@
             <controls:DoorControl Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" DataContext="{Binding Door}" Margin="10,0" VerticalAlignment="Top" Height="317" />
             <Label Grid.Row="2" Grid.Column="1" Content="{Binding State, FallbackValue=Idle}"/>
 
-            <WrapPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" >
-                <Label Content="Passengers: 👤 x"/>
-                <Label Content="{Binding Passengers.Count, FallbackValue=0}"/>
-            </WrapPanel>
-
-            <WrapPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical" Grid.RowSpan="3" >
+            <WrapPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical" Grid.RowSpan="3" >
                 <Label Content="Floors requested: "/>
 
                 <WrapPanel>
                     <Label Content="{Binding FloorsToStopAtString}" />
                 </WrapPanel>
             </WrapPanel>
-            <!--<controls:ButtonPanelControl  Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" DataContext="{Binding ButtonPanel}" Margin="2" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>-->
-            <!--<controls:Interior Grid.Column="4" Grid.Row="0" Grid.RowSpan="7" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
+            <Expander  Grid.Column="1" Grid.Row="4" Grid.RowSpan="3" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" >
+                <Expander.Header>
+                    <WrapPanel Orientation="Horizontal">
+                        <Label Content="Passengers: 👤 x"/>
+                        <Label Content="{Binding Passengers.Count, FallbackValue=0}"/>
+                    </WrapPanel>
+                </Expander.Header>
+
+                <ItemsControl ItemsSource="{Binding Passengers}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" BorderThickness="1,1,1,0">
+                            <StackPanel>
+                                <Label Content="{Binding Path}"/>
+                                <WrapPanel>
+                                    <Label>Direction</Label>
+                                    <Label Content="{Binding Direction}"/>
+                                </WrapPanel>
+                            </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    
+                </ItemsControl>
+
+            </Expander>
         </Grid>
     </StackPanel>
 

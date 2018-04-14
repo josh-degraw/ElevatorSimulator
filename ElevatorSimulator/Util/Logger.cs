@@ -28,7 +28,7 @@ namespace ElevatorApp.Util
         private object _locker = new object();
         private Logger()
         {
-            Trace.Listeners.Add(new EventTraceListener("ElevatorSimulatorEvents.log"));
+           // Trace.Listeners.Add(new EventTraceListener("ElevatorSimulatorEvents.log"));
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace ElevatorApp.Util
                     .ConfigureAwait(false);
             }
 
-            Debug.WriteLine(@event.ToString());
+          //  Debug.WriteLine(@event.ToString());
         };
 
         public static void LogStackTrace()

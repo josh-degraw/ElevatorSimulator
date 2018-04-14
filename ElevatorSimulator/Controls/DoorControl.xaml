@@ -11,16 +11,16 @@
 
     <UserControl.Resources>
         <Storyboard x:Key="animOpening" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="60" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="70" Duration="0:0:2"/>
         </Storyboard>
         <Storyboard x:Key="animClosing" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="60" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="70" Duration="0:0:2"/>
         </Storyboard>
         <Storyboard x:Key="animOpened" >
             <DoubleAnimation Storyboard.TargetProperty="Width" To="180" Duration="0:0:2"/>
         </Storyboard>
         <Storyboard x:Key="animClosed" >
-            <DoubleAnimation Storyboard.TargetProperty="Width" To="0" Duration="0:0:1:5"/>
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="0" Duration="0:0:2"/>
         </Storyboard>
 
     </UserControl.Resources>
@@ -40,14 +40,6 @@
             <UserControl.Style>
                 <Style TargetType="UserControl">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=DoorState}" Value="Closed" >
-                            <DataTrigger.EnterActions>
-                                <BeginStoryboard x:Name="stryBoardClosed" Storyboard="{StaticResource ResourceKey=animClosed}"/>
-                            </DataTrigger.EnterActions>
-                            <DataTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="stryBoardClosed"/>
-                            </DataTrigger.ExitActions>
-                        </DataTrigger>
 
                         <DataTrigger Binding="{Binding Path=DoorState}" Value="Opening">
                             <DataTrigger.EnterActions>
@@ -73,6 +65,14 @@
                             </DataTrigger.EnterActions>
                             <DataTrigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="stryBoardClosing"/>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=DoorState}" Value="Closed" >
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="stryBoardClosed" Storyboard="{StaticResource ResourceKey=animClosed}"/>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="stryBoardClosed"/>
                             </DataTrigger.ExitActions>
                         </DataTrigger>
                     </Style.Triggers>
