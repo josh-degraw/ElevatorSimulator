@@ -23,7 +23,7 @@ namespace ElevatorApp.Models
         private int _floorNum = 1;
         private ElevatorCallPanel _callPanel = new ElevatorCallPanel(1);
 
-        private bool _subscribed = false, _controllerSubscribed = false, _elevatorAvailable = false;
+        private bool _elevatorAvailable = false;
 
         private readonly AsyncObservableCollection<Passenger> _waitingPassengers = new AsyncObservableCollection<Passenger>();
         // private readonly AsyncObservableCollection<Passenger> _waitingPassengers_Down = new AsyncObservableCollection<Passenger>();
@@ -124,6 +124,7 @@ namespace ElevatorApp.Models
         /// <inheritdoc />
         public bool Subscribed { get; private set; }
 
+        private int subscriptionCount = 0;
 
         /// <summary>
         /// Subscribes the <see cref="Floor"/> to the given master controller and elevator
@@ -152,6 +153,7 @@ namespace ElevatorApp.Models
                 this.ElevatorAvailable = true;
             }
 
+            Logger.LogEvent("Subscribing floor", ("Subscription number", subscriptionCount));
             _waitingPassengers.CollectionChanged += onPassengerAdded;
             elevator.PassengerAdded += removePassengerFromQueue;
             elevator.Door.Opened += addPassengersToElevator;
@@ -215,6 +217,11 @@ namespace ElevatorApp.Models
                 }
             }
 
+            #endregion
+
+            this.Subscribed = true;
+        }
+
             void removePassengerFromQueue(object _, Passenger passenger)
             {
                 try
@@ -237,26 +244,18 @@ namespace ElevatorApp.Models
                     }
                 }
             }
-
-            // Alert the Floor that an elevator is available when one arrives on this floor
-            void onElevatorArrivedAtThisFloor(object _, ElevatorMovementEventArgs args)
+        // Alert the Floor that an elevator is available when one arrives on this floor
+        void onElevatorArrivedAtThisFloor(object _, ElevatorMovementEventArgs args)
+        {
+            if (args.DestinationFloor == this.FloorNumber)
             {
-                if (args.DestinationFloor == this.FloorNumber)
-                {
-                    this.ElevatorAvailable = true;
-                }
+                this.ElevatorAvailable = true;
             }
-
-            void onElevatorDeparted(object _, ElevatorMovementEventArgs call)
-            {
-                this.ElevatorAvailable = false;
-            }
-
-            #endregion
-
-            this.Subscribed = true;
         }
-
+        void onElevatorDeparted(object _, ElevatorMovementEventArgs call)
+        {
+            this.ElevatorAvailable = false;
+        }
         private async Task _addPassengersToElevator(Elevator elevator)
         {
             // TODO: Wait for all passengers to get out
@@ -287,12 +286,7 @@ namespace ElevatorApp.Models
                 await elevator.AddPassenger(passenger);
             }
             _adding = false;
-
-            if (elevator.Direction == Direction.None)
-            {
-                elevator.OnNext(elevator.FloorsToStopAt.MinBy(a => Math.Abs(a.Floor - elevator.CurrentFloor)));
-            }
-
+            
         }
 
         /// <summary>

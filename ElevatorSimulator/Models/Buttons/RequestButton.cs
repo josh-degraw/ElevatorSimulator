@@ -50,36 +50,44 @@ namespace ElevatorApp.Models
             if (this.Subscribed)
                 return Task.CompletedTask;
 
-            var elevator = controller.Elevator;
-            // This should be handled by the Call panels
-            this.OnPushed += async (a, floor) =>
+            try
             {
-                try
+                var elevator = controller.Elevator;
+                // This should be handled by the Call panels
+                this.OnPushed += async (a, floor) =>
                 {
-                    Logger.LogEvent("Elevator Requested", ("From floor", this.FloorNumber));
-                    // If the elevator's already here, open the door
-                    if (elevator.CurrentFloor == this.FloorNumber &&
-                        (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
+                    try
                     {
-                        if (elevator.Door.DoorState != DoorState.Opened)
+                        Logger.LogEvent("Elevator Requested", ("From floor", this.FloorNumber));
+                        
+                        // If the elevator's already here, open the door
+                        if (elevator.CurrentFloor == this.FloorNumber &&
+                            (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
                         {
-                            await elevator.Door.RequestOpen();
+                            if (elevator.Door.IsNotOpenedOrOpening)
+                            {
+                                await elevator.Door.RequestOpen();
+                            }
                         }
+                        else
+                        {
+                            // If the elevator isn't already here, tell it to come here
+                            controller.Elevator.OnNext((this.FloorNumber, RequestDirection));
+                        }
+
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        // If the elevator isn't already here, tell it to come here
-                        controller.Elevator.OnNext((this.FloorNumber, RequestDirection));
+                        Debug.WriteLine(ex);
                     }
-
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex);
-                }
-            };
-
+                };
+            }
+            finally
+            {
             this.Subscribed = true;
+                
+            }
+
 
             return Task.CompletedTask;
         }

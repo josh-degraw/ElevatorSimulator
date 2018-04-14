@@ -60,6 +60,26 @@ namespace ElevatorApp.Util
             return toCompare.Any(t => t.Equals(item));
         }
 
+        /// <summary>
+        /// Trims a value to be within the given range
+        /// </summary>
+        /// <param name="me"></param>
+        /// <param name="min">Inclusive</param>
+        /// <param name="max">Inclusive</param>
+        /// <returns></returns>
+        public static int KeepInRange(this int me, int min, int max)
+        {
+            if (me < min)
+                return min;
+
+            if (me > max)
+                return max;
+
+            return me;
+
+
+        }
+
     }
 
 }
