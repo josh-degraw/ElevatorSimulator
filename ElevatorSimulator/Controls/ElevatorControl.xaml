@@ -71,16 +71,18 @@
             </Border>
 
             <controls:DoorControl Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" DataContext="{Binding Door}" Margin="10,0" VerticalAlignment="Top" Height="317" />
-            <Label Grid.Row="2" Grid.Column="1" Content="{Binding State, FallbackValue=Idle}"/>
 
-            <WrapPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical" Grid.RowSpan="3" >
+            <WrapPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                <Label>Elevator State</Label>
+                <Label Content="{Binding State, FallbackValue=Idle}" Background="#FFD8D8D8" />
+            </WrapPanel>
+            <WrapPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Grid.RowSpan="3" >
                 <Label Content="Floors requested: "/>
-
                 <WrapPanel>
                     <Label Content="{Binding FloorsToStopAtString}" />
                 </WrapPanel>
             </WrapPanel>
-            <Expander  Grid.Column="1" Grid.Row="4" Grid.RowSpan="3" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" >
+            <Expander Grid.Column="1" Grid.Row="3" Grid.RowSpan="3">
                 <Expander.Header>
                     <WrapPanel Orientation="Horizontal">
                         <Label Content="Passengers: 👤 x"/>
@@ -88,22 +90,27 @@
                     </WrapPanel>
                 </Expander.Header>
 
-                <ItemsControl ItemsSource="{Binding Passengers}">
-                    <ItemsControl.ItemTemplate>
+                <ScrollViewer MaxHeight="250">
+                    <ItemsControl ItemsSource="{Binding Passengers}"
+                                  ScrollViewer.CanContentScroll="True" 
+                                  ScrollViewer.VerticalScrollBarVisibility="Visible" > 
+
+                        <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border BorderBrush="Black" BorderThickness="1,1,1,0">
-                            <StackPanel>
-                                <Label Content="{Binding Path}"/>
-                                <WrapPanel>
-                                    <Label>Direction</Label>
-                                    <Label Content="{Binding Direction}"/>
-                                </WrapPanel>
-                            </StackPanel>
+                            <Border BorderBrush="Black" BorderThickness="1" Margin="2">
+                                <StackPanel>
+                                    <Label Content="{Binding Path}"/>
+                                    <WrapPanel>
+                                        <Label>Direction</Label>
+                                        <Label Content="{Binding Direction}"/>
+                                    </WrapPanel>
+                                </StackPanel>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                    
-                </ItemsControl>
+
+                    </ItemsControl>
+                </ScrollViewer>
 
             </Expander>
         </Grid>

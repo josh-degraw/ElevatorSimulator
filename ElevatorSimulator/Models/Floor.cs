@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
@@ -108,15 +110,6 @@ namespace ElevatorApp.Models
             var passenger = new Passenger(this.FloorNumber, destination);
 
             this._waitingPassengers.Add(passenger);
-            //switch (passenger.Direction)
-            //{
-            //    case Direction.Down:
-            //    case Direction.Up:
-            //        break;
-
-            //    default:
-            //        throw new ArgumentOutOfRangeException();
-            //}
         }
 
         #region Subscription
@@ -179,11 +172,11 @@ namespace ElevatorApp.Models
                             if (elevator.Door.DoorState == DoorState.Opened)
                             {
                                 IEnumerable<Passenger> departing = getPassengersToMove(elevator);
-                                await _addPassengersToElevator(departing, elevator);
+                                await _addPassengersToElevator(departing, elevator).ConfigureAwait(false);
                             }
                             else
                             {
-                                await elevator.Door.RequestOpen();
+                                await elevator.Door.RequestOpen().ConfigureAwait(false);
                             }
                         }
                         catch (Exception ex)
@@ -200,7 +193,7 @@ namespace ElevatorApp.Models
                 {
                     try
                     {
-                        await _addPassengersToElevator(elevator);
+                        await _addPassengersToElevator(elevator).ConfigureAwait(false);
                     }
                     catch (Exception ex)
                     {
@@ -213,7 +206,7 @@ namespace ElevatorApp.Models
             {
                 if (e.IntermediateFloor == this.FloorNumber)
                 {
-                    e.ShouldStop = getPassengersToMove(elevator, e.DestinationFloor).Any();
+                    e.ShouldStop = getPassengersToMove(elevator).Any();
                 }
             }
 
@@ -222,28 +215,28 @@ namespace ElevatorApp.Models
             this.Subscribed = true;
         }
 
-            void removePassengerFromQueue(object _, Passenger passenger)
+        void removePassengerFromQueue(object _, Passenger passenger)
+        {
+            try
             {
-                try
+                if (this._waitingPassengers.TryRemove(passenger))
                 {
-                    if (this._waitingPassengers.TryRemove(passenger))
-                    {
-                        ; // Successfully removed
-                    }
-                    else
-                    {
-                        ; // Passenger was already removed
-                    }
-
+                    ; // Successfully removed
                 }
-                catch (Exception ex)
+                else
                 {
-                    if (ex is ArgumentOutOfRangeException)
-                    {
-                        ; // Ignore
-                    }
+                    ; // Passenger was already removed
+                }
+
+            }
+            catch (Exception ex)
+            {
+                if (ex is ArgumentOutOfRangeException)
+                {
+                    ; // Ignore
                 }
             }
+        }
         // Alert the Floor that an elevator is available when one arrives on this floor
         void onElevatorArrivedAtThisFloor(object _, ElevatorMovementEventArgs args)
         {
@@ -256,11 +249,12 @@ namespace ElevatorApp.Models
         {
             this.ElevatorAvailable = false;
         }
+
         private async Task _addPassengersToElevator(Elevator elevator)
         {
             // TODO: Wait for all passengers to get out
             IEnumerable<Passenger> departing = getPassengersToMove(elevator);
-            await _addPassengersToElevator(departing, elevator);
+            await _addPassengersToElevator(departing, elevator).ConfigureAwait(false);
         }
 
         private bool _adding = false;
@@ -280,61 +274,63 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         private async Task _addPassengersToElevator(IEnumerable<Passenger> departing, Elevator elevator)
         {
+            var mutex = new SemaphoreSlim(1);
+            await mutex.WaitAsync().ConfigureAwait(false);
             _adding = true;
-            foreach (Passenger passenger in departing)
+            try
             {
-                await elevator.AddPassenger(passenger);
+                foreach (Passenger passenger in departing)
+                {
+                    await elevator.AddPassenger(passenger);
+                }
             }
-            _adding = false;
-            
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                _adding = false;
+                mutex.Release();
+            }
+
         }
 
         /// <summary>
         /// Gets the passengers that are going 
         /// </summary>
-        IEnumerable<Passenger> getPassengersToMove(Elevator elevator, int? nextFloor = null)
+        IEnumerable<Passenger> getPassengersToMove(Elevator elevator)
         {
+            var mutex = new SemaphoreSlim(1);
+            mutex.Wait();
             try
             {
-                int nextDest = 0;
                 var direction = elevator.Direction;
 
-                int minBySelector(Passenger p) => Math.Abs(p.Path.destination - nextFloor ?? elevator.NextFloor);
-
-                switch (elevator.Direction)
+                if (elevator.Direction == Direction.None)
                 {
-                    case Direction.None:
-                        {
-                            // Get the floor of the first passenger added to the waitlist. 
-                            Passenger pass = this.WaitingPassengers.MinByOrDefault(p => p.PassengerNumber);
+                    // Get the floor of the first passenger added to the waitlist. 
+                    Passenger pass = this.WaitingPassengers.MinByOrDefault(p => p.PassengerNumber);
 
-                            direction = pass?.Direction ?? Direction.None;
-
-                            nextDest = pass?.Path.destination ?? elevator.NextFloor;
-                            break;
-                        }
-                    case Direction.Up:
-                    case Direction.Down:
-                        {
-                            Passenger pass = this.WaitingPassengers.MinByOrDefault(minBySelector);
-
-                            nextDest = pass?.Path.destination ?? elevator.NextFloor;
-                            break;
-                        }
+                    direction = pass?.Direction ?? Direction.None;
                 }
 
                 if (direction != Direction.None)
-                    return this._getPassengersToMove(nextDest, direction);
+                    return this._getPassengersToMove(direction);
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
             }
+            finally
+            {
+                mutex.Release();
+            }
 
             return Enumerable.Empty<Passenger>();
         }
 
-        private IEnumerable<Passenger> _getPassengersToMove(int destination, Direction direction)
+        private IEnumerable<Passenger> _getPassengersToMove(Direction direction)
         {
             IEnumerable<Passenger> waiting = this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting);
 
