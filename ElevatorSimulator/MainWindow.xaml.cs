@@ -49,7 +49,16 @@ namespace ElevatorApp
 
         private void Stats_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Average Passenger Wait Time in Seconds: " + Stats.Instance.GetAverageWaitTime().TotalSeconds);
+
+
+            MessageBox.Show("Elevator Simulator Statistics" + "\n\n" +
+                "Average Passenger Wait Time: " + Stats.Instance.GetAverageWaitTime().Seconds + "s \n" +
+                "Minimum Passenger Wait Time: " + Stats.Instance.GetMinWaitTime().Seconds + "s \n" +
+                "Maximum Passenger Wait Time: " + Stats.Instance.GetMaxWaitTime().Seconds + "s ");
+               // "\n\n\n" + "Average Passenger Ride Time: " + "\n" +
+               // "Minimum Passenger Ride Time: " + "\n" +
+               // "Maximum Passenger Ride Time: ");
+          
             Stats.Instance.GetAverageWaitTime();
             Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.GetAverageWaitTime());
         }
@@ -60,6 +69,11 @@ namespace ElevatorApp
         }
 
         private void ListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ElevatorControl_Loaded(object sender, RoutedEventArgs e)
         {
 
         }

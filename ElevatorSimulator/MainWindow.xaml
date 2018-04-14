@@ -83,7 +83,7 @@
                       Margin="10" 
                       BorderBrush="{x:Null}" 
                       BorderThickness="4" 
-                      ClipToBounds="True" Background="#FFD4DDD7">
+                      ClipToBounds="True" Background="#FFD4DDD7" Loaded="ElevatorControl_Loaded">
 
             </controls:ElevatorControl>
 

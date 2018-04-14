@@ -188,7 +188,7 @@ namespace ElevatorApp.Models
                 //This is where I have the passenger add its timings to the stats class for now... certainly a temporary thing
                 Stats.Instance.PassengerWaitTimes.Add(passenger.TimeWaiting);
                 //I also have it print out
-                obj.Add(("Current Average Wait Time", Stats.Instance.PassengerWaitTimes));
+                obj.Add(("Current Average Wait Time ", Stats.Instance.PassengerWaitTimes));
                 //End this section
             }
 

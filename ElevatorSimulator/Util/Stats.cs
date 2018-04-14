@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+
 using System.Threading.Tasks;
 using NodaTime;
 
@@ -51,6 +52,67 @@ namespace ElevatorApp.Util
             }
             else
                 return avg;
+        }
+
+        public Duration GetMinWaitTime()
+        {
+            Duration min = new Duration();
+           
+
+            // for each min value check after the initial one
+           if (passengerWaitTimes.Count > 0)
+                {
+                // Temp way to get min a value so it can determine what is smaller.
+                    min = GetMaxWaitTime();
+                    //Aggregate the durations and then return the min value
+                    foreach (Duration d in passengerWaitTimes)
+                    {
+                        if (d < min)
+                        {
+                            min = d;
+                        }
+                    }
+
+                        return min;
+                }
+
+            else
+                return min;
+        }
+
+        public Duration GetMaxWaitTime()
+        {
+            Duration max = new Duration();
+
+            // For the first time through
+            if (passengerWaitTimes.Count == 1)
+            {
+                //Look in durations and set the initial max value
+                foreach (Duration d in passengerWaitTimes)
+                {
+                    max = d;
+                }
+
+                return max;
+            }
+
+            // for each max value check after the initial one
+            else if (passengerWaitTimes.Count > 1)
+            {
+                //Return the max value
+                foreach (Duration d in passengerWaitTimes)
+                {
+                    if (d > max)
+                    {
+                        max = d;
+                    }
+                }
+
+                return max;
+            }
+
+            else
+                return max;
         }
 
         /// <summary>

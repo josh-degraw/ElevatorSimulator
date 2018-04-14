@@ -215,7 +215,7 @@ namespace ElevatorApp.Util
             {
                 Max = item;
             }
-
+            
             if (item.CompareTo(Min) < 0) // item < Min
             {
                 Min = item;
