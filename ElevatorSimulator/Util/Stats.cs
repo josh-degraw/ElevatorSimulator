@@ -22,15 +22,17 @@ namespace ElevatorApp.Util
         private Stats()
         {
             passengerWaitTimes = new Collection<Duration>();
+            
         }
 
         /// <summary>
         /// This function takes a Duration value and adds it to the collection of passenger wait times. It should be used whenever a passenger exits an elevator
         /// </summary>
         /// <param name="time"></param>
-        public void AddPassengerTime(Duration time)
+        public void AddPassengerTime(Duration waitTime)
         {
-            passengerWaitTimes.Add(time);
+            passengerWaitTimes.Add(waitTime);
+           
         }
 
         /// <summary>
@@ -84,20 +86,7 @@ namespace ElevatorApp.Util
         {
             Duration max = new Duration();
 
-            // For the first time through
-            if (passengerWaitTimes.Count == 1)
-            {
-                //Look in durations and set the initial max value
-                foreach (Duration d in passengerWaitTimes)
-                {
-                    max = d;
-                }
-
-                return max;
-            }
-
-            // for each max value check after the initial one
-            else if (passengerWaitTimes.Count > 1)
+        if (passengerWaitTimes.Count > 0)
             {
                 //Return the max value
                 foreach (Duration d in passengerWaitTimes)
@@ -115,6 +104,9 @@ namespace ElevatorApp.Util
                 return max;
         }
 
+
+
+        
         /// <summary>
         /// This returns the number of passengers that have passed through the system and completed their trip
         /// </summary>
