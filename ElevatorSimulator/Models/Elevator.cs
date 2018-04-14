@@ -661,7 +661,7 @@ namespace ElevatorApp.Models
             }
             finally
             {
-                //mutex.Release();
+                mutex.Release();
             }
         }
 
@@ -719,7 +719,7 @@ namespace ElevatorApp.Models
         {
             try
             {
-                if (this.State == ElevatorState.Departed)
+                if (this.State == ElevatorState.Departed || this.State == ElevatorState.Departing)
                 {
                     this.Arriving?.Invoke(this, args);
 
@@ -732,7 +732,7 @@ namespace ElevatorApp.Models
                 }
                 else
                 {
-                    Debug.Fail("Invalid state", "Must be in state of Arriving to trigger Arrived event");
+                    //Debug.Fail("Invalid state", "Must be in state of Arriving to trigger Arrived event");
                 }
             }
             catch (Exception ex)
