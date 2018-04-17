@@ -41,9 +41,9 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
-        /// 
+        /// Subscribes the specified controller.
         /// </summary>
-        /// <param name="controller"></param>
+        /// <param name="controller">The controller.</param>
         /// <returns></returns>
         public override Task Subscribe(ElevatorMasterController controller)
         {
@@ -52,40 +52,40 @@ namespace ElevatorApp.Models
 
             try
             {
-                var elevator = controller.Elevator;
+                Elevator elevator = controller.Elevator;
                 // This should be handled by the Call panels
-                this.OnPushed += async (a, floor) =>
+                this.OnPushed += (a, floor) =>
                 {
                     try
                     {
                         Logger.LogEvent("Elevator Requested", ("From floor", this.FloorNumber));
-                        
+
                         // If the elevator's already here, open the door
                         if (elevator.CurrentFloor == this.FloorNumber &&
                             (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
                         {
-                            if (elevator.Door.IsNotOpenedOrOpening)
+                            if (elevator.Door.IsClosedOrClosing)
                             {
-                                await elevator.Door.RequestOpen();
+                                elevator.Door.RequestOpen();
                             }
                         }
                         else
                         {
                             // If the elevator isn't already here, tell it to come here
-                            controller.Elevator.OnNext((this.FloorNumber, RequestDirection));
+                            elevator.OnNext((this.FloorNumber, RequestDirection));
                         }
 
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine(ex);
+                        elevator.OnError(ex);
                     }
                 };
             }
             finally
             {
-            this.Subscribed = true;
-                
+                this.Subscribed = true;
+
             }
 
 

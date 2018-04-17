@@ -6,6 +6,12 @@ using ElevatorApp.Models;
 
 namespace ElevatorApp.Util
 {
+    /// <summary>
+    /// Get a string from a given item.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="item">The item.</param>
+    /// <returns>A string representation of the given item</returns>
     public delegate string ToStringMethod<in T>(T item);
 
     /// <summary>
@@ -14,24 +20,43 @@ namespace ElevatorApp.Util
     public interface IStatistic
     {
         /// <summary>
+        /// The name of the statistic
+        /// </summary>
+        string Name { get; }
+
+        /// <summary>
         /// The number of values encountered
         /// </summary>
         int Count { get; }
-
     }
 
     /// <summary>
-    /// 
+    /// An interface representing a statistical calculation of the given types
     /// </summary>
-    /// <typeparam name="TStat"></typeparam>
-    /// <typeparam name="TAggregate"></typeparam>
-    public interface IStatistic<TStat, TAggregate> : IStatistic
+    /// <typeparam name="TStat">The type of the stat.</typeparam>
+    /// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
+    public interface IStatistic<TStat, out TAggregate> : IStatistic
     {
-        string Name { get; }
-
+        /// <summary>
+        /// Gets the minimum of all the collected values
+        /// </summary>
         TStat Min { get; }
+
+        /// <summary>
+        /// Gets the maximum of all the collected values
+        /// </summary>
         TStat Max { get; }
+        
+        /// <summary>
+        /// Gets the average of all the collected values
+        /// </summary>
         TAggregate Average { get; }
+
+        /// <summary>
+        /// Adds the specified item to the collection of statistics
+        /// </summary>
+        /// <param name="item">The item.</param>
+        void Add(TStat item);
     }
 
     /// <summary>
@@ -43,6 +68,7 @@ namespace ElevatorApp.Util
         where TStat : struct, IComparable<TStat>
         where TAggregate : struct, IComparable<TAggregate>
     {
+        private readonly object _locker = new object();
         /// <summary>
         /// The collection of statistics, made available in a read-only fashion
         /// </summary>
@@ -63,19 +89,21 @@ namespace ElevatorApp.Util
 
         #region Properties and Statistical values
 
+        /// <summary>
+        /// The name of the statistic
+        /// </summary>
         public string Name { get; }
 
         /// <summary>
-        /// The minimum value encountered
+        /// Gets the minimum of all the collected values
         /// </summary>
         public TStat Min
         {
             get => _min;
             private set => SetProperty(ref _min, value);
         }
-
         /// <summary>
-        /// The maximum value encountered
+        /// Gets the maximum of all the collected values
         /// </summary>
         public TStat Max
         {
@@ -208,20 +236,24 @@ namespace ElevatorApp.Util
         /// <param name="item">The next statistical value to be added</param>
         public void Add(TStat item)
         {
-            _stats.Add(item);
-            Count = _stats.Count;
-
-            if (item.CompareTo(Max) > 0) // item > Max
+            // Lock here so that all of the aggregated values will by atomic per added item
+            lock (_locker)
             {
-                Max = item;
-            }
-            
-            if (item.CompareTo(Min) < 0) // item < Min
-            {
-                Min = item;
-            }
+                _stats.Add(item);
+                this.Count = _stats.Count;
 
-            Average = CalculateAverage();
+                if (item.CompareTo(Max) > 0) // item > Max
+                {
+                    this.Max = item;
+                }
+
+                if (item.CompareTo(Min) < 0) // item < Min
+                {
+                    this.Min = item;
+                }
+
+                this.Average = CalculateAverage();
+            }
         }
 
         /// <summary>
@@ -235,16 +267,30 @@ namespace ElevatorApp.Util
                 this.Add(item);
             }
         }
-        
-        protected virtual ToStringMethod<TStat> StateToString { get; } = t => t.ToString();
+
+        /// <summary>
+        /// A delegate function to convert an item of type <typeparamref name="TStat"/> to a string. 
+        /// 
+        /// Specifies the format of such values.
+        /// 
+        /// Defaults to <see cref="object.ToString"/>
+        /// </summary>
+        protected virtual ToStringMethod<TStat> StatToString { get; } = t => t.ToString();
+
+        /// <summary>
+        /// A delegate function to convert an item of type <typeparamref name="TAggregate"/> to a string. 
+        /// 
+        /// Specifies the format of such values.
+        /// 
+        /// Defaults to <see cref="object.ToString"/>
+        /// </summary>
         protected virtual ToStringMethod<TAggregate> AggregateToString { get; } = t => t.ToString();
 
         /// <inheritdoc/>
         [Pure]
         public override string ToString()
         {
-
-            return string.Format($@"Average = {AggregateToString(Average)}; Min = {StateToString(Min)}; Max = {StateToString(Max)}; Count = {Count}");
+            return string.Format($@"Average = {AggregateToString(Average)}; Min = {StatToString(Min)}; Max = {StatToString(Max)}; Count = {Count}");
         }
     }
 
@@ -263,6 +309,7 @@ namespace ElevatorApp.Util
         /// <summary>
         /// Constructs a new <see cref="SimpleStatistic{T}"/> object, with the given collection as the initial values
         /// </summary>
+        /// <param name="name"></param>
         /// <param name="collection"></param>
         protected SimpleStatistic(string name, IEnumerable<T> collection) : base(name, collection)
         {

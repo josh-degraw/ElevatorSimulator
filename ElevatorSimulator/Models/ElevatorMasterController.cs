@@ -28,7 +28,7 @@ namespace ElevatorApp.Models
         private readonly Elevator _elevator = new Elevator();
 
         private readonly AsyncObservableCollection<Floor> _floors = new AsyncObservableCollection<Floor>(Enumerable.Range(1, 4).Reverse().Select(a => new Floor(a)));
-      //  private readonly AsyncObservableCollection<int> _floorsRequested = new AsyncObservableCollection<int>();
+        //  private readonly AsyncObservableCollection<int> _floorsRequested = new AsyncObservableCollection<int>();
 
         #endregion
 
@@ -69,16 +69,7 @@ namespace ElevatorApp.Models
                 for (int i = collection.Count; i < value; i++)
                 {
                     T newItem = generator(i);
-
-                    if (newItem is Elevator e)
-                    {
-                        this.SubscribeElevator(e).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        newItem.Subscribe(this);
-                    }
-
+                    newItem.Subscribe(this);
                     collection.Add(newItem);
                 }
             }
@@ -111,66 +102,20 @@ namespace ElevatorApp.Models
 
         #endregion
 
-        #region Events
-
-
-        /// <summary>
-        /// Called when 
-        /// </summary>
-        public event EventHandler<int> ElevatorRequested;
-        #endregion
-
-        private readonly SoundPlayer soundPlayer = new SoundPlayer { Stream = Resources.elevatorDing };
-
         #region Methods
 
-        #region Private methods
         /// <summary>
-        /// Runs when an elevator is has arrived
-        /// </summary>
-        /// <param name="elevator"></param>
-        private async Task ElevatorArrived(Elevator elevator, Direction direction)
-        {
-            soundPlayer.Play();
-
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Subscribes the elevators to this <see cref="ElevatorMasterController"/>
+        /// Runs the necessary functions <see cref="Models.Elevator"/> respond appropriately to this <see cref="ElevatorMasterController"/>
         /// </summary>
         /// <returns></returns>
         public async Task Init()
         {
             Logger.LogEvent($"Initializing {nameof(ElevatorMasterController)}");
 
-            await SubscribeElevator(this.Elevator);
-            await Task.WhenAll(this.Floors.Select(floor => floor.CallPanel.Subscribe(this)));
+            await this.Elevator.Subscribe(this);
 
-            Logger.LogEvent($"Initialized {nameof(ElevatorMasterController)}");
-        }
-
-        /// <summary>
-        /// Runs the necessary functions to have the given <see cref="Models.Elevator"/> respond appropriately to this <see cref="ElevatorMasterController"/>
-        /// </summary>
-        /// <param name="elevator">The elevator to be subscribed</param>
-        private async Task SubscribeElevator(Elevator elevator)
-        {
-            await elevator.Subscribe(this);
-
-            elevator.Arrived += async (a, b) =>
-            {
-                try
-                {
-                    await this.ElevatorArrived(elevator, b.Direction);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex);
-                }
-            };
             await Task.WhenAll(this.Floors.Select(floor => floor.Subscribe(this)));
+            Logger.LogEvent($"Initialized {nameof(ElevatorMasterController)}");
         }
 
         #endregion
@@ -182,7 +127,7 @@ namespace ElevatorApp.Models
         {
         }
 
- 
+
     }
 
 }

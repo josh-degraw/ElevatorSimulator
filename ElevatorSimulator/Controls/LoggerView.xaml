@@ -10,14 +10,15 @@
              MinWidth="450"  
              MinHeight="100"
              x:Name="loggerView"
-             DataContext="{x:Static util:Logger.Instance}">
+             
+             >
+    <!--DataContext="{x:Static util:Logger.Instance}"-->
     <Grid Height="{Binding ElementName=loggerView, Path=Height}" Margin="0,0,0,10" >
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <ListView Grid.Row="0" x:Name="_scrollViewer" 
-                  ItemsSource="{Binding Events}" 
+        <ListView Grid.Row="0" x:Name="listViewEvents" 
                   
                   VerticalAlignment="Stretch" 
                   ScrollViewer.CanContentScroll="True" 
@@ -48,7 +49,7 @@
                 </ListView.ItemTemplate>-->
         </ListView>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" >
+        <StackPanel Grid.Row="1" Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Loaded="StackPanel_Loaded" >
             <Button Padding="15,4" Margin="25,0,15,0" Click="Button_Click">Clear</Button>
             <Button Padding="15,4" IsEnabled="False">Save</Button>
         </StackPanel>

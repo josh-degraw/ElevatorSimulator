@@ -36,7 +36,7 @@ namespace ElevatorApp.Controls
         /// <param name="e"></param>
         private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            var viewer = VisualTreeHelperEx.FindDescendantByType<ScrollViewer>(_scrollViewer);
+            var viewer = VisualTreeHelperEx.FindDescendantByType<ScrollViewer>(listViewEvents);
             if (viewer != null)
             { 
                 // User scroll event : set or unset auto-scroll mode
@@ -71,6 +71,9 @@ namespace ElevatorApp.Controls
         }
 
         private readonly object _locker = new object();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoggerView"/> class.
+        /// </summary>
         public LoggerView()
         {
             BindingOperations.EnableCollectionSynchronization(Logger.Events, _locker);
@@ -79,8 +82,25 @@ namespace ElevatorApp.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Logger.Instance.ClearItems();
+            listViewEvents.Items.Clear();
         }
 
+        private void StackPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            Logger.Instance.ItemLogged -= ItemLogged;
+            Logger.Instance.ItemLogged += ItemLogged;
+        }
+
+        private void ItemLogged(object sender, string message)
+        {
+            try
+            {
+                Dispatcher.Invoke(() => listViewEvents.Items.Add(message));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
     }
 }

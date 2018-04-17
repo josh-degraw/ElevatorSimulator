@@ -21,6 +21,8 @@ namespace ElevatorApp.Models
     /// </summary>
     public class Floor : ModelBase, ISubcriber<ElevatorMasterController>
     {
+        private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
+
         #region Backing fields
         private int _floorNum = 1;
         private ElevatorCallPanel _callPanel = new ElevatorCallPanel(1);
@@ -105,7 +107,7 @@ namespace ElevatorApp.Models
         /// Adds a passenger to the list of waiting passengers
         /// </summary>
         /// <param name="destination"></param>
-        public void QueuePassenger(int destination)
+        private void QueuePassenger(int destination)
         {
             var passenger = new Passenger(this.FloorNumber, destination);
 
@@ -147,6 +149,7 @@ namespace ElevatorApp.Models
             }
 
             Logger.LogEvent("Subscribing floor", ("Subscription number", subscriptionCount));
+
             _waitingPassengers.CollectionChanged += onPassengerAdded;
             elevator.PassengerAdded += removePassengerFromQueue;
             elevator.Door.Opened += addPassengersToElevator;
@@ -169,19 +172,20 @@ namespace ElevatorApp.Models
                     {
                         try
                         {
-                            if (elevator.Door.DoorState == DoorState.Opened)
+                            if (elevator.Door.DoorState != DoorState.Opened)
+                            {
+                                
+                                elevator.Door.RequestOpen();
+                            }
+                            else
                             {
                                 IEnumerable<Passenger> departing = getPassengersToMove(elevator);
                                 await _addPassengersToElevator(departing, elevator).ConfigureAwait(false);
                             }
-                            else
-                            {
-                                await elevator.Door.RequestOpen().ConfigureAwait(false);
-                            }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine(ex);
+                            elevator.OnError(ex);
                         }
                     }
                 }
@@ -189,24 +193,31 @@ namespace ElevatorApp.Models
 
             async void addPassengersToElevator(object _, DoorStateChangeEventArgs args)
             {
-                if (elevator.CurrentFloor == this.FloorNumber)
+                try
                 {
-                    try
+                    if (elevator.CurrentFloor == this.FloorNumber)
                     {
                         await _addPassengersToElevator(elevator).ConfigureAwait(false);
                     }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    elevator.OnError(ex);
                 }
             }
 
             void Elevator_Approaching(object sender, ElevatorApproachingEventArgs e)
             {
-                if (e.IntermediateFloor == this.FloorNumber)
+                try
                 {
-                    e.ShouldStop = getPassengersToMove(elevator).Any();
+                    if (e.IntermediateFloor == this.FloorNumber)
+                    {
+                        e.ShouldStop = getPassengersToMove(elevator).Any();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    elevator.OnError(ex);
                 }
             }
 
@@ -274,7 +285,6 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         private async Task _addPassengersToElevator(IEnumerable<Passenger> departing, Elevator elevator)
         {
-            var mutex = new SemaphoreSlim(1);
             await mutex.WaitAsync().ConfigureAwait(false);
             _adding = true;
             try
@@ -301,8 +311,6 @@ namespace ElevatorApp.Models
         /// </summary>
         IEnumerable<Passenger> getPassengersToMove(Elevator elevator)
         {
-            var mutex = new SemaphoreSlim(1);
-            mutex.Wait();
             try
             {
                 var direction = elevator.Direction;
@@ -324,7 +332,7 @@ namespace ElevatorApp.Models
             }
             finally
             {
-                mutex.Release();
+                //       mutex.Release();
             }
 
             return Enumerable.Empty<Passenger>();

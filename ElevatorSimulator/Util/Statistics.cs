@@ -32,7 +32,7 @@ namespace ElevatorApp.Util
         ///<inheritdoc/>
         protected override Duration SubtractItems(Duration left, Duration right) => left - right;
 
-        protected override ToStringMethod<Duration> StateToString { get; } = d => d.ToString("mm:ss", null);
+        protected override ToStringMethod<Duration> StatToString { get; } = d => d.ToString("mm:ss", null);
 
         protected override ToStringMethod<Duration> AggregateToString { get; } = d => d.ToString("mm:ss", null);
     }

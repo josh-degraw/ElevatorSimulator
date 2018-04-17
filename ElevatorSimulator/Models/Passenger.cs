@@ -8,11 +8,16 @@ using NodaTime;
 
 namespace ElevatorApp.Models
 {
+    /// <summary>
+    /// Represents a Passenger
+    /// </summary>
+    /// <seealso cref="ElevatorApp.Models.ModelBase" />
     public class Passenger : ModelBase
     {
         private static int TotalPassengerCount;
 
         #region Timings
+
         /// <summary>
         /// The instant the passenger was created and therefore started waiting for the elevator
         /// </summary>
@@ -43,6 +48,7 @@ namespace ElevatorApp.Models
         /// Represents how long the <see cref="Passenger"/> spent in the <see cref="Elevator"/>
         /// </summary>
         public Duration TimeSpentInElevator => Exited - Entered;
+
         #endregion
 
         /// <summary>

@@ -44,7 +44,7 @@ namespace ElevatorApp.Util
         {
             this.AddDistinct(next);
         }
-        
+
         /// <summary>
         /// Tries to remove the first item from the collection, mimicking the behavior of <see cref="ConcurrentQueue{T}"/>
         /// </summary>
@@ -112,6 +112,7 @@ namespace ElevatorApp.Util
             }
         }
 
+        private readonly object _distinctLock = new object();
         /// <summary>
         /// Adds an item if it does not already exist in the collection
         /// </summary>
@@ -120,13 +121,44 @@ namespace ElevatorApp.Util
         /// <remarks>Written by Josh DeGraw</remarks>
         public bool AddDistinct(T item)
         {
-            if (!this.Contains(item))
-            {
-                this.Add(item);
-                return true;
-            }
+            ThreadView view = _threadView.Value;
+            if (view.dissalowReenterancy)
+                throwReenterancyException();
 
-            return false;
+            _lock.EnterUpgradeableReadLock();
+
+            try
+            {
+                bool contains = false;
+
+                contains = _collection.Contains(item);
+                if (contains)
+                    return false;
+
+                _lock.EnterWriteLock();
+                try
+                {
+                    _version++;
+                    _collection.Add(item);
+                }
+                catch (Exception ex)
+                {
+                    view.waitingEvents.Clear();
+                    throw;
+                }
+                finally
+                {
+                    _lock.ExitWriteLock();
+                }
+            }
+            finally
+            {
+                _lock.ExitUpgradeableReadLock();
+            }
+            dispatchWaitingEvents(view);
+
+            return true;
+
         }
 
 
@@ -261,7 +293,15 @@ namespace ElevatorApp.Util
         #endregion
 
         #region Read methods
+
         /// <inheritdoc />
+        /// <summary>
+        /// Determines whether the <see cref="T:System.Collections.Generic.ICollection`1" /> contains a specific value.
+        /// </summary>
+        /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1" />.</param>
+        /// <returns>
+        ///   <see langword="true" /> if <paramref name="item" /> is found in the <see cref="T:System.Collections.Generic.ICollection`1" />; otherwise, <see langword="false" />.
+        /// </returns>
         public bool Contains(T item)
         {
             _lock.EnterReadLock();
@@ -275,7 +315,11 @@ namespace ElevatorApp.Util
             }
         }
 
+
         /// <inheritdoc />
+        /// <summary>
+        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1" />.
+        /// </summary>
         public int Count
         {
             get
@@ -292,6 +336,13 @@ namespace ElevatorApp.Util
             }
         }
 
+        /// <summary>
+        /// Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1" />.
+        /// </summary>
+        /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1" />.</param>
+        /// <returns>
+        /// The index of <paramref name="item" /> if found in the list; otherwise, -1.
+        /// </returns>
         /// <inheritdoc />
         public int IndexOf(T item)
         {
@@ -311,6 +362,10 @@ namespace ElevatorApp.Util
 
         #region Write methods -- VERY repetitive, don't say I didn't warn you
 
+        /// <summary>
+        /// Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1" />.
+        /// </summary>
+        /// <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1" />.</param>
         /// <inheritdoc />
         public void Add(T item)
         {
@@ -335,6 +390,10 @@ namespace ElevatorApp.Util
             dispatchWaitingEvents(view);
         }
 
+        /// <summary>
+        /// Adds the range.
+        /// </summary>
+        /// <param name="items">The items.</param>
         /// <inheritdoc />
         public void AddRange(IEnumerable<T> items)
         {
@@ -360,7 +419,15 @@ namespace ElevatorApp.Util
             dispatchWaitingEvents(view);
         }
 
+
         /// <inheritdoc />
+        /// <summary>
+        /// Adds an item to the <see cref="T:System.Collections.IList" />.
+        /// </summary>
+        /// <param name="value">The object to add to the <see cref="T:System.Collections.IList" />.</param>
+        /// <returns>
+        /// The position into which the new element was inserted, or -1 to indicate that the item was not inserted into the collection.
+        /// </returns>
         int IList.Add(object value)
         {
             ThreadView view = _threadView.Value;
@@ -387,6 +454,11 @@ namespace ElevatorApp.Util
         }
 
         /// <inheritdoc />
+        /// <summary>
+        /// Inserts an item to the <see cref="T:System.Collections.Generic.IList`1" /> at the specified index.
+        /// </summary>
+        /// <param name="index">The zero-based index at which <paramref name="item" /> should be inserted.</param>
+        /// <param name="item">The object to insert into the <see cref="T:System.Collections.Generic.IList`1" />.</param>
         public void Insert(int index, T item)
         {
             ThreadView view = _threadView.Value;
@@ -437,6 +509,10 @@ namespace ElevatorApp.Util
         }
 
         /// <inheritdoc />
+        /// <summary>
+        /// Removes the <see cref="T:System.Collections.Generic.IList`1" /> item at the specified index.
+        /// </summary>
+        /// <param name="index">The zero-based index of the item to remove.</param>
         public void RemoveAt(int index)
         {
             ThreadView view = _threadView.Value;
@@ -460,6 +536,9 @@ namespace ElevatorApp.Util
             dispatchWaitingEvents(view);
         }
 
+        /// <summary>
+        /// Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1" />.
+        /// </summary>
         /// <inheritdoc />
         public void Clear()
         {
@@ -483,7 +562,11 @@ namespace ElevatorApp.Util
             }
             dispatchWaitingEvents(view);
         }
-
+        /// <summary>
+        /// Moves the specified old index.
+        /// </summary>
+        /// <param name="oldIndex">The old index.</param>
+        /// <param name="newIndex">The new index.</param>
         /// <inheritdoc />
         public void Move(int oldIndex, int newIndex)
         {
@@ -798,7 +881,7 @@ namespace ElevatorApp.Util
             info.AddValue("values", ToArray(), typeof(T[]));
         }
         #endregion
-       
+
         /// <summary>
         /// <para>
         /// Wrapper around an event so that any events added from a Dispatcher thread are invoked on that thread. This means
@@ -935,8 +1018,16 @@ namespace ElevatorApp.Util
             /// </summary>
             public void raise(object sender, TArgs args)
             {
-                EventHandler<TArgs> evt = _event;
-                evt?.Invoke(sender, args);
+                try
+                {
+
+                    EventHandler<TArgs> evt = _event;
+                    evt?.Invoke(sender, args);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
             }
 
             private static Dispatcher getDispatcherOrNull()
@@ -957,16 +1048,23 @@ namespace ElevatorApp.Util
 
                 public void invoke(object sender, TArgs args)
                 {
-                    if (dispatcher == null || dispatcher == getDispatcherOrNull())
-                        _invoke(handler, sender, args);
-                    else
-                        // ReSharper disable once AssignNullToNotNullAttribute
-                        dispatcher.BeginInvoke(handler as Delegate, DispatcherPriority.DataBind, sender, args);
+                    try
+                    {
+                        if (dispatcher == null || dispatcher == getDispatcherOrNull())
+                            _invoke(handler, sender, args);
+                        else
+                            // ReSharper disable once AssignNullToNotNullAttribute
+                            dispatcher.BeginInvoke(handler as Delegate, DispatcherPriority.DataBind, sender, args);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
                 }
             }
         }
     }
     #endregion
 
-    
+
 }

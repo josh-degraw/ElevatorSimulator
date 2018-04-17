@@ -159,7 +159,6 @@
     <Compile Include="Util\ILogger.cs" />
     <Compile Include="Util\LocalSystemClock.cs" />
     <Compile Include="Util\Logger.cs" />
-    <Compile Include="Util\ObservableConcurrentQueue.cs" />
     <Compile Include="Util\Statistic.cs" />
     <Compile Include="Util\Statistics.cs">
       <DependentUpon>Statistic.cs</DependentUpon>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
@@ -32,11 +33,12 @@ namespace ElevatorApp.Models
     /// </summary>
     public class Door : ModelBase, ISubcriber<Elevator>
     {
+        //  private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
+
         /// <summary>
         /// The number of seconds it takes for the <see cref="Door"/> to close and to open
         /// </summary>
         public const int TRANSITION_TIME_SECONDS = 2;
-
 
         /// <summary>
         /// The number of seconds the <see cref="Door"/> stays open
@@ -131,13 +133,38 @@ namespace ElevatorApp.Models
             }
         }
 
+        private bool _isCloseRequested = false;
+
+        public bool IsCloseRequested
+        {
+            get => _isCloseRequested;
+            private set => SetProperty(ref _isCloseRequested, value);
+        }
+
+        private bool _isOpenRequested = false;
+
+        public bool IsOpenRequested
+        {
+            get => _isOpenRequested;
+            private set => SetProperty(ref _isOpenRequested, value);
+        }
+
         /// <summary>
         /// Constructs a new <see cref="Door"/>
         /// </summary>
         public Door()
         {
-            this.OpenRequested += delegate { Logger.LogEvent("Door Open requested"); };
-            this.CloseRequested += delegate { Logger.LogEvent("Door Close requested"); };
+            this.OpenRequested += delegate
+            {
+                IsOpenRequested = true;
+                Logger.LogEvent("Door Open requested");
+            };
+            this.CloseRequested += delegate
+            {
+                IsCloseRequested = true;
+                Logger.LogEvent("Door Close requested");
+            };
+
             this.Closing += delegate { Logger.LogEvent("Door Closing"); };
             this.Closed += delegate { Logger.LogEvent("Door Closed"); };
 
@@ -146,20 +173,41 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
+        /// Helper property to know if the door is either already opened or in the process of opening
+        /// </summary>
+        public bool IsOpenedOrOpening => this.DoorState.EqualsAny(DoorState.Opened, DoorState.Opening);
+
+        /// <summary>
+        /// Helper property to know if the door is either already closed or in the process of closing
+        /// </summary>
+        public bool IsClosedOrClosing => this.DoorState.EqualsAny(DoorState.Closed, DoorState.Closing);
+
+
+        /// <summary>
         /// Ask the <see cref="Door"/> to open
         /// </summary>
-        public async Task RequestOpen()
+        public async void RequestOpen()
         {
-            await RequestOpen(false).ConfigureAwait(false);
+            try
+            {
+                await RequestOpen(false).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         private async Task RequestOpen(bool fromRequestClose)
         {
+            // If the door is already opened, don't do anything
+            if (this.IsOpenedOrOpening)
+                return;
+
             try
             {
                 //Trace.TraceInformation(Environment.StackTrace);
-                // If the door is already opened, don't do anything
-                if (this.IsNotOpenedOrOpening)
+
                 {
                     var args = new DoorStateChangeEventArgs();
 
@@ -172,19 +220,19 @@ namespace ElevatorApp.Models
 
                         if (!args.CancelOperation)
                         {
-                            await Task.Delay(TRANSITION_TIME);
+                            await Task.Delay(TRANSITION_TIME).ConfigureAwait(false);
 
                             if (this.DoorState != DoorState.Opening)
                                 throw new InvalidOperationException("Do not modify the door state while it is transitioning");
 
                             this.DoorState = DoorState.Opened;
                             this.Opened?.Invoke(this, args);
-                            await Task.Delay(TIME_SPENT_OPEN);
+                            await Task.Delay(TIME_SPENT_OPEN).ConfigureAwait(false);
                         }
                     }
 
-                    if (!fromRequestClose)
-                        await this.RequestClose();
+                    this.RequestClose();
+
                 }
 
             }
@@ -194,28 +242,50 @@ namespace ElevatorApp.Models
             }
         }
 
-        /// <summary>
-        /// Helper property to know if the door is either already opened or in the process of opening
-        /// </summary>
-        public bool IsNotOpenedOrOpening => this.DoorState != DoorState.Opened && DoorState != DoorState.Opening;
 
-        /// <summary>
-        /// Helper property to know if the door is either already closed or in the process of closing
-        /// </summary>
-        public bool IsNotClosedOrClosing => this.DoorState != DoorState.Closed && this.DoorState != DoorState.Closing;
+        public async Task WaitForDoorToClose()
+        {
+            if (DoorState == DoorState.Closed)
+                return;
 
+            if (DoorState != DoorState.Closing)
+                this.RequestClose();
 
+            while (DoorState != DoorState.Closed)
+            {
+                await Task.Delay(100).ConfigureAwait(false);
+            }
+        }
+
+        public async Task WaitForDoorToOpen()
+        {
+            if (DoorState == DoorState.Opened)
+                return;
+
+            if (DoorState != DoorState.Opening)
+                this.RequestOpen();
+
+            while (DoorState != DoorState.Opened)
+            {
+                await Task.Delay(100).ConfigureAwait(false);
+            }
+        }
         /// <summary>
         /// Ask the <see cref="Door"/> to close
         /// </summary>
         /// <returns></returns>
-        public async Task RequestClose()
+        public async void RequestClose()
         {
-            //Trace.TraceInformation(Environment.StackTrace);
-            var args = new DoorStateChangeEventArgs();
             // If the door is already closed, don't do anything
-            if (this.IsNotClosedOrClosing)
+            if (this.IsClosedOrClosing)
+                return;
+
+            // await mutex.WaitAsync().ConfigureAwait(false);
+            try
             {
+                //Trace.TraceInformation(Environment.StackTrace);
+                var args = new DoorStateChangeEventArgs();
+
                 this.CloseRequested?.Invoke(this, args);
                 if (!args.CancelOperation)
                 {
@@ -224,20 +294,25 @@ namespace ElevatorApp.Models
 
                     if (!args.CancelOperation)
                     {
-                        await Task.Delay(TRANSITION_TIME);
+                        await Task.Delay(TRANSITION_TIME).ConfigureAwait(false);
                     }
                 }
 
                 if (args.CancelOperation)
                 {
-                    await this.RequestOpen(true);
+                    await this.RequestOpen(true).ConfigureAwait(false);
+                    return; // Return here because request open calls back here, so we don't need to do the rest again
+                }
+
+                if (this.DoorState == DoorState.Closing)
+                {
+                    this.DoorState = DoorState.Closed;
+                    this.Closed?.Invoke(this, args);
                 }
             }
-
-            if (this.DoorState == DoorState.Closing)
+            finally
             {
-                this.DoorState = DoorState.Closed;
-                this.Closed?.Invoke(this, args);
+                //mutex.Release();
             }
         }
 
@@ -258,11 +333,11 @@ namespace ElevatorApp.Models
             try
             {
 
-                elevator.Arrived += async (e, args) =>
+                elevator.Arrived += (e, args) =>
                 {
                     try
                     {
-                        await this.RequestOpen();
+                        this.RequestOpen();
                     }
                     catch (Exception ex)
                     {

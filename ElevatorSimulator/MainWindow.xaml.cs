@@ -11,6 +11,7 @@ namespace ElevatorApp
     public partial class MainWindow : RibbonWindow
     {
         private readonly object _locker = new object();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -50,15 +51,15 @@ namespace ElevatorApp
         private void Stats_Click(object sender, RoutedEventArgs e)
         {
 
-
-            MessageBox.Show("Elevator Simulator Statistics" + "\n\n" +
-                "Average Passenger Wait Time: " + Stats.Instance.GetAverageWaitTime().Seconds + "s \n" +
-                "Minimum Passenger Wait Time: " + Stats.Instance.GetMinWaitTime().Seconds + "s \n" +
-                "Maximum Passenger Wait Time: " + Stats.Instance.GetMaxWaitTime().Seconds + "s"); 
-               
+            MessageBox.Show($@"
+Passenger Wait Times:
+Average: {Stats.Instance.PassengerWaitTimes.Average.Seconds}s 
+Minimum: {Stats.Instance.PassengerWaitTimes.Min.Seconds}s
+Maximum: {Stats.Instance.PassengerWaitTimes.Max.Seconds}s",
+                "Elevator Simulator Statistics"); 
+              
           
-            Stats.Instance.GetAverageWaitTime();
-            Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.GetAverageWaitTime());
+            Logger.LogEvent("Average Wait Time: " + Stats.Instance.PassengerWaitTimes.Average);
         }
 
         private void LoggerView_Loaded(object sender, RoutedEventArgs e)
@@ -73,7 +74,6 @@ namespace ElevatorApp
 
         private void ElevatorControl_Loaded(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }

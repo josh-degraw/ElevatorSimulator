@@ -11,16 +11,15 @@ namespace ElevatorApp.Models
     /// </summary>
     public abstract class ModelBase : INotifyPropertyChanged
     {
+        private readonly object _modelBaseLocker = new object();
+
         /// <summary>
         /// If <see langword="true"/>, any time a property value changes, an event is logged.
         /// </summary>
         private static bool LogAllPropertyChanges { get; set; } = false;
 
         /// <inheritdoc />
-        public event PropertyChangedEventHandler PropertyChanged = (sender, args) =>
-        {
-
-        };
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Sets the given backing property to the new value (if it has changed), 
@@ -45,15 +44,18 @@ namespace ElevatorApp.Models
         [NotifyPropertyChangedInvocator]
         protected virtual bool SetProperty<T>(ref T prop, T value, bool alwaysLog = false, [CallerMemberName] string propertyName = null)
         {
-            if (prop.Equals(value))
+            lock (_modelBaseLocker)
             {
-                return false;
+                if (prop.Equals(value))
+                {
+                    return false;
+                }
+
+                if (LogAllPropertyChanges || alwaysLog)
+                    Logger.LogEvent($"Property Changed: {propertyName}.", ($"{prop}", value?.ToString()));
+
+                prop = value;
             }
-
-            if (LogAllPropertyChanges || alwaysLog)
-                Logger.LogEvent($"Property Changed: {propertyName}.", ($"{prop}", value?.ToString()));
-
-            prop = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             return true;
         }

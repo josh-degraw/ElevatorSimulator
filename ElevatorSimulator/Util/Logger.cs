@@ -25,10 +25,15 @@ namespace ElevatorApp.Util
     /// </summary>
     public class Logger : ModelBase, ILogger
     {
-        private object _locker = new object();
+        private readonly object _locker = new object();
+        private readonly ReaderWriterLockSlim _rwLock = new ReaderWriterLockSlim();
+
+        /// <summary>
+        /// Prevents a default instance of the <see cref="Logger"/> class from being created.
+        /// </summary>
         private Logger()
         {
-           // Trace.Listeners.Add(new EventTraceListener("ElevatorSimulatorEvents.log"));
+            // Trace.Listeners.Add(new EventTraceListener("ElevatorSimulatorEvents.log"));
         }
 
         /// <summary>
@@ -39,27 +44,35 @@ namespace ElevatorApp.Util
         /// <summary>
         /// Invoked whenever a new <see cref="Event"/> is logged. Can be used to trigger calculations, update text fields, etc.
         /// </summary>
-        public event LogEventHandler ItemLogged = async (sender, @event) =>
-        {
-            var self = (Logger)Instance;
-
-            if (self._loggers.Any())
-            {
-                await Task.WhenAll(self._loggers.Select(writer => writer.WriteLineAsync(@event.ToString())))
-                    .ConfigureAwait(false);
-            }
-
-          //  Debug.WriteLine(@event.ToString());
-        };
+        public event LogEventHandler ItemLogged;
 
         public static void LogStackTrace()
         {
             Trace.TraceInformation(Environment.StackTrace);
         }
 
-        private readonly ConcurrentBag<TextWriter> _loggers = new ConcurrentBag<TextWriter>();
 
         private readonly AsyncObservableCollection<Event> _events = new AsyncObservableCollection<Event>();
+
+        /// <summary>
+        /// Gets the count.
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+
+                _rwLock.EnterReadLock();
+                try
+                {
+                    return _events.Count;
+                }
+                finally
+                {
+                    _rwLock.ExitReadLock();
+                }
+            }
+        }
 
         /// <summary>
         /// A collection of the <see cref="Event"/>s that have been logged 
@@ -69,7 +82,21 @@ namespace ElevatorApp.Util
         /// <summary>
         /// A collection of the <see cref="Event"/>s that have been logged 
         /// </summary>
-        IReadOnlyCollection<Event> ILogger.Events => _events;
+        IReadOnlyCollection<Event> ILogger.Events
+        {
+            get
+            {
+                _rwLock.EnterReadLock();
+                try
+                {
+                    return _events;
+                }
+                finally
+                {
+                    _rwLock.ExitReadLock();
+                }
+            }
+        }
 
         /// <summary>
         /// Log a new <see cref="Event"/>
@@ -83,7 +110,7 @@ namespace ElevatorApp.Util
         {
             Instance.LogEvent(name, parameters);
         }
-        
+
         void ILogger.LogEvent(string name, params (object, object)[] parameters)
         {
             ((ILogger)this).LogEvent(new Event(name, parameters));
@@ -91,24 +118,33 @@ namespace ElevatorApp.Util
 
         void ILogger.LogEvent(Event message, int retryTimes = 3)
         {
-            var prevCount = _events.Count;
+            int prevCount = this.Count;
             int i = 0;
-            do
-            {
-                try
-                {
-                    _events.Add(message);
-                    ItemLogged?.Invoke(this, message);
-                }
-                catch (Exception e)
-                {
-                    if (prevCount == _events.Count)
-                    {
-                        Debug.Write(e.Message);
-                    }
-                }
+            Console.WriteLine(message);
+            ItemLogged?.Invoke(this, message.ToString());
+            //do
+            //{
+            //    if (_rwLock.TryEnterWriteLock())
+            //    {
+            //        try
+            //        {
+            //            _events.Add(message);
+            //            ItemLogged?.Invoke(this, message);
+            //        }
+            //        catch (Exception e)
+            //        {
+            //            if (prevCount == _events.Count)
+            //            {
+            //                Console.WriteLine(e.Message);
+            //            }
+            //        }
+            //        finally
+            //        {
+            //            _rwLock.ExitWriteLock();
+            //        }
+            //    }
 
-            } while (_events.Count == prevCount && i++ < retryTimes);
+            //} while (_events.Count == prevCount && i++ < retryTimes);
 
         }
 
@@ -118,16 +154,23 @@ namespace ElevatorApp.Util
         /// <param name="writer"></param>
         public void AddLogger(TextWriter writer)
         {
-            _loggers.Add(writer);
+            //_loggers.Add(writer);
         }
-
 
         /// <summary>
         /// Removes all <see cref="Event"/>s logged up to this point.
         /// </summary>
         public void ClearItems()
         {
-            this._events.Clear();
+            _rwLock.EnterWriteLock();
+            try
+            {
+                this._events.Clear();
+            }
+            finally
+            {
+                _rwLock.ExitWriteLock();
+            }
         }
 
         /// <summary>
@@ -135,7 +178,7 @@ namespace ElevatorApp.Util
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="str"></param>
-        public delegate void LogEventHandler(object sender, Event str);
+        public delegate void LogEventHandler(object sender, string str);
     }
 
     /// <summary>
@@ -181,7 +224,7 @@ namespace ElevatorApp.Util
         {
             return this.ToString(true);
         }
-        
+
         public string ToString(bool includeTimeStamp)
         {
             string baseStr = $"{this.Name} ";
