@@ -521,7 +521,7 @@ namespace ElevatorApp.Models
                 this._passengers.Remove(passenger);
                 passenger.State = PassengerState.Out;
                 PassengerExited?.Invoke(this, passenger);
-                Stats.Instance.AddPassengerTime(passenger.TimeSpentInElevator + passenger.TimeWaiting);
+                Stats.Instance.AddPassengerTime(passenger.TimeWaiting, passenger.TimeSpentInElevator, passenger.TotalTime);
             }
             finally
             {

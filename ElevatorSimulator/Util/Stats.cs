@@ -15,59 +15,139 @@ namespace ElevatorApp.Util
     {
 
         public DurationStatistic PassengerWaitTimes { get; } = new DurationStatistic("Passenger wait times");
+        public DurationStatistic PassengerRideTimes { get; } = new DurationStatistic("Passenger ride times");
+        public DurationStatistic PassengerTotalTimes { get; } = new DurationStatistic("Passenger ride times");
+        public DurationStatistic TempTimes { get; } = new DurationStatistic("Temporary holder for times");
+
 
         private readonly ICollection<Duration> passengerWaitTimes;
+        private readonly ICollection<Duration> passengerRideTimes; // still need to set all this up
+        private readonly ICollection<Duration> passengerTotalTimes;// still need to set all this up 
+        private ICollection<Duration> tempTimes;
+
         public static Stats Instance { get; } = new Stats();
 
         private Stats()
         {
             passengerWaitTimes = new Collection<Duration>();
-            
+            passengerRideTimes = new Collection<Duration>();
+            passengerTotalTimes = new Collection<Duration>();
+            tempTimes = new Collection<Duration>();
         }
+
 
         /// <summary>
         /// This function takes a Duration value and adds it to the collection of passenger wait times. It should be used whenever a passenger exits an elevator
         /// </summary>
-        /// <param name="time"></param>
-        public void AddPassengerTime(Duration waitTime)
+        /// <param name="waitTime"></param>
+        /// <param name="rideTime"></param>
+        /// <param name="totalTime"></param>
+        
+        public void AddPassengerTime(Duration waitTime, Duration rideTime, Duration totalTime)     // passes this in and knows which to use
         {
-            passengerWaitTimes.Add(waitTime);
+                passengerWaitTimes.Add(waitTime);
+            
+                passengerRideTimes.Add(rideTime);
            
+                passengerTotalTimes.Add(totalTime);
+            
         }
+        // i need to potentially change this to take a duration and an int to determine which stat to add to
+        // if int == 1 do the wait, it == 2 do the ride, etc
+        // make sure these new functions are the right visibility
+
+
+        // make the functions here usable by all types by passing in the kind you want
 
         /// <summary>
         /// This function returns a Duration representing the average wait time for passengers in the system.
         /// </summary>
         /// <returns></returns>
-        public Duration GetAverageWaitTime()
+        public Duration GetAverageTime(int pass) 
         {
-            Duration avg = new Duration();
-            if (passengerWaitTimes.Count > 0)
+
+            Duration avg = new Duration(); 
+            if (pass == 1)
             {
-                //Aggregate the durations and then return an average
-                foreach (Duration d in passengerWaitTimes)
+                if (passengerWaitTimes.Count > 0)
                 {
-                    avg += d;
+                    //Aggregate the durations and then return an average
+                    foreach (Duration d in passengerWaitTimes)
+                    {
+                        avg += d;
+                    }
+                    avg /= passengerWaitTimes.Count;
+                    return avg;
                 }
-                avg /= passengerWaitTimes.Count;
-                return avg;
+                else
+                    return avg;
             }
+            
+            else  if (pass == 2)
+            {
+                if (passengerRideTimes.Count > 0)
+                {
+                    //Aggregate the durations and then return an average
+                    foreach (Duration d in passengerRideTimes)
+                    {
+                        avg += d;
+                    }
+                    avg /= passengerRideTimes.Count;
+                    return avg;
+                }
+                else
+                    return avg;
+            }
+
+            else if (pass == 3)
+            {
+                if (passengerTotalTimes.Count > 0)
+                {
+                    //Aggregate the durations and then return an average
+                    foreach (Duration d in passengerTotalTimes)
+                    {
+                        avg += d;
+                    }
+                    avg /= passengerTotalTimes.Count;
+                    return avg;
+                }
+                else
+                    return avg;
+            }
+
             else
                 return avg;
         }
 
-        public Duration GetMinWaitTime()
+        public Duration GetMinTime(int pass)
         {
             Duration min = new Duration();
-           
 
             // for each min value check after the initial one
-           if (passengerWaitTimes.Count > 0)
+
+           
+                if (pass == 1)
                 {
-                // Temp way to get min a value so it can determine what is smaller.
-                    min = GetMaxWaitTime();
+                    tempTimes = passengerWaitTimes;
+                }
+
+                else if (pass == 2)
+                {
+                    tempTimes = passengerRideTimes;
+                }
+
+                else if (pass == 3)
+                {
+                    tempTimes = passengerTotalTimes;
+                }
+
+
+                if (tempTimes.Count > 0)
+                {
+                    // Temp way to get min a value so it can determine what is smaller.
+                    min = GetMaxTime(pass);
                     //Aggregate the durations and then return the min value
-                    foreach (Duration d in passengerWaitTimes)
+                    foreach (Duration d in tempTimes)
                     {
                         if (d < min)
                         {
@@ -75,37 +155,87 @@ namespace ElevatorApp.Util
                         }
                     }
 
-                        return min;
+                    return min;
                 }
+                else
+                    return min;
+           }
 
-            else
-                return min;
-        }
-
-        public Duration GetMaxWaitTime()
+        
+        public Duration GetMaxTime(int pass)
         {
             Duration max = new Duration();
 
-        if (passengerWaitTimes.Count > 0)
+            // for each min value check after the initial one
+
+            if (pass == 1)
             {
-                //Return the max value
-                foreach (Duration d in passengerWaitTimes)
+                if (passengerWaitTimes.Count > 0)
                 {
-                    if (d > max)
+                    // Temp way to get min a value so it can determine what is smaller.
+                    
+                    //Aggregate the durations and then return the min value
+                    foreach (Duration d in passengerWaitTimes)
                     {
-                        max = d;
+                        if (d > max)
+                        {
+                            max = d;
+                        }
                     }
+
+                    return max;
+                }
+                else
+                    return max;
+            }
+
+            else if (pass == 2)
+            {
+                if (passengerRideTimes.Count > 0)
+                {
+                    // Temp way to get min a value so it can determine what is smaller.
+                   
+                    //Aggregate the durations and then return the min value
+                    foreach (Duration d in passengerRideTimes)
+                    {
+                        if (d > max)
+                        {
+                            max = d;
+                        }
+                    }
+
+                    return max;
+                }
+                else
+                    return max;
+            }
+
+            else if (pass == 3)
+            {
+                if (passengerTotalTimes.Count > 0)
+                {
+                    // Temp way to get min a value so it can determine what is smaller.
+                   
+                    //Aggregate the durations and then return the min value
+                    foreach (Duration d in passengerTotalTimes)
+                    {
+                        if (d > max)
+                        {
+                            max = d;
+                        }
+                    }
+
+                    return max;
                 }
 
-                return max;
+                else
+                    return max;
             }
 
             else
                 return max;
         }
-
-
-
+       
         
         /// <summary>
         /// This returns the number of passengers that have passed through the system and completed their trip

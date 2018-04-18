@@ -43,6 +43,13 @@ namespace ElevatorApp.Models
         /// Represents how long the <see cref="Passenger"/> spent in the <see cref="Elevator"/>
         /// </summary>
         public Duration TimeSpentInElevator => Exited - Entered;
+
+        /// <summary>
+        ///  Represents the total time a person is waiting and using the elevator
+        /// </summary>
+        public Duration TotalTime => TimeWaiting + TimeSpentInElevator;
+
+
         #endregion
 
         /// <summary>
@@ -162,6 +169,11 @@ namespace ElevatorApp.Models
             return $"Time Spent in Elevator: {TimeSpentInElevator:mm:ss}";
         }
 
+
+
+        // add the timespent + timewaiting to get total time for a person.
+        // then send all of those 3 stats over to the add
+
         /// <summary>
         /// String representation of this <see cref="Passenger"/>'s path
         /// </summary>
@@ -189,7 +201,13 @@ namespace ElevatorApp.Models
             {
                 obj.Add(("Time Spent in Elevator", passenger.TimeSpentInElevator.ToString(duration_format, null)));
                 //This is where I have the passenger add its timings to the stats class for now... certainly a temporary thing
+                
+                // This is where the 3 statistics are added to the stats collections
                 Stats.Instance.PassengerWaitTimes.Add(passenger.TimeWaiting);
+                Stats.Instance.PassengerRideTimes.Add(passenger.TimeSpentInElevator);
+                Stats.Instance.PassengerWaitTimes.Add(passenger.TotalTime);
+
+                
                 //I also have it print out
                 obj.Add(("Current Average Wait Time ", Stats.Instance.PassengerWaitTimes));
                 //End this section
