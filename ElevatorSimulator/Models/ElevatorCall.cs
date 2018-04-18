@@ -1,4 +1,5 @@
-﻿using ElevatorApp.Models.Enums;
+﻿using System;
+using ElevatorApp.Models.Enums;
 
 namespace ElevatorApp.Models
 {
@@ -38,35 +39,73 @@ namespace ElevatorApp.Models
             this.FromPassenger = fromPassenger;
         }
 
+        /// <summary>
+        /// Deconstructs this <see cref="ElevatorCall"/> into a <see cref="ValueTuple{T1,T2}"/>
+        /// </summary>
+        /// <param name="floor">The floor.</param>
+        /// <param name="direction">The direction.</param>
         public void Deconstruct(out int floor, out Direction direction)
         {
             floor = this.Floor;
             direction = this.Direction;
         }
 
+        /// <summary>
+        /// Performs an implicit conversion from <see cref="ElevatorCall"/> to a <see cref="ValueTuple{T1, T2}"/>.
+        /// </summary>
+        /// <param name="call">The call.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
         public static implicit operator (int floor, Direction direction) (ElevatorCall call)
         {
             return (call.Floor, call.Direction);
         }
+
+        /// <summary>
+        /// Performs an implicit conversion from a <see cref="ValueTuple{T1, T2}"/>. to <see cref="ElevatorCall"/>.
+        /// </summary>
+        /// <param name="call">The call.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
         public static implicit operator ElevatorCall((int floor, Direction direction) call)
         {
             return new ElevatorCall(call.floor, call.direction);
         }
 
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
         public override string ToString()
         {
             return (Floor, Direction).ToString();
         }
 
+        /// <summary>
+        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
         public override bool Equals(object obj)
         {
-            var call = obj as ElevatorCall;
-            return call != null &&
+            return obj is ElevatorCall call &&
                    Floor == call.Floor &&
                    Direction == call.Direction &&
                    FromPassenger == call.FromPassenger;
         }
 
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// </returns>
         public override int GetHashCode()
         {
             unchecked

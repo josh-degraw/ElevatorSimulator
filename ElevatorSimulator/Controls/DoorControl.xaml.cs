@@ -7,6 +7,9 @@ namespace ElevatorApp.Controls
     /// </summary>
     public partial class DoorControl : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DoorControl"/> class.
+        /// </summary>
         public DoorControl()
         {
             InitializeComponent();

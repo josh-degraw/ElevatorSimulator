@@ -9,7 +9,9 @@ namespace ElevatorApp.Controls
     /// </summary>
     public partial class ElevatorControl : UserControl
     {
-
+        /// <summary>
+        /// Gets or sets the elevator.
+        /// </summary>
         public Elevator Elevator
         {
             get
@@ -23,8 +25,10 @@ namespace ElevatorApp.Controls
                 this.DataContext = value;
             }
         }
-        
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ElevatorControl"/> class.
+        /// </summary>
         public ElevatorControl()
         {
             InitializeComponent();

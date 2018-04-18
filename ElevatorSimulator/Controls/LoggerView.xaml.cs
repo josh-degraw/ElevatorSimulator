@@ -42,7 +42,7 @@ namespace ElevatorApp.Controls
         {
             var viewer = VisualTreeHelperEx.FindDescendantByType<ScrollViewer>(listViewEvents);
             if (viewer != null)
-            { 
+            {
                 // User scroll event : set or unset auto-scroll mode
                 if (e.ExtentHeightChange.Equals(0))
 
@@ -110,9 +110,9 @@ namespace ElevatorApp.Controls
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new SaveFileDialog();
-            MessageBox.Show("Test dialog"); 
+            MessageBox.Show("Test dialog");
 
-            if (dialog.ShowDialog() ==true)
+            if (dialog.ShowDialog() == true)
             {
                 try
                 {

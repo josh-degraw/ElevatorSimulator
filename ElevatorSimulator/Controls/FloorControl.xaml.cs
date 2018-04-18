@@ -21,11 +21,12 @@ namespace ElevatorApp.Controls
     /// </summary>
     public partial class FloorControl : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FloorControl"/> class.
+        /// </summary>
         public FloorControl()
         {
             InitializeComponent();
         }
-
-        public bool ELevatorReady { get; }
     }
 }

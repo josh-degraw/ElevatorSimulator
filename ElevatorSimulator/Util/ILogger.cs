@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace ElevatorApp.Util
 {
+    /// <summary>
+    /// Interface for the <see cref="Logger"/> class, to allow for both static and instance access.
+    /// </summary>
     public interface ILogger
     {
         /// <summary>
@@ -37,7 +40,11 @@ namespace ElevatorApp.Util
         /// </example>
         void LogEvent(string name, params (object, object)[] parameters);
 
-
+        /// <summary>
+        /// Logs the event, with an optional number of retry times you can specify.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="retryTimes">The retry times.</param>
         void LogEvent(Event message, int retryTimes = 3);
     }
 }

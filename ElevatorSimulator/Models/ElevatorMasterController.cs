@@ -52,10 +52,7 @@ namespace ElevatorApp.Models
             get => _floorHeight;
             set => SetProperty(ref _floorHeight, value);
         }
-
-        public ElevatorSettings ElevatorSettings { get; } = new ElevatorSettings();
-
-
+        
         /// <summary>
         /// Adjusts a private collection of the <see cref="ElevatorMasterController"/> based on the number of elements the collection is supposed to contain
         /// </summary>

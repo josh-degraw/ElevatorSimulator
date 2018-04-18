@@ -140,6 +140,12 @@ namespace ElevatorApp.Models
 
         private bool _isCloseRequested = false;
 
+        /// <summary>
+        /// Gets a value indicating whether a close has been requested.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if a close has been requested; otherwise, <c>false</c>.
+        /// </value>
         public bool IsCloseRequested
         {
             get => _isCloseRequested;
@@ -148,6 +154,12 @@ namespace ElevatorApp.Models
 
         private bool _isOpenRequested = false;
 
+        /// <summary>
+        /// Gets a value indicating whether an open has been requested.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if an open has been requested; otherwise, <c>false</c>.
+        /// </value>
         public bool IsOpenRequested
         {
             get => _isOpenRequested;
@@ -194,12 +206,16 @@ namespace ElevatorApp.Models
                 Console.WriteLine(ex);
             }
         }
-
-
+        
         private bool _closeRequestBegun = false;
 
         private bool _openRequestBegun = false;
 
+        /// <summary>
+        /// Requests the door to open.
+        /// </summary>
+        /// <param name="fromRequestClose">If the.</param>
+        /// <returns></returns>
         private async Task RequestOpen(bool fromRequestClose)
         {
             // If the door is already opened, don't do anything
@@ -256,6 +272,10 @@ namespace ElevatorApp.Models
         }
 
 
+        /// <summary>
+        /// Waits for door to close. If not already in progress, calls <see cref="RequestClose()"/>
+        /// </summary>
+        /// <returns></returns>
         public async Task WaitForDoorToClose()
         {
             if (DoorState == DoorState.Closed)
@@ -274,6 +294,10 @@ namespace ElevatorApp.Models
             this.IsCloseRequested = false;
         }
 
+        /// <summary>
+        /// Waits for door to open. If not already in progress, calls <see cref="RequestOpen()"/>
+        /// </summary>
+        /// <returns></returns>
         public async Task WaitForDoorToOpen()
         {
             if (DoorState == DoorState.Opened)
@@ -297,6 +321,10 @@ namespace ElevatorApp.Models
             RequestClose(false);
         }
 
+        /// <summary>
+        /// Requests the door to close.
+        /// </summary>
+        /// <param name="recursed">If called from <see cref="RequestClose()"/> </param>
         private async void RequestClose(bool recursed)
         {
             // If the door is already closed, don't do anything
@@ -345,8 +373,9 @@ namespace ElevatorApp.Models
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Represents if this <see cref="Door"/> has been subscribed
+        /// Represents if this <see cref="Door" /> has been subscribed
         /// </summary>
         public bool Subscribed { get; private set; }
 
@@ -360,7 +389,6 @@ namespace ElevatorApp.Models
                 return Task.CompletedTask;
             try
             {
-
                 elevator.Arrived += (e, args) =>
                 {
                     try

@@ -68,11 +68,6 @@ namespace ElevatorApp.Models
         /// </summary>
         public IReadOnlyCollection<Passenger> WaitingPassengers => _waitingPassengers;
 
-        /// <summary>
-        /// The passengers waiting on the floor for the <see cref="Elevator"/>
-        /// </summary>
-        // public IReadOnlyCollection<Passenger> WaitingPassengersDown => _waitingPassengers_Down;
-
         #endregion
 
         /// <summary>

@@ -45,13 +45,7 @@ namespace ElevatorApp.Util
         /// Invoked whenever a new <see cref="Event"/> is logged. Can be used to trigger calculations, update text fields, etc.
         /// </summary>
         public event LogEventHandler ItemLogged;
-
-        public static void LogStackTrace()
-        {
-            Trace.TraceInformation(Environment.StackTrace);
-        }
-
-
+        
         private readonly AsyncObservableCollection<Event> _events = new AsyncObservableCollection<Event>();
 
         /// <summary>
@@ -225,6 +219,13 @@ namespace ElevatorApp.Util
             return this.ToString(true);
         }
 
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <param name="includeTimeStamp">if set to <c>true</c> include the time stamp in the string.</param>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
         public string ToString(bool includeTimeStamp)
         {
             string baseStr = $"{this.Name} ";

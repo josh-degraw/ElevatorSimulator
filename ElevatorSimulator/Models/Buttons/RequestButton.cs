@@ -37,7 +37,7 @@ namespace ElevatorApp.Models
         ///<inheritdoc/>
         public override void Push()
         {
-            base.Pushed(this, DestinationFloor);
+            base.HandlePushed(this, DestinationFloor);
         }
 
         /// <summary>

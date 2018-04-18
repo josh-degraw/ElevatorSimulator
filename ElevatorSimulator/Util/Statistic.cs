@@ -269,7 +269,7 @@ namespace ElevatorApp.Util
         }
 
         /// <summary>
-        /// A delegate function to convert an item of type <typeparamref name="TStat"/> to a string. 
+        /// A delegate function to convert individual statistical values to a string. 
         /// 
         /// Specifies the format of such values.
         /// 
@@ -278,7 +278,7 @@ namespace ElevatorApp.Util
         protected virtual ToStringMethod<TStat> StatToString { get; } = t => t.ToString();
 
         /// <summary>
-        /// A delegate function to convert an item of type <typeparamref name="TAggregate"/> to a string. 
+        /// A delegate function to convert aggregated values to a string. 
         /// 
         /// Specifies the format of such values.
         /// 
