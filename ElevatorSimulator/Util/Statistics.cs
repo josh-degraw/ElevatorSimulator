@@ -166,11 +166,20 @@ namespace ElevatorApp.Util
     ///<inheritdoc/>
     public class IntStatistic : Statistic<int, double>
     {
-        ///<inheritdoc/>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IntStatistic"/> class.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <inheritdoc />
         public IntStatistic(string name) : base(name)
         { }
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IntStatistic"/> class.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="collection"></param>
+        /// <inheritdoc />
         public IntStatistic(string name, IEnumerable<int> collection) : base(name, collection)
         { }
 
