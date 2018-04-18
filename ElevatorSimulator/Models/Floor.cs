@@ -15,63 +15,6 @@ using MoreLinq;
 
 namespace ElevatorApp.Models
 {
-    public class ElevatorCall
-    {
-        public int Floor { get; }
-        public Direction Direction { get; }
-
-        public bool FromPassenger { get; }
-
-
-        public ElevatorCall(int floor, Direction direction, bool fromPassenger = true)
-        {
-            this.Floor = floor;
-            this.Direction = direction;
-            this.FromPassenger = FromPassenger;
-        }
-
-        public void Deconstruct(out int floor, out Direction direction)
-        {
-            floor = this.Floor;
-            direction = this.Direction;
-        }
-
-        public static implicit operator (int floor, Direction direction) (ElevatorCall call)
-        {
-            return (call.Floor, call.Direction);
-        }
-        public static implicit operator ElevatorCall((int floor, Direction direction) call)
-        {
-            return new ElevatorCall(call.floor, call.direction);
-        }
-
-        public override string ToString()
-        {
-            return (Floor, Direction).ToString();
-        }
-
-        public override bool Equals(object obj)
-        {
-            var call = obj as ElevatorCall;
-            return call != null &&
-                   Floor == call.Floor &&
-                   Direction == call.Direction &&
-                   FromPassenger == call.FromPassenger;
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = 564164426;
-                hashCode = hashCode * -1521134295 + Floor.GetHashCode();
-                hashCode = hashCode * -1521134295 + Direction.GetHashCode();
-                hashCode = hashCode * -1521134295 + FromPassenger.GetHashCode();
-                return hashCode; 
-            }
-        }
-    }
-
     /// <summary>
     /// Represents a floor of a building.
     /// </summary>
