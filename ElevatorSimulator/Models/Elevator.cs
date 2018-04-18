@@ -881,7 +881,7 @@ namespace ElevatorApp.Models
         /// <param name="destination"></param>
         public async void OnNext(ElevatorCall destination)
         {
-            if (!destination.FromPassenger && destination.Floor != this.CurrentFloor && !Door.IsClosedOrClosing)
+            if (!destination.FromPassenger && destination.Floor != this.CurrentFloor && Door.DoorState != DoorState.Opened)
             {
                 // Wait for door to open here so that the passengers who started opening the door get in first
                 await Door.WaitForDoorToOpen().ConfigureAwait(false);

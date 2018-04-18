@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +17,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using ElevatorApp.Util;
+using Microsoft.Win32;
+using MoreLinq;
 using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.Core.Utilities;
+using MessageBox = Xceed.Wpf.Toolkit.MessageBox;
 
 
 namespace ElevatorApp.Controls
@@ -100,6 +104,30 @@ namespace ElevatorApp.Controls
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            MessageBox.Show("Test dialog"); 
+
+            if (dialog.ShowDialog() ==true)
+            {
+                try
+                {
+                    var str = listViewEvents.Items.OfType<string>();
+
+                    File.WriteAllLines(dialog.FileName, str);
+                    MessageBox.Show("Saved file at " + dialog.SafeFileName, "Success", MessageBoxButton.OK);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error saving file", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                //File.WriteAllText(dialog.FileName, txtEditor.Text);
             }
         }
     }

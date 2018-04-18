@@ -25,33 +25,14 @@
                   ScrollViewer.VerticalScrollBarVisibility="Visible" 
                   Margin="0,0,0,5"
                   
-                  ScrollViewer.ScrollChanged="ScrollViewer_ScrollChanged" >
-            <!--<ListView.ItemTemplate>
-                    <DataTemplate DataType="{x:Type util:Event}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="250"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Content="{Binding Name}"/>
-                            <TreeViewItem Grid.Column="2" AllowDrop="True">
-                                <TreeView ItemsSource="{Binding Parameters}">
-                                    <TreeView.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel/>
-                                        </ItemsPanelTemplate>
-                                    </TreeView.ItemsPanel>
-                                </TreeView>
-                            </TreeViewItem>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>-->
+                  ScrollViewer.ScrollChanged="ScrollViewer_ScrollChanged" 
+                  >
+            
         </ListView>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Loaded="StackPanel_Loaded" >
             <Button Padding="15,4" Margin="25,0,15,0" Click="Button_Click">Clear</Button>
-            <Button Padding="15,4" IsEnabled="False">Save</Button>
+            <Button x:Name="btnSave" Padding="15,4" Click="btnSave_Click">Save</Button>
         </StackPanel>
     </Grid>
 </UserControl>
