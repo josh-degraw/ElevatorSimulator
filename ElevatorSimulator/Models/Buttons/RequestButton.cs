@@ -18,9 +18,15 @@ namespace ElevatorApp.Models
         /// <summary> The number of the <see cref="Floor"/> that this button tells the <see cref="Elevator"/> to go to.</summary>
         public int DestinationFloor { get; }
 
+        /// <summary>
+        /// Gets the request direction.
+        /// </summary>
         private Direction RequestDirection => DestinationFloor > FloorNumber ? Direction.Up : Direction.Down;
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// The text on the button
+        /// </summary>
+        /// <inheritdoc />
         public override string Label => DestinationFloor.ToString();
 
         /// <summary>
@@ -28,13 +34,22 @@ namespace ElevatorApp.Models
         /// </summary>
         public override int FloorNumber => base.FloorNumber;
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequestButton"/> class.
+        /// </summary>
+        /// <param name="sourceFloor">The source floor.</param>
+        /// <param name="destinationFloor">The destination floor.</param>
+        /// <param name="startActive">if set to <c>true</c> [start active].</param>
+        /// <inheritdoc />
         public RequestButton(int sourceFloor, int destinationFloor, bool startActive = false) : base(sourceFloor, startActive)
         {
             this.DestinationFloor = destinationFloor;
         }
 
-        ///<inheritdoc/>
+        /// <inheritdoc />
+        /// <summary>
+        /// Push the button
+        /// </summary>
         public override void Push()
         {
             base.HandlePushed(this, DestinationFloor);

@@ -18,6 +18,9 @@ namespace ElevatorApp.Models
         /// </summary>
         private static bool LogAllPropertyChanges { get; set; } = false;
 
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
         /// <inheritdoc />
         public event PropertyChangedEventHandler PropertyChanged;
 

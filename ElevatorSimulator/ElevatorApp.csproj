@@ -149,7 +149,6 @@
     <Compile Include="Models\Floor.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Passenger.cs" />
-    <Compile Include="Models\TestSettings.cs" />
     <Compile Include="Models\Unsubscriber.cs" />
     <Compile Include="SimulatorViewModel.cs" />
     <Compile Include="Util\Annotations.cs" />

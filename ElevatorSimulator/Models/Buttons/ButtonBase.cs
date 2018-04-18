@@ -86,7 +86,18 @@ namespace ElevatorApp.Models
             this.OnDeactivated += _setActiveFalse;
         }
 
+        /// <summary>
+        /// Sets <see cref="Active"/> to <see langword="true"/> when activated
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void _setActiveTrue(object sender, EventArgs e) => this.Active = true;
+
+        /// <summary>
+        /// Sets <see cref="Active"/> to <see langword="false"/> when deactivated
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void _setActiveFalse(object sender, EventArgs e) => this.Active = false;
 
         /// <summary>

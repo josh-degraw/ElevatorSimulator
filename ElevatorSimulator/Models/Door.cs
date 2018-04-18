@@ -33,7 +33,7 @@ namespace ElevatorApp.Models
     /// </summary>
     public class Door : ModelBase, ISubcriber<Elevator>
     {
-        private ReaderWriterLockSlim _stateChangeLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+        private readonly ReaderWriterLockSlim _stateChangeLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         //  private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
 
         /// <summary>
@@ -92,7 +92,6 @@ namespace ElevatorApp.Models
 
         private DoorState _doorState = DoorState.Closed;
 
-        private readonly object _locker = new object();
 
         /// <summary>
         /// The state of the <see cref="Door"/>
@@ -114,6 +113,14 @@ namespace ElevatorApp.Models
             }
         }
 
+        /// <summary>
+        /// Determines whether is valid state transition
+        /// </summary>
+        /// <param name="prev">The previous.</param>
+        /// <param name="next">The next.</param>
+        /// <returns>
+        ///   <c>true</c> if is a valid state transition; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsValidStateTransition(DoorState prev, DoorState next)
         {
             if (prev == next)

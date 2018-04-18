@@ -30,31 +30,53 @@ namespace ElevatorApp.Models
         public virtual IReadOnlyCollection<FloorButton> FloorButtons => _floorButtons;
 
         /// <summary>
-        /// Initialize a new ButtonPanelBase
+        /// Initializes a new instance of the <see cref="ButtonPanelBase"/> class.
         /// </summary>
         protected ButtonPanelBase()
         {
         }
 
         #region ICollectionImplementation
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns>
+        /// An enumerator that can be used to iterate through the collection.
+        /// </returns>
         IEnumerator<FloorButton> IEnumerable<FloorButton>.GetEnumerator()
         {
             return FloorButtons.GetEnumerator();
         }
 
+        /// <summary>
+        /// Returns an enumerator that iterates through a collection.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
+        /// </returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable)FloorButtons).GetEnumerator();
         }
 
+        /// <summary>
+        /// Gets the number of elements in the collection.
+        /// </summary>
         int IReadOnlyCollection<FloorButton>.Count => FloorButtons.Count;
 
         #endregion
 
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Represents whether or not this object has performed the necessary steps to subscribe to the source.
+        /// </summary>
+        /// <inheritdoc />
         public bool Subscribed { get; protected set; }
 
+        /// <summary>
+        /// The observers
+        /// </summary>
         private readonly AsyncObservableCollection<IObserver<ElevatorCall>> _observers = new AsyncObservableCollection<IObserver<ElevatorCall>>();
 
 
@@ -75,8 +97,9 @@ namespace ElevatorApp.Models
             return new Unsubscriber<ElevatorCall>(_observers, observer);
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Subscribes this Button panel to the <see cref="ElevatorMasterController"/>
+        /// Subscribes this Button panel to the <see cref="T:ElevatorApp.Models.ElevatorMasterController" />
         /// </summary>
         public virtual Task Subscribe(ElevatorMasterController parent)
         {

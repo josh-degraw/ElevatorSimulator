@@ -25,8 +25,6 @@ namespace ElevatorApp.Models
         #region Backing fields
         private int _floorHeight;
 
-        private readonly Elevator _elevator = new Elevator();
-
         private readonly AsyncObservableCollection<Floor> _floors = new AsyncObservableCollection<Floor>(Enumerable.Range(1, 4).Reverse().Select(a => new Floor(a)));
         //  private readonly AsyncObservableCollection<int> _floorsRequested = new AsyncObservableCollection<int>();
 
@@ -34,9 +32,9 @@ namespace ElevatorApp.Models
 
         #region Properties
         /// <summary>
-        /// A Read-only collection of <see cref="Models.Elevator"/> objects that will be managed by this <see cref="ElevatorMasterController"/>
+        /// The <see cref="Elevator"/> that is managed by this <see cref="ElevatorMasterController"/>
         /// </summary>
-        public Elevator Elevator => _elevator;
+        public Elevator Elevator { get; } = new Elevator();
 
         /// <summary>
         /// <para>A Read-only collection of <see cref="Floor"/> objects that will be managed by this <see cref="ElevatorMasterController"/>.</para>
@@ -52,7 +50,7 @@ namespace ElevatorApp.Models
             get => _floorHeight;
             set => SetProperty(ref _floorHeight, value);
         }
-        
+
         /// <summary>
         /// Adjusts a private collection of the <see cref="ElevatorMasterController"/> based on the number of elements the collection is supposed to contain
         /// </summary>
@@ -99,8 +97,6 @@ namespace ElevatorApp.Models
 
         #endregion
 
-        #region Methods
-
         /// <summary>
         /// Runs the necessary functions <see cref="Models.Elevator"/> respond appropriately to this <see cref="ElevatorMasterController"/>
         /// </summary>
@@ -114,8 +110,6 @@ namespace ElevatorApp.Models
             await Task.WhenAll(this.Floors.Select(floor => floor.Subscribe(this)));
             Logger.LogEvent($"Initialized {nameof(ElevatorMasterController)}");
         }
-
-        #endregion
 
         /// <summary>
         /// Creates a new <see cref="ElevatorMasterController"/>

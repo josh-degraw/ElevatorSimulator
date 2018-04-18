@@ -110,7 +110,9 @@ namespace ElevatorApp.Models
 
         #region Subscription
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Represents whether or not this object has performed the necessary steps to subscribe to the source.
+        /// </summary>
         public bool Subscribed { get; private set; }
 
         private int subscriptionCount = 0;
@@ -220,6 +222,11 @@ namespace ElevatorApp.Models
             this.Subscribed = true;
         }
 
+        /// <summary>
+        /// Removes the passenger from queue of waiting passengers
+        /// </summary>
+        /// <param name="_">The .</param>
+        /// <param name="passenger">The passenger.</param>
         void removePassengerFromQueue(object _, Passenger passenger)
         {
             try
@@ -243,7 +250,11 @@ namespace ElevatorApp.Models
             }
         }
 
-        // Alert the Floor that an elevator is available when one arrives on this floor
+        /// <summary>
+        /// Alert the Floor that an elevator is available when one arrives on this floor
+        /// </summary>
+        /// <param name="_">The .</param>
+        /// <param name="args">The <see cref="ElevatorApp.Models.ElevatorMovementEventArgs" /> instance containing the event data.</param>
         void onElevatorArrivedAtThisFloor(object _, ElevatorMovementEventArgs args)
         {
             if (args.DestinationFloor == this.FloorNumber)
@@ -252,11 +263,21 @@ namespace ElevatorApp.Models
             }
         }
 
+        /// <summary>
+        /// Sets <see cref="ElevatorAvailable"/> to false when the elevator leaves the floor
+        /// </summary>
+        /// <param name="_">The sender</param>
+        /// <param name="call">The <see cref="ElevatorApp.Models.ElevatorMovementEventArgs" /> instance containing the event data.</param>
         void onElevatorDeparted(object _, ElevatorMovementEventArgs call)
         {
             this.ElevatorAvailable = false;
         }
 
+        /// <summary>
+        /// Adds the passengers to elevator.
+        /// </summary>
+        /// <param name="elevator">The elevator.</param>
+        /// <returns></returns>
         private async Task _addPassengersToElevator(Elevator elevator)
         {
             // TODO: Wait for all passengers to get out
@@ -265,6 +286,11 @@ namespace ElevatorApp.Models
         }
 
         private bool _adding = false;
+        /// <summary>
+        /// Sends a request to the <see cref="Door"/> to prevent it closing if starts to close while passengers are still trying to get on.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The <see cref="ElevatorApp.Models.DoorStateChangeEventArgs" /> instance containing the event data.</param>
         void cancelIfStartsToClose(object sender, DoorStateChangeEventArgs args)
         {
             args.CancelOperation = _adding;
@@ -303,7 +329,7 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
-        /// Gets the passengers that are going 
+        /// Gets the passengers that are going to be moving
         /// </summary>
         IEnumerable<Passenger> getPassengersToMove(Elevator elevator)
         {
@@ -334,6 +360,11 @@ namespace ElevatorApp.Models
             return Enumerable.Empty<Passenger>();
         }
 
+        /// <summary>
+        /// Gets the passengers to move.
+        /// </summary>
+        /// <param name="direction">The direction.</param>
+        /// <returns></returns>
         private IEnumerable<Passenger> _getPassengersToMove(Direction direction)
         {
             IEnumerable<Passenger> waiting = this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting);

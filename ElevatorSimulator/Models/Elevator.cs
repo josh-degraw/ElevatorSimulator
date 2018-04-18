@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Media;
 using System.Threading;
@@ -430,8 +431,12 @@ namespace ElevatorApp.Models
 
         private readonly SoundPlayer soundPlayer = new SoundPlayer { Stream = Resources.elevatorDing };
 
-
-        private bool TryRemoveFloor(ElevatorCall toRemove)
+        /// <summary>
+        /// Tries to remove the given call from the request queue.
+        /// </summary>
+        /// <param name="toRemove"></param>
+        /// <returns><c>true</c> if successfully removed; otherwise false</returns>
+        private bool TryRemoveCall(ElevatorCall toRemove)
         {
 
             // this._floorsLock.EnterUpgradeableReadLock();
@@ -457,7 +462,7 @@ namespace ElevatorApp.Models
 
             return false;
         }
-        
+
 
         /// <summary>
         /// Handles the <see cref="Arrived"/> event. Logs a message, and removes the passengers that are getting off at the given floor.
@@ -470,13 +475,13 @@ namespace ElevatorApp.Models
             {
                 this.CurrentFloor = args.DestinationFloor;
 
-                this.TryRemoveFloor(args.Call);
+                this.TryRemoveCall(args.Call);
 
                 var calledFromFloor =
                     _floorsToStopAt.FirstOrDefault(a => a.Floor == this.CurrentFloor && !a.FromPassenger);
 
                 if (calledFromFloor != null)
-                    TryRemoveFloor(calledFromFloor);
+                    TryRemoveCall(calledFromFloor);
 
                 LogEvent("Elevator Arrived", ("Floor", args.DestinationFloor));
 
@@ -545,7 +550,7 @@ namespace ElevatorApp.Models
         /// Adds a new <see cref="Passenger"/> to the <see cref="Elevator"/>
         /// </summary>
         /// <param name="passenger">The <see cref="Passenger"/> that will be boarding.</param>
-        public async Task AddPassenger(Passenger passenger)
+        public Task AddPassenger(Passenger passenger)
         {
             //await semaphore.WaitAsync().ConfigureAwait(true);
             try
@@ -559,16 +564,7 @@ namespace ElevatorApp.Models
 
                 passenger.State = PassengerState.In;
 
-                // _passengerLock.EnterWriteLock();
-
-                try
-                {
-                    this._passengers.AddDistinct(passenger);
-                }
-                finally
-                {
-                    //   _passengerLock.ExitWriteLock();
-                }
+                this._passengers.AddDistinct(passenger);
 
                 PassengerAdded?.Invoke(this, passenger);
 
@@ -579,13 +575,15 @@ namespace ElevatorApp.Models
             {
                 UpdatingPassengers = false;
             }
+
+            return Task.CompletedTask;
         }
 
         /// <summary>
         /// Moves a <see cref="Passenger"/> off of the <see cref="Elevator"/>
         /// </summary>
         /// <param name="passenger">The <see cref="Passenger"/> that will be departing.</param>
-        private async Task RemovePassenger(Passenger passenger)
+        private Task RemovePassenger(Passenger passenger)
         {
             try
             {
@@ -593,19 +591,10 @@ namespace ElevatorApp.Models
                 LogEvent("Passenger Leaving Elevator");
                 passenger.State = PassengerState.Transition;
 
-                Thread.Sleep(Passenger.TransitionSpeed);//.ConfigureAwait(false);
+                Thread.Sleep(Passenger.TransitionSpeed);
 
-                // _passengerLock.EnterWriteLock();
-
-                try
-                {
-                    this._passengers.Remove(passenger);
-                    passenger.State = PassengerState.Out;
-                }
-                finally
-                {
-                    //   _passengerLock.ExitWriteLock();
-                }
+                this._passengers.Remove(passenger);
+                passenger.State = PassengerState.Out;
 
                 PassengerExited?.Invoke(this, passenger);
 
@@ -615,6 +604,8 @@ namespace ElevatorApp.Models
             {
                 UpdatingPassengers = false;
             }
+
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
@@ -639,6 +630,13 @@ namespace ElevatorApp.Models
             this.Subscribed = true;
         }
 
+        /// <summary>
+        /// Returns the direction the elevator should move, assuming the given destination floor. 
+        /// Does not modify the direction the <see cref="Elevator"/> is going in.
+        /// </summary>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        [Pure]
         private Direction assignDirection(int destination)
         {
             if (this.CurrentFloor == destination)
@@ -652,6 +650,9 @@ namespace ElevatorApp.Models
 
         private bool _moving = false;
 
+        /// <summary>
+        /// Represents whether the elevator is currently moving
+        /// </summary>
         private bool Moving
         {
             get => _moving;
@@ -663,7 +664,7 @@ namespace ElevatorApp.Models
         }
 
         private bool RequestStarted = false;
-        
+
 
         #region Movement
         private async Task PerformMovement(int destination, Direction direction, Func<int, int> floorIncrementer)
@@ -887,7 +888,7 @@ namespace ElevatorApp.Models
                 await Door.WaitForDoorToOpen().ConfigureAwait(false);
                 await Task.Delay(500).ConfigureAwait(false);
             }
-            
+
             _floorsToStopAt.AddDistinct(destination);
 
             if (!Moving)

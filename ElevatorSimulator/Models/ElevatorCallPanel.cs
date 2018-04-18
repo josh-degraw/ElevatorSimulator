@@ -12,7 +12,9 @@ namespace ElevatorApp.Models
     /// </summary>
     public class ElevatorCallPanel : ButtonPanelBase /*,ISubcriber<ElevatorMasterController>, ISubcriber<Floor>*/
     {
-        ///<inheritdoc/>
+        /// <summary>
+        /// The actual collection of <see cref="FloorButton" />s
+        /// </summary>
         protected override AsyncObservableCollection<FloorButton> _floorButtons { get; }
 
         /// <summary>
@@ -35,21 +37,6 @@ namespace ElevatorApp.Models
                 new RequestButton(floorNum, 1),
             };
         }
-
-        // bool ISubcriber<Floor>.Subscribed => _floorSubscribed;
-
-        ///// <summary>
-        ///// Perform the necessary steps to subscribe to the target.
-        ///// </summary>
-        ///// <param name="parent">The item this object will be subscribed to</param>
-        ///// <returns></returns>
-        //public Task Subscribe(Floor parent)
-        //{
-        //    if (_floorSubscribed)
-        //        return;
-
-        //    _floorSubscribed = true;
-        //}
 
         /// <inheritdoc/>
         /// <summary>

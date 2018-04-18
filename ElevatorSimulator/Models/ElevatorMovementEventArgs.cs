@@ -42,7 +42,13 @@ namespace ElevatorApp.Models
             this.Call = call;
         }
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        /// <inheritdoc />
         public override string ToString()
         {
             return $"{DestinationFloor}. Direction: {Direction}";
