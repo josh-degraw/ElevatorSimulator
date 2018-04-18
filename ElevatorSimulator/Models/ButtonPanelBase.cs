@@ -17,7 +17,7 @@ namespace ElevatorApp.Models
     /// Represents the base class of a button panel. 
     /// Subscribes all of the <see cref="Button"/>s it contains to the <see cref="Elevator"/>
     /// </summary>
-    public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<ElevatorMasterController>, IObservable<(int, Direction)>
+    public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<ElevatorMasterController>, IObservable<ElevatorCall>
     {
         /// <summary>
         /// The actual collection of <see cref="FloorButton"/>s
@@ -55,7 +55,7 @@ namespace ElevatorApp.Models
         ///<inheritdoc/>
         public bool Subscribed { get; protected set; }
 
-        private readonly AsyncObservableCollection<IObserver<(int, Direction)>> _observers = new AsyncObservableCollection<IObserver<(int, Direction)>>();
+        private readonly AsyncObservableCollection<IObserver<ElevatorCall>> _observers = new AsyncObservableCollection<IObserver<ElevatorCall>>();
 
 
         /// <inheritdoc />
@@ -65,14 +65,14 @@ namespace ElevatorApp.Models
         /// </summary>
         /// <param name="observer"></param>
         /// <returns>An <see cref="Unsubscriber{T}"/> that can be disposed of to stop receiving updates</returns>
-        public IDisposable Subscribe(IObserver<(int, Direction)> observer)
+        public IDisposable Subscribe(IObserver<ElevatorCall> observer)
         {
             if (!_observers.Contains(observer))
             {
                 _observers.Add(observer);
             }
 
-            return new Unsubscriber<(int, Direction)>(_observers, observer);
+            return new Unsubscriber<ElevatorCall>(_observers, observer);
         }
 
         /// <summary>

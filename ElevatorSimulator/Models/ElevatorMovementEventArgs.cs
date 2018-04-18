@@ -12,27 +12,34 @@ namespace ElevatorApp.Models
         /// <summary>
         /// The destination of the current movement
         /// </summary>
-        public virtual int DestinationFloor { get; }
+        public virtual int DestinationFloor => Call.Floor;
 
         /// <summary>
         /// The direction the elevator is going
         /// </summary>
-        public Direction Direction { get; }
+        public Direction Direction => Call.Direction;
 
         /// <summary>
-        /// Set to <see langword="true"/> to prevent other events in the chain from being processed
+        /// Gets or sets the call.
         /// </summary>
-        public bool Handled { get; set; }
+        public ElevatorCall Call { get; set; }
 
         /// <summary>
         /// Construct a new instance of <see cref="ElevatorMovementEventArgs"/>
         /// </summary>
         /// <param name="destination"></param>
         /// <param name="direction"></param>
-        public ElevatorMovementEventArgs(int destination, Direction direction)
+        public ElevatorMovementEventArgs(int destination, Direction direction) : this((destination, direction))
         {
-            this.DestinationFloor = destination;
-            this.Direction = direction;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ElevatorMovementEventArgs"/> class.
+        /// </summary>
+        /// <param name="call">The call.</param>
+        public ElevatorMovementEventArgs(ElevatorCall call)
+        {
+            this.Call = call;
         }
 
         ///<inheritdoc/>

@@ -72,7 +72,7 @@ namespace ElevatorApp.Models
                         else
                         {
                             // If the elevator isn't already here, tell it to come here
-                            elevator.OnNext((this.FloorNumber, RequestDirection));
+                            elevator.OnNext(new ElevatorCall(this.FloorNumber, RequestDirection, false));
                         }
 
                     }
