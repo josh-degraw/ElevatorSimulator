@@ -153,8 +153,6 @@
     <Compile Include="SimulatorViewModel.cs" />
     <Compile Include="Util\Annotations.cs" />
     <Compile Include="Util\AsyncObservableCollection.cs" />
-    <Compile Include="Util\DelegateCommand.cs" />
-    <Compile Include="Util\EventTraceListener.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\ILogger.cs" />
     <Compile Include="Util\LocalSystemClock.cs" />

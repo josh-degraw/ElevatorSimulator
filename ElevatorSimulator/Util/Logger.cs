@@ -20,12 +20,15 @@ using MoreLinq;
 namespace ElevatorApp.Util
 {
 
+    /// <inheritdoc cref="ILogger" />
     /// <summary>
-    /// Singleton object used to log events. Can be accessed statically or via <see cref="Logger.Instance"/>.
+    /// Singleton object used to log events. Can be accessed statically or via <see cref="P:ElevatorApp.Util.Logger.Instance" />.
     /// </summary>
     public class Logger : ModelBase, ILogger
     {
-        private readonly object _locker = new object();
+        /// <summary>
+        /// The rw lock
+        /// </summary>
         private readonly ReaderWriterLockSlim _rwLock = new ReaderWriterLockSlim();
 
         /// <summary>
@@ -45,7 +48,10 @@ namespace ElevatorApp.Util
         /// Invoked whenever a new <see cref="Event"/> is logged. Can be used to trigger calculations, update text fields, etc.
         /// </summary>
         public event LogEventHandler ItemLogged;
-        
+
+        /// <summary>
+        /// The events
+        /// </summary>
         private readonly AsyncObservableCollection<Event> _events = new AsyncObservableCollection<Event>();
 
         /// <summary>
@@ -105,11 +111,23 @@ namespace ElevatorApp.Util
             Instance.LogEvent(name, parameters);
         }
 
+        /// <summary>
+        /// Log a new <see cref="Event" /></summary>
+        /// <param name="name">The name of the event</param>
+        /// <param name="parameters">Any parameters to be associated with the <see cref="Event" /></param>
+        /// <example>
+        /// Logger.LogEvent("event name", ("param1", 1), ("param2", 2));
+        /// </example>
         void ILogger.LogEvent(string name, params (object, object)[] parameters)
         {
             ((ILogger)this).LogEvent(new Event(name, parameters));
         }
 
+        /// <summary>
+        /// Logs the event, with an optional number of retry times you can specify.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="retryTimes">The retry times.</param>
         void ILogger.LogEvent(Event message, int retryTimes = 3)
         {
             int prevCount = this.Count;

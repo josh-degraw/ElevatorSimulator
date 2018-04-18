@@ -12,9 +12,8 @@ namespace ElevatorApp.Util
     /// <summary>
     /// The Stats class. This class will be able to hold and calculate information about the test during runtime. EG Average wait...
     /// </summary>
-    class Stats
+    public class Stats
     {
-        private object _locker = new object();
 
         /// <summary>
         /// A representation of the wait times of the passenges in the application
@@ -24,8 +23,18 @@ namespace ElevatorApp.Util
         /// </value>
         public DurationStatistic PassengerWaitTimes { get; } = new DurationStatistic("Passenger wait times");
 
+        /// <summary>
+        /// The passenger wait times
+        /// </summary>
+        [Obsolete]
         private readonly ICollection<Duration> passengerWaitTimes = new AsyncObservableCollection<Duration>();
 
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>
+        /// The instance.
+        /// </value>
         public static Stats Instance { get; } = new Stats();
 
         /// <summary>
@@ -66,6 +75,11 @@ namespace ElevatorApp.Util
                 return avg;
         }
 
+        /// <summary>
+        /// Gets the minimum wait time.
+        /// </summary>
+        /// <returns></returns>
+        [Obsolete]
         public Duration GetMinWaitTime()
         {
             Duration min = new Duration();
@@ -92,6 +106,11 @@ namespace ElevatorApp.Util
                 return min;
         }
 
+        /// <summary>
+        /// Gets the maximum wait time.
+        /// </summary>
+        /// <returns></returns>
+        [Obsolete]
         public Duration GetMaxWaitTime()
         {
             Duration max = new Duration();
@@ -114,13 +133,11 @@ namespace ElevatorApp.Util
                 return max;
         }
 
-
-
-
         /// <summary>
         /// This returns the number of passengers that have passed through the system and completed their trip
         /// </summary>
         /// <returns></returns>
+        [Obsolete]
         public int GetPassengerCount()
         {
             return passengerWaitTimes.Count;
