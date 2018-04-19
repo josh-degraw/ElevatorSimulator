@@ -549,7 +549,7 @@ namespace ElevatorApp.Models
         public Elevator(int initialFloor = 1)
         {
             this._currentFloor = initialFloor;
-            this.ElevatorNumber = ++_RegisteredElevators;
+            //this.ElevatorNumber = ++_RegisteredElevators;
 
             LogEvent("Initializing Elevator", ("ElevatorNumber", this.ElevatorNumber));
 
