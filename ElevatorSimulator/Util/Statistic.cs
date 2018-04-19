@@ -40,11 +40,13 @@ namespace ElevatorApp.Util
 
         private TAggregate _average;
         private int _count;
-        private TStat _min, _max;
+        protected TStat _min, _max;
 
         #endregion Backing fields
 
         #region Properties and Statistical values
+
+        protected abstract TStat DefaultMin { get; }
 
         /// <summary>
         /// The average of all values
@@ -166,6 +168,7 @@ namespace ElevatorApp.Util
         {
             this.Name = name;
             this._stats = new ConcurrentBag<TStat>();
+            this._min = this.DefaultMin;
         }
 
         /// <summary>

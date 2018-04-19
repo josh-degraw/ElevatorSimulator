@@ -26,6 +26,8 @@ namespace ElevatorApp.Util
         public LongStatistic(string name, IEnumerable<long> collection) : base(name, collection)
         { }
 
+        protected override long DefaultMin => long.MaxValue;
+
         /// <summary>
         /// Provides a function to add two items of type <see cref="long"/> together
         /// <para>Represents <c><paramref name="left"/> + <paramref name="right"/></c></para>

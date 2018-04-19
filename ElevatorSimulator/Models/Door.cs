@@ -255,8 +255,14 @@ namespace ElevatorApp.Models
                 {
                     this.DoorState = DoorState.Opened;
                     this.Opened?.Invoke(this, args);
+                }
+                await Task.Delay(this.TIME_SPENT_OPEN).ConfigureAwait(false);
 
-                    await Task.Delay(this.TIME_SPENT_OPEN).ConfigureAwait(false);
+                if (this.IsCloseRequested || args.CancelOperation)
+                {
+                    // If close has already been requested, just let that call complete
+                    if (!this._closeRequestBegun) this.RequestClose(true);
+                    return;
                 }
 
                 this.RequestClose(true);

@@ -14,6 +14,8 @@ namespace ElevatorApp.Util
         public DoubleStatistic(string name, IEnumerable<double> collection) : base(name, collection)
         { }
 
+        protected override double DefaultMin => double.MaxValue;
+
         ///<inheritdoc/>
         protected override double AddItems(double left, double right) => left + right;
 

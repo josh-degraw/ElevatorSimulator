@@ -39,6 +39,8 @@ namespace ElevatorApp.Util
         /// </summary>
         protected override ToStringMethod<Duration> StatToString { get; } = d => d.ToString("mm:ss", null);
 
+        protected override Duration DefaultMin => Duration.MaxValue;
+
         /// <summary>
         /// Provides a function to add two items of type <see cref="Duration"/> together
         /// <para>Represents <c><paramref name="left"/> + <paramref name="right"/></c></para>
