@@ -26,7 +26,7 @@ namespace ElevatorApp.Controls
         /// </summary>
         public FloorControl()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

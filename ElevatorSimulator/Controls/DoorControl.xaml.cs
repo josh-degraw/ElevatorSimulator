@@ -12,7 +12,7 @@ namespace ElevatorApp.Controls
         /// </summary>
         public DoorControl()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
         
     }

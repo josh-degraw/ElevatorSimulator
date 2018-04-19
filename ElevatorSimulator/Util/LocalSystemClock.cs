@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using NodaTime;
+using System;
 
 namespace ElevatorApp.Util
 {
-
-    /// <inheritdoc />
+    /// <inheritdoc/>
     /// <summary>
-    /// Class copied from NodaTime <see cref="SystemClock" />, to show the local system time instead of UTC
+    /// Class copied from NodaTime <see cref="SystemClock"/>, to show the local system time instead of UTC
     /// </summary>
     public sealed class LocalSystemClock : IClock
     {
@@ -29,20 +24,16 @@ namespace ElevatorApp.Util
         }
 
         /// <summary>
-        /// Gets the current <see cref="T:NodaTime.Instant" /> on the time line according to this clock.
+        /// Gets the current <see cref="T:NodaTime.Instant"/> on the time line according to this clock.
         /// </summary>
-        /// <returns>
-        /// The current instant on the time line according to this clock.
-        /// </returns>
-        /// <inheritdoc />
+        /// <returns>The current instant on the time line according to this clock.</returns>
+        /// <inheritdoc/>
         Instant IClock.GetCurrentInstant() => NodaConstants.BclEpoch.PlusTicks(DateTime.Now.Ticks);
 
         /// <summary>
-        /// Gets the current <see cref="T:NodaTime.Instant" /> on the time line according to this clock.
+        /// Gets the current <see cref="T:NodaTime.Instant"/> on the time line according to this clock.
         /// </summary>
-        /// <returns>
-        /// The current instant on the time line according to this clock.
-        /// </returns>
+        /// <returns>The current instant on the time line according to this clock.</returns>
         public static Instant GetCurrentInstant() => Instance.GetCurrentInstant();
     }
 }

@@ -1,19 +1,17 @@
-﻿using System;
+﻿using ElevatorApp.Util;
 using System.Linq;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using ElevatorApp.Models.Interfaces;
-using ElevatorApp.Util;
 
 namespace ElevatorApp.Models
 {
     /// <summary>
-    /// Represents a panel of buttons used to call an <see cref="Elevator"/>, from outside of the <see cref="Elevator"/> (e.g. on a <see cref="Floor"/>).
+    /// Represents a panel of buttons used to call an <see cref="Elevator"/>, from outside of the <see cref="Elevator"/>
+    /// (e.g. on a <see cref="Floor"/>).
     /// </summary>
     public class ElevatorCallPanel : ButtonPanelBase
     {
         /// <summary>
-        /// The actual collection of <see cref="FloorButton" />s
+        /// The actual collection of <see cref="FloorButton"/> s
         /// </summary>
         protected override AsyncObservableCollection<FloorButton> _floorButtons { get; }
 
@@ -45,7 +43,7 @@ namespace ElevatorApp.Models
         /// <param name="masterController">The item this object will be subscribed to</param>
         public override async Task Subscribe(ElevatorMasterController masterController)
         {
-            if (Subscribed)
+            if (this.Subscribed)
                 return;
 
             var thisBtn = this.FloorButtons.FirstOrDefault(b =>
@@ -66,6 +64,5 @@ namespace ElevatorApp.Models
 
             this.Subscribed = true;
         }
-
     }
 }

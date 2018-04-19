@@ -14,7 +14,7 @@ namespace ElevatorApp.Controls
         /// </summary>
         public ButtonPanelControl()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>

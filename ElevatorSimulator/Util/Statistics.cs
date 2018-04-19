@@ -50,7 +50,7 @@ namespace ElevatorApp.Util
         /// The Average value
         /// </returns>
         /// <inheritdoc />
-        protected override Duration CalculateAverage() => Duration.FromNanoseconds(_collection.Average(d => d.TotalNanoseconds));
+        protected override Duration CalculateAverage() => Duration.FromNanoseconds(this._collection.Average(d => d.TotalNanoseconds));
 
         /// <summary>
         /// Provides a function to divide one items of type <see cref="Duration"/>  from another
@@ -133,7 +133,7 @@ namespace ElevatorApp.Util
         protected override double SubtractItems(double left, double right) => left - right;
 
         ///<inheritdoc/>
-        protected override double CalculateAverage() => _collection.Average();
+        protected override double CalculateAverage() => this._collection.Average();
     }
 
     ///<inheritdoc/>
@@ -160,7 +160,7 @@ namespace ElevatorApp.Util
         protected override decimal SubtractItems(decimal left, decimal right) => left - right;
 
         ///<inheritdoc/>
-        protected override decimal CalculateAverage() => _collection.Average();
+        protected override decimal CalculateAverage() => this._collection.Average();
     }
 
     ///<inheritdoc/>
@@ -196,7 +196,7 @@ namespace ElevatorApp.Util
         protected override int SubtractItems(int left, int right) => left - right;
 
         ///<inheritdoc/>
-        protected override double CalculateAverage() => _collection.Average();
+        protected override double CalculateAverage() => this._collection.Average();
     }
 
     ///<inheritdoc/>
@@ -223,7 +223,7 @@ namespace ElevatorApp.Util
         protected override long SubtractItems(long left, long right) => left - right;
 
         ///<inheritdoc/>
-        protected override double CalculateAverage() => _collection.Average();
+        protected override double CalculateAverage() => this._collection.Average();
     }
 
 }

@@ -40,7 +40,7 @@ namespace ElevatorApp.Controls
         /// <param name="e"></param>
         private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            var viewer = VisualTreeHelperEx.FindDescendantByType<ScrollViewer>(listViewEvents);
+            var viewer = VisualTreeHelperEx.FindDescendantByType<ScrollViewer>(this.listViewEvents);
             if (viewer != null)
             {
                 // User scroll event : set or unset auto-scroll mode
@@ -52,18 +52,18 @@ namespace ElevatorApp.Controls
                     {
                         // Scroll bar is in bottom
                         // Set auto-scroll mode
-                        _autoScroll = true;
+                        this._autoScroll = true;
                     }
                     else
                     {
                         // Scroll bar isn't in bottom
                         // Unset auto-scroll mode
-                        _autoScroll = false;
+                        this._autoScroll = false;
                     }
                 }
 
                 // Content scroll event : auto-scroll eventually
-                if (_autoScroll && !e.ExtentHeightChange.Equals(0))
+                if (this._autoScroll && !e.ExtentHeightChange.Equals(0))
                 {
                     // Content changed and auto-scroll mode set
                     // Autoscroll
@@ -81,7 +81,7 @@ namespace ElevatorApp.Controls
         public LoggerView()
         {
             //BindingOperations.EnableCollectionSynchronization(Logger.Events, _locker);
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace ElevatorApp.Controls
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnClear_click(object sender, RoutedEventArgs e)
         {
-            listViewEvents.Items.Clear();
+            this.listViewEvents.Items.Clear();
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace ElevatorApp.Controls
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void StackPanel_Loaded(object sender, RoutedEventArgs e)
         {
-            Logger.Instance.ItemLogged -= ItemLogged;
-            Logger.Instance.ItemLogged += ItemLogged;
+            Logger.Instance.ItemLogged -= this.ItemLogged;
+            Logger.Instance.ItemLogged += this.ItemLogged;
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace ElevatorApp.Controls
         {
             try
             {
-                Dispatcher.Invoke(() => listViewEvents.Items.Add(message));
+                this.Dispatcher.Invoke(() => this.listViewEvents.Items.Add(message));
             }
             catch (Exception ex)
             {
@@ -139,7 +139,7 @@ namespace ElevatorApp.Controls
             {
                 try
                 {
-                    var str = listViewEvents.Items.OfType<string>();
+                    var str = this.listViewEvents.Items.OfType<string>();
 
                     File.WriteAllLines(dialog.FileName, str);
                     MessageBox.Show("Saved file at " + dialog.SafeFileName, "Success", MessageBoxButton.OK);

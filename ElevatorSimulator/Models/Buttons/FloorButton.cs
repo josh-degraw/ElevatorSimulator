@@ -1,37 +1,21 @@
-﻿using System;
-using System.Threading.Tasks;
-using ElevatorApp.Models.Enums;
+﻿using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
 using ElevatorApp.Util;
+using System.Threading.Tasks;
 
 namespace ElevatorApp.Models
 {
-    /// <inheritdoc cref="ButtonBase{T}" />
+    /// <inheritdoc cref="ButtonBase{T}"/>
     /// <summary>
     /// Represents a Button that tells the elevator to go to a specified floor
     /// </summary>
     public class FloorButton : ButtonBase<int>, ISubcriber<ElevatorMasterController>
     {
-        /// <summary>
-        /// The text on the button
-        /// </summary>
-        /// <inheritdoc />
-        public override string Label => this.FloorNumber.ToString();
+        private bool _subscribed = false;
 
+        /// <inheritdoc/>
         /// <summary>
-        /// The type of button this is
-        /// </summary>
-        /// <inheritdoc />
-        public override ButtonType ButtonType => ButtonType.Floor;
-
-        /// <summary>
-        /// The number of the <see cref="Floor"/> this <see cref="FloorButton"/> is tied to
-        /// </summary>
-        public virtual int FloorNumber { get; }
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:ElevatorApp.Models.FloorButton" /> class.
+        /// Initializes a new instance of the <see cref="T:ElevatorApp.Models.FloorButton"/> class.
         /// </summary>
         /// <param name="floorNumber">The floor number.</param>
         /// <param name="startActive">if set to <c>true</c> [start active].</param>
@@ -40,16 +24,22 @@ namespace ElevatorApp.Models
             this.FloorNumber = floorNumber;
         }
 
-        /// <inheritdoc />
         /// <summary>
-        /// Push the button
+        /// The type of button this is
         /// </summary>
-        public override void Push()
-        {
-            this.HandlePushed(this, this.FloorNumber);
-        }
+        /// <inheritdoc/>
+        public override ButtonType ButtonType => ButtonType.Floor;
 
-        private bool _subscribed = false;
+        /// <summary>
+        /// The number of the <see cref="Floor"/> this <see cref="FloorButton"/> is tied to
+        /// </summary>
+        public virtual int FloorNumber { get; }
+
+        /// <summary>
+        /// The text on the button
+        /// </summary>
+        /// <inheritdoc/>
+        public override string Label => this.FloorNumber.ToString();
 
         /// <summary>
         /// Represents whether or not this object has performed the necessary steps to subscribe to the source.
@@ -57,8 +47,8 @@ namespace ElevatorApp.Models
         /// <inheritdoc/>
         public bool Subscribed
         {
-            get => _subscribed;
-            protected set => SetProperty(ref _subscribed, value);
+            get => this._subscribed;
+            protected set => this.SetProperty(ref this._subscribed, value);
         }
 
         /// <summary>
@@ -69,17 +59,25 @@ namespace ElevatorApp.Models
             this.IsEnabled = false;
         }
 
+        /// <inheritdoc/>
+        /// <summary>
+        /// Push the button
+        /// </summary>
+        public override void Push()
+        {
+            this.HandlePushed(this, this.FloorNumber);
+        }
+
         /// <summary>
         /// Perform the necessary steps to subscribe to the target.
         /// </summary>
         /// <param name="parent">The item this object will be subscribed to</param>
         /// <returns></returns>
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public virtual Task Subscribe(ElevatorMasterController parent)
         {
             if (this.Subscribed)
                 return Task.CompletedTask;
-
 
             Logger.LogEvent($"Subscribing {nameof(FloorButton)}", ("Elevator", parent.Elevator.ElevatorNumber));
 
@@ -106,7 +104,6 @@ namespace ElevatorApp.Models
             //    if (floor.DestinationFloor == this.FloorNumber)
             //        this.HandleActionCompleted(e, floor.DestinationFloor);
             //};
-            
 
             this.Subscribed = true;
             return Task.CompletedTask;

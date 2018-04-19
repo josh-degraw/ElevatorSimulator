@@ -28,7 +28,7 @@ namespace ElevatorApp.Controls
         /// </summary>
         public ElevatorButtonControl()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>

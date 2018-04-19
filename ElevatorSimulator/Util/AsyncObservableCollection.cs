@@ -63,25 +63,25 @@ namespace ElevatorApp.Util
         /// <remarks>Written by Josh DeGraw</remarks>
         public bool AddDistinct(T item)
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             if (view.dissalowReenterancy)
                 throwReenterancyException();
 
-            _lock.EnterUpgradeableReadLock();
+            this._lock.EnterUpgradeableReadLock();
 
             try
             {
                 bool contains = false;
 
-                contains = _collection.Contains(item);
+                contains = this._collection.Contains(item);
                 if (contains)
                     return false;
 
-                _lock.EnterWriteLock();
+                this._lock.EnterWriteLock();
                 try
                 {
-                    _version++;
-                    _collection.Add(item);
+                    this._version++;
+                    this._collection.Add(item);
                 }
                 catch
                 {
@@ -90,14 +90,15 @@ namespace ElevatorApp.Util
                 }
                 finally
                 {
-                    _lock.ExitWriteLock();
+                    this._lock.ExitWriteLock();
                 }
             }
             finally
             {
-                _lock.ExitUpgradeableReadLock();
+                this._lock.ExitUpgradeableReadLock();
             }
-            dispatchWaitingEvents(view);
+
+            this.dispatchWaitingEvents(view);
 
             return true;
 
@@ -116,9 +117,9 @@ namespace ElevatorApp.Util
         /// <inheritdoc />
         public AsyncObservableCollection()
         {
-            _collection = new ObservableCollection<T>();
-            _lock = new ReaderWriterLockSlim();
-            _threadView = new ThreadLocal<ThreadView>(() => new ThreadView(this));
+            this._collection = new ObservableCollection<T>();
+            this._lock = new ReaderWriterLockSlim();
+            this._threadView = new ThreadLocal<ThreadView>(() => new ThreadView(this));
             // It was a design decision to NOT implement IDisposable here for disposing the ThreadLocal instance. ThreadLocal has a finalizer
             // so it will be taken care of eventually. Since the cache itself is a weak reference, the only difference between explicitly
             // disposing of it and waiting for finalization will be ~80 bytes per thread of memory in the TLS table that will stay around for
@@ -128,9 +129,9 @@ namespace ElevatorApp.Util
         /// <inheritdoc />
         public AsyncObservableCollection(IEnumerable<T> collection)
         {
-            _collection = new ObservableCollection<T>(collection);
-            _lock = new ReaderWriterLockSlim();
-            _threadView = new ThreadLocal<ThreadView>(() => new ThreadView(this));
+            this._collection = new ObservableCollection<T>(collection);
+            this._lock = new ReaderWriterLockSlim();
+            this._threadView = new ThreadLocal<ThreadView>(() => new ThreadView(this));
         }
 
         #region ThreadView -- every thread that acceses this collection gets a unique view of it
@@ -155,9 +156,9 @@ namespace ElevatorApp.Util
 
             public ThreadView(AsyncObservableCollection<T> owner)
             {
-                _owner = owner;
-                _threadId = Thread.CurrentThread.ManagedThreadId;
-                _snapshot = new WeakReference<List<T>>(null);
+                this._owner = owner;
+                this._threadId = Thread.CurrentThread.ManagedThreadId;
+                this._snapshot = new WeakReference<List<T>>(null);
             }
 
             /// <summary>
@@ -166,38 +167,38 @@ namespace ElevatorApp.Util
             /// </summary>
             public List<T> getSnapshot()
             {
-                Debug.Assert(Thread.CurrentThread.ManagedThreadId == _threadId);
+                Debug.Assert(Thread.CurrentThread.ManagedThreadId == this._threadId);
                 // if we have a cached snapshot that's up to date, just use that one
-                if (!_snapshot.TryGetTarget(out List<T> list) || _listVersion != _owner._version)
+                if (!this._snapshot.TryGetTarget(out List<T> list) || this._listVersion != this._owner._version)
                 {
                     // need to create a new snapshot
                     // if nothing is using the old snapshot, we can clear and reuse the existing list instead
                     // of allocating a brand new list. yay for eco-friendly solutions!
-                    int enumCount = _enumeratingCurrentSnapshot;
-                    _snapshotId++;
-                    _enumeratingCurrentSnapshot = 0;
+                    int enumCount = this._enumeratingCurrentSnapshot;
+                    this._snapshotId++;
+                    this._enumeratingCurrentSnapshot = 0;
 
-                    _owner._lock.EnterReadLock();
+                    this._owner._lock.EnterReadLock();
                     try
                     {
-                        _listVersion = _owner._version;
+                        this._listVersion = this._owner._version;
                         if (list == null || enumCount > 0)
                         {
                             // if enumCount > 0 here that means something is currently using the instance of list. we create a new list
                             // here and "strand" the old list so the enumerator can finish enumerating it in peace.
-                            list = new List<T>(_owner._collection);
-                            _snapshot.SetTarget(list);
+                            list = new List<T>(this._owner._collection);
+                            this._snapshot.SetTarget(list);
                         }
                         else
                         {
                             // clear & reuse the old list
                             list.Clear();
-                            list.AddRange(_owner._collection);
+                            list.AddRange(this._owner._collection);
                         }
                     }
                     finally
                     {
-                        _owner._lock.ExitReadLock();
+                        this._owner._lock.ExitReadLock();
                     }
                 }
                 return list;
@@ -210,9 +211,9 @@ namespace ElevatorApp.Util
             /// <returns>The ID to pass into <see cref="exitEnumerator"/>.</returns>
             public int enterEnumerator()
             {
-                Debug.Assert(Thread.CurrentThread.ManagedThreadId == _threadId);
-                _enumeratingCurrentSnapshot++;
-                return _snapshotId;
+                Debug.Assert(Thread.CurrentThread.ManagedThreadId == this._threadId);
+                this._enumeratingCurrentSnapshot++;
+                return this._snapshotId;
             }
 
             /// <summary>
@@ -224,10 +225,9 @@ namespace ElevatorApp.Util
                 // if the enumerator is being disposed from a different thread than the one that creatd it, there's no way
                 // to garuntee the atomicity of this operation. if this (EXTREMELY rare) case happens, we'll ditch the list next
                 // time we need to make a new snapshot. this can never happen with a regular foreach()
-                if (Thread.CurrentThread.ManagedThreadId == _threadId)
+                if (Thread.CurrentThread.ManagedThreadId == this._threadId)
                 {
-                    if (_snapshotId == oldId)
-                        _enumeratingCurrentSnapshot--;
+                    if (this._snapshotId == oldId) this._enumeratingCurrentSnapshot--;
                 }
             }
         }
@@ -245,14 +245,14 @@ namespace ElevatorApp.Util
         /// </returns>
         public bool Contains(T item)
         {
-            _lock.EnterReadLock();
+            this._lock.EnterReadLock();
             try
             {
-                return _collection.Contains(item);
+                return this._collection.Contains(item);
             }
             finally
             {
-                _lock.ExitReadLock();
+                this._lock.ExitReadLock();
             }
         }
 
@@ -265,14 +265,14 @@ namespace ElevatorApp.Util
         {
             get
             {
-                _lock.EnterReadLock();
+                this._lock.EnterReadLock();
                 try
                 {
-                    return _collection.Count;
+                    return this._collection.Count;
                 }
                 finally
                 {
-                    _lock.ExitReadLock();
+                    this._lock.ExitReadLock();
                 }
             }
         }
@@ -287,14 +287,14 @@ namespace ElevatorApp.Util
         /// <inheritdoc />
         public int IndexOf(T item)
         {
-            _lock.EnterReadLock();
+            this._lock.EnterReadLock();
             try
             {
-                return _collection.IndexOf(item);
+                return this._collection.IndexOf(item);
             }
             finally
             {
-                _lock.ExitReadLock();
+                this._lock.ExitReadLock();
             }
         }
 
@@ -310,14 +310,14 @@ namespace ElevatorApp.Util
         /// <inheritdoc />
         public void Add(T item)
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             if (view.dissalowReenterancy)
                 throwReenterancyException();
-            _lock.EnterWriteLock();
+            this._lock.EnterWriteLock();
             try
             {
-                _version++;
-                _collection.Add(item);
+                this._version++;
+                this._collection.Add(item);
             }
             catch (Exception)
             {
@@ -326,9 +326,10 @@ namespace ElevatorApp.Util
             }
             finally
             {
-                _lock.ExitWriteLock();
+                this._lock.ExitWriteLock();
             }
-            dispatchWaitingEvents(view);
+
+            this.dispatchWaitingEvents(view);
         }
 
         /// <summary>
@@ -338,15 +339,14 @@ namespace ElevatorApp.Util
         /// <inheritdoc />
         public void AddRange(IEnumerable<T> items)
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             if (view.dissalowReenterancy)
                 throwReenterancyException();
-            _lock.EnterWriteLock();
+            this._lock.EnterWriteLock();
             try
             {
-                _version++;
-                foreach (T item in items)
-                    _collection.Add(item);
+                this._version++;
+                foreach (T item in items) this._collection.Add(item);
             }
             catch (Exception)
             {
@@ -355,9 +355,10 @@ namespace ElevatorApp.Util
             }
             finally
             {
-                _lock.ExitWriteLock();
+                this._lock.ExitWriteLock();
             }
-            dispatchWaitingEvents(view);
+
+            this.dispatchWaitingEvents(view);
         }
 
 
@@ -371,15 +372,15 @@ namespace ElevatorApp.Util
         /// </returns>
         int IList.Add(object value)
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             if (view.dissalowReenterancy)
                 throwReenterancyException();
             int result;
-            _lock.EnterWriteLock();
+            this._lock.EnterWriteLock();
             try
             {
-                _version++;
-                result = ((IList)_collection).Add(value);
+                this._version++;
+                result = ((IList) this._collection).Add(value);
             }
             catch (Exception)
             {
@@ -388,9 +389,10 @@ namespace ElevatorApp.Util
             }
             finally
             {
-                _lock.ExitWriteLock();
+                this._lock.ExitWriteLock();
             }
-            dispatchWaitingEvents(view);
+
+            this.dispatchWaitingEvents(view);
             return result;
         }
 
@@ -402,14 +404,14 @@ namespace ElevatorApp.Util
         /// <param name="item">The object to insert into the <see cref="T:System.Collections.Generic.IList`1" />.</param>
         public void Insert(int index, T item)
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             if (view.dissalowReenterancy)
                 throwReenterancyException();
-            _lock.EnterWriteLock();
+            this._lock.EnterWriteLock();
             try
             {
-                _version++;
-                _collection.Insert(index, item);
+                this._version++;
+                this._collection.Insert(index, item);
             }
             catch (Exception)
             {
@@ -418,23 +420,24 @@ namespace ElevatorApp.Util
             }
             finally
             {
-                _lock.ExitWriteLock();
+                this._lock.ExitWriteLock();
             }
-            dispatchWaitingEvents(view);
+
+            this.dispatchWaitingEvents(view);
         }
 
         /// <inheritdoc />
         public bool Remove(T item)
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             if (view.dissalowReenterancy)
                 throwReenterancyException();
             bool result;
-            _lock.EnterWriteLock();
+            this._lock.EnterWriteLock();
             try
             {
-                _version++;
-                result = _collection.Remove(item);
+                this._version++;
+                result = this._collection.Remove(item);
             }
             catch (Exception)
             {
@@ -443,9 +446,10 @@ namespace ElevatorApp.Util
             }
             finally
             {
-                _lock.ExitWriteLock();
+                this._lock.ExitWriteLock();
             }
-            dispatchWaitingEvents(view);
+
+            this.dispatchWaitingEvents(view);
             return result;
         }
 
@@ -456,14 +460,14 @@ namespace ElevatorApp.Util
         /// <param name="index">The zero-based index of the item to remove.</param>
         public void RemoveAt(int index)
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             if (view.dissalowReenterancy)
                 throwReenterancyException();
-            _lock.EnterWriteLock();
+            this._lock.EnterWriteLock();
             try
             {
-                _version++;
-                _collection.RemoveAt(index);
+                this._version++;
+                this._collection.RemoveAt(index);
             }
             catch (Exception)
             {
@@ -472,9 +476,10 @@ namespace ElevatorApp.Util
             }
             finally
             {
-                _lock.ExitWriteLock();
+                this._lock.ExitWriteLock();
             }
-            dispatchWaitingEvents(view);
+
+            this.dispatchWaitingEvents(view);
         }
 
         /// <summary>
@@ -483,14 +488,14 @@ namespace ElevatorApp.Util
         /// <inheritdoc />
         public void Clear()
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             if (view.dissalowReenterancy)
                 throwReenterancyException();
-            _lock.EnterWriteLock();
+            this._lock.EnterWriteLock();
             try
             {
-                _version++;
-                _collection.Clear();
+                this._version++;
+                this._collection.Clear();
             }
             catch (Exception)
             {
@@ -499,9 +504,10 @@ namespace ElevatorApp.Util
             }
             finally
             {
-                _lock.ExitWriteLock();
+                this._lock.ExitWriteLock();
             }
-            dispatchWaitingEvents(view);
+
+            this.dispatchWaitingEvents(view);
         }
         /// <summary>
         /// Moves the specified old index.
@@ -511,14 +517,14 @@ namespace ElevatorApp.Util
         /// <inheritdoc />
         public void Move(int oldIndex, int newIndex)
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             if (view.dissalowReenterancy)
                 throwReenterancyException();
-            _lock.EnterWriteLock();
+            this._lock.EnterWriteLock();
             try
             {
-                _version++;
-                _collection.Move(oldIndex, newIndex);
+                this._version++;
+                this._collection.Move(oldIndex, newIndex);
             }
             catch (Exception)
             {
@@ -527,9 +533,10 @@ namespace ElevatorApp.Util
             }
             finally
             {
-                _lock.ExitWriteLock();
+                this._lock.ExitWriteLock();
             }
-            dispatchWaitingEvents(view);
+
+            this.dispatchWaitingEvents(view);
         }
         #endregion
 
@@ -539,27 +546,27 @@ namespace ElevatorApp.Util
         {
             get
             {
-                _lock.EnterReadLock();
+                this._lock.EnterReadLock();
                 try
                 {
-                    return _collection[index];
+                    return this._collection[index];
                 }
                 finally
                 {
-                    _lock.ExitReadLock();
+                    this._lock.ExitReadLock();
                 }
             }
 
             set
             {
-                ThreadView view = _threadView.Value;
+                ThreadView view = this._threadView.Value;
                 if (view.dissalowReenterancy)
                     throwReenterancyException();
-                _lock.EnterWriteLock();
+                this._lock.EnterWriteLock();
                 try
                 {
-                    _version++;
-                    _collection[index] = value;
+                    this._version++;
+                    this._collection[index] = value;
                 }
                 catch (Exception)
                 {
@@ -568,9 +575,10 @@ namespace ElevatorApp.Util
                 }
                 finally
                 {
-                    _lock.ExitWriteLock();
+                    this._lock.ExitWriteLock();
                 }
-                dispatchWaitingEvents(view);
+
+                this.dispatchWaitingEvents(view);
             }
         }
         #endregion
@@ -579,7 +587,7 @@ namespace ElevatorApp.Util
         /// <inheritdoc />
         public IEnumerator<T> GetEnumerator()
         {
-            ThreadView view = _threadView.Value;
+            ThreadView view = this._threadView.Value;
             return new EnumeratorImpl(view.getSnapshot(), view);
         }
 
@@ -587,14 +595,14 @@ namespace ElevatorApp.Util
         public void CopyTo(T[] array, int arrayIndex)
         {
             // don't need to worry about re-entry/other iterators here since we're at the bottom of the stack
-            ((ICollection)_threadView.Value.getSnapshot()).CopyTo(array, arrayIndex);
+            ((ICollection) this._threadView.Value.getSnapshot()).CopyTo(array, arrayIndex);
         }
 
         /// <inheritdoc />
         public T[] ToArray()
         {
             // don't need to worry about re-entry/other iterators here since we're at the bottom of the stack
-            return _threadView.Value.getSnapshot().ToArray();
+            return this._threadView.Value.getSnapshot().ToArray();
         }
 
         /// <inheritdoc />
@@ -607,37 +615,37 @@ namespace ElevatorApp.Util
 
             public EnumeratorImpl(List<T> list, ThreadView view)
             {
-                _enumerator = list.GetEnumerator();
-                _view = view;
-                _myId = view.enterEnumerator();
+                this._enumerator = list.GetEnumerator();
+                this._view = view;
+                this._myId = view.enterEnumerator();
             }
 
-            object IEnumerator.Current => Current;
+            object IEnumerator.Current => this.Current;
 
             public T Current
             {
                 get
                 {
-                    if (_isDisposed)
+                    if (this._isDisposed)
                         throwDisposedException();
-                    return _enumerator.Current;
+                    return this._enumerator.Current;
                 }
             }
 
             public bool MoveNext()
             {
-                if (_isDisposed)
+                if (this._isDisposed)
                     throwDisposedException();
-                return _enumerator.MoveNext();
+                return this._enumerator.MoveNext();
             }
 
             public void Dispose()
             {
-                if (!_isDisposed)
+                if (!this._isDisposed)
                 {
-                    _enumerator.Dispose();
-                    _isDisposed = true;
-                    _view.exitEnumerator(_myId);
+                    this._enumerator.Dispose();
+                    this._isDisposed = true;
+                    this._view.exitEnumerator(this._myId);
                 }
             }
 
@@ -659,84 +667,86 @@ namespace ElevatorApp.Util
 
         // Collection changed
         private readonly AsyncDispatcherEvent<NotifyCollectionChangedEventHandler, NotifyCollectionChangedEventArgs> _collectionChanged = new AsyncDispatcherEvent<NotifyCollectionChangedEventHandler, NotifyCollectionChangedEventArgs>();
-        private void onCollectionChangedInternal(object sender, NotifyCollectionChangedEventArgs args) { _threadView.Value.waitingEvents.Add(args); }
+        private void onCollectionChangedInternal(object sender, NotifyCollectionChangedEventArgs args) {
+            this._threadView.Value.waitingEvents.Add(args); }
         /// <inheritdoc />
         public event NotifyCollectionChangedEventHandler CollectionChanged
         {
             add
             {
                 if (value == null) return;
-                _lock.EnterWriteLock(); // can't add/remove event during write operation
+                this._lock.EnterWriteLock(); // can't add/remove event during write operation
                 try
                 {
                     // even though this is technically a write operation, there's no reason to check reenterancy since it won't ever call handler
                     // in fact, removing handlers in the callback could be a useful scenario
-                    if (_collectionChanged.isEmpty) // if we were empty before, the handler wasn't attached
-                        _collection.CollectionChanged += onCollectionChangedInternal;
-                    _collectionChanged.add(value);
+                    if (this._collectionChanged.isEmpty) // if we were empty before, the handler wasn't attached
+                        this._collection.CollectionChanged += this.onCollectionChangedInternal;
+                    this._collectionChanged.add(value);
                 }
                 finally
                 {
-                    _lock.ExitWriteLock();
+                    this._lock.ExitWriteLock();
                 }
             }
             remove
             {
                 if (value == null) return;
-                _lock.EnterWriteLock(); // can't add/remove event during write operation
+                this._lock.EnterWriteLock(); // can't add/remove event during write operation
                 try
                 {
                     // even though this is technically a write operation, there's no reason to check reenterancy since it won't ever call handler
                     // in fact, removing handlers in the callback could be a useful scenario
-                    _collectionChanged.remove(value);
-                    if (_collectionChanged.isEmpty) // if we're now empty, detatch handler
-                        _collection.CollectionChanged -= onCollectionChangedInternal;
+                    this._collectionChanged.remove(value);
+                    if (this._collectionChanged.isEmpty) // if we're now empty, detatch handler
+                        this._collection.CollectionChanged -= this.onCollectionChangedInternal;
                 }
                 finally
                 {
-                    _lock.ExitWriteLock();
+                    this._lock.ExitWriteLock();
                 }
             }
         }
 
         // Property changed
         private readonly AsyncDispatcherEvent<PropertyChangedEventHandler, PropertyChangedEventArgs> _propertyChanged = new AsyncDispatcherEvent<PropertyChangedEventHandler, PropertyChangedEventArgs>();
-        private void onPropertyChangedInternal(object sender, PropertyChangedEventArgs args) { _threadView.Value.waitingEvents.Add(args); }
+        private void onPropertyChangedInternal(object sender, PropertyChangedEventArgs args) {
+            this._threadView.Value.waitingEvents.Add(args); }
         /// <inheritdoc />
         event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
         {
             add
             {
                 if (value == null) return;
-                _lock.EnterWriteLock(); // can't add/remove event during write operation
+                this._lock.EnterWriteLock(); // can't add/remove event during write operation
                 try
                 {
                     // even though this is technically a write operation, there's no reason to check reenterancy since it won't ever call handler
                     // in fact, removing handlers in the callback could be a useful scenario
-                    if (_propertyChanged.isEmpty) // if we were empty before, the handler wasn't attached
-                        ((INotifyPropertyChanged)_collection).PropertyChanged += onPropertyChangedInternal;
-                    _propertyChanged.add(value);
+                    if (this._propertyChanged.isEmpty) // if we were empty before, the handler wasn't attached
+                        ((INotifyPropertyChanged) this._collection).PropertyChanged += this.onPropertyChangedInternal;
+                    this._propertyChanged.add(value);
                 }
                 finally
                 {
-                    _lock.ExitWriteLock();
+                    this._lock.ExitWriteLock();
                 }
             }
             remove
             {
                 if (value == null) return;
-                _lock.EnterWriteLock(); // can't add/remove event during write operation
+                this._lock.EnterWriteLock(); // can't add/remove event during write operation
                 try
                 {
                     // even though this is technically a write operation, there's no reason to check reenterancy since it won't ever call handler
                     // in fact, removing handlers in the callback could be a useful scenario
-                    _propertyChanged.remove(value);
-                    if (_propertyChanged.isEmpty) // if we're now empty, detatch handler
-                        ((INotifyPropertyChanged)_collection).PropertyChanged -= onPropertyChangedInternal;
+                    this._propertyChanged.remove(value);
+                    if (this._propertyChanged.isEmpty) // if we're now empty, detatch handler
+                        ((INotifyPropertyChanged) this._collection).PropertyChanged -= this.onPropertyChangedInternal;
                 }
                 finally
                 {
-                    _lock.ExitWriteLock();
+                    this._lock.ExitWriteLock();
                 }
             }
         }
@@ -760,13 +770,13 @@ namespace ElevatorApp.Util
                 {
                     if (args is NotifyCollectionChangedEventArgs ccArgs)
                     {
-                        _collectionChanged.raise(this, ccArgs);
+                        this._collectionChanged.raise(this, ccArgs);
                     }
                     else
                     {
                         if (args is PropertyChangedEventArgs pcArgs)
                         {
-                            _propertyChanged.raise(this, pcArgs);
+                            this._propertyChanged.raise(this, pcArgs);
                         }
                     }
                 }
@@ -785,27 +795,29 @@ namespace ElevatorApp.Util
         #endregion
 
         #region Methods to make interfaces happy -- most of these just foreward to the appropriate methods above
-        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
-        void IList.Remove(object value) { Remove((T)value); }
+        IEnumerator IEnumerable.GetEnumerator() { return this.GetEnumerator(); }
+        void IList.Remove(object value) {
+            this.Remove((T)value); }
         object IList.this[int index]
         {
             get => this[index];
             set => this[index] = (T)value;
         }
-        void IList.Insert(int index, object value) { Insert(index, (T)value); }
+        void IList.Insert(int index, object value) {
+            this.Insert(index, (T)value); }
         bool ICollection<T>.IsReadOnly => false;
         bool IList.IsReadOnly => false;
         bool IList.IsFixedSize => false;
-        bool IList.Contains(object value) { return Contains((T)value); }
+        bool IList.Contains(object value) { return this.Contains((T)value); }
         object ICollection.SyncRoot => throw new NotSupportedException("AsyncObservableCollection doesn't need external synchronization");
         bool ICollection.IsSynchronized => false;
 
         void ICollection.CopyTo(Array array, int index)
         {
             // don't need to worry about re-entry/other iterators here since we're at the bottom of the stack
-            ((ICollection)_threadView.Value.getSnapshot()).CopyTo(array, index);
+            ((ICollection) this._threadView.Value.getSnapshot()).CopyTo(array, index);
         }
-        int IList.IndexOf(object value) { return IndexOf((T)value); }
+        int IList.IndexOf(object value) { return this.IndexOf((T)value); }
         #endregion
 
         #region Serialization
@@ -819,7 +831,7 @@ namespace ElevatorApp.Util
 
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("values", ToArray(), typeof(T[]));
+            info.AddValue("values", this.ToArray(), typeof(T[]));
         }
         #endregion
 
@@ -917,7 +929,7 @@ namespace ElevatorApp.Util
             {
                 if (value == null)
                     return;
-                _event += (new DelegateWrapper(getDispatcherOrNull(), value)).invoke;
+                this._event += (new DelegateWrapper(getDispatcherOrNull(), value)).invoke;
             }
 
             /// <summary>
@@ -929,9 +941,9 @@ namespace ElevatorApp.Util
                 if (value == null)
                     return;
                 Dispatcher dispatcher = getDispatcherOrNull();
-                lock (_removeLock) // because events are intrinsically threadsafe, and dispatchers are thread-local, the only time this lock matters is when removing non-dispatcher events
+                lock (this._removeLock) // because events are intrinsically threadsafe, and dispatchers are thread-local, the only time this lock matters is when removing non-dispatcher events
                 {
-                    EventHandler<TArgs> evt = _event;
+                    EventHandler<TArgs> evt = this._event;
                     if (evt != null)
                     {
                         Delegate[] invList = evt.GetInvocationList();
@@ -941,7 +953,7 @@ namespace ElevatorApp.Util
                             // need to use Equals instead of == for delegates
                             if (wrapper.handler.Equals(value) && wrapper.dispatcher == dispatcher)
                             {
-                                _event -= wrapper.invoke;
+                                this._event -= wrapper.invoke;
                                 return;
                             }
                         }
@@ -952,7 +964,7 @@ namespace ElevatorApp.Util
             /// <summary>
             /// Checks if any delegate has been added to this event.
             /// </summary>
-            public bool isEmpty => _event == null;
+            public bool isEmpty => this._event == null;
 
             /// <summary>
             /// Calls the event.
@@ -962,7 +974,7 @@ namespace ElevatorApp.Util
                 try
                 {
 
-                    EventHandler<TArgs> evt = _event;
+                    EventHandler<TArgs> evt = this._event;
                     evt?.Invoke(sender, args);
                 }
                 catch (Exception ex)
@@ -991,11 +1003,11 @@ namespace ElevatorApp.Util
                 {
                     try
                     {
-                        if (dispatcher == null || dispatcher == getDispatcherOrNull())
-                            _invoke(handler, sender, args);
+                        if (this.dispatcher == null || this.dispatcher == getDispatcherOrNull())
+                            _invoke(this.handler, sender, args);
                         else
                             // ReSharper disable once AssignNullToNotNullAttribute
-                            dispatcher.BeginInvoke(handler as Delegate, DispatcherPriority.DataBind, sender, args);
+                            this.dispatcher.BeginInvoke(this.handler as Delegate, DispatcherPriority.DataBind, sender, args);
                     }
                     catch (Exception ex)
                     {

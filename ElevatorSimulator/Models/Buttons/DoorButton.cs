@@ -23,7 +23,7 @@ namespace ElevatorApp.Models
         {
             get
             {
-                switch (ButtonType)
+                switch (this.ButtonType)
                 {
                     case ButtonType.Open:
                         return "Open";
@@ -96,9 +96,9 @@ namespace ElevatorApp.Models
                 return Task.CompletedTask;
 
             if (this.ButtonType == ButtonType.Open)
-                door.Opened += (e, args) => base.ActionCompleted(e, this.ButtonType);
+                door.Opened += (e, args) => this.ActionCompleted(e, this.ButtonType);
             else
-                door.Closed += (e, args) => base.ActionCompleted(e, this.ButtonType);
+                door.Closed += (e, args) => this.ActionCompleted(e, this.ButtonType);
 
             this.Subscribed = true;
             return Task.CompletedTask;

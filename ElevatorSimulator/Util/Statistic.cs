@@ -72,7 +72,7 @@ namespace ElevatorApp.Util
         /// <summary>
         /// The collection of statistics, made available in a read-only fashion
         /// </summary>
-        protected IReadOnlyCollection<TStat> _collection => _stats;
+        protected IReadOnlyCollection<TStat> _collection => this._stats;
 
         #region Backing fields
         /// <summary>
@@ -99,16 +99,16 @@ namespace ElevatorApp.Util
         /// </summary>
         public TStat Min
         {
-            get => _min;
-            private set => SetProperty(ref _min, value);
+            get => this._min;
+            private set => this.SetProperty(ref this._min, value);
         }
         /// <summary>
         /// Gets the maximum of all the collected values
         /// </summary>
         public TStat Max
         {
-            get => _max;
-            private set => SetProperty(ref _max, value);
+            get => this._max;
+            private set => this.SetProperty(ref this._max, value);
         }
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace ElevatorApp.Util
         /// </summary>
         public TAggregate Average
         {
-            get => _average;
-            private set => SetProperty(ref _average, value);
+            get => this._average;
+            private set => this.SetProperty(ref this._average, value);
         }
 
         /// <summary>
@@ -125,8 +125,8 @@ namespace ElevatorApp.Util
         /// </summary>
         public int Count
         {
-            get => _count;
-            private set => SetProperty(ref _count, value);
+            get => this._count;
+            private set => this.SetProperty(ref this._count, value);
         }
 
         #endregion
@@ -214,7 +214,7 @@ namespace ElevatorApp.Util
         protected Statistic(string name)
         {
             this.Name = name;
-            _stats = new ConcurrentBag<TStat>();
+            this._stats = new ConcurrentBag<TStat>();
         }
 
 
@@ -237,22 +237,22 @@ namespace ElevatorApp.Util
         public void Add(TStat item)
         {
             // Lock here so that all of the aggregated values will by atomic per added item
-            lock (_locker)
+            lock (this._locker)
             {
-                _stats.Add(item);
-                this.Count = _stats.Count;
+                this._stats.Add(item);
+                this.Count = this._stats.Count;
 
-                if (item.CompareTo(Max) > 0) // item > Max
+                if (item.CompareTo(this.Max) > 0) // item > Max
                 {
                     this.Max = item;
                 }
 
-                if (item.CompareTo(Min) < 0) // item < Min
+                if (item.CompareTo(this.Min) < 0) // item < Min
                 {
                     this.Min = item;
                 }
 
-                this.Average = CalculateAverage();
+                this.Average = this.CalculateAverage();
             }
         }
 
@@ -290,7 +290,7 @@ namespace ElevatorApp.Util
         [Pure]
         public override string ToString()
         {
-            return string.Format($@"Average = {AggregateToString(Average)}; Min = {StatToString(Min)}; Max = {StatToString(Max)}; Count = {Count}");
+            return string.Format($@"Average = {this.AggregateToString(this.Average)}; Min = {this.StatToString(this.Min)}; Max = {this.StatToString(this.Max)}; Count = {this.Count}");
         }
     }
 

@@ -25,12 +25,12 @@ namespace ElevatorApp
         /// <summary>
         /// The elevator 
         /// </summary>
-        public Elevator Elevator => Controller.Elevator;
+        public Elevator Elevator => this.Controller.Elevator;
 
         /// <summary>
         /// The <see cref="Floor"/>s of the <see cref="ElevatorMasterController"/>
         /// </summary>
-        public IReadOnlyCollection<Floor> Floors => Controller.Floors;
+        public IReadOnlyCollection<Floor> Floors => this.Controller.Floors;
         
 
     }

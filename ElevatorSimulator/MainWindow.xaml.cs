@@ -16,7 +16,7 @@ namespace ElevatorApp
         /// </summary>
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>

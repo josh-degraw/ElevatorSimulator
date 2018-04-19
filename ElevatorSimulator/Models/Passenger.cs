@@ -1,35 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Media.Animation;
-using ElevatorApp.Models.Enums;
-using ElevatorApp.Models.Interfaces;
+﻿using ElevatorApp.Models.Enums;
 using ElevatorApp.Util;
 using NodaTime;
+using System;
+using System.Collections.Generic;
 
 namespace ElevatorApp.Models
 {
     /// <summary>
     /// Represents a Passenger
     /// </summary>
-    /// <seealso cref="ElevatorApp.Models.ModelBase" />
+    /// <seealso cref="ElevatorApp.Models.ModelBase"/>
     public class Passenger : ModelBase
     {
+        #region Private Fields
+
         /// <summary>
         /// The total passenger count.
         /// </summary>
         private static int TotalPassengerCount;
 
+        private (int source, int destination) _path;
+
+        private PassengerState _state = PassengerState.Waiting;
+
         #region Timings
-
-        /// <summary>
-        /// The instant the passenger was created and therefore started waiting for the elevator
-        /// </summary>
-        private Instant WaitStart = LocalSystemClock.GetCurrentInstant();
-
-        /// <summary>
-        /// The instant the <see cref="Elevator"/> arrived and the <see cref="Passenger"/>'s state changed to <see cref="PassengerState.Transition"/>
-        /// </summary>
-        private Instant WaitEnd = default;
 
         /// <summary>
         /// The instant that the <see cref="Passenger"/> entered the <see cref="Elevator"/>
@@ -41,93 +35,34 @@ namespace ElevatorApp.Models
         /// </summary>
         private Instant Exited = default;
 
+        /// <summary>
+        /// The instant the <see cref="Elevator"/> arrived and the <see cref="Passenger"/>'s state changed to <see cref="PassengerState.Transition"/>
+        /// </summary>
+        private Instant WaitEnd = default;
 
         /// <summary>
-        /// Represents how long the <see cref="Passenger"/> spent waiting for the <see cref="Elevator"/> to come
+        /// The instant the passenger was created and therefore started waiting for the elevator
         /// </summary>
-        public Duration TimeWaiting => WaitEnd - WaitStart;
+        private Instant WaitStart = LocalSystemClock.GetCurrentInstant();
 
-        /// <summary>
-        /// Represents how long the <see cref="Passenger"/> spent in the <see cref="Elevator"/>
-        /// </summary>
-        public Duration TimeSpentInElevator => Exited - Entered;
+        #endregion Timings
 
-        #endregion
+        #endregion Private Fields
 
-        /// <summary>
-        /// Represents how heavy the <see cref="Passenger"/> is
-        /// </summary>
-        public int Weight { get; set; }
-
-        private PassengerState _state = PassengerState.Waiting;
-
-        /// <summary>
-        /// Represents the state of the <see cref="Passenger"/>
-        /// </summary>
-        public PassengerState State
-        {
-            get => _state;
-            set
-            {
-                PassengerState oldVal = _state;
-                SetProperty(ref _state, value);
-
-                switch (value)
-                {
-                    case PassengerState.Waiting:
-                        WaitStart = LocalSystemClock.GetCurrentInstant();
-                        break;
-                    case PassengerState.Transition when oldVal == PassengerState.Waiting:
-                        WaitEnd = LocalSystemClock.GetCurrentInstant();
-                        break;
-                    case PassengerState.In:
-                        Entered = LocalSystemClock.GetCurrentInstant();
-                        break;
-                    case PassengerState.Out:
-                        Exited = LocalSystemClock.GetCurrentInstant();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        private (int source, int destination) _path;
-
-
-        /// <summary>
-        /// A tuple representing the path of the <see cref="Passenger"/>
-        /// </summary>
-        public (int source, int destination) Path
-        {
-            get => _path;
-            set => SetProperty(ref _path, value);
-        }
-
-
-        /// <summary>
-        /// Computed property representing the direction the passenger wants to go
-        /// </summary>
-        public Direction Direction => this.Path.destination > this.Path.source ? Direction.Up : Direction.Down;
-
-        /// <summary>
-        /// Represents the intended floor and the direction the passenter wants to go
-        /// </summary>
-        public (int floor, Direction direction ) Call => (this.Path.destination, this.Direction);
+        #region Public Fields
 
         /// <summary>
         /// The amount of time it takes for this <see cref="Passenger"/> to transition into or out of the <see cref="Elevator"/>
         /// </summary>
         public static readonly TimeSpan TransitionSpeed = TimeSpan.FromSeconds(1.5);
 
-        /// <summary>
-        /// The number of this <see cref="Passenger"/>, in the order of creation
-        /// </summary>
-        public int PassengerNumber { get; }
+        #endregion Public Fields
+
+        #region Public Constructors
 
         /// <summary>
-        /// Creates a new passenger, incrementing the total number of passengers that have been created
-        /// Only for use by the designer
+        /// Creates a new passenger, incrementing the total number of passengers that have been created Only for use by
+        /// the designer
         /// </summary>
         public Passenger()
         {
@@ -147,35 +82,88 @@ namespace ElevatorApp.Models
             this.Path = (source, destination);
         }
 
-        /// <summary>
-        /// String representation of how long the <see cref="Passenger"/> has been waiting
-        /// </summary>
-        /// <returns></returns>
-        public string GetWaitingString()
-        {
-            if (WaitEnd == default)
-                return "";
+        #endregion Public Constructors
 
-            return $"Time Spent Waiting: {TimeWaiting:mm:ss}";
+        #region Public Properties
+
+        /// <summary>
+        /// Represents the intended floor and the direction the passenter wants to go
+        /// </summary>
+        public (int floor, Direction direction) Call => (this.Path.destination, this.Direction);
+
+        /// <summary>
+        /// The number of this <see cref="Passenger"/>, in the order of creation
+        /// </summary>
+        public int PassengerNumber { get; }
+
+        /// <summary>
+        /// A tuple representing the path of the <see cref="Passenger"/>
+        /// </summary>
+        public (int source, int destination) Path
+        {
+            get => this._path;
+            set => this.SetProperty(ref this._path, value);
         }
 
-
         /// <summary>
-        /// String representation of how long the <see cref="Passenger"/> spent in the <see cref="Elevator"/>
+        /// Represents the state of the <see cref="Passenger"/>
         /// </summary>
-        public string GetTimeInElevatorString()
+        public PassengerState State
         {
-            if (Exited == default)
-                return "";
+            get => this._state;
 
-            return $"Time Spent in Elevator: {TimeSpentInElevator:mm:ss}";
+            set
+            {
+                PassengerState oldVal = this._state;
+                this.SetProperty(ref this._state, value);
+
+                switch (value)
+                {
+                    case PassengerState.Waiting:
+                        this.WaitStart = LocalSystemClock.GetCurrentInstant();
+                        break;
+
+                    case PassengerState.Transition when oldVal == PassengerState.Waiting:
+                        this.WaitEnd = LocalSystemClock.GetCurrentInstant();
+                        break;
+
+                    case PassengerState.In:
+                        this.Entered = LocalSystemClock.GetCurrentInstant();
+                        break;
+
+                    case PassengerState.Out:
+                        this.Exited = LocalSystemClock.GetCurrentInstant();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
 
         /// <summary>
-        /// String representation of this <see cref="Passenger"/>'s path
+        /// Represents how long the <see cref="Passenger"/> spent in the <see cref="Elevator"/>
         /// </summary>
-        public override string ToString() => $"Path: {this.Path.source} -> {this.Path.destination}";
+        public Duration TimeSpentInElevator => this.Exited - this.Entered;
 
+        /// <summary>
+        /// Represents how long the <see cref="Passenger"/> spent waiting for the <see cref="Elevator"/> to come
+        /// </summary>
+        public Duration TimeWaiting => this.WaitEnd - this.WaitStart;
+
+        /// <summary>
+        /// Represents how heavy the <see cref="Passenger"/> is
+        /// </summary>
+        public int Weight { get; set; }
+
+        /// <summary>
+        /// Computed property representing the direction the passenger wants to go
+        /// </summary>
+        public Direction Direction => this.Path.destination > this.Path.source ? Direction.Up : Direction.Down;
+
+        #endregion Public Properties
+
+        #region Public Methods
 
         /// <summary>
         /// Implicitly convert this <see cref="Passenger"/> to an array of <see cref="Event"/> parameters
@@ -197,14 +185,47 @@ namespace ElevatorApp.Models
             if (passenger.Exited != default)
             {
                 obj.Add(("Time Spent in Elevator", passenger.TimeSpentInElevator.ToString(duration_format, null)));
+
                 //This is where I have the passenger add its timings to the stats class for now... certainly a temporary thing
                 Stats.Instance.PassengerWaitTimes.Add(passenger.TimeWaiting);
+
                 //I also have it print out
                 obj.Add(("Current Average Wait Time ", Stats.Instance.PassengerWaitTimes));
+
                 //End this section
             }
 
             return obj.ToArray();
         }
+
+        /// <summary>
+        /// String representation of how long the <see cref="Passenger"/> spent in the <see cref="Elevator"/>
+        /// </summary>
+        public string GetTimeInElevatorString()
+        {
+            if (this.Exited == default)
+                return "";
+
+            return $"Time Spent in Elevator: {this.TimeSpentInElevator:mm:ss}";
+        }
+
+        /// <summary>
+        /// String representation of how long the <see cref="Passenger"/> has been waiting
+        /// </summary>
+        /// <returns></returns>
+        public string GetWaitingString()
+        {
+            if (this.WaitEnd == default)
+                return "";
+
+            return $"Time Spent Waiting: {this.TimeWaiting:mm:ss}";
+        }
+
+        /// <summary>
+        /// String representation of this <see cref="Passenger"/>'s path
+        /// </summary>
+        public override string ToString() => $"Path: {this.Path.source} -> {this.Path.destination}";
+
+        #endregion Public Methods
     }
 }

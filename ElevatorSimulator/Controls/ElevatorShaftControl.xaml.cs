@@ -21,8 +21,8 @@ namespace ElevatorApp.Controls
         /// </summary>
         public ElevatorShaftControl()
         {
-            InitializeComponent();
-            this.DataContextChanged += ElevatorShaftControl_DataContextChanged;
+            this.InitializeComponent();
+            this.DataContextChanged += this.ElevatorShaftControl_DataContextChanged;
         }
 
         /// <summary>

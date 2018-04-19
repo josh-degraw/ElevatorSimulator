@@ -1,50 +1,7 @@
-﻿using System;
-namespace ElevatorApp.Models.Enums
+﻿namespace ElevatorApp.Models.Enums
 {
     /// <summary>
-    /// Represent the state of a <see cref="Door"/>
-    /// </summary>
-    public enum DoorState
-    {
-        /// <summary>
-        /// The door has just been closed
-        /// </summary>
-        Closed,
-
-        /// <summary>
-        /// The door has just started closing
-        /// </summary>
-        Closing,
-
-        /// <summary>
-        /// The door has just opened
-        /// </summary>
-        Opened,
-
-        /// <summary>
-        /// The door has just started opening
-        /// </summary>
-        Opening,
-    }
-
-    /// <summary>
-    /// Represents the type of <see cref="Door"/> an <see cref="Elevator"/> has
-    /// </summary>
-    public enum DoorType
-    {
-        /// <summary>
-        /// One door
-        /// </summary>
-        Single,
-
-        /// <summary>
-        /// Two door (not yet implemented)
-        /// </summary>
-        Double
-    }
-
-    /// <summary>
-    /// The kind of Button 
+    /// The kind of Button
     /// </summary>
     public enum ButtonType
     {
@@ -96,17 +53,61 @@ namespace ElevatorApp.Models.Enums
     }
 
     /// <summary>
+    /// Represent the state of a <see cref="Door"/>
+    /// </summary>
+    public enum DoorState
+    {
+        /// <summary>
+        /// The door has just been closed
+        /// </summary>
+        Closed,
+
+        /// <summary>
+        /// The door has just started closing
+        /// </summary>
+        Closing,
+
+        /// <summary>
+        /// The door has just opened
+        /// </summary>
+        Opened,
+
+        /// <summary>
+        /// The door has just started opening
+        /// </summary>
+        Opening,
+    }
+
+    /// <summary>
+    /// Represents the type of <see cref="Door"/> an <see cref="Elevator"/> has
+    /// </summary>
+    public enum DoorType
+    {
+        /// <summary>
+        /// One door
+        /// </summary>
+        Single,
+
+        /// <summary>
+        /// Two door (not yet implemented)
+        /// </summary>
+        Double
+    }
+
+    /// <summary>
     /// The state an <see cref="Elevator"/> is in
     /// </summary>
     public enum ElevatorState
     {
         /// <summary>
-        /// The <see cref="Elevator"/> has no <see cref="Floor"/>s waiting for it, and no <see cref="Passenger"/>s in it with a destination queued.
+        /// The <see cref="Elevator"/> has no <see cref="Floor"/> s waiting for it, and no <see cref="Passenger"/> s in
+        /// it with a destination queued.
         /// </summary>
         Idle = 0,
 
         /// <summary>
-        /// The <see cref="Elevator"/> is in the process of leaving a <see cref="Floor"/>. In this state, the <see cref="Elevator"/> has not yet reached full speed.
+        /// The <see cref="Elevator"/> is in the process of leaving a <see cref="Floor"/>. In this state, the
+        /// <see cref="Elevator"/> has not yet reached full speed.
         /// </summary>
         Departing = 1,
 
@@ -137,7 +138,8 @@ namespace ElevatorApp.Models.Enums
         Waiting = 0,
 
         /// <summary>
-        /// The <see cref="Passenger"/> is either entering or exiting the <see cref="Elevator"/>. Either way they are in transition from one final state to another.
+        /// The <see cref="Passenger"/> is either entering or exiting the <see cref="Elevator"/>. Either way they are in
+        /// transition from one final state to another.
         /// </summary>
         Transition = 1,
 

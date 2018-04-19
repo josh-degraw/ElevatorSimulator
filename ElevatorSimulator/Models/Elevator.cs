@@ -23,6 +23,8 @@ namespace ElevatorApp.Models
     /// </summary>
     public class Elevator : ModelBase, ISubcriber<ElevatorMasterController>, IObserver<ElevatorCall>
     {
+        #region Private Fields
+
         /// <summary>
         /// The registered elevators.
         /// </summary>
@@ -48,8 +50,9 @@ namespace ElevatorApp.Models
         /// Used to prevent threading issues, has async support
         /// </summary>
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
-        private readonly SoundPlayer soundPlayer = new SoundPlayer { Stream = Resources.elevatorDing };
+
         private Direction _direction = Direction.None;
+
         private ElevatorState _elevatorState = ElevatorState.Idle;
 
         /// <summary>
@@ -60,23 +63,37 @@ namespace ElevatorApp.Models
         private bool _moving = false;
 
         private int
-                            _speed = 800,
-            _currentSpeed = 0,
-            _totalCapacity,
-            _currentFloor = 1,
-            _nextFloor = 1;
+                    _speed = 800,
+                    _currentSpeed = 0,
+                    _totalCapacity,
+                    _currentFloor = 1,
+                    _nextFloor = 1;
+
+        #endregion Private Fields
+
+        #region Private Properties
+
         /// <summary>
         /// Represents whether the elevator is currently moving
         /// </summary>
         private bool Moving
         {
-            get => _moving;
+            get => this._moving;
+
             set
             {
-                lock (_locker)
-                    _moving = value;
+                lock (this._locker) this._moving = value;
             }
         }
+
+        /// <summary>
+        /// Used to make a `ding` sound when the elevator arrives
+        /// </summary>
+        private SoundPlayer soundPlayer { get; } = new SoundPlayer { Stream = Resources.elevatorDing };
+
+        #endregion Private Properties
+
+        #region Private Methods
 
         /// <summary>
         /// Approaches the floor.
@@ -168,6 +185,13 @@ namespace ElevatorApp.Models
             }
         }
 
+        /// <summary>
+        /// Validates the state change.
+        /// </summary>
+        /// <param name="prev">The previous.</param>
+        /// <param name="next">The next.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">prev - Unkown state</exception>
         private bool _validateStateChange(ElevatorState prev, ElevatorState next)
         {
             if (prev == next)
@@ -191,7 +215,7 @@ namespace ElevatorApp.Models
                     return next.EqualsAny(ElevatorState.Departing, ElevatorState.Idle);
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(prev), prev, null);
+                    throw new ArgumentOutOfRangeException(nameof(prev), prev, "Unkown state");
             }
         }
 
@@ -227,11 +251,9 @@ namespace ElevatorApp.Models
 
                 this.TryRemoveCall(args.Call);
 
-                ElevatorCall calledFromFloor =
-                    _floorsToStopAt.FirstOrDefault(a => a.Floor == this.CurrentFloor && !a.FromPassenger);
+                ElevatorCall calledFromFloor = this._floorsToStopAt.FirstOrDefault(a => a.Floor == this.CurrentFloor && !a.FromPassenger);
 
-                if (calledFromFloor != null)
-                    TryRemoveCall(calledFromFloor);
+                if (calledFromFloor != null) this.TryRemoveCall(calledFromFloor);
 
                 LogEvent("Elevator Arrived", ("Floor", args.DestinationFloor));
 
@@ -259,7 +281,7 @@ namespace ElevatorApp.Models
                     if (this.FloorRequests.Any() && !this.Passengers.Any())
                     {
                         //Reset the direction and then get the next floor to pick up a passenger at
-                        this.RequestedDirection = this.assignDirection(FloorRequests.Min(a => Math.Abs(a.Floor - this.CurrentFloor)));
+                        this.RequestedDirection = this.assignDirection(this.FloorRequests.Min(a => Math.Abs(a.Floor - this.CurrentFloor)));
                         await this.Move().ConfigureAwait(false);
                     }
                 }
@@ -310,8 +332,7 @@ namespace ElevatorApp.Models
             {
                 while (this._floorsToStopAt.Any())
                 {
-                    var (destination, direction) =
-                        FloorRequests
+                    var (destination, direction) = this.FloorRequests
                             .Where(a =>
                             {
                                 // If we're not moving, find the closest floor.
@@ -325,7 +346,7 @@ namespace ElevatorApp.Models
                             })
                             .MinBy(a => Math.Abs(a.Floor - this.CurrentFloor));
 
-                    this.RequestedDirection = assignDirection(destination);
+                    this.RequestedDirection = this.assignDirection(destination);
 
                     if (this.RequestedDirection == Direction.None)
                         break;
@@ -335,12 +356,12 @@ namespace ElevatorApp.Models
                         case Direction.Up:
 
                             this.NextFloor = this.CurrentFloor + 1;
-                            await _startMovement(new ElevatorMovementEventArgs(destination, direction));
+                            await this._startMovement(new ElevatorMovementEventArgs(destination, direction));
 
                             do
                             {
                                 this.NextFloor = this.CurrentFloor + 1;
-                                await PerformMovement(destination, direction, a => a + 1);
+                                await this.PerformMovement(destination, direction, a => a + 1);
                             }
                             while (this.NextFloor < destination);
 
@@ -349,19 +370,19 @@ namespace ElevatorApp.Models
                         case Direction.Down:
                             Trace.Indent();
                             this.NextFloor = this.CurrentFloor - 1;
-                            await _startMovement(new ElevatorMovementEventArgs(destination, direction));
+                            await this._startMovement(new ElevatorMovementEventArgs(destination, direction));
 
                             do
                             {
                                 this.NextFloor = this.CurrentFloor - 1;
-                                await PerformMovement(destination, direction, a => a - 1);
+                                await this.PerformMovement(destination, direction, a => a - 1);
                             }
                             while (this.NextFloor > destination);
 
                             break;
                     }
 
-                    await _arriveAtFloor(new ElevatorMovementEventArgs(destination, direction));
+                    await this._arriveAtFloor(new ElevatorMovementEventArgs(destination, direction));
                 }
             }
             catch (Exception ex)
@@ -371,6 +392,7 @@ namespace ElevatorApp.Models
             finally
             {
                 this.OnCompleted();
+
                 // semaphore.Release();
             }
         }
@@ -379,22 +401,23 @@ namespace ElevatorApp.Models
         {
             try
             {
-                await _semaphore.WaitAsync().ConfigureAwait(false);
+                await this._semaphore.WaitAsync().ConfigureAwait(false);
                 Thread.Sleep(FLOOR_MOVEMENT_SPEED.ToTimeSpan());//.ConfigureAwait(false);
 
                 var args = new ElevatorApproachingEventArgs(this.NextFloor, destination, direction);
 
                 // If the elevator should stop at this floor
-                bool shouldStop = _approachFloor(args);
+                bool shouldStop = this._approachFloor(args);
 
                 if (shouldStop)
                 {
                     var call = new ElevatorMovementEventArgs(this.NextFloor, direction);
-                    await _arriveAtFloor(call);
+                    await this._arriveAtFloor(call);
 
                     this.NextFloor = floorIncrementer(this.CurrentFloor);
 
-                    await _startMovement(call);
+                    await this._startMovement(call);
+
                     // Start moving to the next floor
                 }
                 else if (this.NextFloor != destination)
@@ -408,7 +431,7 @@ namespace ElevatorApp.Models
             }
             finally
             {
-                _semaphore.Release();
+                this._semaphore.Release();
             }
         }
 
@@ -420,7 +443,7 @@ namespace ElevatorApp.Models
         {
             try
             {
-                UpdatingPassengers = true;
+                this.UpdatingPassengers = true;
                 LogEvent("Passenger Leaving Elevator");
                 passenger.State = PassengerState.Transition;
 
@@ -429,13 +452,13 @@ namespace ElevatorApp.Models
                 this._passengers.Remove(passenger);
                 passenger.State = PassengerState.Out;
 
-                PassengerExited?.Invoke(this, passenger);
+                this.PassengerExited?.Invoke(this, passenger);
 
                 Stats.Instance.PassengerWaitTimes.Add(passenger.TimeSpentInElevator + passenger.TimeWaiting);
             }
             finally
             {
-                UpdatingPassengers = false;
+                this.UpdatingPassengers = false;
             }
 
             return Task.CompletedTask;
@@ -450,11 +473,34 @@ namespace ElevatorApp.Models
         {
             if (this._floorsToStopAt.Contains(toRemove))
             {
-                return _floorsToStopAt.TryRemove(toRemove);
+                return this._floorsToStopAt.TryRemove(toRemove);
             }
 
             return false;
         }
+
+        #endregion Private Methods
+
+        #region Public Fields
+
+        /// <summary>
+        /// The time it takes to get up to full speed once departing
+        /// </summary>
+        public static readonly Duration ACCELERATION_DELAY = Duration.FromSeconds(4);
+
+        /// <summary>
+        /// The time it takes to slow down before arriving
+        /// </summary>
+        public static readonly Duration DECELERATION_DELAY = ACCELERATION_DELAY * 2;
+
+        /// <summary>
+        /// The time it takes to move from one floor to another
+        /// </summary>
+        public static readonly Duration FLOOR_MOVEMENT_SPEED = Duration.FromSeconds(7);
+
+        #endregion Public Fields
+
+        #region Public Events
 
         /// <summary>
         /// Called when the <see cref="Elevator"/> is getting close to a <see cref="Floor"/>, but before it's officially
@@ -492,20 +538,9 @@ namespace ElevatorApp.Models
         /// </summary>
         public event EventHandler<Passenger> PassengerExited;
 
-        /// <summary>
-        /// The time it takes to get up to full speed once departing
-        /// </summary>
-        public static readonly Duration ACCELERATION_DELAY = Duration.FromSeconds(4);
+        #endregion Public Events
 
-        /// <summary>
-        /// The time it takes to slow down before arriving
-        /// </summary>
-        public static readonly Duration DECELERATION_DELAY = ACCELERATION_DELAY * 2;
-
-        /// <summary>
-        /// The time it takes to move from one floor to another
-        /// </summary>
-        public static readonly Duration FLOOR_MOVEMENT_SPEED = Duration.FromSeconds(7);
+        #region Public Constructors
 
         /// <summary>
         /// Instantiates a new <see cref="Elevator"/>
@@ -516,14 +551,14 @@ namespace ElevatorApp.Models
             this._currentFloor = initialFloor;
             this.ElevatorNumber = ++_RegisteredElevators;
 
-            Logger.LogEvent("Initializing Elevator", ("ElevatorNumber", this.ElevatorNumber));
+            LogEvent("Initializing Elevator", ("ElevatorNumber", this.ElevatorNumber));
 
             this._floorsToStopAt.CollectionChanged += (sender, args) =>
             {
                 try
                 {
-                    Logger.LogEvent("Elevator Queue changed", ("Path", _floorsToStopAt.OrderBy(a => a.Floor).ToDelimitedString(",")));
-                    base.OnPropertyChanged(FloorsToStopAtString, nameof(FloorsToStopAtString));
+                    LogEvent("Elevator Queue changed", ("Path", this._floorsToStopAt.OrderBy(a => a.Floor).ToDelimitedString(",")));
+                    this.OnPropertyChanged(this.FloorsToStopAtString, nameof(this.FloorsToStopAtString));
                 }
                 catch (Exception ex)
                 {
@@ -531,15 +566,19 @@ namespace ElevatorApp.Models
                 }
             };
 
-            this.Arriving += ElevatorArriving;
-            this.Arrived += ElevatorArrived;
+            this.Arriving += this.ElevatorArriving;
+            this.Arrived += this.ElevatorArrived;
 
-            this.Departing -= ElevatorDeparting;
-            this.Departed -= ElevatorDeparted;
+            this.Departing -= this.ElevatorDeparting;
+            this.Departed -= this.ElevatorDeparted;
 
-            this.Departing += ElevatorDeparting;
-            this.Departed += ElevatorDeparted;
+            this.Departing += this.ElevatorDeparting;
+            this.Departed += this.ElevatorDeparted;
         }
+
+        #endregion Public Constructors
+
+        #region Public Properties
 
         /// <summary>
         /// Same as <see cref="FLOOR_MOVEMENT_SPEED"/>, but in a format that can be used by the GUI
@@ -555,7 +594,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Represents the total weight currently held on the <see cref="Elevator"/>
         /// </summary>
-        public int CurrentCapacity => Passengers?.Count ?? 0;
+        public int CurrentCapacity => this.Passengers?.Count ?? 0;
 
         /// <summary>
         /// Represents the current floor of the <see cref="Elevator"/>
@@ -563,8 +602,8 @@ namespace ElevatorApp.Models
         /// </summary>
         public int CurrentFloor
         {
-            get => _currentFloor;
-            private set => SetProperty(ref _currentFloor, value.KeepInRange(0, this._getFloorNum())); //TODO: remove hardcoded floor number
+            get => this._currentFloor;
+            private set => this.SetProperty(ref this._currentFloor, value.KeepInRange(0, this._getFloorNum())); //TODO: remove hardcoded floor number
         }
 
         /// <summary>
@@ -572,8 +611,8 @@ namespace ElevatorApp.Models
         /// </summary>
         public int CurrentSpeed
         {
-            get => _currentSpeed;
-            private set => SetProperty(ref _currentSpeed, value);
+            get => this._currentSpeed;
+            private set => this.SetProperty(ref this._currentSpeed, value);
         }
 
         /// <summary>
@@ -616,26 +655,26 @@ namespace ElevatorApp.Models
         /// <summary>
         /// A collection of the floor numbers that want the <see cref="Elevator"/> to stop there
         /// </summary>
-        public IReadOnlyCollection<ElevatorCall> FloorRequests => _floorsToStopAt;
+        public IReadOnlyCollection<ElevatorCall> FloorRequests => this._floorsToStopAt;
 
         /// <summary>
         /// A string representation of the floors that are currently in the queue
         /// </summary>
-        public string FloorsToStopAtString => FloorRequests.ToDelimitedString(", ");
+        public string FloorsToStopAtString => this.FloorRequests.ToDelimitedString(", ");
 
         /// <summary>
         /// Represents the closest elevator, If the <see cref="Elevator"/> is idle, this will be the same as <see cref="CurrentFloor"/>
         /// </summary>
         public int NextFloor
         {
-            get => _nextFloor;
-            private set => SetProperty(ref _nextFloor, value.KeepInRange(0, this._getFloorNum()));
+            get => this._nextFloor;
+            private set => this.SetProperty(ref this._nextFloor, value.KeepInRange(0, this._getFloorNum()));
         }
 
         /// <summary>
         /// The people currently inside the <see cref="Elevator"/>
         /// </summary>
-        public IReadOnlyCollection<Passenger> Passengers => _passengers;
+        public IReadOnlyCollection<Passenger> Passengers => this._passengers;
 
         /// <summary>
         /// The relative speed of the <see cref="Elevator"/>. Negative values indicate downward movement.
@@ -666,8 +705,8 @@ namespace ElevatorApp.Models
         /// </summary>
         public Direction RequestedDirection
         {
-            get => _direction;
-            private set => SetProperty(ref _direction, value);
+            get => this._direction;
+            private set => this.SetProperty(ref this._direction, value);
         }
 
         /// <summary>
@@ -676,11 +715,12 @@ namespace ElevatorApp.Models
         /// </summary>
         public int Speed
         {
-            get => _speed;
+            get => this._speed;
+
             private set
             {
-                SetProperty(ref _speed, value);
-                OnPropertyChanged(this.RelativeSpeed, nameof(this.RelativeSpeed));
+                this.SetProperty(ref this._speed, value);
+                this.OnPropertyChanged(this.RelativeSpeed, nameof(this.RelativeSpeed));
             }
         }
 
@@ -693,11 +733,12 @@ namespace ElevatorApp.Models
         /// </summary>
         public ElevatorState State
         {
-            get => _elevatorState;
+            get => this._elevatorState;
+
             private set
             {
-                Debug.Assert(_validateStateChange(_elevatorState, value), "Invalid state change for elevator", "{0} -> {1}", _elevatorState, value);
-                SetProperty(ref _elevatorState, value);
+                Debug.Assert(this._validateStateChange(this._elevatorState, value), "Invalid state change for elevator", "{0} -> {1}", this._elevatorState, value);
+                this.SetProperty(ref this._elevatorState, value);
             }
         }
 
@@ -712,14 +753,20 @@ namespace ElevatorApp.Models
         /// </summary>
         public int TotalCapacity
         {
-            get => _totalCapacity;
-            set => SetProperty(ref _totalCapacity, value);
+            get => this._totalCapacity;
+            set => this.SetProperty(ref this._totalCapacity, value);
         }
+
         /// <summary>
         /// Gets a value indicating whether the number of passengers is being changed
         /// </summary>
         /// <value><c>true</c> if updating passengers; otherwise, <c>false</c>.</value>
         public bool UpdatingPassengers { get; private set; }
+
+        #endregion Public Properties
+
+        #region Public Methods
+
         /// <summary>
         /// Adds a new <see cref="Passenger"/> to the <see cref="Elevator"/>
         /// </summary>
@@ -729,7 +776,7 @@ namespace ElevatorApp.Models
             //await semaphore.WaitAsync().ConfigureAwait(true);
             try
             {
-                UpdatingPassengers = true;
+                this.UpdatingPassengers = true;
                 LogEvent("Adding Passenger to Elevator");
                 passenger.State = PassengerState.Transition;
 
@@ -740,27 +787,28 @@ namespace ElevatorApp.Models
 
                 this._passengers.AddDistinct(passenger);
 
-                PassengerAdded?.Invoke(this, passenger);
+                this.PassengerAdded?.Invoke(this, passenger);
 
                 this.OnNext(passenger.Call);
             }
             finally
             {
-                UpdatingPassengers = false;
+                this.UpdatingPassengers = false;
             }
 
             return Task.CompletedTask;
         }
+
         /// <inheritdoc/>
         /// <summary>
         /// Runs when the <see cref="T:ElevatorApp.Models.Elevator"/> has completed all of the requests it has.
         /// </summary>
         public void OnCompleted()
         {
-            Moving = false;
+            this.Moving = false;
             this.RequestedDirection = Direction.None;
             this.State = ElevatorState.Idle;
-            Logger.LogEvent("Elevator path completed.");
+            LogEvent("Elevator path completed.");
         }
 
         /// <inheritdoc/>
@@ -780,16 +828,16 @@ namespace ElevatorApp.Models
         /// <param name="destination"></param>
         public async void OnNext(ElevatorCall destination)
         {
-            if (!destination.FromPassenger && destination.Floor != this.CurrentFloor && Door.DoorState != DoorState.Opened)
+            if (!destination.FromPassenger && destination.Floor != this.CurrentFloor && this.Door.DoorState != DoorState.Opened)
             {
                 // Wait for door to open here so that the passengers who started opening the door get in first
-                await Door.WaitForDoorToOpen().ConfigureAwait(false);
+                await this.Door.WaitForDoorToOpen().ConfigureAwait(false);
                 await Task.Delay(500).ConfigureAwait(false);
             }
 
-            _floorsToStopAt.AddDistinct(destination);
+            this._floorsToStopAt.AddDistinct(destination);
 
-            if (!Moving)
+            if (!this.Moving)
             {
                 // Only start the Movement thread if the elevator hasn't already been assigned a direction
                 if (this.RequestedDirection == Direction.None)
@@ -819,20 +867,22 @@ namespace ElevatorApp.Models
         /// </summary>
         public async Task Subscribe(ElevatorMasterController controller)
         {
-            if (Subscribed)
+            if (this.Subscribed)
                 return;
 
-            Logger.LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
+            LogEvent("Subcribing elevator to MasterController", ("Elevator Number", this.ElevatorNumber.ToString()));
 
             this._getFloorNum = () => controller.FloorCount;
 
             this.Door.Opening += (a, b) =>
             {
-                soundPlayer.Play();
+                this.soundPlayer.Play();
             };
 
             await this.Door.Subscribe(this).ConfigureAwait(false);
             this.Subscribed = true;
         }
+
+        #endregion Public Methods
     }
 }

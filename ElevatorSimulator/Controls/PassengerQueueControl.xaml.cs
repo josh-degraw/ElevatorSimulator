@@ -26,7 +26,7 @@ namespace ElevatorApp.Controls
         /// </summary>
         public PassengerQueueControl()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>

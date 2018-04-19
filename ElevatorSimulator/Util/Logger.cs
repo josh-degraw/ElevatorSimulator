@@ -61,15 +61,14 @@ namespace ElevatorApp.Util
         {
             get
             {
-
-                _rwLock.EnterReadLock();
+                this._rwLock.EnterReadLock();
                 try
                 {
-                    return _events.Count;
+                    return this._events.Count;
                 }
                 finally
                 {
-                    _rwLock.ExitReadLock();
+                    this._rwLock.ExitReadLock();
                 }
             }
         }
@@ -88,14 +87,14 @@ namespace ElevatorApp.Util
         {
             get
             {
-                _rwLock.EnterReadLock();
+                this._rwLock.EnterReadLock();
                 try
                 {
-                    return _events;
+                    return this._events;
                 }
                 finally
                 {
-                    _rwLock.ExitReadLock();
+                    this._rwLock.ExitReadLock();
                 }
             }
         }
@@ -135,7 +134,7 @@ namespace ElevatorApp.Util
             int prevCount = this.Count;
             //int i = 0;
             Console.WriteLine(message);
-            ItemLogged?.Invoke(this, message.ToString());
+            this.ItemLogged?.Invoke(this, message.ToString());
             //do
             //{
             //    if (_rwLock.TryEnterWriteLock())
@@ -176,14 +175,14 @@ namespace ElevatorApp.Util
         /// </summary>
         public void ClearItems()
         {
-            _rwLock.EnterWriteLock();
+            this._rwLock.EnterWriteLock();
             try
             {
                 this._events.Clear();
             }
             finally
             {
-                _rwLock.ExitWriteLock();
+                this._rwLock.ExitWriteLock();
             }
         }
 

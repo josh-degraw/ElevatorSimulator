@@ -1,5 +1,5 @@
-﻿using System;
-using ElevatorApp.Models.Enums;
+﻿using ElevatorApp.Models.Enums;
+using System;
 
 namespace ElevatorApp.Models
 {
@@ -22,7 +22,7 @@ namespace ElevatorApp.Models
         /// Gets a value indicating whether the call was from a <see cref="Passenger"/> entering the <see cref="Elevator"/>
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the call was from a <see cref="Passenger"/> entering the <see cref="Elevator"/>; otherwise, <c>false</c>.
+        /// <c>true</c> if the call was from a <see cref="Passenger"/> entering the <see cref="Elevator"/>; otherwise, <c>false</c>.
         /// </value>
         public bool FromPassenger { get; }
 
@@ -56,9 +56,7 @@ namespace ElevatorApp.Models
         /// Performs an implicit conversion from <see cref="ElevatorCall"/> to a <see cref="ValueTuple{T1, T2}"/>.
         /// </summary>
         /// <param name="call">The call.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator (int floor, Direction direction) (ElevatorCall call)
         {
             return (call.Floor, call.Direction);
@@ -68,58 +66,51 @@ namespace ElevatorApp.Models
         /// Performs an implicit conversion from a <see cref="ValueTuple{T1, T2}"/>. to <see cref="ElevatorCall"/>.
         /// </summary>
         /// <param name="call">The call.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
+        /// <returns>The result of the conversion.</returns>
         public static implicit operator ElevatorCall((int floor, Direction direction) call)
         {
             return new ElevatorCall(call.floor, call.direction);
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
+        /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
         public override string ToString()
         {
-            return (Floor, Direction).ToString();
+            return (this.Floor, this.Direction).ToString();
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
+        /// Determines whether the specified <see cref="System.Object"/>, is equal to this instance.
         /// </summary>
-        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
         /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public override bool Equals(object obj)
         {
-            return obj is ElevatorCall call &&
-                   Floor == call.Floor &&
-                   Direction == call.Direction &&
-                   FromPassenger == call.FromPassenger;
+            return obj is ElevatorCall call && this.Floor == call.Floor && this.Direction == call.Direction && this.FromPassenger == call.FromPassenger;
         }
 
         /// <summary>
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public override int GetHashCode()
         {
             unchecked
             {
                 var hashCode = 564164426;
-                hashCode = hashCode * -1521134295 + Floor.GetHashCode();
-                hashCode = hashCode * -1521134295 + Direction.GetHashCode();
-                hashCode = hashCode * -1521134295 + FromPassenger.GetHashCode();
+                hashCode = hashCode * -1521134295 + this.Floor.GetHashCode();
+                hashCode = hashCode * -1521134295 + this.Direction.GetHashCode();
+                hashCode = hashCode * -1521134295 + this.FromPassenger.GetHashCode();
                 return hashCode;
             }
         }
 
-        #endregion
+        #endregion Operators and overloads
     }
 }

@@ -50,7 +50,7 @@ namespace ElevatorApp.Util
         [Obsolete]
         public void AddPassengerTime(Duration waitTime)
         {
-            PassengerWaitTimes.Add(waitTime);
+            this.PassengerWaitTimes.Add(waitTime);
         }
 
         /// <summary>
@@ -61,14 +61,14 @@ namespace ElevatorApp.Util
         public Duration GetAverageWaitTime()
         {
             var avg = new Duration();
-            if (passengerWaitTimes.Count > 0)
+            if (this.passengerWaitTimes.Count > 0)
             {
                 //Aggregate the durations and then return an average
-                foreach (Duration d in passengerWaitTimes)
+                foreach (Duration d in this.passengerWaitTimes)
                 {
                     avg += d;
                 }
-                avg /= passengerWaitTimes.Count;
+                avg /= this.passengerWaitTimes.Count;
                 return avg;
             }
             else
@@ -86,12 +86,12 @@ namespace ElevatorApp.Util
 
 
             // for each min value check after the initial one
-            if (passengerWaitTimes.Count > 0)
+            if (this.passengerWaitTimes.Count > 0)
             {
                 // Temp way to get min a value so it can determine what is smaller.
-                min = GetMaxWaitTime();
+                min = this.GetMaxWaitTime();
                 //Aggregate the durations and then return the min value
-                foreach (Duration d in passengerWaitTimes)
+                foreach (Duration d in this.passengerWaitTimes)
                 {
                     if (d < min)
                     {
@@ -115,10 +115,10 @@ namespace ElevatorApp.Util
         {
             Duration max = new Duration();
 
-            if (passengerWaitTimes.Count > 0)
+            if (this.passengerWaitTimes.Count > 0)
             {
                 //Return the max value
-                foreach (Duration d in passengerWaitTimes)
+                foreach (Duration d in this.passengerWaitTimes)
                 {
                     if (d > max)
                     {
@@ -140,7 +140,7 @@ namespace ElevatorApp.Util
         [Obsolete]
         public int GetPassengerCount()
         {
-            return passengerWaitTimes.Count;
+            return this.passengerWaitTimes.Count;
         }
     }
 }

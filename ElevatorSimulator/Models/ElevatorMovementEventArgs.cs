@@ -1,9 +1,9 @@
-﻿using System;
-using ElevatorApp.Models.Enums;
+﻿using ElevatorApp.Models.Enums;
+using System;
 
 namespace ElevatorApp.Models
 {
-    /// <inheritdoc />
+    /// <inheritdoc/>
     /// <summary>
     /// Holds the data that represents an <see cref="Elevator"/> movement
     /// </summary>
@@ -12,21 +12,21 @@ namespace ElevatorApp.Models
         /// <summary>
         /// The destination of the current movement
         /// </summary>
-        public virtual int DestinationFloor => Call.Floor;
+        public virtual int DestinationFloor => this.Call.Floor;
 
         /// <summary>
         /// The direction the elevator is going
         /// </summary>
-        public Direction Direction => Call.Direction;
+        public Direction Direction => this.Call.Direction;
 
         /// <summary>
         /// Gets or sets the call.
         /// </summary>
         public ElevatorCall Call { get; set; }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         /// <summary>
-        /// Construct a new instance of <see cref="T:ElevatorApp.Models.ElevatorMovementEventArgs" />
+        /// Construct a new instance of <see cref="T:ElevatorApp.Models.ElevatorMovementEventArgs"/>
         /// </summary>
         /// <param name="destination"></param>
         /// <param name="direction"></param>
@@ -34,9 +34,9 @@ namespace ElevatorApp.Models
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:ElevatorApp.Models.ElevatorMovementEventArgs" /> class.
+        /// Initializes a new instance of the <see cref="T:ElevatorApp.Models.ElevatorMovementEventArgs"/> class.
         /// </summary>
         /// <param name="call">The call.</param>
         public ElevatorMovementEventArgs(ElevatorCall call)
@@ -45,19 +45,17 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        /// <inheritdoc />
+        /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
+        /// <inheritdoc/>
         public override string ToString()
         {
-            return $"{DestinationFloor}. Direction: {Direction}";
+            return $"{this.DestinationFloor}. Direction: {this.Direction}";
         }
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public class ElevatorApproachingEventArgs : ElevatorMovementEventArgs
     {
         /// <summary>
@@ -70,25 +68,24 @@ namespace ElevatorApp.Models
         /// </summary>
         public int IntermediateFloor { get; }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         /// <summary>
-        /// The final destination of the <see cref="T:ElevatorApp.Models.Elevator" /> in the current path
+        /// The final destination of the <see cref="T:ElevatorApp.Models.Elevator"/> in the current path
         /// </summary>
         public override int DestinationFloor => base.DestinationFloor;
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public ElevatorApproachingEventArgs(int intermediateFloor, int destination, Direction direction) : base(destination, direction)
         {
             this.IntermediateFloor = intermediateFloor;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         /// <summary>
         /// The arguments that have been passed along the event cycle
         /// </summary>
         public ElevatorApproachingEventArgs(ElevatorMovementEventArgs args) : base(args.DestinationFloor, args.Direction)
         {
-
         }
     }
 }
