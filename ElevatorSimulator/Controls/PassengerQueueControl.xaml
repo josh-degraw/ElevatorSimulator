@@ -1,40 +1,38 @@
 ﻿<UserControl x:Class="ElevatorApp.Controls.PassengerQueueControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ElevatorApp.Controls"
              xmlns:models="clr-namespace:ElevatorApp.Models"
              d:DataContext="{d:DesignInstance Type=models:Floor, IsDesignTimeCreatable=True}"
              x:Name="me"
-             
-             
-             mc:Ignorable="d" >
+
+             mc:Ignorable="d">
     <Border Margin="5" Padding="5" Background="LightGray">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" 
-                   Background="White" 
-                   Content="{Binding FloorNumber}" 
+            <Label Grid.Column="0"
+                   Background="White"
+                   Content="{Binding FloorNumber}"
                    VerticalContentAlignment="Top" FontSize="30" Margin="10,14,10,10"
-                   Padding="15"
-                   />
+                   Padding="15" />
             <StackPanel Grid.Column="1" Margin="5">
                   <StackPanel Orientation="Horizontal">
                     <Label>Elevator Available:</Label>
                     <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="ExtraBold">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
-                                <Setter Property="Text" Value="✕"/>
-                                <Setter Property="Foreground" Value="Red"/>
+                                <Setter Property="Text" Value="✕" />
+                                <Setter Property="Foreground" Value="Red" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ElevatorAvailable}" Value="True">
-                                        <Setter Property="Text" Value="✔"/>
-                                        <Setter Property="Foreground" Value="Green"/>
+                                        <Setter Property="Text" Value="✔" />
+                                        <Setter Property="Foreground" Value="Green" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -44,25 +42,25 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Padding="5,5,0,5" >Waiting: 👤 x</Label>
-                    <Label Content="{Binding WaitingPassengers.Count}" Padding="0,5,5,5"/>
+                    <Label Content="{Binding WaitingPassengers.Count}" Padding="0,5,5,5" />
                 </StackPanel>
                 <!--<StackPanel Orientation="Horizontal">
                     <Label>Waiting ▲ ▼ 👤:</Label>
-                    <Label Content="{Binding WaitingPassengersDown.Count}"/>
+                    <Label Content="{Binding WaitingPassengersDown.Count}" />
                 </StackPanel>-->
             </StackPanel>
-            <Expander 
-                IsExpanded="True" 
-                Grid.Column="2" 
-                Header="Add Passenger" 
+            <Expander
+                IsExpanded="True"
+                Grid.Column="2"
+                Header="Add Passenger"
                 Margin="5"
-                ExpandDirection="Down" >
+                ExpandDirection="Down">
 
                 <StackPanel>
                     <Label >Destination:</Label>
                     <ItemsControl BorderThickness="0"
                                   Background="Transparent"
-                                  ItemsSource="{Binding CallPanel.FloorButtons}" BorderBrush="Black" >
+                                  ItemsSource="{Binding CallPanel.FloorButtons}" BorderBrush="Black">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button Content="{Binding Label}" DataContext="{Binding}" IsEnabled="{Binding IsEnabled, FallbackValue=true}" Margin="2" Width="25" Height="25" FontSize="11" Click="Button_Click" />

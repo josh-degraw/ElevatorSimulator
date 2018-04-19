@@ -1,6 +1,5 @@
-﻿using System.Windows.Controls;
-using ElevatorApp.Models;
-using ElevatorApp.Models.Interfaces;
+﻿using ElevatorApp.Models;
+using System.Windows.Controls;
 
 namespace ElevatorApp.Controls
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MoreLinq;
+using System;
 using System.Collections.Generic;
-using MoreLinq;
 using System.Linq;
 
 namespace ElevatorApp.Util
@@ -30,29 +30,6 @@ namespace ElevatorApp.Util
         //}
 
         /// <summary>
-        /// Gets the minimum of all given values, or the <see langword="default"/> if there are no elements or the source is empty
-        /// </summary>
-        /// <typeparam name="TElement">The type of the element.</typeparam>
-        /// <typeparam name="TKey">The type of the key.</typeparam>
-        /// <param name="collection">The collection.</param>
-        /// <param name="selector">The selector.</param>
-        /// <returns></returns>
-        public static TElement MinByOrDefault<TElement, TKey>(this IEnumerable<TElement> collection, Func<TElement, TKey> selector)
-        {
-            if (collection == null)
-                return default;
-
-            try
-            {
-                return collection.MinBy(selector);
-            }
-            catch
-            {
-                return default;
-            }
-        }
-
-        /// <summary>
         /// Returns true if any of the given values match the current item
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -80,10 +57,30 @@ namespace ElevatorApp.Util
                 return max;
 
             return me;
-
-
         }
 
-    }
+        /// <summary>
+        /// Gets the minimum of all given values, or the <see langword="default"/> if there are no elements or the source
+        /// is empty
+        /// </summary>
+        /// <typeparam name="TElement">The type of the element.</typeparam>
+        /// <typeparam name="TKey">The type of the key.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <param name="selector">The selector.</param>
+        /// <returns></returns>
+        public static TElement MinByOrDefault<TElement, TKey>(this IEnumerable<TElement> collection, Func<TElement, TKey> selector)
+        {
+            if (collection == null)
+                return default;
 
+            try
+            {
+                return collection.MinBy(selector);
+            }
+            catch
+            {
+                return default;
+            }
+        }
+    }
 }

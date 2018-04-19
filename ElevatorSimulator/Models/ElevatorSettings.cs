@@ -8,18 +8,8 @@ namespace ElevatorApp.Models
     /// <seealso cref="ElevatorApp.Models.ModelBase"/>
     public class ElevatorSettings : ModelBase
     {
-        private int _speed, _capacity;
         private DoorType _doorType = DoorType.Single;
-
-        /// <summary>
-        /// Gets or sets the speed.
-        /// </summary>
-        /// <value>The speed.</value>
-        public int Speed
-        {
-            get => this._speed;
-            set => this.SetProperty(ref this._speed, value);
-        }
+        private int _speed, _capacity;
 
         /// <summary>
         /// Gets or sets the capacity.
@@ -39,6 +29,16 @@ namespace ElevatorApp.Models
         {
             get => this._doorType;
             set => this.SetProperty(ref this._doorType, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the speed.
+        /// </summary>
+        /// <value>The speed.</value>
+        public int Speed
+        {
+            get => this._speed;
+            set => this.SetProperty(ref this._speed, value);
         }
     }
 }

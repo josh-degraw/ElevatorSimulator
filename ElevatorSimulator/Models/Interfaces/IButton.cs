@@ -1,5 +1,5 @@
-﻿using System;
-using ElevatorApp.Models.Enums;
+﻿using ElevatorApp.Models.Enums;
+using System;
 
 namespace ElevatorApp.Models.Interfaces
 {
@@ -8,24 +8,6 @@ namespace ElevatorApp.Models.Interfaces
     /// </summary>
     public interface IButton
     {
-        /// <summary>
-        /// What would be printed on the button
-        /// </summary>
-        string Label { get; }
-
-        /// <summary>
-        /// Gets a value indicating whether this <see cref="IButton"/> is active.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if active; otherwise, <c>false</c>.
-        /// </value>
-        bool Active { get; }
-
-        /// <summary>
-        /// Pushes this button
-        /// </summary>
-        void Push();
-
         /// <summary>
         /// Occurs when on activated.
         /// </summary>
@@ -37,9 +19,25 @@ namespace ElevatorApp.Models.Interfaces
         event EventHandler OnDeactivated;
 
         /// <summary>
+        /// Gets a value indicating whether this <see cref="IButton"/> is active.
+        /// </summary>
+        /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
+        bool Active { get; }
+
+        /// <summary>
         /// The type of the button.
         /// </summary>
         ButtonType ButtonType { get; }
+
+        /// <summary>
+        /// What would be printed on the button
+        /// </summary>
+        string Label { get; }
+
+        /// <summary>
+        /// Pushes this button
+        /// </summary>
+        void Push();
     }
 
     /// <summary>
@@ -49,19 +47,18 @@ namespace ElevatorApp.Models.Interfaces
     public interface IButton<T> : IButton
     {
         /// <summary>
-        /// Occurs when pushed.
-        /// </summary>
-        event EventHandler<T> OnPushed;
-
-        /// <summary>
         /// Occurs when the action intended by this button is completed.
         /// </summary>
         event EventHandler<T> OnActionCompleted;
 
         /// <summary>
+        /// Occurs when pushed.
+        /// </summary>
+        event EventHandler<T> OnPushed;
+
+        /// <summary>
         /// Handles (triggers) the action completed event.
         /// </summary>
         void HandleActionCompleted();
-
     }
 }

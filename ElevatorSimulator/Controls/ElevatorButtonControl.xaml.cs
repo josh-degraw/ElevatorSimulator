@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using ElevatorApp.Models.Interfaces;
+using System.Windows;
 using System.Windows.Controls;
-using ElevatorApp.Models.Interfaces;
 
 namespace ElevatorApp.Controls
 {
@@ -33,9 +33,7 @@ namespace ElevatorApp.Controls
 
         /// <summary>
         /// Handles the Click event of the Button control.
-        /// <para>
-        /// Pushes the <see cref="IButton"/>
-        /// </para>
+        /// <para>Pushes the <see cref="IButton"/></para>
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>

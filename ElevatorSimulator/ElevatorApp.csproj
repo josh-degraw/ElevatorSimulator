@@ -153,14 +153,37 @@
     <Compile Include="SimulatorViewModel.cs" />
     <Compile Include="Util\Annotations.cs" />
     <Compile Include="Util\AsyncObservableCollection.cs" />
-    <Compile Include="Util\Extensions.cs" />
-    <Compile Include="Util\ILogger.cs" />
-    <Compile Include="Util\LocalSystemClock.cs" />
-    <Compile Include="Util\Logger.cs" />
-    <Compile Include="Util\Statistic.cs" />
-    <Compile Include="Util\Statistics.cs">
+    <Compile Include="Util\DecimalStatistic.cs">
       <DependentUpon>Statistic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\DoubleStatistic.cs">
+      <DependentUpon>Statistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\DurationStatistic.cs">
+      <DependentUpon>Statistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Event.cs">
+      <DependentUpon>Logger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Extensions.cs" />
+    <Compile Include="Util\ILogger.cs">
+      <DependentUpon>Logger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\IntStatistic.cs">
+      <DependentUpon>Statistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\IStatistic.cs">
+      <DependentUpon>Statistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\LocalSystemClock.cs" />
+    <Compile Include="Util\Logger.cs" />
+    <Compile Include="Util\LongStatistic.cs">
+      <DependentUpon>Statistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\SimpleStatistic.cs">
+      <DependentUpon>Statistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Statistic.cs" />
     <Compile Include="Util\Stats.cs" />
     <Page Include="Controls\AddPassengerControl.xaml">
       <SubType>Designer</SubType>

@@ -14,6 +14,5 @@ namespace ElevatorApp.Controls
         {
             this.InitializeComponent();
         }
-        
     }
 }

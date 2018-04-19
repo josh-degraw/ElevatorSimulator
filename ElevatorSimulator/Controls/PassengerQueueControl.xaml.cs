@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ElevatorApp.Models;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ElevatorApp.Models;
 
 namespace ElevatorApp.Controls
 {
@@ -59,10 +47,7 @@ namespace ElevatorApp.Controls
         /// <summary>
         /// Gets a value indicating whether the elevator is available.
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if the elevator is available; otherwise, <c>false</c>.
-        /// </value>
+        /// <value><c>true</c> if the elevator is available; otherwise, <c>false</c>.</value>
         public bool ElevatorAvailable => this.Floor?.ElevatorAvailable ?? false;
-
     }
 }

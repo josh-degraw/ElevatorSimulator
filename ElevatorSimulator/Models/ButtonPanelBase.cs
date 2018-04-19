@@ -14,6 +14,18 @@ namespace ElevatorApp.Models
     public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<ElevatorMasterController>, IObservable<ElevatorCall>
     {
         /// <summary>
+        /// The observers
+        /// </summary>
+        private readonly AsyncObservableCollection<IObserver<ElevatorCall>> _observers = new AsyncObservableCollection<IObserver<ElevatorCall>>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ButtonPanelBase"/> class.
+        /// </summary>
+        protected ButtonPanelBase()
+        {
+        }
+
+        /// <summary>
         /// The actual collection of <see cref="FloorButton"/> s
         /// </summary>
         protected abstract AsyncObservableCollection<FloorButton> _floorButtons { get; }
@@ -23,14 +35,12 @@ namespace ElevatorApp.Models
         /// </summary>
         public virtual IReadOnlyCollection<FloorButton> FloorButtons => this._floorButtons;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ButtonPanelBase"/> class.
-        /// </summary>
-        protected ButtonPanelBase()
-        {
-        }
-
         #region ICollectionImplementation
+
+        /// <summary>
+        /// Gets the number of elements in the collection.
+        /// </summary>
+        int IReadOnlyCollection<FloorButton>.Count => this.FloorButtons.Count;
 
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
@@ -52,11 +62,6 @@ namespace ElevatorApp.Models
             return ((IEnumerable)this.FloorButtons).GetEnumerator();
         }
 
-        /// <summary>
-        /// Gets the number of elements in the collection.
-        /// </summary>
-        int IReadOnlyCollection<FloorButton>.Count => this.FloorButtons.Count;
-
         #endregion ICollectionImplementation
 
         /// <summary>
@@ -64,11 +69,6 @@ namespace ElevatorApp.Models
         /// </summary>
         /// <inheritdoc/>
         public bool Subscribed { get; protected set; }
-
-        /// <summary>
-        /// The observers
-        /// </summary>
-        private readonly AsyncObservableCollection<IObserver<ElevatorCall>> _observers = new AsyncObservableCollection<IObserver<ElevatorCall>>();
 
         /// <inheritdoc/>
         /// <summary>

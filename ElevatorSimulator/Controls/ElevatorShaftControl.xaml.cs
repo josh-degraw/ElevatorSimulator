@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using ElevatorApp.Models;
-using ElevatorApp.Util;
 
 namespace ElevatorApp.Controls
 {
@@ -32,15 +24,12 @@ namespace ElevatorApp.Controls
         /// <param name="args">The <see cref="DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
         private void ElevatorShaftControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs args)
         {
-            
         }
 
         /// <summary>
         /// Gets the controller.
         /// </summary>
-        /// <value>
-        /// The controller.
-        /// </value>
+        /// <value>The controller.</value>
         private SimulatorViewModel Controller
         {
             get
@@ -51,7 +40,5 @@ namespace ElevatorApp.Controls
                 return null;
             }
         }
-
-
     }
 }

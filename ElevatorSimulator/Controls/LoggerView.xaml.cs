@@ -1,28 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using ElevatorApp.Util;
+using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
-using ElevatorApp.Util;
-using Microsoft.Win32;
-using MoreLinq;
-using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.Core.Utilities;
 using MessageBox = Xceed.Wpf.Toolkit.MessageBox;
-
 
 namespace ElevatorApp.Controls
 {
@@ -50,14 +34,12 @@ namespace ElevatorApp.Controls
                     // Content unchanged : user scroll event
                     if (viewer.VerticalOffset.Equals(viewer.ScrollableHeight))
                     {
-                        // Scroll bar is in bottom
-                        // Set auto-scroll mode
+                        // Scroll bar is in bottom Set auto-scroll mode
                         this._autoScroll = true;
                     }
                     else
                     {
-                        // Scroll bar isn't in bottom
-                        // Unset auto-scroll mode
+                        // Scroll bar isn't in bottom Unset auto-scroll mode
                         this._autoScroll = false;
                     }
                 }
@@ -65,16 +47,14 @@ namespace ElevatorApp.Controls
                 // Content scroll event : auto-scroll eventually
                 if (this._autoScroll && !e.ExtentHeightChange.Equals(0))
                 {
-                    // Content changed and auto-scroll mode set
-                    // Autoscroll
+                    // Content changed and auto-scroll mode set Autoscroll
                     viewer.ScrollToVerticalOffset(viewer.ExtentHeight);
                 }
-
             }
-
         }
 
         private readonly object _locker = new object();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LoggerView"/> class.
         /// </summary>
@@ -96,9 +76,7 @@ namespace ElevatorApp.Controls
 
         /// <summary>
         /// Handles the Loaded event of the StackPanel control.
-        /// <para>
-        /// This is when the <see cref="Logger"/> is wired up to write the events
-        /// </para>
+        /// <para>This is when the <see cref="Logger"/> is wired up to write the events</para>
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
@@ -143,7 +121,6 @@ namespace ElevatorApp.Controls
 
                     File.WriteAllLines(dialog.FileName, str);
                     MessageBox.Show("Saved file at " + dialog.SafeFileName, "Success", MessageBoxButton.OK);
-
                 }
                 catch (Exception ex)
                 {

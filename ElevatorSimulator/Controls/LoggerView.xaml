@@ -1,36 +1,32 @@
 ﻿<UserControl x:Class="ElevatorApp.Controls.LoggerView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ElevatorApp.Controls"
              xmlns:util="clr-namespace:ElevatorApp.Util"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
-             mc:Ignorable="d" 
-             MinWidth="450"  
+             mc:Ignorable="d"
+             MinWidth="450"
              MinHeight="100"
-             x:Name="loggerView"
-             
-             >
+             x:Name="loggerView">
     <!--DataContext="{x:Static util:Logger.Instance}"-->
-    <Grid Height="{Binding ElementName=loggerView, Path=Height}" Margin="0,0,0,10" >
+    <Grid Height="{Binding ElementName=loggerView, Path=Height}" Margin="0,0,0,10">
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="25" />
         </Grid.RowDefinitions>
-        <ListView Grid.Row="0" x:Name="listViewEvents" 
-                  
-                  VerticalAlignment="Stretch" 
-                  ScrollViewer.CanContentScroll="True" 
-                  ScrollViewer.VerticalScrollBarVisibility="Visible" 
+        <ListView Grid.Row="0" x:Name="listViewEvents"
+
+                  VerticalAlignment="Stretch"
+                  ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
                   Margin="0,0,0,5"
-                  
-                  ScrollViewer.ScrollChanged="ScrollViewer_ScrollChanged" 
-                  >
-            
+
+                  ScrollViewer.ScrollChanged="ScrollViewer_ScrollChanged">
         </ListView>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Loaded="StackPanel_Loaded" >
+        <StackPanel Grid.Row="1" Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Loaded="StackPanel_Loaded">
             <Button Padding="15,4" Margin="25,0,15,0" Click="btnClear_click">Clear</Button>
             <Button x:Name="btnSave" Padding="15,4" Click="btnSave_Click">Save</Button>
         </StackPanel>

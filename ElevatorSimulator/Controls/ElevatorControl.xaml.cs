@@ -1,6 +1,5 @@
-﻿using System.Windows.Controls;
-using ElevatorApp.Models;
-using ElevatorApp.Models.Interfaces;
+﻿using ElevatorApp.Models;
+using System.Windows.Controls;
 
 namespace ElevatorApp.Controls
 {
@@ -20,6 +19,7 @@ namespace ElevatorApp.Controls
                     return vm;
                 return null;
             }
+
             set
             {
                 this.DataContext = value;
@@ -33,7 +33,5 @@ namespace ElevatorApp.Controls
         {
             this.InitializeComponent();
         }
-        
-
     }
 }

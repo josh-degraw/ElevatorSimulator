@@ -11,12 +11,6 @@ namespace ElevatorApp.Util
     public sealed class LocalSystemClock : IClock
     {
         /// <summary>
-        /// Gets the singleton instance
-        /// </summary>
-        [NotNull]
-        public static IClock Instance { get; } = new LocalSystemClock();
-
-        /// <summary>
         /// Prevents a default instance of the <see cref="LocalSystemClock"/> class from being created.
         /// </summary>
         private LocalSystemClock()
@@ -24,16 +18,22 @@ namespace ElevatorApp.Util
         }
 
         /// <summary>
-        /// Gets the current <see cref="T:NodaTime.Instant"/> on the time line according to this clock.
+        /// Gets the singleton instance
         /// </summary>
-        /// <returns>The current instant on the time line according to this clock.</returns>
-        /// <inheritdoc/>
-        Instant IClock.GetCurrentInstant() => NodaConstants.BclEpoch.PlusTicks(DateTime.Now.Ticks);
+        [NotNull]
+        public static IClock Instance { get; } = new LocalSystemClock();
 
         /// <summary>
         /// Gets the current <see cref="T:NodaTime.Instant"/> on the time line according to this clock.
         /// </summary>
         /// <returns>The current instant on the time line according to this clock.</returns>
         public static Instant GetCurrentInstant() => Instance.GetCurrentInstant();
+
+        /// <summary>
+        /// Gets the current <see cref="T:NodaTime.Instant"/> on the time line according to this clock.
+        /// </summary>
+        /// <returns>The current instant on the time line according to this clock.</returns>
+        /// <inheritdoc/>
+        Instant IClock.GetCurrentInstant() => NodaConstants.BclEpoch.PlusTicks(DateTime.Now.Ticks);
     }
 }
