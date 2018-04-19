@@ -18,9 +18,15 @@ namespace ElevatorApp.Models
         /// <summary> The number of the <see cref="Floor"/> that this button tells the <see cref="Elevator"/> to go to.</summary>
         public int DestinationFloor { get; }
 
+        /// <summary>
+        /// Gets the request direction.
+        /// </summary>
         private Direction RequestDirection => DestinationFloor > FloorNumber ? Direction.Up : Direction.Down;
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// The text on the button
+        /// </summary>
+        /// <inheritdoc />
         public override string Label => DestinationFloor.ToString();
 
         /// <summary>
@@ -28,22 +34,31 @@ namespace ElevatorApp.Models
         /// </summary>
         public override int FloorNumber => base.FloorNumber;
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequestButton"/> class.
+        /// </summary>
+        /// <param name="sourceFloor">The source floor.</param>
+        /// <param name="destinationFloor">The destination floor.</param>
+        /// <param name="startActive">if set to <c>true</c> [start active].</param>
+        /// <inheritdoc />
         public RequestButton(int sourceFloor, int destinationFloor, bool startActive = false) : base(sourceFloor, startActive)
         {
             this.DestinationFloor = destinationFloor;
         }
 
-        ///<inheritdoc/>
+        /// <inheritdoc />
+        /// <summary>
+        /// Push the button
+        /// </summary>
         public override void Push()
         {
-            base.Pushed(this, DestinationFloor);
+            base.HandlePushed(this, DestinationFloor);
         }
 
         /// <summary>
-        /// 
+        /// Subscribes the specified controller.
         /// </summary>
-        /// <param name="controller"></param>
+        /// <param name="controller">The controller.</param>
         /// <returns></returns>
         public override Task Subscribe(ElevatorMasterController controller)
         {
@@ -52,40 +67,40 @@ namespace ElevatorApp.Models
 
             try
             {
-                var elevator = controller.Elevator;
+                Elevator elevator = controller.Elevator;
                 // This should be handled by the Call panels
-                this.OnPushed += async (a, floor) =>
+                this.OnPushed += (a, floor) =>
                 {
                     try
                     {
                         Logger.LogEvent("Elevator Requested", ("From floor", this.FloorNumber));
-                        
+
                         // If the elevator's already here, open the door
                         if (elevator.CurrentFloor == this.FloorNumber &&
                             (elevator.State == ElevatorState.Arrived || elevator.State == ElevatorState.Idle))
                         {
-                            if (elevator.Door.IsNotOpenedOrOpening)
+                            if (elevator.Door.IsClosedOrClosing)
                             {
-                                await elevator.Door.RequestOpen();
+                                elevator.Door.RequestOpen();
                             }
                         }
                         else
                         {
                             // If the elevator isn't already here, tell it to come here
-                            controller.Elevator.OnNext((this.FloorNumber, RequestDirection));
+                            elevator.OnNext(new ElevatorCall(this.FloorNumber, RequestDirection, false));
                         }
 
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine(ex);
+                        elevator.OnError(ex);
                     }
                 };
             }
             finally
             {
-            this.Subscribed = true;
-                
+                this.Subscribed = true;
+
             }
 
 

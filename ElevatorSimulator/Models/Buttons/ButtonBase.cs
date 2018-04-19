@@ -86,13 +86,24 @@ namespace ElevatorApp.Models
             this.OnDeactivated += _setActiveFalse;
         }
 
+        /// <summary>
+        /// Sets <see cref="Active"/> to <see langword="true"/> when activated
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void _setActiveTrue(object sender, EventArgs e) => this.Active = true;
+
+        /// <summary>
+        /// Sets <see cref="Active"/> to <see langword="false"/> when deactivated
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void _setActiveFalse(object sender, EventArgs e) => this.Active = false;
 
         /// <summary>
         /// Trigger the <see cref="OnPushed"/> event.
         /// </summary>
-        protected void Pushed(object sender, T args)
+        protected void HandlePushed(object sender, T args)
         {
             this.OnPushed?.Invoke(sender, args);
             actionArgs = args;
@@ -112,7 +123,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Trigger the <see cref="OnActionCompleted"/> event
         /// </summary>
-        public void ActionCompleted()
+        public void HandleActionCompleted()
         {
             ActionCompleted(this, this.actionArgs);
         }

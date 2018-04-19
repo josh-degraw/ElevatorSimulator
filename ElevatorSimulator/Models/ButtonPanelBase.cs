@@ -17,7 +17,7 @@ namespace ElevatorApp.Models
     /// Represents the base class of a button panel. 
     /// Subscribes all of the <see cref="Button"/>s it contains to the <see cref="Elevator"/>
     /// </summary>
-    public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<ElevatorMasterController>, IObservable<(int, Direction)>
+    public abstract class ButtonPanelBase : IReadOnlyCollection<FloorButton>, ISubcriber<ElevatorMasterController>, IObservable<ElevatorCall>
     {
         /// <summary>
         /// The actual collection of <see cref="FloorButton"/>s
@@ -30,32 +30,54 @@ namespace ElevatorApp.Models
         public virtual IReadOnlyCollection<FloorButton> FloorButtons => _floorButtons;
 
         /// <summary>
-        /// Initialize a new ButtonPanelBase
+        /// Initializes a new instance of the <see cref="ButtonPanelBase"/> class.
         /// </summary>
         protected ButtonPanelBase()
         {
         }
 
         #region ICollectionImplementation
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns>
+        /// An enumerator that can be used to iterate through the collection.
+        /// </returns>
         IEnumerator<FloorButton> IEnumerable<FloorButton>.GetEnumerator()
         {
             return FloorButtons.GetEnumerator();
         }
 
+        /// <summary>
+        /// Returns an enumerator that iterates through a collection.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
+        /// </returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable)FloorButtons).GetEnumerator();
         }
 
+        /// <summary>
+        /// Gets the number of elements in the collection.
+        /// </summary>
         int IReadOnlyCollection<FloorButton>.Count => FloorButtons.Count;
 
         #endregion
 
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Represents whether or not this object has performed the necessary steps to subscribe to the source.
+        /// </summary>
+        /// <inheritdoc />
         public bool Subscribed { get; protected set; }
 
-        private readonly AsyncObservableCollection<IObserver<(int, Direction)>> _observers = new AsyncObservableCollection<IObserver<(int, Direction)>>();
+        /// <summary>
+        /// The observers
+        /// </summary>
+        private readonly AsyncObservableCollection<IObserver<ElevatorCall>> _observers = new AsyncObservableCollection<IObserver<ElevatorCall>>();
 
 
         /// <inheritdoc />
@@ -65,18 +87,19 @@ namespace ElevatorApp.Models
         /// </summary>
         /// <param name="observer"></param>
         /// <returns>An <see cref="Unsubscriber{T}"/> that can be disposed of to stop receiving updates</returns>
-        public IDisposable Subscribe(IObserver<(int, Direction)> observer)
+        public IDisposable Subscribe(IObserver<ElevatorCall> observer)
         {
             if (!_observers.Contains(observer))
             {
                 _observers.Add(observer);
             }
 
-            return new Unsubscriber<(int, Direction)>(_observers, observer);
+            return new Unsubscriber<ElevatorCall>(_observers, observer);
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Subscribes this Button panel to the <see cref="ElevatorMasterController"/>
+        /// Subscribes this Button panel to the <see cref="T:ElevatorApp.Models.ElevatorMasterController" />
         /// </summary>
         public virtual Task Subscribe(ElevatorMasterController parent)
         {

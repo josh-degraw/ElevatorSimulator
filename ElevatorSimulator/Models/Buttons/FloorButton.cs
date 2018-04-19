@@ -12,9 +12,15 @@ namespace ElevatorApp.Models
     /// </summary>
     public class FloorButton : ButtonBase<int>, ISubcriber<ElevatorMasterController>
     {
+        /// <summary>
+        /// The text on the button
+        /// </summary>
         /// <inheritdoc />
         public override string Label => this.FloorNumber.ToString();
 
+        /// <summary>
+        /// The type of button this is
+        /// </summary>
         /// <inheritdoc />
         public override ButtonType ButtonType => ButtonType.Floor;
 
@@ -23,19 +29,30 @@ namespace ElevatorApp.Models
         /// </summary>
         public virtual int FloorNumber { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FloorButton"/> class.
+        /// </summary>
+        /// <param name="floorNumber">The floor number.</param>
+        /// <param name="startActive">if set to <c>true</c> [start active].</param>
         public FloorButton(int floorNumber, bool startActive = false) : base($"FloorBtn {floorNumber}", startActive)
         {
             this.FloorNumber = floorNumber;
         }
-        
+
+        /// <summary>
+        /// Push the button
+        /// </summary>
         public override void Push()
         {
-            this.Pushed(this, this.FloorNumber);
+            this.HandlePushed(this, this.FloorNumber);
         }
 
         private bool _subscribed = false;
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Represents whether or not this object has performed the necessary steps to subscribe to the source.
+        /// </summary>
+        /// <inheritdoc/>
         public bool Subscribed
         {
             get => _subscribed;
@@ -43,13 +60,18 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
-        /// 
+        /// Disables this instance.
         /// </summary>
         public void Disable()
         {
             this.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Perform the necessary steps to subscribe to the target.
+        /// </summary>
+        /// <param name="parent">The item this object will be subscribed to</param>
+        /// <returns></returns>
         /// <inheritdoc />
         public virtual Task Subscribe(ElevatorMasterController parent)
         {
@@ -80,7 +102,7 @@ namespace ElevatorApp.Models
             //elevator.Arrived += (e, floor) =>
             //{
             //    if (floor.DestinationFloor == this.FloorNumber)
-            //        this.ActionCompleted(e, floor.DestinationFloor);
+            //        this.HandleActionCompleted(e, floor.DestinationFloor);
             //};
             
 

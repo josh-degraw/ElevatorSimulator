@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\ButtonPanelBase.cs" />
+    <Compile Include="Models\ElevatorCall.cs" />
     <Compile Include="Models\ElevatorMovementEventArgs.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Interfaces\IButton.cs" />
@@ -148,18 +149,14 @@
     <Compile Include="Models\Floor.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Passenger.cs" />
-    <Compile Include="Models\TestSettings.cs" />
     <Compile Include="Models\Unsubscriber.cs" />
     <Compile Include="SimulatorViewModel.cs" />
     <Compile Include="Util\Annotations.cs" />
     <Compile Include="Util\AsyncObservableCollection.cs" />
-    <Compile Include="Util\DelegateCommand.cs" />
-    <Compile Include="Util\EventTraceListener.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\ILogger.cs" />
     <Compile Include="Util\LocalSystemClock.cs" />
     <Compile Include="Util\Logger.cs" />
-    <Compile Include="Util\ObservableConcurrentQueue.cs" />
     <Compile Include="Util\Statistic.cs" />
     <Compile Include="Util\Statistics.cs">
       <DependentUpon>Statistic.cs</DependentUpon>

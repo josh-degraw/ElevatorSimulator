@@ -20,6 +20,11 @@ namespace ElevatorApp.Models
 
         private readonly Action _remove;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Unsubscriber{T}"/> class.
+        /// </summary>
+        /// <param name="observers">The observers.</param>
+        /// <param name="observer">The observer.</param>
         internal Unsubscriber(ICollection<IObserver<T>> observers, IObserver<T> observer)
         {
             // Using an Action delegate allows us to remove the observer from the collection without holding explicit references to them, via closure properties
@@ -31,7 +36,9 @@ namespace ElevatorApp.Models
             };
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             if (!Disposed)

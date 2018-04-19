@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using ElevatorApp.Models.Enums;
 using ElevatorApp.Models.Interfaces;
@@ -32,11 +33,13 @@ namespace ElevatorApp.Models
     /// </summary>
     public class Door : ModelBase, ISubcriber<Elevator>
     {
+        private readonly ReaderWriterLockSlim _stateChangeLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+        //  private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
+
         /// <summary>
         /// The number of seconds it takes for the <see cref="Door"/> to close and to open
         /// </summary>
         public const int TRANSITION_TIME_SECONDS = 2;
-
 
         /// <summary>
         /// The number of seconds the <see cref="Door"/> stays open
@@ -89,7 +92,6 @@ namespace ElevatorApp.Models
 
         private DoorState _doorState = DoorState.Closed;
 
-        private readonly object _locker = new object();
 
         /// <summary>
         /// The state of the <see cref="Door"/>
@@ -99,14 +101,26 @@ namespace ElevatorApp.Models
             get => _doorState;
             private set
             {
-                lock (_locker)
+                _stateChangeLock.EnterWriteLock();
+                try
                 {
-                    Debug.Assert(IsValidStateTransition(_doorState, value), "Invalid state transition", "{0} -> {1}", _doorState, value);
                     SetProperty(ref _doorState, value);
+                }
+                finally
+                {
+                    _stateChangeLock.ExitWriteLock();
                 }
             }
         }
 
+        /// <summary>
+        /// Determines whether is valid state transition
+        /// </summary>
+        /// <param name="prev">The previous.</param>
+        /// <param name="next">The next.</param>
+        /// <returns>
+        ///   <c>true</c> if is a valid state transition; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsValidStateTransition(DoorState prev, DoorState next)
         {
             if (prev == next)
@@ -131,6 +145,34 @@ namespace ElevatorApp.Models
             }
         }
 
+        private bool _isCloseRequested = false;
+
+        /// <summary>
+        /// Gets a value indicating whether a close has been requested.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if a close has been requested; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsCloseRequested
+        {
+            get => _isCloseRequested;
+            private set => SetProperty(ref _isCloseRequested, value);
+        }
+
+        private bool _isOpenRequested = false;
+
+        /// <summary>
+        /// Gets a value indicating whether an open has been requested.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if an open has been requested; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsOpenRequested
+        {
+            get => _isOpenRequested;
+            private set => SetProperty(ref _isOpenRequested, value);
+        }
+
         /// <summary>
         /// Constructs a new <see cref="Door"/>
         /// </summary>
@@ -138,6 +180,7 @@ namespace ElevatorApp.Models
         {
             this.OpenRequested += delegate { Logger.LogEvent("Door Open requested"); };
             this.CloseRequested += delegate { Logger.LogEvent("Door Close requested"); };
+
             this.Closing += delegate { Logger.LogEvent("Door Closing"); };
             this.Closed += delegate { Logger.LogEvent("Door Closed"); };
 
@@ -146,104 +189,200 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
+        /// Helper property to know if the door is either already opened or in the process of opening
+        /// </summary>
+        public bool IsOpenedOrOpening => this.DoorState.EqualsAny(DoorState.Opened, DoorState.Opening);
+
+        /// <summary>
+        /// Helper property to know if the door is either already closed or in the process of closing
+        /// </summary>
+        public bool IsClosedOrClosing => this.DoorState.EqualsAny(DoorState.Closed, DoorState.Closing);
+
+
+        /// <summary>
         /// Ask the <see cref="Door"/> to open
         /// </summary>
-        public async Task RequestOpen()
-        {
-            await RequestOpen(false).ConfigureAwait(false);
-        }
-
-        private async Task RequestOpen(bool fromRequestClose)
+        public async void RequestOpen()
         {
             try
             {
-                //Trace.TraceInformation(Environment.StackTrace);
-                // If the door is already opened, don't do anything
-                if (this.IsNotOpenedOrOpening)
+                await RequestOpen(false).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+        
+        private bool _closeRequestBegun = false;
+
+        private bool _openRequestBegun = false;
+
+        /// <summary>
+        /// Requests the door to open.
+        /// </summary>
+        /// <param name="fromRequestClose">If the.</param>
+        /// <returns></returns>
+        private async Task RequestOpen(bool fromRequestClose)
+        {
+            // If the door is already opened, don't do anything
+            if (this.IsOpenedOrOpening)
+                return;
+
+            try
+            {
+                var args = new DoorStateChangeEventArgs();
+
+                this._openRequestBegun = true;
+                this.OpenRequested?.Invoke(this, args);
+
+                if (this.IsCloseRequested || args.CancelOperation)
                 {
-                    var args = new DoorStateChangeEventArgs();
-
-                    this.OpenRequested?.Invoke(this, args);
-
-                    if (!args.CancelOperation)
-                    {
-                        this.DoorState = DoorState.Opening;
-                        this.Opening?.Invoke(this, args);
-
-                        if (!args.CancelOperation)
-                        {
-                            await Task.Delay(TRANSITION_TIME);
-
-                            if (this.DoorState != DoorState.Opening)
-                                throw new InvalidOperationException("Do not modify the door state while it is transitioning");
-
-                            this.DoorState = DoorState.Opened;
-                            this.Opened?.Invoke(this, args);
-                            await Task.Delay(TIME_SPENT_OPEN);
-                        }
-                    }
-
-                    if (!fromRequestClose)
-                        await this.RequestClose();
+                    // If close has already been requested, just let that call complete
+                    if (!_closeRequestBegun)
+                        RequestClose(true);
+                    return;
                 }
 
+                this.DoorState = DoorState.Opening;
+                this.Opening?.Invoke(this, args);
+
+
+                if (IsCloseRequested || args.CancelOperation)
+                {
+                    // If close has already been requested, just let that call complete
+                    if (!_closeRequestBegun)
+                        RequestClose(true);
+                    return;
+                }
+
+
+                await Task.Delay(TRANSITION_TIME).ConfigureAwait(false);
+                if (this.DoorState == DoorState.Opening)
+                {
+                    this.DoorState = DoorState.Opened;
+                    this.Opened?.Invoke(this, args);
+
+                    await Task.Delay(TIME_SPENT_OPEN).ConfigureAwait(false);
+                }
+
+                this.RequestClose(true);
             }
             catch (Exception ex)
             {
                 Logger.LogEvent("Error", ("Message", ex.Message));
             }
+            finally
+            {
+                this._openRequestBegun = false;
+            }
+        }
+
+
+        /// <summary>
+        /// Waits for door to close. If not already in progress, calls <see cref="RequestClose()"/>
+        /// </summary>
+        /// <returns></returns>
+        public async Task WaitForDoorToClose()
+        {
+            if (DoorState == DoorState.Closed)
+                return;
+
+            this.IsCloseRequested = true;
+
+            if (DoorState != DoorState.Closing)
+                this.RequestClose();
+
+            while (DoorState != DoorState.Closed)
+            {
+                await Task.Delay(100).ConfigureAwait(false);
+            }
+
+            this.IsCloseRequested = false;
         }
 
         /// <summary>
-        /// Helper property to know if the door is either already opened or in the process of opening
+        /// Waits for door to open. If not already in progress, calls <see cref="RequestOpen()"/>
         /// </summary>
-        public bool IsNotOpenedOrOpening => this.DoorState != DoorState.Opened && DoorState != DoorState.Opening;
+        /// <returns></returns>
+        public async Task WaitForDoorToOpen()
+        {
+            if (DoorState == DoorState.Opened)
+                return;
 
-        /// <summary>
-        /// Helper property to know if the door is either already closed or in the process of closing
-        /// </summary>
-        public bool IsNotClosedOrClosing => this.DoorState != DoorState.Closed && this.DoorState != DoorState.Closing;
+            if (DoorState != DoorState.Opening)
+                this.RequestOpen();
 
+            while (DoorState != DoorState.Opened)
+            {
+                await Task.Delay(100).ConfigureAwait(false);
+            }
+        }
 
         /// <summary>
         /// Ask the <see cref="Door"/> to close
         /// </summary>
         /// <returns></returns>
-        public async Task RequestClose()
+        public void RequestClose()
         {
-            //Trace.TraceInformation(Environment.StackTrace);
-            var args = new DoorStateChangeEventArgs();
-            // If the door is already closed, don't do anything
-            if (this.IsNotClosedOrClosing)
-            {
-                this.CloseRequested?.Invoke(this, args);
-                if (!args.CancelOperation)
-                {
-                    this.DoorState = DoorState.Closing;
-                    this.Closing?.Invoke(this, args);
+            RequestClose(false);
+        }
 
-                    if (!args.CancelOperation)
-                    {
-                        await Task.Delay(TRANSITION_TIME);
-                    }
-                }
+        /// <summary>
+        /// Requests the door to close.
+        /// </summary>
+        /// <param name="recursed">If called from <see cref="RequestClose()"/> </param>
+        private async void RequestClose(bool recursed)
+        {
+            // If the door is already closed, don't do anything
+            if (this.IsClosedOrClosing)
+                return;
+
+            // await mutex.WaitAsync().ConfigureAwait(false);
+            try
+            {
+                //Trace.TraceInformation(Environment.StackTrace);
+                var args = new DoorStateChangeEventArgs();
+                _closeRequestBegun = true;
+
+                this.CloseRequested?.Invoke(this, args);
 
                 if (args.CancelOperation)
                 {
-                    await this.RequestOpen(true);
+                    if (!_openRequestBegun)
+                        await this.RequestOpen(true).ConfigureAwait(false);
+                    return;
+                }
+
+                this.DoorState = DoorState.Closing;
+                this.Closing?.Invoke(this, args);
+
+                if (args.CancelOperation)
+                {
+                    if (!_openRequestBegun)
+                        await this.RequestOpen(true).ConfigureAwait(false);
+                    return;
+                }
+
+                await Task.Delay(TRANSITION_TIME).ConfigureAwait(false);
+
+                if (this.DoorState == DoorState.Closing)
+                {
+                    this.DoorState = DoorState.Closed;
+
+                    this.Closed?.Invoke(this, args);
                 }
             }
-
-            if (this.DoorState == DoorState.Closing)
+            finally
             {
-                this.DoorState = DoorState.Closed;
-                this.Closed?.Invoke(this, args);
+                _closeRequestBegun = false;
+                //mutex.Release();
             }
         }
 
-
+        /// <inheritdoc />
         /// <summary>
-        /// Represents if this <see cref="Door"/> has been subscribed
+        /// Represents if this <see cref="Door" /> has been subscribed
         /// </summary>
         public bool Subscribed { get; private set; }
 
@@ -257,16 +396,15 @@ namespace ElevatorApp.Models
                 return Task.CompletedTask;
             try
             {
-
-                elevator.Arrived += async (e, args) =>
+                elevator.Arrived += (e, args) =>
                 {
                     try
                     {
-                        await this.RequestOpen();
+                        this.RequestOpen();
                     }
                     catch (Exception ex)
                     {
-                        Debug.Fail(ex.Message);
+                        Trace.TraceError(ex.ToString());
                     }
                 };
 

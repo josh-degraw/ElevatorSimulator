@@ -41,7 +41,7 @@ namespace ElevatorApp.Models
         ///<inheritdoc cref="ButtonBase{T}.Push"/>
         public override void Push()
         {
-            this.Pushed(this, this.ButtonType);
+            this.HandlePushed(this, this.ButtonType);
         }
 
         private DoorButton(ButtonType type) : base($"DoorBtn {type}")

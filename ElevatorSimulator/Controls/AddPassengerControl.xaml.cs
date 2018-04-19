@@ -20,13 +20,18 @@ namespace ElevatorApp.Controls
     /// </summary>
     public partial class AddPassengerControl : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddPassengerControl"/> class.
+        /// </summary>
         public AddPassengerControl()
         {
             InitializeComponent();
         }
 
-        
 
+        /// <summary>
+        /// Adds the passenger to the waiting queue of a floor
+        /// </summary>
         public void AddPassenger()
         {
             

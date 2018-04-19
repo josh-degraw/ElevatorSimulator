@@ -15,12 +15,13 @@ using MoreLinq;
 
 namespace ElevatorApp.Models
 {
-
     /// <summary>
     /// Represents a floor of a building.
     /// </summary>
     public class Floor : ModelBase, ISubcriber<ElevatorMasterController>
     {
+        private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
+
         #region Backing fields
         private int _floorNum = 1;
         private ElevatorCallPanel _callPanel = new ElevatorCallPanel(1);
@@ -67,11 +68,6 @@ namespace ElevatorApp.Models
         /// </summary>
         public IReadOnlyCollection<Passenger> WaitingPassengers => _waitingPassengers;
 
-        /// <summary>
-        /// The passengers waiting on the floor for the <see cref="Elevator"/>
-        /// </summary>
-        // public IReadOnlyCollection<Passenger> WaitingPassengersDown => _waitingPassengers_Down;
-
         #endregion
 
         /// <summary>
@@ -105,7 +101,7 @@ namespace ElevatorApp.Models
         /// Adds a passenger to the list of waiting passengers
         /// </summary>
         /// <param name="destination"></param>
-        public void QueuePassenger(int destination)
+        private void QueuePassenger(int destination)
         {
             var passenger = new Passenger(this.FloorNumber, destination);
 
@@ -114,7 +110,9 @@ namespace ElevatorApp.Models
 
         #region Subscription
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Represents whether or not this object has performed the necessary steps to subscribe to the source.
+        /// </summary>
         public bool Subscribed { get; private set; }
 
         private int subscriptionCount = 0;
@@ -147,6 +145,7 @@ namespace ElevatorApp.Models
             }
 
             Logger.LogEvent("Subscribing floor", ("Subscription number", subscriptionCount));
+
             _waitingPassengers.CollectionChanged += onPassengerAdded;
             elevator.PassengerAdded += removePassengerFromQueue;
             elevator.Door.Opened += addPassengersToElevator;
@@ -169,19 +168,20 @@ namespace ElevatorApp.Models
                     {
                         try
                         {
-                            if (elevator.Door.DoorState == DoorState.Opened)
+                            if (elevator.Door.DoorState != DoorState.Opened)
+                            {
+
+                                elevator.Door.RequestOpen();
+                            }
+                            else
                             {
                                 IEnumerable<Passenger> departing = getPassengersToMove(elevator);
                                 await _addPassengersToElevator(departing, elevator).ConfigureAwait(false);
                             }
-                            else
-                            {
-                                await elevator.Door.RequestOpen().ConfigureAwait(false);
-                            }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine(ex);
+                            elevator.OnError(ex);
                         }
                     }
                 }
@@ -189,24 +189,31 @@ namespace ElevatorApp.Models
 
             async void addPassengersToElevator(object _, DoorStateChangeEventArgs args)
             {
-                if (elevator.CurrentFloor == this.FloorNumber)
+                try
                 {
-                    try
+                    if (elevator.CurrentFloor == this.FloorNumber)
                     {
                         await _addPassengersToElevator(elevator).ConfigureAwait(false);
                     }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    elevator.OnError(ex);
                 }
             }
 
             void Elevator_Approaching(object sender, ElevatorApproachingEventArgs e)
             {
-                if (e.IntermediateFloor == this.FloorNumber)
+                try
                 {
-                    e.ShouldStop = getPassengersToMove(elevator).Any();
+                    if (e.IntermediateFloor == this.FloorNumber)
+                    {
+                        e.ShouldStop = getPassengersToMove(elevator).Any();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    elevator.OnError(ex);
                 }
             }
 
@@ -215,6 +222,11 @@ namespace ElevatorApp.Models
             this.Subscribed = true;
         }
 
+        /// <summary>
+        /// Removes the passenger from queue of waiting passengers
+        /// </summary>
+        /// <param name="_">The .</param>
+        /// <param name="passenger">The passenger.</param>
         void removePassengerFromQueue(object _, Passenger passenger)
         {
             try
@@ -237,7 +249,12 @@ namespace ElevatorApp.Models
                 }
             }
         }
-        // Alert the Floor that an elevator is available when one arrives on this floor
+
+        /// <summary>
+        /// Alert the Floor that an elevator is available when one arrives on this floor
+        /// </summary>
+        /// <param name="_">The .</param>
+        /// <param name="args">The <see cref="ElevatorApp.Models.ElevatorMovementEventArgs" /> instance containing the event data.</param>
         void onElevatorArrivedAtThisFloor(object _, ElevatorMovementEventArgs args)
         {
             if (args.DestinationFloor == this.FloorNumber)
@@ -245,11 +262,22 @@ namespace ElevatorApp.Models
                 this.ElevatorAvailable = true;
             }
         }
+
+        /// <summary>
+        /// Sets <see cref="ElevatorAvailable"/> to false when the elevator leaves the floor
+        /// </summary>
+        /// <param name="_">The sender</param>
+        /// <param name="call">The <see cref="ElevatorApp.Models.ElevatorMovementEventArgs" /> instance containing the event data.</param>
         void onElevatorDeparted(object _, ElevatorMovementEventArgs call)
         {
             this.ElevatorAvailable = false;
         }
 
+        /// <summary>
+        /// Adds the passengers to elevator.
+        /// </summary>
+        /// <param name="elevator">The elevator.</param>
+        /// <returns></returns>
         private async Task _addPassengersToElevator(Elevator elevator)
         {
             // TODO: Wait for all passengers to get out
@@ -258,6 +286,11 @@ namespace ElevatorApp.Models
         }
 
         private bool _adding = false;
+        /// <summary>
+        /// Sends a request to the <see cref="Door"/> to prevent it closing if starts to close while passengers are still trying to get on.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The <see cref="ElevatorApp.Models.DoorStateChangeEventArgs" /> instance containing the event data.</param>
         void cancelIfStartsToClose(object sender, DoorStateChangeEventArgs args)
         {
             args.CancelOperation = _adding;
@@ -274,7 +307,6 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         private async Task _addPassengersToElevator(IEnumerable<Passenger> departing, Elevator elevator)
         {
-            var mutex = new SemaphoreSlim(1);
             await mutex.WaitAsync().ConfigureAwait(false);
             _adding = true;
             try
@@ -297,12 +329,10 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
-        /// Gets the passengers that are going 
+        /// Gets the passengers that are going to be moving
         /// </summary>
         IEnumerable<Passenger> getPassengersToMove(Elevator elevator)
         {
-            var mutex = new SemaphoreSlim(1);
-            mutex.Wait();
             try
             {
                 var direction = elevator.Direction;
@@ -324,12 +354,17 @@ namespace ElevatorApp.Models
             }
             finally
             {
-                mutex.Release();
+                //       mutex.Release();
             }
 
             return Enumerable.Empty<Passenger>();
         }
 
+        /// <summary>
+        /// Gets the passengers to move.
+        /// </summary>
+        /// <param name="direction">The direction.</param>
+        /// <returns></returns>
         private IEnumerable<Passenger> _getPassengersToMove(Direction direction)
         {
             IEnumerable<Passenger> waiting = this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting);

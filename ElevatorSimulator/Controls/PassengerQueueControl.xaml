@@ -54,7 +54,6 @@
             <Expander 
                 IsExpanded="True" 
                 Grid.Column="2" 
-                MouseUp="Expander_MouseUp" 
                 Header="Add Passenger" 
                 Margin="5"
                 ExpandDirection="Down" >

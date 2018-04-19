@@ -5,16 +5,16 @@ using ElevatorApp.Util;
 
 namespace ElevatorApp.Models
 {
-    [Obsolete]
-    public class ElevatorSimulator
-    {
-        public ElevatorMasterController Controller { get; } = new ElevatorMasterController();
+    //[Obsolete("",true)]
+    //public class ElevatorSimulator
+    //{
+    //    public ElevatorMasterController Controller { get; } = new ElevatorMasterController();
 
 
-        public ElevatorSimulator()
-        {
-            Logger.LogEvent("Initializing Simulator");
-        }
+    //    public ElevatorSimulator()
+    //    {
+    //        Logger.LogEvent("Initializing Simulator");
+    //    }
 
-    }
+    //}
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,15 @@ namespace ElevatorApp.Util
     /// <summary>
     /// The Stats class. This class will be able to hold and calculate information about the test during runtime. EG Average wait...
     /// </summary>
-    class Stats
+    public class Stats
     {
 
+        /// <summary>
+        /// A representation of the wait times of the passenges in the application
+        /// </summary>
+        /// <value>
+        /// The passenger wait times.
+        /// </value>
         public DurationStatistic PassengerWaitTimes { get; } = new DurationStatistic("Passenger wait times");
         public DurationStatistic PassengerRideTimes { get; } = new DurationStatistic("Passenger ride times");
         public DurationStatistic PassengerTotalTimes { get; } = new DurationStatistic("Passenger ride times");
@@ -27,6 +34,9 @@ namespace ElevatorApp.Util
 
         public static Stats Instance { get; } = new Stats();
 
+        /// <summary>
+        /// Prevents a default instance of the <see cref="Stats"/> class from being created.
+        /// </summary>
         private Stats()
         {
             passengerWaitTimes = new Collection<Duration>();
@@ -241,6 +251,7 @@ namespace ElevatorApp.Util
         /// This returns the number of passengers that have passed through the system and completed their trip
         /// </summary>
         /// <returns></returns>
+        [Obsolete]
         public int GetPassengerCount()
         {
             return passengerWaitTimes.Count;

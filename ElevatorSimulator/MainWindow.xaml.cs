@@ -11,12 +11,17 @@ namespace ElevatorApp
     public partial class MainWindow : RibbonWindow
     {
         private readonly object _locker = new object();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
-        
 
+        /// <summary>
+        /// Gets the view model.
+        /// </summary>
         public SimulatorViewModel ViewModel
         {
             get
@@ -28,25 +33,30 @@ namespace ElevatorApp
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the Init control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Init_Click(object sender, RoutedEventArgs e)
         {
             this.ViewModel?.Controller.Init();
         }
 
-
+        /// <summary>
+        /// CLKs the select elevator.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void clkSelectElevator(object sender, RoutedEventArgs e)
         {
         }
 
-        private void ListView_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-        }
-
-        private void RibbonButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Handles the Click event of the Stats control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Stats_Click(object sender, RoutedEventArgs e)
         {
             // These are to tell the stats class which thing to use, waitTime, rideTimes, or totalTimes
@@ -73,19 +83,15 @@ namespace ElevatorApp
             Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.GetAverageTime(x));
         }
 
+        /// <summary>
+        /// Handles the Loaded event of the LoggerView control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void LoggerView_Loaded(object sender, RoutedEventArgs e)
         {
             ViewModel?.Controller.Init();
         }
 
-        private void ListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ElevatorControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

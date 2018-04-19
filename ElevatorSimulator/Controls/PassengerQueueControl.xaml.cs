@@ -21,13 +21,19 @@ namespace ElevatorApp.Controls
     /// </summary>
     public partial class PassengerQueueControl : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PassengerQueueControl"/> class.
+        /// </summary>
         public PassengerQueueControl()
         {
             InitializeComponent();
         }
 
-        public bool ShowAddButtons { get; set; } = true;
-
+        /// <summary>
+        /// Handles the Click event of the Button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button b && b.DataContext is RequestButton fb)
@@ -36,6 +42,9 @@ namespace ElevatorApp.Controls
             }
         }
 
+        /// <summary>
+        /// Gets the floor.
+        /// </summary>
         private Floor Floor
         {
             get
@@ -47,6 +56,12 @@ namespace ElevatorApp.Controls
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the elevator is available.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the elevator is available; otherwise, <c>false</c>.
+        /// </value>
         public bool ElevatorAvailable => this.Floor?.ElevatorAvailable ?? false;
 
         private void Expander_MouseUp(object sender, MouseButtonEventArgs e)
