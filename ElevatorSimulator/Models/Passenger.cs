@@ -45,7 +45,13 @@ namespace ElevatorApp.Models
         /// </summary>
         private Instant WaitStart = LocalSystemClock.GetCurrentInstant();
 
-        #endregion Timings
+        /// <summary>
+        ///  Represents the total time a person is waiting and using the elevator
+        /// </summary>
+        public Duration TotalTime => TimeWaiting + TimeSpentInElevator;
+
+
+        #endregion
 
         #endregion Private Fields
 
@@ -156,6 +162,14 @@ namespace ElevatorApp.Models
         /// </summary>
         public int Weight { get; set; }
 
+            return $"Time Spent in Elevator: {TimeSpentInElevator:mm:ss}";
+        }
+
+
+
+        // add the timespent + timewaiting to get total time for a person.
+        // then send all of those 3 stats over to the add
+
         /// <summary>
         /// Computed property representing the direction the passenger wants to go
         /// </summary>
@@ -187,8 +201,13 @@ namespace ElevatorApp.Models
                 obj.Add(("Time Spent in Elevator", passenger.TimeSpentInElevator.ToString(duration_format, null)));
 
                 //This is where I have the passenger add its timings to the stats class for now... certainly a temporary thing
+                
+                // This is where the 3 statistics are added to the stats collections
                 Stats.Instance.PassengerWaitTimes.Add(passenger.TimeWaiting);
+                Stats.Instance.PassengerRideTimes.Add(passenger.TimeSpentInElevator);
+                Stats.Instance.PassengerWaitTimes.Add(passenger.TotalTime);
 
+                
                 //I also have it print out
                 obj.Add(("Current Average Wait Time ", Stats.Instance.PassengerWaitTimes));
 

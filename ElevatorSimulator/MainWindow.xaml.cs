@@ -40,16 +40,28 @@ namespace ElevatorApp
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Stats_Click(object sender, RoutedEventArgs e)
         {
+            // These are to tell the stats class which thing to use, waitTime, rideTimes, or totalTimes
+            int x = 1, y = 2, z = 3;
 
-            MessageBox.Show($@"
-Passenger Wait Times:
-Average: {Stats.Instance.PassengerWaitTimes.Average.Seconds}s 
-Minimum: {Stats.Instance.PassengerWaitTimes.Min.Seconds}s
-Maximum: {Stats.Instance.PassengerWaitTimes.Max.Seconds}s",
-                "Elevator Simulator Statistics"); 
-              
+
+
+            // check to see if i can pass the collection in right here
+            MessageBox.Show("Elevator Simulator Statistics" + "\n\n" +
+                "Average Passenger Wait Time: " + Stats.Instance.GetAverageTime(x).Seconds + "s \n" +
+                "Minimum Passenger Wait Time: " + Stats.Instance.GetMinTime(y).Seconds + "s \n" +
+                "Maximum Passenger Wait Time: " + Stats.Instance.GetMaxTime(z).Seconds + "s \n\n" + 
+
+                "Average Passenger Ride Time: " + Stats.Instance.GetAverageTime(x).Seconds + "s \n" +
+                "Minimum Passenger Ride Time: " + Stats.Instance.GetMinTime(y).Seconds + "s \n" +
+                "Maximum Passenger Ride Time: " + Stats.Instance.GetMaxTime(z).Seconds + "s \n\n" +
+
+                "Average Passenger Total Time: " + Stats.Instance.GetAverageTime(x).Seconds + "s \n" +
+                "Minimum Passenger Total Time: " + Stats.Instance.GetMinTime(y).Seconds + "s \n" +
+                "Maximum Passenger Total Time: " + Stats.Instance.GetMaxTime(z).Seconds + "s"); 
+               
           
-            Logger.LogEvent("Average Wait Time: " + Stats.Instance.PassengerWaitTimes.Average);
+            Stats.Instance.GetAverageTime(x);
+            Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.GetAverageTime(x));
         }
 
     }
