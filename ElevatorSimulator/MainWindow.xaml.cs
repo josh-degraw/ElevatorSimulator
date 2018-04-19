@@ -64,5 +64,9 @@ namespace ElevatorApp
             Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.GetAverageTime(x));
         }
 
+        private void LoggerView_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.Controller.Init();
+        }
     }
 }

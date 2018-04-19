@@ -162,10 +162,6 @@ namespace ElevatorApp.Models
         /// </summary>
         public int Weight { get; set; }
 
-            return $"Time Spent in Elevator: {TimeSpentInElevator:mm:ss}";
-        }
-
-
 
         // add the timespent + timewaiting to get total time for a person.
         // then send all of those 3 stats over to the add

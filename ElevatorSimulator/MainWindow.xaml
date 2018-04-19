@@ -83,7 +83,7 @@
                       Margin="10" 
                       BorderBrush="{x:Null}" 
                       BorderThickness="4" 
-                      ClipToBounds="True" Background="#FFD4DDD7" Loaded="ElevatorControl_Loaded">
+                      ClipToBounds="True" Background="#FFD4DDD7">
 
             </controls:ElevatorControl>
 
@@ -98,8 +98,7 @@
                 Background="#FFD4DDD7"
                 Grid.ColumnSpan="2" 
                 
-                VerticalAlignment="Stretch" 
-                Loaded="LoggerView_Loaded" />
+                VerticalAlignment="Stretch" Loaded="LoggerView_Loaded"  />
 
             <ScrollViewer Grid.Row="0" Grid.Column="1" Margin="5,0,0,7">
                 <controls:ElevatorShaftControl DataContext="{Binding}" FontSize="20" 

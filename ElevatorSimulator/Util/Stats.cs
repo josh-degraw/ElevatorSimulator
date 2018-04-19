@@ -34,10 +34,6 @@ namespace ElevatorApp.Util
         /// </summary>
         private Stats()
         {
-            passengerWaitTimes = new Collection<Duration>();
-            passengerRideTimes = new Collection<Duration>();
-            passengerTotalTimes = new Collection<Duration>();
-            tempTimes = new Collection<Duration>();
         }
 
 
@@ -127,7 +123,7 @@ namespace ElevatorApp.Util
 
         public Duration GetMinTime(int pass)
         {
-            Duration max = new Duration();
+            Duration min = new Duration();
 
             // for each min value check after the initial one
 
@@ -238,7 +234,7 @@ namespace ElevatorApp.Util
                     return max;
             }
             else
-                return min;
+                return max;
         }
        
         
