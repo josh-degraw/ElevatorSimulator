@@ -20,7 +20,10 @@ namespace ElevatorApp.Models
     /// </summary>
     public class Floor : ModelBase, ISubcriber<ElevatorMasterController>
     {
-        private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
+        /// <summary>
+        /// Used to prevent threading issues
+        /// </summary>
+        private readonly SemaphoreSlim _mutex = new SemaphoreSlim(1);
 
         #region Backing fields
         private int _floorNum = 1;
@@ -307,7 +310,7 @@ namespace ElevatorApp.Models
         /// <returns></returns>
         private async Task _addPassengersToElevator(IEnumerable<Passenger> departing, Elevator elevator)
         {
-            await mutex.WaitAsync().ConfigureAwait(false);
+            await _mutex.WaitAsync().ConfigureAwait(false);
             _adding = true;
             try
             {
@@ -323,7 +326,7 @@ namespace ElevatorApp.Models
             finally
             {
                 _adding = false;
-                mutex.Release();
+                _mutex.Release();
             }
 
         }

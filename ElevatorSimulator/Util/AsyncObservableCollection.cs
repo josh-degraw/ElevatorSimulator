@@ -12,7 +12,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Windows.Threading;
-// ReSharper disable All
+
 
 namespace ElevatorApp.Util
 {
@@ -37,40 +37,6 @@ namespace ElevatorApp.Util
     public sealed class AsyncObservableCollection<T> : IList<T>, IReadOnlyList<T>, IList, INotifyCollectionChanged, INotifyPropertyChanged, ISerializable
     {
         /// <summary>
-        /// Adds an item to the collection, mimicking the behavior of <see cref="ConcurrentQueue{T}"/>
-        /// </summary>
-        /// <remarks>Written by Josh DeGraw</remarks>
-        public void Enqueue(T next)
-        {
-            this.AddDistinct(next);
-        }
-
-        /// <summary>
-        /// Tries to remove the first item from the collection, mimicking the behavior of <see cref="ConcurrentQueue{T}"/>
-        /// </summary>
-        /// <remarks>Written by Josh DeGraw</remarks>
-        /// <param name="res">The item that was dequeud</param>
-        /// <returns>True if an item was successfully dequeued, else false</returns>
-        public bool TryDequeue(out T res)
-        {
-            if (!this.Any())
-            {
-                res = default;
-                return false;
-            }
-            try
-            {
-                res = this.First();
-                return this.Remove(res);
-            }
-            catch
-            {
-                res = default;
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Tries to remove the given item from the collection
         /// </summary>
         /// <param name="item">The item to be removed</param>
@@ -84,30 +50,6 @@ namespace ElevatorApp.Util
             }
             catch
             {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Tries to read the first item in the collection
-        /// </summary>
-        /// <remarks>Written by Josh DeGraw</remarks>
-        public bool TryPeek(out T item)
-        {
-            if (this.Count <= 0)
-            {
-                item = default;
-                return false;
-            }
-
-            try
-            {
-                item = this.First();
-                return true;
-            }
-            catch
-            {
-                item = default;
                 return false;
             }
         }
@@ -141,7 +83,7 @@ namespace ElevatorApp.Util
                     _version++;
                     _collection.Add(item);
                 }
-                catch (Exception ex)
+                catch
                 {
                     view.waitingEvents.Clear();
                     throw;
@@ -225,9 +167,8 @@ namespace ElevatorApp.Util
             public List<T> getSnapshot()
             {
                 Debug.Assert(Thread.CurrentThread.ManagedThreadId == _threadId);
-                List<T> list;
                 // if we have a cached snapshot that's up to date, just use that one
-                if (!_snapshot.TryGetTarget(out list) || _listVersion != _owner._version)
+                if (!_snapshot.TryGetTarget(out List<T> list) || _listVersion != _owner._version)
                 {
                     // need to create a new snapshot
                     // if nothing is using the old snapshot, we can clear and reuse the existing list instead
@@ -1063,8 +1004,8 @@ namespace ElevatorApp.Util
                 }
             }
         }
-    }
-    #endregion
+        #endregion
 
+    }
 
 }

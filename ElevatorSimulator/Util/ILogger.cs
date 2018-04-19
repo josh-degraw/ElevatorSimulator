@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 
@@ -12,6 +13,7 @@ namespace ElevatorApp.Util
         /// <summary>
         /// A collection of the <see cref="Event"/>s that have been logged 
         /// </summary>
+        [Obsolete]
         IReadOnlyCollection<Event> Events { get; }
 
         /// <summary>

@@ -6,6 +6,7 @@ using ElevatorApp.Util;
 
 namespace ElevatorApp
 {
+    /// <inheritdoc />
     /// <summary>
     /// ViewModel for the Elevator simulator
     /// </summary>

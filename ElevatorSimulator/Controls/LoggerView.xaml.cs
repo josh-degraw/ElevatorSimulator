@@ -80,21 +80,39 @@ namespace ElevatorApp.Controls
         /// </summary>
         public LoggerView()
         {
-            BindingOperations.EnableCollectionSynchronization(Logger.Events, _locker);
+            //BindingOperations.EnableCollectionSynchronization(Logger.Events, _locker);
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handles the Click event of the Button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void btnClear_click(object sender, RoutedEventArgs e)
         {
             listViewEvents.Items.Clear();
         }
 
+        /// <summary>
+        /// Handles the Loaded event of the StackPanel control.
+        /// <para>
+        /// This is when the <see cref="Logger"/> is wired up to write the events
+        /// </para>
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void StackPanel_Loaded(object sender, RoutedEventArgs e)
         {
             Logger.Instance.ItemLogged -= ItemLogged;
             Logger.Instance.ItemLogged += ItemLogged;
         }
 
+        /// <summary>
+        /// Handler for <see cref="Logger.ItemLogged"/> that writes the event to the listbox of this view
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="message">The message.</param>
         private void ItemLogged(object sender, string message)
         {
             try
@@ -107,6 +125,11 @@ namespace ElevatorApp.Controls
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnSave control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new SaveFileDialog();

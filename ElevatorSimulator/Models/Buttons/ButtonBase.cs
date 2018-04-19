@@ -103,6 +103,8 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Trigger the <see cref="OnPushed"/> event.
         /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The arguments.</param>
         protected void HandlePushed(object sender, T args)
         {
             this.OnPushed?.Invoke(sender, args);
@@ -113,6 +115,8 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Trigger the <see cref="OnActionCompleted"/> event
         /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The arguments.</param>
         protected void ActionCompleted(object sender, T args)
         {
             this.OnActionCompleted?.Invoke(sender, args);

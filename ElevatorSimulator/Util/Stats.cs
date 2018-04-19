@@ -14,7 +14,6 @@ namespace ElevatorApp.Util
     /// </summary>
     public class Stats
     {
-
         /// <summary>
         /// A representation of the wait times of the passenges in the application
         /// </summary>
@@ -48,6 +47,7 @@ namespace ElevatorApp.Util
         /// This function takes a Duration value and adds it to the collection of passenger wait times. It should be used whenever a passenger exits an elevator
         /// </summary>
         /// <param name="waitTime"></param>
+        [Obsolete]
         public void AddPassengerTime(Duration waitTime)
         {
             PassengerWaitTimes.Add(waitTime);

@@ -301,7 +301,11 @@ namespace ElevatorApp.Util
     /// <typeparam name="T">The single calculation type</typeparam>
     public abstract class SimpleStatistic<T> : Statistic<T, T> where T : struct, IComparable<T>
     {
-        /// <inheritdoc/>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleStatistic{T}"/> class.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <inheritdoc />
         protected SimpleStatistic(string name) : base(name)
         { }
 

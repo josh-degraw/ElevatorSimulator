@@ -8,9 +8,10 @@ using NodaTime;
 
 namespace ElevatorApp.Util
 {
-    
+
+    /// <inheritdoc />
     /// <summary>
-    /// Class copied from NodaTime <see cref="T:NodaTime.SystemClock" />, to show the local system time instead of UTC
+    /// Class copied from NodaTime <see cref="SystemClock" />, to show the local system time instead of UTC
     /// </summary>
     public sealed class LocalSystemClock : IClock
     {
@@ -20,17 +21,28 @@ namespace ElevatorApp.Util
         [NotNull]
         public static IClock Instance { get; } = new LocalSystemClock();
 
-        /// <summary>Constructor present to prevent external construction.</summary>
+        /// <summary>
+        /// Prevents a default instance of the <see cref="LocalSystemClock"/> class from being created.
+        /// </summary>
         private LocalSystemClock()
         {
         }
-        
+
+        /// <summary>
+        /// Gets the current <see cref="T:NodaTime.Instant" /> on the time line according to this clock.
+        /// </summary>
+        /// <returns>
+        /// The current instant on the time line according to this clock.
+        /// </returns>
+        /// <inheritdoc />
         Instant IClock.GetCurrentInstant() => NodaConstants.BclEpoch.PlusTicks(DateTime.Now.Ticks);
 
         /// <summary>
-        /// Static helper to get the current instant
+        /// Gets the current <see cref="T:NodaTime.Instant" /> on the time line according to this clock.
         /// </summary>
-        /// <returns>The current <see cref="Instant"/> in time</returns>
+        /// <returns>
+        /// The current instant on the time line according to this clock.
+        /// </returns>
         public static Instant GetCurrentInstant() => Instance.GetCurrentInstant();
     }
 }

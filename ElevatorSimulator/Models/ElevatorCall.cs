@@ -39,6 +39,8 @@ namespace ElevatorApp.Models
             this.FromPassenger = fromPassenger;
         }
 
+        #region Operators and overloads
+
         /// <summary>
         /// Deconstructs this <see cref="ElevatorCall"/> into a <see cref="ValueTuple{T1,T2}"/>
         /// </summary>
@@ -114,8 +116,10 @@ namespace ElevatorApp.Models
                 hashCode = hashCode * -1521134295 + Floor.GetHashCode();
                 hashCode = hashCode * -1521134295 + Direction.GetHashCode();
                 hashCode = hashCode * -1521134295 + FromPassenger.GetHashCode();
-                return hashCode; 
+                return hashCode;
             }
         }
+
+        #endregion
     }
 }

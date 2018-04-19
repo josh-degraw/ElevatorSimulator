@@ -64,9 +64,5 @@ namespace ElevatorApp.Controls
         /// </value>
         public bool ElevatorAvailable => this.Floor?.ElevatorAvailable ?? false;
 
-        private void Expander_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
     }
 }

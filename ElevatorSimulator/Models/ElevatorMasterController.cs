@@ -17,6 +17,7 @@ using MoreLinq;
 namespace ElevatorApp.Models
 {
 
+    /// <inheritdoc />
     /// <summary>
     /// Represents the master controller for the system. Contains the Elevator and the floors
     /// </summary>

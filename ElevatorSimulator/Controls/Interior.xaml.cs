@@ -18,6 +18,7 @@ namespace ElevatorApp.Controls
     /// <summary>
     /// Interaction logic for Interior.xaml
     /// </summary>
+    [Obsolete]
     public partial class Interior : UserControl
     {
         /// <summary>

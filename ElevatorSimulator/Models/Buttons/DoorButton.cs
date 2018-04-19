@@ -11,7 +11,6 @@ namespace ElevatorApp.Models
     /// </summary>
     public class DoorButton : ButtonBase<ButtonType>, IButton, ISubcriber<Door>
     {
-
         /// <summary>
         /// Indicates whether this <see cref="DoorButton"/> is used to request the <see cref="Door"/> to open or close
         /// </summary>
@@ -35,15 +34,25 @@ namespace ElevatorApp.Models
             }
         }
 
-        ///<inheritdoc cref="ButtonBase{T}.OnActivated"/>
+        /// <summary>
+        /// Invoked after the button has been pressed and the button is now active
+        /// </summary>
+        /// <inheritdoc cref="ButtonBase{T}.OnActivated" />
         public override event EventHandler OnActivated;
 
-        ///<inheritdoc cref="ButtonBase{T}.Push"/>
+        /// <summary>
+        /// Push the button
+        /// </summary>
+        /// <inheritdoc cref="ButtonBase{T}.Push" />
         public override void Push()
         {
             this.HandlePushed(this, this.ButtonType);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DoorButton"/> class.
+        /// </summary>
+        /// <param name="type">The type.</param>
         private DoorButton(ButtonType type) : base($"DoorBtn {type}")
         {
             this.ButtonType = type;
@@ -69,9 +78,17 @@ namespace ElevatorApp.Models
         /// <returns>The newly created <see cref="DoorButton"/> instance</returns>
         public static DoorButton Close() => new DoorButton(ButtonType.Close);
 
+        /// <summary>
+        /// Represents whether or not this object has performed the necessary steps to subscribe to the source.
+        /// </summary>
         /// <inheritdoc />
         public bool Subscribed { get; set; } = false;
 
+        /// <summary>
+        /// Subscribes the specified door.
+        /// </summary>
+        /// <param name="door">The door.</param>
+        /// <returns></returns>
         /// <inheritdoc />
         public Task Subscribe(Door door)
         {

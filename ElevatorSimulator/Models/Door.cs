@@ -28,11 +28,15 @@ namespace ElevatorApp.Models
     /// <param name="args"></param>
     public delegate void DoorStateChangeRequestHandler(object sender, DoorStateChangeEventArgs args);
 
+    /// <inheritdoc />
     /// <summary>
-    /// Represents the door of the <see cref="Elevator"/>
+    /// Represents the door of the <see cref="T:ElevatorApp.Models.Elevator" />
     /// </summary>
     public class Door : ModelBase, ISubcriber<Elevator>
     {
+        /// <summary>
+        /// Used to prevent multiple threads from changing the state of the <see cref="Door"/>
+        /// </summary>
         private readonly ReaderWriterLockSlim _stateChangeLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         //  private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
 

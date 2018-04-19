@@ -8,20 +8,20 @@ using FontAwesome;
 
 namespace ElevatorApp.Models
 {
-    delegate void RequestFloor(int floorNumber, Direction requestDirection);
-
     /// <summary>
     /// Represents a button used to request an <see cref="Elevator"/> from a <see cref="Floor"/>
     /// </summary>
     public class RequestButton : FloorButton
     {
-        /// <summary> The number of the <see cref="Floor"/> that this button tells the <see cref="Elevator"/> to go to.</summary>
+        /// <summary> 
+        /// The number of the <see cref="Floor"/> that this button tells the <see cref="Elevator"/> to go to.
+        /// </summary>
         public int DestinationFloor { get; }
 
         /// <summary>
         /// Gets the request direction.
         /// </summary>
-        private Direction RequestDirection => DestinationFloor > FloorNumber ? Direction.Up : Direction.Down;
+        private Direction _requestDirection => DestinationFloor > FloorNumber ? Direction.Up : Direction.Down;
 
         /// <summary>
         /// The text on the button
@@ -29,8 +29,9 @@ namespace ElevatorApp.Models
         /// <inheritdoc />
         public override string Label => DestinationFloor.ToString();
 
+        /// <inheritdoc />
         /// <summary>
-        /// The number of the <see cref="Floor"/>  that this Button is on. Here, it functions as the Source floor.
+        /// The number of the <see cref="T:ElevatorApp.Models.Floor" />  that this Button is on. Here, it functions as the Source floor.
         /// </summary>
         public override int FloorNumber => base.FloorNumber;
 
@@ -55,6 +56,7 @@ namespace ElevatorApp.Models
             base.HandlePushed(this, DestinationFloor);
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Subscribes the specified controller.
         /// </summary>
@@ -87,7 +89,7 @@ namespace ElevatorApp.Models
                         else
                         {
                             // If the elevator isn't already here, tell it to come here
-                            elevator.OnNext(new ElevatorCall(this.FloorNumber, RequestDirection, false));
+                            elevator.OnNext(new ElevatorCall(this.FloorNumber, _requestDirection, false));
                         }
 
                     }

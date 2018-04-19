@@ -24,8 +24,9 @@ namespace ElevatorApp.Models
         /// </summary>
         public ElevatorCall Call { get; set; }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Construct a new instance of <see cref="ElevatorMovementEventArgs"/>
+        /// Construct a new instance of <see cref="T:ElevatorApp.Models.ElevatorMovementEventArgs" />
         /// </summary>
         /// <param name="destination"></param>
         /// <param name="direction"></param>
@@ -33,8 +34,9 @@ namespace ElevatorApp.Models
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElevatorMovementEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="T:ElevatorApp.Models.ElevatorMovementEventArgs" /> class.
         /// </summary>
         /// <param name="call">The call.</param>
         public ElevatorMovementEventArgs(ElevatorCall call)
@@ -68,8 +70,9 @@ namespace ElevatorApp.Models
         /// </summary>
         public int IntermediateFloor { get; }
 
+        /// <inheritdoc />
         /// <summary>
-        /// The final destination of the <see cref="Elevator"/> in the current path
+        /// The final destination of the <see cref="T:ElevatorApp.Models.Elevator" /> in the current path
         /// </summary>
         public override int DestinationFloor => base.DestinationFloor;
 

@@ -14,6 +14,9 @@ namespace ElevatorApp.Models
     /// <seealso cref="ElevatorApp.Models.ModelBase" />
     public class Passenger : ModelBase
     {
+        /// <summary>
+        /// The total passenger count.
+        /// </summary>
         private static int TotalPassengerCount;
 
         #region Timings

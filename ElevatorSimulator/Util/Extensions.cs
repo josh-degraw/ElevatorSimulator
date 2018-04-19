@@ -6,7 +6,7 @@ using System.Linq;
 namespace ElevatorApp.Util
 {
     /// <summary>
-    /// Holds helper functions
+    /// Class to Holds helper functions, i.e. Extension methods
     /// </summary>
     public static partial class Extensions
     {

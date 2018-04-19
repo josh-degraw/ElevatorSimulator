@@ -8,7 +8,11 @@ using ElevatorApp.Util;
 
 namespace ElevatorApp.Models
 {
-    ///<inheritdoc/>
+    /// <summary>
+    /// Represents a button panel on the inside of an elevator, including floor buttons and door open / close buttons
+    /// </summary>
+    /// <seealso cref="ElevatorApp.Models.ButtonPanelBase" />
+    /// <inheritdoc />
     public class ButtonPanel : ButtonPanelBase
     {
         /// <summary>
@@ -21,10 +25,16 @@ namespace ElevatorApp.Models
         /// </summary>
         public DoorButton CloseDoorButton { get; }
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// The actual collection of <see cref="FloorButton" />s
+        /// </summary>
+        /// <inheritdoc />
         protected override AsyncObservableCollection<FloorButton> _floorButtons { get; }
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ButtonPanel"/> class.
+        /// </summary>
+        /// <inheritdoc />
         public ButtonPanel()
         {
             this._floorButtons = new AsyncObservableCollection<FloorButton>
@@ -40,7 +50,12 @@ namespace ElevatorApp.Models
         }
 
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Subscribes this Button panel to the <see cref="ElevatorMasterController" />
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <returns></returns>
+        /// <inheritdoc />
         public override async Task Subscribe(ElevatorMasterController parent)
         {
             if (Subscribed)

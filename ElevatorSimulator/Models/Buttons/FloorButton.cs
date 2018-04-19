@@ -29,8 +29,9 @@ namespace ElevatorApp.Models
         /// </summary>
         public virtual int FloorNumber { get; }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="FloorButton"/> class.
+        /// Initializes a new instance of the <see cref="T:ElevatorApp.Models.FloorButton" /> class.
         /// </summary>
         /// <param name="floorNumber">The floor number.</param>
         /// <param name="startActive">if set to <c>true</c> [start active].</param>
@@ -39,6 +40,7 @@ namespace ElevatorApp.Models
             this.FloorNumber = floorNumber;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Push the button
         /// </summary>

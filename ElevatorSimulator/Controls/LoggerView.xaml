@@ -31,7 +31,7 @@
         </ListView>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Loaded="StackPanel_Loaded" >
-            <Button Padding="15,4" Margin="25,0,15,0" Click="Button_Click">Clear</Button>
+            <Button Padding="15,4" Margin="25,0,15,0" Click="btnClear_click">Clear</Button>
             <Button x:Name="btnSave" Padding="15,4" Click="btnSave_Click">Save</Button>
         </StackPanel>
     </Grid>

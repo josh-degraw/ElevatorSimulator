@@ -77,11 +77,13 @@ namespace ElevatorApp.Util
         /// <summary>
         /// A collection of the <see cref="Event"/>s that have been logged 
         /// </summary>
+        [Obsolete]
         public static IReadOnlyCollection<Event> Events => ((ILogger)Instance).Events;
 
         /// <summary>
         /// A collection of the <see cref="Event"/>s that have been logged 
         /// </summary>
+        [Obsolete]
         IReadOnlyCollection<Event> ILogger.Events
         {
             get
@@ -131,7 +133,7 @@ namespace ElevatorApp.Util
         void ILogger.LogEvent(Event message, int retryTimes = 3)
         {
             int prevCount = this.Count;
-            int i = 0;
+            //int i = 0;
             Console.WriteLine(message);
             ItemLogged?.Invoke(this, message.ToString());
             //do
