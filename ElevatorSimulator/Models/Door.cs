@@ -240,23 +240,31 @@ namespace ElevatorApp.Models
                     return;
                 }
 
+                args = new DoorStateChangeEventArgs();
+
                 this.DoorState = DoorState.Opening;
                 this.Opening?.Invoke(this, args);
 
                 if (this.IsCloseRequested || args.CancelOperation)
                 {
                     // If close has already been requested, just let that call complete
-                    if (!this._closeRequestBegun) this.RequestClose(true);
+                    if (!this._closeRequestBegun)
+                    {
+                        this.RequestClose(true);
+                    }
+
                     return;
                 }
 
                 await Task.Delay(this.TRANSITION_TIME).ConfigureAwait(false);
+                args = new DoorStateChangeEventArgs();
                 if (this.DoorState == DoorState.Opening)
                 {
                     this.DoorState = DoorState.Opened;
                     this.Opened?.Invoke(this, args);
                 }
-                await Task.Delay(this.TIME_SPENT_OPEN).ConfigureAwait(false);
+
+                await Task.Delay(this.TIME_SPENT_OPEN).ConfigureAwait(true);
 
                 if (this.IsCloseRequested || args.CancelOperation)
                 {
@@ -288,8 +296,8 @@ namespace ElevatorApp.Models
 
             this.IsCloseRequested = true;
 
-            if (this.DoorState != DoorState.Closing)
-                this.RequestClose();
+            //if (this.DoorState != DoorState.Closing)
+            //    this.RequestClose();
 
             while (this.DoorState != DoorState.Closed)
             {
