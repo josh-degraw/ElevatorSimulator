@@ -23,6 +23,8 @@ namespace ElevatorApp.Util
         public IntStatistic(string name, IEnumerable<int> collection) : base(name, collection)
         { }
 
+        protected override int DefaultMin => int.MaxValue;
+
         ///<inheritdoc/>
         protected override int AddItems(int left, int right) => left + right;
 

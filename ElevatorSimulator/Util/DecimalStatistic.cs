@@ -18,6 +18,8 @@ namespace ElevatorApp.Util
         public DecimalStatistic(string name, IEnumerable<decimal> collection) : base(name, collection)
         { }
 
+        protected override decimal DefaultMin => decimal.MaxValue;
+
         ///<inheritdoc/>
         protected override decimal AddItems(decimal left, decimal right) => left + right;
 

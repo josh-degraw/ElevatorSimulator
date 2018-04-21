@@ -2,6 +2,7 @@
 using System.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using ElevatorApp.Util;
+using MoreLinq;
 
 namespace ElevatorApp
 {
@@ -43,25 +44,24 @@ namespace ElevatorApp
             // These are to tell the stats class which thing to use, waitTime, rideTimes, or totalTimes
             int x = 1, y = 2, z = 3;
 
-
-
             // check to see if i can pass the collection in right here
-            MessageBox.Show("Elevator Simulator Statistics" + "\n\n" +
-                "Average Passenger Wait Time: " + Stats.Instance.GetAverageTime(x).Seconds + "s \n" +
-                "Minimum Passenger Wait Time: " + Stats.Instance.GetMinTime(y).Seconds + "s \n" +
-                "Maximum Passenger Wait Time: " + Stats.Instance.GetMaxTime(z).Seconds + "s \n\n" + 
+            MessageBox.Show("Elevator Simulator Statistics" + "\n\n" + Stats.Instance);
 
-                "Average Passenger Ride Time: " + Stats.Instance.GetAverageTime(x).Seconds + "s \n" +
-                "Minimum Passenger Ride Time: " + Stats.Instance.GetMinTime(y).Seconds + "s \n" +
-                "Maximum Passenger Ride Time: " + Stats.Instance.GetMaxTime(z).Seconds + "s \n\n" +
+            //"Average Passenger Wait Time: " + Stats.Instance.GetAverageTime(x).Seconds + "s \n" +
+            //"Minimum Passenger Wait Time: " + Stats.Instance.GetMinTime(y).Seconds + "s \n" +
+            //"Maximum Passenger Wait Time: " + Stats.Instance.GetMaxTime(z).Seconds + "s \n\n" + 
 
-                "Average Passenger Total Time: " + Stats.Instance.GetAverageTime(x).Seconds + "s \n" +
-                "Minimum Passenger Total Time: " + Stats.Instance.GetMinTime(y).Seconds + "s \n" +
-                "Maximum Passenger Total Time: " + Stats.Instance.GetMaxTime(z).Seconds + "s"); 
-               
-          
-            Stats.Instance.GetAverageTime(x);
-            Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.GetAverageTime(x));
+            //"Average Passenger Ride Time: " + Stats.Instance.GetAverageTime(x).Seconds + "s \n" +
+            //"Minimum Passenger Ride Time: " + Stats.Instance.GetMinTime(y).Seconds + "s \n" +
+            //"Maximum Passenger Ride Time: " + Stats.Instance.GetMaxTime(z).Seconds + "s \n\n" +
+
+            //"Average Passenger Total Time: " + Stats.Instance.GetAverageTime(x).Seconds + "s \n" +
+            //"Minimum Passenger Total Time: " + Stats.Instance.GetMinTime(y).Seconds + "s \n" +
+            //"Maximum Passenger Total Time: " + Stats.Instance.GetMaxTime(z).Seconds + "s"); 
+
+
+            
+            Logger.LogEvent("Calculated Current Average Wait Time: " + Stats.Instance.PassengerWaitTimes.Average);
         }
 
         private void LoggerView_Loaded(object sender, RoutedEventArgs e)
