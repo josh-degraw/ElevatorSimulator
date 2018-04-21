@@ -832,7 +832,7 @@ namespace ElevatorApp.Models
             {
                 await Task.Delay(500).ConfigureAwait(false);
             }
-            if (!destination.FromPassenger && destination.Floor == this.CurrentFloor)
+            if (!destination.FromPassenger && destination.Floor == this.CurrentFloor && (this.State == ElevatorState.Arrived || this.State == ElevatorState.Idle))
             {
                 // Wait for door to open here so that the passengers who started opening the door get in first
                 await this.Door.WaitForDoorToOpen().ConfigureAwait(false);

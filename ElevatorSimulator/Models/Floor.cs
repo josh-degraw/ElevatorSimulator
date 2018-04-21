@@ -316,7 +316,8 @@ namespace ElevatorApp.Models
             elevator.Door.Opened += addPassengersToElevator;
             elevator.Door.CloseRequested += this.cancelIfStartsToClose;
             elevator.Door.Closing += this.cancelIfStartsToClose;
-            elevator.Departed += this.onElevatorDeparted;
+            //elevator.Departed += this.onElevatorDeparted;
+            elevator.Departing += this.onElevatorDeparted;
 
             elevator.Approaching += Elevator_Approaching;
             elevator.Arrived += this.onElevatorArrivedAtThisFloor;
@@ -355,7 +356,7 @@ namespace ElevatorApp.Models
             {
                 try
                 {
-                    if (elevator.CurrentFloor == this.FloorNumber)
+                    if (elevator.CurrentFloor == this.FloorNumber && this.ElevatorAvailable)
                     {
                         await this._addPassengersToElevator(elevator).ConfigureAwait(false);
                     }
