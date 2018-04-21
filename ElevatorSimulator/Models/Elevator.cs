@@ -266,7 +266,7 @@ namespace ElevatorApp.Models
                 {
                     try
                     {
-                        await this.RemovePassenger(passenger);
+                        await this.RemovePassenger(passenger).ConfigureAwait(false);
                     }
                     catch (Exception ex)
                     {
@@ -828,7 +828,11 @@ namespace ElevatorApp.Models
         /// <param name="destination"></param>
         public async void OnNext(ElevatorCall destination)
         {
-            if (!destination.FromPassenger && destination.Floor != this.CurrentFloor && this.Door.DoorState != DoorState.Opened)
+            while (this.Door.IsOpenedOrOpening && destination.Floor != this.CurrentFloor)
+            {
+                await Task.Delay(500).ConfigureAwait(false);
+            }
+            if (!destination.FromPassenger && destination.Floor == this.CurrentFloor)
             {
                 // Wait for door to open here so that the passengers who started opening the door get in first
                 await this.Door.WaitForDoorToOpen().ConfigureAwait(false);
@@ -848,9 +852,12 @@ namespace ElevatorApp.Models
                     {
                         // Starts the movement in a seperate thread with Task.Run Not awaited because it's running
                         // somewhere else and we don't care about the results here
-
+                        while (this.Door.IsOpenedOrOpening)
+                        {
+                            await Task.Delay(500).ConfigureAwait(false);
+                        }
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                        Task.Factory.StartNew(this.Move, TaskCreationOptions.LongRunning).ConfigureAwait(false);
+                            Task.Factory.StartNew(this.Move, TaskCreationOptions.LongRunning).ConfigureAwait(false);
 #pragma warning restore CS4014
                     }
                     catch (Exception ex)
