@@ -2,19 +2,17 @@
 <HelpKI>
   <HelpKINode Title="ACCELERATION_DELAY field" Url="html/F_ElevatorApp_Models_Elevator_ACCELERATION_DELAY.htm" />
   <HelpKINode Title="actionArgs property" Url="html/P_ElevatorApp_Models_ButtonBase_1_actionArgs.htm" />
-  <HelpKINode Title="ActionCompleted method">
-    <HelpKINode Title="ButtonBase(T).ActionCompleted Method " Url="html/Overload_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm" />
-    <HelpKINode Title="IButton(T).ActionCompleted Method " Url="html/M_ElevatorApp_Models_Interfaces_IButton_1_ActionCompleted.htm" />
-  </HelpKINode>
+  <HelpKINode Title="ActionCompleted method" Url="html/M_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm" />
   <HelpKINode Title="Active property">
     <HelpKINode Title="ButtonBase(T).Active Property " Url="html/P_ElevatorApp_Models_ButtonBase_1_Active.htm" />
     <HelpKINode Title="IButton.Active Property " Url="html/P_ElevatorApp_Models_Interfaces_IButton_Active.htm" />
   </HelpKINode>
-  <HelpKINode Title="add method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_add.htm" />
   <HelpKINode Title="Add method">
-    <HelpKINode Title="AsyncObservableCollection(T).Add Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Add.htm" />
     <HelpKINode Title="Statistic(TStat, TAggregate).Add Method " Url="html/M_ElevatorApp_Util_Statistic_2_Add.htm" />
+    <HelpKINode Title="AsyncObservableCollection(T).Add Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Add.htm" />
+    <HelpKINode Title="IStatistic(TStat, TAggregate).Add Method " Url="html/M_ElevatorApp_Util_IStatistic_2_Add.htm" />
   </HelpKINode>
+  <HelpKINode Title="add method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_add.htm" />
   <HelpKINode Title="AddDistinct method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddDistinct.htm" />
   <HelpKINode Title="AddItems method">
     <HelpKINode Title="DecimalStatistic.AddItems Method " Url="html/M_ElevatorApp_Util_DecimalStatistic_AddItems.htm" />
@@ -42,6 +40,7 @@
   <HelpKINode Title="AddPassengerControl.AddPassenger method" Url="html/M_ElevatorApp_Controls_AddPassengerControl_AddPassenger.htm" />
   <HelpKINode Title="AddPassengerControl.AddPassengerControl constructor" Url="html/M_ElevatorApp_Controls_AddPassengerControl__ctor.htm" />
   <HelpKINode Title="AddPassengerControl.InitializeComponent method" Url="html/M_ElevatorApp_Controls_AddPassengerControl_InitializeComponent.htm" />
+  <HelpKINode Title="AddPassengerTime method" Url="html/M_ElevatorApp_Util_Stats_AddPassengerTime.htm" />
   <HelpKINode Title="AddRange method">
     <HelpKINode Title="AsyncObservableCollection(T).AddRange Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AddRange.htm" />
     <HelpKINode Title="Statistic(TStat, TAggregate).AddRange Method " Url="html/M_ElevatorApp_Util_Statistic_2_AddRange.htm" />
@@ -50,6 +49,7 @@
     <HelpKINode Title="DurationStatistic.AggregateToString Property " Url="html/P_ElevatorApp_Util_DurationStatistic_AggregateToString.htm" />
     <HelpKINode Title="Statistic(TStat, TAggregate).AggregateToString Property " Url="html/P_ElevatorApp_Util_Statistic_2_AggregateToString.htm" />
   </HelpKINode>
+  <HelpKINode Title="AllStatistics property" Url="html/P_ElevatorApp_Util_Stats_AllStatistics.htm" />
   <HelpKINode Title="App class">
     <HelpKINode Title="App Class" Url="html/T_ElevatorApp_App.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_App__ctor.htm" />
@@ -98,7 +98,6 @@
   <HelpKINode Title="AsyncObservableCollection(Of T).Contains method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Contains.htm" />
   <HelpKINode Title="AsyncObservableCollection(Of T).CopyTo method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_CopyTo.htm" />
   <HelpKINode Title="AsyncObservableCollection(Of T).Count property" Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Count.htm" />
-  <HelpKINode Title="AsyncObservableCollection(Of T).Enqueue method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Enqueue.htm" />
   <HelpKINode Title="AsyncObservableCollection(Of T).GetEnumerator method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_GetEnumerator.htm" />
   <HelpKINode Title="AsyncObservableCollection(Of T).IndexOf method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_IndexOf.htm" />
   <HelpKINode Title="AsyncObservableCollection(Of T).Insert method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Insert.htm" />
@@ -107,8 +106,6 @@
   <HelpKINode Title="AsyncObservableCollection(Of T).Remove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Remove.htm" />
   <HelpKINode Title="AsyncObservableCollection(Of T).RemoveAt method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_RemoveAt.htm" />
   <HelpKINode Title="AsyncObservableCollection(Of T).ToArray method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_ToArray.htm" />
-  <HelpKINode Title="AsyncObservableCollection(Of T).TryDequeue method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryDequeue.htm" />
-  <HelpKINode Title="AsyncObservableCollection(Of T).TryPeek method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryPeek.htm" />
   <HelpKINode Title="AsyncObservableCollection(Of T).TryRemove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryRemove.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt; class">
     <HelpKINode Title="AsyncObservableCollection(T) Class" Url="html/T_ElevatorApp_Util_AsyncObservableCollection_1.htm" />
@@ -135,7 +132,6 @@
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.Contains method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Contains.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.CopyTo method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_CopyTo.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.Count property" Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Count.htm" />
-  <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.Enqueue method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Enqueue.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.GetEnumerator method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_GetEnumerator.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.IndexOf method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_IndexOf.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.Insert method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Insert.htm" />
@@ -144,8 +140,6 @@
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.Remove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Remove.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.RemoveAt method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_RemoveAt.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.ToArray method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_ToArray.htm" />
-  <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.TryDequeue method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryDequeue.htm" />
-  <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.TryPeek method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryPeek.htm" />
   <HelpKINode Title="AsyncObservableCollection&lt;T&gt;.TryRemove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryRemove.htm" />
   <HelpKINode Title="Average property">
     <HelpKINode Title="IStatistic(TStat, TAggregate).Average Property " Url="html/P_ElevatorApp_Util_IStatistic_2_Average.htm" />
@@ -160,10 +154,12 @@
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Models_ButtonBase_1.htm" />
   </HelpKINode>
   <HelpKINode Title="ButtonBase(Of T).actionArgs property" Url="html/P_ElevatorApp_Models_ButtonBase_1_actionArgs.htm" />
-  <HelpKINode Title="ButtonBase(Of T).ActionCompleted method" Url="html/Overload_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm" />
+  <HelpKINode Title="ButtonBase(Of T).ActionCompleted method" Url="html/M_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm" />
   <HelpKINode Title="ButtonBase(Of T).Active property" Url="html/P_ElevatorApp_Models_ButtonBase_1_Active.htm" />
   <HelpKINode Title="ButtonBase(Of T).ButtonBase constructor" Url="html/M_ElevatorApp_Models_ButtonBase_1__ctor.htm" />
   <HelpKINode Title="ButtonBase(Of T).ButtonType property" Url="html/P_ElevatorApp_Models_ButtonBase_1_ButtonType.htm" />
+  <HelpKINode Title="ButtonBase(Of T).HandleActionCompleted method" Url="html/M_ElevatorApp_Models_ButtonBase_1_HandleActionCompleted.htm" />
+  <HelpKINode Title="ButtonBase(Of T).HandlePushed method" Url="html/M_ElevatorApp_Models_ButtonBase_1_HandlePushed.htm" />
   <HelpKINode Title="ButtonBase(Of T).Id property" Url="html/P_ElevatorApp_Models_ButtonBase_1_Id.htm" />
   <HelpKINode Title="ButtonBase(Of T).IsEnabled property" Url="html/P_ElevatorApp_Models_ButtonBase_1_IsEnabled.htm" />
   <HelpKINode Title="ButtonBase(Of T).Label property" Url="html/P_ElevatorApp_Models_ButtonBase_1_Label.htm" />
@@ -172,7 +168,6 @@
   <HelpKINode Title="ButtonBase(Of T).OnDeactivated event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnDeactivated.htm" />
   <HelpKINode Title="ButtonBase(Of T).OnPushed event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnPushed.htm" />
   <HelpKINode Title="ButtonBase(Of T).Push method" Url="html/M_ElevatorApp_Models_ButtonBase_1_Push.htm" />
-  <HelpKINode Title="ButtonBase(Of T).Pushed method" Url="html/M_ElevatorApp_Models_ButtonBase_1_Pushed.htm" />
   <HelpKINode Title="ButtonBase(Of T).ToString method" Url="html/M_ElevatorApp_Models_ButtonBase_1_ToString.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt; class">
     <HelpKINode Title="ButtonBase(T) Class" Url="html/T_ElevatorApp_Models_ButtonBase_1.htm" />
@@ -182,10 +177,12 @@
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Models_ButtonBase_1.htm" />
   </HelpKINode>
   <HelpKINode Title="ButtonBase&lt;T&gt;.actionArgs property" Url="html/P_ElevatorApp_Models_ButtonBase_1_actionArgs.htm" />
-  <HelpKINode Title="ButtonBase&lt;T&gt;.ActionCompleted method" Url="html/Overload_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm" />
+  <HelpKINode Title="ButtonBase&lt;T&gt;.ActionCompleted method" Url="html/M_ElevatorApp_Models_ButtonBase_1_ActionCompleted.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt;.Active property" Url="html/P_ElevatorApp_Models_ButtonBase_1_Active.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt;.ButtonBase constructor" Url="html/M_ElevatorApp_Models_ButtonBase_1__ctor.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt;.ButtonType property" Url="html/P_ElevatorApp_Models_ButtonBase_1_ButtonType.htm" />
+  <HelpKINode Title="ButtonBase&lt;T&gt;.HandleActionCompleted method" Url="html/M_ElevatorApp_Models_ButtonBase_1_HandleActionCompleted.htm" />
+  <HelpKINode Title="ButtonBase&lt;T&gt;.HandlePushed method" Url="html/M_ElevatorApp_Models_ButtonBase_1_HandlePushed.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt;.Id property" Url="html/P_ElevatorApp_Models_ButtonBase_1_Id.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt;.IsEnabled property" Url="html/P_ElevatorApp_Models_ButtonBase_1_IsEnabled.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt;.Label property" Url="html/P_ElevatorApp_Models_ButtonBase_1_Label.htm" />
@@ -194,7 +191,6 @@
   <HelpKINode Title="ButtonBase&lt;T&gt;.OnDeactivated event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnDeactivated.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt;.OnPushed event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnPushed.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt;.Push method" Url="html/M_ElevatorApp_Models_ButtonBase_1_Push.htm" />
-  <HelpKINode Title="ButtonBase&lt;T&gt;.Pushed method" Url="html/M_ElevatorApp_Models_ButtonBase_1_Pushed.htm" />
   <HelpKINode Title="ButtonBase&lt;T&gt;.ToString method" Url="html/M_ElevatorApp_Models_ButtonBase_1_ToString.htm" />
   <HelpKINode Title="ButtonPanel class">
     <HelpKINode Title="ButtonPanel Class" Url="html/T_ElevatorApp_Models_ButtonPanel.htm" />
@@ -243,7 +239,10 @@
     <HelpKINode Title="LongStatistic.CalculateAverage Method " Url="html/M_ElevatorApp_Util_LongStatistic_CalculateAverage.htm" />
     <HelpKINode Title="Statistic(TStat, TAggregate).CalculateAverage Method " Url="html/M_ElevatorApp_Util_Statistic_2_CalculateAverage.htm" />
   </HelpKINode>
-  <HelpKINode Title="Call property" Url="html/P_ElevatorApp_Models_Passenger_Call.htm" />
+  <HelpKINode Title="Call property">
+    <HelpKINode Title="ElevatorMovementEventArgs.Call Property " Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_Call.htm" />
+    <HelpKINode Title="Passenger.Call Property " Url="html/P_ElevatorApp_Models_Passenger_Call.htm" />
+  </HelpKINode>
   <HelpKINode Title="CallPanel property" Url="html/P_ElevatorApp_Models_Floor_CallPanel.htm" />
   <HelpKINode Title="CancelOperation property" Url="html/P_ElevatorApp_Models_DoorStateChangeEventArgs_CancelOperation.htm" />
   <HelpKINode Title="Capacity property" Url="html/P_ElevatorApp_Models_ElevatorSettings_Capacity.htm" />
@@ -260,20 +259,14 @@
   <HelpKINode Title="CloseRequested event" Url="html/E_ElevatorApp_Models_Door_CloseRequested.htm" />
   <HelpKINode Title="Closing enumeration member" Url="html/T_ElevatorApp_Models_Enums_DoorState.htm" />
   <HelpKINode Title="Closing event" Url="html/E_ElevatorApp_Models_Door_Closing.htm" />
-  <HelpKINode Title="CollectionChanged event">
-    <HelpKINode Title="AsyncObservableCollection(T).CollectionChanged Event" Url="html/E_ElevatorApp_Util_AsyncObservableCollection_1_CollectionChanged.htm" />
-    <HelpKINode Title="ObservableConcurrentQueue(T).CollectionChanged Event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_CollectionChanged.htm" />
-  </HelpKINode>
+  <HelpKINode Title="CollectionChanged event" Url="html/E_ElevatorApp_Util_AsyncObservableCollection_1_CollectionChanged.htm" />
   <HelpKINode Title="Contains method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Contains.htm" />
-  <HelpKINode Title="Controller property">
-    <HelpKINode Title="ElevatorSimulator.Controller Property " Url="html/P_ElevatorApp_Models_ElevatorSimulator_Controller.htm" />
-    <HelpKINode Title="SimulatorViewModel.Controller Property " Url="html/P_ElevatorApp_SimulatorViewModel_Controller.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Controller property" Url="html/P_ElevatorApp_SimulatorViewModel_Controller.htm" />
   <HelpKINode Title="CopyTo method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_CopyTo.htm" />
   <HelpKINode Title="Count property">
     <HelpKINode Title="AsyncObservableCollection(T).Count Property " Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_Count.htm" />
     <HelpKINode Title="IStatistic.Count Property " Url="html/P_ElevatorApp_Util_IStatistic_Count.htm" />
-    <HelpKINode Title="ObservableConcurrentQueue(T).Count Property " Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_Count.htm" />
+    <HelpKINode Title="Logger.Count Property " Url="html/P_ElevatorApp_Util_Logger_Count.htm" />
     <HelpKINode Title="Statistic(TStat, TAggregate).Count Property " Url="html/P_ElevatorApp_Util_Statistic_2_Count.htm" />
   </HelpKINode>
   <HelpKINode Title="CurrentCapacity property" Url="html/P_ElevatorApp_Models_Elevator_CurrentCapacity.htm" />
@@ -290,11 +283,21 @@
   <HelpKINode Title="DecimalStatistic.AddItems method" Url="html/M_ElevatorApp_Util_DecimalStatistic_AddItems.htm" />
   <HelpKINode Title="DecimalStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_DecimalStatistic_CalculateAverage.htm" />
   <HelpKINode Title="DecimalStatistic.DecimalStatistic constructor" Url="html/Overload_ElevatorApp_Util_DecimalStatistic__ctor.htm" />
+  <HelpKINode Title="DecimalStatistic.DefaultMin property" Url="html/P_ElevatorApp_Util_DecimalStatistic_DefaultMin.htm" />
   <HelpKINode Title="DecimalStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_DecimalStatistic_DivideItems.htm" />
   <HelpKINode Title="DecimalStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_DecimalStatistic_MultiplyItems.htm" />
   <HelpKINode Title="DecimalStatistic.SubtractItems method" Url="html/M_ElevatorApp_Util_DecimalStatistic_SubtractItems.htm" />
+  <HelpKINode Title="Deconstruct method" Url="html/M_ElevatorApp_Models_ElevatorCall_Deconstruct.htm" />
   <HelpKINode Title="Deconstruct(Of TKey, TValue) method" Url="html/M_ElevatorApp_Util_Extensions_Deconstruct__2.htm" />
   <HelpKINode Title="Deconstruct&lt;TKey, TValue&gt; method" Url="html/M_ElevatorApp_Util_Extensions_Deconstruct__2.htm" />
+  <HelpKINode Title="DefaultMin property">
+    <HelpKINode Title="DecimalStatistic.DefaultMin Property " Url="html/P_ElevatorApp_Util_DecimalStatistic_DefaultMin.htm" />
+    <HelpKINode Title="DoubleStatistic.DefaultMin Property " Url="html/P_ElevatorApp_Util_DoubleStatistic_DefaultMin.htm" />
+    <HelpKINode Title="DurationStatistic.DefaultMin Property " Url="html/P_ElevatorApp_Util_DurationStatistic_DefaultMin.htm" />
+    <HelpKINode Title="IntStatistic.DefaultMin Property " Url="html/P_ElevatorApp_Util_IntStatistic_DefaultMin.htm" />
+    <HelpKINode Title="LongStatistic.DefaultMin Property " Url="html/P_ElevatorApp_Util_LongStatistic_DefaultMin.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).DefaultMin Property " Url="html/P_ElevatorApp_Util_Statistic_2_DefaultMin.htm" />
+  </HelpKINode>
   <HelpKINode Title="Departed enumeration member" Url="html/T_ElevatorApp_Models_Enums_ElevatorState.htm" />
   <HelpKINode Title="Departed event" Url="html/E_ElevatorApp_Models_Elevator_Departed.htm" />
   <HelpKINode Title="Departing enumeration member" Url="html/T_ElevatorApp_Models_Enums_ElevatorState.htm" />
@@ -308,6 +311,7 @@
   <HelpKINode Title="Direction enumeration" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
   <HelpKINode Title="Direction property">
     <HelpKINode Title="Elevator.Direction Property " Url="html/P_ElevatorApp_Models_Elevator_Direction.htm" />
+    <HelpKINode Title="ElevatorCall.Direction Property " Url="html/P_ElevatorApp_Models_ElevatorCall_Direction.htm" />
     <HelpKINode Title="ElevatorMovementEventArgs.Direction Property " Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_Direction.htm" />
     <HelpKINode Title="Passenger.Direction Property " Url="html/P_ElevatorApp_Models_Passenger_Direction.htm" />
   </HelpKINode>
@@ -334,8 +338,10 @@
   <HelpKINode Title="Door.Closing event" Url="html/E_ElevatorApp_Models_Door_Closing.htm" />
   <HelpKINode Title="Door.Door constructor" Url="html/M_ElevatorApp_Models_Door__ctor.htm" />
   <HelpKINode Title="Door.DoorState property" Url="html/P_ElevatorApp_Models_Door_DoorState.htm" />
-  <HelpKINode Title="Door.IsNotClosedOrClosing property" Url="html/P_ElevatorApp_Models_Door_IsNotClosedOrClosing.htm" />
-  <HelpKINode Title="Door.IsNotOpenedOrOpening property" Url="html/P_ElevatorApp_Models_Door_IsNotOpenedOrOpening.htm" />
+  <HelpKINode Title="Door.IsClosedOrClosing property" Url="html/P_ElevatorApp_Models_Door_IsClosedOrClosing.htm" />
+  <HelpKINode Title="Door.IsCloseRequested property" Url="html/P_ElevatorApp_Models_Door_IsCloseRequested.htm" />
+  <HelpKINode Title="Door.IsOpenedOrOpening property" Url="html/P_ElevatorApp_Models_Door_IsOpenedOrOpening.htm" />
+  <HelpKINode Title="Door.IsOpenRequested property" Url="html/P_ElevatorApp_Models_Door_IsOpenRequested.htm" />
   <HelpKINode Title="Door.Opened event" Url="html/E_ElevatorApp_Models_Door_Opened.htm" />
   <HelpKINode Title="Door.Opening event" Url="html/E_ElevatorApp_Models_Door_Opening.htm" />
   <HelpKINode Title="Door.OpenRequested event" Url="html/E_ElevatorApp_Models_Door_OpenRequested.htm" />
@@ -345,6 +351,8 @@
   <HelpKINode Title="Door.Subscribed property" Url="html/P_ElevatorApp_Models_Door_Subscribed.htm" />
   <HelpKINode Title="Door.TIME_SPENT_OPEN_SECONDS field" Url="html/F_ElevatorApp_Models_Door_TIME_SPENT_OPEN_SECONDS.htm" />
   <HelpKINode Title="Door.TRANSITION_TIME_SECONDS field" Url="html/F_ElevatorApp_Models_Door_TRANSITION_TIME_SECONDS.htm" />
+  <HelpKINode Title="Door.WaitForDoorToClose method" Url="html/M_ElevatorApp_Models_Door_WaitForDoorToClose.htm" />
+  <HelpKINode Title="Door.WaitForDoorToOpen method" Url="html/M_ElevatorApp_Models_Door_WaitForDoorToOpen.htm" />
   <HelpKINode Title="DoorButton class">
     <HelpKINode Title="DoorButton Class" Url="html/T_ElevatorApp_Models_DoorButton.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_DoorButton__ctor.htm" />
@@ -393,6 +401,7 @@
   </HelpKINode>
   <HelpKINode Title="DoubleStatistic.AddItems method" Url="html/M_ElevatorApp_Util_DoubleStatistic_AddItems.htm" />
   <HelpKINode Title="DoubleStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_DoubleStatistic_CalculateAverage.htm" />
+  <HelpKINode Title="DoubleStatistic.DefaultMin property" Url="html/P_ElevatorApp_Util_DoubleStatistic_DefaultMin.htm" />
   <HelpKINode Title="DoubleStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_DoubleStatistic_DivideItems.htm" />
   <HelpKINode Title="DoubleStatistic.DoubleStatistic constructor" Url="html/Overload_ElevatorApp_Util_DoubleStatistic__ctor.htm" />
   <HelpKINode Title="DoubleStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_DoubleStatistic_MultiplyItems.htm" />
@@ -408,10 +417,11 @@
   <HelpKINode Title="DurationStatistic.AddItems method" Url="html/M_ElevatorApp_Util_DurationStatistic_AddItems.htm" />
   <HelpKINode Title="DurationStatistic.AggregateToString property" Url="html/P_ElevatorApp_Util_DurationStatistic_AggregateToString.htm" />
   <HelpKINode Title="DurationStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_DurationStatistic_CalculateAverage.htm" />
+  <HelpKINode Title="DurationStatistic.DefaultMin property" Url="html/P_ElevatorApp_Util_DurationStatistic_DefaultMin.htm" />
   <HelpKINode Title="DurationStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_DurationStatistic_DivideItems.htm" />
   <HelpKINode Title="DurationStatistic.DurationStatistic constructor" Url="html/Overload_ElevatorApp_Util_DurationStatistic__ctor.htm" />
   <HelpKINode Title="DurationStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_DurationStatistic_MultiplyItems.htm" />
-  <HelpKINode Title="DurationStatistic.StateToString property" Url="html/P_ElevatorApp_Util_DurationStatistic_StateToString.htm" />
+  <HelpKINode Title="DurationStatistic.StatToString property" Url="html/P_ElevatorApp_Util_DurationStatistic_StatToString.htm" />
   <HelpKINode Title="DurationStatistic.SubtractItems method" Url="html/M_ElevatorApp_Util_DurationStatistic_SubtractItems.htm" />
   <HelpKINode Title="Elevator class">
     <HelpKINode Title="Elevator Class" Url="html/T_ElevatorApp_Models_Elevator.htm" />
@@ -442,7 +452,6 @@
   <HelpKINode Title="Elevator.Door property" Url="html/P_ElevatorApp_Models_Elevator_Door.htm" />
   <HelpKINode Title="Elevator.Elevator constructor" Url="html/M_ElevatorApp_Models_Elevator__ctor.htm" />
   <HelpKINode Title="Elevator.ElevatorNumber property" Url="html/P_ElevatorApp_Models_Elevator_ElevatorNumber.htm" />
-  <HelpKINode Title="Elevator.Finalize method" Url="html/M_ElevatorApp_Models_Elevator_Finalize.htm" />
   <HelpKINode Title="Elevator.FloorMovementSpeed property" Url="html/P_ElevatorApp_Models_Elevator_FloorMovementSpeed.htm" />
   <HelpKINode Title="Elevator.FloorRequests property" Url="html/P_ElevatorApp_Models_Elevator_FloorRequests.htm" />
   <HelpKINode Title="Elevator.FloorsToStopAtString property" Url="html/P_ElevatorApp_Models_Elevator_FloorsToStopAtString.htm" />
@@ -461,6 +470,7 @@
   <HelpKINode Title="Elevator.Subscribe method" Url="html/M_ElevatorApp_Models_Elevator_Subscribe.htm" />
   <HelpKINode Title="Elevator.Subscribed property" Url="html/P_ElevatorApp_Models_Elevator_Subscribed.htm" />
   <HelpKINode Title="Elevator.TotalCapacity property" Url="html/P_ElevatorApp_Models_Elevator_TotalCapacity.htm" />
+  <HelpKINode Title="Elevator.UpdatingPassengers property" Url="html/P_ElevatorApp_Models_Elevator_UpdatingPassengers.htm" />
   <HelpKINode Title="ElevatorApp namespace" Url="html/N_ElevatorApp.htm" />
   <HelpKINode Title="ElevatorApp.App class" Url="html/T_ElevatorApp_App.htm" />
   <HelpKINode Title="ElevatorApp.Controls namespace" Url="html/N_ElevatorApp_Controls.htm" />
@@ -486,11 +496,11 @@
   <HelpKINode Title="ElevatorApp.Models.DoorStateChangeRequestHandler delegate" Url="html/T_ElevatorApp_Models_DoorStateChangeRequestHandler.htm" />
   <HelpKINode Title="ElevatorApp.Models.Elevator class" Url="html/T_ElevatorApp_Models_Elevator.htm" />
   <HelpKINode Title="ElevatorApp.Models.ElevatorApproachingEventArgs class" Url="html/T_ElevatorApp_Models_ElevatorApproachingEventArgs.htm" />
+  <HelpKINode Title="ElevatorApp.Models.ElevatorCall class" Url="html/T_ElevatorApp_Models_ElevatorCall.htm" />
   <HelpKINode Title="ElevatorApp.Models.ElevatorCallPanel class" Url="html/T_ElevatorApp_Models_ElevatorCallPanel.htm" />
   <HelpKINode Title="ElevatorApp.Models.ElevatorMasterController class" Url="html/T_ElevatorApp_Models_ElevatorMasterController.htm" />
   <HelpKINode Title="ElevatorApp.Models.ElevatorMovementEventArgs class" Url="html/T_ElevatorApp_Models_ElevatorMovementEventArgs.htm" />
   <HelpKINode Title="ElevatorApp.Models.ElevatorSettings class" Url="html/T_ElevatorApp_Models_ElevatorSettings.htm" />
-  <HelpKINode Title="ElevatorApp.Models.ElevatorSimulator class" Url="html/T_ElevatorApp_Models_ElevatorSimulator.htm" />
   <HelpKINode Title="ElevatorApp.Models.Enums namespace" Url="html/N_ElevatorApp_Models_Enums.htm" />
   <HelpKINode Title="ElevatorApp.Models.Enums.ButtonType enumeration" Url="html/T_ElevatorApp_Models_Enums_ButtonType.htm" />
   <HelpKINode Title="ElevatorApp.Models.Enums.Direction enumeration" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
@@ -519,7 +529,6 @@
   <HelpKINode Title="ElevatorApp.Util.DoubleStatistic class" Url="html/T_ElevatorApp_Util_DoubleStatistic.htm" />
   <HelpKINode Title="ElevatorApp.Util.DurationStatistic class" Url="html/T_ElevatorApp_Util_DurationStatistic.htm" />
   <HelpKINode Title="ElevatorApp.Util.Event structure" Url="html/T_ElevatorApp_Util_Event.htm" />
-  <HelpKINode Title="ElevatorApp.Util.EventTraceListener class" Url="html/T_ElevatorApp_Util_EventTraceListener.htm" />
   <HelpKINode Title="ElevatorApp.Util.Extensions class" Url="html/T_ElevatorApp_Util_Extensions.htm" />
   <HelpKINode Title="ElevatorApp.Util.ILogger interface" Url="html/T_ElevatorApp_Util_ILogger.htm" />
   <HelpKINode Title="ElevatorApp.Util.IntStatistic class" Url="html/T_ElevatorApp_Util_IntStatistic.htm" />
@@ -530,12 +539,11 @@
   <HelpKINode Title="ElevatorApp.Util.Logger class" Url="html/T_ElevatorApp_Util_Logger.htm" />
   <HelpKINode Title="ElevatorApp.Util.Logger.LogEventHandler delegate" Url="html/T_ElevatorApp_Util_Logger_LogEventHandler.htm" />
   <HelpKINode Title="ElevatorApp.Util.LongStatistic class" Url="html/T_ElevatorApp_Util_LongStatistic.htm" />
-  <HelpKINode Title="ElevatorApp.Util.ObservableConcurrentQueue(Of T) class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
-  <HelpKINode Title="ElevatorApp.Util.ObservableConcurrentQueue&lt;T&gt; class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
   <HelpKINode Title="ElevatorApp.Util.SimpleStatistic(Of T) class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm" />
   <HelpKINode Title="ElevatorApp.Util.SimpleStatistic&lt;T&gt; class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm" />
   <HelpKINode Title="ElevatorApp.Util.Statistic(Of TStat, TAggregate) class" Url="html/T_ElevatorApp_Util_Statistic_2.htm" />
   <HelpKINode Title="ElevatorApp.Util.Statistic&lt;TStat, TAggregate&gt; class" Url="html/T_ElevatorApp_Util_Statistic_2.htm" />
+  <HelpKINode Title="ElevatorApp.Util.Stats class" Url="html/T_ElevatorApp_Util_Stats.htm" />
   <HelpKINode Title="ElevatorApp.Util.ToStringMethod(Of T) delegate" Url="html/T_ElevatorApp_Util_ToStringMethod_1.htm" />
   <HelpKINode Title="ElevatorApp.Util.ToStringMethod&lt;T&gt; delegate" Url="html/T_ElevatorApp_Util_ToStringMethod_1.htm" />
   <HelpKINode Title="ElevatorApproachingEventArgs class">
@@ -562,6 +570,23 @@
   <HelpKINode Title="ElevatorButtonControl.Button property" Url="html/P_ElevatorApp_Controls_ElevatorButtonControl_Button.htm" />
   <HelpKINode Title="ElevatorButtonControl.ElevatorButtonControl constructor" Url="html/M_ElevatorApp_Controls_ElevatorButtonControl__ctor.htm" />
   <HelpKINode Title="ElevatorButtonControl.InitializeComponent method" Url="html/M_ElevatorApp_Controls_ElevatorButtonControl_InitializeComponent.htm" />
+  <HelpKINode Title="ElevatorCall class">
+    <HelpKINode Title="ElevatorCall Class" Url="html/T_ElevatorApp_Models_ElevatorCall.htm" />
+    <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_ElevatorCall__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorCall.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorCall.htm" />
+    <HelpKINode Title="type conversions" Url="html/Operators_T_ElevatorApp_Models_ElevatorCall.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ElevatorCall to ValueTuple(Of Int32, Direction) conversion" Url="html/M_ElevatorApp_Models_ElevatorCall_op_Implicit.htm" />
+  <HelpKINode Title="ElevatorCall to ValueTuple&lt;Int32, Direction&gt; conversion" Url="html/M_ElevatorApp_Models_ElevatorCall_op_Implicit.htm" />
+  <HelpKINode Title="ElevatorCall.Deconstruct method" Url="html/M_ElevatorApp_Models_ElevatorCall_Deconstruct.htm" />
+  <HelpKINode Title="ElevatorCall.Direction property" Url="html/P_ElevatorApp_Models_ElevatorCall_Direction.htm" />
+  <HelpKINode Title="ElevatorCall.ElevatorCall constructor" Url="html/M_ElevatorApp_Models_ElevatorCall__ctor.htm" />
+  <HelpKINode Title="ElevatorCall.Equals method" Url="html/M_ElevatorApp_Models_ElevatorCall_Equals.htm" />
+  <HelpKINode Title="ElevatorCall.Floor property" Url="html/P_ElevatorApp_Models_ElevatorCall_Floor.htm" />
+  <HelpKINode Title="ElevatorCall.FromPassenger property" Url="html/P_ElevatorApp_Models_ElevatorCall_FromPassenger.htm" />
+  <HelpKINode Title="ElevatorCall.GetHashCode method" Url="html/M_ElevatorApp_Models_ElevatorCall_GetHashCode.htm" />
+  <HelpKINode Title="ElevatorCall.ToString method" Url="html/M_ElevatorApp_Models_ElevatorCall_ToString.htm" />
   <HelpKINode Title="ElevatorCallPanel class">
     <HelpKINode Title="ElevatorCallPanel Class" Url="html/T_ElevatorApp_Models_ElevatorCallPanel.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_ElevatorCallPanel__ctor.htm" />
@@ -591,26 +616,22 @@
   </HelpKINode>
   <HelpKINode Title="ElevatorMasterController.Elevator property" Url="html/P_ElevatorApp_Models_ElevatorMasterController_Elevator.htm" />
   <HelpKINode Title="ElevatorMasterController.ElevatorMasterController constructor" Url="html/M_ElevatorApp_Models_ElevatorMasterController__ctor.htm" />
-  <HelpKINode Title="ElevatorMasterController.ElevatorRequested event" Url="html/E_ElevatorApp_Models_ElevatorMasterController_ElevatorRequested.htm" />
-  <HelpKINode Title="ElevatorMasterController.ElevatorSettings property" Url="html/P_ElevatorApp_Models_ElevatorMasterController_ElevatorSettings.htm" />
   <HelpKINode Title="ElevatorMasterController.FloorCount property" Url="html/P_ElevatorApp_Models_ElevatorMasterController_FloorCount.htm" />
   <HelpKINode Title="ElevatorMasterController.FloorHeight property" Url="html/P_ElevatorApp_Models_ElevatorMasterController_FloorHeight.htm" />
   <HelpKINode Title="ElevatorMasterController.Floors property" Url="html/P_ElevatorApp_Models_ElevatorMasterController_Floors.htm" />
   <HelpKINode Title="ElevatorMasterController.Init method" Url="html/M_ElevatorApp_Models_ElevatorMasterController_Init.htm" />
   <HelpKINode Title="ElevatorMovementEventArgs class">
     <HelpKINode Title="ElevatorMovementEventArgs Class" Url="html/T_ElevatorApp_Models_ElevatorMovementEventArgs.htm" />
-    <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_ElevatorMovementEventArgs__ctor.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Models_ElevatorMovementEventArgs__ctor.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorMovementEventArgs.htm" />
   </HelpKINode>
+  <HelpKINode Title="ElevatorMovementEventArgs.Call property" Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_Call.htm" />
   <HelpKINode Title="ElevatorMovementEventArgs.DestinationFloor property" Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_DestinationFloor.htm" />
   <HelpKINode Title="ElevatorMovementEventArgs.Direction property" Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_Direction.htm" />
-  <HelpKINode Title="ElevatorMovementEventArgs.ElevatorMovementEventArgs constructor" Url="html/M_ElevatorApp_Models_ElevatorMovementEventArgs__ctor.htm" />
-  <HelpKINode Title="ElevatorMovementEventArgs.Handled property" Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_Handled.htm" />
+  <HelpKINode Title="ElevatorMovementEventArgs.ElevatorMovementEventArgs constructor" Url="html/Overload_ElevatorApp_Models_ElevatorMovementEventArgs__ctor.htm" />
   <HelpKINode Title="ElevatorMovementEventArgs.ToString method" Url="html/M_ElevatorApp_Models_ElevatorMovementEventArgs_ToString.htm" />
   <HelpKINode Title="ElevatorNumber property" Url="html/P_ElevatorApp_Models_Elevator_ElevatorNumber.htm" />
-  <HelpKINode Title="ELevatorReady property" Url="html/P_ElevatorApp_Controls_FloorControl_ELevatorReady.htm" />
-  <HelpKINode Title="ElevatorRequested event" Url="html/E_ElevatorApp_Models_ElevatorMasterController_ElevatorRequested.htm" />
   <HelpKINode Title="ElevatorSettings class">
     <HelpKINode Title="ElevatorSettings Class" Url="html/T_ElevatorApp_Models_ElevatorSettings.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_ElevatorSettings__ctor.htm" />
@@ -618,7 +639,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorSettings.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSettings.htm" />
   </HelpKINode>
-  <HelpKINode Title="ElevatorSettings property" Url="html/P_ElevatorApp_Models_ElevatorMasterController_ElevatorSettings.htm" />
   <HelpKINode Title="ElevatorSettings.Capacity property" Url="html/P_ElevatorApp_Models_ElevatorSettings_Capacity.htm" />
   <HelpKINode Title="ElevatorSettings.DoorType property" Url="html/P_ElevatorApp_Models_ElevatorSettings_DoorType.htm" />
   <HelpKINode Title="ElevatorSettings.ElevatorSettings constructor" Url="html/M_ElevatorApp_Models_ElevatorSettings__ctor.htm" />
@@ -632,19 +652,8 @@
   </HelpKINode>
   <HelpKINode Title="ElevatorShaftControl.ElevatorShaftControl constructor" Url="html/M_ElevatorApp_Controls_ElevatorShaftControl__ctor.htm" />
   <HelpKINode Title="ElevatorShaftControl.InitializeComponent method" Url="html/M_ElevatorApp_Controls_ElevatorShaftControl_InitializeComponent.htm" />
-  <HelpKINode Title="ElevatorSimulator class">
-    <HelpKINode Title="ElevatorSimulator Class" Url="html/T_ElevatorApp_Models_ElevatorSimulator.htm" />
-    <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_ElevatorSimulator__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Models_ElevatorSimulator.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Models_ElevatorSimulator.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ElevatorSimulator.Controller property" Url="html/P_ElevatorApp_Models_ElevatorSimulator_Controller.htm" />
-  <HelpKINode Title="ElevatorSimulator.ElevatorSimulator constructor" Url="html/M_ElevatorApp_Models_ElevatorSimulator__ctor.htm" />
   <HelpKINode Title="ElevatorState enumeration" Url="html/T_ElevatorApp_Models_Enums_ElevatorState.htm" />
-  <HelpKINode Title="Enqueue method">
-    <HelpKINode Title="AsyncObservableCollection(T).Enqueue Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_Enqueue.htm" />
-    <HelpKINode Title="ObservableConcurrentQueue(T).Enqueue Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_Enqueue.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Equals method" Url="html/M_ElevatorApp_Models_ElevatorCall_Equals.htm" />
   <HelpKINode Title="EqualsAny(Of T) method" Url="html/M_ElevatorApp_Util_Extensions_EqualsAny__1.htm" />
   <HelpKINode Title="EqualsAny&lt;T&gt; method" Url="html/M_ElevatorApp_Util_Extensions_EqualsAny__1.htm" />
   <HelpKINode Title="Event structure">
@@ -664,16 +673,6 @@
     <HelpKINode Title="ILogger.Events Property " Url="html/P_ElevatorApp_Util_ILogger_Events.htm" />
     <HelpKINode Title="Logger.Events Property " Url="html/P_ElevatorApp_Util_Logger_Events.htm" />
   </HelpKINode>
-  <HelpKINode Title="EventTraceListener class">
-    <HelpKINode Title="EventTraceListener Class" Url="html/T_ElevatorApp_Util_EventTraceListener.htm" />
-    <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Util_EventTraceListener__ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_EventTraceListener.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_EventTraceListener.htm" />
-  </HelpKINode>
-  <HelpKINode Title="EventTraceListener.EventTraceListener constructor" Url="html/M_ElevatorApp_Util_EventTraceListener__ctor.htm" />
-  <HelpKINode Title="EventTraceListener.FileName property" Url="html/P_ElevatorApp_Util_EventTraceListener_FileName.htm" />
-  <HelpKINode Title="EventTraceListener.Write method" Url="html/Overload_ElevatorApp_Util_EventTraceListener_Write.htm" />
-  <HelpKINode Title="EventTraceListener.WriteLine method" Url="html/Overload_ElevatorApp_Util_EventTraceListener_WriteLine.htm" />
   <HelpKINode Title="Extensions class">
     <HelpKINode Title="Extensions Class" Url="html/T_ElevatorApp_Util_Extensions.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_Extensions.htm" />
@@ -683,10 +682,8 @@
   <HelpKINode Title="Extensions.EqualsAny(Of T) method" Url="html/M_ElevatorApp_Util_Extensions_EqualsAny__1.htm" />
   <HelpKINode Title="Extensions.EqualsAny&lt;T&gt; method" Url="html/M_ElevatorApp_Util_Extensions_EqualsAny__1.htm" />
   <HelpKINode Title="Extensions.KeepInRange method" Url="html/M_ElevatorApp_Util_Extensions_KeepInRange.htm" />
-  <HelpKINode Title="Extensions.MinByOrDefault(Of T, TKey) method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
-  <HelpKINode Title="Extensions.MinByOrDefault&lt;T, TKey&gt; method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
-  <HelpKINode Title="FileName property" Url="html/P_ElevatorApp_Util_EventTraceListener_FileName.htm" />
-  <HelpKINode Title="Finalize method" Url="html/M_ElevatorApp_Models_Elevator_Finalize.htm" />
+  <HelpKINode Title="Extensions.MinByOrDefault(Of TElement, TKey) method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
+  <HelpKINode Title="Extensions.MinByOrDefault&lt;TElement, TKey&gt; method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
   <HelpKINode Title="Floor class">
     <HelpKINode Title="Floor Class" Url="html/T_ElevatorApp_Models_Floor.htm" />
     <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Models_Floor__ctor.htm" />
@@ -695,11 +692,11 @@
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Models_Floor.htm" />
   </HelpKINode>
   <HelpKINode Title="Floor enumeration member" Url="html/T_ElevatorApp_Models_Enums_ButtonType.htm" />
+  <HelpKINode Title="Floor property" Url="html/P_ElevatorApp_Models_ElevatorCall_Floor.htm" />
   <HelpKINode Title="Floor.CallPanel property" Url="html/P_ElevatorApp_Models_Floor_CallPanel.htm" />
   <HelpKINode Title="Floor.ElevatorAvailable property" Url="html/P_ElevatorApp_Models_Floor_ElevatorAvailable.htm" />
   <HelpKINode Title="Floor.Floor constructor" Url="html/Overload_ElevatorApp_Models_Floor__ctor.htm" />
   <HelpKINode Title="Floor.FloorNumber property" Url="html/P_ElevatorApp_Models_Floor_FloorNumber.htm" />
-  <HelpKINode Title="Floor.QueuePassenger method" Url="html/M_ElevatorApp_Models_Floor_QueuePassenger.htm" />
   <HelpKINode Title="Floor.Subscribe method" Url="html/M_ElevatorApp_Models_Floor_Subscribe.htm" />
   <HelpKINode Title="Floor.Subscribed property" Url="html/P_ElevatorApp_Models_Floor_Subscribed.htm" />
   <HelpKINode Title="Floor.WaitingPassengers property" Url="html/P_ElevatorApp_Models_Floor_WaitingPassengers.htm" />
@@ -726,7 +723,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Controls_FloorControl.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Controls_FloorControl.htm" />
   </HelpKINode>
-  <HelpKINode Title="FloorControl.ELevatorReady property" Url="html/P_ElevatorApp_Controls_FloorControl_ELevatorReady.htm" />
   <HelpKINode Title="FloorControl.FloorControl constructor" Url="html/M_ElevatorApp_Controls_FloorControl__ctor.htm" />
   <HelpKINode Title="FloorControl.InitializeComponent method" Url="html/M_ElevatorApp_Controls_FloorControl_InitializeComponent.htm" />
   <HelpKINode Title="FloorCount property" Url="html/P_ElevatorApp_Models_ElevatorMasterController_FloorCount.htm" />
@@ -745,14 +741,17 @@
   </HelpKINode>
   <HelpKINode Title="FloorsToStopAtString property" Url="html/P_ElevatorApp_Models_Elevator_FloorsToStopAtString.htm" />
   <HelpKINode Title="FLOOR_MOVEMENT_SPEED field" Url="html/F_ElevatorApp_Models_Elevator_FLOOR_MOVEMENT_SPEED.htm" />
+  <HelpKINode Title="FromPassenger property" Url="html/P_ElevatorApp_Models_ElevatorCall_FromPassenger.htm" />
   <HelpKINode Title="GetCurrentInstant method" Url="html/M_ElevatorApp_Util_LocalSystemClock_GetCurrentInstant.htm" />
-  <HelpKINode Title="GetEnumerator method">
-    <HelpKINode Title="AsyncObservableCollection(T).GetEnumerator Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_GetEnumerator.htm" />
-    <HelpKINode Title="ObservableConcurrentQueue(T).GetEnumerator Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_GetEnumerator.htm" />
-  </HelpKINode>
+  <HelpKINode Title="GetEnumerator method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_GetEnumerator.htm" />
+  <HelpKINode Title="GetHashCode method" Url="html/M_ElevatorApp_Models_ElevatorCall_GetHashCode.htm" />
   <HelpKINode Title="GetTimeInElevatorString method" Url="html/M_ElevatorApp_Models_Passenger_GetTimeInElevatorString.htm" />
   <HelpKINode Title="GetWaitingString method" Url="html/M_ElevatorApp_Models_Passenger_GetWaitingString.htm" />
-  <HelpKINode Title="Handled property" Url="html/P_ElevatorApp_Models_ElevatorMovementEventArgs_Handled.htm" />
+  <HelpKINode Title="HandleActionCompleted method">
+    <HelpKINode Title="ButtonBase(T).HandleActionCompleted Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_HandleActionCompleted.htm" />
+    <HelpKINode Title="IButton(T).HandleActionCompleted Method " Url="html/M_ElevatorApp_Models_Interfaces_IButton_1_HandleActionCompleted.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HandlePushed method" Url="html/M_ElevatorApp_Models_ButtonBase_1_HandlePushed.htm" />
   <HelpKINode Title="IButton interface">
     <HelpKINode Title="IButton Interface" Url="html/T_ElevatorApp_Models_Interfaces_IButton.htm" />
     <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Models_Interfaces_IButton.htm" />
@@ -765,7 +764,7 @@
     <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton_1.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_IButton_1.htm" />
   </HelpKINode>
-  <HelpKINode Title="IButton(Of T).ActionCompleted method" Url="html/M_ElevatorApp_Models_Interfaces_IButton_1_ActionCompleted.htm" />
+  <HelpKINode Title="IButton(Of T).HandleActionCompleted method" Url="html/M_ElevatorApp_Models_Interfaces_IButton_1_HandleActionCompleted.htm" />
   <HelpKINode Title="IButton(Of T).OnActionCompleted event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnActionCompleted.htm" />
   <HelpKINode Title="IButton(Of T).OnPushed event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnPushed.htm" />
   <HelpKINode Title="IButton.Active property" Url="html/P_ElevatorApp_Models_Interfaces_IButton_Active.htm" />
@@ -780,7 +779,7 @@
     <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_IButton_1.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Models_Interfaces_IButton_1.htm" />
   </HelpKINode>
-  <HelpKINode Title="IButton&lt;T&gt;.ActionCompleted method" Url="html/M_ElevatorApp_Models_Interfaces_IButton_1_ActionCompleted.htm" />
+  <HelpKINode Title="IButton&lt;T&gt;.HandleActionCompleted method" Url="html/M_ElevatorApp_Models_Interfaces_IButton_1_HandleActionCompleted.htm" />
   <HelpKINode Title="IButton&lt;T&gt;.OnActionCompleted event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnActionCompleted.htm" />
   <HelpKINode Title="IButton&lt;T&gt;.OnPushed event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnPushed.htm" />
   <HelpKINode Title="Id property" Url="html/P_ElevatorApp_Models_ButtonBase_1_Id.htm" />
@@ -817,6 +816,7 @@
   <HelpKINode Title="Instance property">
     <HelpKINode Title="LocalSystemClock.Instance Property " Url="html/P_ElevatorApp_Util_LocalSystemClock_Instance.htm" />
     <HelpKINode Title="Logger.Instance Property " Url="html/P_ElevatorApp_Util_Logger_Instance.htm" />
+    <HelpKINode Title="Stats.Instance Property " Url="html/P_ElevatorApp_Util_Stats_Instance.htm" />
   </HelpKINode>
   <HelpKINode Title="Interior class">
     <HelpKINode Title="Interior Class" Url="html/T_ElevatorApp_Controls_Interior.htm" />
@@ -837,36 +837,41 @@
   </HelpKINode>
   <HelpKINode Title="IntStatistic.AddItems method" Url="html/M_ElevatorApp_Util_IntStatistic_AddItems.htm" />
   <HelpKINode Title="IntStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_IntStatistic_CalculateAverage.htm" />
+  <HelpKINode Title="IntStatistic.DefaultMin property" Url="html/P_ElevatorApp_Util_IntStatistic_DefaultMin.htm" />
   <HelpKINode Title="IntStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_IntStatistic_DivideItems.htm" />
   <HelpKINode Title="IntStatistic.IntStatistic constructor" Url="html/Overload_ElevatorApp_Util_IntStatistic__ctor.htm" />
   <HelpKINode Title="IntStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_IntStatistic_MultiplyItems.htm" />
   <HelpKINode Title="IntStatistic.SubtractItems method" Url="html/M_ElevatorApp_Util_IntStatistic_SubtractItems.htm" />
+  <HelpKINode Title="IsClosedOrClosing property" Url="html/P_ElevatorApp_Models_Door_IsClosedOrClosing.htm" />
+  <HelpKINode Title="IsCloseRequested property" Url="html/P_ElevatorApp_Models_Door_IsCloseRequested.htm" />
   <HelpKINode Title="isEmpty property" Url="html/P_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_isEmpty.htm" />
   <HelpKINode Title="IsEnabled property" Url="html/P_ElevatorApp_Models_ButtonBase_1_IsEnabled.htm" />
-  <HelpKINode Title="IsNotClosedOrClosing property" Url="html/P_ElevatorApp_Models_Door_IsNotClosedOrClosing.htm" />
-  <HelpKINode Title="IsNotOpenedOrOpening property" Url="html/P_ElevatorApp_Models_Door_IsNotOpenedOrOpening.htm" />
-  <HelpKINode Title="IsReadOnly property" Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_IsReadOnly.htm" />
+  <HelpKINode Title="IsOpenedOrOpening property" Url="html/P_ElevatorApp_Models_Door_IsOpenedOrOpening.htm" />
+  <HelpKINode Title="IsOpenRequested property" Url="html/P_ElevatorApp_Models_Door_IsOpenRequested.htm" />
   <HelpKINode Title="IStatistic interface">
     <HelpKINode Title="IStatistic Interface" Url="html/T_ElevatorApp_Util_IStatistic.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_IStatistic.htm" />
   </HelpKINode>
   <HelpKINode Title="IStatistic(Of TStat, TAggregate) interface">
     <HelpKINode Title="IStatistic(TStat, TAggregate) Interface" Url="html/T_ElevatorApp_Util_IStatistic_2.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_IStatistic_2.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_IStatistic_2.htm" />
   </HelpKINode>
+  <HelpKINode Title="IStatistic(Of TStat, TAggregate).Add method" Url="html/M_ElevatorApp_Util_IStatistic_2_Add.htm" />
   <HelpKINode Title="IStatistic(Of TStat, TAggregate).Average property" Url="html/P_ElevatorApp_Util_IStatistic_2_Average.htm" />
   <HelpKINode Title="IStatistic(Of TStat, TAggregate).Max property" Url="html/P_ElevatorApp_Util_IStatistic_2_Max.htm" />
   <HelpKINode Title="IStatistic(Of TStat, TAggregate).Min property" Url="html/P_ElevatorApp_Util_IStatistic_2_Min.htm" />
-  <HelpKINode Title="IStatistic(Of TStat, TAggregate).Name property" Url="html/P_ElevatorApp_Util_IStatistic_2_Name.htm" />
   <HelpKINode Title="IStatistic.Count property" Url="html/P_ElevatorApp_Util_IStatistic_Count.htm" />
+  <HelpKINode Title="IStatistic.Name property" Url="html/P_ElevatorApp_Util_IStatistic_Name.htm" />
   <HelpKINode Title="IStatistic&lt;TStat, TAggregate&gt; interface">
     <HelpKINode Title="IStatistic(TStat, TAggregate) Interface" Url="html/T_ElevatorApp_Util_IStatistic_2.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_IStatistic_2.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_IStatistic_2.htm" />
   </HelpKINode>
+  <HelpKINode Title="IStatistic&lt;TStat, TAggregate&gt;.Add method" Url="html/M_ElevatorApp_Util_IStatistic_2_Add.htm" />
   <HelpKINode Title="IStatistic&lt;TStat, TAggregate&gt;.Average property" Url="html/P_ElevatorApp_Util_IStatistic_2_Average.htm" />
   <HelpKINode Title="IStatistic&lt;TStat, TAggregate&gt;.Max property" Url="html/P_ElevatorApp_Util_IStatistic_2_Max.htm" />
   <HelpKINode Title="IStatistic&lt;TStat, TAggregate&gt;.Min property" Url="html/P_ElevatorApp_Util_IStatistic_2_Min.htm" />
-  <HelpKINode Title="IStatistic&lt;TStat, TAggregate&gt;.Name property" Url="html/P_ElevatorApp_Util_IStatistic_2_Name.htm" />
   <HelpKINode Title="ISubcriber(Of T) interface">
     <HelpKINode Title="ISubcriber(T) Interface" Url="html/T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Models_Interfaces_ISubcriber_1.htm" />
@@ -914,12 +919,12 @@
   <HelpKINode Title="Logger property" Url="html/P_ElevatorApp_SimulatorViewModel_Logger.htm" />
   <HelpKINode Title="Logger.AddLogger method" Url="html/M_ElevatorApp_Util_Logger_AddLogger.htm" />
   <HelpKINode Title="Logger.ClearItems method" Url="html/M_ElevatorApp_Util_Logger_ClearItems.htm" />
+  <HelpKINode Title="Logger.Count property" Url="html/P_ElevatorApp_Util_Logger_Count.htm" />
   <HelpKINode Title="Logger.Events property" Url="html/P_ElevatorApp_Util_Logger_Events.htm" />
   <HelpKINode Title="Logger.Instance property" Url="html/P_ElevatorApp_Util_Logger_Instance.htm" />
   <HelpKINode Title="Logger.ItemLogged event" Url="html/E_ElevatorApp_Util_Logger_ItemLogged.htm" />
   <HelpKINode Title="Logger.LogEvent method" Url="html/M_ElevatorApp_Util_Logger_LogEvent.htm" />
   <HelpKINode Title="Logger.LogEventHandler delegate" Url="html/T_ElevatorApp_Util_Logger_LogEventHandler.htm" />
-  <HelpKINode Title="Logger.LogStackTrace method" Url="html/M_ElevatorApp_Util_Logger_LogStackTrace.htm" />
   <HelpKINode Title="LoggerView class">
     <HelpKINode Title="LoggerView Class" Url="html/T_ElevatorApp_Controls_LoggerView.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Controls_LoggerView__ctor.htm" />
@@ -929,7 +934,6 @@
   </HelpKINode>
   <HelpKINode Title="LoggerView.InitializeComponent method" Url="html/M_ElevatorApp_Controls_LoggerView_InitializeComponent.htm" />
   <HelpKINode Title="LoggerView.LoggerView constructor" Url="html/M_ElevatorApp_Controls_LoggerView__ctor.htm" />
-  <HelpKINode Title="LogStackTrace method" Url="html/M_ElevatorApp_Util_Logger_LogStackTrace.htm" />
   <HelpKINode Title="LongStatistic class">
     <HelpKINode Title="LongStatistic Class" Url="html/T_ElevatorApp_Util_LongStatistic.htm" />
     <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_LongStatistic__ctor.htm" />
@@ -939,6 +943,7 @@
   </HelpKINode>
   <HelpKINode Title="LongStatistic.AddItems method" Url="html/M_ElevatorApp_Util_LongStatistic_AddItems.htm" />
   <HelpKINode Title="LongStatistic.CalculateAverage method" Url="html/M_ElevatorApp_Util_LongStatistic_CalculateAverage.htm" />
+  <HelpKINode Title="LongStatistic.DefaultMin property" Url="html/P_ElevatorApp_Util_LongStatistic_DefaultMin.htm" />
   <HelpKINode Title="LongStatistic.DivideItems method" Url="html/M_ElevatorApp_Util_LongStatistic_DivideItems.htm" />
   <HelpKINode Title="LongStatistic.LongStatistic constructor" Url="html/Overload_ElevatorApp_Util_LongStatistic__ctor.htm" />
   <HelpKINode Title="LongStatistic.MultiplyItems method" Url="html/M_ElevatorApp_Util_LongStatistic_MultiplyItems.htm" />
@@ -962,8 +967,8 @@
     <HelpKINode Title="IStatistic(TStat, TAggregate).Min Property " Url="html/P_ElevatorApp_Util_IStatistic_2_Min.htm" />
     <HelpKINode Title="Statistic(TStat, TAggregate).Min Property " Url="html/P_ElevatorApp_Util_Statistic_2_Min.htm" />
   </HelpKINode>
-  <HelpKINode Title="MinByOrDefault(Of T, TKey) method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
-  <HelpKINode Title="MinByOrDefault&lt;T, TKey&gt; method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
+  <HelpKINode Title="MinByOrDefault(Of TElement, TKey) method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
+  <HelpKINode Title="MinByOrDefault&lt;TElement, TKey&gt; method" Url="html/M_ElevatorApp_Util_Extensions_MinByOrDefault__2.htm" />
   <HelpKINode Title="ModelBase class">
     <HelpKINode Title="ModelBase Class" Url="html/T_ElevatorApp_Models_ModelBase.htm" />
     <HelpKINode Title="constructor" Url="html/M_ElevatorApp_Models_ModelBase__ctor.htm" />
@@ -988,43 +993,11 @@
   </HelpKINode>
   <HelpKINode Title="Name property">
     <HelpKINode Title="Event.Name Property " Url="html/P_ElevatorApp_Util_Event_Name.htm" />
-    <HelpKINode Title="IStatistic(TStat, TAggregate).Name Property " Url="html/P_ElevatorApp_Util_IStatistic_2_Name.htm" />
+    <HelpKINode Title="IStatistic.Name Property " Url="html/P_ElevatorApp_Util_IStatistic_Name.htm" />
     <HelpKINode Title="Statistic(TStat, TAggregate).Name Property " Url="html/P_ElevatorApp_Util_Statistic_2_Name.htm" />
   </HelpKINode>
   <HelpKINode Title="NextFloor property" Url="html/P_ElevatorApp_Models_Elevator_NextFloor.htm" />
   <HelpKINode Title="None enumeration member" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue(Of T) class">
-    <HelpKINode Title="ObservableConcurrentQueue(T) Class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
-    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm" />
-    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ObservableConcurrentQueue(Of T).CollectionChanged event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_CollectionChanged.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue(Of T).Count property" Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_Count.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue(Of T).Enqueue method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_Enqueue.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue(Of T).GetEnumerator method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_GetEnumerator.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue(Of T).IsReadOnly property" Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_IsReadOnly.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue(Of T).ObservableConcurrentQueue constructor" Url="html/Overload_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue(Of T).PropertyChanged event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_PropertyChanged.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue(Of T).TryDequeue method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryDequeue.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue(Of T).TryPeek method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryPeek.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt; class">
-    <HelpKINode Title="ObservableConcurrentQueue(T) Class" Url="html/T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
-    <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm" />
-    <HelpKINode Title="events" Url="html/Events_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_ObservableConcurrentQueue_1.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.CollectionChanged event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_CollectionChanged.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.Count property" Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_Count.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.Enqueue method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_Enqueue.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.GetEnumerator method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_GetEnumerator.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.IsReadOnly property" Url="html/P_ElevatorApp_Util_ObservableConcurrentQueue_1_IsReadOnly.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.ObservableConcurrentQueue constructor" Url="html/Overload_ElevatorApp_Util_ObservableConcurrentQueue_1__ctor.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.PropertyChanged event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_PropertyChanged.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.TryDequeue method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryDequeue.htm" />
-  <HelpKINode Title="ObservableConcurrentQueue&lt;T&gt;.TryPeek method" Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryPeek.htm" />
   <HelpKINode Title="OnActionCompleted event">
     <HelpKINode Title="ButtonBase(T).OnActionCompleted Event" Url="html/E_ElevatorApp_Models_ButtonBase_1_OnActionCompleted.htm" />
     <HelpKINode Title="IButton(T).OnActionCompleted Event" Url="html/E_ElevatorApp_Models_Interfaces_IButton_1_OnActionCompleted.htm" />
@@ -1079,6 +1052,7 @@
   <HelpKINode Title="Passenger.TimeSpentInElevator property" Url="html/P_ElevatorApp_Models_Passenger_TimeSpentInElevator.htm" />
   <HelpKINode Title="Passenger.TimeWaiting property" Url="html/P_ElevatorApp_Models_Passenger_TimeWaiting.htm" />
   <HelpKINode Title="Passenger.ToString method" Url="html/M_ElevatorApp_Models_Passenger_ToString.htm" />
+  <HelpKINode Title="Passenger.TotalTime property" Url="html/P_ElevatorApp_Models_Passenger_TotalTime.htm" />
   <HelpKINode Title="Passenger.TransitionSpeed field" Url="html/F_ElevatorApp_Models_Passenger_TransitionSpeed.htm" />
   <HelpKINode Title="Passenger.Weight property" Url="html/P_ElevatorApp_Models_Passenger_Weight.htm" />
   <HelpKINode Title="PassengerAdded event" Url="html/E_ElevatorApp_Models_Elevator_PassengerAdded.htm" />
@@ -1094,14 +1068,13 @@
   <HelpKINode Title="PassengerQueueControl.ElevatorAvailable property" Url="html/P_ElevatorApp_Controls_PassengerQueueControl_ElevatorAvailable.htm" />
   <HelpKINode Title="PassengerQueueControl.InitializeComponent method" Url="html/M_ElevatorApp_Controls_PassengerQueueControl_InitializeComponent.htm" />
   <HelpKINode Title="PassengerQueueControl.PassengerQueueControl constructor" Url="html/M_ElevatorApp_Controls_PassengerQueueControl__ctor.htm" />
-  <HelpKINode Title="PassengerQueueControl.ShowAddButtons property" Url="html/P_ElevatorApp_Controls_PassengerQueueControl_ShowAddButtons.htm" />
+  <HelpKINode Title="PassengerRideTimes property" Url="html/P_ElevatorApp_Util_Stats_PassengerRideTimes.htm" />
   <HelpKINode Title="Passengers property" Url="html/P_ElevatorApp_Models_Elevator_Passengers.htm" />
   <HelpKINode Title="PassengerState enumeration" Url="html/T_ElevatorApp_Models_Enums_PassengerState.htm" />
+  <HelpKINode Title="PassengerTotalTimes property" Url="html/P_ElevatorApp_Util_Stats_PassengerTotalTimes.htm" />
+  <HelpKINode Title="PassengerWaitTimes property" Url="html/P_ElevatorApp_Util_Stats_PassengerWaitTimes.htm" />
   <HelpKINode Title="Path property" Url="html/P_ElevatorApp_Models_Passenger_Path.htm" />
-  <HelpKINode Title="PropertyChanged event">
-    <HelpKINode Title="ModelBase.PropertyChanged Event" Url="html/E_ElevatorApp_Models_ModelBase_PropertyChanged.htm" />
-    <HelpKINode Title="ObservableConcurrentQueue(T).PropertyChanged Event" Url="html/E_ElevatorApp_Util_ObservableConcurrentQueue_1_PropertyChanged.htm" />
-  </HelpKINode>
+  <HelpKINode Title="PropertyChanged event" Url="html/E_ElevatorApp_Models_ModelBase_PropertyChanged.htm" />
   <HelpKINode Title="Push method">
     <HelpKINode Title="ButtonBase(T).Push Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_Push.htm" />
     <HelpKINode Title="DoorButton.Push Method " Url="html/M_ElevatorApp_Models_DoorButton_Push.htm" />
@@ -1109,8 +1082,6 @@
     <HelpKINode Title="IButton.Push Method " Url="html/M_ElevatorApp_Models_Interfaces_IButton_Push.htm" />
     <HelpKINode Title="RequestButton.Push Method " Url="html/M_ElevatorApp_Models_RequestButton_Push.htm" />
   </HelpKINode>
-  <HelpKINode Title="Pushed method" Url="html/M_ElevatorApp_Models_ButtonBase_1_Pushed.htm" />
-  <HelpKINode Title="QueuePassenger method" Url="html/M_ElevatorApp_Models_Floor_QueuePassenger.htm" />
   <HelpKINode Title="raise method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_raise.htm" />
   <HelpKINode Title="RelativeSpeed property" Url="html/P_ElevatorApp_Models_Elevator_RelativeSpeed.htm" />
   <HelpKINode Title="remove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_AsyncDispatcherEvent_2_remove.htm" />
@@ -1137,7 +1108,6 @@
   <HelpKINode Title="SetProperty(Of T) method" Url="html/M_ElevatorApp_Models_ModelBase_SetProperty__1.htm" />
   <HelpKINode Title="SetProperty&lt;T&gt; method" Url="html/M_ElevatorApp_Models_ModelBase_SetProperty__1.htm" />
   <HelpKINode Title="ShouldStop property" Url="html/P_ElevatorApp_Models_ElevatorApproachingEventArgs_ShouldStop.htm" />
-  <HelpKINode Title="ShowAddButtons property" Url="html/P_ElevatorApp_Controls_PassengerQueueControl_ShowAddButtons.htm" />
   <HelpKINode Title="SimpleStatistic(Of T) class">
     <HelpKINode Title="SimpleStatistic(T) Class" Url="html/T_ElevatorApp_Util_SimpleStatistic_1.htm" />
     <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_SimpleStatistic_1__ctor.htm" />
@@ -1175,10 +1145,6 @@
     <HelpKINode Title="Elevator.State Property " Url="html/P_ElevatorApp_Models_Elevator_State.htm" />
     <HelpKINode Title="Passenger.State Property " Url="html/P_ElevatorApp_Models_Passenger_State.htm" />
   </HelpKINode>
-  <HelpKINode Title="StateToString property">
-    <HelpKINode Title="DurationStatistic.StateToString Property " Url="html/P_ElevatorApp_Util_DurationStatistic_StateToString.htm" />
-    <HelpKINode Title="Statistic(TStat, TAggregate).StateToString Property " Url="html/P_ElevatorApp_Util_Statistic_2_StateToString.htm" />
-  </HelpKINode>
   <HelpKINode Title="Statistic(Of TStat, TAggregate) class">
     <HelpKINode Title="Statistic(TStat, TAggregate) Class" Url="html/T_ElevatorApp_Util_Statistic_2.htm" />
     <HelpKINode Title="constructor" Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm" />
@@ -1193,13 +1159,14 @@
   <HelpKINode Title="Statistic(Of TStat, TAggregate).Average property" Url="html/P_ElevatorApp_Util_Statistic_2_Average.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).CalculateAverage method" Url="html/M_ElevatorApp_Util_Statistic_2_CalculateAverage.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).Count property" Url="html/P_ElevatorApp_Util_Statistic_2_Count.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).DefaultMin property" Url="html/P_ElevatorApp_Util_Statistic_2_DefaultMin.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).DivideItems method" Url="html/M_ElevatorApp_Util_Statistic_2_DivideItems.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).Max property" Url="html/P_ElevatorApp_Util_Statistic_2_Max.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).Min property" Url="html/P_ElevatorApp_Util_Statistic_2_Min.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).MultiplyItems method" Url="html/M_ElevatorApp_Util_Statistic_2_MultiplyItems.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).Name property" Url="html/P_ElevatorApp_Util_Statistic_2_Name.htm" />
-  <HelpKINode Title="Statistic(Of TStat, TAggregate).StateToString property" Url="html/P_ElevatorApp_Util_Statistic_2_StateToString.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).Statistic constructor" Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm" />
+  <HelpKINode Title="Statistic(Of TStat, TAggregate).StatToString property" Url="html/P_ElevatorApp_Util_Statistic_2_StatToString.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).SubtractItems method" Url="html/M_ElevatorApp_Util_Statistic_2_SubtractItems.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate).ToString method" Url="html/M_ElevatorApp_Util_Statistic_2_ToString.htm" />
   <HelpKINode Title="Statistic(Of TStat, TAggregate)._collection property" Url="html/P_ElevatorApp_Util_Statistic_2__collection.htm" />
@@ -1217,16 +1184,33 @@
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Average property" Url="html/P_ElevatorApp_Util_Statistic_2_Average.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.CalculateAverage method" Url="html/M_ElevatorApp_Util_Statistic_2_CalculateAverage.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Count property" Url="html/P_ElevatorApp_Util_Statistic_2_Count.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.DefaultMin property" Url="html/P_ElevatorApp_Util_Statistic_2_DefaultMin.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.DivideItems method" Url="html/M_ElevatorApp_Util_Statistic_2_DivideItems.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Max property" Url="html/P_ElevatorApp_Util_Statistic_2_Max.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Min property" Url="html/P_ElevatorApp_Util_Statistic_2_Min.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.MultiplyItems method" Url="html/M_ElevatorApp_Util_Statistic_2_MultiplyItems.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Name property" Url="html/P_ElevatorApp_Util_Statistic_2_Name.htm" />
-  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.StateToString property" Url="html/P_ElevatorApp_Util_Statistic_2_StateToString.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.Statistic constructor" Url="html/Overload_ElevatorApp_Util_Statistic_2__ctor.htm" />
+  <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.StatToString property" Url="html/P_ElevatorApp_Util_Statistic_2_StatToString.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.SubtractItems method" Url="html/M_ElevatorApp_Util_Statistic_2_SubtractItems.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;.ToString method" Url="html/M_ElevatorApp_Util_Statistic_2_ToString.htm" />
   <HelpKINode Title="Statistic&lt;TStat, TAggregate&gt;._collection property" Url="html/P_ElevatorApp_Util_Statistic_2__collection.htm" />
+  <HelpKINode Title="Stats class">
+    <HelpKINode Title="Stats Class" Url="html/T_ElevatorApp_Util_Stats.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ElevatorApp_Util_Stats.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ElevatorApp_Util_Stats.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Stats.AddPassengerTime method" Url="html/M_ElevatorApp_Util_Stats_AddPassengerTime.htm" />
+  <HelpKINode Title="Stats.AllStatistics property" Url="html/P_ElevatorApp_Util_Stats_AllStatistics.htm" />
+  <HelpKINode Title="Stats.Instance property" Url="html/P_ElevatorApp_Util_Stats_Instance.htm" />
+  <HelpKINode Title="Stats.PassengerRideTimes property" Url="html/P_ElevatorApp_Util_Stats_PassengerRideTimes.htm" />
+  <HelpKINode Title="Stats.PassengerTotalTimes property" Url="html/P_ElevatorApp_Util_Stats_PassengerTotalTimes.htm" />
+  <HelpKINode Title="Stats.PassengerWaitTimes property" Url="html/P_ElevatorApp_Util_Stats_PassengerWaitTimes.htm" />
+  <HelpKINode Title="Stats.ToString method" Url="html/M_ElevatorApp_Util_Stats_ToString.htm" />
+  <HelpKINode Title="StatToString property">
+    <HelpKINode Title="DurationStatistic.StatToString Property " Url="html/P_ElevatorApp_Util_DurationStatistic_StatToString.htm" />
+    <HelpKINode Title="Statistic(TStat, TAggregate).StatToString Property " Url="html/P_ElevatorApp_Util_Statistic_2_StatToString.htm" />
+  </HelpKINode>
   <HelpKINode Title="Subscribe method">
     <HelpKINode Title="ButtonPanel.Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanel_Subscribe.htm" />
     <HelpKINode Title="ButtonPanelBase.Subscribe Method " Url="html/Overload_ElevatorApp_Models_ButtonPanelBase_Subscribe.htm" />
@@ -1264,33 +1248,31 @@
   <HelpKINode Title="ToArray method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_ToArray.htm" />
   <HelpKINode Title="ToString method">
     <HelpKINode Title="ButtonBase(T).ToString Method " Url="html/M_ElevatorApp_Models_ButtonBase_1_ToString.htm" />
+    <HelpKINode Title="ElevatorCall.ToString Method " Url="html/M_ElevatorApp_Models_ElevatorCall_ToString.htm" />
     <HelpKINode Title="ElevatorMovementEventArgs.ToString Method " Url="html/M_ElevatorApp_Models_ElevatorMovementEventArgs_ToString.htm" />
     <HelpKINode Title="Event.ToString Method " Url="html/Overload_ElevatorApp_Util_Event_ToString.htm" />
     <HelpKINode Title="Passenger.ToString Method " Url="html/M_ElevatorApp_Models_Passenger_ToString.htm" />
     <HelpKINode Title="Statistic(TStat, TAggregate).ToString Method " Url="html/M_ElevatorApp_Util_Statistic_2_ToString.htm" />
+    <HelpKINode Title="Stats.ToString Method " Url="html/M_ElevatorApp_Util_Stats_ToString.htm" />
   </HelpKINode>
   <HelpKINode Title="ToStringMethod(Of T) delegate" Url="html/T_ElevatorApp_Util_ToStringMethod_1.htm" />
   <HelpKINode Title="ToStringMethod&lt;T&gt; delegate" Url="html/T_ElevatorApp_Util_ToStringMethod_1.htm" />
   <HelpKINode Title="TotalCapacity property" Url="html/P_ElevatorApp_Models_Elevator_TotalCapacity.htm" />
+  <HelpKINode Title="TotalTime property" Url="html/P_ElevatorApp_Models_Passenger_TotalTime.htm" />
   <HelpKINode Title="Transition enumeration member" Url="html/T_ElevatorApp_Models_Enums_PassengerState.htm" />
   <HelpKINode Title="TransitionSpeed field" Url="html/F_ElevatorApp_Models_Passenger_TransitionSpeed.htm" />
   <HelpKINode Title="TRANSITION_TIME_SECONDS field" Url="html/F_ElevatorApp_Models_Door_TRANSITION_TIME_SECONDS.htm" />
-  <HelpKINode Title="TryDequeue method">
-    <HelpKINode Title="AsyncObservableCollection(T).TryDequeue Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryDequeue.htm" />
-    <HelpKINode Title="ObservableConcurrentQueue(T).TryDequeue Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryDequeue.htm" />
-  </HelpKINode>
-  <HelpKINode Title="TryPeek method">
-    <HelpKINode Title="AsyncObservableCollection(T).TryPeek Method " Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryPeek.htm" />
-    <HelpKINode Title="ObservableConcurrentQueue(T).TryPeek Method " Url="html/M_ElevatorApp_Util_ObservableConcurrentQueue_1_TryPeek.htm" />
-  </HelpKINode>
   <HelpKINode Title="TryRemove method" Url="html/M_ElevatorApp_Util_AsyncObservableCollection_1_TryRemove.htm" />
   <HelpKINode Title="Up enumeration member" Url="html/T_ElevatorApp_Models_Enums_Direction.htm" />
+  <HelpKINode Title="UpdatingPassengers property" Url="html/P_ElevatorApp_Models_Elevator_UpdatingPassengers.htm" />
+  <HelpKINode Title="ValueTuple(Of Int32, Direction) to ElevatorCall conversion" Url="html/M_ElevatorApp_Models_ElevatorCall_op_Implicit_1.htm" />
+  <HelpKINode Title="ValueTuple&lt;Int32, Direction&gt; to ElevatorCall conversion" Url="html/M_ElevatorApp_Models_ElevatorCall_op_Implicit_1.htm" />
   <HelpKINode Title="ViewModel property" Url="html/P_ElevatorApp_MainWindow_ViewModel.htm" />
+  <HelpKINode Title="WaitForDoorToClose method" Url="html/M_ElevatorApp_Models_Door_WaitForDoorToClose.htm" />
+  <HelpKINode Title="WaitForDoorToOpen method" Url="html/M_ElevatorApp_Models_Door_WaitForDoorToOpen.htm" />
   <HelpKINode Title="Waiting enumeration member" Url="html/T_ElevatorApp_Models_Enums_PassengerState.htm" />
   <HelpKINode Title="WaitingPassengers property" Url="html/P_ElevatorApp_Models_Floor_WaitingPassengers.htm" />
   <HelpKINode Title="Weight property" Url="html/P_ElevatorApp_Models_Passenger_Weight.htm" />
-  <HelpKINode Title="Write method" Url="html/Overload_ElevatorApp_Util_EventTraceListener_Write.htm" />
-  <HelpKINode Title="WriteLine method" Url="html/Overload_ElevatorApp_Util_EventTraceListener_WriteLine.htm" />
   <HelpKINode Title="_collection property" Url="html/P_ElevatorApp_Util_Statistic_2__collection.htm" />
   <HelpKINode Title="_floorButtons property">
     <HelpKINode Title="ButtonPanel._floorButtons Property " Url="html/P_ElevatorApp_Models_ButtonPanel__floorButtons.htm" />
