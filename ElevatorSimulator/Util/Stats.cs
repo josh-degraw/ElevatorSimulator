@@ -18,12 +18,16 @@ namespace ElevatorApp.Util
         /// <value>The passenger wait times.</value>
         public DurationStatistic PassengerWaitTimes { get; } = new DurationStatistic("Passenger wait times");
 
+        /// <summary>
+        /// Gets the passenger ride times.
+        /// </summary>
         public DurationStatistic PassengerRideTimes { get; } = new DurationStatistic("Passenger ride times");
 
+        /// <summary>
+        /// Gets the passenger total times.
+        /// </summary>
         public DurationStatistic PassengerTotalTimes { get; } = new DurationStatistic("Passenger total times");
-
-        private ICollection<Duration> tempTimes;
-
+        
         private IEnumerable<IStatistic> _getStatistics()
         {
             yield return this.PassengerWaitTimes;
@@ -31,7 +35,9 @@ namespace ElevatorApp.Util
             yield return this.PassengerTotalTimes;
         }
 
-
+        /// <summary>
+        /// Gets all statistics tracked by the <see cref="Stats"/> class
+        /// </summary>
         public IEnumerable<IStatistic> AllStatistics => _getStatistics();
         
 

@@ -40,14 +40,21 @@ namespace ElevatorApp.Util
 
         private TAggregate _average;
         private int _count;
-        protected TStat _min, _max;
+        private TStat _min;
+        private TStat _max;
 
         #endregion Backing fields
 
         #region Properties and Statistical values
 
+        /// <summary>
+        /// Inherited classes must provide a default minimum value for the type of statistic. 
+        /// <para>In most cases, this should be defaulted to a static field or property on the struct or class, titled MaxValue.</para>
+        /// <para>Defaulting the initial minimum to the maximum possible value ensures that any value that comes after will be smaller</para>
+        /// </summary>
         protected abstract TStat DefaultMin { get; }
 
+        /// <inheritdoc />
         /// <summary>
         /// The average of all values
         /// </summary>
@@ -57,6 +64,7 @@ namespace ElevatorApp.Util
             private set => this.SetProperty(ref this._average, value);
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// The number of values encountered
         /// </summary>
@@ -66,6 +74,7 @@ namespace ElevatorApp.Util
             private set => this.SetProperty(ref this._count, value);
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Gets the maximum of all the collected values
         /// </summary>
@@ -75,6 +84,7 @@ namespace ElevatorApp.Util
             private set => this.SetProperty(ref this._max, value);
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Gets the minimum of all the collected values
         /// </summary>
@@ -84,6 +94,7 @@ namespace ElevatorApp.Util
             private set => this.SetProperty(ref this._min, value);
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// The name of the statistic
         /// </summary>
@@ -101,7 +112,7 @@ namespace ElevatorApp.Util
         /// <param name="right">The item on the right of the equation</param>
         /// <returns>
         /// <code>
-        /// <paramref name="left" /> + <paramref name="right" />
+        /// left + right
         /// </code>
         /// </returns>
         [Pure]
@@ -115,14 +126,14 @@ namespace ElevatorApp.Util
         protected abstract TAggregate CalculateAverage();
 
         /// <summary>
-        /// Provides a function to divide one items of type <typeparamref name="TStat"/> from another
+        /// Provides a function to divide one item of type <typeparamref name="TStat"/> from another
         /// <para>Represents <c><paramref name="numerator"/> / <paramref name="denominator"/></c></para>
         /// </summary>
         /// <param name="numerator">The item on the left of the equation</param>
         /// <param name="denominator">The item on the right of the equation</param>
         /// <returns>
         /// <code>
-        /// <paramref name="numerator" /> / <paramref name="denominator" />
+        /// numerator / denominator
         /// </code>
         /// </returns>
         [Pure]
@@ -136,21 +147,21 @@ namespace ElevatorApp.Util
         /// <param name="right">The item on the right of the equation</param>
         /// <returns>
         /// <code>
-        /// <paramref name="left" /> * <paramref name="right" />
+        /// left * right
         /// </code>
         /// </returns>
         [Pure]
         protected abstract TStat MultiplyItems(TStat left, TStat right);
 
         /// <summary>
-        /// Provides a function to subtract one items of type <typeparamref name="TStat"/> from another
+        /// Provides a function to subtract one item of type <typeparamref name="TStat"/> from another
         /// <para>Represents <c><paramref name="left"/> - <paramref name="right"/></c></para>
         /// </summary>
         /// <param name="left">The item on the left of the equation</param>
         /// <param name="right">The item on the right of the equation</param>
         /// <returns>
         /// <code>
-        /// <paramref name="left" /> - <paramref name="right" />
+        /// left - right
         /// </code>
         /// </returns>
         [Pure]
@@ -160,10 +171,11 @@ namespace ElevatorApp.Util
 
         #region Constructors
 
-        ///<inheritdoc/>
         /// <summary>
-        /// Constructs a new <see cref="Statistic{TStat, TAggregate}"/> object
+        /// Initializes a new instance of the <see cref="Statistic{TStat, TAggregate}"/> class.
         /// </summary>
+        /// <param name="name">The name of the statistic.</param>
+        /// <inheritdoc />
         protected Statistic(string name)
         {
             this.Name = name;
@@ -171,11 +183,12 @@ namespace ElevatorApp.Util
             this._min = this.DefaultMin;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Constructs a new <see cref="Statistic{TStat, TAggregate}"/> object, with the given collection as the initial values
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="collection"></param>
+        /// <param name="name">The name of the statistic.</param>
+        /// <param name="collection">A pre-existing collection of values with which to start off the statistic.</param>
         protected Statistic(string name, IEnumerable<TStat> collection) : this(name)
         {
             this.AddRange(collection);
@@ -201,9 +214,10 @@ namespace ElevatorApp.Util
         /// </summary>
         protected virtual ToStringMethod<TStat> StatToString { get; } = t => t.ToString();
 
+        /// <inheritdoc />
         /// <summary>
-        /// Adds an item to the collection and calculates the new <see cref="Min"/>, <see cref="Max"/>, and
-        /// <see cref="Average"/> values
+        /// Adds an item to the collection and calculates the new <see cref="P:ElevatorApp.Util.Statistic`2.Min" />, <see cref="P:ElevatorApp.Util.Statistic`2.Max" />, and
+        /// <see cref="P:ElevatorApp.Util.Statistic`2.Average" /> values
         /// </summary>
         /// <param name="item">The next statistical value to be added</param>
         public void Add(TStat item)
@@ -247,7 +261,12 @@ namespace ElevatorApp.Util
         [Pure]
         public override string ToString()
         {
-            return string.Format($@"Average = {this.AggregateToString(this.Average)}; Min = {this.StatToString(this.Min)}; Max = {this.StatToString(this.Max)}; Count = {this.Count}");
+            return string.Format(
+$@"{this.Name}
+    Average = {this.AggregateToString(this.Average)}; 
+    Min = {this.StatToString(this.Min)}; 
+    Max = {this.StatToString(this.Max)}; 
+    Count = {this.Count}");
         }
     }
 }

@@ -95,7 +95,17 @@ namespace ElevatorApp.Controls
         {
             try
             {
-                this.Dispatcher.Invoke(() => this.listViewEvents.Items.Add(message));
+                this.Dispatcher.Invoke(() =>
+                {
+                    try
+                    {
+                        this.listViewEvents.Items.Add(message);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                });
             }
             catch (Exception ex)
             {

@@ -16,6 +16,7 @@
         string Name { get; }
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// An interface representing a statistical calculation of the given types
     /// </summary>

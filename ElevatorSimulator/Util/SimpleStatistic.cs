@@ -14,17 +14,17 @@ namespace ElevatorApp.Util
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleStatistic{T}"/> class.
         /// </summary>
-        /// <param name="name"></param>
-        /// <inheritdoc/>
+        /// <param name="name">The name of the statistic.</param>
+        /// <inheritdoc />
         protected SimpleStatistic(string name) : base(name)
         { }
 
-        /// <inheritdoc/>
         /// <summary>
-        /// Constructs a new <see cref="SimpleStatistic{T}"/> object, with the given collection as the initial values
+        /// Initializes a new instance of the <see cref="SimpleStatistic{T}"/> class.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="collection"></param>
+        /// <param name="name">The name of the statistic.</param>
+        /// <param name="collection">A pre-existing collection of values with which to start off the statistic.</param>
+        /// <inheritdoc />
         protected SimpleStatistic(string name, IEnumerable<T> collection) : base(name, collection)
         {
         }

@@ -9,7 +9,7 @@ namespace ElevatorApp.Util
         /// <summary>
         /// Initializes a new instance of the <see cref="IntStatistic"/> class.
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">The name of the statistic.</param>
         /// <inheritdoc />
         public IntStatistic(string name) : base(name)
         { }
@@ -17,27 +17,87 @@ namespace ElevatorApp.Util
         /// <summary>
         /// Initializes a new instance of the <see cref="IntStatistic"/> class.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="collection"></param>
+        /// <param name="name">The name of the statistic.</param>
+        /// <param name="collection">A pre-existing collection of values with which to start off the statistic.</param>
         /// <inheritdoc />
         public IntStatistic(string name, IEnumerable<int> collection) : base(name, collection)
         { }
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Inherited classes must provide a default minimum value for the type of statistic.
+        /// <para>
+        /// In most cases, this should be defaulted to a static field or property on the struct or class, titled MaxValue.
+        /// </para>
+        /// <para>
+        /// Defaulting the initial minimum to the maximum possible value ensures that any value that comes after will be smaller
+        /// </para>
+        /// </summary>
         protected override int DefaultMin => int.MaxValue;
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Provides a function to add two items of type <see langword="int"/> together
+        /// <para>Represents <c><paramref name="left"/> + <paramref name="right"/></c></para>
+        /// </summary>
+        /// <param name="left">The item on the left of the equation</param>
+        /// <param name="right">The item on the right of the equation</param>
+        /// <returns>
+        /// <code>
+        /// left + right
+        /// </code>
+        /// </returns>
+        /// <inheritdoc/>
         protected override int AddItems(int left, int right) => left + right;
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Provides a function to divide one item of type <see langword="int"/> from another
+        /// <para>Represents <c>numerator / denominator</c></para>
+        /// </summary>
+        /// <param name="numerator">The item on the left of the equation</param>
+        /// <param name="denominator">The item on the right of the equation</param>
+        /// <returns>
+        /// <code>
+        ///   numerator / denominator
+        /// </code>
+        /// </returns>
+        /// <inheritdoc />
         protected override int DivideItems(int numerator, int denominator) => numerator / denominator;
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Provides a function to multiply two items of type <see langword="int"/> together
+        /// <para>Represents <c>left * right</c></para>
+        /// </summary>
+        /// <param name="left">The item on the left of the equation</param>
+        /// <param name="right">The item on the right of the equation</param>
+        /// <returns>
+        /// <code>
+        ///   left * right
+        /// </code>
+        /// </returns>
+        /// <inheritdoc />
         protected override int MultiplyItems(int left, int right) => left * right;
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// Provides a function to subtract one item of type <see langword="int"/> from another
+        /// <para>Represents <c>left - right</c></para>
+        /// </summary>
+        /// <param name="left">The item on the left of the equation</param>
+        /// <param name="right">The item on the right of the equation</param>
+        /// <returns>
+        /// <code>
+        ///   left - right
+        /// </code>
+        /// </returns>
+        /// <inheritdoc />
         protected override int SubtractItems(int left, int right) => left - right;
 
-        ///<inheritdoc/>
+        /// <summary>
+        /// A function that will get the average of all statistics held by this object
+        /// </summary>
+        /// <returns>
+        /// The Average value
+        /// </returns>
+        /// <inheritdoc />
         protected override double CalculateAverage() => this._collection.Average();
     }
 }

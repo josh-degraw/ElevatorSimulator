@@ -240,6 +240,7 @@ namespace ElevatorApp.Models
                     return;
                 }
 
+                //TODO: Tooltips
                 args = new DoorStateChangeEventArgs();
 
                 this.DoorState = DoorState.Opening;

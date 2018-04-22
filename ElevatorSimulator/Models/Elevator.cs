@@ -167,6 +167,10 @@ namespace ElevatorApp.Models
         {
             try
             {
+                // If it's trying to go to the floor it's already on, that's just a bucket of nonsense
+                if (args.DestinationFloor == this.CurrentFloor)
+                    return;
+
                 await this.Door.WaitForDoorToClose().ConfigureAwait(false);
 
                 this.Moving = true;
@@ -332,6 +336,7 @@ namespace ElevatorApp.Models
             {
                 while (this._floorsToStopAt.Any())
                 {
+
                     var (destination, direction) = this.FloorRequests
                             .Where(a =>
                             {
@@ -368,7 +373,6 @@ namespace ElevatorApp.Models
                             break;
 
                         case Direction.Down:
-                            Trace.Indent();
                             this.NextFloor = this.CurrentFloor - 1;
                             await this._startMovement(new ElevatorMovementEventArgs(destination, direction));
 
@@ -826,46 +830,49 @@ namespace ElevatorApp.Models
         /// Tells the elevator that a new call has been made
         /// </summary>
         /// <param name="destination"></param>
-        public async void OnNext(ElevatorCall destination)
+        public void OnNext(ElevatorCall destination)
         {
-            while (this.Door.IsOpenedOrOpening && destination.Floor != this.CurrentFloor)
+            Task.Run(() =>
             {
-                await Task.Delay(500).ConfigureAwait(false);
-            }
-            if (!destination.FromPassenger && destination.Floor == this.CurrentFloor && (this.State == ElevatorState.Arrived || this.State == ElevatorState.Idle))
-            {
-                // Wait for door to open here so that the passengers who started opening the door get in first
-                await this.Door.WaitForDoorToOpen().ConfigureAwait(false);
-                await Task.Delay(500).ConfigureAwait(false);
-            }
-
-            this._floorsToStopAt.AddDistinct(destination);
-
-            if (!this.Moving)
-            {
-                // Only start the Movement thread if the elevator hasn't already been assigned a direction
-                if (this.RequestedDirection == Direction.None)
+                while (this.Door.IsOpenedOrOpening && destination.Floor != this.CurrentFloor)
                 {
-                    this.RequestedDirection = destination.Direction;
-
-                    try
-                    {
-                        // Starts the movement in a seperate thread with Task.Run Not awaited because it's running
-                        // somewhere else and we don't care about the results here
-                        while (this.Door.IsOpenedOrOpening)
-                        {
-                            await Task.Delay(500).ConfigureAwait(false);
-                        }
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                            Task.Factory.StartNew(this.Move, TaskCreationOptions.LongRunning).ConfigureAwait(false);
-#pragma warning restore CS4014
-                    }
-                    catch (Exception ex)
-                    {
-                        this.OnError(ex);
-                    }
+                    Thread.Sleep(500); //.ConfigureAwait(false);
                 }
-            }
+
+                if (!destination.FromPassenger && destination.Floor == this.CurrentFloor &&
+                    (this.State == ElevatorState.Arrived || this.State == ElevatorState.Idle))
+                {
+                    // Wait for door to open here so that the passengers who started opening the door get in first
+                    this.Door.WaitForDoorToOpen().ConfigureAwait(false).GetAwaiter().GetResult();
+                    Thread.Sleep(500); //.ConfigureAwait(false);
+                }
+
+                this._floorsToStopAt.AddDistinct(destination);
+
+
+                if (this.Moving || this.RequestedDirection != Direction.None) return;
+                // Only start the Movement thread if the elevator hasn't already been assigned a direction
+
+                this.RequestedDirection = destination.Direction;
+
+                try
+                {
+                    // Starts the movement in a seperate thread with Task.Run Not awaited because it's running
+                    // somewhere else and we don't care about the results here
+                    while (this.Door.IsOpenedOrOpening)
+                    {
+                        Thread.Sleep(500); //.ConfigureAwait(false);
+                    }
+
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+                    Task.Factory.StartNew(this.Move, TaskCreationOptions.LongRunning).ConfigureAwait(false);
+#pragma warning restore CS4014
+                }
+                catch (Exception ex)
+                {
+                    this.OnError(ex);
+                }
+            });
         }
 
         /// <inheritdoc/>

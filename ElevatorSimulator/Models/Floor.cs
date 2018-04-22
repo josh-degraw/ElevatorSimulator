@@ -302,7 +302,7 @@ namespace ElevatorApp.Models
 
             await this.CallPanel.Subscribe(controller);
 
-            var elevator = controller.Elevator;
+            Elevator elevator = controller.Elevator;
 
             if (elevator.CurrentFloor == this.FloorNumber)
             {
@@ -316,7 +316,6 @@ namespace ElevatorApp.Models
             elevator.Door.Opened += addPassengersToElevator;
             elevator.Door.CloseRequested += this.cancelIfStartsToClose;
             elevator.Door.Closing += this.cancelIfStartsToClose;
-            //elevator.Departed += this.onElevatorDeparted;
             elevator.Departing += this.onElevatorDeparted;
 
             elevator.Approaching += Elevator_Approaching;
