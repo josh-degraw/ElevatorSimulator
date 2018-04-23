@@ -22,7 +22,7 @@
                    VerticalContentAlignment="Top" FontSize="30" Margin="10,14,10,10"
                    Padding="15" />
             <StackPanel Grid.Column="1" Margin="5">
-                  <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
                     <Label>Elevator Available:</Label>
                     <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="ExtraBold">
                         <TextBlock.Style>
@@ -40,40 +40,53 @@
                     </TextBlock>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
-                    <Label Padding="5,5,0,5" >Waiting: 👤 x</Label>
-                    <Label Content="{Binding WaitingPassengers.Count}" Padding="0,5,5,5" />
+                <StackPanel>
+                    <Label Padding="5,5,0,5" >Waiting:</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>👤 x</Label>
+                        <Label Content="{Binding WaitingPassengers.Count}" Padding="0,5,5,5" />
+                    </StackPanel>
                 </StackPanel>
                 <!--<StackPanel Orientation="Horizontal">
                     <Label>Waiting ▲ ▼ 👤:</Label>
                     <Label Content="{Binding WaitingPassengersDown.Count}" />
                 </StackPanel>-->
             </StackPanel>
-            <Expander
-                IsExpanded="True"
-                Grid.Column="2"
-                Header="Add Passenger"
-                Margin="5"
-                ExpandDirection="Down">
 
-                <StackPanel>
-                    <Label >Destination:</Label>
-                    <ItemsControl BorderThickness="0"
+
+            <StackPanel Grid.Column="2">
+                <Label>Add Passenger</Label>
+                <Label >Destination:</Label>
+                <ItemsControl BorderThickness="0"
                                   Background="Transparent"
                                   ItemsSource="{Binding CallPanel.FloorButtons}" BorderBrush="Black">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Content="{Binding Label}" DataContext="{Binding}" IsEnabled="{Binding IsEnabled, FallbackValue=true}" Margin="2" Width="25" Height="25" FontSize="11" Click="Button_Click" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </StackPanel>
-            </Expander>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button 
+                                    Content="{Binding Label}" 
+                                    DataContext="{Binding}" 
+                                    IsEnabled="{Binding IsEnabled, FallbackValue=true}" 
+                                    Margin="2" Width="25" Height="25" FontSize="11" 
+                                    Click="Button_Click">
+                                <Button.ToolTip>
+                                    <WrapPanel>
+                                        <Label Padding="0,0,1,0">Add a passenger going from floor</Label>
+                                        <Label Padding="1,0" Content="{Binding FloorNumber}" />
+                                        <Label Padding="1,0">to floor</Label>
+                                        <Label Padding="1,0,0,0" Content="{Binding DestinationFloor}"/>
+                                    </WrapPanel>
+                                </Button.ToolTip>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+
         </Grid>
     </Border>
 </UserControl>

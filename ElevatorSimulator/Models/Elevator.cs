@@ -26,12 +26,6 @@ namespace ElevatorApp.Models
         #region Private Fields
 
         /// <summary>
-        /// The registered elevators.
-        /// </summary>
-        [Obsolete("No longer needed because we're only using one Elevator now")]
-        private static int _RegisteredElevators = 0;
-
-        /// <summary>
         /// The floors to stop at
         /// </summary>
         private readonly AsyncObservableCollection<ElevatorCall> _floorsToStopAt = new AsyncObservableCollection<ElevatorCall>();
@@ -285,8 +279,9 @@ namespace ElevatorApp.Models
                     if (this.FloorRequests.Any() && !this.Passengers.Any())
                     {
                         //Reset the direction and then get the next floor to pick up a passenger at
-                        this.RequestedDirection = this.assignDirection(this.FloorRequests.Min(a => Math.Abs(a.Floor - this.CurrentFloor)));
-                        await this.Move().ConfigureAwait(false);
+                        var nextCall = this.FloorRequests.MinByOrDefault(a => Math.Abs(a.Floor - this.CurrentFloor));
+                        this.RequestedDirection = this.assignDirection(nextCall.Floor);
+                        this.OnNext(nextCall);
                     }
                 }
             }
@@ -334,10 +329,15 @@ namespace ElevatorApp.Models
         {
             try
             {
-                while (this._floorsToStopAt.Any())
+                // If it takes longer than the given timespan to finish this call, the thread is currently in use, i.e.
+                // the elevator is already moving, so we should get out.
+                // There should only be one thread in this function at a time
+                await _semaphore.WaitAsync(TimeSpan.FromMilliseconds(50));
+                try
                 {
-
-                    var (destination, direction) = this.FloorRequests
+                    while (this._floorsToStopAt.Any())
+                    {
+                        var (destination, direction) = this.FloorRequests
                             .Where(a =>
                             {
                                 // If we're not moving, find the closest floor.
@@ -351,53 +351,60 @@ namespace ElevatorApp.Models
                             })
                             .MinBy(a => Math.Abs(a.Floor - this.CurrentFloor));
 
-                    this.RequestedDirection = this.assignDirection(destination);
+                        this.RequestedDirection = this.assignDirection(destination);
 
-                    if (this.RequestedDirection == Direction.None)
-                        break;
+                        if (this.RequestedDirection == Direction.None)
+                            break;
 
-                    switch (this.RequestedDirection)
-                    {
-                        case Direction.Up:
+                        switch (this.RequestedDirection)
+                        {
+                            case Direction.Up:
 
-                            this.NextFloor = this.CurrentFloor + 1;
-                            await this._startMovement(new ElevatorMovementEventArgs(destination, direction));
-
-                            do
-                            {
                                 this.NextFloor = this.CurrentFloor + 1;
-                                await this.PerformMovement(destination, direction, a => a + 1);
-                            }
-                            while (this.NextFloor < destination);
+                                await this._startMovement(new ElevatorMovementEventArgs(destination, direction));
 
-                            break;
+                                do
+                                {
+                                    this.NextFloor = this.CurrentFloor + 1;
+                                    await this.PerformMovement(destination, direction, a => a + 1);
+                                } while (this.NextFloor < destination);
 
-                        case Direction.Down:
-                            this.NextFloor = this.CurrentFloor - 1;
-                            await this._startMovement(new ElevatorMovementEventArgs(destination, direction));
+                                break;
 
-                            do
-                            {
+                            case Direction.Down:
                                 this.NextFloor = this.CurrentFloor - 1;
-                                await this.PerformMovement(destination, direction, a => a - 1);
-                            }
-                            while (this.NextFloor > destination);
+                                await this._startMovement(new ElevatorMovementEventArgs(destination, direction));
 
-                            break;
+                                do
+                                {
+                                    this.NextFloor = this.CurrentFloor - 1;
+                                    await this.PerformMovement(destination, direction, a => a - 1);
+                                } while (this.NextFloor > destination);
+
+                                break;
+                        }
+
+                        await this._arriveAtFloor(new ElevatorMovementEventArgs(destination, direction));
                     }
-
-                    await this._arriveAtFloor(new ElevatorMovementEventArgs(destination, direction));
                 }
+                catch (Exception ex)
+                {
+                    this.OnError(ex);
+                }
+                finally
+                {
+                    this.OnCompleted();
+
+                    _semaphore.Release();
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                ;// Ignore this error, it just means that the thread should not be used, since the elevator is already moving
             }
             catch (Exception ex)
             {
                 this.OnError(ex);
-            }
-            finally
-            {
-                this.OnCompleted();
-
-                // semaphore.Release();
             }
         }
 
@@ -405,7 +412,7 @@ namespace ElevatorApp.Models
         {
             try
             {
-                await this._semaphore.WaitAsync().ConfigureAwait(false);
+                //    await this._semaphore.WaitAsync().ConfigureAwait(false);
                 Thread.Sleep(FLOOR_MOVEMENT_SPEED.ToTimeSpan());//.ConfigureAwait(false);
 
                 var args = new ElevatorApproachingEventArgs(this.NextFloor, destination, direction);
@@ -435,7 +442,7 @@ namespace ElevatorApp.Models
             }
             finally
             {
-                this._semaphore.Release();
+                // this._semaphore.Release();
             }
         }
 
@@ -454,11 +461,10 @@ namespace ElevatorApp.Models
                 Thread.Sleep(Passenger.TransitionSpeed);
 
                 this._passengers.Remove(passenger);
+
                 passenger.State = PassengerState.Out;
 
                 this.PassengerExited?.Invoke(this, passenger);
-
-                Stats.Instance.PassengerWaitTimes.Add(passenger.TimeSpentInElevator + passenger.TimeWaiting);
             }
             finally
             {
@@ -553,6 +559,7 @@ namespace ElevatorApp.Models
         public Elevator(int initialFloor = 1)
         {
             this._currentFloor = initialFloor;
+
             //this.ElevatorNumber = ++_RegisteredElevators;
 
             LogEvent("Initializing Elevator", ("ElevatorNumber", this.ElevatorNumber));
@@ -777,7 +784,6 @@ namespace ElevatorApp.Models
         /// <param name="passenger">The <see cref="Passenger"/> that will be boarding.</param>
         public Task AddPassenger(Passenger passenger)
         {
-            //await semaphore.WaitAsync().ConfigureAwait(true);
             try
             {
                 this.UpdatingPassengers = true;
@@ -805,7 +811,7 @@ namespace ElevatorApp.Models
 
         /// <inheritdoc/>
         /// <summary>
-        /// Runs when the <see cref="T:ElevatorApp.Models.Elevator"/> has completed all of the requests it has.
+        /// Runs when the <see cref="Elevator"/> has completed all of the requests it has.
         /// </summary>
         public void OnCompleted()
         {
@@ -832,45 +838,55 @@ namespace ElevatorApp.Models
         /// <param name="destination"></param>
         public void OnNext(ElevatorCall destination)
         {
-            Task.Run(() =>
+            Task.Run(async () =>
             {
-                while (this.Door.IsOpenedOrOpening && destination.Floor != this.CurrentFloor)
-                {
-                    Thread.Sleep(500); //.ConfigureAwait(false);
-                }
-
-                if (!destination.FromPassenger && destination.Floor == this.CurrentFloor &&
-                    (this.State == ElevatorState.Arrived || this.State == ElevatorState.Idle))
-                {
-                    // Wait for door to open here so that the passengers who started opening the door get in first
-                    this.Door.WaitForDoorToOpen().ConfigureAwait(false).GetAwaiter().GetResult();
-                    Thread.Sleep(500); //.ConfigureAwait(false);
-                }
-
-                this._floorsToStopAt.AddDistinct(destination);
-
-
-                if (this.Moving || this.RequestedDirection != Direction.None) return;
-                // Only start the Movement thread if the elevator hasn't already been assigned a direction
-
-                this.RequestedDirection = destination.Direction;
-
                 try
                 {
-                    // Starts the movement in a seperate thread with Task.Run Not awaited because it's running
-                    // somewhere else and we don't care about the results here
-                    while (this.Door.IsOpenedOrOpening)
+                    while (this.Door.IsOpenedOrOpening && destination.Floor != this.CurrentFloor)
                     {
-                        Thread.Sleep(500); //.ConfigureAwait(false);
+                        //Thread.Sleep(500); //.ConfigureAwait(false);
+                        await Task.Delay(500);
                     }
 
+                    if (!destination.FromPassenger && destination.Floor == this.CurrentFloor &&
+                        (this.State == ElevatorState.Arrived || this.State == ElevatorState.Idle))
+                    {
+                        // Wait for door to open here so that the passengers who started opening the door get in first
+                        this.Door.WaitForDoorToOpen().ConfigureAwait(false).GetAwaiter().GetResult();
+                        await Task.Delay(500);
+                        //Thread.Sleep(500); //.ConfigureAwait(false);
+                    }
+
+                    this._floorsToStopAt.AddDistinct(destination);
+
+                    if (this.Moving || this.RequestedDirection != Direction.None) return;
+
+                    // Only start the Movement thread if the elevator hasn't already been assigned a direction
+
+                    this.RequestedDirection = destination.Direction;
+
+                    try
+                    {
+                        while (this.Door.IsOpenedOrOpening)
+                        {
+                            await Task.Delay(500);
+                            //Thread.Sleep(500); //.ConfigureAwait(false);
+                        }
+
+                        // Starts the movement in a seperate thread with Task.Run Not awaited because it's running somewhere
+                        // else and we don't care about the results here
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                    Task.Factory.StartNew(this.Move, TaskCreationOptions.LongRunning).ConfigureAwait(false);
+                        Task.Factory.StartNew(this.Move, TaskCreationOptions.LongRunning).ConfigureAwait(false);
 #pragma warning restore CS4014
+                    }
+                    catch (Exception ex)
+                    {
+                        this.OnError(ex);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    this.OnError(ex);
+                    Console.WriteLine(ex);
                 }
             });
         }

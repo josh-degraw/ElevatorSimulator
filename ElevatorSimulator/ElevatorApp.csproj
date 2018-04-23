@@ -128,6 +128,9 @@
     <Compile Include="Controls\PassengerQueueControl.xaml.cs">
       <DependentUpon>PassengerQueueControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\StatisticControl.xaml.cs">
+      <DependentUpon>StatisticControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\ButtonPanelBase.cs" />
     <Compile Include="Models\ElevatorCall.cs" />
@@ -175,6 +178,7 @@
     <Compile Include="Util\IStatistic.cs">
       <DependentUpon>Statistic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\IStats.cs" />
     <Compile Include="Util\LocalSystemClock.cs" />
     <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\LongStatistic.cs">
@@ -222,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\PassengerQueueControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StatisticControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

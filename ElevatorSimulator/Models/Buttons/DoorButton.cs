@@ -33,13 +33,7 @@ namespace ElevatorApp.Models
                 }
             }
         }
-
-        /// <summary>
-        /// Invoked after the button has been pressed and the button is now active
-        /// </summary>
-        /// <inheritdoc cref="ButtonBase{T}.OnActivated" />
-        public override event EventHandler OnActivated;
-
+        
         /// <summary>
         /// Push the button
         /// </summary>

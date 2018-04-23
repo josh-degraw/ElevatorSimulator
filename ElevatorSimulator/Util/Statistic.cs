@@ -9,11 +9,12 @@ namespace ElevatorApp.Util
     /// <summary>
     /// Get a string from a given item.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type of the item</typeparam>
     /// <param name="item">The item.</param>
     /// <returns>A string representation of the given item</returns>
     public delegate string ToStringMethod<in T>(T item);
 
+    /// <inheritdoc />
     /// <summary>
     /// Represents a statistical computation. As new items are added, the new statistical values are calculated and
     /// updated, so that read operations yield no real cost
@@ -253,9 +254,9 @@ namespace ElevatorApp.Util
                 this.Add(item);
             }
         }
-
+        
         /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// Returns a string representation of the values of the statistic
         /// </summary>
         /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
         [Pure]

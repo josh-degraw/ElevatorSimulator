@@ -13,10 +13,12 @@
     <!--DataContext="{x:Static util:Logger.Instance}"-->
     <Grid Height="{Binding ElementName=loggerView, Path=Height}" Margin="0,0,0,10">
         <Grid.RowDefinitions>
+            <RowDefinition  Height="25" />
             <RowDefinition />
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
-        <ListView Grid.Row="0" x:Name="listViewEvents"
+        <TextBlock Grid.Row="0">Events</TextBlock>
+        <ListView Grid.Row="1"  x:Name="listViewEvents"
 
                   VerticalAlignment="Stretch"
                   ScrollViewer.CanContentScroll="True"
@@ -26,9 +28,13 @@
                   ScrollViewer.ScrollChanged="ScrollViewer_ScrollChanged">
         </ListView>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Loaded="StackPanel_Loaded">
-            <Button Padding="15,4" Margin="25,0,15,0" Click="btnClear_click">Clear</Button>
-            <Button x:Name="btnSave" Padding="15,4" Click="btnSave_Click">Save</Button>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Loaded="StackPanel_Loaded">
+            <Button Padding="15,4" Margin="25,0,15,0" Click="btnClear_click" ToolTip="Clear the contents of the log. This action cannot be undone.">
+                Clear
+            </Button>
+            <Button x:Name="btnSave" Padding="15,4" Click="btnSave_Click" ToolTip="Save the contents of the application log to a file">
+                Save
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

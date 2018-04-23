@@ -27,7 +27,7 @@ namespace ElevatorApp.Models
     /// <param name="args"></param>
     public delegate void DoorStateChangeRequestHandler(object sender, DoorStateChangeEventArgs args);
 
-    /// <inheritdoc/>
+    /// <inheritdoc cref="ISubcriber{T}"/>
     /// <summary>
     /// Represents the door of the <see cref="T:ElevatorApp.Models.Elevator"/>
     /// </summary>
@@ -41,9 +41,14 @@ namespace ElevatorApp.Models
         // private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
 
         /// <summary>
+        /// The amount of time it takes to go from opening to opened, or from closing to closed
+        /// </summary>
+        public const int HALF_TRANSITION_TIME_SECONDS = 1;
+
+        /// <summary>
         /// The number of seconds it takes for the <see cref="Door"/> to close and to open
         /// </summary>
-        public const int TRANSITION_TIME_SECONDS = 2;
+        public const int TRANSITION_TIME_SECONDS = HALF_TRANSITION_TIME_SECONDS * 2;
 
         /// <summary>
         /// The number of seconds the <see cref="Door"/> stays open

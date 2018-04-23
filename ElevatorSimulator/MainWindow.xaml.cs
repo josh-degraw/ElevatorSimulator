@@ -9,7 +9,7 @@ namespace ElevatorApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : RibbonWindow
+    public partial class MainWindow : Window
     {
         private readonly object _locker = new object();
         /// <summary>
@@ -41,9 +41,6 @@ namespace ElevatorApp
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Stats_Click(object sender, RoutedEventArgs e)
         {
-            // These are to tell the stats class which thing to use, waitTime, rideTimes, or totalTimes
-            int x = 1, y = 2, z = 3;
-
             // check to see if i can pass the collection in right here
             MessageBox.Show("Elevator Simulator Statistics" + "\n\n" + Stats.Instance);
 
@@ -67,6 +64,16 @@ namespace ElevatorApp
         private void LoggerView_Loaded(object sender, RoutedEventArgs e)
         {
             ViewModel?.Controller.Init();
+        }
+
+        private void btnStatsClick(object sender, RoutedEventArgs e)
+        {
+            //this.lstViewStats.Items.Clear();
+
+            //foreach (var stat in Stats.Instance)
+            //{
+            //    this.lstViewStats.Items.Add(stat);
+            //}
         }
     }
 }

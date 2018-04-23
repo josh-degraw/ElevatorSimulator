@@ -1,0 +1,30 @@
+﻿<DataGrid  x:Class="ElevatorApp.Controls.StatisticControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElevatorApp.Controls"
+             xmlns:util="clr-namespace:ElevatorApp.Util"
+             mc:Ignorable="d" 
+             d:DesignHeight="349.5" d:DesignWidth="512"
+             x:Name="control"
+             IsReadOnly="True" 
+             ItemsSource="{Binding ElementName=control, Path=ViewModel.AllStatistics}" 
+             AutoGenerateColumns="False"
+           >
+    <Control.Resources>
+        <local:DurationConverter x:Key="durationConverter"/>
+    </Control.Resources>
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+        <DataGridTextColumn Header="Average" Binding="{Binding Average, Converter={StaticResource durationConverter}}" >
+            <DataGridTextColumn.ElementStyle>
+                <Style></Style>
+            </DataGridTextColumn.ElementStyle>
+        </DataGridTextColumn>
+        <DataGridTextColumn Header="Min" Binding="{Binding Min, Converter={StaticResource durationConverter}}"/>
+        <DataGridTextColumn Header="Max" Binding="{Binding Max, Converter={StaticResource durationConverter}}"/>
+        <DataGridTextColumn Header="Count" Binding="{Binding Count}"/>
+    </DataGrid.Columns>
+
+</DataGrid>

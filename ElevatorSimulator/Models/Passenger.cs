@@ -6,10 +6,11 @@ using System.Collections.Generic;
 
 namespace ElevatorApp.Models
 {
+    /// <inheritdoc />
     /// <summary>
     /// Represents a Passenger
     /// </summary>
-    /// <seealso cref="ElevatorApp.Models.ModelBase"/>
+    /// <seealso cref="T:ElevatorApp.Models.ModelBase" />
     public class Passenger : ModelBase
     {
         #region Private Fields
@@ -112,6 +113,23 @@ namespace ElevatorApp.Models
         }
 
         /// <summary>
+        /// Called when a <see cref="Passenger"/> has just entered the <see cref="Elevator"/>
+        /// </summary>
+        public event EventHandler<Passenger> EnteredElevator = (sender, passenger) =>
+        {
+            Stats.Instance.PassengerWaitTimes.Add(passenger.TimeWaiting);
+        };
+
+        /// <summary>
+        /// Called when a <see cref="Passenger"/> has just left the <see cref="Elevator"/>
+        /// </summary>
+        public event EventHandler<Passenger> ExitedElevator = (sender, passenger) =>
+        {
+            Stats.Instance.PassengerRideTimes.Add(passenger.TimeSpentInElevator);
+            Stats.Instance.PassengerTotalTimes.Add(passenger.TimeSpentInElevator + passenger.TimeWaiting);
+        };
+
+        /// <summary>
         /// Represents the state of the <see cref="Passenger"/>
         /// </summary>
         public PassengerState State
@@ -125,20 +143,22 @@ namespace ElevatorApp.Models
 
                 switch (value)
                 {
-                    case PassengerState.Waiting:
-                        this.WaitStart = LocalSystemClock.GetCurrentInstant();
-                        break;
-
                     case PassengerState.Transition when oldVal == PassengerState.Waiting:
                         this.WaitEnd = LocalSystemClock.GetCurrentInstant();
                         break;
 
+                    case PassengerState.Waiting:
+                        this.WaitStart = LocalSystemClock.GetCurrentInstant();
+                        break;
+
                     case PassengerState.In:
                         this.Entered = LocalSystemClock.GetCurrentInstant();
+                        EnteredElevator?.Invoke(this, this);
                         break;
 
                     case PassengerState.Out:
                         this.Exited = LocalSystemClock.GetCurrentInstant();
+                        ExitedElevator?.Invoke(this, this);
                         break;
 
                     default:
@@ -160,6 +180,7 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Represents how heavy the <see cref="Passenger"/> is
         /// </summary>
+        [Obsolete]
         public int Weight { get; set; }
 
 
@@ -197,13 +218,13 @@ namespace ElevatorApp.Models
                 obj.Add(("Time Spent in Elevator", passenger.TimeSpentInElevator.ToString(duration_format, null)));
 
                 //This is where I have the passenger add its timings to the stats class for now... certainly a temporary thing
-                
+
                 // This is where the 3 statistics are added to the stats collections
                 Stats.Instance.PassengerWaitTimes.Add(passenger.TimeWaiting);
                 Stats.Instance.PassengerRideTimes.Add(passenger.TimeSpentInElevator);
                 Stats.Instance.PassengerWaitTimes.Add(passenger.TotalTime);
 
-                
+
                 //I also have it print out
                 obj.Add(("Current Average Wait Time ", Stats.Instance.PassengerWaitTimes));
 
