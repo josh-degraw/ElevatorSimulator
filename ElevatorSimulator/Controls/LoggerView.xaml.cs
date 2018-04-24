@@ -1,6 +1,7 @@
 ﻿using ElevatorApp.Util;
 using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -62,6 +63,11 @@ namespace ElevatorApp.Controls
         {
             //BindingOperations.EnableCollectionSynchronization(Logger.Events, _locker);
             this.InitializeComponent();
+            this.Dispatcher.UnhandledException += (sender, e) =>
+            {
+                e.Handled = true;
+                Trace.TraceError(e.Exception.ToString() + "\n" + e.Exception.InnerException?.ToString());
+            };
         }
 
         /// <summary>

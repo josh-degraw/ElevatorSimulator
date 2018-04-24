@@ -241,7 +241,7 @@ namespace ElevatorApp.Models
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args">The floor that the elevator is arriving at</param>
-        private async void ElevatorArrived(object sender, ElevatorMovementEventArgs args)
+        private void ElevatorArrived(object sender, ElevatorMovementEventArgs args)
         {
             try
             {
@@ -258,13 +258,13 @@ namespace ElevatorApp.Models
                 IEnumerable<Passenger> leaving =
                         this.Passengers.Where(p => p.Path.destination == args.DestinationFloor);
 
-                await this.Door.WaitForDoorToOpen().ConfigureAwait(false);
+                this.Door.WaitForDoorToOpen().GetAwaiter().GetResult();
 
                 foreach (Passenger passenger in leaving)
                 {
                     try
                     {
-                        await this.RemovePassenger(passenger).ConfigureAwait(false);
+                        this.RemovePassenger(passenger);//.GetAwaiter().GetResult();
                     }
                     catch (Exception ex)
                     {
@@ -450,7 +450,7 @@ namespace ElevatorApp.Models
         /// Moves a <see cref="Passenger"/> off of the <see cref="Elevator"/>
         /// </summary>
         /// <param name="passenger">The <see cref="Passenger"/> that will be departing.</param>
-        private Task RemovePassenger(Passenger passenger)
+        private void RemovePassenger(Passenger passenger)
         {
             try
             {
@@ -470,8 +470,6 @@ namespace ElevatorApp.Models
             {
                 this.UpdatingPassengers = false;
             }
-
-            return Task.CompletedTask;
         }
 
         /// <summary>
@@ -746,11 +744,7 @@ namespace ElevatorApp.Models
         {
             get => this._elevatorState;
 
-            private set
-            {
-                Debug.Assert(this._validateStateChange(this._elevatorState, value), "Invalid state change for elevator", "{0} -> {1}", this._elevatorState, value);
-                this.SetProperty(ref this._elevatorState, value);
-            }
+            private set => this.SetProperty(ref this._elevatorState, value);
         }
 
         /// <summary>
@@ -782,7 +776,7 @@ namespace ElevatorApp.Models
         /// Adds a new <see cref="Passenger"/> to the <see cref="Elevator"/>
         /// </summary>
         /// <param name="passenger">The <see cref="Passenger"/> that will be boarding.</param>
-        public Task AddPassenger(Passenger passenger)
+        public void AddPassenger(Passenger passenger)
         {
             try
             {
@@ -791,7 +785,7 @@ namespace ElevatorApp.Models
                 passenger.State = PassengerState.Transition;
 
                 // Simulate time it takes to enter the elevator
-                Thread.Sleep(Passenger.TransitionSpeed);//.ConfigureAwait(true);
+                Thread.Sleep(Passenger.TransitionSpeed); //.ConfigureAwait(true);
 
                 passenger.State = PassengerState.In;
 
@@ -801,12 +795,15 @@ namespace ElevatorApp.Models
 
                 this.OnNext(passenger.Call);
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
             finally
             {
                 this.UpdatingPassengers = false;
             }
 
-            return Task.CompletedTask;
         }
 
         /// <inheritdoc/>
@@ -815,10 +812,17 @@ namespace ElevatorApp.Models
         /// </summary>
         public void OnCompleted()
         {
-            this.Moving = false;
-            this.RequestedDirection = Direction.None;
-            this.State = ElevatorState.Idle;
-            LogEvent("Elevator path completed.");
+            try
+            {
+                this.Moving = false;
+                this.RequestedDirection = Direction.None;
+                this.State = ElevatorState.Idle;
+                LogEvent("Elevator path completed.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         /// <inheritdoc/>
@@ -828,7 +832,14 @@ namespace ElevatorApp.Models
         /// <param name="error">An object that provides additional information about the error.</param>
         public void OnError(Exception error)
         {
-            Trace.TraceError(error.ToString());
+            try
+            {
+                Trace.TraceError(error.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         /// <inheritdoc/>
@@ -838,57 +849,62 @@ namespace ElevatorApp.Models
         /// <param name="destination"></param>
         public void OnNext(ElevatorCall destination)
         {
-            Task.Run(async () =>
+            try
             {
-                try
+                Task.Run(async () =>
                 {
-                    while (this.Door.IsOpenedOrOpening && destination.Floor != this.CurrentFloor)
-                    {
-                        //Thread.Sleep(500); //.ConfigureAwait(false);
-                        await Task.Delay(500);
-                    }
-
-                    if (!destination.FromPassenger && destination.Floor == this.CurrentFloor &&
-                        (this.State == ElevatorState.Arrived || this.State == ElevatorState.Idle))
-                    {
-                        // Wait for door to open here so that the passengers who started opening the door get in first
-                        this.Door.WaitForDoorToOpen().ConfigureAwait(false).GetAwaiter().GetResult();
-                        await Task.Delay(500);
-                        //Thread.Sleep(500); //.ConfigureAwait(false);
-                    }
-
-                    this._floorsToStopAt.AddDistinct(destination);
-
-                    if (this.Moving || this.RequestedDirection != Direction.None) return;
-
-                    // Only start the Movement thread if the elevator hasn't already been assigned a direction
-
-                    this.RequestedDirection = destination.Direction;
-
                     try
                     {
-                        while (this.Door.IsOpenedOrOpening)
+                        while (this.Door.IsOpenedOrOpening && destination.Floor != this.CurrentFloor)
                         {
                             await Task.Delay(500);
-                            //Thread.Sleep(500); //.ConfigureAwait(false);
                         }
 
-                        // Starts the movement in a seperate thread with Task.Run Not awaited because it's running somewhere
-                        // else and we don't care about the results here
+                        if (!destination.FromPassenger && destination.Floor == this.CurrentFloor &&
+                            (this.State == ElevatorState.Arrived || this.State == ElevatorState.Idle))
+                        {
+                            // Wait for door to open here so that the passengers who started opening the door get in first
+                            await this.Door.WaitForDoorToOpen();
+                            await Task.Delay(500);
+
+                        }
+
+                        this._floorsToStopAt.AddDistinct(destination);
+
+                        if (this.Moving || this.RequestedDirection != Direction.None) return;
+
+                        // Only start the Movement thread if the elevator hasn't already been assigned a direction
+
+                        this.RequestedDirection = destination.Direction;
+
+                        try
+                        {
+                            while (this.Door.IsOpenedOrOpening)
+                            {
+                                await Task.Delay(500);
+                            }
+
+                            // Starts the movement in a seperate thread with Task.Run Not awaited because it's running somewhere
+                            // else and we don't care about the results here
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                        Task.Factory.StartNew(this.Move, TaskCreationOptions.LongRunning).ConfigureAwait(false);
+                            Task.Factory.StartNew(this.Move, TaskCreationOptions.LongRunning).ConfigureAwait(false);
 #pragma warning restore CS4014
+                        }
+                        catch (Exception ex)
+                        {
+                            this.OnError(ex);
+                        }
                     }
                     catch (Exception ex)
                     {
-                        this.OnError(ex);
+                        Console.WriteLine(ex);
                     }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-            });
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         /// <inheritdoc/>

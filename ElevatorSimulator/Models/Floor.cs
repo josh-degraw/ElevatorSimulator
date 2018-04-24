@@ -118,11 +118,11 @@ namespace ElevatorApp.Models
         /// </summary>
         /// <param name="elevator">The elevator.</param>
         /// <returns></returns>
-        private async Task _addPassengersToElevator(Elevator elevator)
+        private void _addPassengersToElevator(Elevator elevator)
         {
             // TODO: Wait for all passengers to get out
             IEnumerable<Passenger> departing = this.getPassengersToMove(elevator);
-            await this._addPassengersToElevator(departing, elevator).ConfigureAwait(false);
+            this._addPassengersToElevator(departing, elevator);//.ConfigureAwait(false);
         }
 
         /// <summary>
@@ -134,15 +134,15 @@ namespace ElevatorApp.Models
         /// <param name="departing"></param>
         /// <param name="elevator"></param>
         /// <returns></returns>
-        private async Task _addPassengersToElevator(IEnumerable<Passenger> departing, Elevator elevator)
+        private void _addPassengersToElevator(IEnumerable<Passenger> departing, Elevator elevator)
         {
-            await this._mutex.WaitAsync().ConfigureAwait(false);
+            this._mutex.Wait();
             this._adding = true;
             try
             {
                 foreach (Passenger passenger in departing)
                 {
-                    await elevator.AddPassenger(passenger);
+                    elevator.AddPassenger(passenger);
                 }
             }
             catch (Exception ex)
@@ -237,9 +237,12 @@ namespace ElevatorApp.Models
         /// </param>
         private void onElevatorArrivedAtThisFloor(object _, ElevatorMovementEventArgs args)
         {
-            if (args.DestinationFloor == this.FloorNumber)
+            lock (_locker)
             {
-                this.ElevatorAvailable = true;
+                if (args.DestinationFloor == this.FloorNumber)
+                {
+                    this.ElevatorAvailable = true;
+                }
             }
         }
 
@@ -252,7 +255,8 @@ namespace ElevatorApp.Models
         /// </param>
         private void onElevatorDeparted(object _, ElevatorMovementEventArgs call)
         {
-            this.ElevatorAvailable = false;
+            lock (_locker)
+                this.ElevatorAvailable = false;
         }
 
         /// <summary>
@@ -281,6 +285,8 @@ namespace ElevatorApp.Models
                 }
             }
         }
+
+        private readonly object _locker = new object();
 
         /// <summary>
         /// Subscribes the <see cref="Floor"/> to the given master controller and elevator
@@ -324,12 +330,15 @@ namespace ElevatorApp.Models
             #region Local methods for event handlers, which do the real work
 
             // Respond to passengers trying to get on the elevator
-            async void onPassengerAdded(object sender, NotifyCollectionChangedEventArgs e)
+            void onPassengerAdded(object sender, NotifyCollectionChangedEventArgs e)
             {
                 if (e.Action == NotifyCollectionChangedAction.Add)
                 {
                     // If the elevator is here, add the passengers and get going
-                    if (this.ElevatorAvailable)
+                    var available = false;
+                    lock (_locker)
+                        available = ElevatorAvailable;
+                    if (available)
                     {
                         try
                         {
@@ -340,7 +349,7 @@ namespace ElevatorApp.Models
                             else
                             {
                                 IEnumerable<Passenger> departing = this.getPassengersToMove(elevator);
-                                await this._addPassengersToElevator(departing, elevator).ConfigureAwait(false);
+                                this._addPassengersToElevator(departing, elevator);
                             }
                         }
                         catch (Exception ex)
@@ -351,13 +360,19 @@ namespace ElevatorApp.Models
                 }
             }
 
-            async void addPassengersToElevator(object _, DoorStateChangeEventArgs args)
+            void addPassengersToElevator(object _, DoorStateChangeEventArgs args)
             {
                 try
                 {
-                    if (elevator.CurrentFloor == this.FloorNumber && this.ElevatorAvailable)
+                    if (elevator.CurrentFloor == this.FloorNumber)
                     {
-                        await this._addPassengersToElevator(elevator).ConfigureAwait(false);
+                        lock (_locker)
+                        {
+                            if (this.ElevatorAvailable)
+                            {
+                                this._addPassengersToElevator(elevator);
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)

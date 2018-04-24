@@ -181,14 +181,14 @@ namespace ElevatorApp.Models
         /// </summary>
         public Door()
         {
-            this.OpenRequested += delegate { Logger.LogEvent("Door Open requested"); };
-            this.CloseRequested += delegate { Logger.LogEvent("Door Close requested"); };
+            //this.OpenRequested = delegate { Logger.LogEvent("Door Open requested"); };
+            //this.CloseRequested = delegate { Logger.LogEvent("Door Close requested"); };
 
-            this.Closing += delegate { Logger.LogEvent("Door Closing"); };
-            this.Closed += delegate { Logger.LogEvent("Door Closed"); };
+            //this.Closing = delegate { Logger.LogEvent("Door Closing"); };
+            //this.Closed = delegate { Logger.LogEvent("Door Closed"); };
 
-            this.Opening += delegate { Logger.LogEvent("Door Opening"); };
-            this.Opened += delegate { Logger.LogEvent("Door Opened"); };
+            //this.Opening = delegate { Logger.LogEvent("Door Opening"); };
+            //this.Opened = delegate { Logger.LogEvent("Door Opened"); };
         }
 
         /// <summary>
@@ -204,11 +204,11 @@ namespace ElevatorApp.Models
         /// <summary>
         /// Ask the <see cref="Door"/> to open
         /// </summary>
-        public async void RequestOpen()
+        public void RequestOpen()
         {
             try
             {
-                await this.RequestOpen(false).ConfigureAwait(false);
+                Task.Run(() => this.RequestOpen(false)).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -241,11 +241,12 @@ namespace ElevatorApp.Models
                 if (this.IsCloseRequested || args.CancelOperation)
                 {
                     // If close has already been requested, just let that call complete
-                    if (!this._closeRequestBegun) this.RequestClose(true);
+                    if (!this._closeRequestBegun)
+                        this.RequestClose(true);
+
                     return;
                 }
 
-                //TODO: Tooltips
                 args = new DoorStateChangeEventArgs();
 
                 this.DoorState = DoorState.Opening;
@@ -262,7 +263,7 @@ namespace ElevatorApp.Models
                     return;
                 }
 
-                await Task.Delay(this.TRANSITION_TIME).ConfigureAwait(false);
+                await Task.Delay(this.TRANSITION_TIME);//.ConfigureAwait(false);
                 args = new DoorStateChangeEventArgs();
                 if (this.DoorState == DoorState.Opening)
                 {
@@ -270,7 +271,7 @@ namespace ElevatorApp.Models
                     this.Opened?.Invoke(this, args);
                 }
 
-                await Task.Delay(this.TIME_SPENT_OPEN).ConfigureAwait(true);
+                await Task.Delay(this.TIME_SPENT_OPEN);//.ConfigureAwait(true);
 
                 if (this.IsCloseRequested || args.CancelOperation)
                 {
@@ -295,39 +296,61 @@ namespace ElevatorApp.Models
         /// Waits for door to close. If not already in progress, calls <see cref="RequestClose()"/>
         /// </summary>
         /// <returns></returns>
-        public async Task WaitForDoorToClose()
+        public async Task WaitForDoorToClose(CancellationToken token = default)
         {
-            if (this.DoorState == DoorState.Closed)
-                return;
-
-            this.IsCloseRequested = true;
-
-            //if (this.DoorState != DoorState.Closing)
-            //    this.RequestClose();
-
-            while (this.DoorState != DoorState.Closed)
+            try
             {
-                await Task.Delay(100).ConfigureAwait(false);
-            }
+                if (this.DoorState == DoorState.Closed)
+                    return;
 
-            this.IsCloseRequested = false;
+                this.IsCloseRequested = true;
+
+                //if (this.DoorState != DoorState.Closing)
+                //    this.RequestClose();
+
+                while (this.DoorState != DoorState.Closed)
+                {
+                    await Task.Delay(100, token);//.ConfigureAwait(false);
+                }
+
+                this.IsCloseRequested = false;
+            }
+            catch (OperationCanceledException)
+            {
+                ;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         /// <summary>
         /// Waits for door to open. If not already in progress, calls <see cref="RequestOpen()"/>
         /// </summary>
         /// <returns></returns>
-        public async Task WaitForDoorToOpen()
+        public async Task WaitForDoorToOpen(CancellationToken token = default)
         {
-            if (this.DoorState == DoorState.Opened)
-                return;
-
-            if (this.DoorState != DoorState.Opening)
-                this.RequestOpen();
-
-            while (this.DoorState != DoorState.Opened)
+            try
             {
-                await Task.Delay(100).ConfigureAwait(false);
+                if (this.DoorState == DoorState.Opened)
+                    return;
+
+                if (this.DoorState != DoorState.Opening)
+                    this.RequestOpen();
+
+                while (this.DoorState != DoorState.Opened)
+                {
+                    await Task.Delay(100, token);//.ConfigureAwait(false);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                ;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
 
@@ -344,7 +367,7 @@ namespace ElevatorApp.Models
         /// Requests the door to close.
         /// </summary>
         /// <param name="recursed">If called from <see cref="RequestClose()"/></param>
-        private async void RequestClose(bool recursed)
+        private void RequestClose(bool recursed)
         {
             // If the door is already closed, don't do anything
             if (this.IsClosedOrClosing)
@@ -362,7 +385,7 @@ namespace ElevatorApp.Models
                 if (args.CancelOperation)
                 {
                     if (!this._openRequestBegun)
-                        await this.RequestOpen(true).ConfigureAwait(false);
+                        this.RequestOpen(true).GetAwaiter().GetResult();
                     return;
                 }
 
@@ -372,11 +395,11 @@ namespace ElevatorApp.Models
                 if (args.CancelOperation)
                 {
                     if (!this._openRequestBegun)
-                        await this.RequestOpen(true).ConfigureAwait(false);
+                        this.RequestOpen(true).GetAwaiter().GetResult();
                     return;
                 }
 
-                await Task.Delay(this.TRANSITION_TIME).ConfigureAwait(false);
+                Task.Delay(this.TRANSITION_TIME).GetAwaiter().GetResult();
 
                 if (this.DoorState == DoorState.Closing)
                 {

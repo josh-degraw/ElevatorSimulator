@@ -101,6 +101,11 @@ namespace ElevatorApp.Util
                     this._lock.ExitWriteLock();
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
             finally
             {
                 this._lock.ExitUpgradeableReadLock();

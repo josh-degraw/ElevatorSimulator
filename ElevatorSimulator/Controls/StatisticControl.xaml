@@ -11,10 +11,11 @@
              IsReadOnly="True" 
              ItemsSource="{Binding ElementName=control, Path=ViewModel.AllStatistics}" 
              AutoGenerateColumns="False"
+             VerticalAlignment="Stretch"
            >
-    <Control.Resources>
+    <DataGrid.Resources>
         <local:DurationConverter x:Key="durationConverter"/>
-    </Control.Resources>
+    </DataGrid.Resources>
     <DataGrid.Columns>
         <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
         <DataGridTextColumn Header="Average" Binding="{Binding Average, Converter={StaticResource durationConverter}}" >
