@@ -246,12 +246,16 @@ namespace ElevatorApp.Models
             try
             {
                 this.CurrentFloor = args.DestinationFloor;
+                if(this.RequestedDirection == Direction.Down)
+                    this.NextFloor = this.CurrentFloor - 1;
+                else
+                    this.NextFloor = this.CurrentFloor + 1;
 
                 this.TryRemoveCall(args.Call);
 
                 ElevatorCall calledFromFloor = this._floorsToStopAt.FirstOrDefault(a => a.Floor == this.CurrentFloor && !a.FromPassenger);
 
-                if (calledFromFloor != null) this.TryRemoveCall(calledFromFloor);
+                if (calledFromFloor != null && (calledFromFloor.Direction == this.RequestedDirection || this.Direction == Direction.None)) this.TryRemoveCall(calledFromFloor);
 
                 LogEvent("Elevator Arrived", ("Floor", args.DestinationFloor));
 

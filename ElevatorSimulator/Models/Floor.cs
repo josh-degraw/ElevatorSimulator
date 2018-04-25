@@ -368,6 +368,8 @@ namespace ElevatorApp.Models
                     {
                         lock (_locker)
                         {
+                            if (elevator.CurrentFloor == this.FloorNumber)
+                                this.ElevatorAvailable = true;
                             if (this.ElevatorAvailable)
                             {
                                 this._addPassengersToElevator(elevator);
