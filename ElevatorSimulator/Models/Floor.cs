@@ -164,7 +164,6 @@ namespace ElevatorApp.Models
         private IEnumerable<Passenger> _getPassengersToMove(Direction direction)
         {
             IEnumerable<Passenger> waiting = this.WaitingPassengers.Where(p => p.State == PassengerState.Waiting);
-
             switch (direction)
             {
                 // If the elevator is already going up, only add passengers who are going up

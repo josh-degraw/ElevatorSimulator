@@ -820,6 +820,9 @@ namespace ElevatorApp.Models
             {
                 this.Moving = false;
                 this.RequestedDirection = Direction.None;
+                //This is possibly just a temp fix, but resetting the next floor to the curr floor after the path completes fixes
+                //some issues pertaining to adding passengers after letting a long string of tests complete.
+                this.NextFloor = this.CurrentFloor;
                 this.State = ElevatorState.Idle;
                 LogEvent("Elevator path completed.");
             }
