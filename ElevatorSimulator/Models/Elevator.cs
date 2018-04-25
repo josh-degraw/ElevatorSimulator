@@ -139,6 +139,14 @@ namespace ElevatorApp.Models
 
                 if (this.State == ElevatorState.Arriving)
                 {
+                    if(this.Direction == Direction.Up)
+                    {
+                        this.NextFloor = this.NextFloor + 1;
+                    }
+                    if (this.Direction == Direction.Down )
+                    {
+                        this.NextFloor = this.NextFloor -1;
+                    }
                     this.State = ElevatorState.Arrived;
                     this.Arrived?.Invoke(this, args);
                 }
@@ -246,21 +254,23 @@ namespace ElevatorApp.Models
             try
             {
                 this.CurrentFloor = args.DestinationFloor;
-                if(this.RequestedDirection == Direction.Down)
-                    this.NextFloor = this.CurrentFloor - 1;
-                else
-                    this.NextFloor = this.CurrentFloor + 1;
 
                 this.TryRemoveCall(args.Call);
-
-                ElevatorCall calledFromFloor = this._floorsToStopAt.FirstOrDefault(a => a.Floor == this.CurrentFloor && !a.FromPassenger);
-
-                if (calledFromFloor != null && (calledFromFloor.Direction == this.RequestedDirection || this.Direction == Direction.None)) this.TryRemoveCall(calledFromFloor);
 
                 LogEvent("Elevator Arrived", ("Floor", args.DestinationFloor));
 
                 IEnumerable<Passenger> leaving =
                         this.Passengers.Where(p => p.Path.destination == args.DestinationFloor);
+
+                //See if there will be no one left in the elevator after this
+                ElevatorCall calledFromFloor = this._floorsToStopAt.FirstOrDefault(a => a.Floor == this.CurrentFloor && !a.FromPassenger);
+                if(leaving.Count() >= Passengers.Count())
+                {
+                    this.Moving = false;
+                    this.NextFloor = this.CurrentFloor;
+                }
+                //We need to reset next floor to the curr floor right now if there are no people left. The same reason we check for floor calls after passengers exit
+                if (calledFromFloor != null && (calledFromFloor.Direction == this.RequestedDirection || this.Direction == Direction.None)) this.TryRemoveCall(calledFromFloor);
 
                 this.Door.WaitForDoorToOpen().GetAwaiter().GetResult();
 
@@ -351,7 +361,10 @@ namespace ElevatorApp.Models
                                 }
 
                                 // If we are moving, find the closest floor that is not the current floor
-                                return a.Direction == this.Direction && a.Floor != this.CurrentFloor;
+                                if(a.Direction == Direction.Down)
+                                    return a.Direction == this.Direction && a.Floor <= this.CurrentFloor;
+                                else
+                                    return a.Direction == this.Direction && a.Floor >= this.CurrentFloor;
                             })
                             .MinBy(a => Math.Abs(a.Floor - this.CurrentFloor));
 
@@ -820,9 +833,6 @@ namespace ElevatorApp.Models
             {
                 this.Moving = false;
                 this.RequestedDirection = Direction.None;
-                //This is possibly just a temp fix, but resetting the next floor to the curr floor after the path completes fixes
-                //some issues pertaining to adding passengers after letting a long string of tests complete.
-                this.NextFloor = this.CurrentFloor;
                 this.State = ElevatorState.Idle;
                 LogEvent("Elevator path completed.");
             }
